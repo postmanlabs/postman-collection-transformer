@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+- '0.10'
+- '0.12'
+# deploy:
+#   provider: npm
+#   email: help@getpostman.com
+#   api_key:
+#     secure: ESlV0/FVf+QlzIhz5gRtesugK6CvituS2ThvkRXJoVoqPTpV30kAhapl6OmHEVyDJAiAhK+gOqywxEtqviNpNIXMgjSMVKR/KJanGGJz8+KECdR4fTBlO4GrJ5MfOJpvOQoI/qoG2/nt7e72j22IIGessGcF/CMnktpLVxf+zIGFiFBAy4OqknOWk5uIfwj9JVqTiXOeiYu7Uotg8izaortzAkIVE8MIaFYQbEayzNxn0nCkHJ0mjtoeO8HpCsSCwJhib5eEBUmdu104GzLY0K9Sw6QdmVEis8bXB5J5twv40gL+bPWXqjU9dWq4pr6zxehipSS0ijD1T/kgJoIUJxxnSzkmGjs+kCC9Wa8ITzwtYNMFsZIJjbBd49pA397GoPyIiG6i9kf81o2NaXY3jCWG9+x9N+y7ZId8crhjsa/uUnJRyuvN0czzmKqWHsGFeucgTfAXi3FsqH8zDIzqgNM91Fj21n0jZzvl6c/tsB14jlIJhreI06LQWUg7GKCPtksuIJ74BXWtBGMA5wQ+FVAAC+wE0mMuj0A16Ru4xmfTe2UnOYrb37d1mmw+DXJ1C0HlZypwGthzVH6Y58WfRZSpO+qJ1yCa74MwXnUdV8fAO28Zfv97ZzvXZ7xUw+dj7QEysmvYkdAki46qVyQXfLKZIUaV7Exxcgr4DSup1bg=
+#   on:
+#     tags: true
+#     repo: postmanlabs/async-domino
+#     branch: master
