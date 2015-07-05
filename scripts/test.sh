@@ -27,7 +27,9 @@ echo -e "jscs v`jscs --version`\033[0m\n";
 jscs index.js lib bin tests/unit
 
 # run jshint
-jshint index.js lib bin tests/unit --show-non-errors --verbose && echo "No lint errors found.";
+echo # blank line
+jshint index.js lib bin tests/unit --show-non-errors --verbose;
+echo -n "No lint errors found.";
 
 # run mocha tests
 echo -e "\n\n\033[93mRunning unit tests...\033[0m";
