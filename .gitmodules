@@ -1,4 +1,4 @@
-[submodule "schemas"]
-	path = schemas
+[submodule "lib/schemas"]
+	path = lib/schemas
 	url = https://github.com/postmanlabs/schemas.git
 	branch = master
