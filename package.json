@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "commander": "2.8.1",
+    "strip-json-comments": "1.0.2",
     "winston": "1.0.1"
   }
 }
