@@ -18,6 +18,10 @@ program
     .option('-p, --output-version [version]', 'required version to which the collection is needed to be converted to')
     .action(function (options) {
         logger.info('yet to be implemented', options, transformer);
+
+        transformer.convert(options, function (/* error, result */) {
+            // write to file
+        }); // @todo pass params
         // @todo implement with as little and concise code as possible with least external dependencies
     });
 
