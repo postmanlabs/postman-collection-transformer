@@ -27,7 +27,7 @@ program
                 if (error) {
                     console.log(error);
                 }
-            })
+            });
         });
     });
 
@@ -44,7 +44,7 @@ program
 
 program
     .command('*', 'Display usage text', {isDefault: true})
-    .action(function (options) {
+    .action(function () {
         program.outputHelp();
     });
 
