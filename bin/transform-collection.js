@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 var program = require('commander'),
-    logger = require('winston'),
     transformer = require('../index');
 
 program
@@ -38,7 +37,7 @@ program
     .option('-i, --input <path>', 'path to the input postman collection file')
     .option('-s, --schema [version]', 'the version of the input collection format standard')
     .action(function (options) {
-        logger.info('yet to be implemented', options, transformer);
+        console.log('yet to be implemented', options, transformer);
         // @todo implement with as little and concise code as possible with least external dependencies
     });
 
