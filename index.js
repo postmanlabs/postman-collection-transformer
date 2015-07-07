@@ -1,7 +1,4 @@
 /**
  * @module transformer
  */
-module.exports = {
-    lib: require('./lib/main'),
-    util: require('./lib/util')
-};
+module.exports = require('./lib/main');

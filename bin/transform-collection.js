@@ -17,12 +17,12 @@ program
     .option('-p, --output-version [version]', 'required version to which the collection is needed to be converted to')
     .option('-P, --pretty', 'Pretty print the output')
     .action(function (options) {
-        transformer.lib.convert(options, function (error, result) {
+        transformer.convert(options, function (error, result) {
             if (error) {
                 console.log(error);
                 return;
             }
-            transformer.util.writeJSON(options.output, result, options.pretty, function (error) {
+            transformer.util.writeJSON(options.output, result, {pretty: true, overwrite: true}, function (error) {
                 if (error) {
                     console.log(error);
                 }
