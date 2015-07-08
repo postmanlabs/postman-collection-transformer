@@ -8,9 +8,9 @@ var expect = require('expect.js'),
     tv4 = require('tv4'),
     _ = require('lodash');
 
+/* global describe, it */
 describe('v1.0.0 ==> v2.0.0', function () {
-    var fs = require('fs'),
-        converter = require('../../lib/converters/converter-v1-to-v2'),
+    var converter = require('../../lib/converters/converter-v1-to-v2'),
         schema = require('../../lib/schemas/json/collection/v2.0.0-draft.1/index'),
         examplesDir = path.join(__dirname, '../../examples/v1');
 
@@ -22,7 +22,7 @@ describe('v1.0.0 ==> v2.0.0', function () {
                     var result = tv4.validate(converted, schema);
                     expect(result).to.be(true);
                 });
-            })
-        })
-    })
+            });
+        });
+    });
 });
