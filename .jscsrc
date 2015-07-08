@@ -129,7 +129,7 @@
     //     "beforeOpeningCurlyBrace": true
     // },
     // "requireSpacesInsideArrayBrackets": false,
-    "requireSpacesInsideObjectBrackets": "allButNested",
+    // "requireSpacesInsideObjectBrackets": "allButNested",
     // "requireSpacesInsideParentheses": false,
     // "requireTrailingComma": false,
     // "requireYodaConditions": false,
