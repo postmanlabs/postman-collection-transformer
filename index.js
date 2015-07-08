@@ -1,4 +1,4 @@
 /**
- * @exports async-domino
+ * @module transformer
  */
 module.exports = require('./lib/main');
