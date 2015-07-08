@@ -16,13 +16,14 @@ program
     .option('-o, --output <path>', 'target file path where the converted collection will be written')
     .option('-p, --output-version [version]', 'required version to which the collection is needed to be converted to')
     .option('-P, --pretty', 'Pretty print the output')
+    .option('-w, --overwrite', 'Overwrite the output file if it exists')
     .action(function (options) {
         transformer.convert(options, function (error, result) {
             if (error) {
                 console.log(error);
                 return;
             }
-            transformer.util.writeJSON(options.output, result, {pretty: true, overwrite: true}, function (error) {
+            transformer.util.writeJSON(options.output, result, options.pretty, options.overwrite, function (error) {
                 if (error) {
                     console.log(error);
                 }
