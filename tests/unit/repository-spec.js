@@ -77,6 +77,15 @@ describe('repository', function () {
             });
         });
 
+        describe('dependencies', function () {
+            it('must point to a valid and precise (no * or ^) semver', function () {
+                for (var item in json.dependencies) {
+                    expect(json.dependencies[item]).to.match(new RegExp('^((\\d+)\\.(\\d+)\\.(\\d+))(?:-' +
+                        '([\\dA-Za-z\\-]+(?:\\.[\\dA-Za-z\\-]+)*))?(?:\\+([\\dA-Za-z\\-]+(?:\\.[\\dA-Za-z\\-]+)*))?$'));
+                }
+            });
+        });
+
         describe('devDependencies', function () {
             it('must exist', function () {
                 expect(json.devDependencies).to.be.a('object');
@@ -88,9 +97,10 @@ describe('repository', function () {
                 }
             });
 
-            it('must point to specific package version; (*) not expected', function () {
+            it('must point to a valid and precise (no * or ^) semver', function () {
                 for (var item in json.devDependencies) {
-                    expect(json.devDependencies[item]).not.to.equal('*');
+                    expect(json.devDependencies[item]).to.match(new RegExp('^((\\d+)\\.(\\d+)\\.(\\d+))(?:-' +
+                        '([\\dA-Za-z\\-]+(?:\\.[\\dA-Za-z\\-]+)*))?(?:\\+([\\dA-Za-z\\-]+(?:\\.[\\dA-Za-z\\-]+)*))?$'));
                 }
             });
         });

@@ -29,10 +29,10 @@
   },
   "homepage": "https://github.com/postmanlabs/postman-collection-transformer#readme",
   "devDependencies": {
-    "expect.js": "^0.3.1",
-    "jscs": "^1.13.1",
-    "jshint": "^2.8.0",
-    "mocha": "^2.2.5"
+    "expect.js": "0.3.1",
+    "jscs": "1.13.1",
+    "jshint": "2.8.0",
+    "mocha": "2.2.5"
   },
   "dependencies": {
     "commander": "2.8.1",
@@ -40,7 +40,7 @@
     "require-all": "1.1.0",
     "semver": "4.3.6",
     "strip-json-comments": "1.0.2",
-    "tv4": "^1.1.12",
-    "url-parse": "^1.0.2"
+    "tv4": "1.1.12",
+    "url-parse": "1.0.2"
   }
 }
