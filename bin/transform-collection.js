@@ -20,12 +20,17 @@ program
     .action(function (options) {
         transformer.convert(options, function (error, result) {
             if (error) {
-                console.log(error);
+                console.error(error.message);
                 return;
             }
             transformer.util.writeJSON(options.output, result, options.pretty, options.overwrite, function (error) {
                 if (error) {
-                    console.log(error);
+                    if (error.code === 'EEXIST') {
+                        console.error('Output file %s already exists', error.path);
+                    }
+                    else {
+                        console.error(error.message);
+                    }
                 }
             });
         });
