@@ -3,7 +3,4 @@
 # postman-collection-transformer
 Perform rapid conversation and validation of JSON structure between Postman Collection Format v1 and v2.
 
-## Caution
-
-This is still a work in progress. Please check <a href="http://blog.getpostman.com/" target="_blank">our blog</a> and
-our Twitter page <a href="https://twitter.com/postmanclient" target="_blank">@postmanclient</a> for updates!
+> This is still a work in progress. Please check <a href="http://blog.getpostman.com/" target="_blank">our blog</a> and our Twitter page <a href="https://twitter.com/postmanclient" target="_blank">@postmanclient</a> for updates!
