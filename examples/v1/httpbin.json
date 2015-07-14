@@ -1,82 +1,40 @@
 {
-	"id": "d3ac0bab-ffb6-a769-eb77-e530db67af4f",
+	"id": "65d8dc8f-fb76-8d61-8adc-f96d2109ec7d",
 	"name": "httpbin",
 	"description": "Requests to HTTP Bin",
 	"order": [
-		"377fc870-cf64-ac1c-d516-c2cdfcb5495d",
-		"403f1713-2dd7-82bb-5af6-7dabda800592"
+		"1b99c251-ac65-e6db-4387-2d85ffbaca71",
+		"4f69f0e3-a962-d661-d247-ff7ce9217877",
+		"8dfc10ad-9f66-666a-2966-ca011dd12d61"
 	],
 	"folders": [
 		{
-			"id": "388ca16f-c740-49e9-aeef-9907db229eb5",
+			"id": "8d45b2ca-35a9-75ce-0147-16eb1b54bc66",
 			"name": "All POST JSON ",
 			"description": "",
-			"owner": "61671",
-			"lastUpdatedBy": "61671",
-			"lastRevision": 14925070,
-			"collection": "d3ac0bab-ffb6-a769-eb77-e530db67af4f",
 			"order": [
-				"36d8cc35-4bdc-f8b6-b712-da28df8dd89a"
+				"d4cc78b7-232d-8c8c-b5d5-8630faa63c3e"
 			],
-			"createdAt": "2015-07-02T07:53:22.000Z",
-			"updatedAt": "2015-07-02T07:53:33.000Z",
+			"owner": "1260",
+			"collection_id": "65d8dc8f-fb76-8d61-8adc-f96d2109ec7d",
 			"write": true,
 			"collection_name": "httpbin",
-			"collection_owner": "61671",
-			"collection_id": "d3ac0bab-ffb6-a769-eb77-e530db67af4f"
+			"collection_owner": "1260"
 		}
 	],
 	"timestamp": 0,
-	"owner": "61671",
-	"remoteLink": null,
+	"owner": "1260",
+	"remoteLink": "",
 	"public": false,
 	"requests": [
 		{
-			"id": "36d8cc35-4bdc-f8b6-b712-da28df8dd89a",
-			"name": "POST with URL params and JSON",
-			"dataMode": "raw",
-			"data": [],
-			"descriptionFormat": "html",
-			"description": "",
-			"headers": "Content-Type: application/json\n",
-			"method": "POST",
-			"pathVariables": {},
-			"url": "httpbin.org/post?random=yeah",
-			"preRequestScript": "",
-			"tests": "",
-			"version": null,
-			"currentHelper": "normal",
-			"helperAttributes": "{}",
-			"folder": "388ca16f-c740-49e9-aeef-9907db229eb5",
-			"collectionId": "d3ac0bab-ffb6-a769-eb77-e530db67af4f",
-			"rawModeData": "{\n    \"gimme\": \"somejson!\"\n}"
-		},
-		{
-			"id": "377fc870-cf64-ac1c-d516-c2cdfcb5495d",
+			"id": "1b99c251-ac65-e6db-4387-2d85ffbaca71",
 			"name": "POST with URL params and form-data",
-			"dataMode": "params",
-			"data": [
-				{
-					"key": "postdata",
-					"value": "isawesome",
-					"type": "text",
-					"enabled": true
-				}
-			],
-			"rawModeData": null,
-			"descriptionFormat": "html",
-			"description": "",
-			"headers": "",
+			"url": "//httpbin.org/post?random=yo",
+			"collectionId": "65d8dc8f-fb76-8d61-8adc-f96d2109ec7d",
 			"method": "POST",
-			"pathVariables": {},
-			"url": "httpbin.org/post?random=yo",
-			"preRequestScript": "",
 			"tests": "",
-			"version": null,
-			"currentHelper": "normal",
-			"helperAttributes": "{}",
-			"folder": null,
-			"collectionId": "d3ac0bab-ffb6-a769-eb77-e530db67af4f",
+			"preRequestScript": "",
 			"responses": [
 				{
 					"owner": "61671",
@@ -102,7 +60,7 @@
 						"isFromCollection": true,
 						"version": 2
 					},
-					"id": "35052c57-e5f8-acc2-86a0-c8479d8bead3",
+					"id": "28e83b62-5b5d-c04c-81ca-35b3289ffd18",
 					"name": "One and only response",
 					"status": "",
 					"responseCode": {
@@ -194,7 +152,7 @@
 						"isFromCollection": true,
 						"version": 2
 					},
-					"id": "c01700a4-5351-f2fb-20c5-357fbf96652b",
+					"id": "5b7c7ce9-7b49-11bb-e245-1c8623d464f1",
 					"name": "TheResponse",
 					"status": "",
 					"responseCode": {
@@ -262,11 +220,29 @@
 					"updatedAt": "2015-07-02T06:14:05.000Z",
 					"write": true
 				}
-			]
+			],
+			"headers": "",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "postdata",
+					"value": "isawesome",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"rawModeData": ""
 		},
 		{
-			"id": "403f1713-2dd7-82bb-5af6-7dabda800592",
+			"id": "4f69f0e3-a962-d661-d247-ff7ce9217877",
 			"name": "POST with URL params and urlencoded",
+			"url": "//httpbin.org/post?random=yeah",
+			"collectionId": "65d8dc8f-fb76-8d61-8adc-f96d2109ec7d",
+			"method": "POST",
+			"tests": "",
+			"preRequestScript": "",
+			"responses": [],
+			"headers": "",
 			"dataMode": "urlencoded",
 			"data": [
 				{
@@ -276,20 +252,44 @@
 					"enabled": true
 				}
 			],
-			"rawModeData": null,
-			"descriptionFormat": "html",
-			"description": "",
+			"rawModeData": ""
+		},
+		{
+			"id": "8dfc10ad-9f66-666a-2966-ca011dd12d61",
 			"headers": "",
-			"method": "POST",
-			"pathVariables": {},
-			"url": "httpbin.org/post?random=yeah",
+			"url": "httpbin.org/status/:code",
+			"pathVariables": {
+				"code": "201"
+			},
 			"preRequestScript": "",
+			"method": "GET",
+			"collectionId": "65d8dc8f-fb76-8d61-8adc-f96d2109ec7d",
+			"data": [],
+			"dataMode": "params",
+			"name": "PathVariables",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1436865265598,
+			"version": 2,
+			"responses": [],
 			"tests": "",
-			"version": null,
 			"currentHelper": "normal",
-			"helperAttributes": "{}",
-			"folder": null,
-			"collectionId": "d3ac0bab-ffb6-a769-eb77-e530db67af4f"
+			"helperAttributes": {}
+		},
+		{
+			"id": "d4cc78b7-232d-8c8c-b5d5-8630faa63c3e",
+			"name": "POST with URL params and JSON",
+			"url": "//httpbin.org/post?random=yeah",
+			"collectionId": "65d8dc8f-fb76-8d61-8adc-f96d2109ec7d",
+			"method": "POST",
+			"tests": "",
+			"preRequestScript": "",
+			"responses": [],
+			"headers": "Content-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\n    \"gimme\": \"somejson!\"\n}",
+			"folder": "8d45b2ca-35a9-75ce-0147-16eb1b54bc66"
 		}
 	]
 }
