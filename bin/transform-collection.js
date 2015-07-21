@@ -29,7 +29,7 @@ program
                         console.error('Output file %s already exists', error.path);
                     }
                     else {
-                        console.error(error.message);
+                        console.error(error.message || error);
                     }
                 }
             });
