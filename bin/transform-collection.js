@@ -18,7 +18,7 @@ program
     .option('-P, --pretty', 'Pretty print the output')
     .option('-w, --overwrite', 'Overwrite the output file if it exists')
     .action(function (options) {
-        transformer.convert(options, function (error, result) {
+        transformer.convertFile(options, function (error, result) {
             if (error) {
                 console.error(error.message);
                 return;
