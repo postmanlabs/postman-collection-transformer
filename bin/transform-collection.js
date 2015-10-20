@@ -1,6 +1,49 @@
 #!/usr/bin/env node
 var program = require('commander'),
-    transformer = require('../index');
+    transformer = require('../index'),
+    log = require('intel'),
+    fs = require('fs'),
+    stripJSONComments = require('strip-json-comments'),
+
+    /**
+     * Loads a JSON in a safe and compatible way from a file
+     *
+     * @param  {string} path
+     */
+    loadJSON = function (path) {
+        var data = fs.readFileSync(path);
+        return JSON.parse(stripJSONComments(data.toString()));
+    },
+
+    /**
+     * Writes a JSON blob to the given path.
+     * ``options.path`` must contain the path to the output file.
+     * If ``options.pretty`` is true, output will be pretty printed. (Default false)
+     * If ``options.overwrite`` is false, output file will be overwritten (Default true)
+     *
+     * @param data
+     * @param options
+     * @param callback
+     */
+    writeJSON = function (data, options, callback) {
+        var json,
+            FSWF_FLAG_W = {flag: 'w'},
+            FSWF_FLAG_WX = {flag: 'wx'};
+
+        try {
+            json = JSON.stringify(data, null, options.pretty ? 4 : 0);
+        }
+        catch (e) {
+            return callback(e);
+        }
+        fs.writeFile(options.output, json, options.overwrite ? FSWF_FLAG_W : FSWF_FLAG_WX, callback);
+    };
+
+// Setup logging
+log.basicConfig({
+    format: '%(date)s [%(levelname)s] %(message)s',
+    level: log.DEBUG
+});
 
 program
     .usage('[command] [options]')
@@ -18,19 +61,31 @@ program
     .option('-P, --pretty', 'Pretty print the output')
     .option('-w, --overwrite', 'Overwrite the output file if it exists')
     .action(function (options) {
-        transformer.convertFile(options, function (error, result) {
-            if (error) {
-                console.error(error.message);
+        var input;
+
+        if (!options.output) {
+            return log.error('Output file must be specified!');
+        }
+        if (!options.input) {
+            return log.error('Output file must be specified!');
+        }
+
+        try {
+            input = loadJSON(options.input);
+        }
+        catch (e) {
+            log.error('Unable to load the input file!', e);
+            return;
+        }
+
+        transformer.convert(input, options, function (err, result) {
+            if (err) {
+                log.error('Unable to convert the input:', err);
                 return;
             }
-            transformer.util.writeJSON(options.output, result, options.pretty, options.overwrite, function (error) {
+            writeJSON(result, options, function (error) {
                 if (error) {
-                    if (error.code === 'EEXIST') {
-                        console.error('Output file %s already exists', error.path);
-                    }
-                    else {
-                        console.error(error.message || error);
-                    }
+                    log.error('Could not create output file %s', options.output, error);
                 }
             });
         });
