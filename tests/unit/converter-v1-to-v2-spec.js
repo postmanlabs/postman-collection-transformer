@@ -5,14 +5,13 @@
 var expect = require('expect.js'),
     requireAll = require('require-all'),
     path = require('path'),
-    util = require('../../lib/util'),
     tv4 = require('tv4'),
     _ = require('lodash');
 
 /* global describe, it */
 describe('v1.0.0 ==> v2.0.0', function () {
     var converter = require('../../lib/converters/converter-v1-to-v2'),
-        schema = require('../../lib/schemas/json/collection/v2.0.0-draft.2/index'),
+        schema = require('../../lib/schemas/json/collection/v2.0.0-draft.4/index'),
         examplesDir = path.join(__dirname, '../../examples/v1');
 
     describe('sample conversions', function () {
@@ -29,14 +28,5 @@ describe('v1.0.0 ==> v2.0.0', function () {
                 });
             });
         });
-    });
-
-    it('must not add leading "//" when a variable is present at the beginning of the url', function (done) {
-        var sample = require(path.join(examplesDir, 'proper-url-parsing.json'));
-        converter.convert(sample, {}, function (err, converted) {
-            expect(util.stringStartsWith(converted.items[0].request.url.href, '//')).to.be(false);
-            expect(util.stringEndsWith(converted.items[0].request.url.href, '?')).to.be(false);
-        });
-        done();
     });
 });

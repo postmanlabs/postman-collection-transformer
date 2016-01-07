@@ -14,7 +14,7 @@
 		{
 			"id": "2c03f359-f259-bb30-d14c-ea278056e95f",
 			"headers": "",
-			"url": "{{some_var}}/abc/123",
+			"url": "https://ani{{yo}}ket:{{asd}}@{{hellohost}}:2002/crazyvar/{{yo}}/:awesome?a=b&c=d#/awesomeshit",
 			"pathVariables": {},
 			"preRequestScript": "",
 			"method": "GET",
