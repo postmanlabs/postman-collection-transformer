@@ -5,8 +5,6 @@
 var expect = require('expect.js'),
     requireAll = require('require-all'),
     path = require('path'),
-    inspect = require('util').inspect,
-    fs = require('fs'),
     tv4 = require('tv4'),
     _ = require('lodash');
 
