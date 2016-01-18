@@ -5,6 +5,8 @@
 var expect = require('expect.js'),
     requireAll = require('require-all'),
     path = require('path'),
+    inspect = require('util').inspect,
+    fs = require('fs'),
     tv4 = require('tv4'),
     _ = require('lodash');
 
@@ -19,9 +21,22 @@ describe('v1.0.0 ==> v2.0.0', function () {
         _.map(samples, function (sample, sampleName) {
             it('must create a valid V2 collection from ' + sampleName + '.json', function (done) {
                 converter.convert(sample, {}, function (err, converted) {
-                    var result = tv4.validate(converted, schema);
+                    var validator = tv4.freshApi(),
+                        result;
+                    validator.addSchema(schema);
+
+                    // Some of the converter functions assign "undefined" value to some properties,
+                    // It is necessary to get rid of them (otherwise schema validation sees an "undefined" and fails).
+                    // Converting to and parsing from JSON does this.
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    result = validator.validate(converted, schema);
                     if (!result) {
                         console.log(JSON.stringify(tv4.error, null, 4)); // Helps debug on CI
+                    }
+                    if (validator.missing.length) {
+                        console.log(validator.missing);
+                        result = false;
                     }
                     expect(result).to.be(true);
                     done();
