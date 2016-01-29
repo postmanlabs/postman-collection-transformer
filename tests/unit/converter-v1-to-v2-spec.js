@@ -30,7 +30,7 @@ describe('v1.0.0 ==> v2.0.0', function () {
 
                     result = validator.validate(converted, schema);
                     if (!result) {
-                        console.log(JSON.stringify(tv4.error, null, 4)); // Helps debug on CI
+                        console.log(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
                     }
                     if (validator.missing.length) {
                         console.log(validator.missing);
