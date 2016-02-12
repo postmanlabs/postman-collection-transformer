@@ -1,0 +1,36 @@
+{
+    "variables": [],
+    "info": {
+        "name": "rawjsonbody",
+        "_postman_id": "c96a1f4e-f2e8-ed1f-3421-e16568f4b471",
+        "description": "",
+        "schema": "http://schema.getpostman.com/collection/v2/collection.json"
+    },
+    "item": [
+        {
+            "id": "8f444706-d8cc-9196-ee18-e0c7c3627df3",
+            "name": "httpbin.org/post",
+            "request": {
+                "auth": {
+                    "type": "noauth",
+                    "noauth": {}
+                },
+                "url": "httpbin.org/:method",
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "description": ""
+                    }
+                ],
+                "data": {
+                    "mode": "raw",
+                    "content": "{\n    \"asd\": \"tyyy\"\n}"
+                },
+                "description": ""
+            },
+            "response": []
+        }
+    ]
+}
