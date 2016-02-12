@@ -22,7 +22,6 @@ describe('v2.0.0 ==> v1.0.0', function () {
                     var validator = tv4.freshApi(),
                         result;
                     validator.addSchema(schema);
-
                     // Some of the converter functions assign "undefined" value to some properties,
                     // It is necessary to get rid of them (otherwise schema validation sees an "undefined" and fails).
                     // Converting to and parsing from JSON does this.
@@ -37,6 +36,7 @@ describe('v2.0.0 ==> v1.0.0', function () {
                         result = false;
                     }
                     expect(result).to.be(true);
+                    expect(err).to.be(null);
                     done();
                 });
             });

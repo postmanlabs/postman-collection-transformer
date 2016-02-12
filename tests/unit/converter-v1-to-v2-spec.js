@@ -36,6 +36,7 @@ describe('v1.0.0 ==> v2.0.0', function () {
                         console.log(validator.missing);
                         result = false;
                     }
+                    expect(err).to.be(null);
                     expect(result).to.be(true);
                     done();
                 });
