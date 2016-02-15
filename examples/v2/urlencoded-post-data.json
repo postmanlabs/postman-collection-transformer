@@ -121,7 +121,7 @@
                         }
                     ],
                     "cookie": [],
-                    "time": 925,
+                    "responseTime": 925,
                     "data": "{\n  \"args\": {}, \n  \"data\": \"\", \n  \"files\": {}, \n  \"form\": {\n    \"akshay\": \"bald\", \n    \"yakshay\": \"ybald\"\n  }, \n  \"headers\": {\n    \"Accept\": \"*/*\", \n    \"Accept-Encoding\": \"gzip\", \n    \"Accept-Language\": \"en-US,en;q=0.8\", \n    \"Cache-Control\": \"no-cache\", \n    \"Content-Length\": \"25\", \n    \"Content-Type\": \"application/x-www-form-urlencoded\", \n    \"Cookie\": \"_ga=GA1.2.113558537.1435817423\", \n    \"Host\": \"httpbin.org\", \n    \"Origin\": \"chrome-extension://aicmkgpgakddgnaphhhpliifpcfhicfo\", \n    \"Postman-Token\": \"e8826f9c-70fa-0957-fe12-265257861623\", \n    \"User-Agent\": \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36\"\n  }, \n  \"json\": null, \n  \"origin\": \"106.51.38.69\", \n  \"url\": \"http://httpbin.org/post\"\n}\n"
                 }
             ]

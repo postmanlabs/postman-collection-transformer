@@ -223,7 +223,7 @@
                                 }
                             ],
                             "cookie": [],
-                            "time": "9843",
+                            "responseTime": "9843",
                             "data": "{\"authenticated\":true}"
                         }
                     ]
@@ -365,7 +365,7 @@
                                 }
                             ],
                             "cookie": [],
-                            "time": "276",
+                            "responseTime": "276",
                             "data": "Unauthorized"
                         },
                         {
@@ -472,7 +472,7 @@
                                 }
                             ],
                             "cookie": [],
-                            "time": "377",
+                            "responseTime": "377",
                             "data": "{\"authenticated\":true}"
                         }
                     ]
@@ -669,7 +669,7 @@
                                 }
                             ],
                             "cookie": [],
-                            "time": "3063",
+                            "responseTime": "3063",
                             "data": "{\"cookies\":{\"foo1\":\"bar\",\"foo2\":\"bar\"}}"
                         }
                     ]
@@ -794,7 +794,7 @@
                                 }
                             ],
                             "cookie": [],
-                            "time": "462",
+                            "responseTime": "462",
                             "data": "{\"cookies\":{\"foo2\":\"bar\"}}"
                         }
                     ]
@@ -919,7 +919,7 @@
                                 }
                             ],
                             "cookie": [],
-                            "time": "1417",
+                            "responseTime": "1417",
                             "data": "{\"cookies\":{\"foo2\":\"bar\"}}"
                         }
                     ]
@@ -1611,7 +1611,7 @@
                                 }
                             ],
                             "cookie": [],
-                            "time": "291",
+                            "responseTime": "291",
                             "data": "{}"
                         }
                     ]
@@ -1788,7 +1788,7 @@
                                 }
                             ],
                             "cookie": [],
-                            "time": "287",
+                            "responseTime": "287",
                             "data": "{}"
                         },
                         {
@@ -1911,7 +1911,7 @@
                                 }
                             ],
                             "cookie": [],
-                            "time": "303",
+                            "responseTime": "303",
                             "data": "{\"access_token\":\"vp7jxTwqgczoFHs0uIdOvv4VdBWmvCkbVbNBCuaTQ3JZplPS40BaNV47HD1zt7MztQPILJvqYsOs6PfJpFYBgwbaE3CVEKOj\",\"token_type\":\"Bearer\"}"
                         }
                     ]
@@ -2098,7 +2098,7 @@
                                 }
                             ],
                             "cookie": [],
-                            "time": "303",
+                            "responseTime": "303",
                             "data": "Unauthorized"
                         },
                         {
@@ -2231,7 +2231,7 @@
                                 }
                             ],
                             "cookie": [],
-                            "time": "323",
+                            "responseTime": "323",
                             "data": "{\"user_id\":1,\"name\":\"postman\"}"
                         }
                     ]
