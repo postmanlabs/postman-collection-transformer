@@ -27,7 +27,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -48,7 +48,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -69,7 +69,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -90,7 +90,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\"item\": { \"id\": \"300065354\", \"type\": \"folder\"}, \"accessible_by\": { \"id\": \"129395212\"}, \"role\": \"editor\"}"
+                            "raw": "{\"item\": { \"id\": \"300065354\", \"type\": \"folder\"}, \"accessible_by\": { \"id\": \"129395212\"}, \"role\": \"editor\"}"
                         },
                         "description": ""
                     },
@@ -111,7 +111,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\"role\": \"viewer\"}"
+                            "raw": "{\"role\": \"viewer\"}"
                         },
                         "description": ""
                     },
@@ -132,7 +132,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -160,7 +160,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -181,7 +181,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\n\n\t\"item\":\n\n\t{\"type\": \"file\", \"id\": \"6526455273\"}, \n    \n\t\"message\": \"This looks great!\"\n\n}"
+                            "raw": "{\n\n\t\"item\":\n\n\t{\"type\": \"file\", \"id\": \"6526455273\"}, \n    \n\t\"message\": \"This looks great!\"\n\n}"
                         },
                         "description": ""
                     },
@@ -202,7 +202,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\n\n\t\"item\":\n\n\t{\"type\": \"file\", \"id\": \"6526455273\"}, \n    \n\t\"tagged_message\": \"Tagged mention for @[192642898:Rory]\"\n\n}\n\n"
+                            "raw": "{\n\n\t\"item\":\n\n\t{\"type\": \"file\", \"id\": \"6526455273\"}, \n    \n\t\"tagged_message\": \"Tagged mention for @[192642898:Rory]\"\n\n}\n\n"
                         },
                         "description": ""
                     },
@@ -223,7 +223,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\"tagged_message\": \"Tagged mention for @[192642898:Rory]\"}"
+                            "raw": "{\"tagged_message\": \"Tagged mention for @[192642898:Rory]\"}"
                         },
                         "description": ""
                     },
@@ -244,7 +244,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\"message\": \"Change comment via the API\"}"
+                            "raw": "{\"message\": \"Change comment via the API\"}"
                         },
                         "description": ""
                     },
@@ -265,7 +265,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -293,7 +293,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -314,7 +314,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -335,7 +335,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -363,7 +363,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -384,7 +384,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -405,7 +405,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": [
+                            "formdata": [
                                 {
                                     "key": "Zelda",
                                     "value": "",
@@ -432,7 +432,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -453,7 +453,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -474,7 +474,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": [
+                            "formdata": [
                                 {
                                     "key": "Zelda",
                                     "value": "",
@@ -501,7 +501,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -522,7 +522,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\"parent\": {\"id\" : 0}}"
+                            "raw": "{\"parent\": {\"id\" : 0}}"
                         },
                         "description": ""
                     },
@@ -543,7 +543,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -564,7 +564,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": [
+                            "formdata": [
                                 {
                                     "key": "filename",
                                     "value": "",
@@ -601,7 +601,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": [
+                            "formdata": [
                                 {
                                     "key": "Zelda",
                                     "value": "",
@@ -628,7 +628,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\"parent\": {\"id\" : 1139054013}}"
+                            "raw": "{\"parent\": {\"id\" : 1139054013}}"
                         },
                         "description": ""
                     },
@@ -649,7 +649,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\"shared_link\": {\"access\": \"Open\"}}"
+                            "raw": "{\"shared_link\": {\"access\": \"Open\"}}"
                         },
                         "description": ""
                     },
@@ -670,7 +670,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\"shared_link\": null}"
+                            "raw": "{\"shared_link\": null}"
                         },
                         "description": ""
                     },
@@ -691,7 +691,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\"description\":\"File Description 2\"}"
+                            "raw": "{\"description\":\"File Description 2\"}"
                         },
                         "description": ""
                     },
@@ -717,7 +717,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -738,7 +738,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -766,7 +766,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -787,7 +787,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -808,7 +808,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -829,7 +829,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -850,7 +850,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -871,7 +871,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\"parent\": {\"id\" : 0}}"
+                            "raw": "{\"parent\": {\"id\" : 0}}"
                         },
                         "description": ""
                     },
@@ -892,7 +892,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\"name\":\"New Folder\", \"parent\": {\"id\": \"0\"}}"
+                            "raw": "{\"name\":\"New Folder\", \"parent\": {\"id\": \"0\"}}"
                         },
                         "description": ""
                     },
@@ -913,7 +913,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\"name\":\"New Folder\", \"parent\": {\"id\": \"0\"}}"
+                            "raw": "{\"name\":\"New Folder\", \"parent\": {\"id\": \"0\"}}"
                         },
                         "description": ""
                     },
@@ -934,7 +934,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\"parent\": {\"id\" : 682258214}}"
+                            "raw": "{\"parent\": {\"id\" : 682258214}}"
                         },
                         "description": ""
                     },
@@ -955,7 +955,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\"name\":\"New Folder Name!\"}"
+                            "raw": "{\"name\":\"New Folder Name!\"}"
                         },
                         "description": ""
                     },
@@ -976,7 +976,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\"folder_upload_email\": {\"access\": \"open\"}}"
+                            "raw": "{\"folder_upload_email\": {\"access\": \"open\"}}"
                         },
                         "description": ""
                     },
@@ -997,7 +997,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\"shared_link\": null}"
+                            "raw": "{\"shared_link\": null}"
                         },
                         "description": ""
                     },
@@ -1018,7 +1018,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -1039,7 +1039,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -1067,7 +1067,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -1088,7 +1088,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -1109,7 +1109,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -1130,7 +1130,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -1151,7 +1151,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -1172,7 +1172,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\"item\": { \"id\": \"1076455207\", \"type\": \"folder\"}, \"accessible_by\": { \"type\":\"group\", \"id\": \"104687\"}, \"role\": \"editor\"}"
+                            "raw": "{\"item\": { \"id\": \"1076455207\", \"type\": \"folder\"}, \"accessible_by\": { \"type\":\"group\", \"id\": \"104687\"}, \"role\": \"editor\"}"
                         },
                         "description": ""
                     },
@@ -1193,7 +1193,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\"group\": { \"id\": \"137557\", \"type\": \"group\"}, \"user\": { \"id\": \"192642898\"}}\n"
+                            "raw": "{\"group\": { \"id\": \"137557\", \"type\": \"group\"}, \"user\": { \"id\": \"192642898\"}}\n"
                         },
                         "description": ""
                     },
@@ -1214,7 +1214,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\"name\":\"SE Team\"}"
+                            "raw": "{\"name\":\"SE Team\"}"
                         },
                         "description": ""
                     },
@@ -1235,7 +1235,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{ \"accessible_by\": { \"type\":\"group\", \"id\": \"104687\"}, \"role\": \"Uploader\"}"
+                            "raw": "{ \"accessible_by\": { \"type\":\"group\", \"id\": \"104687\"}, \"role\": \"Uploader\"}"
                         },
                         "description": ""
                     },
@@ -1256,7 +1256,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\"name\":\"SE Team 3\"}"
+                            "raw": "{\"name\":\"SE Team 3\"}"
                         },
                         "description": ""
                     },
@@ -1277,7 +1277,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{ \"role\": \"submaster\" }"
+                            "raw": "{ \"role\": \"submaster\" }"
                         },
                         "description": ""
                     },
@@ -1298,7 +1298,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": []
+                            "raw": ""
                         },
                         "description": ""
                     },
@@ -1319,7 +1319,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": []
+                            "raw": ""
                         },
                         "description": ""
                     },
@@ -1340,7 +1340,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": []
+                            "raw": ""
                         },
                         "description": ""
                     },
@@ -1373,7 +1373,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": [
+                            "formdata": [
                                 {
                                     "key": "token",
                                     "value": "",
@@ -1422,7 +1422,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": [
+                            "formdata": [
                                 {
                                     "key": "token",
                                     "value": "",
@@ -1460,7 +1460,7 @@
                         "header": [],
                         "data": {
                             "mode": "urlencoded",
-                            "content": [
+                            "urlencoded": [
                                 {
                                     "key": "grant_type",
                                     "value": "urn:box:oauth2:grant-type:provision",
@@ -1496,7 +1496,7 @@
                         "header": [],
                         "data": {
                             "mode": "formdata",
-                            "content": [
+                            "formdata": [
                                 {
                                     "key": "token",
                                     "value": "",
@@ -1540,7 +1540,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -1573,7 +1573,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -1601,7 +1601,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -1622,7 +1622,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -1643,7 +1643,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -1664,7 +1664,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{ \n  \"item\": { \"type\":\"file\", \"id\": \"7170802730\"},\n  \"action\": \"review\",\n  \"message\": \"Is this working?\",\n  \"assigned_to\": { \"type\": \"user\", \"id\": \"194651398\"}\n }\n\n"
+                            "raw": "{ \n  \"item\": { \"type\":\"file\", \"id\": \"7170802730\"},\n  \"action\": \"review\",\n  \"message\": \"Is this working?\",\n  \"assigned_to\": { \"type\": \"user\", \"id\": \"194651398\"}\n }\n\n"
                         },
                         "description": ""
                     },
@@ -1685,7 +1685,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{ \"task\": { \"id\": \"2073417\", \"type\": \"task\" }, \"assign_to\": { \"login\": \"john.doe+demo@box.com\" } }"
+                            "raw": "{ \"task\": { \"id\": \"2073417\", \"type\": \"task\" }, \"assign_to\": { \"login\": \"john.doe+demo@box.com\" } }"
                         },
                         "description": ""
                     },
@@ -1706,7 +1706,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\"item\": {\"type\": \"file\", \"id\": \"7262132718\"}, \"action\": \"review\", \"message\" : \"vish is awesome\"}"
+                            "raw": "{\"item\": {\"type\": \"file\", \"id\": \"7262132718\"}, \"action\": \"review\", \"message\" : \"vish is awesome\"}"
                         },
                         "description": ""
                     },
@@ -1727,7 +1727,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{ \"task\": { \"id\": \"2073419\", \"type\": \"task\" }, \"assign_to\": { \"login\": \"john.doe+demo@box.com\" } }"
+                            "raw": "{ \"task\": { \"id\": \"2073419\", \"type\": \"task\" }, \"assign_to\": { \"login\": \"john.doe+demo@box.com\" } }"
                         },
                         "description": ""
                     },
@@ -1748,7 +1748,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{ \"message\": \"hello!!!\" , \"resolution_state\":\"completed\"}"
+                            "raw": "{ \"message\": \"hello!!!\" , \"resolution_state\":\"completed\"}"
                         },
                         "description": ""
                     },
@@ -1769,7 +1769,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\"action\": \"approve\"}"
+                            "raw": "{\"action\": \"approve\"}"
                         },
                         "description": ""
                     },
@@ -1790,7 +1790,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": []
+                            "raw": ""
                         },
                         "description": ""
                     },
@@ -1811,7 +1811,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": []
+                            "raw": ""
                         },
                         "description": ""
                     },
@@ -1839,7 +1839,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -1860,7 +1860,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -1881,7 +1881,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -1902,7 +1902,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\"email\":\"john.doe.alias@box.com\"}"
+                            "raw": "{\"email\":\"john.doe.alias@box.com\"}"
                         },
                         "description": ""
                     },
@@ -1923,7 +1923,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\"login\": \"john.doe.new@box.com\", \"name\": \"Ned Stark\"}"
+                            "raw": "{\"login\": \"john.doe.new@box.com\", \"name\": \"Ned Stark\"}"
                         },
                         "description": ""
                     },
@@ -1944,7 +1944,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\"login\":\"john.doe+newlogin@box.com\"}"
+                            "raw": "{\"login\":\"john.doe+newlogin@box.com\"}"
                         },
                         "description": ""
                     },
@@ -1965,7 +1965,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\"owned_by\": {\"id\": \"12927765\"}}\n"
+                            "raw": "{\"owned_by\": {\"id\": \"12927765\"}}\n"
                         },
                         "description": ""
                     },
@@ -1986,7 +1986,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\"is_password_reset_required\":\"true\"}"
+                            "raw": "{\"is_password_reset_required\":\"true\"}"
                         },
                         "description": ""
                     },
@@ -2007,7 +2007,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\"name\": \"Box Admin\"}"
+                            "raw": "{\"name\": \"Box Admin\"}"
                         },
                         "description": ""
                     },
@@ -2028,7 +2028,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -2049,7 +2049,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -2071,7 +2071,7 @@
                         "header": [],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -2086,7 +2086,7 @@
                         "header": [],
                         "data": {
                             "mode": "formdata",
-                            "content": [
+                            "formdata": [
                                 {
                                     "key": "grant_type",
                                     "value": "authorization_code",
@@ -2122,7 +2122,7 @@
                         "header": [],
                         "data": {
                             "mode": "formdata",
-                            "content": [
+                            "formdata": [
                                 {
                                     "key": "grant_type",
                                     "value": "refresh_token",
@@ -2158,7 +2158,7 @@
                         "header": [],
                         "data": {
                             "mode": "formdata",
-                            "content": [
+                            "formdata": [
                                 {
                                     "key": "token",
                                     "value": "",

@@ -42,7 +42,7 @@
                 "header": [],
                 "data": {
                     "mode": "formdata",
-                    "content": []
+                    "formdata": []
                 },
                 "description": ""
             },
@@ -74,7 +74,7 @@
                 "header": [],
                 "data": {
                     "mode": "formdata",
-                    "content": []
+                    "formdata": []
                 },
                 "description": ""
             },
@@ -112,7 +112,7 @@
                 "header": [],
                 "data": {
                     "mode": "formdata",
-                    "content": []
+                    "formdata": []
                 },
                 "description": ""
             },

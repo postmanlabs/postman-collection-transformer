@@ -34,7 +34,7 @@
                         "header": [],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": "List contributors to the specified repository, sorted by the number of commits per contributor in descending order."
                     },
@@ -62,7 +62,7 @@
                         "header": [],
                         "data": {
                             "mode": "raw",
-                            "content": ""
+                            "raw": ""
                         },
                         "description": "Get the specified repository for the user\n\nThe parent and source objects are present when the repository is a fork. parent is the repository this repository was forked from, source is the ultimate source for the network."
                     },
@@ -90,7 +90,7 @@
                         "header": [],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": "Get the specified branch for the repository"
                     },
@@ -118,7 +118,7 @@
                         "header": [],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": "List tags for the specified repository"
                     },
@@ -146,7 +146,7 @@
                         "header": [],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": "List languages for the specified repository. The value on the right of a language is the number of bytes of code written in that language."
                     },
@@ -174,7 +174,7 @@
                         "header": [],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": "List all branches for the specified repository"
                     },
@@ -215,7 +215,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": "Get the authenticated user.\n\nNote: The returned email is the user’s publicly visible email address (or null if the user has not specified a public email address in their profile)."
                     },
@@ -249,7 +249,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": ""
+                            "raw": ""
                         },
                         "description": "List all email addresses for the authenticated user\n\nThis endpoint is accessible with the user:email scope."
                     },
@@ -277,7 +277,7 @@
                         "header": [],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": "List a user's followers"
                     },
@@ -311,7 +311,7 @@
                         ],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": "List the authenticated user's followers"
                     },
