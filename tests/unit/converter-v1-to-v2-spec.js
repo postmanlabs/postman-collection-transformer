@@ -6,18 +6,28 @@ var expect = require('expect.js'),
     requireAll = require('require-all'),
     path = require('path'),
     tv4 = require('tv4'),
-    _ = require('lodash');
+    _ = require('lodash'),
+    agent = require('superagent');
 
-/* global describe, it */
+/* global describe, it, before */
 describe('v1.0.0 ==> v2.0.0', function () {
     var converter = require('../../lib/converters/converter-v1-to-v2'),
-        schema = require('../../lib/schemas/json/collection/v2.0.0-draft.4/index'),
+        schemaUrl = require('../../lib/constants').SCHEMA_V2_URL,
         examplesDir = path.join(__dirname, '../../examples/v1');
 
     describe('sample conversions', function () {
-        var samples = requireAll(examplesDir);
-        _.map(samples, function (sample, sampleName) {
-            it('must create a valid V2 collection from ' + sampleName + '.json', function (done) {
+        var schema,
+            samples = requireAll(examplesDir);
+
+        before(function (done) {
+            agent.get(schemaUrl, function (error, response) {
+                schema = _.isString(response.body) ? JSON.parse(response.body) : response.body;
+                done();
+            });
+        });
+
+        _.forEach(samples, function (sample, sampleName) {
+            it('must create a valid V1 collection from ' + sampleName + '.json', function (done) {
                 converter.convert(sample, {}, function (err, converted) {
                     var validator = tv4.freshApi(),
                         result;
