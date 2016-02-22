@@ -20,7 +20,7 @@
                 "header": [],
                 "data": {
                     "mode": "urlencoded",
-                    "content": [
+                    "urlencoded": [
                         {
                             "key": "akshay",
                             "value": "bald",
@@ -62,7 +62,7 @@
                         ],
                         "data": {
                             "mode": "urlencoded",
-                            "content": [
+                            "urlencoded": [
                                 {
                                     "key": "akshay",
                                     "value": "bald"

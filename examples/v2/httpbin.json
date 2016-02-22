@@ -27,7 +27,7 @@
                         ],
                         "data": {
                             "mode": "raw",
-                            "content": "{\n    \"gimme\": \"somejson!\"\n}"
+                            "raw": "{\n    \"gimme\": \"somejson!\"\n}"
                         }
                     },
                     "response": []
@@ -43,7 +43,7 @@
                 "header": [],
                 "data": {
                     "mode": "formdata",
-                    "content": [
+                    "formdata": [
                         {
                             "key": "postdata",
                             "value": "isawesome",
@@ -62,7 +62,7 @@
                         "header": [],
                         "data": {
                             "mode": "formdata",
-                            "content": [
+                            "formdata": [
                                 {
                                     "key": "postdata",
                                     "value": "isawesome",
@@ -131,7 +131,7 @@
                         "header": [],
                         "data": {
                             "mode": "formdata",
-                            "content": [
+                            "formdata": [
                                 {
                                     "key": "postdata",
                                     "value": "isawesome",
@@ -203,7 +203,7 @@
                 "header": [],
                 "data": {
                     "mode": "urlencoded",
-                    "content": [
+                    "urlencoded": [
                         {
                             "key": "somekey",
                             "value": "somevalue",
@@ -228,7 +228,7 @@
                 "header": [],
                 "data": {
                     "mode": "formdata",
-                    "content": []
+                    "formdata": []
                 },
                 "description": ""
             },

@@ -21,7 +21,7 @@
                         "header": [],
                         "data": {
                             "mode": "urlencoded",
-                            "content": [
+                            "urlencoded": [
                                 {
                                     "key": "but",
                                     "value": "this",
@@ -63,7 +63,7 @@
                                 "header": [],
                                 "data": {
                                     "mode": "formdata",
-                                    "content": []
+                                    "formdata": []
                                 },
                                 "description": ""
                             },
@@ -110,7 +110,7 @@
                         "header": [],
                         "data": {
                             "mode": "urlencoded",
-                            "content": [
+                            "urlencoded": [
                                 {
                                     "key": "but",
                                     "value": "this",
@@ -150,7 +150,7 @@
                         "header": [],
                         "data": {
                             "mode": "urlencoded",
-                            "content": [
+                            "urlencoded": [
                                 {
                                     "key": "but",
                                     "value": "this",
@@ -194,7 +194,7 @@
                         "header": [],
                         "data": {
                             "mode": "formdata",
-                            "content": [
+                            "formdata": [
                                 {
                                     "key": "question",
                                     "value": "unknown",
@@ -229,7 +229,7 @@
                         "header": [],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -244,7 +244,7 @@
                         "header": [],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -259,7 +259,7 @@
                         "header": [],
                         "data": {
                             "mode": "formdata",
-                            "content": []
+                            "formdata": []
                         },
                         "description": ""
                     },
@@ -281,7 +281,7 @@
                         "header": [],
                         "data": {
                             "mode": "urlencoded",
-                            "content": [
+                            "urlencoded": [
                                 {
                                     "key": "but",
                                     "value": "this",

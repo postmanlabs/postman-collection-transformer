@@ -26,7 +26,7 @@
                 ],
                 "data": {
                     "mode": "raw",
-                    "content": "{\n    \"asd\": \"tyyy\"\n}"
+                    "raw": "{\n    \"asd\": \"tyyy\"\n}"
                 },
                 "description": ""
             },

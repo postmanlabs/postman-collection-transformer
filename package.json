@@ -33,14 +33,15 @@
     "jscs": "1.13.1",
     "jshint": "2.8.0",
     "mocha": "2.2.5",
-    "require-all": "1.1.0"
+    "require-all": "1.1.0",
+    "superagent": "1.7.2",
+    "tv4": "1.2.7"
   },
   "dependencies": {
     "commander": "2.8.1",
     "intel": "1.0.2",
     "lodash": "3.10.0",
     "semver": "4.3.6",
-    "strip-json-comments": "1.0.2",
-    "tv4": "1.2.7"
+    "strip-json-comments": "1.0.2"
   }
 }
