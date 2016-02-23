@@ -1,5 +1,5 @@
 /**
- * @fileoverview This test suite runs tests on the V1 to V2 converter.
+ * @fileoverview This test suite runs tests on the V2 to V1 converter.
  */
 
 var expect = require('expect.js'),
@@ -22,6 +22,9 @@ describe('v2.0.0 ==> v1.0.0', function () {
         before(function (done) {
             agent.get(schemaUrl, function (error, response) {
                 schema = _.isString(response.body) ? JSON.parse(response.body) : response.body;
+                if (error) {
+                    console.error(error);
+                }
                 done();
             });
         });
@@ -32,6 +35,7 @@ describe('v2.0.0 ==> v1.0.0', function () {
                     var validator = tv4.freshApi(),
                         result;
                     validator.addSchema(schema);
+
                     // Some of the converter functions assign "undefined" value to some properties,
                     // It is necessary to get rid of them (otherwise schema validation sees an "undefined" and fails).
                     // Converting to and parsing from JSON does this.
