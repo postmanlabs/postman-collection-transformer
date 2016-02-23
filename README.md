@@ -62,6 +62,6 @@ If you'd rather use the transformer as a library:
             return console.error(error);
         }
 
-        // result <== the converted collection as a raw JSON
+        // result <== the converted collection as a raw Javascript object
         console.log(inspect(result, {colors: true, depth: 10000}));
     });
