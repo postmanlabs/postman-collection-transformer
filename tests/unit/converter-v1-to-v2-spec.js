@@ -22,12 +22,15 @@ describe('v1.0.0 ==> v2.0.0', function () {
         before(function (done) {
             agent.get(schemaUrl, function (error, response) {
                 schema = _.isString(response.body) ? JSON.parse(response.body) : response.body;
+                if (error) {
+                    console.error(error);
+                }
                 done();
             });
         });
 
         _.forEach(samples, function (sample, sampleName) {
-            it('must create a valid V1 collection from ' + sampleName + '.json', function (done) {
+            it('must create a valid V2 collection from ' + sampleName + '.json', function (done) {
                 converter.convert(sample, {}, function (err, converted) {
                     var validator = tv4.freshApi(),
                         result;
