@@ -7,7 +7,6 @@ var expect = require('expect.js'),
     path = require('path'),
     tv4 = require('tv4'),
     _ = require('lodash'),
-    fs = require('fs'),
     agent = require('superagent');
 
 /* global describe, it, before */
@@ -36,12 +35,10 @@ describe('v2.0.0 ==> v1.0.0', function () {
                     var validator = tv4.freshApi(),
                         result;
                     validator.addSchema(schema);
-                    fs.writeFileSync('schema.json', JSON.stringify(schema, null, 4));
                     // Some of the converter functions assign "undefined" value to some properties,
                     // It is necessary to get rid of them (otherwise schema validation sees an "undefined" and fails).
                     // Converting to and parsing from JSON does this.
                     converted = JSON.parse(JSON.stringify(converted));
-                    fs.writeFileSync('converted.json', JSON.stringify(converted, null, 4));
                     result = validator.validate(converted, schema);
                     if (!result) {
                         console.log(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
