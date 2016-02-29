@@ -4,7 +4,7 @@
         "name": "Twitter",
         "_postman_id": "d362bd3b-ab81-2b7d-0ce5-345df1826043",
         "description": "",
-        "schema": "http://schema.getpostman.com/collection/v2/collection.json"
+        "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
     },
     "item": [
         {
@@ -20,7 +20,22 @@
                             "type": "oauth1",
                             "oauth1": {}
                         },
-                        "url": "https://api.twitter.com/1.1/statuses/home_timeline.json",
+                        "url": {
+                            "raw": "https://api.twitter.com/1.1/statuses/home_timeline.json",
+                            "protocol": "https",
+                            "auth": {},
+                            "host": [
+                                "api",
+                                "twitter",
+                                "com"
+                            ],
+                            "path": [
+                                "1.1",
+                                "statuses",
+                                "home_timeline.json"
+                            ],
+                            "variable": []
+                        },
                         "method": "GET",
                         "header": [
                             {
@@ -29,7 +44,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -45,7 +60,22 @@
                             "type": "oauth1",
                             "oauth1": {}
                         },
-                        "url": "https://api.twitter.com/1.1/statuses/home_timeline.json",
+                        "url": {
+                            "raw": "https://api.twitter.com/1.1/statuses/home_timeline.json",
+                            "protocol": "https",
+                            "auth": {},
+                            "host": [
+                                "api",
+                                "twitter",
+                                "com"
+                            ],
+                            "path": [
+                                "1.1",
+                                "statuses",
+                                "home_timeline.json"
+                            ],
+                            "variable": []
+                        },
                         "method": "GET",
                         "header": [
                             {
@@ -54,7 +84,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -70,7 +100,22 @@
                             "type": "oauth1",
                             "oauth1": {}
                         },
-                        "url": "https://api.twitter.com/1.1/statuses/retweets_of_me.json",
+                        "url": {
+                            "raw": "https://api.twitter.com/1.1/statuses/retweets_of_me.json",
+                            "protocol": "https",
+                            "auth": {},
+                            "host": [
+                                "api",
+                                "twitter",
+                                "com"
+                            ],
+                            "path": [
+                                "1.1",
+                                "statuses",
+                                "retweets_of_me.json"
+                            ],
+                            "variable": []
+                        },
                         "method": "GET",
                         "header": [
                             {
@@ -79,7 +124,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -95,7 +140,28 @@
                             "type": "oauth1",
                             "oauth1": {}
                         },
-                        "url": "https://api.twitter.com/1.1/statuses/destroy/:id.json",
+                        "url": {
+                            "raw": "https://api.twitter.com/1.1/statuses/destroy/:id.json",
+                            "protocol": "https",
+                            "auth": {},
+                            "host": [
+                                "api",
+                                "twitter",
+                                "com"
+                            ],
+                            "path": [
+                                "1.1",
+                                "statuses",
+                                "destroy",
+                                ":id.json"
+                            ],
+                            "variable": [
+                                {
+                                    "value": "611110830424264704",
+                                    "id": "id"
+                                }
+                            ]
+                        },
                         "method": "POST",
                         "header": [
                             {
@@ -104,7 +170,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -136,7 +202,36 @@
                             "type": "oauth1",
                             "oauth1": {}
                         },
-                        "url": "https://api.twitter.com/1.1/search/tweets.json?q=postman&count={{count}}&since_id={{since_id}}",
+                        "url": {
+                            "raw": "https://api.twitter.com/1.1/search/tweets.json?q=postman&count={{count}}&since_id={{since_id}}",
+                            "protocol": "https",
+                            "auth": {},
+                            "host": [
+                                "api",
+                                "twitter",
+                                "com"
+                            ],
+                            "path": [
+                                "1.1",
+                                "search",
+                                "tweets.json"
+                            ],
+                            "query": [
+                                {
+                                    "key": "q",
+                                    "value": "postman"
+                                },
+                                {
+                                    "key": "count",
+                                    "value": "{{count}}"
+                                },
+                                {
+                                    "key": "since_id",
+                                    "value": "{{since_id}}"
+                                }
+                            ],
+                            "variable": []
+                        },
                         "method": "GET",
                         "header": [
                             {
@@ -145,7 +240,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -168,7 +263,28 @@
                             "type": "oauth1",
                             "oauth1": {}
                         },
-                        "url": "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=sobtiankit",
+                        "url": {
+                            "raw": "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=sobtiankit",
+                            "protocol": "https",
+                            "auth": {},
+                            "host": [
+                                "api",
+                                "twitter",
+                                "com"
+                            ],
+                            "path": [
+                                "1.1",
+                                "statuses",
+                                "user_timeline.json"
+                            ],
+                            "query": [
+                                {
+                                    "key": "screen_name",
+                                    "value": "sobtiankit"
+                                }
+                            ],
+                            "variable": []
+                        },
                         "method": "GET",
                         "header": [
                             {
@@ -177,7 +293,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": [
                                 {
@@ -242,7 +358,28 @@
                             "type": "oauth1",
                             "oauth1": {}
                         },
-                        "url": "https://api.twitter.com/1.1/search/tweets.json?q=test",
+                        "url": {
+                            "raw": "https://api.twitter.com/1.1/search/tweets.json?q=test",
+                            "protocol": "https",
+                            "auth": {},
+                            "host": [
+                                "api",
+                                "twitter",
+                                "com"
+                            ],
+                            "path": [
+                                "1.1",
+                                "search",
+                                "tweets.json"
+                            ],
+                            "query": [
+                                {
+                                    "key": "q",
+                                    "value": "test"
+                                }
+                            ],
+                            "variable": []
+                        },
                         "method": "GET",
                         "header": [
                             {
@@ -251,7 +388,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -270,11 +407,28 @@
                     "id": "e5ca3774-cb10-b021-ec0b-9f2e3ab49d23",
                     "name": "All collections",
                     "request": {
-                        "auth": {
-                            "type": "noauth",
-                            "noauth": {}
+                        "url": {
+                            "raw": "https://api.twitter.com/1.1/collections/list.json?screen_name=postmanclient",
+                            "protocol": "https",
+                            "auth": {},
+                            "host": [
+                                "api",
+                                "twitter",
+                                "com"
+                            ],
+                            "path": [
+                                "1.1",
+                                "collections",
+                                "list.json"
+                            ],
+                            "query": [
+                                {
+                                    "key": "screen_name",
+                                    "value": "postmanclient"
+                                }
+                            ],
+                            "variable": []
                         },
-                        "url": "https://api.twitter.com/1.1/collections/list.json?screen_name=postmanclient",
                         "method": "GET",
                         "header": [
                             {
@@ -283,7 +437,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -310,7 +464,28 @@
                     "type": "oauth1",
                     "oauth1": {}
                 },
-                "url": "https://api.twitter.com/1.1/statuses/show.json?id={{tweet_id}}",
+                "url": {
+                    "raw": "https://api.twitter.com/1.1/statuses/show.json?id={{tweet_id}}",
+                    "protocol": "https",
+                    "auth": {},
+                    "host": [
+                        "api",
+                        "twitter",
+                        "com"
+                    ],
+                    "path": [
+                        "1.1",
+                        "statuses",
+                        "show.json"
+                    ],
+                    "query": [
+                        {
+                            "key": "id",
+                            "value": "{{tweet_id}}"
+                        }
+                    ],
+                    "variable": []
+                },
                 "method": "GET",
                 "header": [
                     {
@@ -319,7 +494,7 @@
                         "description": ""
                     }
                 ],
-                "data": {
+                "body": {
                     "mode": "formdata",
                     "formdata": []
                 },
@@ -344,7 +519,37 @@
                     "type": "oauth1",
                     "oauth1": {}
                 },
-                "url": "https://api.twitter.com/1.1/statuses/retweeters/ids.json?id={{tweet_id}}&count=100&stringify_ids=true",
+                "url": {
+                    "raw": "https://api.twitter.com/1.1/statuses/retweeters/ids.json?id={{tweet_id}}&count=100&stringify_ids=true",
+                    "protocol": "https",
+                    "auth": {},
+                    "host": [
+                        "api",
+                        "twitter",
+                        "com"
+                    ],
+                    "path": [
+                        "1.1",
+                        "statuses",
+                        "retweeters",
+                        "ids.json"
+                    ],
+                    "query": [
+                        {
+                            "key": "id",
+                            "value": "{{tweet_id}}"
+                        },
+                        {
+                            "key": "count",
+                            "value": "100"
+                        },
+                        {
+                            "key": "stringify_ids",
+                            "value": "true"
+                        }
+                    ],
+                    "variable": []
+                },
                 "method": "GET",
                 "header": [
                     {
@@ -353,7 +558,7 @@
                         "description": ""
                     }
                 ],
-                "data": {
+                "body": {
                     "mode": "formdata",
                     "formdata": []
                 },
@@ -385,7 +590,28 @@
                     "type": "oauth1",
                     "oauth1": {}
                 },
-                "url": "https://api.twitter.com/1.1/users/show.json?user_id={{user_id}}",
+                "url": {
+                    "raw": "https://api.twitter.com/1.1/users/show.json?user_id={{user_id}}",
+                    "protocol": "https",
+                    "auth": {},
+                    "host": [
+                        "api",
+                        "twitter",
+                        "com"
+                    ],
+                    "path": [
+                        "1.1",
+                        "users",
+                        "show.json"
+                    ],
+                    "query": [
+                        {
+                            "key": "user_id",
+                            "value": "{{user_id}}"
+                        }
+                    ],
+                    "variable": []
+                },
                 "method": "GET",
                 "header": [
                     {
@@ -394,7 +620,7 @@
                         "description": ""
                     }
                 ],
-                "data": {
+                "body": {
                     "mode": "formdata",
                     "formdata": []
                 },
@@ -419,7 +645,36 @@
                     "type": "oauth1",
                     "oauth1": {}
                 },
-                "url": "https://api.twitter.com/1.1/search/tweets.json?q=postman&count={{count}}&since_id={{since_id}}",
+                "url": {
+                    "raw": "https://api.twitter.com/1.1/search/tweets.json?q=postman&count={{count}}&since_id={{since_id}}",
+                    "protocol": "https",
+                    "auth": {},
+                    "host": [
+                        "api",
+                        "twitter",
+                        "com"
+                    ],
+                    "path": [
+                        "1.1",
+                        "search",
+                        "tweets.json"
+                    ],
+                    "query": [
+                        {
+                            "key": "q",
+                            "value": "postman"
+                        },
+                        {
+                            "key": "count",
+                            "value": "{{count}}"
+                        },
+                        {
+                            "key": "since_id",
+                            "value": "{{since_id}}"
+                        }
+                    ],
+                    "variable": []
+                },
                 "method": "GET",
                 "header": [
                     {
@@ -428,7 +683,7 @@
                         "description": ""
                     }
                 ],
-                "data": {
+                "body": {
                     "mode": "formdata",
                     "formdata": [
                         {
@@ -493,7 +748,28 @@
                     "type": "oauth1",
                     "oauth1": {}
                 },
-                "url": "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=sobtiankit",
+                "url": {
+                    "raw": "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=sobtiankit",
+                    "protocol": "https",
+                    "auth": {},
+                    "host": [
+                        "api",
+                        "twitter",
+                        "com"
+                    ],
+                    "path": [
+                        "1.1",
+                        "statuses",
+                        "user_timeline.json"
+                    ],
+                    "query": [
+                        {
+                            "key": "screen_name",
+                            "value": "sobtiankit"
+                        }
+                    ],
+                    "variable": []
+                },
                 "method": "GET",
                 "header": [
                     {
@@ -502,7 +778,7 @@
                         "description": ""
                     }
                 ],
-                "data": {
+                "body": {
                     "mode": "formdata",
                     "formdata": [
                         {
@@ -576,7 +852,28 @@
                     "type": "oauth1",
                     "oauth1": {}
                 },
-                "url": "https://api.twitter.com/1.1/statuses/user_timeline.json?user_id={{user_id}}",
+                "url": {
+                    "raw": "https://api.twitter.com/1.1/statuses/user_timeline.json?user_id={{user_id}}",
+                    "protocol": "https",
+                    "auth": {},
+                    "host": [
+                        "api",
+                        "twitter",
+                        "com"
+                    ],
+                    "path": [
+                        "1.1",
+                        "statuses",
+                        "user_timeline.json"
+                    ],
+                    "query": [
+                        {
+                            "key": "user_id",
+                            "value": "{{user_id}}"
+                        }
+                    ],
+                    "variable": []
+                },
                 "method": "GET",
                 "header": [
                     {
@@ -585,7 +882,7 @@
                         "description": ""
                     }
                 ],
-                "data": {
+                "body": {
                     "mode": "formdata",
                     "formdata": []
                 },
@@ -610,7 +907,23 @@
                     "type": "oauth1",
                     "oauth1": {}
                 },
-                "url": "https://api.twitter.com/1.1/statuses/retweets/{{tweet_id}}.json",
+                "url": {
+                    "raw": "https://api.twitter.com/1.1/statuses/retweets/{{tweet_id}}.json",
+                    "protocol": "https",
+                    "auth": {},
+                    "host": [
+                        "api",
+                        "twitter",
+                        "com"
+                    ],
+                    "path": [
+                        "1.1",
+                        "statuses",
+                        "retweets",
+                        "{{tweet_id}}.json"
+                    ],
+                    "variable": []
+                },
                 "method": "GET",
                 "header": [
                     {
@@ -619,7 +932,7 @@
                         "description": ""
                     }
                 ],
-                "data": {
+                "body": {
                     "mode": "formdata",
                     "formdata": []
                 },
@@ -635,7 +948,28 @@
                     "type": "oauth1",
                     "oauth1": {}
                 },
-                "url": "https://api.twitter.com/1.1/lists/list.json?screen_name=alexjv89",
+                "url": {
+                    "raw": "https://api.twitter.com/1.1/lists/list.json?screen_name=alexjv89",
+                    "protocol": "https",
+                    "auth": {},
+                    "host": [
+                        "api",
+                        "twitter",
+                        "com"
+                    ],
+                    "path": [
+                        "1.1",
+                        "lists",
+                        "list.json"
+                    ],
+                    "query": [
+                        {
+                            "key": "screen_name",
+                            "value": "alexjv89"
+                        }
+                    ],
+                    "variable": []
+                },
                 "method": "GET",
                 "header": [
                     {
@@ -644,7 +978,7 @@
                         "description": ""
                     }
                 ],
-                "data": {
+                "body": {
                     "mode": "formdata",
                     "formdata": []
                 },
@@ -669,7 +1003,32 @@
                     "type": "oauth1",
                     "oauth1": {}
                 },
-                "url": "https://api.twitter.com/1.1/lists/memberships.json?screen_name=runscope&count=200",
+                "url": {
+                    "raw": "https://api.twitter.com/1.1/lists/memberships.json?screen_name=runscope&count=200",
+                    "protocol": "https",
+                    "auth": {},
+                    "host": [
+                        "api",
+                        "twitter",
+                        "com"
+                    ],
+                    "path": [
+                        "1.1",
+                        "lists",
+                        "memberships.json"
+                    ],
+                    "query": [
+                        {
+                            "key": "screen_name",
+                            "value": "runscope"
+                        },
+                        {
+                            "key": "count",
+                            "value": "200"
+                        }
+                    ],
+                    "variable": []
+                },
                 "method": "GET",
                 "header": [
                     {
@@ -678,7 +1037,7 @@
                         "description": ""
                     }
                 ],
-                "data": {
+                "body": {
                     "mode": "formdata",
                     "formdata": []
                 },
@@ -694,7 +1053,28 @@
                     "type": "oauth1",
                     "oauth1": {}
                 },
-                "url": "https://api.twitter.com/1.1/statuses/update.json?status=Testing out Twitter integration with Postman",
+                "url": {
+                    "raw": "https://api.twitter.com/1.1/statuses/update.json?status=Testing out Twitter integration with Postman",
+                    "protocol": "https",
+                    "auth": {},
+                    "host": [
+                        "api",
+                        "twitter",
+                        "com"
+                    ],
+                    "path": [
+                        "1.1",
+                        "statuses",
+                        "update.json"
+                    ],
+                    "query": [
+                        {
+                            "key": "status",
+                            "value": "Testing out Twitter integration with Postman"
+                        }
+                    ],
+                    "variable": []
+                },
                 "method": "POST",
                 "header": [
                     {
@@ -703,7 +1083,7 @@
                         "description": ""
                     }
                 ],
-                "data": {
+                "body": {
                     "mode": "formdata",
                     "formdata": [
                         {

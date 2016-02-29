@@ -4,7 +4,7 @@
         "name": "Box Content API",
         "_postman_id": "48e1ee04-a604-2549-9422-43270e936399",
         "description": "I am trying to update this.",
-        "schema": "http://schema.getpostman.com/collection/v2/collection.json"
+        "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
     },
     "item": [
         {
@@ -25,7 +25,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -46,7 +46,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -67,7 +67,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -79,7 +79,22 @@
                     "id": "9c62da18-4ba2-0472-7a4d-736abbe590a9",
                     "name": "Add a Collaboration",
                     "request": {
-                        "url": "https://api.box.com/2.0/collaborations/",
+                        "url": {
+                            "raw": "https://api.box.com/2.0/collaborations/",
+                            "protocol": "https",
+                            "auth": {},
+                            "host": [
+                                "api",
+                                "box",
+                                "com"
+                            ],
+                            "path": [
+                                "2.0",
+                                "collaborations",
+                                ""
+                            ],
+                            "variable": []
+                        },
                         "method": "POST",
                         "header": [
                             {
@@ -88,7 +103,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\"item\": { \"id\": \"300065354\", \"type\": \"folder\"}, \"accessible_by\": { \"id\": \"129395212\"}, \"role\": \"editor\"}"
                         },
@@ -109,7 +124,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\"role\": \"viewer\"}"
                         },
@@ -130,7 +145,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -158,7 +173,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -179,7 +194,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\n\n\t\"item\":\n\n\t{\"type\": \"file\", \"id\": \"6526455273\"}, \n    \n\t\"message\": \"This looks great!\"\n\n}"
                         },
@@ -200,7 +215,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\n\n\t\"item\":\n\n\t{\"type\": \"file\", \"id\": \"6526455273\"}, \n    \n\t\"tagged_message\": \"Tagged mention for @[192642898:Rory]\"\n\n}\n\n"
                         },
@@ -221,7 +236,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\"tagged_message\": \"Tagged mention for @[192642898:Rory]\"}"
                         },
@@ -242,7 +257,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\"message\": \"Change comment via the API\"}"
                         },
@@ -263,7 +278,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -291,7 +306,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -312,7 +327,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -333,7 +348,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -361,7 +376,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -382,7 +397,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -403,7 +418,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": [
                                 {
@@ -430,7 +445,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -451,7 +466,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -472,7 +487,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": [
                                 {
@@ -499,7 +514,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -520,7 +535,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\"parent\": {\"id\" : 0}}"
                         },
@@ -541,7 +556,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -562,7 +577,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": [
                                 {
@@ -599,7 +614,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": [
                                 {
@@ -626,7 +641,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\"parent\": {\"id\" : 1139054013}}"
                         },
@@ -647,7 +662,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\"shared_link\": {\"access\": \"Open\"}}"
                         },
@@ -668,7 +683,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\"shared_link\": null}"
                         },
@@ -689,7 +704,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\"description\":\"File Description 2\"}"
                         },
@@ -715,7 +730,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -736,7 +751,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -764,7 +779,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -785,7 +800,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -806,7 +821,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -827,7 +842,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -848,7 +863,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -869,7 +884,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\"parent\": {\"id\" : 0}}"
                         },
@@ -890,7 +905,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\"name\":\"New Folder\", \"parent\": {\"id\": \"0\"}}"
                         },
@@ -911,7 +926,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\"name\":\"New Folder\", \"parent\": {\"id\": \"0\"}}"
                         },
@@ -932,7 +947,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\"parent\": {\"id\" : 682258214}}"
                         },
@@ -953,7 +968,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\"name\":\"New Folder Name!\"}"
                         },
@@ -974,7 +989,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\"folder_upload_email\": {\"access\": \"open\"}}"
                         },
@@ -995,7 +1010,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\"shared_link\": null}"
                         },
@@ -1016,7 +1031,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -1037,7 +1052,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -1065,7 +1080,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -1086,7 +1101,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -1107,7 +1122,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -1128,7 +1143,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -1149,7 +1164,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -1170,7 +1185,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\"item\": { \"id\": \"1076455207\", \"type\": \"folder\"}, \"accessible_by\": { \"type\":\"group\", \"id\": \"104687\"}, \"role\": \"editor\"}"
                         },
@@ -1191,7 +1206,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\"group\": { \"id\": \"137557\", \"type\": \"group\"}, \"user\": { \"id\": \"192642898\"}}\n"
                         },
@@ -1212,7 +1227,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\"name\":\"SE Team\"}"
                         },
@@ -1233,7 +1248,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{ \"accessible_by\": { \"type\":\"group\", \"id\": \"104687\"}, \"role\": \"Uploader\"}"
                         },
@@ -1254,7 +1269,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\"name\":\"SE Team 3\"}"
                         },
@@ -1275,7 +1290,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{ \"role\": \"submaster\" }"
                         },
@@ -1296,7 +1311,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": ""
                         },
@@ -1317,7 +1332,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": ""
                         },
@@ -1338,7 +1353,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": ""
                         },
@@ -1371,7 +1386,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": [
                                 {
@@ -1420,7 +1435,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": [
                                 {
@@ -1458,7 +1473,7 @@
                         "url": "https://api.box.com/oauth2/token",
                         "method": "POST",
                         "header": [],
-                        "data": {
+                        "body": {
                             "mode": "urlencoded",
                             "urlencoded": [
                                 {
@@ -1494,7 +1509,7 @@
                         "url": "https://api.box.com/oauth2/authorize?response_type=code&client_id=&state=authenticated&scope=folder_readwrite&folder_id=app_folder&redirect_uri=https://localhost",
                         "method": "GET",
                         "header": [],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": [
                                 {
@@ -1538,7 +1553,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -1571,7 +1586,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -1599,7 +1614,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -1620,7 +1635,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -1641,7 +1656,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -1662,7 +1677,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{ \n  \"item\": { \"type\":\"file\", \"id\": \"7170802730\"},\n  \"action\": \"review\",\n  \"message\": \"Is this working?\",\n  \"assigned_to\": { \"type\": \"user\", \"id\": \"194651398\"}\n }\n\n"
                         },
@@ -1683,7 +1698,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{ \"task\": { \"id\": \"2073417\", \"type\": \"task\" }, \"assign_to\": { \"login\": \"john.doe+demo@box.com\" } }"
                         },
@@ -1704,7 +1719,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\"item\": {\"type\": \"file\", \"id\": \"7262132718\"}, \"action\": \"review\", \"message\" : \"vish is awesome\"}"
                         },
@@ -1725,7 +1740,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{ \"task\": { \"id\": \"2073419\", \"type\": \"task\" }, \"assign_to\": { \"login\": \"john.doe+demo@box.com\" } }"
                         },
@@ -1746,7 +1761,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{ \"message\": \"hello!!!\" , \"resolution_state\":\"completed\"}"
                         },
@@ -1767,7 +1782,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\"action\": \"approve\"}"
                         },
@@ -1788,7 +1803,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": ""
                         },
@@ -1809,7 +1824,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": ""
                         },
@@ -1837,7 +1852,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -1858,7 +1873,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -1879,7 +1894,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -1900,7 +1915,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\"email\":\"john.doe.alias@box.com\"}"
                         },
@@ -1921,7 +1936,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\"login\": \"john.doe.new@box.com\", \"name\": \"Ned Stark\"}"
                         },
@@ -1942,7 +1957,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\"login\":\"john.doe+newlogin@box.com\"}"
                         },
@@ -1963,7 +1978,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\"owned_by\": {\"id\": \"12927765\"}}\n"
                         },
@@ -1984,7 +1999,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\"is_password_reset_required\":\"true\"}"
                         },
@@ -2005,7 +2020,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": "{\"name\": \"Box Admin\"}"
                         },
@@ -2026,7 +2041,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -2047,7 +2062,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -2069,7 +2084,7 @@
                         "url": "https://api.box.com/oauth2/authorize?response_type=code&client_id=&state=authenticated&redirect_uri=https://localhost",
                         "method": "GET",
                         "header": [],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -2084,7 +2099,7 @@
                         "url": "https://api.box.com/oauth2/token",
                         "method": "POST",
                         "header": [],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": [
                                 {
@@ -2120,7 +2135,7 @@
                         "url": "https://api.box.com/oauth2/token",
                         "method": "POST",
                         "header": [],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": [
                                 {
@@ -2156,7 +2171,7 @@
                         "url": "https://api.box.com/oauth2/revoke",
                         "method": "POST",
                         "header": [],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": [
                                 {

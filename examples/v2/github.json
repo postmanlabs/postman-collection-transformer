@@ -4,7 +4,7 @@
         "name": "Github",
         "_postman_id": "b6241b6a-fbf3-e3b7-4f96-0154e3056843",
         "description": "",
-        "schema": "http://schema.getpostman.com/collection/v2/collection.json"
+        "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
     },
     "item": [
         {
@@ -25,14 +25,23 @@
                         }
                     ],
                     "request": {
-                        "auth": {
-                            "type": "noauth",
-                            "noauth": {}
+                        "url": {
+                            "raw": "{{url}}/repos/{{username}}/{{repository}}/contributors",
+                            "auth": {},
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "repos",
+                                "{{username}}",
+                                "{{repository}}",
+                                "contributors"
+                            ],
+                            "variable": []
                         },
-                        "url": "{{url}}/repos/{{username}}/{{repository}}/contributors",
                         "method": "GET",
                         "header": [],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -53,14 +62,22 @@
                         }
                     ],
                     "request": {
-                        "auth": {
-                            "type": "noauth",
-                            "noauth": {}
+                        "url": {
+                            "raw": "{{url}}/repos/{{username}}/{{repository}}",
+                            "auth": {},
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "repos",
+                                "{{username}}",
+                                "{{repository}}"
+                            ],
+                            "variable": []
                         },
-                        "url": "{{url}}/repos/{{username}}/{{repository}}",
                         "method": "GET",
                         "header": [],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": ""
                         },
@@ -81,14 +98,24 @@
                         }
                     ],
                     "request": {
-                        "auth": {
-                            "type": "noauth",
-                            "noauth": {}
+                        "url": {
+                            "raw": "{{url}}/repos/{{username}}/{{repository}}/branches/{{branch}}",
+                            "auth": {},
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "repos",
+                                "{{username}}",
+                                "{{repository}}",
+                                "branches",
+                                "{{branch}}"
+                            ],
+                            "variable": []
                         },
-                        "url": "{{url}}/repos/{{username}}/{{repository}}/branches/{{branch}}",
                         "method": "GET",
                         "header": [],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -109,14 +136,23 @@
                         }
                     ],
                     "request": {
-                        "auth": {
-                            "type": "noauth",
-                            "noauth": {}
+                        "url": {
+                            "raw": "{{url}}/repos/{{username}}/{{repository}}/tags",
+                            "auth": {},
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "repos",
+                                "{{username}}",
+                                "{{repository}}",
+                                "tags"
+                            ],
+                            "variable": []
                         },
-                        "url": "{{url}}/repos/{{username}}/{{repository}}/tags",
                         "method": "GET",
                         "header": [],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -137,14 +173,23 @@
                         }
                     ],
                     "request": {
-                        "auth": {
-                            "type": "noauth",
-                            "noauth": {}
+                        "url": {
+                            "raw": "{{url}}/repos/{{username}}/{{repository}}/languages",
+                            "auth": {},
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "repos",
+                                "{{username}}",
+                                "{{repository}}",
+                                "languages"
+                            ],
+                            "variable": []
                         },
-                        "url": "{{url}}/repos/{{username}}/{{repository}}/languages",
                         "method": "GET",
                         "header": [],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -165,14 +210,23 @@
                         }
                     ],
                     "request": {
-                        "auth": {
-                            "type": "noauth",
-                            "noauth": {}
+                        "url": {
+                            "raw": "{{url}}/repos/{{username}}/{{repository}}/branches",
+                            "auth": {},
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "repos",
+                                "{{username}}",
+                                "{{repository}}",
+                                "branches"
+                            ],
+                            "variable": []
                         },
-                        "url": "{{url}}/repos/{{username}}/{{repository}}/branches",
                         "method": "GET",
                         "header": [],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -200,11 +254,17 @@
                         }
                     ],
                     "request": {
-                        "auth": {
-                            "type": "noauth",
-                            "noauth": {}
+                        "url": {
+                            "raw": "{{url}}/user",
+                            "auth": {},
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "user"
+                            ],
+                            "variable": []
                         },
-                        "url": "{{url}}/user",
                         "method": "GET",
                         "header": [
                             {
@@ -213,7 +273,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -234,11 +294,18 @@
                         }
                     ],
                     "request": {
-                        "auth": {
-                            "type": "noauth",
-                            "noauth": {}
+                        "url": {
+                            "raw": "{{url}}/user/emails",
+                            "auth": {},
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "user",
+                                "emails"
+                            ],
+                            "variable": []
                         },
-                        "url": "{{url}}/user/emails",
                         "method": "GET",
                         "header": [
                             {
@@ -247,7 +314,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "raw",
                             "raw": ""
                         },
@@ -268,14 +335,22 @@
                         }
                     ],
                     "request": {
-                        "auth": {
-                            "type": "noauth",
-                            "noauth": {}
+                        "url": {
+                            "raw": "{{url}}/users/{{username}}/followers",
+                            "auth": {},
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "users",
+                                "{{username}}",
+                                "followers"
+                            ],
+                            "variable": []
                         },
-                        "url": "{{url}}/users/{{username}}/followers",
                         "method": "GET",
                         "header": [],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
@@ -296,11 +371,18 @@
                         }
                     ],
                     "request": {
-                        "auth": {
-                            "type": "noauth",
-                            "noauth": {}
+                        "url": {
+                            "raw": "{{url}}/user/followers",
+                            "auth": {},
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "user",
+                                "followers"
+                            ],
+                            "variable": []
                         },
-                        "url": "{{url}}/user/followers",
                         "method": "GET",
                         "header": [
                             {
@@ -309,7 +391,7 @@
                                 "description": ""
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "formdata",
                             "formdata": []
                         },

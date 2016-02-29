@@ -4,21 +4,29 @@
         "name": "urlencodeddata",
         "_postman_id": "551c1361-2b81-68c7-677e-ec2efdd8322e",
         "description": "",
-        "schema": "http://schema.getpostman.com/collection/v2/collection.json"
+        "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
     },
     "item": [
         {
             "id": "b7fe1cf7-22bb-93f2-f058-3b4cdbf965b7",
             "name": "http://httpbin.org/post",
             "request": {
-                "auth": {
-                    "type": "noauth",
-                    "noauth": {}
+                "url": {
+                    "raw": "http://httpbin.org/post",
+                    "protocol": "http",
+                    "auth": {},
+                    "host": [
+                        "httpbin",
+                        "org"
+                    ],
+                    "path": [
+                        "post"
+                    ],
+                    "variable": []
                 },
-                "url": "http://httpbin.org/post",
                 "method": "POST",
                 "header": [],
-                "data": {
+                "body": {
                     "mode": "urlencoded",
                     "urlencoded": [
                         {
@@ -60,7 +68,7 @@
                                 "value": "application/x-www-form-urlencoded"
                             }
                         ],
-                        "data": {
+                        "body": {
                             "mode": "urlencoded",
                             "urlencoded": [
                                 {
@@ -122,7 +130,7 @@
                     ],
                     "cookie": [],
                     "responseTime": 925,
-                    "data": "{\n  \"args\": {}, \n  \"data\": \"\", \n  \"files\": {}, \n  \"form\": {\n    \"akshay\": \"bald\", \n    \"yakshay\": \"ybald\"\n  }, \n  \"headers\": {\n    \"Accept\": \"*/*\", \n    \"Accept-Encoding\": \"gzip\", \n    \"Accept-Language\": \"en-US,en;q=0.8\", \n    \"Cache-Control\": \"no-cache\", \n    \"Content-Length\": \"25\", \n    \"Content-Type\": \"application/x-www-form-urlencoded\", \n    \"Cookie\": \"_ga=GA1.2.113558537.1435817423\", \n    \"Host\": \"httpbin.org\", \n    \"Origin\": \"chrome-extension://aicmkgpgakddgnaphhhpliifpcfhicfo\", \n    \"Postman-Token\": \"e8826f9c-70fa-0957-fe12-265257861623\", \n    \"User-Agent\": \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36\"\n  }, \n  \"json\": null, \n  \"origin\": \"106.51.38.69\", \n  \"url\": \"http://httpbin.org/post\"\n}\n"
+                    "body": "{\n  \"args\": {}, \n  \"data\": \"\", \n  \"files\": {}, \n  \"form\": {\n    \"akshay\": \"bald\", \n    \"yakshay\": \"ybald\"\n  }, \n  \"headers\": {\n    \"Accept\": \"*/*\", \n    \"Accept-Encoding\": \"gzip\", \n    \"Accept-Language\": \"en-US,en;q=0.8\", \n    \"Cache-Control\": \"no-cache\", \n    \"Content-Length\": \"25\", \n    \"Content-Type\": \"application/x-www-form-urlencoded\", \n    \"Cookie\": \"_ga=GA1.2.113558537.1435817423\", \n    \"Host\": \"httpbin.org\", \n    \"Origin\": \"chrome-extension://aicmkgpgakddgnaphhhpliifpcfhicfo\", \n    \"Postman-Token\": \"e8826f9c-70fa-0957-fe12-265257861623\", \n    \"User-Agent\": \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36\"\n  }, \n  \"json\": null, \n  \"origin\": \"106.51.38.69\", \n  \"url\": \"http://httpbin.org/post\"\n}\n"
                 }
             ]
         }
