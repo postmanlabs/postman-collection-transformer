@@ -55,5 +55,31 @@ describe('v1.0.0 ==> v2.0.0', function () {
                 });
             });
         });
+
+        _.forEach(samples, function (sample, sampleName) {
+            it('must create a valid V2 collection from ' + sampleName + '.json with synchronous API', function (done) {
+                var validator = tv4.freshApi(),
+                    result,
+                    converted;
+                validator.addSchema(schema);
+                converted = converter.convert(sample);
+
+                // Some of the converter functions assign "undefined" value to some properties,
+                // It is necessary to get rid of them (otherwise schema validation sees an "undefined" and fails).
+                // Converting to and parsing from JSON does this.
+                converted = JSON.parse(JSON.stringify(converted));
+
+                result = validator.validate(converted, schema);
+                if (!result) {
+                    console.log(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
+                }
+                if (validator.missing.length) {
+                    console.log(validator.missing);
+                    result = false;
+                }
+                expect(result).to.be(true);
+                done();
+            });
+        });
     });
 });
