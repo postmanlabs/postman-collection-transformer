@@ -41,7 +41,7 @@
     "commander": "2.8.1",
     "intel": "1.0.2",
     "lodash": "3.10.0",
-    "semver": "4.3.6",
+    "semver": "5.1.0",
     "strip-json-comments": "1.0.2"
   }
 }
