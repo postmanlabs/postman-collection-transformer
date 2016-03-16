@@ -19,17 +19,19 @@ echo -e "\033[0m\n";
 # linting code
 echo -e "\033[93mLinting and style-checking...\033[0m";
 echo -en "\033[0m\033[2m";
-jshint -v;
-echo -e "jscs v`jscs --version`\033[0m\n";
-
 
 # run jscs
-jscs index.js lib tests/unit
+echo -e "jscs v`jscs --version`\033[0m\n";
+jscs index.js lib bin tests/unit
 
 # run jshint
-jshint index.js lib tests/unit --show-non-errors --verbose && echo "No lint errors found.";
+echo # blank line
+jshint -v;
+jshint index.js lib bin tests/unit --show-non-errors --verbose;
+
+echo -n "No lint errors found.";
 
 # run mocha tests
 echo -e "\n\n\033[93mRunning unit tests...\033[0m";
 echo -en "\033[0m\033[2mmocha `mocha --version`\033[0m";
-mocha tests/unit/*-spec.js
+mocha -t 10000 tests/unit/*-spec.js
