@@ -102,7 +102,6 @@
 			"tests": "",
 			"version": 2,
 			"currentHelper": "oAuth1",
-			"helperAttributes": "{\"id\":\"oAuth1\",\"time\":1434545476427,\"consumerKey\":\"d2ZxSW0dTPkGuMM9sAIBxWZLw\",\"consumerSecret\":\"vKj1x1eGfKnS6MVYRLsKx8UXAlif7gPvq4tE6gfhz6KeLXQBl6\",\"token\":\"{{token}}\",\"tokenSecret\":\"{{token_secret}}\",\"signatureMethod\":\"HMAC-SHA1\",\"timestamp\":\"1434545690\"",
 			"collectionId": "d362bd3b-ab81-2b7d-0ce5-345df1826043"
 		},
 		{
@@ -171,7 +170,6 @@
 			"tests": "",
 			"version": 2,
 			"currentHelper": "oAuth1",
-			"helperAttributes": "{\"0\":\"{\",\"1\":\"\\\"\",\"2\":\"i\",\"3\":\"d\",\"4\":\"\\\"\",\"5\":\":\",\"6\":\"\\\"\",\"7\":\"o\",\"8\":\"A\",\"9\":\"u\",\"10\":\"t\",\"11\":\"h\",\"12\":\"1\",\"13\":\"\\\"\",\"14\":\",\",\"15\":\"\\\"\",\"16\":\"t\",\"17\":\"i\",\"18\":\"m\",\"19\":\"e\",\"20\":\"\\\"\",\"21\":\":\",\"22\":\"1\",\"23\":\"4\",\"24\":\"3\",\"25\":\"4\",\"26\":\"5\",\"27\":\"4\",\"28\":\"",
 			"collectionId": "d362bd3b-ab81-2b7d-0ce5-345df1826043"
 		},
 		{
@@ -240,7 +238,6 @@
 			"tests": "",
 			"version": 2,
 			"currentHelper": "oAuth1",
-			"helperAttributes": "{\"id\":\"oAuth1\",\"time\":1434545476427,\"consumerKey\":\"d2ZxSW0dTPkGuMM9sAIBxWZLw\",\"consumerSecret\":\"vKj1x1eGfKnS6MVYRLsKx8UXAlif7gPvq4tE6gfhz6KeLXQBl6\",\"token\":\"{{token}}\",\"tokenSecret\":\"{{token_secret}}\",\"signatureMethod\":\"HMAC-SHA1\",\"timestamp\":\"1434545724\"",
 			"collectionId": "d362bd3b-ab81-2b7d-0ce5-345df1826043"
 		},
 		{
@@ -260,7 +257,6 @@
 			"tests": "",
 			"version": 2,
 			"currentHelper": "oAuth1",
-			"helperAttributes": "{\"id\":\"oAuth1\",\"time\":1434545476427,\"consumerKey\":\"d2ZxSW0dTPkGuMM9sAIBxWZLw\",\"consumerSecret\":\"vKj1x1eGfKnS6MVYRLsKx8UXAlif7gPvq4tE6gfhz6KeLXQBl6\",\"token\":\"{{token}}\",\"tokenSecret\":\"{{token_secret}}\",\"signatureMethod\":\"HMAC-SHA1\",\"timestamp\":\"1434545476\"",
 			"collectionId": "d362bd3b-ab81-2b7d-0ce5-345df1826043"
 		},
 		{
@@ -321,7 +317,7 @@
 			"rawModeData": null,
 			"descriptionFormat": "html",
 			"description": "",
-			"headers": "Authorization: OAuth oauth_consumer_key=\"kbXFSaNTcUeJxsWLOP0U85zaV\",oauth_token=\"88952001-03JcHuetTAKmLCUZe5E2xUFmCWMmNP5NiTocwHSds\",oauth_signature_method=\"HMAC-SHA1\",oauth_timestamp=\"1434949696\",oauth_nonce=\"y1XISF\",oauth_version=\"1.0\",oauth_signature=\"RZAl4XXTs4woVqphafctrV4Ml90%3D\"\n",
+			"headers": "Authorization: OAuth oauth_consumer_key=\"kbXFSaNTcUeJxsWLOP0U85zaV\",oauth_token=\"88952001-03JcHuetTAKmLCUZe5E2xUFmCWMmNP5NiTocwHSds\",oauth_signature_method=\"HMAC-SHA1\",oauth_timestamp=\"1434949696\",oauth_nonce=\"y1XISF\",oauth_version=\"1.0\",oauth_signature=\"RZAl4XXTs4woVqphafctrV4Ml90%3D\"\n}",
 			"method": "GET",
 			"pathVariables": {},
 			"url": "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=sobtiankit",
@@ -329,7 +325,6 @@
 			"tests": "",
 			"version": 2,
 			"currentHelper": "oAuth1",
-			"helperAttributes": "{\"id\":\"oAuth1\",\"time\":1434545476427,\"consumerKey\":\"d2ZxSW0dTPkGuMM9sAIBxWZLw\",\"consumerSecret\":\"vKj1x1eGfKnS6MVYRLsKx8UXAlif7gPvq4tE6gfhz6KeLXQBl6\",\"token\":\"{{token}}\",\"tokenSecret\":\"{{token_secret}}\",\"signatureMethod\":\"HMAC-SHA1\",\"timestamp\":\"1434549252\"",
 			"collectionId": "d362bd3b-ab81-2b7d-0ce5-345df1826043"
 		},
 		{
@@ -341,7 +336,7 @@
 			"rawModeData": null,
 			"descriptionFormat": null,
 			"description": "",
-			"headers": "Authorization: OAuth oauth_consumer_key=\"d2ZxSW0dTPkGuMM9sAIBxWZLw\",oauth_token=\"160113786-lJUEMPzvQ61utoGADZfPKOSsbkKtR6czzuDblvC0\",oauth_signature_method=\"HMAC-SHA1\",oauth_timestamp=\"1434535754\",oauth_nonce=\"G5615d\",oauth_version=\"1.0\",oauth_signature=\"kFy%2F9DPv8ifnGDlE3tvupHsgwwo%3D\"\n",
+			"headers": "Authorization: OAuth oauth_consumer_key=\"d2ZxSW0dTPkGuMM9sAIBxWZLw\",oauth_token=\"160113786-lJUEMPzvQ61utoGADZfPKOSsbkKtR6czzuDblvC0\",oauth_signature_method=\"HMAC-SHA1\",oauth_timestamp=\"1434535754\",oauth_nonce=\"G5615d\",oauth_version=\"1.0\",oauth_signature=\"kFy%2F9DPv8ifnGDlE3tvupHsgwwo%3D\"\n}",
 			"method": "POST",
 			"pathVariables": {
 				"id": "611110830424264704"
@@ -351,7 +346,6 @@
 			"tests": "",
 			"version": 2,
 			"currentHelper": "oAuth1",
-			"helperAttributes": "{\"id\":\"oAuth1\",\"time\":1434545476427,\"consumerKey\":\"d2ZxSW0dTPkGuMM9sAIBxWZLw\",\"consumerSecret\":\"vKj1x1eGfKnS6MVYRLsKx8UXAlif7gPvq4tE6gfhz6KeLXQBl6\",\"token\":\"{{token}}\",\"tokenSecret\":\"{{token_secret}}\",\"signatureMethod\":\"HMAC-SHA1\",\"timestamp\":\"1434545717\"",
 			"collectionId": "d362bd3b-ab81-2b7d-0ce5-345df1826043"
 		},
 		{
@@ -363,7 +357,7 @@
 			"rawModeData": null,
 			"descriptionFormat": "html",
 			"description": "",
-			"headers": "Authorization: OAuth oauth_consumer_key=\"d2ZxSW0dTPkGuMM9sAIBxWZLw\",oauth_token=\"160113786-lJUEMPzvQ61utoGADZfPKOSsbkKtR6czzuDblvC0\",oauth_signature_method=\"HMAC-SHA1\",oauth_timestamp=\"1434548343\",oauth_nonce=\"6c4JlR\",oauth_version=\"1.0\",oauth_signature=\"KuqrmkEXjxlq61BKyCxp1CZl3ZE%3D\"\n",
+			"headers": "Authorization: OAuth oauth_consumer_key=\"d2ZxSW0dTPkGuMM9sAIBxWZLw\",oauth_token=\"160113786-lJUEMPzvQ61utoGADZfPKOSsbkKtR6czzuDblvC0\",oauth_signature_method=\"HMAC-SHA1\",oauth_timestamp=\"1434548343\",oauth_nonce=\"6c4JlR\",oauth_version=\"1.0\",oauth_signature=\"KuqrmkEXjxlq61BKyCxp1CZl3ZE%3D\"\n}",
 			"method": "GET",
 			"pathVariables": {},
 			"url": "https://api.twitter.com/1.1/users/show.json?user_id={{user_id}}",
@@ -371,7 +365,6 @@
 			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"screen_name\",data.screen_name);\n\n",
 			"version": 2,
 			"currentHelper": "oAuth1",
-			"helperAttributes": "{\"id\":\"oAuth1\",\"time\":1434545476427,\"consumerKey\":\"d2ZxSW0dTPkGuMM9sAIBxWZLw\",\"consumerSecret\":\"vKj1x1eGfKnS6MVYRLsKx8UXAlif7gPvq4tE6gfhz6KeLXQBl6\",\"token\":\"{{token}}\",\"tokenSecret\":\"{{token_secret}}\",\"signatureMethod\":\"HMAC-SHA1\",\"timestamp\":\"1434548345\"",
 			"collectionId": "d362bd3b-ab81-2b7d-0ce5-345df1826043"
 		},
 		{
@@ -391,7 +384,6 @@
 			"tests": "var data = JSON.parse(responseBody);\ntests[\"number of lists = \"+data.lists.length ] = true;\nfor (i=0;i<data.lists.length;i++)\n{\n\n    tests[i+\" - \"+data.lists[i].name] = true;\n}",
 			"version": 2,
 			"currentHelper": "oAuth1",
-			"helperAttributes": "{\"id\":\"oAuth1\",\"time\":1434545476427,\"consumerKey\":\"d2ZxSW0dTPkGuMM9sAIBxWZLw\",\"consumerSecret\":\"vKj1x1eGfKnS6MVYRLsKx8UXAlif7gPvq4tE6gfhz6KeLXQBl6\",\"token\":\"{{token}}\",\"tokenSecret\":\"{{token_secret}}\",\"signatureMethod\":\"HMAC-SHA1\",\"timestamp\":\"1434545673\"",
 			"collectionId": "d362bd3b-ab81-2b7d-0ce5-345df1826043"
 		},
 		{
@@ -411,7 +403,6 @@
 			"tests": "",
 			"version": 2,
 			"currentHelper": "oAuth1",
-			"helperAttributes": "{\"id\":\"oAuth1\",\"time\":1434545476427,\"consumerKey\":\"d2ZxSW0dTPkGuMM9sAIBxWZLw\",\"consumerSecret\":\"vKj1x1eGfKnS6MVYRLsKx8UXAlif7gPvq4tE6gfhz6KeLXQBl6\",\"token\":\"{{token}}\",\"tokenSecret\":\"{{token_secret}}\",\"signatureMethod\":\"HMAC-SHA1\",\"timestamp\":\"1434548615\"",
 			"collectionId": "d362bd3b-ab81-2b7d-0ce5-345df1826043"
 		},
 		{
@@ -431,7 +422,6 @@
 			"tests": "// The user id of the person who tweeted is saved to environment\nvar data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"user_id\", data.user.id);\npostman.setEnvironmentVariable(\"screen_name\", data.user.screen_name);",
 			"version": 2,
 			"currentHelper": "oAuth1",
-			"helperAttributes": "{\"id\":\"oAuth1\",\"time\":1434545476427,\"consumerKey\":\"d2ZxSW0dTPkGuMM9sAIBxWZLw\",\"consumerSecret\":\"vKj1x1eGfKnS6MVYRLsKx8UXAlif7gPvq4tE6gfhz6KeLXQBl6\",\"token\":\"{{token}}\",\"tokenSecret\":\"{{token_secret}}\",\"signatureMethod\":\"HMAC-SHA1\",\"timestamp\":\"1434548776\"",
 			"collectionId": "d362bd3b-ab81-2b7d-0ce5-345df1826043"
 		},
 		{
@@ -451,7 +441,6 @@
 			"tests": "",
 			"version": 2,
 			"currentHelper": "oAuth1",
-			"helperAttributes": "{\"id\":\"oAuth1\",\"time\":1434545476427,\"consumerKey\":\"d2ZxSW0dTPkGuMM9sAIBxWZLw\",\"consumerSecret\":\"vKj1x1eGfKnS6MVYRLsKx8UXAlif7gPvq4tE6gfhz6KeLXQBl6\",\"token\":\"{{token}}\",\"tokenSecret\":\"{{token_secret}}\",\"signatureMethod\":\"HMAC-SHA1\",\"timestamp\":\"1434545661\"",
 			"collectionId": "d362bd3b-ab81-2b7d-0ce5-345df1826043"
 		},
 		{
@@ -471,7 +460,6 @@
 			"tests": "var data = JSON.parse(responseBody);\nif (data.length>=10)\n tests[\"more than 10 retweets\"] = true;",
 			"version": 2,
 			"currentHelper": "oAuth1",
-			"helperAttributes": "{\"id\":\"oAuth1\",\"time\":1434545476427,\"consumerKey\":\"d2ZxSW0dTPkGuMM9sAIBxWZLw\",\"consumerSecret\":\"vKj1x1eGfKnS6MVYRLsKx8UXAlif7gPvq4tE6gfhz6KeLXQBl6\",\"token\":\"{{token}}\",\"tokenSecret\":\"{{token_secret}}\",\"signatureMethod\":\"HMAC-SHA1\",\"timestamp\":\"1434552136\"",
 			"collectionId": "d362bd3b-ab81-2b7d-0ce5-345df1826043"
 		},
 		{
@@ -491,7 +479,6 @@
 			"tests": "",
 			"version": 2,
 			"currentHelper": "oAuth1",
-			"helperAttributes": "{\"id\":\"oAuth1\",\"time\":1434545476427,\"consumerKey\":\"d2ZxSW0dTPkGuMM9sAIBxWZLw\",\"consumerSecret\":\"vKj1x1eGfKnS6MVYRLsKx8UXAlif7gPvq4tE6gfhz6KeLXQBl6\",\"token\":\"{{token}}\",\"tokenSecret\":\"{{token_secret}}\",\"signatureMethod\":\"HMAC-SHA1\",\"timestamp\":\"1434545700\"",
 			"collectionId": "d362bd3b-ab81-2b7d-0ce5-345df1826043"
 		},
 		{
@@ -511,7 +498,6 @@
 			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"user_id\",data.ids[0]);\n",
 			"version": 2,
 			"currentHelper": "oAuth1",
-			"helperAttributes": "{\"id\":\"oAuth1\",\"time\":1434545476427,\"consumerKey\":\"d2ZxSW0dTPkGuMM9sAIBxWZLw\",\"consumerSecret\":\"vKj1x1eGfKnS6MVYRLsKx8UXAlif7gPvq4tE6gfhz6KeLXQBl6\",\"token\":\"{{token}}\",\"tokenSecret\":\"{{token_secret}}\",\"signatureMethod\":\"HMAC-SHA1\",\"timestamp\":\"1434548549\"",
 			"collectionId": "d362bd3b-ab81-2b7d-0ce5-345df1826043"
 		},
 		{
@@ -600,7 +586,6 @@
 			"tests": "if(tests[\"Status code is 200\"] = responseCode.code === 200) {\n    var search = JSON.parse(responseBody);\n    postman.setEnvironmentVariable(\"since_id\", search.search_metadata.max_id_str);\n}\n\n\n// postman.setEnvironmentVariable(\"len\", instances.length);\n// postman.setEnvironmentVariable(\"instances\", responseBody);\n// postman.setEnvironmentVariable(\"c\", 0);\n\n// postman.setNextRequest(\"Create User\");\n\n\n",
 			"version": 2,
 			"currentHelper": "oAuth1",
-			"helperAttributes": "{\"id\":\"oAuth1\",\"time\":1434545476427,\"consumerKey\":\"d2ZxSW0dTPkGuMM9sAIBxWZLw\",\"consumerSecret\":\"vKj1x1eGfKnS6MVYRLsKx8UXAlif7gPvq4tE6gfhz6KeLXQBl6\",\"token\":\"{{token}}\",\"tokenSecret\":\"{{token_secret}}\",\"signatureMethod\":\"HMAC-SHA1\",\"timestamp\":\"1434545476\"",
 			"collectionId": "d362bd3b-ab81-2b7d-0ce5-345df1826043",
 			"responses": []
 		},
@@ -621,7 +606,6 @@
 			"tests": "",
 			"version": 2,
 			"currentHelper": "oAuth1",
-			"helperAttributes": "{\"id\":\"oAuth1\",\"time\":1434545476427,\"consumerKey\":\"d2ZxSW0dTPkGuMM9sAIBxWZLw\",\"consumerSecret\":\"vKj1x1eGfKnS6MVYRLsKx8UXAlif7gPvq4tE6gfhz6KeLXQBl6\",\"token\":\"{{token}}\",\"tokenSecret\":\"{{token_secret}}\",\"signatureMethod\":\"HMAC-SHA1\",\"timestamp\":\"1434545706\"",
 			"collectionId": "d362bd3b-ab81-2b7d-0ce5-345df1826043"
 		},
 		{
@@ -641,7 +625,6 @@
 			"tests": "if(tests[\"Status code is 200\"] = responseCode.code === 200) {\n    var search = JSON.parse(responseBody);\n    postman.setEnvironmentVariable(\"since_id\", search.search_metadata.max_id_str);\n}\n\n\n// postman.setEnvironmentVariable(\"len\", instances.length);\n// postman.setEnvironmentVariable(\"instances\", responseBody);\n// postman.setEnvironmentVariable(\"c\", 0);\n\n// postman.setNextRequest(\"Create User\");\n\n\n",
 			"version": 2,
 			"currentHelper": "oAuth1",
-			"helperAttributes": "{\"0\":\"{\",\"1\":\"\\\"\",\"2\":\"i\",\"3\":\"d\",\"4\":\"\\\"\",\"5\":\":\",\"6\":\"\\\"\",\"7\":\"o\",\"8\":\"A\",\"9\":\"u\",\"10\":\"t\",\"11\":\"h\",\"12\":\"1\",\"13\":\"\\\"\",\"14\":\",\",\"15\":\"\\\"\",\"16\":\"t\",\"17\":\"i\",\"18\":\"m\",\"19\":\"e\",\"20\":\"\\\"\",\"21\":\":\",\"22\":\"1\",\"23\":\"4\",\"24\":\"3\",\"25\":\"4\",\"26\":\"5\",\"27\":\"4\",\"28\":\"",
 			"collectionId": "d362bd3b-ab81-2b7d-0ce5-345df1826043"
 		}
 	]
