@@ -82,4 +82,12 @@ describe('v1.0.0 ==> v2.0.0', function () {
             });
         });
     });
+
+    describe('Exceptional cases', function () {
+        it('should handle the edge case of "data" vs "rawModeData"', function () {
+            var v1 = require('../../examples/v1/simplest.json'),
+                v2 = converter.convert(v1);
+            expect(v2.item[0].request.body.raw).to.eql('something');
+        });
+    });
 });
