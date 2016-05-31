@@ -89,5 +89,20 @@ describe('v1.0.0 ==> v2.0.0', function () {
                 v2 = converter.convert(v1);
             expect(v2.item[0].request.body.raw).to.eql('something');
         });
+
+        it('should strip out all request and folder ids by default', function () {
+            var v1 = require('../../examples/v1/simplest.json'),
+                v2 = JSON.parse(JSON.stringify(converter.convert(v1)));
+            expect(v2.item[0]).to.not.have.property('id');
+            expect(v2.item[0]).to.not.have.property('_postman_id');
+        });
+
+        it('should retain all request and folder ids if asked to', function () {
+            var v1 = require('../../examples/v1/simplest.json'),
+                v2 = JSON.parse(JSON.stringify(converter.convert(v1, {
+                    retainIds: true
+                })));
+            expect(v2.item[0]).to.have.property('_postman_id');
+        });
     });
 });
