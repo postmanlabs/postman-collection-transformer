@@ -73,7 +73,7 @@
     // "requireAlignedObjectValues": false,
     // "requireAnonymousFunctions": false,
     "requireBlocksOnNewline": 2,
-    "requireCamelCaseOrUpperCaseIdentifiers": true,
+    // "requireCamelCaseOrUpperCaseIdentifiers": true,
     // "requireCapitalizedComments": true,
     "requireCapitalizedConstructors": true,
     // "requireCommaBeforeLineBreak": false,
