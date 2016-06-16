@@ -1,0 +1,40 @@
+{
+    "variables": [],
+    "info": {
+        "name": "simplest",
+        "_postman_id": "c3ac3ec4-8f23-2f3a-5215-aa33d781ca21",
+        "description": "",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0-draft.1/collection.json"
+    },
+    "items": [
+        {
+            "name": "echo.getpostman.com/post",
+            "events": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "type": "text/javascript",
+                        "exec": "tests[\"Body matches string\"] = responseBody.has(\"OMG\");\ntests[\"Status code is 200\"] = responseCode.code === 200;"
+                    }
+                }
+            ],
+            "request": {
+                "url": "echo.getpostman.com/post",
+                "method": "POST",
+                "headers": [
+                    {
+                        "key": "Content-Type",
+                        "value": "text/plain",
+                        "description": ""
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "something"
+                },
+                "description": "OMG I AM description"
+            },
+            "responses": []
+        }
+    ]
+}
