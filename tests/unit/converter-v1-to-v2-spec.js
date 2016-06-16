@@ -13,7 +13,7 @@ var expect = require('expect.js'),
 describe('v1.0.0 ==> v2.0.0', function () {
     var converter = require('../../lib/converters/converter-v1-to-v2'),
         schemaUrl = require('../../lib/constants').SCHEMA_V2_URL,
-        examplesDir = path.join(__dirname, '../../examples/v1');
+        examplesDir = path.join(__dirname, '../../examples/v1.0.0');
 
     describe('sample conversions', function () {
         var schema,
@@ -82,20 +82,20 @@ describe('v1.0.0 ==> v2.0.0', function () {
 
     describe('Exceptional cases', function () {
         it('should handle the edge case of "data" vs "rawModeData"', function () {
-            var v1 = require('../../examples/v1/simplest.json'),
+            var v1 = require('../../examples/v1.0.0/simplest.json'),
                 v2 = converter.convert(v1);
             expect(v2.items[0].request.body.raw).to.eql('something');
         });
 
         it('should strip out all request and folder ids by default', function () {
-            var v1 = require('../../examples/v1/simplest.json'),
+            var v1 = require('../../examples/v1.0.0/simplest.json'),
                 v2 = JSON.parse(JSON.stringify(converter.convert(v1)));
             expect(v2.items[0]).to.not.have.property('id');
             expect(v2.items[0]).to.not.have.property('_postman_id');
         });
 
         it('should retain all request and folder ids if asked to', function () {
-            var v1 = require('../../examples/v1/simplest.json'),
+            var v1 = require('../../examples/v1.0.0/simplest.json'),
                 v2 = JSON.parse(JSON.stringify(converter.convert(v1, {
                     retainIds: true
                 })));
