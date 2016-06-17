@@ -26,7 +26,7 @@ describe('v2.0.0 ==> v1.0.0', function () {
             });
         });
 
-        it('must create a valid V1 collection with multi-level folder support from twitter_multifolder.json', function (done) {
+        it('must create a valid V1 collection with multi folder support from twitter_multifolder', function (done) {
             converter.convert(samples.twitter_multifolder, {
                 flattenMultiFolders: true
             }, function (err, converted) {
