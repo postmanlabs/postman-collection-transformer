@@ -78,7 +78,7 @@ describe('v2.0.0 ==> v1.0.0', function () {
         });
     });
 
-    it('must be compatible with both v2.0.0 and v2.1.0 formats', function () {
+    it.skip('must be compatible with both v2.0.0 and v2.1.0 formats', function () {
         var samples_2_1_0 = requireAll(path.join(__dirname, '../../examples/v2.1.0')),
             samples_2_0_0 = requireAll(path.join(__dirname, '../../examples/v2.0.0')),
 
