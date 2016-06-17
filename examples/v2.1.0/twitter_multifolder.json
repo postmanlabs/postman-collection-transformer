@@ -8,15 +8,15 @@
     },
     "items": [
         {
-            "name": "User Specific Folder",
+            "name": "User Specific FolderL1",
             "description": "These requests are specific to the user whos auth tokens you have",
             "items": [
                 {
-                    "name": "MentionsFolder",
+                    "name": "MentionsFolderL2",
                     "description": "Second level folder",
                     "items": [
                         {
-                            "name": "MentionsFolder",
+                            "name": "MentionsRequestL2",
                             "request": {
                                 "auth": {
                                     "type": "oauth1",
@@ -40,6 +40,30 @@
                             "responses": []
                         }
                     ]
+                },
+                {
+                    "name": "MentionsRequestL1",
+                    "request": {
+                        "auth": {
+                            "type": "oauth1",
+                            "oauth1": {}
+                        },
+                        "url": "https://api.twitter.com/1.1/statuses/home_timeline.json",
+                        "method": "GET",
+                        "headers": [
+                            {
+                                "key": "Authorization",
+                                "value": "OAuth oauth_consumer_key=\"d2ZxSW0dTPkGuMM9sAIBxWZLw\",oauth_token=\"160113786-lJUEMPzvQ61utoGADZfPKOSsbkKtR6czzuDblvC0\",oauth_signature_method=\"HMAC-SHA1\",oauth_timestamp=\"1434532628\",oauth_nonce=\"HOW7JN\",oauth_version=\"1.0\",oauth_signature=\"h2vIYOZCPOiKVHKuIfQaR1gNUoY%3D\"",
+                                "description": ""
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": []
+                        },
+                        "description": ""
+                    },
+                    "responses": []
                 }
             ]
         }
