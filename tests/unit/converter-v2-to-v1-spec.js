@@ -26,6 +26,39 @@ describe('v2.0.0 ==> v1.0.0', function () {
             });
         });
 
+        it('must create a valid V1 collection with multi-level folder support from twitter_multifolder.json', function (done) {
+            converter.convert(samples.twitter_multifolder, {
+                flattenMultiFolders: true
+            }, function (err, converted) {
+                var validator = tv4.freshApi(),
+                    result,
+                    innerFolder;
+                validator.addSchema(schema);
+                // Some of the converter functions assign "undefined" value to some properties,
+                // It is necessary to get rid of them (otherwise schema validation sees an "undefined" and fails).
+                // Converting to and parsing from JSON does this.
+                converted = JSON.parse(JSON.stringify(converted));
+                result = validator.validate(converted, schema);
+                if (!result) {
+                    console.log(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
+                }
+                if (validator.missing.length) {
+                    console.log(validator.missing);
+                    result = false;
+                }
+                expect(result).to.be(true);
+                expect(err).to.be(null);
+
+                // Atleast 1 folder with a parentId
+                innerFolder = _.find(converted.folders, function (folder) {
+                    return folder.parentId;
+                });
+                expect(innerFolder).to.be.ok();
+
+                done();
+            });
+        });
+
         _.forEach(samples, function (sample, sampleName) {
             it('must create a valid V1 collection from ' + sampleName + '.json', function (done) {
                 converter.convert(sample, {}, function (err, converted) {
@@ -63,7 +96,6 @@ describe('v2.0.0 ==> v1.0.0', function () {
                 // It is necessary to get rid of them (otherwise schema validation sees an "undefined" and fails).
                 // Converting to and parsing from JSON does this.
                 converted = JSON.parse(JSON.stringify(converted));
-
                 result = validator.validate(converted, schema);
                 if (!result) {
                     console.log(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
