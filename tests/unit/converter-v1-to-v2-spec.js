@@ -101,5 +101,13 @@ describe('v1.0.0 ==> v2.0.0', function () {
                 })));
             expect(v2.item[0]).to.have.property('_postman_id');
         });
+
+        it('should mark commented out headers as disabled', function () {
+            var v1 = require('../../examples/v1.0.0/disabledheaders.json'),
+                v2 = JSON.parse(JSON.stringify(converter.convert(v1, {
+                    retainIds: true
+                })));
+            expect(v2.item[0].request.header[1].disabled).to.be(true);
+        });
     });
 });
