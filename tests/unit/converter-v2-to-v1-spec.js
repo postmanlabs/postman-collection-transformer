@@ -78,7 +78,7 @@ describe('v2.0.0 ==> v1.0.0', function () {
         });
     });
 
-    it.skip('must be compatible with both v2.0.0 and v2.1.0 formats', function () {
+    it('must be compatible with both v2.0.0 and v2.1.0 formats', function () {
         var samples_2_1_0 = requireAll(path.join(__dirname, '../../examples/v2.1.0')),
             samples_2_0_0 = requireAll(path.join(__dirname, '../../examples/v2.0.0')),
 
@@ -88,6 +88,7 @@ describe('v2.0.0 ==> v1.0.0', function () {
                     _.isString(first) ||
                     _.isBoolean(first) ||
                     _.isNumber(first) ||
+                    _.isUndefined(first) ||
                     _.isNull(first)) {
                     return first === second;
                 }
@@ -112,8 +113,8 @@ describe('v2.0.0 ==> v1.0.0', function () {
         expect(_.keys(samples_2_0_0)).to.eql(_.keys(samples_2_1_0));
 
         _.forOwn(samples_2_0_0, function (sample, sampleName) {
-            var convertedExpectation = converter.convert(sample),
-                convertedActual = converter.convert(samples_2_1_0[sampleName]);
+            var convertedExpectation = converter.convert(sample),  // Converted version of a v2.0.0 collection
+                convertedActual = converter.convert(samples_2_1_0[sampleName]);  // Converting the corresponding v2.1.0
 
             expect(_.keys(convertedExpectation)).to.eql(_.keys(convertedActual));
             expect(_.keys(convertedExpectation)).to.not.be.empty();
