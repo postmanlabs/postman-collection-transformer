@@ -4,7 +4,7 @@
         "name": "httpbin",
         "_postman_id": "65d8dc8f-fb76-8d61-8adc-f96d2109ec7d",
         "description": "Requests to HTTP Bin",
-        "schema": "https://schema.getpostman.com/json/collection/v2.1.0-draft.1/collection.json"
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
     "items": [
         {
