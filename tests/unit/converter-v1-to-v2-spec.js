@@ -6,7 +6,7 @@ var expect = require('expect.js'),
     requireAll = require('require-all'),
     path = require('path'),
     tv4 = require('tv4'),
-    _ = require('lodash'),
+    _ = require('lodash').noConflict(),
     agent = require('superagent');
 
 /* global describe, it, before */
