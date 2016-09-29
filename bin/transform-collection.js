@@ -59,6 +59,7 @@ program
     .option('-o, --output <path>', 'target file path where the converted collection will be written')
     .option('-p, --output-version [version]', 'required version to which the collection is needed to be converted to')
     .option('-P, --pretty', 'Pretty print the output')
+    .option('--retain-ids', 'Retain the request and folder IDs during conversion (collection ID is always retained)')
     .option('-w, --overwrite', 'Overwrite the output file if it exists')
     .action(function (options) {
         var input;

@@ -44,6 +44,7 @@ All options:
         -o, --output <path>             target file path where the converted collection will be written
         -p, --output-version [version]  required version to which the collection is needed to be converted to
         -P, --pretty                    Pretty print the output
+        --retain-ids                    Retain the request and folder IDs during conversion (collection ID is always retained)
         -w, --overwrite                 Overwrite the output file if it exists
 
 If you'd rather use the transformer as a library:
@@ -54,7 +55,8 @@ If you'd rather use the transformer as a library:
 
         options = {
             inputVersion: '1.0.0',
-            outputVersion: '2.0.0'
+            outputVersion: '2.0.0',
+            retainIds: true  // the transformer strips request-ids etc by default.
         };
 
     transformer.convert(collection, options, function (error, result) {
