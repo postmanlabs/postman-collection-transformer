@@ -54,13 +54,13 @@ describe('repository', function () {
                     props[prop] = {
                         base: (propBase = prop.substr(0, prop.indexOf('-') > -1 ?
                             prop.indexOf('-') : undefined)),
-                        path: 'scripts/' + propBase + '.sh'
+                        path: 'npm/' + propBase + '.sh'
                     };
                     expect(fs.existsSync(props[prop].path)).to.be.ok();
                 }
             });
 
-            it('must be defined as per standards `[script]: scripts/[name].sh`', function () {
+            it('must be defined as per standards `[script]: npm/[name].sh`', function () {
                 for (var prop in json.scripts) {
                     expect(json.scripts[prop]).to.match(new RegExp(props[prop].path, 'g'));
                 }
