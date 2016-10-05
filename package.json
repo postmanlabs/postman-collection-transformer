@@ -6,7 +6,7 @@
   "scripts": {
     "build-docs": "node npm/build-docs.js",
     "build-wiki": "node npm/build-wiki.js",
-    "test": "npm/test.sh",
+    "test": "node npm/test.js",
     "test-lint": "node npm/test-lint.js",
     "test-system": "node npm/test-system.js",
     "test-unit": "node npm/test-unit.js",
