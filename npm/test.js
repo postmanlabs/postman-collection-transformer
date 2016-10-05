@@ -16,6 +16,6 @@ async.series([
     require('./test-unit'),
     require('./test-integration')
 ], function (code) {
-    !code && console.log(colors.green('\npostman-collection tests: all ok!'));
+    !code && console.log('\npostman-collection-transformer tests: all ok!'.green.bold);
     exit(code);
 });

@@ -27,8 +27,8 @@ var program = require('commander'),
      */
     writeJSON = function (data, options, callback) {
         var json,
-            FSWF_FLAG_W = {flag: 'w'},
-            FSWF_FLAG_WX = {flag: 'wx'};
+            FSWF_FLAG_W = { flag: 'w' },
+            FSWF_FLAG_WX = { flag: 'wx' };
 
         try {
             json = JSON.stringify(data, null, options.pretty ? 4 : 0);
@@ -104,7 +104,7 @@ program
     });
 
 program
-    .command('*', 'Display usage text', {isDefault: true})
+    .command('*', 'Display usage text', { isDefault: true })
     .action(function () {
         program.outputHelp();
     });
