@@ -40,7 +40,7 @@
   "dependencies": {
     "commander": "2.8.1",
     "intel": "1.0.2",
-    "lodash": "3.10.0",
+    "lodash": "4.16.5",
     "semver": "5.1.0",
     "strip-json-comments": "1.0.2"
   }
