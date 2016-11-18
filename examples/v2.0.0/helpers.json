@@ -28,7 +28,7 @@
                         "token": "",
                         "tokenSecret": "",
                         "signatureMethod": "HMAC-SHA1",
-                        "timeStamp": "1415542860",
+                        "timestamp": "1415542860",
                         "nonce": "yPmTxQ",
                         "version": "1.0",
                         "realm": "",
