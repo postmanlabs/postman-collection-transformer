@@ -68,7 +68,7 @@ program
             return log.error('Output file must be specified!');
         }
         if (!options.input) {
-            return log.error('Output file must be specified!');
+            return log.error('Input file must be specified!');
         }
 
         try {
