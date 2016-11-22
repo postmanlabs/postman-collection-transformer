@@ -35,45 +35,26 @@ describe('repository', function () {
             });
 
             it('must have a valid version string in form of <major>.<minor>.<revision>', function () {
-                /* jshint ignore:start */
                 expect(json.version).to.match(/^((\d+)\.(\d+)\.(\d+))(?:-([\dA-Za-z\-]+(?:\.[\dA-Za-z\-]+)*))?(?:\+([\dA-Za-z\-]+(?:\.[\dA-Za-z\-]+)*))?$/);
-                /* jshint ignore:end */
             });
         });
 
         describe('script definitions', function () {
-            var props = {};
-
             it('files must exist', function () {
-                var prop,
-                    propBase;
+                var scriptRegex = /^node\snpm\/.*\.js/;
 
                 expect(json.scripts).to.be.ok();
-
-                for (prop in json.scripts) {
-                    props[prop] = {
-                        base: (propBase = prop.substr(0, prop.indexOf('-') > -1 ?
-                            prop.indexOf('-') : undefined)),
-                        path: 'scripts/' + propBase + '.sh'
-                    };
-                    expect(fs.existsSync(props[prop].path)).to.be.ok();
-                }
-            });
-
-            it('must be defined as per standards `[script]: scripts/[name].sh`', function () {
-                for (var prop in json.scripts) {
-                    expect(json.scripts[prop]).to.match(new RegExp(props[prop].path, 'g'));
-                }
+                json.scripts && Object.keys(json.scripts).forEach(function (scriptName) {
+                    expect(scriptRegex.test(json.scripts[scriptName])).to.be(true);
+                    expect(fs.existsSync('npm/' + scriptName + '.js')).to.be.ok();
+                });
             });
 
             it('must have the hashbang defined', function () {
-                var fileContent,
-                    prop;
-
-                for (prop in json.scripts) {
-                    fileContent = fs.readFileSync(props[prop].path).toString();
-                    expect(/^#!\/(bin\/bash|usr\/bin\/env\s(node|bash))[\r\n][\W\w]*$/g.test(fileContent)).to.be.ok();
-                }
+                json.scripts && Object.keys(json.scripts).forEach(function (scriptName) {
+                    var fileContent = fs.readFileSync('npm/' + scriptName + '.js').toString();
+                    expect(/^#!\/(bin\/bash|usr\/bin\/env\snode)[\r\n][\W\w]*$/g.test(fileContent)).to.be.ok();
+                });
             });
         });
 
