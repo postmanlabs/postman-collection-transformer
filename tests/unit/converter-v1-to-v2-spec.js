@@ -109,5 +109,13 @@ describe('v1.0.0 ==> v2.0.0', function () {
                 })));
             expect(v2.item[0].request.header[1].disabled).to.be(true);
         });
+
+        it('should not set default request body for requests with no data', function () {
+            var v1 = require('../../examples/v1.0.0/emptydata.json'),
+                v2 = JSON.parse(JSON.stringify(converter.convert(v1, {
+                    retainIds: true
+                })));
+            expect(_.isEmpty(v2.item[0].request.body)).to.be(true);
+        });
     });
 });
