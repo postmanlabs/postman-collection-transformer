@@ -118,4 +118,14 @@ describe('v1.0.0 ==> v2.0.0', function () {
             expect(_.isEmpty(v2.item[0].request.body)).to.be(true);
         });
     });
+
+    describe('Binary File reference', function () {
+        it('should be converted to v2 correctly', function () {
+            var v1 = require('../../examples/v1.0.0/binary-upload.json'),
+                v2 = JSON.parse(JSON.stringify(converter.convert(v1, {
+                    retainIds: true
+                })));
+            expect(_.get(v2, 'item[0].request.body.file.src')).to.be('sample.txt');
+        });
+    });
 });
