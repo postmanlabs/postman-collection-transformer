@@ -5,6 +5,7 @@ var expect = require('expect.js'),
     _ = require('lodash').noConflict(),
     agent = require('superagent');
 
+/* global describe, it, before */
 describe('Example validity', function () {
     // The V1 collections contain random stuff for extremely old collections, so their tests are skipped
     describe.skip('v1.0.0', function () {
