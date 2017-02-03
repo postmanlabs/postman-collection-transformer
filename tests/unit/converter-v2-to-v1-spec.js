@@ -78,6 +78,18 @@ describe('v2.0.0 ==> v1.0.0', function () {
         });
     });
 
+    describe('Exceptional cases', function () {
+        describe('Binary File reference', function () {
+            it('should be converted to v1 correctly', function () {
+                var v2 = require('../../examples/v2.0.0/binary-upload.json'),
+                    v1 = JSON.parse(JSON.stringify(converter.convert(v2)));
+                expect(_.get(v1, 'requests[0].dataMode')).to.be('binary');
+                expect(_.get(v1, 'requests[0].rawModeData')).to.be('sample.txt');
+                expect(_.isEmpty(_.get(v1, 'requests[0].data'))).to.be(true);
+            });
+        });
+    });
+
     it.skip('must be compatible with both v2.0.0 and v2.1.0 formats', function () {
         var samples_2_1_0 = requireAll(path.join(__dirname, '../../examples/v2.1.0')),
             samples_2_0_0 = requireAll(path.join(__dirname, '../../examples/v2.0.0')),

@@ -58,8 +58,8 @@
     //     "beforeOpeningRoundBrace": false,
     //     "beforeOpeningCurlyBrace": false
     // },
-    "disallowSpacesInsideArrayBrackets": "all",
-    "disallowSpacesInsideObjectBrackets": "all",
+    // "disallowSpacesInsideArrayBrackets": "all",
+    // "disallowSpacesInsideObjectBrackets": "all",
     "disallowSpacesInsideParentheses": { "only": [ "{", "}" ] },
     "disallowTrailingComma": true,
     "disallowTrailingWhitespace": true,
