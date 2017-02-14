@@ -12,6 +12,7 @@ var expect = require('expect.js'),
 /* global describe, it, before */
 describe('v1.0.0 ==> v2.0.0', function () {
     var converter = require('../../lib/converters/converter-v1-to-v2'),
+        reverseConverter = require('../../lib/converters/converter-v2-to-v1'),
         schemaUrl = require('../../lib/constants').SCHEMA_V2_URL,
         examplesDir = path.join(__dirname, '../../examples/v1.0.0');
 
@@ -108,6 +109,20 @@ describe('v1.0.0 ==> v2.0.0', function () {
                     retainIds: true
                 })));
             expect(v2.item[0].request.header[1].disabled).to.be(true);
+        });
+    });
+
+    describe('Malformed V1 collections', function () {
+        var malformedJson = require(path.join(examplesDir, 'malformed.json'));
+
+        it('should remove duplicate / non existent folder/request ids', function (done) {
+            var converted = JSON.parse(JSON.stringify(converter.convert(malformedJson))),
+                reverted = JSON.parse(JSON.stringify(reverseConverter.convert(converted)));
+
+            expect(reverted.order).to.have.length(1);
+            expect(reverted.folders[3].order).to.have.length(0); // F4
+            expect(reverted.folders[4].order).to.have.length(1); // F5
+            done();
         });
     });
 });
