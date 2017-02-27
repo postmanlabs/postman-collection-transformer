@@ -138,8 +138,13 @@ describe('v1.0.0 ==> v2.0.0', function () {
                 reverted = JSON.parse(JSON.stringify(reverseConverter.convert(converted)));
 
             expect(reverted.order).to.have.length(1);
+            expect(reverted.folders_order).to.have.length(2);
+
+            expect(reverted.folders[1].order).to.have.length(2); // F5
+            expect(reverted.folders[1].folders_order).to.have.length(4); // F5
+
             expect(reverted.folders[3].order).to.have.length(0); // F4
-            expect(reverted.folders[4].order).to.have.length(1); // F5
+            expect(reverted.folders[4].order).to.have.length(0); // F5.F1
             done();
         });
     });
