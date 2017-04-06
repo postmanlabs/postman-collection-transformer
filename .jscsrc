@@ -137,5 +137,8 @@
     "validateIndentation": 4,
     "validateLineBreaks": "LF",
     "validateParameterSeparator": ", ",
-    "validateQuoteMarks": "'"
+    "validateQuoteMarks": "'",
+    "excludeFiles": [
+        "tests/unit/fixtures/*"
+    ]
 }
