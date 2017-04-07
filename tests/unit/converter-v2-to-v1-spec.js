@@ -35,8 +35,7 @@ describe('v2.0.0 to v1.0.0', function () {
                     retainIds: true
                 }),
                 converted;
-
-            // the v2 tp v
+            // the v2 to v1 conversion reqiuires a collection id, so we send one
             converted = JSON.parse(JSON.stringify(converter.request(fixture.v2), fixture.v1.collectionId));
 
             [
