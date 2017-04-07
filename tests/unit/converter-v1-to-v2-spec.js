@@ -26,6 +26,7 @@ describe('v1.0.0 to v2.0.0', function () {
     });
 
     describe('Converter', function () {
+        // todo: add tests for cookie conversions
         it('.singleItem()', function () {
             var fixture = require('./fixtures/single-request'),
                 converter = transformer.create({

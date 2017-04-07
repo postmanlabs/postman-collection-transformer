@@ -174,38 +174,7 @@ module.exports = {
                         description: ""
                     }
                 ],
-                cookies: [
-                    {
-                        domain: "postman-echo.com",
-                        expirationDate: 2147463847,
-                        httpOnly: true,
-                        name: "sails.sid",
-                        path: "/",
-                        secure: false,
-                        url: "http://postman-echo.com",
-                        value: "s%3AVqEMru_wz_0eq_8AhtXYn8bekPp0NfQB.v%2FvfdOH0R0wgY4IEDySPFHBVWYYN7bEldy3NU5UkBXU"
-                    },
-                    {
-                        domain: "postman-echo.com",
-                        expirationDate: 2147463847,
-                        httpOnly: false,
-                        name: "foo1",
-                        path: "/",
-                        secure: false,
-                        url: "http://postman-echo.com",
-                        value: "bar1"
-                    },
-                    {
-                        domain: "postman-echo.com",
-                        expirationDate: 2147463847,
-                        httpOnly: false,
-                        name: "foo2",
-                        path: "/",
-                        secure: false,
-                        url: "http://postman-echo.com",
-                        value: "bar2"
-                    }
-                ],
+                cookies: [],
                 mime: "",
                 text: "{}",
                 language: "javascript",
@@ -548,35 +517,7 @@ module.exports = {
                         description: ""
                     }
                 ],
-                cookie: [
-                    {
-                        expires: "Tue Jan 19 2038 03:14:07 GMT+0530 (IST)",
-                        httpOnly: true,
-                        domain: "postman-echo.com",
-                        path: "/",
-                        secure: false,
-                        value: "s%3AVqEMru_wz_0eq_8AhtXYn8bekPp0NfQB.v%2FvfdOH0R0wgY4IEDySPFHBVWYYN7bEldy3NU5UkBXU",
-                        key: "sails.sid"
-                    },
-                    {
-                        expires: "Tue Jan 19 2038 03:14:07 GMT+0530 (IST)",
-                        httpOnly: false,
-                        domain: "postman-echo.com",
-                        path: "/",
-                        secure: false,
-                        value: "bar1",
-                        key: "foo1"
-                    },
-                    {
-                        expires: "Tue Jan 19 2038 03:14:07 GMT+0530 (IST)",
-                        httpOnly: false,
-                        domain: "postman-echo.com",
-                        path: "/",
-                        secure: false,
-                        value: "bar2",
-                        key: "foo2"
-                    }
-                ],
+                cookie: [],
                 responseTime: "287",
                 body: "{}"
             },
