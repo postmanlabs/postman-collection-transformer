@@ -3,7 +3,6 @@
  */
 
 var expect = require('expect.js'),
-    _ = require('lodash'),
     transformer = require('../../index');
 
 /* global describe, it */
