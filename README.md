@@ -74,41 +74,20 @@ If you'd rather use the transformer as a library:
 
 The transformer also allows you to convert individual requests (only supported when used as a library):
 
-###### Example (v1 to v2)
+###### Example
 ```javascript
 
     var transformer = require('postman-collection-transformer'),
     
-        v1Request = { /* A valid collection v1 Request */ },
+        objectToConvert = { /* A valid collection v1 Request or a collection v2 Item */ },
 
         options = {
             inputVersion: '1.0.0',
             outputVersion: '2.0.0',
             retainIds: true  // the transformer strips request-ids etc by default.
-        },
-        
-        converter;
+        };
 
-    converter = transformer.create(options);
-    
-    console.log(converter.singleItem(v1Request));
-```
-
-###### Example (v2 to v1)
-```javascript
-    var transformer = require('postman-collection-transformer'),
-    
-        v2Item = { /* A valid collection v2 Item */ },
-
-        options = {
-            inputVersion: '2.0.0',
-            outputVersion: '1.0.0',
-            retainIds: true  // the transformer strips request-ids etc by default.
-        },
-        
-        converter;
-
-    converter = transformer.create(options);
-    
-    console.log(converter.request(v2Item));
+    transformer.convertSingle(v1Request, options, function (err, converted) {
+        console.log(converted);
+    });
 ```
