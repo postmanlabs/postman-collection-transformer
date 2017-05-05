@@ -27,7 +27,7 @@ jscs index.js lib bin tests/unit
 # run jshint
 echo # blank line
 jshint -v;
-jshint --exclude tests/unit/fixtures/**.js index.js lib bin tests/unit tests/schema --show-non-errors --verbose;
+jshint --exclude tests/unit/fixtures index.js lib bin tests/unit tests/schema --show-non-errors --verbose;
 
 echo -n "No lint errors found.";
 
