@@ -2563,7 +2563,31 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/cookies/set?foo1=bar1&foo2=bar2",
+                            url: {
+                                auth: {},
+                                host: [
+                                    "echo",
+                                    "getpostman",
+                                    "com"
+                                ],
+                                path: [
+                                    "cookies",
+                                    "set"
+                                ],
+                                protocol: "https",
+                                query: [
+                                    {
+                                        key: "foo1",
+                                        value: "bar1"
+                                    },
+                                    {
+                                        key: "foo2",
+                                        value: "bar2"
+                                    }
+                                ],
+                                raw: "https://echo.getpostman.com/cookies/set?foo1=bar1&foo2=bar2",
+                                variable: []
+                            },
                             method: "GET",
                             header: [],
                             body: {},
@@ -2802,7 +2826,31 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/cookies/delete?foo1&foo2",
+                            url: {
+                                auth: {},
+                                host: [
+                                    "echo",
+                                    "getpostman",
+                                    "com"
+                                ],
+                                path: [
+                                    "cookies",
+                                    "delete"
+                                ],
+                                protocol: "https",
+                                query: [
+                                    {
+                                        key: "foo1",
+                                        value: ""
+                                    },
+                                    {
+                                        key: "foo2",
+                                        value: ""
+                                    }
+                                ],
+                                raw: "https://echo.getpostman.com/cookies/delete?foo1&foo2",
+                                variable: []
+                            },
                             method: "GET",
                             header: [],
                             body: {},
@@ -2954,7 +3002,30 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/response-headers?Content-Type=text/html&Server=apibin",
+                            url: {
+                                auth: {},
+                                host: [
+                                    "echo",
+                                    "getpostman",
+                                    "com"
+                                ],
+                                path: [
+                                    "response-headers"
+                                ],
+                                protocol: "https",
+                                query: [
+                                    {
+                                        key: "Content-Type",
+                                        value: "text/html"
+                                    },
+                                    {
+                                        key: "Server",
+                                        value: "apibin"
+                                    }
+                                ],
+                                raw: "https://echo.getpostman.com/response-headers?Content-Type=text/html&Server=apibin",
+                                variable: []
+                            },
                             method: "GET",
                             header: [],
                             body: {
@@ -3024,7 +3095,26 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/get?test=123",
+                            url: {
+                                auth: {},
+                                host: [
+                                    "echo",
+                                    "getpostman",
+                                    "com"
+                                ],
+                                path: [
+                                    "get"
+                                ],
+                                protocol: "https",
+                                query: [
+                                    {
+                                        key: "test",
+                                        value: "123"
+                                    }
+                                ],
+                                raw: "https://echo.getpostman.com/get?test=123",
+                                variable: []
+                            },
                             method: "GET",
                             header: [],
                             body: {
@@ -3465,7 +3555,31 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/oauth2/authtoken?client_id=abc123&response_type=code",
+                            url: {
+                                auth: {},
+                                host: [
+                                    "echo",
+                                    "getpostman",
+                                    "com"
+                                ],
+                                path: [
+                                    "oauth2",
+                                    "authtoken"
+                                ],
+                                protocol: "https",
+                                query: [
+                                    {
+                                        key: "client_id",
+                                        value: "abc123"
+                                    },
+                                    {
+                                        key: "response_type",
+                                        value: "code"
+                                    }
+                                ],
+                                raw: "https://echo.getpostman.com/oauth2/authtoken?client_id=abc123&response_type=code",
+                                variable: []
+                            },
                             method: "GET",
                             header: [],
                             body: {
