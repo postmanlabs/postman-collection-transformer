@@ -109,6 +109,9 @@ describe('v1.0.0 ==> v2.0.0', function () {
                     retainIds: true
                 })));
             expect(v2.item[0].request.header[1].disabled).to.be(true);
+
+            // Make sure the comments don't stay in the header key
+            expect(v2.item[0].request.header[1].key.substring(0,2)).to.not.be('//');
         });
 
         it('should not set default request body for requests with no data', function () {
