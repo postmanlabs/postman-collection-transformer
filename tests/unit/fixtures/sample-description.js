@@ -8,17 +8,25 @@ module.exports = {
         requests: [
             {
                 id: 'e18e734b-4259-db7d-3728-215b2df05a19',
-                headers: 'h_foo: h_alpha\nh_bar: h_beta',
+                headers: 'h_foo: h_alpha\nh_bar: h_beta\n// h_baz: h_gamma',
                 headerData: [
                     {
                         key: 'h_foo',
                         value: 'h_alpha',
+                        enabled: true,
                         description: 'This is the first header'
                     },
                     {
                         key: 'h_bar',
                         value: 'h_beta',
+                        enabled: true,
                         description: 'This is the second header'
+                    },
+                    {
+                        key: 'h_baz',
+                        value: 'h_gamma',
+                        enabled: false,
+                        description: 'This is the third header (disabled)'
                     }
                 ],
                 url: 'https://postman-echo.com/post/:a?qp_foo=qp_alpha&qp_bar=qp_beta&qp_foo=qp_alpha',
@@ -26,17 +34,26 @@ module.exports = {
                     {
                         key: 'qp_foo',
                         value: 'qp_alpha',
+                        enabled: true,
                         description: 'This is the first url query parameter'
                     },
                     {
                         key: 'qp_bar',
                         value: 'qp_beta',
+                        enabled: true,
                         description: 'This is the second url query parameter'
                     },
                     {
                         key: 'qp_foo',
                         value: 'qp_alpha',
+                        enabled: true,
                         description: 'This is the third url query parameter'
+                    },
+                    {
+                        key: 'qp_baz',
+                        value: 'qp_gamma',
+                        enabled: false,
+                        description: 'This is the fourth url query parameter (disabled)'
                     }
                 ],
                 rawModeData: '',
@@ -109,6 +126,12 @@ module.exports = {
                                 key: 'qp_foo',
                                 value: 'qp_alpha',
                                 description: 'This is the third url query parameter'
+                            },
+                            {
+                                key: 'qp_baz',
+                                value: 'qp_gamma',
+                                disabled: true,
+                                description: 'This is the fourth url query parameter (disabled)'
                             }
                         ]
                     },
@@ -123,6 +146,12 @@ module.exports = {
                             key: 'h_bar',
                             value: 'h_beta',
                             description: 'This is the second header'
+                        },
+                        {
+                            key: 'h_baz',
+                            value: 'h_gamma',
+                            disabled: true,
+                            description: 'This is the third header (disabled)'
                         }
                     ],
                     body: {
