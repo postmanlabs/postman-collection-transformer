@@ -27,11 +27,11 @@ jscs index.js lib bin tests/unit
 # run jshint
 echo # blank line
 jshint -v;
-jshint index.js lib bin tests/unit --show-non-errors --verbose;
+jshint --exclude tests/unit/fixtures index.js lib bin tests/unit tests/schema --show-non-errors --verbose;
 
 echo -n "No lint errors found.";
 
 # run mocha tests
 echo -e "\n\n\033[93mRunning unit tests...\033[0m";
 echo -en "\033[0m\033[2mmocha `mocha --version`\033[0m";
-mocha -t 10000 tests/unit/*-spec.js
+mocha -t 10000 tests/unit/*-spec.js tests/schema/*-spec.js

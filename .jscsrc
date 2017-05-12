@@ -58,8 +58,8 @@
     //     "beforeOpeningRoundBrace": false,
     //     "beforeOpeningCurlyBrace": false
     // },
-    "disallowSpacesInsideArrayBrackets": "all",
-    "disallowSpacesInsideObjectBrackets": "all",
+    // "disallowSpacesInsideArrayBrackets": "all",
+    // "disallowSpacesInsideObjectBrackets": "all",
     "disallowSpacesInsideParentheses": { "only": [ "{", "}" ] },
     "disallowTrailingComma": true,
     "disallowTrailingWhitespace": true,
@@ -137,5 +137,8 @@
     "validateIndentation": 4,
     "validateLineBreaks": "LF",
     "validateParameterSeparator": ", ",
-    "validateQuoteMarks": "'"
+    "validateQuoteMarks": "'",
+    "excludeFiles": [
+        "tests/unit/fixtures/*"
+    ]
 }

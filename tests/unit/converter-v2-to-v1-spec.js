@@ -1,124 +1,72 @@
 /**
- * @fileoverview This test suite runs tests on the V2 to V1 converter.
+ * @fileoverview This test suite runs tests on the V1 to V2 converter.
  */
 
 var expect = require('expect.js'),
-    requireAll = require('require-all'),
-    path = require('path'),
-    tv4 = require('tv4'),
-    _ = require('lodash').noConflict(),
-    agent = require('superagent');
+    transformer = require('../../index');
 
-/* global describe, it, before */
-describe('v2.0.0 ==> v1.0.0', function () {
-    var converter = require('../../lib/converters/converter-v2-to-v1'),
-        schemaUrl = require('../../lib/constants').SCHEMA_V1_URL,
-        examplesDir = path.join(__dirname, '../../examples/v2.1.0');
-
-    describe('sample conversions', function () {
-        var schema,
-            samples = requireAll(examplesDir);
-
-        before(function (done) {
-            agent.get(schemaUrl, function (error, response) {
-                schema = _.isString(response.body) ? JSON.parse(response.body) : response.body;
-                done(error);
-            });
+/* global describe, it */
+describe('v2.0.0 to v1.0.0', function () {
+    describe('api', function () {
+        it('should have a .convertSingle() function', function () {
+            expect(transformer.convertSingle).to.be.a('function');
+            expect(transformer.convertSingle.length).to.be(3);
         });
+    });
 
-        _.forEach(samples, function (sample, sampleName) {
-            it('must create a valid V1 collection from ' + sampleName + '.json', function (done) {
-                converter.convert(sample, {}, function (err, converted) {
-                    var validator = tv4.freshApi(),
-                        result;
-                    validator.addSchema(schema);
-                    // Some of the converter functions assign "undefined" value to some properties,
-                    // It is necessary to get rid of them (otherwise schema validation sees an "undefined" and fails).
-                    // Converting to and parsing from JSON does this.
-                    converted = JSON.parse(JSON.stringify(converted));
-                    result = validator.validate(converted, schema);
-                    if (!result) {
-                        console.log(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
-                    }
-                    if (validator.missing.length) {
-                        console.log(validator.missing);
-                        result = false;
-                    }
-                    expect(result).to.be(true);
-                    expect(err).to.be(null);
-                    done();
-                });
-            });
-        });
+    describe('transformer', function () {
+        it('.convertSingle()', function (done) {
+            var fixture = require('./fixtures/single-request'),
+                options = {
+                    inputVersion: '2.0.0',
+                    outputVersion: '1.0.0',
+                    retainIds: true
+                };
 
-        _.forEach(samples, function (sample, sampleName) {
-            it('must create a valid V1 collection from ' + sampleName + '.json with synchronous API', function (done) {
-                var validator = tv4.freshApi(),
-                    result,
-                    converted;
-                validator.addSchema(schema);
-                converted = converter.convert(sample);
+            transformer.convertSingle(fixture.v2, options, function (err, converted) {
+                expect(err).to.not.be.ok();
 
-                // Some of the converter functions assign "undefined" value to some properties,
-                // It is necessary to get rid of them (otherwise schema validation sees an "undefined" and fails).
-                // Converting to and parsing from JSON does this.
+                // remove `undefined` properties for testing
                 converted = JSON.parse(JSON.stringify(converted));
-
-                result = validator.validate(converted, schema);
-                if (!result) {
-                    console.log(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
-                }
-                if (validator.missing.length) {
-                    console.log(validator.missing);
-                    result = false;
-                }
-                expect(result).to.be(true);
+                [
+                    'id',
+                    'name',
+                    'description',
+                    'method',
+                    'headers',
+                    'dataMode',
+                    'data',
+                    'rawModeData',
+                    'tests',
+                    'preRequestScript',
+                    'url',
+                    'responses'
+                ].forEach(function (p) {
+                    expect(converted).to.have.property(p);
+                });
                 done();
             });
         });
     });
 
-    it.skip('must be compatible with both v2.0.0 and v2.1.0 formats', function () {
-        var samples_2_1_0 = requireAll(path.join(__dirname, '../../examples/v2.1.0')),
-            samples_2_0_0 = requireAll(path.join(__dirname, '../../examples/v2.0.0')),
+    describe('descriptions', function () {
+        it('should correctly handle descriptions whilst converting from v2 to v1', function (done) {
+            var fixture = require('./fixtures/sample-description'),
+                options = {
+                    inputVersion: '2.0.0',
+                    outputVersion: '1.0.0',
+                    retainIds: true
+                };
 
-            deepCompare = function (first, second, omitProperties) {
-                if (_.isNaN(first) ||
-                    _.isDate(first) ||
-                    _.isString(first) ||
-                    _.isBoolean(first) ||
-                    _.isNumber(first) ||
-                    _.isNull(first)) {
-                    return first === second;
-                }
+            transformer.convert(fixture.v2, options, function (err, converted) {
+                expect(err).to.not.be.ok();
 
-                for (var key in first) {
-                    if (!first.hasOwnProperty(key)) {
-                        continue;
-                    }
-                    if (_.includes(omitProperties, key)) {
-                        if (_.isArray(first[key])) {
-                            return first[key].length === second[key].length;
-                        }
-                        continue;
-                    }
-                    if (!deepCompare(first[key], second[key], omitProperties)) {
-                        return false;
-                    }
-                }
-                return true;
-            };
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
 
-        expect(_.keys(samples_2_0_0)).to.eql(_.keys(samples_2_1_0));
-
-        _.forOwn(samples_2_0_0, function (sample, sampleName) {
-            var convertedExpectation = converter.convert(sample),
-                convertedActual = converter.convert(samples_2_1_0[sampleName]);
-
-            expect(_.keys(convertedExpectation)).to.eql(_.keys(convertedActual));
-            expect(_.keys(convertedExpectation)).to.not.be.empty();
-
-            expect(deepCompare(convertedExpectation, convertedActual, ['id', 'order'])).to.equal(true);
+                expect(converted).to.eql(fixture.v1);
+                done();
+            });
         });
     });
 });

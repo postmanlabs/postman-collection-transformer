@@ -16,6 +16,8 @@ As a library:
 
 ## Usage
 
+#### Converting Entire Collections
+
 The transformer provides a Command line API to convert collections.
 
 Example:
@@ -67,3 +69,25 @@ If you'd rather use the transformer as a library:
         // result <== the converted collection as a raw Javascript object
         console.log(inspect(result, {colors: true, depth: 10000}));
     });
+    
+#### Converting Individual Requests
+
+The transformer also allows you to convert individual requests (only supported when used as a library):
+
+###### Example
+```javascript
+
+    var transformer = require('postman-collection-transformer'),
+    
+        objectToConvert = { /* A valid collection v1 Request or a collection v2 Item */ },
+
+        options = {
+            inputVersion: '1.0.0',
+            outputVersion: '2.0.0',
+            retainIds: true  // the transformer strips request-ids etc by default.
+        };
+
+    transformer.convertSingle(v1Request, options, function (err, converted) {
+        console.log(converted);
+    });
+```
