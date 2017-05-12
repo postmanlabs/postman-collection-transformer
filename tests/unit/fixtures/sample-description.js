@@ -13,13 +13,11 @@ module.exports = {
                     {
                         key: 'h_foo',
                         value: 'h_alpha',
-                        enabled: true,
                         description: 'This is the first header'
                     },
                     {
                         key: 'h_bar',
                         value: 'h_beta',
-                        enabled: true,
                         description: 'This is the second header'
                     },
                     {
@@ -34,19 +32,16 @@ module.exports = {
                     {
                         key: 'qp_foo',
                         value: 'qp_alpha',
-                        enabled: true,
                         description: 'This is the first url query parameter'
                     },
                     {
                         key: 'qp_bar',
                         value: 'qp_beta',
-                        enabled: true,
                         description: 'This is the second url query parameter'
                     },
                     {
                         key: 'qp_foo',
                         value: 'qp_alpha',
-                        enabled: true,
                         description: 'This is the third url query parameter'
                     },
                     {
@@ -63,14 +58,12 @@ module.exports = {
                         key: 'rb_foo',
                         value: 'rb_alpha',
                         description: 'This is the first request body datum',
-                        enabled: true,
                         type: 'text'
                     },
                     {
                         key: 'rb_bar',
                         value: 'rb_beta',
                         description: 'This is the second request body datum',
-                        enabled: true,
                         type: 'text'
                     }
                 ],
