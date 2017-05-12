@@ -370,32 +370,27 @@ module.exports = {
                     {
                         key: "code",
                         value: "xWnkliVQJURqB2x1",
-                        type: "text",
-                        enabled: true
+                        type: "text"
                     },
                     {
                         key: "grant_type",
                         value: "authorization_code",
-                        type: "text",
-                        enabled: true
+                        type: "text"
                     },
                     {
                         key: "redirect_uri",
                         value: "https://www.getpostman.com/oauth2/callback",
-                        type: "text",
-                        enabled: true
+                        type: "text"
                     },
                     {
                         key: "client_id",
                         value: "abc123",
-                        type: "text",
-                        enabled: true
+                        type: "text"
                     },
                     {
                         key: "client_secret",
                         value: "ssh-secret",
-                        type: "text",
-                        enabled: true
+                        type: "text"
                     }
                 ]
             },
@@ -415,32 +410,27 @@ module.exports = {
                             {
                                 key: "code",
                                 value: "xWnkliVQJURqB2x1",
-                                type: "text",
-                                enabled: true
+                                type: "text"
                             },
                             {
                                 key: "grant_type",
                                 value: "authorization_code",
-                                type: "text",
-                                enabled: true
+                                type: "text"
                             },
                             {
                                 key: "redirect_uri",
                                 value: "https://www.getpostman.com/oauth2/callback",
-                                type: "text",
-                                enabled: true
+                                type: "text"
                             },
                             {
                                 key: "client_id",
                                 value: "abc123",
-                                type: "text",
-                                enabled: true
+                                type: "text"
                             },
                             {
                                 key: "client_secret",
                                 value: "ssh-secret",
-                                type: "text",
-                                enabled: true
+                                type: "text"
                             }
                         ]
                     },
@@ -535,32 +525,27 @@ module.exports = {
                             {
                                 key: "code",
                                 value: "xWnkliVQJURqB2x1",
-                                type: "text",
-                                enabled: true
+                                type: "text"
                             },
                             {
                                 key: "grant_type",
                                 value: "authorization_code",
-                                type: "text",
-                                enabled: true
+                                type: "text"
                             },
                             {
                                 key: "redirect_uri",
                                 value: "https://www.getpostman.com/oauth2/callback",
-                                type: "text",
-                                enabled: true
+                                type: "text"
                             },
                             {
                                 key: "client_id",
                                 value: "abc123",
-                                type: "text",
-                                enabled: true
+                                type: "text"
                             },
                             {
                                 key: "client_secret",
                                 value: "ssh-secret",
-                                type: "text",
-                                enabled: true
+                                type: "text"
                             }
                         ]
                     },

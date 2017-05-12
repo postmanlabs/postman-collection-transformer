@@ -63,12 +63,14 @@ module.exports = {
                         key: 'rb_foo',
                         value: 'rb_alpha',
                         description: 'This is the first request body datum',
+                        enabled: true,
                         type: 'text'
                     },
                     {
                         key: 'rb_bar',
                         value: 'rb_beta',
                         description: 'This is the second request body datum',
+                        enabled: true,
                         type: 'text'
                     }
                 ],
