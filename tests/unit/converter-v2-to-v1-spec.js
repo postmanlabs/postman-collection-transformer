@@ -2,7 +2,8 @@
  * @fileoverview This test suite runs tests on the V1 to V2 converter.
  */
 
-var expect = require('expect.js'),
+var _ = require('lodash'),
+    expect = require('expect.js'),
     transformer = require('../../index');
 
 /* global describe, it */
@@ -15,36 +16,90 @@ describe('v2.0.0 to v1.0.0', function () {
     });
 
     describe('transformer', function () {
-        it('.convertSingle()', function (done) {
-            var fixture = require('./fixtures/single-request'),
-                options = {
-                    inputVersion: '2.0.0',
-                    outputVersion: '1.0.0',
-                    retainIds: true
-                };
+        describe('.convertSingle()', function () {
+            it('.convertSingle()', function (done) {
+                var fixture = require('./fixtures/single-request'),
+                    options = {
+                        inputVersion: '2.0.0',
+                        outputVersion: '1.0.0',
+                        retainIds: true
+                    };
 
-            transformer.convertSingle(fixture.v2, options, function (err, converted) {
-                expect(err).to.not.be.ok();
+                transformer.convertSingle(fixture.v2, options, function (err, converted) {
+                    expect(err).to.not.be.ok();
 
-                // remove `undefined` properties for testing
-                converted = JSON.parse(JSON.stringify(converted));
-                [
-                    'id',
-                    'name',
-                    'description',
-                    'method',
-                    'headers',
-                    'dataMode',
-                    'data',
-                    'rawModeData',
-                    'tests',
-                    'preRequestScript',
-                    'url',
-                    'responses'
-                ].forEach(function (p) {
-                    expect(converted).to.have.property(p);
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+                    [
+                        'id',
+                        'name',
+                        'description',
+                        'method',
+                        'headers',
+                        'dataMode',
+                        'data',
+                        'rawModeData',
+                        'tests',
+                        'preRequestScript',
+                        'url',
+                        'responses'
+                    ].forEach(function (p) {
+                        expect(converted).to.have.property(p);
+                    });
+                    done();
                 });
-                done();
+            });
+        });
+
+        describe('.convertResponse()', function () {
+            it('.convertSingle()', function (done) {
+                var fixture = require('./fixtures/single-response'),
+                    options = {
+                        inputVersion: '2.0.0',
+                        outputVersion: '1.0.0',
+                        retainIds: true
+                    };
+
+                transformer.convertResponse(fixture.v2, options, function (err, converted) {
+                    if (err) { return done(err); }
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted.requestObject).to.be.a('string');
+                    expect(function () {
+                        JSON.parse(converted.requestObject);
+                    }).to.not.throwException();
+
+                    expect(_.omit(converted, [
+                        'rawDataType',
+                        'request',
+                        'requestObject',
+                        'responseCode',
+                        'status'
+                    ])).to.eql(_.omit(fixture.v1, [
+                        'code',
+                        'dataURI',
+                        'empty',
+                        'failed',
+                        'fileName',
+                        'forceNoPretty',
+                        'mime',
+                        'mimeType',
+                        'request',
+                        'responseCode',
+                        'responseSize',
+                        'searchResultScrolledTo',
+                        'state',
+                        'status',
+                        'write'
+                    ]));
+
+                    [].forEach(function (p) {
+                        expect(converted).to.have.property(p);
+                    });
+                    done();
+                });
             });
         });
     });
