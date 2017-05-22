@@ -87,7 +87,29 @@ The transformer also allows you to convert individual requests (only supported w
             retainIds: true  // the transformer strips request-ids etc by default.
         };
 
-    transformer.convertSingle(v1Request, options, function (err, converted) {
+    transformer.convertSingle(objectToConvert, options, function (err, converted) {
+        console.log(converted);
+    });
+```
+
+#### Converting Individual Responses
+
+You can convert individual responses too if needed:
+
+###### Example
+```javascript
+
+    var transformer = require('postman-collection-transformer'),
+    
+        objectToConvert = { /* A v1 Response or a v2 Response */ },
+
+        options = {
+            inputVersion: '1.0.0',
+            outputVersion: '2.0.0',
+            retainIds: true  // the transformer strips request-ids etc by default.
+        };
+
+    transformer.convertResponse(objectToConvert, options, function (err, converted) {
         console.log(converted);
     });
 ```
