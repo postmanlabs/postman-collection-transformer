@@ -1,5 +1,8 @@
 # Postman Collection Transformer Changelog
 
+#### 2.1.2 (May 25, 2017)
+* Handle an edge case where an unhandled ID is provided in the `requestObject`
+
 #### 2.1.1 (May 22, 2017)
 * Fixed a bug where the `requestObject` was missing when doing v2 to v1 conversions
 * Added the ability to convert single responses as well
