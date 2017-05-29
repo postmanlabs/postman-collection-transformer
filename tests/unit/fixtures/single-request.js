@@ -36,8 +36,23 @@ module.exports = {
         description: "This endpoint is used to get the `access_token`\n\nIt requires the following secret client credentials to be sent as part of the form body along with the `authentication code` obtained as part of the `redirect_uri` from the previous request.\n\n> code: xWnkliVQJURqB2x1\n>\n> grant_type: authorization_code\n>\n> redirect_uri: https://www.getpostman.com/oauth2/callback\n>\n> client_id: abc123\n>\n> client_secret: ssh-secret\n\nIf the correct credentials are not passed, the server returns with a `401 Unauthorized` response.",
         headers: "A:B\nC:D\n// E: F",
         method: "POST",
-        pathVariables: {},
-        url: "https://yo.postman.wtf/oauth2/token",
+        pathVariables: {
+            alpha: 'foo',
+            beta: null,
+            gamma: NaN,
+            delta: undefined,
+            epsilon: [],
+            phi: {}
+        },
+        pathVariableData: [
+            { key: 'alpha', value: 'foo' },
+            { key: 'beta', value: null },
+            { key: 'gamma', value: NaN },
+            { key: 'delta', value: undefined },
+            { key: 'epsilon', value: [] },
+            { key: 'phi', value: {} }
+        ],
+        url: "https://yo.postman.wtf/oauth2/token/:alpha/:beta/:gamma/:delta/:epsilon/:phi",
         preRequestScript: "",
         tests: "tests[\"response code is 200\"] = responseCode.code === 200;\nvar body = JSON.parse(responseBody);\ntests[\"body has access token\"] = \"access_token\" in body;\ntests[\"body has bearer type\"] = \"token_type\" in body;",
         currentHelper: "normal",
@@ -352,7 +367,30 @@ module.exports = {
             }
         ],
         request: {
-            url: "https://yo.postman.wtf/oauth2/token",
+            url: {
+                raw: "https://yo.postman.wtf/oauth2/token/:alpha/:beta/:gamma/:delta/:epsilon/:phi",
+                protocol: "https",
+                auth: {},
+                host: [
+                    "yo",
+                    "postman",
+                    "wtf"
+                ],
+                path: [
+                    "oauth2",
+                    "token",
+                    ":alpha",
+                    ":beta",
+                    ":gamma",
+                    ":delta",
+                    ":epsilon",
+                    ":phi"
+                ],
+                query: [],
+                variable: [
+                    { id: 'alpha', value: 'foo' }
+                ]
+            },
             method: "POST",
             header: [
                 { key: 'A', value: 'B', description: '' },
