@@ -62,7 +62,7 @@ describe('v1.0.0 to v2.0.0', function () {
             });
         });
 
-        describe('.convertResponse', function () {
+        describe('.convertResponse()', function () {
             it('should work as intended', function (done) {
                 var fixture = require('./fixtures/single-response'),
                     options = {

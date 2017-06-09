@@ -17,7 +17,7 @@ describe('v2.0.0 to v1.0.0', function () {
 
     describe('transformer', function () {
         describe('.convertSingle()', function () {
-            it('.convertSingle()', function (done) {
+            it('should work as intended', function (done) {
                 var fixture = require('./fixtures/single-request'),
                     options = {
                         inputVersion: '2.0.0',
@@ -52,7 +52,7 @@ describe('v2.0.0 to v1.0.0', function () {
         });
 
         describe('.convertResponse()', function () {
-            it('.convertSingle()', function (done) {
+            it('should work as intended', function (done) {
                 var fixture = require('./fixtures/single-response'),
                     options = {
                         inputVersion: '2.0.0',

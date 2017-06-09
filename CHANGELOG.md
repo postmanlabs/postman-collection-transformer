@@ -1,5 +1,8 @@
 # Postman Collection Transformer Changelog
 
+#### 2.1.3 (June 09, 2017)
+* Fixed a bug in the URL parse implementation, by copying the parser & unparser from the sdk
+
 #### 2.1.2 (May 25, 2017)
 * Handle an edge case where an unhandled ID is provided in the `requestObject`
 
