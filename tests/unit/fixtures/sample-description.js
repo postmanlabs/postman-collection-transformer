@@ -97,7 +97,6 @@ module.exports = {
                         variable: [],
                         raw: 'https://postman-echo.com/post/:a?qp_foo=qp_alpha&qp_bar=qp_beta&qp_foo=qp_alpha',
                         protocol: 'https',
-                        auth: {},
                         host: [
                             'postman-echo',
                             'com'
