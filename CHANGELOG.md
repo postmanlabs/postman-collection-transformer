@@ -1,5 +1,8 @@
 # Postman Collection Transformer Changelog
 
+#### 2.1.4 (June 19, 2017)
+* No code changes
+
 #### 2.1.3 (June 09, 2017)
 * Fixed a bug in the URL parse implementation, by copying the parser & unparser from the sdk
 
