@@ -1,5 +1,8 @@
 # Postman Collection Transformer Changelog
 
+#### 2.1.5 (June 28, 2017)
+* Allowed both: `key` and `id` as identifers for path variables in v2 collections #60
+
 #### 2.1.4 (June 19, 2017)
 * No code changes
 

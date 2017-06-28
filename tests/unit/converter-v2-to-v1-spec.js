@@ -102,6 +102,82 @@ describe('v2.0.0 to v1.0.0', function () {
                 });
             });
         });
+
+        describe('path variables', function () {
+            it('should work with id as indexing property', function (done) {
+                var fixture = {
+                        id: 'some-id',
+                        name: 'some-name',
+                        request: {
+                            url: {
+                                host: ['postman-echo', 'com'],
+                                path: [':method'],
+                                variable: [{
+                                    id: 'method',
+                                    value: 'get'
+                                }]
+                            },
+                            method: 'GET'
+                        }
+                    },
+                    options = {
+                        inputVersion: '2.0.0',
+                        outputVersion: '1.0.0',
+                        retainIds: true
+                    };
+
+                transformer.convertSingle(fixture, options, function (err, converted) {
+                    expect(err).to.not.be.ok();
+
+                    expect(converted.pathVariables).to.eql({
+                        method: 'get'
+                    });
+
+                    expect(converted.pathVariableData).to.eql([{
+                        key: 'method',
+                        value: 'get'
+                    }]);
+                    done();
+                });
+            });
+
+            it('should work with key as indexing property', function (done) {
+                var fixture = {
+                        id: 'some-id',
+                        name: 'some-name',
+                        request: {
+                            url: {
+                                host: ['postman-echo', 'com'],
+                                path: [':method'],
+                                variable: [{
+                                    key: 'method',
+                                    value: 'get'
+                                }]
+                            },
+                            method: 'GET'
+                        }
+                    },
+                    options = {
+                        inputVersion: '2.0.0',
+                        outputVersion: '1.0.0',
+                        retainIds: true
+                    };
+
+                transformer.convertSingle(fixture, options, function (err, converted) {
+                    expect(err).to.not.be.ok();
+
+                    expect(converted.pathVariables).to.eql({
+                        method: 'get'
+                    });
+
+                    expect(converted.pathVariableData).to.eql([{
+                        key: 'method',
+                        value: 'get'
+                    }]);
+                    done();
+                });
+            });
+        });
     });
 
     describe('descriptions', function () {
