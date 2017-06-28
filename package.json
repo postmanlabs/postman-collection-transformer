@@ -1,6 +1,6 @@
 {
   "name": "postman-collection-transformer",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "Perform rapid conversation and validation of JSON structure between Postman Collection Format v1 and v2",
   "main": "index.js",
   "scripts": {
