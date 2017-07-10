@@ -3,7 +3,7 @@
     "info": {
         "name": "urlencodeddata",
         "_postman_id": "551c1361-2b81-68c7-677e-ec2efdd8322e",
-        "description": "",
+        "description": "Description",
         "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
     },
     "item": [
@@ -43,7 +43,7 @@
                         }
                     ]
                 },
-                "description": ""
+                "description": "Description"
             },
             "response": [
                 {
