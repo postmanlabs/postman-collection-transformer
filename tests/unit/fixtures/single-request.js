@@ -105,68 +105,57 @@ module.exports = {
                     {
                         name: "Access-Control-Allow-Credentials",
                         key: "Access-Control-Allow-Credentials",
-                        value: "",
-                        description: ""
+                        value: ""
                     },
                     {
                         name: "Access-Control-Allow-Headers",
                         key: "Access-Control-Allow-Headers",
-                        value: "",
-                        description: ""
+                        value: ""
                     },
                     {
                         name: "Access-Control-Allow-Methods",
                         key: "Access-Control-Allow-Methods",
-                        value: "",
-                        description: ""
+                        value: ""
                     },
                     {
                         name: "Access-Control-Allow-Origin",
                         key: "Access-Control-Allow-Origin",
-                        value: "",
-                        description: ""
+                        value: ""
                     },
                     {
                         name: "Connection",
                         key: "Connection",
-                        value: "keep-alive",
-                        description: ""
+                        value: "keep-alive"
                     },
                     {
                         name: "Content-Length",
                         key: "Content-Length",
-                        value: "2",
-                        description: ""
+                        value: "2"
                     },
                     {
                         name: "Content-Type",
                         key: "Content-Type",
-                        value: "application/json; charset=utf-8",
-                        description: ""
+                        value: "application/json; charset=utf-8"
                     },
                     {
                         name: "Date",
                         key: "Date",
-                        value: "Sat, 31 Oct 2015 06:43:44 GMT",
-                        description: ""
+                        value: "Sat, 31 Oct 2015 06:43:44 GMT"
                     },
                     {
                         name: "Server",
                         key: "Server",
-                        value: "nginx/1.6.2",
-                        description: ""
+                        value: "nginx/1.6.2"
                     },
                     {
                         name: "Vary",
                         key: "Vary",
-                        value: "X-HTTP-Method-Override, Accept-Encoding",
-                        description: ""
+                        value: "X-HTTP-Method-Override, Accept-Encoding"
                     },
                     {
                         name: "X-Powered-By",
                         key: "X-Powered-By",
-                        value: "Sails <sailsjs.org>",
-                        description: ""
+                        value: "Sails <sailsjs.org>"
                     }
                 ],
                 cookies: [],
@@ -246,74 +235,62 @@ module.exports = {
                     {
                         name: "Access-Control-Allow-Credentials",
                         key: "Access-Control-Allow-Credentials",
-                        value: "",
-                        description: ""
+                        value: ""
                     },
                     {
                         name: "Access-Control-Allow-Headers",
                         key: "Access-Control-Allow-Headers",
-                        value: "",
-                        description: ""
+                        value: ""
                     },
                     {
                         name: "Access-Control-Allow-Methods",
                         key: "Access-Control-Allow-Methods",
-                        value: "",
-                        description: ""
+                        value: ""
                     },
                     {
                         name: "Access-Control-Allow-Origin",
                         key: "Access-Control-Allow-Origin",
-                        value: "",
-                        description: ""
+                        value: ""
                     },
                     {
                         name: "Connection",
                         key: "Connection",
-                        value: "keep-alive",
-                        description: ""
+                        value: "keep-alive"
                     },
                     {
                         name: "Content-Encoding",
                         key: "Content-Encoding",
-                        value: "gzip",
-                        description: ""
+                        value: "gzip"
                     },
                     {
                         name: "Content-Length",
                         key: "Content-Length",
-                        value: "153",
-                        description: ""
+                        value: "153"
                     },
                     {
                         name: "Content-Type",
                         key: "Content-Type",
-                        value: "application/json; charset=utf-8",
-                        description: ""
+                        value: "application/json; charset=utf-8"
                     },
                     {
                         name: "Date",
                         key: "Date",
-                        value: "Sat, 31 Oct 2015 06:43:34 GMT",
-                        description: ""
+                        value: "Sat, 31 Oct 2015 06:43:34 GMT"
                     },
                     {
                         name: "Server",
                         key: "Server",
-                        value: "nginx/1.6.2",
-                        description: ""
+                        value: "nginx/1.6.2"
                     },
                     {
                         name: "Vary",
                         key: "Vary",
-                        value: "X-HTTP-Method-Override, Accept-Encoding",
-                        description: ""
+                        value: "X-HTTP-Method-Override, Accept-Encoding"
                     },
                     {
                         name: "X-Powered-By",
                         key: "X-Powered-By",
-                        value: "Sails <sailsjs.org>",
-                        description: ""
+                        value: "Sails <sailsjs.org>"
                     }
                 ],
                 cookies: [],
@@ -355,9 +332,9 @@ module.exports = {
             url: "https://yo.postman.wtf/oauth2/token",
             method: "POST",
             header: [
-                { key: 'A', value: 'B', description: '' },
-                { key: 'C', value: 'D', description: '' },
-                { key: 'E', value: 'F', description: '', disabled: true }
+                { key: 'A', value: 'B' },
+                { key: 'C', value: 'D' },
+                { key: 'E', value: 'F', disabled: true }
             ],
             body: {
                 mode: "formdata",
@@ -439,68 +416,57 @@ module.exports = {
                     {
                         name: "Access-Control-Allow-Credentials",
                         key: "Access-Control-Allow-Credentials",
-                        value: "",
-                        description: ""
+                        value: ""
                     },
                     {
                         name: "Access-Control-Allow-Headers",
                         key: "Access-Control-Allow-Headers",
-                        value: "",
-                        description: ""
+                        value: ""
                     },
                     {
                         name: "Access-Control-Allow-Methods",
                         key: "Access-Control-Allow-Methods",
-                        value: "",
-                        description: ""
+                        value: ""
                     },
                     {
                         name: "Access-Control-Allow-Origin",
                         key: "Access-Control-Allow-Origin",
-                        value: "",
-                        description: ""
+                        value: ""
                     },
                     {
                         name: "Connection",
                         key: "Connection",
-                        value: "keep-alive",
-                        description: ""
+                        value: "keep-alive"
                     },
                     {
                         name: "Content-Length",
                         key: "Content-Length",
-                        value: "2",
-                        description: ""
+                        value: "2"
                     },
                     {
                         name: "Content-Type",
                         key: "Content-Type",
-                        value: "application/json; charset=utf-8",
-                        description: ""
+                        value: "application/json; charset=utf-8"
                     },
                     {
                         name: "Date",
                         key: "Date",
-                        value: "Sat, 31 Oct 2015 06:43:44 GMT",
-                        description: ""
+                        value: "Sat, 31 Oct 2015 06:43:44 GMT"
                     },
                     {
                         name: "Server",
                         key: "Server",
-                        value: "nginx/1.6.2",
-                        description: ""
+                        value: "nginx/1.6.2"
                     },
                     {
                         name: "Vary",
                         key: "Vary",
-                        value: "X-HTTP-Method-Override, Accept-Encoding",
-                        description: ""
+                        value: "X-HTTP-Method-Override, Accept-Encoding"
                     },
                     {
                         name: "X-Powered-By",
                         key: "X-Powered-By",
-                        value: "Sails <sailsjs.org>",
-                        description: ""
+                        value: "Sails <sailsjs.org>"
                     }
                 ],
                 cookie: [],
@@ -554,74 +520,62 @@ module.exports = {
                     {
                         name: "Access-Control-Allow-Credentials",
                         key: "Access-Control-Allow-Credentials",
-                        value: "",
-                        description: ""
+                        value: ""
                     },
                     {
                         name: "Access-Control-Allow-Headers",
                         key: "Access-Control-Allow-Headers",
-                        value: "",
-                        description: ""
+                        value: ""
                     },
                     {
                         name: "Access-Control-Allow-Methods",
                         key: "Access-Control-Allow-Methods",
-                        value: "",
-                        description: ""
+                        value: ""
                     },
                     {
                         name: "Access-Control-Allow-Origin",
                         key: "Access-Control-Allow-Origin",
-                        value: "",
-                        description: ""
+                        value: ""
                     },
                     {
                         name: "Connection",
                         key: "Connection",
-                        value: "keep-alive",
-                        description: ""
+                        value: "keep-alive"
                     },
                     {
                         name: "Content-Encoding",
                         key: "Content-Encoding",
-                        value: "gzip",
-                        description: ""
+                        value: "gzip"
                     },
                     {
                         name: "Content-Length",
                         key: "Content-Length",
-                        value: "153",
-                        description: ""
+                        value: "153"
                     },
                     {
                         name: "Content-Type",
                         key: "Content-Type",
-                        value: "application/json; charset=utf-8",
-                        description: ""
+                        value: "application/json; charset=utf-8"
                     },
                     {
                         name: "Date",
                         key: "Date",
-                        value: "Sat, 31 Oct 2015 06:43:34 GMT",
-                        description: ""
+                        value: "Sat, 31 Oct 2015 06:43:34 GMT"
                     },
                     {
                         name: "Server",
                         key: "Server",
-                        value: "nginx/1.6.2",
-                        description: ""
+                        value: "nginx/1.6.2"
                     },
                     {
                         name: "Vary",
                         key: "Vary",
-                        value: "X-HTTP-Method-Override, Accept-Encoding",
-                        description: ""
+                        value: "X-HTTP-Method-Override, Accept-Encoding"
                     },
                     {
                         name: "X-Powered-By",
                         key: "X-Powered-By",
-                        value: "Sails <sailsjs.org>",
-                        description: ""
+                        value: "Sails <sailsjs.org>"
                     }
                 ],
                 cookie: [],
