@@ -7,7 +7,7 @@
 		{
 			"id": "d335cdcb-81ce-8a6f-6140-bfd9fb564b13",
 			"name": "Items",
-			"description": "",
+			"description": "Description",
 			"owner": "5",
 			"lastUpdatedBy": "5",
 			"lastRevision": 62968,
@@ -76,7 +76,7 @@
 			"data": [],
 			"rawModeData": null,
 			"descriptionFormat": "html",
-			"description": "",
+			"description": "Description",
 			"headers": "",
 			"method": "GET",
 			"pathVariables": {},
@@ -109,7 +109,7 @@
 			],
 			"rawModeData": null,
 			"descriptionFormat": "html",
-			"description": "",
+			"description": "Description",
 			"headers": "",
 			"method": "COPY",
 			"pathVariables": {},
@@ -154,7 +154,7 @@
 			],
 			"rawModeData": null,
 			"descriptionFormat": "html",
-			"description": "",
+			"description": "Description",
 			"headers": "",
 			"method": "GET",
 			"pathVariables": {},
@@ -199,7 +199,7 @@
 			],
 			"rawModeData": null,
 			"descriptionFormat": "html",
-			"description": "",
+			"description": "Description",
 			"headers": "",
 			"method": "GET",
 			"pathVariables": {},
@@ -218,7 +218,7 @@
 					"lastRevision": 93689,
 					"request": {
 						"name": "Story",
-						"description": "",
+						"description": "Description",
 						"url": "https://hacker-news.firebaseio.com/v0/item/8863.json?print=pretty",
 						"pathVariables": {},
 						"headers": "",
@@ -246,25 +246,25 @@
 							"name": "Cache-Control",
 							"key": "Cache-Control",
 							"value": "no-cache",
-							"description": ""
+							"description": "Description"
 						},
 						{
 							"name": "Content-Length",
 							"key": "Content-Length",
 							"value": "456",
-							"description": ""
+							"description": "Description"
 						},
 						{
 							"name": "Content-Type",
 							"key": "Content-Type",
 							"value": "application/json; charset=utf-8",
-							"description": ""
+							"description": "Description"
 						},
 						{
 							"name": "Strict-Transport-Security",
 							"key": "Strict-Transport-Security",
 							"value": "max-age=31556926; includeSubDomains; preload",
-							"description": ""
+							"description": "Description"
 						}
 					],
 					"cookies": [],
@@ -292,7 +292,7 @@
 			"data": [],
 			"rawModeData": null,
 			"descriptionFormat": "html",
-			"description": "",
+			"description": "Description",
 			"headers": "",
 			"method": "GET",
 			"pathVariables": {},
@@ -337,7 +337,7 @@
 			],
 			"rawModeData": null,
 			"descriptionFormat": "html",
-			"description": "",
+			"description": "Description",
 			"headers": "",
 			"method": "GET",
 			"pathVariables": {},
@@ -357,7 +357,7 @@
 			"data": [],
 			"rawModeData": null,
 			"descriptionFormat": "html",
-			"description": "",
+			"description": "Description",
 			"headers": "",
 			"method": "GET",
 			"pathVariables": {},
@@ -402,7 +402,7 @@
 			],
 			"rawModeData": null,
 			"descriptionFormat": "html",
-			"description": "",
+			"description": "Description",
 			"headers": "",
 			"method": "GET",
 			"pathVariables": {},

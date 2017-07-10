@@ -1,7 +1,7 @@
 {
 	"id": "551c1361-2b81-68c7-677e-ec2efdd8322e",
 	"name": "urlencodeddata",
-	"description": "",
+	"description": "Description",
 	"order": [
 		"b7fe1cf7-22bb-93f2-f058-3b4cdbf965b7"
 	],
@@ -35,7 +35,7 @@
 			],
 			"dataMode": "urlencoded",
 			"name": "http://httpbin.org/post",
-			"description": "",
+			"description": "Description",
 			"descriptionFormat": "html",
 			"time": 1455197245454,
 			"version": 2,

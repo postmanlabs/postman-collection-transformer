@@ -1,7 +1,7 @@
 {
 	"id": "34783f86-4a67-d3bd-ba5b-148495fa2f72",
 	"name": "c1",
-	"description": "",
+	"description": "Description",
 	"order": [
 		"51e6ecc7-ff3c-9bc0-8aea-b417c4723f68",
 		"35c535b1-7e0f-fba7-ce6c-71162ce45dec",
@@ -38,7 +38,7 @@
 			},
 			"time": 1415541064613,
 			"name": "DigestAuth",
-			"description": "",
+			"description": "Description",
 			"collectionId": "34783f86-4a67-d3bd-ba5b-148495fa2f72",
 			"responses": [],
 			"synced": false
@@ -63,7 +63,7 @@
 			},
 			"time": 1415541373790,
 			"name": "basicAuth",
-			"description": "",
+			"description": "Description",
 			"collectionId": "34783f86-4a67-d3bd-ba5b-148495fa2f72",
 			"responses": [],
 			"synced": false
@@ -98,7 +98,7 @@
 			},
 			"time": 1415542891315,
 			"name": "OAuth",
-			"description": "",
+			"description": "Description",
 			"collectionId": "34783f86-4a67-d3bd-ba5b-148495fa2f72",
 			"responses": [],
 			"synced": false

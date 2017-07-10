@@ -1,7 +1,7 @@
 {
   "id": "5b99a43f-b73a-9b61-deb3-61bc639b9a17",
   "name": "hello",
-  "description": "",
+  "description": "Description",
   "order": [
     "e800d19c-0660-e2d6-ebc8-cfda8a56cddd"
   ],
@@ -18,7 +18,7 @@
       "data": null,
       "rawModeData": null,
       "descriptionFormat": "html",
-      "description": "",
+      "description": "Description",
       "headers": "helo: \n",
       "method": "GET",
       "pathVariables": {},
