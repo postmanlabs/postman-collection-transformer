@@ -3,7 +3,7 @@
     "info": {
         "name": "rawjsonbody",
         "_postman_id": "c96a1f4e-f2e8-ed1f-3421-e16568f4b471",
-        "description": "",
+        "description": "Description",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0-draft.1/collection.json"
     },
     "items": [
@@ -32,14 +32,14 @@
                     {
                         "key": "Content-Type",
                         "value": "application/json",
-                        "description": ""
+                        "description": "Description"
                     }
                 ],
                 "body": {
                     "mode": "raw",
                     "raw": "{\n    \"asd\": \"tyyy\"\n}"
                 },
-                "description": ""
+                "description": "Description"
             },
             "responses": []
         }

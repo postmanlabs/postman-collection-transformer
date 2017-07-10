@@ -97,7 +97,7 @@
                             {
                                 "key": "Authorization",
                                 "value": "Digest username=\"postman\", realm=\"Users\", nonce=\"ni1LiL0O37PRRhofWdCLmwFsnEtH1lew\", uri=\"/digest-auth\", response=\"254679099562cf07df9b6f5d8d15db44\", opaque=\"\"",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
@@ -130,7 +130,7 @@
                                     {
                                         "key": "Authorization",
                                         "value": "Digest username=\"postman\", realm=\"Users\", nonce=\"ni1LiL0O37PRRhofWdCLmwFsnEtH1lew\", uri=\"/digest-auth\", response=\"254679099562cf07df9b6f5d8d15db44\", opaque=\"\"",
-                                        "description": ""
+                                        "description": "Description"
                                     }
                                 ],
                                 "body": {
@@ -148,73 +148,73 @@
                                     "name": "Access-Control-Allow-Credentials",
                                     "key": "Access-Control-Allow-Credentials",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Headers",
                                     "key": "Access-Control-Allow-Headers",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Methods",
                                     "key": "Access-Control-Allow-Methods",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Origin",
                                     "key": "Access-Control-Allow-Origin",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Connection",
                                     "key": "Connection",
                                     "value": "keep-alive",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Content-Encoding",
                                     "key": "Content-Encoding",
                                     "value": "gzip",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Content-Length",
                                     "key": "Content-Length",
                                     "value": "42",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Content-Type",
                                     "key": "Content-Type",
                                     "value": "application/json; charset=utf-8",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Date",
                                     "key": "Date",
                                     "value": "Thu, 29 Oct 2015 06:17:51 GMT",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Server",
                                     "key": "Server",
                                     "value": "nginx/1.6.2",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Vary",
                                     "key": "Vary",
                                     "value": "Accept-Encoding",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "X-Powered-By",
                                     "key": "X-Powered-By",
                                     "value": "Sails <sailsjs.org>",
-                                    "description": ""
+                                    "description": "Description"
                                 }
                             ],
                             "cookie": [],
@@ -227,7 +227,7 @@
         },
         {
             "name": "Auth: Others",
-            "description": "",
+            "description": "Description",
             "items": [
                 {
                     "name": "Basic Auth",
@@ -256,7 +256,7 @@
                             {
                                 "key": "Authorization",
                                 "value": "Basic cG9zdG1hbjpwYXNzd29yZA==",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
@@ -284,7 +284,7 @@
                                     {
                                         "key": "Authorization",
                                         "value": "Basic cG9zdG1hbjpwYXNzd29yZA==",
-                                        "description": ""
+                                        "description": "Description"
                                     }
                                 ],
                                 "body": {
@@ -302,61 +302,61 @@
                                     "name": "Access-Control-Allow-Credentials",
                                     "key": "Access-Control-Allow-Credentials",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Headers",
                                     "key": "Access-Control-Allow-Headers",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Methods",
                                     "key": "Access-Control-Allow-Methods",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Origin",
                                     "key": "Access-Control-Allow-Origin",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Connection",
                                     "key": "Connection",
                                     "value": "keep-alive",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Date",
                                     "key": "Date",
                                     "value": "Sat, 31 Oct 2015 06:38:51 GMT",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Server",
                                     "key": "Server",
                                     "value": "nginx/1.6.2",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "WWW-Authenticate",
                                     "key": "WWW-Authenticate",
                                     "value": "Basic realm=\"Users\"",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "X-Powered-By",
                                     "key": "X-Powered-By",
                                     "value": "Sails <sailsjs.org>",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "transfer-encoding",
                                     "key": "transfer-encoding",
                                     "value": "chunked",
-                                    "description": ""
+                                    "description": "Description"
                                 }
                             ],
                             "cookie": [],
@@ -381,7 +381,7 @@
                                     {
                                         "key": "Authorization",
                                         "value": "Basic cG9zdG1hbjpwYXNzd29yZA==",
-                                        "description": ""
+                                        "description": "Description"
                                     }
                                 ],
                                 "body": {
@@ -399,73 +399,73 @@
                                     "name": "Access-Control-Allow-Credentials",
                                     "key": "Access-Control-Allow-Credentials",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Headers",
                                     "key": "Access-Control-Allow-Headers",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Methods",
                                     "key": "Access-Control-Allow-Methods",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Origin",
                                     "key": "Access-Control-Allow-Origin",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Connection",
                                     "key": "Connection",
                                     "value": "keep-alive",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Content-Encoding",
                                     "key": "Content-Encoding",
                                     "value": "gzip",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Content-Length",
                                     "key": "Content-Length",
                                     "value": "42",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Content-Type",
                                     "key": "Content-Type",
                                     "value": "application/json; charset=utf-8",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Date",
                                     "key": "Date",
                                     "value": "Sat, 31 Oct 2015 06:38:25 GMT",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Server",
                                     "key": "Server",
                                     "value": "nginx/1.6.2",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Vary",
                                     "key": "Vary",
                                     "value": "Accept-Encoding",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "X-Powered-By",
                                     "key": "X-Powered-By",
                                     "value": "Sails <sailsjs.org>",
-                                    "description": ""
+                                    "description": "Description"
                                 }
                             ],
                             "cookie": [],
@@ -492,7 +492,7 @@
                             {
                                 "key": "Authorization",
                                 "value": "OAuth oauth_consumer_key=\"RKCGzna7bv9YD57c\",oauth_signature_method=\"HMAC-SHA1\",oauth_timestamp=\"1442394747\",oauth_nonce=\"UIGipk\",oauth_version=\"1.0\",oauth_signature=\"CaeyGPr2mns1WCq4Cpm5aLvz6Gs=\"",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
@@ -583,73 +583,73 @@
                                     "name": "Access-Control-Allow-Credentials",
                                     "key": "Access-Control-Allow-Credentials",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Headers",
                                     "key": "Access-Control-Allow-Headers",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Methods",
                                     "key": "Access-Control-Allow-Methods",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Origin",
                                     "key": "Access-Control-Allow-Origin",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Connection",
                                     "key": "Connection",
                                     "value": "keep-alive",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Content-Encoding",
                                     "key": "Content-Encoding",
                                     "value": "gzip",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Content-Length",
                                     "key": "Content-Length",
                                     "value": "51",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Content-Type",
                                     "key": "Content-Type",
                                     "value": "application/json; charset=utf-8",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Date",
                                     "key": "Date",
                                     "value": "Thu, 29 Oct 2015 06:15:28 GMT",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Server",
                                     "key": "Server",
                                     "value": "nginx/1.6.2",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Vary",
                                     "key": "Vary",
                                     "value": "Accept-Encoding",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "X-Powered-By",
                                     "key": "X-Powered-By",
                                     "value": "Sails <sailsjs.org>",
-                                    "description": ""
+                                    "description": "Description"
                                 }
                             ],
                             "cookie": [],
@@ -701,73 +701,73 @@
                                     "name": "Access-Control-Allow-Credentials",
                                     "key": "Access-Control-Allow-Credentials",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Headers",
                                     "key": "Access-Control-Allow-Headers",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Methods",
                                     "key": "Access-Control-Allow-Methods",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Origin",
                                     "key": "Access-Control-Allow-Origin",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Connection",
                                     "key": "Connection",
                                     "value": "keep-alive",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Content-Encoding",
                                     "key": "Content-Encoding",
                                     "value": "gzip",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Content-Length",
                                     "key": "Content-Length",
                                     "value": "46",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Content-Type",
                                     "key": "Content-Type",
                                     "value": "application/json; charset=utf-8",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Date",
                                     "key": "Date",
                                     "value": "Thu, 29 Oct 2015 06:16:29 GMT",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Server",
                                     "key": "Server",
                                     "value": "nginx/1.6.2",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Vary",
                                     "key": "Vary",
                                     "value": "Accept-Encoding",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "X-Powered-By",
                                     "key": "X-Powered-By",
                                     "value": "Sails <sailsjs.org>",
-                                    "description": ""
+                                    "description": "Description"
                                 }
                             ],
                             "cookie": [],
@@ -819,73 +819,73 @@
                                     "name": "Access-Control-Allow-Credentials",
                                     "key": "Access-Control-Allow-Credentials",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Headers",
                                     "key": "Access-Control-Allow-Headers",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Methods",
                                     "key": "Access-Control-Allow-Methods",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Origin",
                                     "key": "Access-Control-Allow-Origin",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Connection",
                                     "key": "Connection",
                                     "value": "keep-alive",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Content-Encoding",
                                     "key": "Content-Encoding",
                                     "value": "gzip",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Content-Length",
                                     "key": "Content-Length",
                                     "value": "46",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Content-Type",
                                     "key": "Content-Type",
                                     "value": "application/json; charset=utf-8",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Date",
                                     "key": "Date",
                                     "value": "Thu, 29 Oct 2015 06:16:00 GMT",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Server",
                                     "key": "Server",
                                     "value": "nginx/1.6.2",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Vary",
                                     "key": "Vary",
                                     "value": "Accept-Encoding",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "X-Powered-By",
                                     "key": "X-Powered-By",
                                     "value": "Sails <sailsjs.org>",
-                                    "description": ""
+                                    "description": "Description"
                                 }
                             ],
                             "cookie": [],
@@ -1055,7 +1055,7 @@
                             {
                                 "key": "Content-Type",
                                 "value": "text/plain",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
@@ -1139,7 +1139,7 @@
         },
         {
             "name": "Utilities",
-            "description": "",
+            "description": "Description",
             "items": [
                 {
                     "name": "Response Status Code",
@@ -1435,73 +1435,73 @@
                                     "name": "Access-Control-Allow-Credentials",
                                     "key": "Access-Control-Allow-Credentials",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Headers",
                                     "key": "Access-Control-Allow-Headers",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Methods",
                                     "key": "Access-Control-Allow-Methods",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Origin",
                                     "key": "Access-Control-Allow-Origin",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Connection",
                                     "key": "Connection",
                                     "value": "keep-alive",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Content-Length",
                                     "key": "Content-Length",
                                     "value": "2",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Content-Type",
                                     "key": "Content-Type",
                                     "value": "application/json; charset=utf-8",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Date",
                                     "key": "Date",
                                     "value": "Sat, 31 Oct 2015 06:43:23 GMT",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "ETag",
                                     "key": "ETag",
                                     "value": "W/\"2-2745614147\"",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Server",
                                     "key": "Server",
                                     "value": "nginx/1.6.2",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Vary",
                                     "key": "Vary",
                                     "value": "Accept-Encoding",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "X-Powered-By",
                                     "key": "X-Powered-By",
                                     "value": "Sails <sailsjs.org>",
-                                    "description": ""
+                                    "description": "Description"
                                 }
                             ],
                             "cookie": [],
@@ -1615,67 +1615,67 @@
                                     "name": "Access-Control-Allow-Credentials",
                                     "key": "Access-Control-Allow-Credentials",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Headers",
                                     "key": "Access-Control-Allow-Headers",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Methods",
                                     "key": "Access-Control-Allow-Methods",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Origin",
                                     "key": "Access-Control-Allow-Origin",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Connection",
                                     "key": "Connection",
                                     "value": "keep-alive",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Content-Length",
                                     "key": "Content-Length",
                                     "value": "2",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Content-Type",
                                     "key": "Content-Type",
                                     "value": "application/json; charset=utf-8",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Date",
                                     "key": "Date",
                                     "value": "Sat, 31 Oct 2015 06:43:44 GMT",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Server",
                                     "key": "Server",
                                     "value": "nginx/1.6.2",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Vary",
                                     "key": "Vary",
                                     "value": "X-HTTP-Method-Override, Accept-Encoding",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "X-Powered-By",
                                     "key": "X-Powered-By",
                                     "value": "Sails <sailsjs.org>",
-                                    "description": ""
+                                    "description": "Description"
                                 }
                             ],
                             "cookie": [],
@@ -1734,73 +1734,73 @@
                                     "name": "Access-Control-Allow-Credentials",
                                     "key": "Access-Control-Allow-Credentials",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Headers",
                                     "key": "Access-Control-Allow-Headers",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Methods",
                                     "key": "Access-Control-Allow-Methods",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Origin",
                                     "key": "Access-Control-Allow-Origin",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Connection",
                                     "key": "Connection",
                                     "value": "keep-alive",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Content-Encoding",
                                     "key": "Content-Encoding",
                                     "value": "gzip",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Content-Length",
                                     "key": "Content-Length",
                                     "value": "153",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Content-Type",
                                     "key": "Content-Type",
                                     "value": "application/json; charset=utf-8",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Date",
                                     "key": "Date",
                                     "value": "Sat, 31 Oct 2015 06:43:34 GMT",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Server",
                                     "key": "Server",
                                     "value": "nginx/1.6.2",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Vary",
                                     "key": "Vary",
                                     "value": "X-HTTP-Method-Override, Accept-Encoding",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "X-Powered-By",
                                     "key": "X-Powered-By",
                                     "value": "Sails <sailsjs.org>",
-                                    "description": ""
+                                    "description": "Description"
                                 }
                             ],
                             "cookie": [],
@@ -1827,7 +1827,7 @@
                             {
                                 "key": "Authorization",
                                 "value": "Bearer vp7jxTwqgczoFHs0uIdOvv4VdBWmvCkbVbNBCuaTQ3JZplPS40BaNV47HD1zt7MztQPILJvqYsOs6PfJpFYBgwbaE3CVEKOj",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
@@ -1877,7 +1877,7 @@
                                     {
                                         "key": "Authorization",
                                         "value": "Bearer vp7jxTwqgczoFHs0uIdOvv4VdBWmvCkbVbNBCuaTQ3JZplPS40BaNV47HD1zt7MztQPILJvqYsOs6PfJpFYBgwbaE3CVEKOj",
-                                        "description": ""
+                                        "description": "Description"
                                     }
                                 ],
                                 "body": {
@@ -1926,61 +1926,61 @@
                                     "name": "Access-Control-Allow-Credentials",
                                     "key": "Access-Control-Allow-Credentials",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Headers",
                                     "key": "Access-Control-Allow-Headers",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Methods",
                                     "key": "Access-Control-Allow-Methods",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Origin",
                                     "key": "Access-Control-Allow-Origin",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Connection",
                                     "key": "Connection",
                                     "value": "keep-alive",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Date",
                                     "key": "Date",
                                     "value": "Sat, 31 Oct 2015 06:44:16 GMT",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Server",
                                     "key": "Server",
                                     "value": "nginx/1.6.2",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "WWW-Authenticate",
                                     "key": "WWW-Authenticate",
                                     "value": "Bearer realm=\"Users\"",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "X-Powered-By",
                                     "key": "X-Powered-By",
                                     "value": "Sails <sailsjs.org>",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "transfer-encoding",
                                     "key": "transfer-encoding",
                                     "value": "chunked",
-                                    "description": ""
+                                    "description": "Description"
                                 }
                             ],
                             "cookie": [],
@@ -1996,7 +1996,7 @@
                                     {
                                         "key": "Authorization",
                                         "value": "Bearer vp7jxTwqgczoFHs0uIdOvv4VdBWmvCkbVbNBCuaTQ3JZplPS40BaNV47HD1zt7MztQPILJvqYsOs6PfJpFYBgwbaE3CVEKOj",
-                                        "description": ""
+                                        "description": "Description"
                                     }
                                 ],
                                 "body": {
@@ -2045,73 +2045,73 @@
                                     "name": "Access-Control-Allow-Credentials",
                                     "key": "Access-Control-Allow-Credentials",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Headers",
                                     "key": "Access-Control-Allow-Headers",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Methods",
                                     "key": "Access-Control-Allow-Methods",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Access-Control-Allow-Origin",
                                     "key": "Access-Control-Allow-Origin",
                                     "value": "",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Connection",
                                     "key": "Connection",
                                     "value": "keep-alive",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Content-Encoding",
                                     "key": "Content-Encoding",
                                     "value": "gzip",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Content-Length",
                                     "key": "Content-Length",
                                     "value": "50",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Content-Type",
                                     "key": "Content-Type",
                                     "value": "application/json; charset=utf-8",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Date",
                                     "key": "Date",
                                     "value": "Sat, 31 Oct 2015 06:44:49 GMT",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Server",
                                     "key": "Server",
                                     "value": "nginx/1.6.2",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Vary",
                                     "key": "Vary",
                                     "value": "Accept-Encoding",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "X-Powered-By",
                                     "key": "X-Powered-By",
                                     "value": "Sails <sailsjs.org>",
-                                    "description": ""
+                                    "description": "Description"
                                 }
                             ],
                             "cookie": [],
