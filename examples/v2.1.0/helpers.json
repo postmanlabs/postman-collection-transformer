@@ -3,7 +3,7 @@
     "info": {
         "name": "c1",
         "_postman_id": "34783f86-4a67-d3bd-ba5b-148495fa2f72",
-        "description": "",
+        "description": "Description",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0-draft.1/collection.json"
     },
     "items": [
@@ -43,7 +43,7 @@
                     "mode": "formdata",
                     "formdata": []
                 },
-                "description": ""
+                "description": "Description"
             },
             "responses": []
         },
@@ -74,7 +74,7 @@
                     "mode": "formdata",
                     "formdata": []
                 },
-                "description": ""
+                "description": "Description"
             },
             "responses": []
         },
@@ -111,7 +111,7 @@
                     "mode": "formdata",
                     "formdata": []
                 },
-                "description": ""
+                "description": "Description"
             },
             "responses": []
         }

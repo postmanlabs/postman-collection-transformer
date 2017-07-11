@@ -1,7 +1,7 @@
 {
 	"id": "c96a1f4e-f2e8-ed1f-3421-e16568f4b471",
 	"name": "rawjsonbody",
-	"description": "",
+	"description": "Description",
 	"order": [
 		"8f444706-d8cc-9196-ee18-e0c7c3627df3"
 	],
@@ -24,7 +24,7 @@
 			"data": [],
 			"dataMode": "raw",
 			"name": "httpbin.org/post",
-			"description": "",
+			"description": "Description",
 			"descriptionFormat": "html",
 			"time": 1455198431632,
 			"version": 2,

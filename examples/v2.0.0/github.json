@@ -3,7 +3,7 @@
     "info": {
         "name": "Github",
         "_postman_id": "b6241b6a-fbf3-e3b7-4f96-0154e3056843",
-        "description": "",
+        "description": "Description",
         "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
     },
     "item": [
@@ -270,7 +270,7 @@
                             {
                                 "key": "Authorization",
                                 "value": "token {{token}}",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
@@ -311,7 +311,7 @@
                             {
                                 "key": "Authorization",
                                 "value": "token {{token}}",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
@@ -388,7 +388,7 @@
                             {
                                 "key": "Authorization",
                                 "value": "token {{token}}",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {

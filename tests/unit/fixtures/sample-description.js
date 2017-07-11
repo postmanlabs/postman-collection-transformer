@@ -1,6 +1,5 @@
 module.exports = {
     v1: {
-        description: '',
         folders: [],
         folders_order: [],
         id: 'e1036383-ba43-d240-5e9d-19614febed77',
@@ -83,7 +82,6 @@ module.exports = {
     v2: {
         variables: [],
         info: {
-            description: '',
             name: 'Sample descriptions',
             _postman_id: 'e1036383-ba43-d240-5e9d-19614febed77',
             schema: 'https://schema.getpostman.com/json/collection/v2.0.0/collection.json'

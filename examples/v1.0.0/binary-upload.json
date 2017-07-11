@@ -1,7 +1,7 @@
 {
     "id": "70fa9b38-91c0-7e67-0ead-b31622bdc152",
     "name": "asdasdasdasdasdasd",
-    "description": "",
+    "description": "Description",
     "order": [
         "cc0e1894-bad7-aeeb-e91c-e74635371614"
     ],
@@ -16,7 +16,7 @@
             "data": [],
             "rawModeData": "sample.txt",
             "descriptionFormat": "html",
-            "description": "",
+            "description": "Description",
             "headers": "",
             "method": "POST",
             "pathVariables": {},
