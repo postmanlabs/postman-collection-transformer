@@ -116,7 +116,11 @@ module.exports = {
         id: '21c40bcc-c1d5-1f91-06df-d7f4e66d1647',
         name: 'Sample Response',
         originalRequest: {
-            url: 'https://google.com',
+            url: {
+                raw: 'https://google.com',
+                protocol: 'https',
+                host: ['google', 'com']
+            },
             method: 'GET',
             header: [],
             body: { mode: 'raw', raw: 'akjshgdajhsgd' }

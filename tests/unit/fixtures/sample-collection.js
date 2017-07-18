@@ -1891,7 +1891,12 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/digest-auth",
+                            url: {
+                                raw: "https://echo.getpostman.com/digest-auth",
+                                protocol: "https",
+                                host: ["echo", "getpostman", "com"],
+                                path: ["digest-auth"]
+                            },
                             method: "GET",
                             header: [],
                             body: {
@@ -1958,7 +1963,12 @@ module.exports = {
                                     qop: ""
                                 }
                             },
-                            url: "https://echo.getpostman.com/digest-auth",
+                            url: {
+                                raw: "https://echo.getpostman.com/digest-auth",
+                                protocol: "https",
+                                host: ["echo", "getpostman", "com"],
+                                path: ["digest-auth"]
+                            },
                             method: "GET",
                             header: [
                                 {
@@ -1975,6 +1985,9 @@ module.exports = {
                                 name: "200",
                                 originalRequest: {
                                     header: [],
+                                    url: {
+                                        raw: ""
+                                    },
                                     body: {
                                         mode: "raw",
                                         raw: ""
@@ -2083,7 +2096,12 @@ module.exports = {
                                     showPassword: false
                                 }
                             },
-                            url: "https://echo.getpostman.com/basic-auth",
+                            url: {
+                                raw: "https://echo.getpostman.com/basic-auth",
+                                protocol: "https",
+                                host: ["echo", "getpostman", "com"],
+                                path: ["basic-auth"]
+                            },
                             method: "GET",
                             header: [
                                 {
@@ -2100,6 +2118,9 @@ module.exports = {
                                 name: "401",
                                 originalRequest: {
                                     header: [],
+                                    url: {
+                                        raw: ""
+                                    },
                                     body: {
                                         mode: "raw",
                                         raw: ""
@@ -2170,6 +2191,9 @@ module.exports = {
                                 name: "200",
                                 originalRequest: {
                                     header: [],
+                                    url: {
+                                        raw: ""
+                                    },
                                     body: {
                                         mode: "raw",
                                         raw: ""
@@ -2264,7 +2288,12 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/oauth1",
+                            url: {
+                                raw: "https://echo.getpostman.com/oauth1",
+                                protocol: "https",
+                                host: ["echo", "getpostman", "com"],
+                                path: ["oauth1"]
+                            },
                             method: "GET",
                             header: [
                                 {
@@ -2334,7 +2363,13 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/cookies/set?foo1=bar1&foo2=bar2",
+                            url: {
+                                raw: "https://echo.getpostman.com/cookies/set?foo1=bar1&foo2=bar2",
+                                protocol: "https",
+                                host: ["echo", "getpostman", "com"],
+                                path: ["cookies", "set"],
+                                query: [{ key: "foo1", value: "bar1" }, { key: "foo2", value: "bar2" }]
+                            },
                             method: "GET",
                             header: [],
                             body: {},
@@ -2346,6 +2381,9 @@ module.exports = {
                                 name: "Cookies",
                                 originalRequest: {
                                     header: [],
+                                    url: {
+                                        raw: ""
+                                    },
                                     body: {
                                         mode: "raw",
                                         raw: ""
@@ -2441,7 +2479,12 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/cookies",
+                            url: {
+                                raw: "https://echo.getpostman.com/cookies",
+                                protocol: "https",
+                                host: ["echo", "getpostman", "com"],
+                                path: ["cookies"]
+                            },
                             method: "GET",
                             header: [],
                             body: {},
@@ -2453,6 +2496,9 @@ module.exports = {
                                 name: "Cookies",
                                 originalRequest: {
                                     header: [],
+                                    url: {
+                                        raw: ""
+                                    },
                                     body: {
                                         mode: "raw",
                                         raw: ""
@@ -2549,7 +2595,13 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/cookies/delete?foo1&foo2",
+                            url: {
+                                raw: "https://echo.getpostman.com/cookies/delete?foo1&foo2",
+                                protocol: "https",
+                                host: ["echo", "getpostman", "com"],
+                                path: ["cookies", "delete"],
+                                query: [{ key: "foo1", value: "" }, { key: "foo2", value: "" }]
+                            },
                             method: "GET",
                             header: [],
                             body: {},
@@ -2561,6 +2613,9 @@ module.exports = {
                                 name: "Cookies Response",
                                 originalRequest: {
                                     header: [],
+                                    url: {
+                                        raw: ""
+                                    },
                                     body: {
                                         mode: "raw",
                                         raw: ""
@@ -2665,7 +2720,12 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/headers",
+                            url: {
+                                raw: "https://echo.getpostman.com/headers",
+                                protocol: "https",
+                                host: ["echo", "getpostman", "com"],
+                                path: ["headers"]
+                            },
                             method: "GET",
                             header: [],
                             body: {},
@@ -2689,7 +2749,13 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/response-headers?Content-Type=text/html&Server=apibin",
+                            url: {
+                                raw: "https://echo.getpostman.com/response-headers?Content-Type=text/html&Server=apibin",
+                                protocol: "https",
+                                host: ["echo", "getpostman", "com"],
+                                path: ["response-headers"],
+                                query: [{ key: "Content-Type", value: "text/html" }, { key: "Server", value: "apibin" }]
+                            },
                             method: "GET",
                             header: [],
                             body: {
@@ -2754,7 +2820,13 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/get?test=123",
+                            url: {
+                                raw: "https://echo.getpostman.com/get?test=123",
+                                protocol: "https",
+                                host: ["echo", "getpostman", "com"],
+                                path: ["get"],
+                                query: [{ key: "test", value: "123" }]
+                            },
                             method: "GET",
                             header: [],
                             body: {
@@ -2813,7 +2885,12 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/post",
+                            url: {
+                                raw: "https://echo.getpostman.com/post",
+                                protocol: "https",
+                                host: ["echo", "getpostman", "com"],
+                                path: ["post"]
+                            },
                             method: "POST",
                             header: [
                                 {
@@ -2857,7 +2934,12 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/put",
+                            url: {
+                                raw: "https://echo.getpostman.com/put",
+                                protocol: "https",
+                                host: ["echo", "getpostman", "com"],
+                                path: ["put"]
+                            },
                             method: "PUT",
                             header: [],
                             body: {
@@ -2891,7 +2973,12 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/patch",
+                            url: {
+                                raw: "https://echo.getpostman.com/patch",
+                                protocol: "https",
+                                host: ["echo", "getpostman", "com"],
+                                path: ["patch"]
+                            },
                             method: "PATCH",
                             header: [],
                             body: {
@@ -2925,7 +3012,12 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/delete",
+                            url: {
+                                raw: "https://echo.getpostman.com/delete",
+                                protocol: "https",
+                                host: ["echo", "getpostman", "com"],
+                                path: ["delete"]
+                            },
                             method: "DELETE",
                             header: [],
                             body: {
@@ -2962,7 +3054,12 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/status/200",
+                            url: {
+                                raw: "https://echo.getpostman.com/status/200",
+                                protocol: "https",
+                                host: ["echo", "getpostman", "com"],
+                                path: ["status", "200"]
+                            },
                             method: "GET",
                             header: [],
                             body: {
@@ -2996,7 +3093,12 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/stream/10",
+                            url: {
+                                raw: "https://echo.getpostman.com/stream/10",
+                                protocol: "https",
+                                host: ["echo", "getpostman", "com"],
+                                path: ["stream", "10"]
+                            },
                             method: "GET",
                             header: [],
                             body: {},
@@ -3023,7 +3125,12 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/delay/3",
+                            url: {
+                                raw: "https://echo.getpostman.com/delay/3",
+                                protocol: "https",
+                                host: ["echo", "getpostman", "com"],
+                                path: ["delay", "3"]
+                            },
                             method: "GET",
                             header: [],
                             body: {
@@ -3055,7 +3162,12 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/encoding/utf8",
+                            url: {
+                                raw: "https://echo.getpostman.com/encoding/utf8",
+                                protocol: "https",
+                                host: ["echo", "getpostman", "com"],
+                                path: ["encoding", "utf8"]
+                            },
                             method: "GET",
                             header: [],
                             body: {},
@@ -3088,7 +3200,12 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/gzip",
+                            url: {
+                                raw: "https://echo.getpostman.com/gzip",
+                                protocol: "https",
+                                host: ["echo", "getpostman", "com"],
+                                path: ["gzip"]
+                            },
                             method: "GET",
                             header: [],
                             body: {
@@ -3151,7 +3268,12 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/deflate",
+                            url: {
+                                raw: "https://echo.getpostman.com/deflate",
+                                protocol: "https",
+                                host: ["echo", "getpostman", "com"],
+                                path: ["deflate"]
+                            },
                             method: "GET",
                             header: [],
                             body: {},
@@ -3181,7 +3303,13 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/oauth2/authtoken?client_id=abc123&response_type=code",
+                            url: {
+                                raw: "https://echo.getpostman.com/oauth2/authtoken?client_id=abc123&response_type=code",
+                                protocol: "https",
+                                host: ["echo", "getpostman", "com"],
+                                path: ["oauth2", "authtoken"],
+                                query: [{ key: "client_id", value: "abc123" }, { key: "response_type", value: "code" }]
+                            },
                             method: "GET",
                             header: [],
                             body: {
@@ -3222,6 +3350,9 @@ module.exports = {
                                 name: "401",
                                 originalRequest: {
                                     header: [],
+                                    url: {
+                                        raw: ""
+                                    },
                                     body: {
                                         mode: "raw",
                                         raw: ""
@@ -3317,7 +3448,12 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/oauth2/token",
+                            url: {
+                                raw: "https://echo.getpostman.com/oauth2/token",
+                                protocol: "https",
+                                host: [ "echo", "getpostman", "com" ],
+                                path: [ "oauth2", "token" ]
+                            },
                             method: "POST",
                             header: [],
                             body: {
@@ -3357,7 +3493,12 @@ module.exports = {
                                 id: "0716233b-474d-bac7-bf1f-ccb461ecd3b9",
                                 name: "401",
                                 originalRequest: {
-                                    url: "https://echo.getpostman.com/oauth2/token",
+                                    url: {
+                                        raw: "https://echo.getpostman.com/oauth2/token",
+                                        protocol: "https",
+                                        host: ["echo", "getpostman", "com"],
+                                        path: ["oauth2", "token"]
+                                    },
                                     method: "POST",
                                     header: [],
                                     body: {
@@ -3461,7 +3602,12 @@ module.exports = {
                                 id: "aa6e8983-172d-692b-f8da-a69af6a27371",
                                 name: "200",
                                 originalRequest: {
-                                    url: "https://echo.getpostman.com/oauth2/token",
+                                    url: {
+                                        raw: "https://echo.getpostman.com/oauth2/token",
+                                        protocol: "https",
+                                        host: ["echo", "getpostman", "com"],
+                                        path: ["oauth2", "token"]
+                                    },
                                     method: "POST",
                                     header: [],
                                     body: {
@@ -3586,7 +3732,12 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/oauth2/user/info",
+                            url: {
+                                raw: "https://echo.getpostman.com/oauth2/user/info",
+                                protocol: "https",
+                                host: ["echo", "getpostman", "com"],
+                                path: ["oauth2", "user", "info"]
+                            },
                             method: "GET",
                             header: [
                                 {
@@ -3632,6 +3783,9 @@ module.exports = {
                                 name: "401",
                                 originalRequest: {
                                     header: [],
+                                    url: {
+                                        raw: ""
+                                    },
                                     body: {
                                         mode: "raw",
                                         raw: ""
@@ -3702,6 +3856,9 @@ module.exports = {
                                 name: "200",
                                 originalRequest: {
                                     header: [],
+                                    url: {
+                                        raw: ""
+                                    },
                                     body: {
                                         mode: "raw",
                                         raw: ""
