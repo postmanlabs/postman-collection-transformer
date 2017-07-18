@@ -200,4 +200,25 @@ describe('v2.0.0 to v1.0.0', function () {
             });
         });
     });
+
+    describe('request file body', function () {
+        it('should correctly handle request file bodies whilst converting from v1 to v2', function (done) {
+            var fixture = require('./fixtures/request-body-file'),
+                options = {
+                    inputVersion: '2.0.0',
+                    outputVersion: '1.0.0',
+                    retainIds: true
+                };
+
+            transformer.convert(fixture.v2, options, function (err, converted) {
+                expect(err).to.not.be.ok();
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql(fixture.v1);
+                done();
+            });
+        });
+    });
 });
