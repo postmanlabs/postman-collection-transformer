@@ -71,7 +71,6 @@ module.exports = {
                 description: 'A simple `POST` request to demonstrate the usage of descriptions across various parts of a request.',
                 collectionId: 'e1036383-ba43-d240-5e9d-19614febed77',
                 pathVariableData: [],
-                pathVariables: {},
                 responses: []
             }
         ],
@@ -92,7 +91,6 @@ module.exports = {
                 name: 'Simple POST request',
                 request: {
                     url: {
-                        variable: [],
                         raw: 'https://postman-echo.com/post/:a?qp_foo=qp_alpha&qp_bar=qp_beta&qp_foo=qp_alpha',
                         protocol: 'https',
                         host: [
