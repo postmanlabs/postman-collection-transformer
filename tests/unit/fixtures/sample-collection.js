@@ -1985,9 +1985,6 @@ module.exports = {
                                 name: "200",
                                 originalRequest: {
                                     header: [],
-                                    url: {
-                                        raw: ""
-                                    },
                                     body: {
                                         mode: "raw",
                                         raw: ""
@@ -2118,9 +2115,6 @@ module.exports = {
                                 name: "401",
                                 originalRequest: {
                                     header: [],
-                                    url: {
-                                        raw: ""
-                                    },
                                     body: {
                                         mode: "raw",
                                         raw: ""
@@ -2191,9 +2185,6 @@ module.exports = {
                                 name: "200",
                                 originalRequest: {
                                     header: [],
-                                    url: {
-                                        raw: ""
-                                    },
                                     body: {
                                         mode: "raw",
                                         raw: ""
@@ -2381,9 +2372,6 @@ module.exports = {
                                 name: "Cookies",
                                 originalRequest: {
                                     header: [],
-                                    url: {
-                                        raw: ""
-                                    },
                                     body: {
                                         mode: "raw",
                                         raw: ""
@@ -2496,9 +2484,6 @@ module.exports = {
                                 name: "Cookies",
                                 originalRequest: {
                                     header: [],
-                                    url: {
-                                        raw: ""
-                                    },
                                     body: {
                                         mode: "raw",
                                         raw: ""
@@ -2613,9 +2598,6 @@ module.exports = {
                                 name: "Cookies Response",
                                 originalRequest: {
                                     header: [],
-                                    url: {
-                                        raw: ""
-                                    },
                                     body: {
                                         mode: "raw",
                                         raw: ""
@@ -3350,9 +3332,6 @@ module.exports = {
                                 name: "401",
                                 originalRequest: {
                                     header: [],
-                                    url: {
-                                        raw: ""
-                                    },
                                     body: {
                                         mode: "raw",
                                         raw: ""
@@ -3783,9 +3762,6 @@ module.exports = {
                                 name: "401",
                                 originalRequest: {
                                     header: [],
-                                    url: {
-                                        raw: ""
-                                    },
                                     body: {
                                         mode: "raw",
                                         raw: ""
@@ -3856,9 +3832,6 @@ module.exports = {
                                 name: "200",
                                 originalRequest: {
                                     header: [],
-                                    url: {
-                                        raw: ""
-                                    },
                                     body: {
                                         mode: "raw",
                                         raw: ""
