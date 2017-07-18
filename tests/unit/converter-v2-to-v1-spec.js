@@ -202,7 +202,7 @@ describe('v2.0.0 to v1.0.0', function () {
     });
 
     describe('request file body', function () {
-        it('should correctly handle request file bodies whilst converting from v1 to v2', function (done) {
+        it('should correctly handle request file bodies whilst converting from v2 to v1', function (done) {
             var fixture = require('./fixtures/request-body-file'),
                 options = {
                     inputVersion: '2.0.0',
