@@ -7,7 +7,7 @@ var expect = require('chai').expect,
 
 /* global describe, it, before */
 describe('Example validity', function () {
-    // The V1 collections contain random stuff for extremely old collections, so their test are skipped
+    // The V1 collections contain random stuff for extremely old collections, so their tests are skipped
     describe.skip('v1.0.0', function () {
         var schemaUrl = require('../../lib/constants').SCHEMA_V1_URL,
             examplesDir = path.join(__dirname, '../../examples/v1.0.0'),
