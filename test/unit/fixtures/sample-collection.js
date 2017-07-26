@@ -1,3 +1,5 @@
+/* eslint-disable quotes, max-len */
+
 module.exports = {
     v1: {
         id: "03cf74df-32de-af8b-7db8-855b51b05e50",

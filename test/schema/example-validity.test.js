@@ -1,4 +1,4 @@
-var expect = require('expect.js'),
+var expect = require('chai').expect,
     requireAll = require('require-all'),
     path = require('path'),
     tv4 = require('tv4'),
@@ -7,7 +7,7 @@ var expect = require('expect.js'),
 
 /* global describe, it, before */
 describe('Example validity', function () {
-    // The V1 collections contain random stuff for extremely old collections, so their tests are skipped
+    // The V1 collections contain random stuff for extremely old collections, so their test are skipped
     describe.skip('v1.0.0', function () {
         var schemaUrl = require('../../lib/constants').SCHEMA_V1_URL,
             examplesDir = path.join(__dirname, '../../examples/v1.0.0'),
@@ -37,7 +37,7 @@ describe('Example validity', function () {
                     console.log(validator.missing);
                     result = false;
                 }
-                expect(result).to.be(true);
+                expect(result).to.equal(true);
                 done();
             });
         });
@@ -72,7 +72,7 @@ describe('Example validity', function () {
                     console.log(validator.missing);
                     result = false;
                 }
-                expect(result).to.be(true);
+                expect(result).to.equal(true);
                 done();
             });
         });

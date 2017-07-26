@@ -68,6 +68,7 @@ module.exports = {
                 ],
                 dataMode: 'params',
                 name: 'Simple POST request',
+                // eslint-disable-next-line max-len
                 description: 'A simple `POST` request to demonstrate the usage of descriptions across various parts of a request.',
                 collectionId: 'e1036383-ba43-d240-5e9d-19614febed77',
                 pathVariableData: [],
@@ -161,6 +162,7 @@ module.exports = {
                             }
                         ]
                     },
+                    // eslint-disable-next-line max-len
                     description: 'A simple `POST` request to demonstrate the usage of descriptions across various parts of a request.'
                 },
                 response: []
