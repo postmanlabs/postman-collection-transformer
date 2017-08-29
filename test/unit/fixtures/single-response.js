@@ -1,3 +1,5 @@
+/* eslint-disable quotes, max-len */
+
 module.exports = {
     v1: {
         status: "",

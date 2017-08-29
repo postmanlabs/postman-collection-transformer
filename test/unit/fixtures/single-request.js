@@ -1,3 +1,5 @@
+/* eslint-disable quotes, max-len */
+
 module.exports = {
     v1: {
         folder: "58b0685d-5e5c-d03e-8899-c1084704d0d3",

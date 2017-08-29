@@ -1,4 +1,4 @@
-var expect = require('expect.js'),
+var expect = require('chai').expect,
     requireAll = require('require-all'),
     path = require('path'),
     tv4 = require('tv4'),
@@ -37,7 +37,7 @@ describe('Example validity', function () {
                     console.log(validator.missing);
                     result = false;
                 }
-                expect(result).to.be(true);
+                expect(result).to.equal(true);
                 done();
             });
         });
@@ -72,7 +72,7 @@ describe('Example validity', function () {
                     console.log(validator.missing);
                     result = false;
                 }
-                expect(result).to.be(true);
+                expect(result).to.equal(true);
                 done();
             });
         });

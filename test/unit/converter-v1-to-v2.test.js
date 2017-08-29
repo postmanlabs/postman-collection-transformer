@@ -2,7 +2,7 @@
  * @fileoverview This test suite runs tests on the V1 to V2 converter.
  */
 
-var expect = require('expect.js'),
+var expect = require('chai').expect,
     transformer = require('../../index');
 
 /* global describe, it */
@@ -10,12 +10,12 @@ describe('v1.0.0 to v2.0.0', function () {
     describe('api', function () {
         it('should have a .convertSingle() function', function () {
             expect(transformer.convertSingle).to.be.a('function');
-            expect(transformer.convertSingle.length).to.be(3);
+            expect(transformer.convertSingle.length).to.equal(3);
         });
 
         it('should have a .convert() function', function () {
             expect(transformer.convert).to.be.a('function');
-            expect(transformer.convert.length).to.be(3);
+            expect(transformer.convert.length).to.equal(3);
         });
     });
 
@@ -30,7 +30,7 @@ describe('v1.0.0 to v2.0.0', function () {
                     };
 
                 transformer.convertSingle(fixture.v1, options, function (err, converted) {
-                    expect(err).to.not.be.ok();
+                    expect(err).to.not.be.ok;
 
                     // remove `undefined` properties for testing
                     converted = JSON.parse(JSON.stringify(converted));
@@ -51,7 +51,7 @@ describe('v1.0.0 to v2.0.0', function () {
                     };
 
                 transformer.convert(fixture.v1, options, function (err, converted) {
-                    expect(err).to.not.be.ok();
+                    expect(err).to.not.be.ok;
 
                     // remove `undefined` properties for testing
                     converted = JSON.parse(JSON.stringify(converted));
@@ -72,7 +72,7 @@ describe('v1.0.0 to v2.0.0', function () {
                     };
 
                 transformer.convertResponse(fixture.v1, options, function (err, converted) {
-                    expect(err).to.not.be.ok();
+                    expect(err).to.not.be.ok;
 
                     // remove `undefined` properties for testing
                     converted = JSON.parse(JSON.stringify(converted));
@@ -93,7 +93,7 @@ describe('v1.0.0 to v2.0.0', function () {
                 };
 
             transformer.convert(fixture.v1, options, function (err, converted) {
-                expect(err).to.not.be.ok();
+                expect(err).to.not.be.ok;
 
                 // remove `undefined` properties for testing
                 converted = JSON.parse(JSON.stringify(converted));
@@ -114,7 +114,7 @@ describe('v1.0.0 to v2.0.0', function () {
                 };
 
             transformer.convert(fixture.v1, options, function (err, converted) {
-                expect(err).to.not.be.ok();
+                expect(err).to.not.be.ok;
 
                 // remove `undefined` properties for testing
                 converted = JSON.parse(JSON.stringify(converted));

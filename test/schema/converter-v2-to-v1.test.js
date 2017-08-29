@@ -2,7 +2,7 @@
  * @fileoverview This test suite runs tests on the V2 to V1 converter.
  */
 
-var expect = require('expect.js'),
+var expect = require('chai').expect,
     requireAll = require('require-all'),
     path = require('path'),
     tv4 = require('tv4'),
@@ -44,8 +44,8 @@ describe('v2.0.0 ==> v1.0.0', function () {
                         console.log(validator.missing);
                         result = false;
                     }
-                    expect(result).to.be(true);
-                    expect(err).to.be(null);
+                    expect(result).to.equal(true);
+                    expect(err).to.equal(null);
                     done();
                 });
             });
@@ -72,7 +72,7 @@ describe('v2.0.0 ==> v1.0.0', function () {
                     console.log(validator.missing);
                     result = false;
                 }
-                expect(result).to.be(true);
+                expect(result).to.equal(true);
                 done();
             });
         });
@@ -83,9 +83,9 @@ describe('v2.0.0 ==> v1.0.0', function () {
             it('should be converted to v1 correctly', function () {
                 var v2 = require('../../examples/v2.0.0/binary-upload.json'),
                     v1 = JSON.parse(JSON.stringify(converter.convert(v2)));
-                expect(_.get(v1, 'requests[0].dataMode')).to.be('binary');
-                expect(_.get(v1, 'requests[0].rawModeData')).to.be('sample.txt');
-                expect(_.isEmpty(_.get(v1, 'requests[0].data'))).to.be(true);
+                expect(_.get(v1, 'requests[0].dataMode')).to.equal('binary');
+                expect(_.get(v1, 'requests[0].rawModeData')).to.equal('sample.txt');
+                expect(_.isEmpty(_.get(v1, 'requests[0].data'))).to.equal(true);
             });
         });
     });

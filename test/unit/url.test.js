@@ -2,7 +2,7 @@
  * @fileoverview This test suite runs tests on the V1 to V2 converter.
  */
 
-var expect = require('expect.js'),
+var expect = require('chai').expect,
     url = require('../../lib/url');
 
 /* global describe, it */

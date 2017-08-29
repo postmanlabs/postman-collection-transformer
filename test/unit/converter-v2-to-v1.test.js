@@ -3,7 +3,7 @@
  */
 
 var _ = require('lodash'),
-    expect = require('expect.js'),
+    expect = require('chai').expect,
     transformer = require('../../index');
 
 /* global describe, it */
@@ -11,7 +11,7 @@ describe('v2.0.0 to v1.0.0', function () {
     describe('api', function () {
         it('should have a .convertSingle() function', function () {
             expect(transformer.convertSingle).to.be.a('function');
-            expect(transformer.convertSingle.length).to.be(3);
+            expect(transformer.convertSingle.length).to.equal(3);
         });
     });
 
@@ -26,7 +26,7 @@ describe('v2.0.0 to v1.0.0', function () {
                     };
 
                 transformer.convertSingle(fixture.v2, options, function (err, converted) {
-                    expect(err).to.not.be.ok();
+                    expect(err).to.not.be.ok;
 
                     // remove `undefined` properties for testing
                     converted = JSON.parse(JSON.stringify(converted));
@@ -69,7 +69,7 @@ describe('v2.0.0 to v1.0.0', function () {
                     expect(converted.requestObject).to.be.a('string');
                     expect(function () {
                         JSON.parse(converted.requestObject);
-                    }).to.not.throwException();
+                    }).to.not.throw();
 
                     expect(_.omit(converted, [
                         'rawDataType',
@@ -127,7 +127,7 @@ describe('v2.0.0 to v1.0.0', function () {
                     };
 
                 transformer.convertSingle(fixture, options, function (err, converted) {
-                    expect(err).to.not.be.ok();
+                    expect(err).to.not.be.ok;
 
                     expect(converted.pathVariables).to.eql({
                         method: 'get'
@@ -164,7 +164,7 @@ describe('v2.0.0 to v1.0.0', function () {
                     };
 
                 transformer.convertSingle(fixture, options, function (err, converted) {
-                    expect(err).to.not.be.ok();
+                    expect(err).to.not.be.ok;
 
                     expect(converted.pathVariables).to.eql({
                         method: 'get'
@@ -190,7 +190,7 @@ describe('v2.0.0 to v1.0.0', function () {
                 };
 
             transformer.convert(fixture.v2, options, function (err, converted) {
-                expect(err).to.not.be.ok();
+                expect(err).to.not.be.ok;
 
                 // remove `undefined` properties for testing
                 converted = JSON.parse(JSON.stringify(converted));
@@ -211,7 +211,7 @@ describe('v2.0.0 to v1.0.0', function () {
                 };
 
             transformer.convert(fixture.v2, options, function (err, converted) {
-                expect(err).to.not.be.ok();
+                expect(err).to.not.be.ok;
 
                 // remove `undefined` properties for testing
                 converted = JSON.parse(JSON.stringify(converted));

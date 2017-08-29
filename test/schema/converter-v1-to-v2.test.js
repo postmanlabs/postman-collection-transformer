@@ -2,7 +2,7 @@
  * @fileoverview This test suite runs tests on the V1 to V2 converter.
  */
 
-var expect = require('expect.js'),
+var expect = require('chai').expect,
     requireAll = require('require-all'),
     path = require('path'),
     tv4 = require('tv4'),
@@ -47,8 +47,8 @@ describe('v1.0.0 ==> v2.0.0', function () {
                         console.log(validator.missing);
                         result = false;
                     }
-                    expect(err).to.be(null);
-                    expect(result).to.be(true);
+                    expect(err).to.equal(null);
+                    expect(result).to.equal(true);
                     done();
                 });
             });
@@ -75,7 +75,7 @@ describe('v1.0.0 ==> v2.0.0', function () {
                     console.log(validator.missing);
                     result = false;
                 }
-                expect(result).to.be(true);
+                expect(result).to.equal(true);
                 done();
             });
         });
@@ -108,7 +108,7 @@ describe('v1.0.0 ==> v2.0.0', function () {
                 v2 = JSON.parse(JSON.stringify(converter.convert(v1, {
                     retainIds: true
                 })));
-            expect(v2.item[0].request.header[1].disabled).to.be(true);
+            expect(v2.item[0].request.header[1].disabled).to.equal(true);
         });
 
         it('should not set default request body for requests with no data', function () {
@@ -116,7 +116,7 @@ describe('v1.0.0 ==> v2.0.0', function () {
                 v2 = JSON.parse(JSON.stringify(converter.convert(v1, {
                     retainIds: true
                 })));
-            expect(_.isEmpty(v2.item[0].request.body)).to.be(true);
+            expect(_.isEmpty(v2.item[0].request.body)).to.equal(true);
         });
     });
 
@@ -126,7 +126,7 @@ describe('v1.0.0 ==> v2.0.0', function () {
                 v2 = JSON.parse(JSON.stringify(converter.convert(v1, {
                     retainIds: true
                 })));
-            expect(_.get(v2, 'item[0].request.body.file.src')).to.be('sample.txt');
+            expect(_.get(v2, 'item[0].request.body.file.src')).to.equal('sample.txt');
         });
     });
 
