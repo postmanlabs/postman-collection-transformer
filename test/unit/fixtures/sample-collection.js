@@ -1853,7 +1853,6 @@ module.exports = {
         ]
     },
     v2: {
-        variables: [],
         info: {
             name: "Postman Echo (shamasified)",
             _postman_id: "03cf74df-32de-af8b-7db8-855b51b05e50",
@@ -3916,7 +3915,6 @@ module.exports = {
         ]
     },
     v21: {
-        variables: [],
         info: {
             name: "Postman Echo (shamasified)",
             _postman_id: "03cf74df-32de-af8b-7db8-855b51b05e50",
@@ -4017,15 +4015,15 @@ module.exports = {
                             auth: {
                                 type: "digest",
                                 digest: [
-                                    { key: 'algorithm', value: 'MD5' },
-                                    { key: 'username', value: 'postman' },
-                                    { key: 'realm', value: '{{echo_digest_realm}}' },
-                                    { key: 'password', value: 'password' },
-                                    { key: 'nonce', value: '{{echo_digest_nonce}}' },
-                                    { key: 'nonceCount', value: '' },
-                                    { key: 'clientNonce', value: '' },
-                                    { key: 'opaque', value: '' },
-                                    { key: 'qop', value: '' }
+                                    { key: 'algorithm', value: 'MD5', type: 'string' },
+                                    { key: 'username', value: 'postman', type: 'string' },
+                                    { key: 'realm', value: '{{echo_digest_realm}}', type: 'string' },
+                                    { key: 'password', value: 'password', type: 'string' },
+                                    { key: 'nonce', value: '{{echo_digest_nonce}}', type: 'string' },
+                                    { key: 'nonceCount', value: '', type: 'string' },
+                                    { key: 'clientNonce', value: '', type: 'string' },
+                                    { key: 'opaque', value: '', type: 'string' },
+                                    { key: 'qop', value: '', type: 'string' }
                                 ]
                             },
                             url: {
@@ -4152,10 +4150,10 @@ module.exports = {
                             auth: {
                                 type: "basic",
                                 basic: [
-                                    { key: 'username', value: 'postman' },
-                                    { key: 'password', value: 'password' },
-                                    { key: 'saveHelperData', value: true },
-                                    { key: 'showPassword', value: false }
+                                    { key: 'username', value: 'postman', type: 'string' },
+                                    { key: 'password', value: 'password', type: 'string' },
+                                    { key: 'saveHelperData', value: true, type: 'boolean' },
+                                    { key: 'showPassword', value: false, type: 'boolean' }
                                 ]
                             },
                             url: {

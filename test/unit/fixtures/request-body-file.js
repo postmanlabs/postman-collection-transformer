@@ -49,7 +49,6 @@ module.exports = {
         ]
     },
     v2: {
-        variables: [],
         info: {
             name: 'body-src-check',
             _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
@@ -106,7 +105,6 @@ module.exports = {
         ]
     },
     v21: {
-        variables: [],
         info: {
             name: 'body-src-check',
             _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
