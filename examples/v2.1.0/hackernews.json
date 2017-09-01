@@ -4,13 +4,13 @@
         "name": "HackerNews API",
         "_postman_id": "361708ee-7343-43e0-f803-e10fb4d5d675",
         "description": "HackerNews API collection for Postman. I added more documentation.",
-        "schema": "https://schema.getpostman.com/json/collection/v2.1.0-draft.1/collection.json"
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
-    "items": [
+    "item": [
         {
             "name": "Items",
             "description": "Description",
-            "items": [
+            "item": [
                 {
                     "name": "Story",
                     "request": {
@@ -207,7 +207,7 @@
         {
             "name": "Live data",
             "description": "The coolest part of Firebase is its support for change notifications. While you can subscribe to individual items and profiles, you'll need to use the following to observe front page ranking, new items, and new profiles.",
-            "items": [
+            "item": [
                 {
                     "name": "Max Item ID",
                     "request": {
@@ -255,7 +255,7 @@
         {
             "name": "Users",
             "description": "Users are identified by case-sensitive ids, and live under https://hacker-news.firebaseio.com/v0/user/.\n",
-            "items": [
+            "item": [
                 {
                     "name": "User",
                     "request": {
