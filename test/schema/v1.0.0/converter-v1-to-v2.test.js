@@ -137,7 +137,6 @@ describe('v1.0.0 ==> v2.0.0', function () {
             var converted = JSON.parse(JSON.stringify(converter.convert(malformedJson))),
                 reverted = JSON.parse(JSON.stringify(reverseConverter.convert(converted)));
 
-            console.log(JSON.stringify(reverted, null, 4));
             expect(reverted.order).to.have.length(1);
             expect(reverted.folders_order).to.have.length(2);
 
