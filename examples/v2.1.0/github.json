@@ -3,14 +3,14 @@
     "info": {
         "name": "Github",
         "_postman_id": "b6241b6a-fbf3-e3b7-4f96-0154e3056843",
-        "description": "",
-        "schema": "https://schema.getpostman.com/json/collection/v2.1.0-draft.1/collection.json"
+        "description": "Description",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
-    "items": [
+    "item": [
         {
             "name": "Repositories",
             "description": "API endpoints related to repositories",
-            "items": [
+            "item": [
                 {
                     "name": "List Contributors",
                     "events": [
@@ -154,7 +154,7 @@
         {
             "name": "Users",
             "description": "Many of the resources on the users API provide a shortcut for getting information about the currently authenticated user. If a request URL does not include a :username parameter then the response will be for the logged in user (and you must pass authentication information with your request).",
-            "items": [
+            "item": [
                 {
                     "name": "Get Authenticated User",
                     "events": [
@@ -173,7 +173,7 @@
                             {
                                 "key": "Authorization",
                                 "value": "token {{token}}",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
@@ -202,7 +202,7 @@
                             {
                                 "key": "Authorization",
                                 "value": "token {{token}}",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
@@ -254,7 +254,7 @@
                             {
                                 "key": "Authorization",
                                 "value": "token {{token}}",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {

@@ -1,7 +1,13 @@
 # Postman Collection Transformer Changelog
 
+#### v2.2.0 (September 4, 2017)
+* :feat: Added support for transformations to and from the `v2.1.0` format. #66, #67, #68
+* :arrow_up: Updated dependencies #65
+* :bug: Enforced an object structure for V2 collection request URLs. #62
+* :bug: Prevented empty descriptions from showing up across transformations. #61
+
 #### 2.1.5 (June 28, 2017)
-* Allowed both: `key` and `id` as identifers for path variables in v2 collections #60
+* Allowed both: `key` and `id` as identifiers for path variables in v2 collections #60
 
 #### 2.1.4 (June 19, 2017)
 * No code changes

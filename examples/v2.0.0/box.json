@@ -10,7 +10,7 @@
         {
             "_postman_id": "5da6ad20-2b42-5386-30c4-c9df037e23cd",
             "name": "Collaborations",
-            "description": "",
+            "description": "Description",
             "item": [
                 {
                     "id": "48160ea8-5d75-b871-7aa8-2ef2e635e0f5",
@@ -22,14 +22,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -43,14 +43,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -64,14 +64,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -100,14 +100,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\"item\": { \"id\": \"300065354\", \"type\": \"folder\"}, \"accessible_by\": { \"id\": \"129395212\"}, \"role\": \"editor\"}"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -121,14 +121,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\"role\": \"viewer\"}"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -142,14 +142,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 }
@@ -158,7 +158,7 @@
         {
             "_postman_id": "10ae52bc-41e4-7bb7-680b-f0985563fc77",
             "name": "Comments",
-            "description": "",
+            "description": "Description",
             "item": [
                 {
                     "id": "14856b65-eb3e-dc4d-d8dc-d6a982249c6e",
@@ -170,14 +170,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -191,14 +191,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\n\n\t\"item\":\n\n\t{\"type\": \"file\", \"id\": \"6526455273\"}, \n    \n\t\"message\": \"This looks great!\"\n\n}"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -212,14 +212,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\n\n\t\"item\":\n\n\t{\"type\": \"file\", \"id\": \"6526455273\"}, \n    \n\t\"tagged_message\": \"Tagged mention for @[192642898:Rory]\"\n\n}\n\n"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -233,14 +233,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\"tagged_message\": \"Tagged mention for @[192642898:Rory]\"}"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -254,14 +254,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\"message\": \"Change comment via the API\"}"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -275,14 +275,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 }
@@ -291,7 +291,7 @@
         {
             "_postman_id": "5a8844f1-40cd-065f-22a1-dfce981d846a",
             "name": "Events",
-            "description": "",
+            "description": "Description",
             "item": [
                 {
                     "id": "2cbf2ad1-e374-0649-ce3f-e6cd5d1dd66f",
@@ -303,14 +303,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -324,14 +324,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -345,14 +345,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 }
@@ -361,7 +361,7 @@
         {
             "_postman_id": "a7afd5f3-2089-3557-3c59-77e9740bc2ea",
             "name": "Files",
-            "description": "",
+            "description": "Description",
             "item": [
                 {
                     "id": "c9d0928a-670a-a7cf-d6e2-8e9aa421a609",
@@ -373,14 +373,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -394,14 +394,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -415,7 +415,7 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
@@ -428,7 +428,7 @@
                                 }
                             ]
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -442,14 +442,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -463,14 +463,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -484,7 +484,7 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
@@ -497,7 +497,7 @@
                                 }
                             ]
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -511,14 +511,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -532,14 +532,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\"parent\": {\"id\" : 0}}"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -553,14 +553,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -574,7 +574,7 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
@@ -592,7 +592,7 @@
                                 }
                             ]
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -606,12 +606,12 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             },
                             {
                                 "key": "If-Match",
                                 "value": "b3f76e2998597a51ec076076493d905fbf09a76b",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
@@ -624,7 +624,7 @@
                                 }
                             ]
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -638,14 +638,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\"parent\": {\"id\" : 1139054013}}"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -659,14 +659,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\"shared_link\": {\"access\": \"Open\"}}"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -680,14 +680,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\"shared_link\": null}"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -701,14 +701,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\"description\":\"File Description 2\"}"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -722,19 +722,19 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             },
                             {
                                 "key": "If-Match",
                                 "value": "b0d845836633e96992c25fbdca151407938b485c",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -748,14 +748,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 }
@@ -764,7 +764,7 @@
         {
             "_postman_id": "c36f0bc8-cc0d-0b86-559b-b30a705f2c78",
             "name": "Folders",
-            "description": "",
+            "description": "Description",
             "item": [
                 {
                     "id": "f96c8cc9-a72e-eb8c-5ef8-7e447c674fdc",
@@ -776,14 +776,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -797,14 +797,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -818,14 +818,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -839,14 +839,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -860,14 +860,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -881,14 +881,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\"parent\": {\"id\" : 0}}"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -902,14 +902,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\"name\":\"New Folder\", \"parent\": {\"id\": \"0\"}}"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -923,14 +923,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\"name\":\"New Folder\", \"parent\": {\"id\": \"0\"}}"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -944,14 +944,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\"parent\": {\"id\" : 682258214}}"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -965,14 +965,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\"name\":\"New Folder Name!\"}"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -986,14 +986,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\"folder_upload_email\": {\"access\": \"open\"}}"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1007,14 +1007,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\"shared_link\": null}"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1028,14 +1028,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1049,14 +1049,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 }
@@ -1065,7 +1065,7 @@
         {
             "_postman_id": "3b74c445-ae07-74b2-c1b0-ac40e41fd82c",
             "name": "Groups",
-            "description": "",
+            "description": "Description",
             "item": [
                 {
                     "id": "1f5ea222-53c8-1227-04d9-e699a542413d",
@@ -1077,14 +1077,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1098,14 +1098,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1119,14 +1119,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1140,14 +1140,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1161,14 +1161,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1182,14 +1182,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\"item\": { \"id\": \"1076455207\", \"type\": \"folder\"}, \"accessible_by\": { \"type\":\"group\", \"id\": \"104687\"}, \"role\": \"editor\"}"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1203,14 +1203,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\"group\": { \"id\": \"137557\", \"type\": \"group\"}, \"user\": { \"id\": \"192642898\"}}\n"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1224,14 +1224,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\"name\":\"SE Team\"}"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1245,14 +1245,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{ \"accessible_by\": { \"type\":\"group\", \"id\": \"104687\"}, \"role\": \"Uploader\"}"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1266,14 +1266,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\"name\":\"SE Team 3\"}"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1287,14 +1287,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{ \"role\": \"submaster\" }"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1308,14 +1308,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": ""
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1329,14 +1329,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": ""
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1350,14 +1350,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": ""
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 }
@@ -1366,7 +1366,7 @@
         {
             "_postman_id": "3641c1e3-7b23-9352-b267-531ae498dcc3",
             "name": "On-Behalf-Of-1 copy-1",
-            "description": "",
+            "description": "Description",
             "item": [
                 {
                     "id": "fa9f4ccc-f32d-b476-5e83-56f4b8ce404c",
@@ -1378,12 +1378,12 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             },
                             {
                                 "key": "On-Behalf-Of",
                                 "value": "joen.doe+what@box.com",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
@@ -1406,7 +1406,7 @@
                                 }
                             ]
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 }
@@ -1415,7 +1415,7 @@
         {
             "_postman_id": "cae8799f-8639-e172-cf07-d5d8d9d012d8",
             "name": "On-Behalf-Of-1",
-            "description": "",
+            "description": "Description",
             "item": [
                 {
                     "id": "4ec3a679-bbe6-f81e-8260-a7de9bf2fb88",
@@ -1427,12 +1427,12 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             },
                             {
                                 "key": "On-Behalf-Of",
                                 "value": "joen.doe+what@box.com",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
@@ -1455,7 +1455,7 @@
                                 }
                             ]
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 }
@@ -1464,7 +1464,7 @@
         {
             "_postman_id": "fdbea569-15a1-3100-9d37-66ac6351adf3",
             "name": "Provisioning API",
-            "description": "",
+            "description": "Description",
             "item": [
                 {
                     "id": "397f353b-74b3-87fb-5894-28c5f8d0d71c",
@@ -1498,7 +1498,7 @@
                                 }
                             ]
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1529,7 +1529,7 @@
                                 }
                             ]
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 }
@@ -1538,7 +1538,7 @@
         {
             "_postman_id": "e2b2d70e-9c4f-61fe-6150-7f900ed9f2ce",
             "name": "Search",
-            "description": "",
+            "description": "Description",
             "item": [
                 {
                     "id": "8a23db0e-4f01-15f3-e41e-077d3238f0b5",
@@ -1550,14 +1550,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 }
@@ -1566,7 +1566,7 @@
         {
             "_postman_id": "cb4b37d6-1a2c-7bcb-d886-73992683130c",
             "name": "Shared Items",
-            "description": "",
+            "description": "Description",
             "item": [
                 {
                     "id": "3d113f28-7693-b9d8-9ab0-91c0b9cf7912",
@@ -1578,19 +1578,19 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             },
                             {
                                 "key": "BoxApi",
                                 "value": "shared_link=https://box.com/s/5szm1glgq1foiai1kjqz",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 }
@@ -1599,7 +1599,7 @@
         {
             "_postman_id": "72cbade8-18a0-7a0e-1208-2f1014914ac7",
             "name": "Tasks",
-            "description": "",
+            "description": "Description",
             "item": [
                 {
                     "id": "322af24a-6c80-9465-0564-2bfba80269cd",
@@ -1611,14 +1611,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1632,14 +1632,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1653,14 +1653,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1674,14 +1674,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{ \n  \"item\": { \"type\":\"file\", \"id\": \"7170802730\"},\n  \"action\": \"review\",\n  \"message\": \"Is this working?\",\n  \"assigned_to\": { \"type\": \"user\", \"id\": \"194651398\"}\n }\n\n"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1695,14 +1695,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{ \"task\": { \"id\": \"2073417\", \"type\": \"task\" }, \"assign_to\": { \"login\": \"john.doe+demo@box.com\" } }"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1716,14 +1716,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\"item\": {\"type\": \"file\", \"id\": \"7262132718\"}, \"action\": \"review\", \"message\" : \"vish is awesome\"}"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1737,14 +1737,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{ \"task\": { \"id\": \"2073419\", \"type\": \"task\" }, \"assign_to\": { \"login\": \"john.doe+demo@box.com\" } }"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1758,14 +1758,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{ \"message\": \"hello!!!\" , \"resolution_state\":\"completed\"}"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1779,14 +1779,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\"action\": \"approve\"}"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1800,14 +1800,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": ""
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1821,14 +1821,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": ""
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 }
@@ -1837,7 +1837,7 @@
         {
             "_postman_id": "191d402a-1c51-ea5e-5161-2f5915cfb9a4",
             "name": "Users",
-            "description": "",
+            "description": "Description",
             "item": [
                 {
                     "id": "ca77e479-2e3b-eb88-b4ad-14b5e4bddf79",
@@ -1849,14 +1849,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1870,14 +1870,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1891,14 +1891,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1912,14 +1912,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\"email\":\"john.doe.alias@box.com\"}"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1933,14 +1933,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\"login\": \"john.doe.new@box.com\", \"name\": \"Ned Stark\"}"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1954,14 +1954,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\"login\":\"john.doe+newlogin@box.com\"}"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1975,14 +1975,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\"owned_by\": {\"id\": \"12927765\"}}\n"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -1996,14 +1996,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\"is_password_reset_required\":\"true\"}"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -2017,14 +2017,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "raw",
                             "raw": "{\"name\": \"Box Admin\"}"
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -2038,14 +2038,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -2059,14 +2059,14 @@
                             {
                                 "key": "Authorization",
                                 "value": "",
-                                "description": ""
+                                "description": "Description"
                             }
                         ],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 }
@@ -2075,7 +2075,7 @@
         {
             "_postman_id": "a5286882-89a4-9fac-da8d-ebe2fcd1a35b",
             "name": "oAuth 2",
-            "description": "",
+            "description": "Description",
             "item": [
                 {
                     "id": "c54bf04d-3e95-e165-3ed1-f75ed6c2dc5a",
@@ -2088,7 +2088,7 @@
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -2124,7 +2124,7 @@
                                 }
                             ]
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -2160,7 +2160,7 @@
                                 }
                             ]
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 },
@@ -2191,7 +2191,7 @@
                                 }
                             ]
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "response": []
                 }

@@ -1,7 +1,7 @@
 {
 	"id": "7ea31a30-8377-0e56-d11f-5943e6527bca",
 	"name": "proper-url-parsing",
-	"description": "",
+	"description": "Description",
 	"order": [
 		"2c03f359-f259-bb30-d14c-ea278056e95f"
 	],
@@ -22,7 +22,7 @@
 			"data": [],
 			"dataMode": "params",
 			"name": "request with hostname as variable",
-			"description": "",
+			"description": "Description",
 			"descriptionFormat": "html",
 			"time": 1448955336367,
 			"version": 2,

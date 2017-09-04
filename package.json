@@ -1,10 +1,15 @@
 {
   "name": "postman-collection-transformer",
-  "version": "2.1.5",
+  "version": "2.2.0",
   "description": "Perform rapid conversation and validation of JSON structure between Postman Collection Format v1 and v2",
   "main": "index.js",
   "scripts": {
-    "test": "scripts/test.sh"
+    "test": "node npm/test.js",
+    "test-lint": "node npm/test-lint.js",
+    "test-browser": "node npm/test-browser.js",
+    "test-schema": "node npm/test-schema.js",
+    "test-unit": "node npm/test-unit.js",
+    "test-system": "node npm/test-system.js"
   },
   "repository": {
     "type": "git",
@@ -28,20 +33,44 @@
     "url": "https://github.com/postmanlabs/postman-collection-transformer/issues"
   },
   "homepage": "https://github.com/postmanlabs/postman-collection-transformer#readme",
+  "engines": {
+    "node": ">=4"
+  },
   "devDependencies": {
-    "expect.js": "0.3.1",
-    "jscs": "1.13.1",
-    "jshint": "2.8.0",
-    "mocha": "2.2.5",
-    "require-all": "1.1.0",
-    "superagent": "1.7.2",
-    "tv4": "1.2.7"
+    "async": "2.5.0",
+    "browserify": "14.4.0",
+    "chai": "4.1.0",
+    "colors": "1.1.2",
+    "eslint": "4.3.0",
+    "eslint-plugin-jsdoc": "3.1.1",
+    "eslint-plugin-lodash": "2.4.4",
+    "eslint-plugin-mocha": "4.11.0",
+    "eslint-plugin-security": "1.4.0",
+    "js-yaml": "3.9.0",
+    "karma": "1.7.0",
+    "karma-browserify": "5.1.1",
+    "karma-chrome-launcher": "2.2.0",
+    "karma-mocha": "1.3.0",
+    "karma-mocha-reporter": "2.2.3",
+    "mocha": "3.4.2",
+    "nsp": "2.6.3",
+    "nyc": "11.0.3",
+    "packity": "0.3.2",
+    "parse-gitignore": "0.4.0",
+    "pretty-ms": "3.0.0",
+    "recursive-readdir": "2.2.1",
+    "require-all": "2.2.0",
+    "shelljs": "0.7.8",
+    "superagent": "3.5.2",
+    "tv4": "1.3.0",
+    "watchify": "3.9.0"
   },
   "dependencies": {
-    "commander": "2.8.1",
-    "intel": "1.0.2",
-    "lodash": "3.10.0",
-    "semver": "5.1.0",
-    "strip-json-comments": "1.0.2"
+    "commander": "2.11.0",
+    "inherits": "2.0.3",
+    "intel": "1.2.0",
+    "lodash": "4.17.4",
+    "semver": "5.4.1",
+    "strip-json-comments": "2.0.1"
   }
 }

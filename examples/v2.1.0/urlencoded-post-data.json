@@ -3,10 +3,10 @@
     "info": {
         "name": "urlencodeddata",
         "_postman_id": "551c1361-2b81-68c7-677e-ec2efdd8322e",
-        "description": "",
-        "schema": "https://schema.getpostman.com/json/collection/v2.1.0-draft.1/collection.json"
+        "description": "Description",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
-    "items": [
+    "item": [
         {
             "name": "http://httpbin.org/post",
             "request": {
@@ -30,7 +30,7 @@
                         }
                     ]
                 },
-                "description": ""
+                "description": "Description"
             },
             "responses": [
                 {

@@ -4,13 +4,13 @@
         "name": "HackerNews API",
         "_postman_id": "361708ee-7343-43e0-f803-e10fb4d5d675",
         "description": "HackerNews API collection for Postman. I added more documentation.",
-        "schema": "https://schema.getpostman.com/json/collection/v2.1.0-draft.1/collection.json"
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
-    "items": [
+    "item": [
         {
             "name": "Items",
-            "description": "",
-            "items": [
+            "description": "Description",
+            "item": [
                 {
                     "name": "Story",
                     "request": {
@@ -46,7 +46,7 @@
                                 }
                             ]
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "responses": [
                         {
@@ -59,7 +59,7 @@
                                     "mode": "formdata",
                                     "formdata": []
                                 },
-                                "description": ""
+                                "description": "Description"
                             },
                             "status": "OK",
                             "code": 200,
@@ -70,25 +70,25 @@
                                     "name": "Cache-Control",
                                     "key": "Cache-Control",
                                     "value": "no-cache",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Content-Length",
                                     "key": "Content-Length",
                                     "value": "456",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Content-Type",
                                     "key": "Content-Type",
                                     "value": "application/json; charset=utf-8",
-                                    "description": ""
+                                    "description": "Description"
                                 },
                                 {
                                     "name": "Strict-Transport-Security",
                                     "key": "Strict-Transport-Security",
                                     "value": "max-age=31556926; includeSubDomains; preload",
-                                    "description": ""
+                                    "description": "Description"
                                 }
                             ],
                             "cookie": [],
@@ -132,7 +132,7 @@
                                 }
                             ]
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "responses": []
                 },
@@ -171,7 +171,7 @@
                                 }
                             ]
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "responses": []
                 },
@@ -198,7 +198,7 @@
                                 }
                             ]
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "responses": []
                 }
@@ -207,7 +207,7 @@
         {
             "name": "Live data",
             "description": "The coolest part of Firebase is its support for change notifications. While you can subscribe to individual items and profiles, you'll need to use the following to observe front page ranking, new items, and new profiles.",
-            "items": [
+            "item": [
                 {
                     "name": "Max Item ID",
                     "request": {
@@ -218,7 +218,7 @@
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "responses": []
                 },
@@ -232,7 +232,7 @@
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "responses": []
                 },
@@ -246,7 +246,7 @@
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "responses": []
                 }
@@ -255,7 +255,7 @@
         {
             "name": "Users",
             "description": "Users are identified by case-sensitive ids, and live under https://hacker-news.firebaseio.com/v0/user/.\n",
-            "items": [
+            "item": [
                 {
                     "name": "User",
                     "request": {
@@ -291,7 +291,7 @@
                                 }
                             ]
                         },
-                        "description": ""
+                        "description": "Description"
                     },
                     "responses": []
                 }
