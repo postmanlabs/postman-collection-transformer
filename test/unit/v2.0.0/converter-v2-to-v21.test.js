@@ -60,15 +60,18 @@ describe('v2.0.0 to v2.1.0', function () {
         describe('path variables', function () {
             it('should work with id as indexing property', function (done) {
                 var fixture = {
-                        url: {
-                            host: ['postman-echo', 'com'],
-                            path: [':method'],
-                            variable: [{
-                                id: 'method',
-                                value: 'get'
-                            }]
+                        request: {
+                            url: {
+                                host: ['postman-echo', 'com'],
+                                path: [':method'],
+                                variable: [{
+                                    id: 'method',
+                                    value: 'get'
+                                }]
+                            },
+                            method: 'GET'
                         },
-                        method: 'GET'
+                        response: []
                     },
                     options = {
                         inputVersion: '2.0.0',
@@ -80,15 +83,18 @@ describe('v2.0.0 to v2.1.0', function () {
                     expect(err).to.not.be.ok;
 
                     expect(converted).to.eql({
-                        url: {
-                            host: ['postman-echo', 'com'],
-                            path: [':method'],
-                            variable: [{
-                                key: 'method',
-                                value: 'get'
-                            }]
+                        request: {
+                            url: {
+                                host: ['postman-echo', 'com'],
+                                path: [':method'],
+                                variable: [{
+                                    key: 'method',
+                                    value: 'get'
+                                }]
+                            },
+                            method: 'GET'
                         },
-                        method: 'GET'
+                        response: []
                     });
                     done();
                 });
@@ -96,7 +102,7 @@ describe('v2.0.0 to v2.1.0', function () {
 
             it('should work with key as indexing property', function (done) {
                 var fixture = {
-                        id: 'some-id',
+                        _postman_id: 'some-id',
                         name: 'some-name',
                         request: {
                             url: {
@@ -108,7 +114,8 @@ describe('v2.0.0 to v2.1.0', function () {
                                 }]
                             },
                             method: 'GET'
-                        }
+                        },
+                        response: []
                     },
                     options = {
                         inputVersion: '2.0.0',

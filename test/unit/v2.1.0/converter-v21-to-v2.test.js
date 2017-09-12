@@ -60,7 +60,7 @@ describe('v2.1.0 to v2.0.0', function () {
         describe('path variables', function () {
             it('should work with key as indexing property', function (done) {
                 var fixture = {
-                        id: 'some-id',
+                        _postman_id: 'some-id',
                         name: 'some-name',
                         request: {
                             url: {
@@ -72,7 +72,8 @@ describe('v2.1.0 to v2.0.0', function () {
                                 }]
                             },
                             method: 'GET'
-                        }
+                        },
+                        response: []
                     },
                     options = {
                         inputVersion: '2.1.0',
