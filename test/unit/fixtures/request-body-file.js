@@ -59,12 +59,7 @@ module.exports = {
                 _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
                 name: 'Formdata POST',
                 request: {
-                    url: {
-                        raw: 'https://postman-echo.com/post',
-                        protocol: 'https',
-                        host: ['postman-echo', 'com'],
-                        path: ['post']
-                    },
+                    url: 'https://postman-echo.com/post',
                     method: 'POST',
                     header: [],
                     body: {
@@ -85,12 +80,7 @@ module.exports = {
                 _postman_id: '3d2c6dbc-cefa-0951-2796-3f0142ff85c3',
                 name: 'Binary POST',
                 request: {
-                    url: {
-                        raw: 'https://postman-echo.com/post',
-                        protocol: 'https',
-                        host: ['postman-echo', 'com'],
-                        path: ['post']
-                    },
+                    url: 'https://postman-echo.com/post',
                     method: 'POST',
                     header: [],
                     body: {

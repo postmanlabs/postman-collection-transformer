@@ -331,12 +331,7 @@ module.exports = {
             }
         ],
         request: {
-            url: {
-                raw: 'https://yo.postman.wtf/oauth2/token',
-                protocol: 'https',
-                host: ['yo', 'postman', 'wtf'],
-                path: ['oauth2', 'token']
-            },
+            url: 'https://yo.postman.wtf/oauth2/token',
             method: "POST",
             header: [
                 { key: 'A', value: 'B' },
@@ -380,12 +375,7 @@ module.exports = {
                 id: "0716233b-474d-bac7-bf1f-ccb461ecd3b9",
                 name: "401",
                 originalRequest: {
-                    url: {
-                        raw: "https://yo.postman.wtf/oauth2/token",
-                        protocol: 'https',
-                        host: ['yo', 'postman', 'wtf'],
-                        path: ['oauth2', 'token']
-                    },
+                    url: 'https://yo.postman.wtf/oauth2/token',
                     method: "POST",
                     header: [],
                     body: {
@@ -489,12 +479,7 @@ module.exports = {
                 id: "aa6e8983-172d-692b-f8da-a69af6a27371",
                 name: "200",
                 originalRequest: {
-                    url: {
-                        raw: "https://yo.postman.wtf/oauth2/token",
-                        protocol: 'https',
-                        host: ['yo', 'postman', 'wtf'],
-                        path: ['oauth2', 'token']
-                    },
+                    url: 'https://yo.postman.wtf/oauth2/token',
                     method: "POST",
                     header: [],
                     body: {
