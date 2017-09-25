@@ -3,7 +3,7 @@
  */
 
 var expect = require('chai').expect,
-    transformer = require('../../index');
+    transformer = require('../../../index');
 
 /* global describe, it */
 describe('v1.0.0 to v2.0.0', function () {
@@ -22,7 +22,7 @@ describe('v1.0.0 to v2.0.0', function () {
     describe('transformer', function () {
         describe('.convertSingle()', function () {
             it('should work as intended', function (done) {
-                var fixture = require('./fixtures/single-request'),
+                var fixture = require('../fixtures/single-request'),
                     options = {
                         inputVersion: '1.0.0',
                         outputVersion: '2.0.0',
@@ -43,7 +43,7 @@ describe('v1.0.0 to v2.0.0', function () {
 
         describe('.convert()', function () {
             it('should work as intended', function (done) {
-                var fixture = require('./fixtures/sample-collection'),
+                var fixture = require('../fixtures/sample-collection'),
                     options = {
                         inputVersion: '1.0.0',
                         outputVersion: '2.0.0',
@@ -64,7 +64,7 @@ describe('v1.0.0 to v2.0.0', function () {
 
         describe('.convertResponse()', function () {
             it('should work as intended', function (done) {
-                var fixture = require('./fixtures/single-response'),
+                var fixture = require('../fixtures/single-response'),
                     options = {
                         inputVersion: '1.0.0',
                         outputVersion: '2.0.0',
@@ -85,7 +85,7 @@ describe('v1.0.0 to v2.0.0', function () {
 
     describe('descriptions', function () {
         it('should correctly handle descriptions whilst converting from v1 to v2', function (done) {
-            var fixture = require('./fixtures/sample-description'),
+            var fixture = require('../fixtures/sample-description'),
                 options = {
                     inputVersion: '1.0.0',
                     outputVersion: '2.0.0',
@@ -106,7 +106,7 @@ describe('v1.0.0 to v2.0.0', function () {
 
     describe('request file body', function () {
         it('should correctly handle request file bodies whilst converting from v1 to v2', function (done) {
-            var fixture = require('./fixtures/request-body-file'),
+            var fixture = require('../fixtures/request-body-file'),
                 options = {
                     inputVersion: '1.0.0',
                     outputVersion: '2.0.0',
