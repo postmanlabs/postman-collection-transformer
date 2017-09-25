@@ -4,13 +4,13 @@
         "name": "Postman Echo (shamasified)",
         "_postman_id": "03cf74df-32de-af8b-7db8-855b51b05e50",
         "description": "Postman Echo is service you can use to test your REST clients and make sample API calls. It provides endpoints for `GET`, `POST`, `PUT`, various auth mechanisms and other utility endpoints.",
-        "schema": "https://schema.getpostman.com/json/collection/v2.1.0-draft.1/collection.json"
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
-    "items": [
+    "item": [
         {
             "name": "Auth: Digest",
             "description": "Digest authentication protects an endpoint with a username and password without actually transmitting the password over network.\nOne has to apply a hash function (like MD5, etc) to the username and password before sending them over the network.\n\n> Username: `postman`\n>\n> Password: `password`\n\nUnlike Basic-Auth, authentication happens using two consecutive requests where the first request returns `401 Unauthorised` along with `WWW-Authenticate` header containing information that needs to be used to authenticate subsequent calls.\n\nTo know more about digest authentication, refer to the [Digest Access Authentication](https://en.wikipedia.org/wiki/Digest_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.getpostman.com/docs/helpers#digest-auth) elaborates how to use the same within the Postman app.",
-            "items": [
+            "item": [
                 {
                     "name": "DigestAuth Request",
                     "events": [
@@ -79,17 +79,44 @@
                     "request": {
                         "auth": {
                             "type": "digest",
-                            "digest": {
-                                "algorithm": "MD5",
-                                "username": "postman",
-                                "realm": "{{echo_digest_realm}}",
-                                "password": "password",
-                                "nonce": "{{echo_digest_nonce}}",
-                                "nonceCount": "",
-                                "clientNonce": "",
-                                "opaque": "",
-                                "qop": ""
-                            }
+                            "digest": [
+                                {
+                                    "key": "algorithm",
+                                    "value": "MD5"
+                                },
+                                {
+                                    "key": "username",
+                                    "value": "postman"
+                                },
+                                {
+                                    "key": "realm",
+                                    "value": "{{echo_digest_realm}}"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "password"
+                                },
+                                {
+                                    "key": "nonce",
+                                    "value": "{{echo_digest_nonce}}"
+                                },
+                                {
+                                    "key": "nonceCount",
+                                    "value": ""
+                                },
+                                {
+                                    "key": "clientNonce",
+                                    "value": ""
+                                },
+                                {
+                                    "key": "opaque",
+                                    "value": ""
+                                },
+                                {
+                                    "key": "qop",
+                                    "value": ""
+                                }
+                            ]
                         },
                         "url": "https://echo.getpostman.com/digest-auth",
                         "method": "GET",
@@ -112,17 +139,44 @@
                             "originalRequest": {
                                 "auth": {
                                     "type": "digest",
-                                    "digest": {
-                                        "algorithm": "MD5",
-                                        "username": "postman",
-                                        "realm": "{{echo_digest_realm}}",
-                                        "password": "password",
-                                        "nonce": "{{echo_digest_nonce}}",
-                                        "nonceCount": "",
-                                        "clientNonce": "",
-                                        "opaque": "",
-                                        "qop": ""
-                                    }
+                                    "digest": [
+                                        {
+                                            "key": "algorithm",
+                                            "value": "MD5"
+                                        },
+                                        {
+                                            "key": "username",
+                                            "value": "postman"
+                                        },
+                                        {
+                                            "key": "realm",
+                                            "value": "{{echo_digest_realm}}"
+                                        },
+                                        {
+                                            "key": "password",
+                                            "value": "password"
+                                        },
+                                        {
+                                            "key": "nonce",
+                                            "value": "{{echo_digest_nonce}}"
+                                        },
+                                        {
+                                            "key": "nonceCount",
+                                            "value": ""
+                                        },
+                                        {
+                                            "key": "clientNonce",
+                                            "value": ""
+                                        },
+                                        {
+                                            "key": "opaque",
+                                            "value": ""
+                                        },
+                                        {
+                                            "key": "qop",
+                                            "value": ""
+                                        }
+                                    ]
                                 },
                                 "url": "https://echo.getpostman.com/digest-auth",
                                 "method": "GET",
@@ -228,7 +282,7 @@
         {
             "name": "Auth: Others",
             "description": "Description",
-            "items": [
+            "item": [
                 {
                     "name": "Basic Auth",
                     "events": [
@@ -243,12 +297,16 @@
                     "request": {
                         "auth": {
                             "type": "basic",
-                            "basic": {
-                                "username": "postman",
-                                "password": "password",
-                                "saveHelperData": true,
-                                "showPassword": false
-                            }
+                            "basic": [
+                                {
+                                    "key": "username",
+                                    "value": "postman"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "password"
+                                }
+                            ]
                         },
                         "url": "https://echo.getpostman.com/basic-auth",
                         "method": "GET",
@@ -271,12 +329,16 @@
                             "originalRequest": {
                                 "auth": {
                                     "type": "basic",
-                                    "basic": {
-                                        "username": "postman",
-                                        "password": "password",
-                                        "saveHelperData": true,
-                                        "showPassword": false
-                                    }
+                                    "basic": [
+                                        {
+                                            "key": "username",
+                                            "value": "postman"
+                                        },
+                                        {
+                                            "key": "password",
+                                            "value": "password"
+                                        }
+                                    ]
                                 },
                                 "url": "https://echo.getpostman.com/basic-auth",
                                 "method": "GET",
@@ -368,12 +430,16 @@
                             "originalRequest": {
                                 "auth": {
                                     "type": "basic",
-                                    "basic": {
-                                        "username": "postman",
-                                        "password": "password",
-                                        "saveHelperData": true,
-                                        "showPassword": false
-                                    }
+                                    "basic": [
+                                        {
+                                            "key": "username",
+                                            "value": "postman"
+                                        },
+                                        {
+                                            "key": "password",
+                                            "value": "password"
+                                        }
+                                    ]
                                 },
                                 "url": "https://echo.getpostman.com/basic-auth",
                                 "method": "GET",
@@ -539,7 +605,7 @@
         {
             "name": "Cookies",
             "description": "The cookie related endpoints allow one to get, set and delete simple cookies.\n\nCookies are small snippets of information that is stored in the browser and sent back to the server with every subsequent requests in order to store useful information between requests.\nIf you want to know more about cookies, read the [HTTP Cookie](https://en.wikipedia.org/wiki/HTTP_cookie) article on wikipedia.",
-            "items": [
+            "item": [
                 {
                     "name": "Set Cookies",
                     "events": [
@@ -899,7 +965,7 @@
         {
             "name": "Headers",
             "description": "The following set of endpoints allow one to see the headers being sent as part of a request and to get a custom set of headers as part of response.\n\nHTTP header fields provide required information about the request or response, or about the object sent in the message body. Both request headers and response headers can be controlled using these endpoints.",
-            "items": [
+            "item": [
                 {
                     "name": "Request Headers",
                     "events": [
@@ -982,7 +1048,7 @@
         {
             "name": "Request Methods",
             "description": "HTTP has multiple request \"verbs\", such as `GET`, `PUT`, `POST`, `DELETE`,\n`PATCH`, `HEAD`, etc. \n\nAn HTTP Method (verb) defines how a request should be interpreted by a server. \nThe endpoints in this section demonstrate various HTTP Verbs. Postman supports \nall the HTTP Verbs, including some rarely used ones, such as `PROPFIND`, `UNLINK`, \netc.\n\nFor details about HTTP Verbs, refer to [RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9)\n",
-            "items": [
+            "item": [
                 {
                     "name": "GET Request ",
                     "events": [
@@ -1140,7 +1206,7 @@
         {
             "name": "Utilities",
             "description": "Description",
-            "items": [
+            "item": [
                 {
                     "name": "Response Status Code",
                     "events": [
@@ -1329,7 +1395,7 @@
         {
             "name": "[draft] Auth: OAuth2.0",
             "description": "OAuth 2.0 allows a client to access a resource owners(user) protected resources without direct access to the users credentials.\nThe client obtains an access token which can be used to access the resource owners resources.\nOAuth 2.0 implements 4 different types of grant flows. Postman Echo has implemented the [Authorization Code](https://tools.ietf.org/html/rfc6749#section-1.3.1) grant flow.\n\nThe OAuth flow typically consists of three steps. \nIn the first step the client requests an authentication code from the server implementing the OAuth flow.\nThe authentication code along with other client credentials is then used to get the access token.\nThe access token can be used by the client to access users resources.\n",
-            "items": [
+            "item": [
                 {
                     "name": "OAuth2.0 Get Auth Code",
                     "events": [
