@@ -2336,7 +2336,13 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/cookies/set?foo1=bar1&foo2=bar2",
+                            url: {
+                                raw: "https://echo.getpostman.com/cookies/set?foo1=bar1&foo2=bar2",
+                                protocol: "https",
+                                host: ["echo", "getpostman", "com"],
+                                path: ["cookies", "set"],
+                                query: [{key: "foo1", value: "bar1"}, {key: "foo2", value: "bar2"}]
+                            },
                             method: "GET",
                             header: [],
                             body: {},
@@ -2551,7 +2557,13 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/cookies/delete?foo1&foo2",
+                            url: {
+                                raw: "https://echo.getpostman.com/cookies/delete?foo1&foo2",
+                                protocol: "https",
+                                host: ["echo", "getpostman", "com"],
+                                path: ["cookies", "delete"],
+                                query: [{key: "foo1", value: ""}, {key: "foo2", value: ""}]
+                            },
                             method: "GET",
                             header: [],
                             body: {},
@@ -2691,7 +2703,13 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/response-headers?Content-Type=text/html&Server=apibin",
+                            url: {
+                                raw: "https://echo.getpostman.com/response-headers?Content-Type=text/html&Server=apibin",
+                                protocol: "https",
+                                host: ["echo", "getpostman", "com"],
+                                path: ["response-headers"],
+                                query: [{key: "Content-Type", value: "text/html"}, {key: "Server", value: "apibin"}]
+                            },
                             method: "GET",
                             header: [],
                             body: {
@@ -2756,7 +2774,13 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/get?test=123",
+                            url: {
+                                raw: "https://echo.getpostman.com/get?test=123",
+                                protocol: "https",
+                                host: ["echo", "getpostman", "com"],
+                                path: ["get"],
+                                query: [{key: "test", value: "123"}]
+                            },
                             method: "GET",
                             header: [],
                             body: {
@@ -3183,7 +3207,13 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/oauth2/authtoken?client_id=abc123&response_type=code",
+                            url: {
+                                raw: "https://echo.getpostman.com/oauth2/authtoken?client_id=abc123&response_type=code",
+                                protocol: 'https',
+                                host: ['echo', 'getpostman', 'com'],
+                                path: ['oauth2', 'authtoken'],
+                                query: [{key: 'client_id', value: 'abc123'}, {key: 'response_type', value: 'code'}]
+                            },
                             method: "GET",
                             header: [],
                             body: {
@@ -3786,7 +3816,6 @@ module.exports = {
         ]
     },
     v21: {
-        variables: [],
         info: {
             name: "Postman Echo (shamasified)",
             _postman_id: "03cf74df-32de-af8b-7db8-855b51b05e50",
@@ -3887,15 +3916,15 @@ module.exports = {
                             auth: {
                                 type: "digest",
                                 digest: [
-                                    { key: 'algorithm', value: 'MD5' },
-                                    { key: 'username', value: 'postman' },
-                                    { key: 'realm', value: '{{echo_digest_realm}}' },
-                                    { key: 'password', value: 'password' },
-                                    { key: 'nonce', value: '{{echo_digest_nonce}}' },
-                                    { key: 'nonceCount', value: '' },
-                                    { key: 'clientNonce', value: '' },
-                                    { key: 'opaque', value: '' },
-                                    { key: 'qop', value: '' }
+                                    { key: 'algorithm', value: 'MD5', type: 'string' },
+                                    { key: 'username', value: 'postman', type: 'string' },
+                                    { key: 'realm', value: '{{echo_digest_realm}}', type: 'string' },
+                                    { key: 'password', value: 'password', type: 'string' },
+                                    { key: 'nonce', value: '{{echo_digest_nonce}}', type: 'string' },
+                                    { key: 'nonceCount', value: '', type: 'string' },
+                                    { key: 'clientNonce', value: '', type: 'string' },
+                                    { key: 'opaque', value: '', type: 'string' },
+                                    { key: 'qop', value: '', type: 'string' }
                                 ]
                             },
                             url: {
@@ -4022,10 +4051,10 @@ module.exports = {
                             auth: {
                                 type: "basic",
                                 basic: [
-                                    { key: 'username', value: 'postman' },
-                                    { key: 'password', value: 'password' },
-                                    { key: 'saveHelperData', value: true },
-                                    { key: 'showPassword', value: false }
+                                    { key: 'username', value: 'postman', type: 'string' },
+                                    { key: 'password', value: 'password', type: 'string' },
+                                    { key: 'saveHelperData', value: true, type: 'boolean' },
+                                    { key: 'showPassword', value: false, type: 'boolean' }
                                 ]
                             },
                             url: {
