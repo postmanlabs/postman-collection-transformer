@@ -3,10 +3,10 @@
  */
 
 var expect = require('chai').expect,
-    transformer = require('../../index');
+    transformer = require('../../../index');
 
 /* global describe, it */
-describe('v1.0.0 to v2.0.0', function () {
+describe('v1.0.0 to v2.1.0', function () {
     describe('api', function () {
         it('should have a .convertSingle() function', function () {
             expect(transformer.convertSingle).to.be.a('function');
@@ -22,10 +22,10 @@ describe('v1.0.0 to v2.0.0', function () {
     describe('transformer', function () {
         describe('.convertSingle()', function () {
             it('should work as intended', function (done) {
-                var fixture = require('./fixtures/single-request'),
+                var fixture = require('../fixtures/single-request'),
                     options = {
                         inputVersion: '1.0.0',
-                        outputVersion: '2.0.0',
+                        outputVersion: '2.1.0',
                         retainIds: true
                     };
 
@@ -35,7 +35,7 @@ describe('v1.0.0 to v2.0.0', function () {
                     // remove `undefined` properties for testing
                     converted = JSON.parse(JSON.stringify(converted));
 
-                    expect(converted).to.eql(fixture.v2);
+                    expect(converted).to.eql(fixture.v21);
                     done();
                 });
             });
@@ -43,10 +43,10 @@ describe('v1.0.0 to v2.0.0', function () {
 
         describe('.convert()', function () {
             it('should work as intended', function (done) {
-                var fixture = require('./fixtures/sample-collection'),
+                var fixture = require('../fixtures/sample-collection'),
                     options = {
                         inputVersion: '1.0.0',
-                        outputVersion: '2.0.0',
+                        outputVersion: '2.1.0',
                         retainIds: true
                     };
 
@@ -56,7 +56,7 @@ describe('v1.0.0 to v2.0.0', function () {
                     // remove `undefined` properties for testing
                     converted = JSON.parse(JSON.stringify(converted));
 
-                    expect(converted).to.eql(fixture.v2);
+                    expect(converted).to.eql(fixture.v21);
                     done();
                 });
             });
@@ -64,10 +64,10 @@ describe('v1.0.0 to v2.0.0', function () {
 
         describe('.convertResponse()', function () {
             it('should work as intended', function (done) {
-                var fixture = require('./fixtures/single-response'),
+                var fixture = require('../fixtures/single-response'),
                     options = {
                         inputVersion: '1.0.0',
-                        outputVersion: '2.0.0',
+                        outputVersion: '2.1.0',
                         retainIds: true
                     };
 
@@ -76,7 +76,7 @@ describe('v1.0.0 to v2.0.0', function () {
 
                     // remove `undefined` properties for testing
                     converted = JSON.parse(JSON.stringify(converted));
-                    expect(converted).to.eql(fixture.v2);
+                    expect(converted).to.eql(fixture.v21);
                     done();
                 });
             });
@@ -84,11 +84,11 @@ describe('v1.0.0 to v2.0.0', function () {
     });
 
     describe('descriptions', function () {
-        it('should correctly handle descriptions whilst converting from v1 to v2', function (done) {
-            var fixture = require('./fixtures/sample-description'),
+        it('should correctly handle descriptions whilst converting from v1 to v2.1.0', function (done) {
+            var fixture = require('../fixtures/sample-description'),
                 options = {
                     inputVersion: '1.0.0',
-                    outputVersion: '2.0.0',
+                    outputVersion: '2.1.0',
                     retainIds: true
                 };
 
@@ -98,7 +98,7 @@ describe('v1.0.0 to v2.0.0', function () {
                 // remove `undefined` properties for testing
                 converted = JSON.parse(JSON.stringify(converted));
 
-                expect(converted).to.eql(fixture.v2);
+                expect(converted).to.eql(fixture.v21);
                 done();
             });
         });
@@ -106,10 +106,10 @@ describe('v1.0.0 to v2.0.0', function () {
 
     describe('request file body', function () {
         it('should correctly handle request file bodies whilst converting from v1 to v2', function (done) {
-            var fixture = require('./fixtures/request-body-file'),
+            var fixture = require('../fixtures/request-body-file'),
                 options = {
                     inputVersion: '1.0.0',
-                    outputVersion: '2.0.0',
+                    outputVersion: '2.1.0',
                     retainIds: true
                 };
 
@@ -119,7 +119,7 @@ describe('v1.0.0 to v2.0.0', function () {
                 // remove `undefined` properties for testing
                 converted = JSON.parse(JSON.stringify(converted));
 
-                expect(converted).to.eql(fixture.v2);
+                expect(converted).to.eql(fixture.v21);
                 done();
             });
         });
