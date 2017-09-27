@@ -7,6 +7,7 @@
     "requests": [
         {
             "id": "d66ea01e-803d-4827-91dc-adf1f379d508",
+            "name": "Request",
             "collectionId": "5aff34b9-a2af-4579-8b05-8f3dfea35fe1",
             "method": "GET",
             "headers": "",

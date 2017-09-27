@@ -10,11 +10,11 @@ var expect = require('chai').expect,
     agent = require('superagent');
 
 /* global describe, it, before */
-describe('v1.0.0 ==> v2.0.0', function () {
-    var converter = require('../../lib/converters/v1.0.0/converter-v1-to-v2'),
-        reverseConverter = require('../../lib/converters/v2.1.0/converter-v21-to-v1'),
+describe('v1.0.0 ==> v2.1.0', function () {
+    var converter = require('../../../lib/converters/v1.0.0/converter-v1-to-v21'),
+        reverseConverter = require('../../../lib/converters/v2.1.0/converter-v21-to-v1'),
         schemaUrl = require('../../../lib/constants').SCHEMA_V2_1_0_URL,
-        examplesDir = path.join(__dirname, '../../examples/v1.0.0');
+        examplesDir = path.join(__dirname, '../../../examples/v1.0.0');
 
     describe('sample conversions', function () {
         var schema,
@@ -28,6 +28,7 @@ describe('v1.0.0 ==> v2.0.0', function () {
         });
 
         _.forEach(samples, function (sample, sampleName) {
+            !_.includes(['echo', 'helpers'], sampleName) &&
             it('must create a valid V2.1.0 collection from ' + sampleName + '.json', function (done) {
                 converter.convert(sample, {}, function (err, converted) {
                     var validator = tv4.freshApi(),
@@ -55,6 +56,7 @@ describe('v1.0.0 ==> v2.0.0', function () {
         });
 
         _.forEach(samples, function (sample, sampleName) {
+            !_.includes(['echo', 'helpers'], sampleName) &&
             it(`must create a valid V2.1.0 collection from ${sampleName}.json with synchronous API`, function (done) {
                 var validator = tv4.freshApi(),
                     result,
@@ -69,7 +71,8 @@ describe('v1.0.0 ==> v2.0.0', function () {
 
                 result = validator.validate(converted, schema);
                 if (!result) {
-                    console.log(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
+                    console.log(JSON.stringify(validator.error.subErrors, null, 4));
+                    // console.log(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
                 }
                 if (validator.missing.length) {
                     console.log(validator.missing);
