@@ -4,13 +4,13 @@
         "name": "Box Content API",
         "_postman_id": "48e1ee04-a604-2549-9422-43270e936399",
         "description": "I am trying to update this.",
-        "schema": "https://schema.getpostman.com/json/collection/v2.1.0-draft.1/collection.json"
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
-    "items": [
+    "item": [
         {
             "name": "Collaborations",
             "description": "Description",
-            "items": [
+            "item": [
                 {
                     "name": "Get Pending Collaborations",
                     "request": {
@@ -136,7 +136,7 @@
         {
             "name": "Comments",
             "description": "Description",
-            "items": [
+            "item": [
                 {
                     "name": "Get Information About a Comment",
                     "request": {
@@ -262,7 +262,7 @@
         {
             "name": "Events",
             "description": "Description",
-            "items": [
+            "item": [
                 {
                     "name": "Get Events for a User",
                     "request": {
@@ -328,7 +328,7 @@
         {
             "name": "Files",
             "description": "Description",
-            "items": [
+            "item": [
                 {
                     "name": "Download a File",
                     "request": {
@@ -713,7 +713,7 @@
         {
             "name": "Folders",
             "description": "Description",
-            "items": [
+            "item": [
                 {
                     "name": "Get Information about a Folder",
                     "request": {
@@ -999,7 +999,7 @@
         {
             "name": "Groups",
             "description": "Description",
-            "items": [
+            "item": [
                 {
                     "name": "Get a Group Membership",
                     "request": {
@@ -1285,7 +1285,7 @@
         {
             "name": "On-Behalf-Of-1 copy-1",
             "description": "Description",
-            "items": [
+            "item": [
                 {
                     "name": "Get the Items in a User's Trash",
                     "request": {
@@ -1332,7 +1332,7 @@
         {
             "name": "On-Behalf-Of-1",
             "description": "Description",
-            "items": [
+            "item": [
                 {
                     "name": "Get the Items in a User's Trash",
                     "request": {
@@ -1379,7 +1379,7 @@
         {
             "name": "Provisioning API",
             "description": "Description",
-            "items": [
+            "item": [
                 {
                     "name": "Get an Access Token for a Scoped Folder",
                     "request": {
@@ -1450,7 +1450,7 @@
         {
             "name": "Search",
             "description": "Description",
-            "items": [
+            "item": [
                 {
                     "name": "Search a User's Account",
                     "request": {
@@ -1476,7 +1476,7 @@
         {
             "name": "Shared Items",
             "description": "Description",
-            "items": [
+            "item": [
                 {
                     "name": "Get a Shared Item",
                     "request": {
@@ -1507,7 +1507,7 @@
         {
             "name": "Tasks",
             "description": "Description",
-            "items": [
+            "item": [
                 {
                     "name": "Get Tasks for a File",
                     "request": {
@@ -1733,7 +1733,7 @@
         {
             "name": "Users",
             "description": "Description",
-            "items": [
+            "item": [
                 {
                     "name": "Get Email Aliases for a User",
                     "request": {
@@ -1959,7 +1959,7 @@
         {
             "name": "oAuth 2",
             "description": "Description",
-            "items": [
+            "item": [
                 {
                     "name": "Request Authorization",
                     "request": {

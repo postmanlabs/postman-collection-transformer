@@ -11,9 +11,9 @@ var expect = require('chai').expect,
 
 /* global describe, it, before */
 describe('v2.0.0 ==> v1.0.0', function () {
-    var converter = require('../../lib/converters/converter-v2-to-v1'),
-        schemaUrl = require('../../lib/constants').SCHEMA_V1_URL,
-        examplesDir = path.join(__dirname, '../../examples/v2.1.0');
+    var converter = require('../../../lib/converters/v2.0.0/converter-v2-to-v1'),
+        schemaUrl = require('../../../lib/constants').SCHEMA_V1_URL,
+        examplesDir = path.join(__dirname, '../../../examples/v2.1.0');
 
     describe('sample conversions', function () {
         var schema,
@@ -80,8 +80,8 @@ describe('v2.0.0 ==> v1.0.0', function () {
 
     describe('Exceptional cases', function () {
         describe('Binary File reference', function () {
-            it('should be converted to v1 correctly', function () {
-                var v2 = require('../../examples/v2.0.0/binary-upload.json'),
+            it('should be converted to v1.0.0 correctly', function () {
+                var v2 = require('../../../examples/v2.0.0/binary-upload.json'),
                     v1 = JSON.parse(JSON.stringify(converter.convert(v2)));
                 expect(_.get(v1, 'requests[0].dataMode')).to.equal('binary');
                 expect(_.get(v1, 'requests[0].rawModeData')).to.equal('sample.txt');

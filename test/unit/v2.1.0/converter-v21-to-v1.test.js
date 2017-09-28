@@ -1,13 +1,13 @@
 /**
- * @fileoverview This test suite runs tests on the V1 to V2 converter.
+ * @fileoverview This test suite runs tests on the v2.1.0 to v1.0.0 converter.
  */
 
 var _ = require('lodash'),
     expect = require('chai').expect,
-    transformer = require('../../index');
+    transformer = require('../../../index');
 
 /* global describe, it */
-describe('v2.0.0 to v1.0.0', function () {
+describe('v2.1.0 to v1.0.0', function () {
     describe('api', function () {
         it('should have a .convertSingle() function', function () {
             expect(transformer.convertSingle).to.be.a('function');
@@ -18,14 +18,14 @@ describe('v2.0.0 to v1.0.0', function () {
     describe('transformer', function () {
         describe('.convertSingle()', function () {
             it('should work as intended', function (done) {
-                var fixture = require('./fixtures/single-request'),
+                var fixture = require('../fixtures/single-request'),
                     options = {
-                        inputVersion: '2.0.0',
+                        inputVersion: '2.1.0',
                         outputVersion: '1.0.0',
                         retainIds: true
                     };
 
-                transformer.convertSingle(fixture.v2, options, function (err, converted) {
+                transformer.convertSingle(fixture.v21, options, function (err, converted) {
                     expect(err).to.not.be.ok;
 
                     // remove `undefined` properties for testing
@@ -53,14 +53,14 @@ describe('v2.0.0 to v1.0.0', function () {
 
         describe('.convertResponse()', function () {
             it('should work as intended', function (done) {
-                var fixture = require('./fixtures/single-response'),
+                var fixture = require('../fixtures/single-response'),
                     options = {
-                        inputVersion: '2.0.0',
+                        inputVersion: '2.1.0',
                         outputVersion: '1.0.0',
                         retainIds: true
                     };
 
-                transformer.convertResponse(fixture.v2, options, function (err, converted) {
+                transformer.convertResponse(fixture.v21, options, function (err, converted) {
                     if (err) { return done(err); }
 
                     // remove `undefined` properties for testing
@@ -121,7 +121,7 @@ describe('v2.0.0 to v1.0.0', function () {
                         }
                     },
                     options = {
-                        inputVersion: '2.0.0',
+                        inputVersion: '2.1.0',
                         outputVersion: '1.0.0',
                         retainIds: true
                     };
@@ -158,7 +158,7 @@ describe('v2.0.0 to v1.0.0', function () {
                         }
                     },
                     options = {
-                        inputVersion: '2.0.0',
+                        inputVersion: '2.1.0',
                         outputVersion: '1.0.0',
                         retainIds: true
                     };
@@ -181,15 +181,15 @@ describe('v2.0.0 to v1.0.0', function () {
     });
 
     describe('descriptions', function () {
-        it('should correctly handle descriptions whilst converting from v2 to v1', function (done) {
-            var fixture = require('./fixtures/sample-description'),
+        it('should correctly handle descriptions whilst converting from v2.1.0 to v1.0.0', function (done) {
+            var fixture = require('../fixtures/sample-description'),
                 options = {
-                    inputVersion: '2.0.0',
+                    inputVersion: '2.1.0',
                     outputVersion: '1.0.0',
                     retainIds: true
                 };
 
-            transformer.convert(fixture.v2, options, function (err, converted) {
+            transformer.convert(fixture.v21, options, function (err, converted) {
                 expect(err).to.not.be.ok;
 
                 // remove `undefined` properties for testing
@@ -202,15 +202,15 @@ describe('v2.0.0 to v1.0.0', function () {
     });
 
     describe('request file body', function () {
-        it('should correctly handle request file bodies whilst converting from v2 to v1', function (done) {
-            var fixture = require('./fixtures/request-body-file'),
+        it('should correctly handle request file bodies whilst converting from v2.1.0 to v1.0.0', function (done) {
+            var fixture = require('../fixtures/request-body-file'),
                 options = {
-                    inputVersion: '2.0.0',
+                    inputVersion: '2.1.0',
                     outputVersion: '1.0.0',
                     retainIds: true
                 };
 
-            transformer.convert(fixture.v2, options, function (err, converted) {
+            transformer.convert(fixture.v21, options, function (err, converted) {
                 expect(err).to.not.be.ok;
 
                 // remove `undefined` properties for testing

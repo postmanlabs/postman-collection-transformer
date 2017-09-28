@@ -4,9 +4,9 @@
         "name": "c1",
         "_postman_id": "34783f86-4a67-d3bd-ba5b-148495fa2f72",
         "description": "Description",
-        "schema": "https://schema.getpostman.com/json/collection/v2.1.0-draft.1/collection.json"
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
-    "items": [
+    "item": [
         {
             "name": "OAuth",
             "events": [
@@ -21,20 +21,18 @@
             "request": {
                 "auth": {
                     "type": "oauth1",
-                    "oauth1": {
-                        "consumerKey": "ds",
-                        "consumerSecret": "asdgf",
-                        "token": "",
-                        "tokenSecret": "",
-                        "signatureMethod": "HMAC-SHA1",
-                        "timestamp": "1415542860",
-                        "nonce": "yPmTxQ",
-                        "version": "1.0",
-                        "realm": "",
-                        "addParamsToHeader": false,
-                        "autoAddParam": true,
-                        "addEmptyParamsToSign": false
-                    }
+                    "oauth1": [
+                        { "key": "consumerKey", "value": "ds" },
+                        { "key": "consumerSecret", "value": "asdgf" },
+                        { "key": "token", "value": "" },
+                        { "key": "tokenSecret", "value": "" },
+                        { "key": "signatureMethod", "value": "HMAC-SHA1" },
+                        { "key": "timestamp", "value": "1415542860" },
+                        { "key": "nonce", "value": "yPmTxQ" },
+                        { "key": "version", "value": "1.0" },
+                        { "key": "realm", "value": "" },
+                        { "key": "encodeOAuthSign", "value": true }
+                    ]
                 },
                 "url": "httpbin.org/post",
                 "method": "POST",
@@ -61,11 +59,10 @@
             "request": {
                 "auth": {
                     "type": "basic",
-                    "basic": {
-                        "username": "abhijit",
-                        "password": "kane",
-                        "showPassword": false
-                    }
+                    "basic": [
+                        { "key": "username", "value": "abhijit" },
+                        { "key": "password", "value": "kane" }
+                    ]
                 },
                 "url": "httpbin.org/get",
                 "method": "GET",
@@ -92,17 +89,17 @@
             "request": {
                 "auth": {
                     "type": "digest",
-                    "digest": {
-                        "algorithm": "MD5",
-                        "username": "abhijit",
-                        "realm": "me@kennethreitz.com",
-                        "password": "kane",
-                        "nonce": "b595d63333715eaf0737e4255c288dc1",
-                        "nonceCount": "000001",
-                        "clientNonce": "abcfd",
-                        "opaque": "03a268317fb5ee47794496820f0bb4fd",
-                        "qop": "auth"
-                    }
+                    "digest": [
+                        { "key": "algorithm", "value": "MD5" },
+                        { "key": "username", "value": "abhijit" },
+                        { "key": "realm", "value": "me@kennethreitz.com" },
+                        { "key": "password", "value": "kane" },
+                        { "key": "nonce", "value": "b595d63333715eaf0737e4255c288dc1" },
+                        { "key": "nonceCount", "value": "000001" },
+                        { "key": "clientNonce", "value": "abcfd" },
+                        { "key": "opaque", "value": "03a268317fb5ee47794496820f0bb4fd" },
+                        { "key": "qop", "value": "auth" }
+                    ]
                 },
                 "url": "httpbin.org/get",
                 "method": "GET",
