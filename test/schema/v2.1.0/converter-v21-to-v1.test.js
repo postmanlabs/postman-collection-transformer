@@ -11,9 +11,9 @@ var expect = require('chai').expect,
 
 /* global describe, it, before */
 describe('v2.0.0 ==> v1.0.0', function () {
-    var converter = require('../../lib/converters/converter-v2-to-v1'),
-        schemaUrl = require('../../lib/constants').SCHEMA_V1_URL,
-        examplesDir = path.join(__dirname, '../../examples/v2.1.0');
+    var converter = require('../../../lib/converters/v2.1.0/converter-v21-to-v1'),
+        schemaUrl = require('../../../lib/constants').SCHEMA_V1_URL,
+        examplesDir = path.join(__dirname, '../../../examples/v2.1.0');
 
     describe('sample conversions', function () {
         var schema,
@@ -37,7 +37,7 @@ describe('v2.0.0 ==> v1.0.0', function () {
                     // Converting to and parsing from JSON does this.
                     converted = JSON.parse(JSON.stringify(converted));
                     result = validator.validate(converted, schema);
-                    if (!result) {
+                    if (!result && process.env.CI) { // eslint-disable-line no-process-env
                         console.log(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
                     }
                     if (validator.missing.length) {
@@ -65,7 +65,7 @@ describe('v2.0.0 ==> v1.0.0', function () {
                 converted = JSON.parse(JSON.stringify(converted));
 
                 result = validator.validate(converted, schema);
-                if (!result) {
+                if (!result && process.env.CI) { // eslint-disable-line no-process-env
                     console.log(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
                 }
                 if (validator.missing.length) {
@@ -81,56 +81,12 @@ describe('v2.0.0 ==> v1.0.0', function () {
     describe('Exceptional cases', function () {
         describe('Binary File reference', function () {
             it('should be converted to v1 correctly', function () {
-                var v2 = require('../../examples/v2.0.0/binary-upload.json'),
-                    v1 = JSON.parse(JSON.stringify(converter.convert(v2)));
+                var v21 = require('../../../examples/v2.1.0/binary-upload.json'),
+                    v1 = JSON.parse(JSON.stringify(converter.convert(v21)));
                 expect(_.get(v1, 'requests[0].dataMode')).to.equal('binary');
                 expect(_.get(v1, 'requests[0].rawModeData')).to.equal('sample.txt');
                 expect(_.isEmpty(_.get(v1, 'requests[0].data'))).to.equal(true);
             });
-        });
-    });
-
-    it.skip('must be compatible with both v2.0.0 and v2.1.0 formats', function () {
-        var samples_2_1_0 = requireAll(path.join(__dirname, '../../examples/v2.1.0')),
-            samples_2_0_0 = requireAll(path.join(__dirname, '../../examples/v2.0.0')),
-
-            deepCompare = function (first, second, omitProperties) {
-                if (_.isNaN(first) ||
-                    _.isDate(first) ||
-                    _.isString(first) ||
-                    _.isBoolean(first) ||
-                    _.isNumber(first) ||
-                    _.isNull(first)) {
-                    return first === second;
-                }
-
-                for (var key in first) {
-                    if (!first.hasOwnProperty(key)) {
-                        continue;
-                    }
-                    if (_.includes(omitProperties, key)) {
-                        if (_.isArray(first[key])) {
-                            return first[key].length === second[key].length;
-                        }
-                        continue;
-                    }
-                    if (!deepCompare(first[key], second[key], omitProperties)) {
-                        return false;
-                    }
-                }
-                return true;
-            };
-
-        expect(_.keys(samples_2_0_0)).to.eql(_.keys(samples_2_1_0));
-
-        _.forOwn(samples_2_0_0, function (sample, sampleName) {
-            var convertedExpectation = converter.convert(sample),
-                convertedActual = converter.convert(samples_2_1_0[sampleName]);
-
-            expect(_.keys(convertedExpectation)).to.eql(_.keys(convertedActual));
-            expect(_.keys(convertedExpectation)).to.not.be.empty();
-
-            expect(deepCompare(convertedExpectation, convertedActual, ['id', 'order'])).to.equal(true);
         });
     });
 });
