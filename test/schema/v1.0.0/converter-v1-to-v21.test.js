@@ -10,11 +10,11 @@ var expect = require('chai').expect,
     agent = require('superagent');
 
 /* global describe, it, before */
-describe('v1.0.0 ==> v2.0.0', function () {
-    var converter = require('../../lib/converters/converter-v1-to-v2'),
-        reverseConverter = require('../../lib/converters/converter-v2-to-v1'),
-        schemaUrl = require('../../lib/constants').SCHEMA_V2_URL,
-        examplesDir = path.join(__dirname, '../../examples/v1.0.0');
+describe('v1.0.0 ==> v2.1.0', function () {
+    var converter = require('../../../lib/converters/v1.0.0/converter-v1-to-v21'),
+        reverseConverter = require('../../../lib/converters/v2.1.0/converter-v21-to-v1'),
+        schemaUrl = require('../../../lib/constants').SCHEMA_V2_1_0_URL,
+        examplesDir = path.join(__dirname, '../../../examples/v1.0.0');
 
     describe('sample conversions', function () {
         var schema,
@@ -28,7 +28,8 @@ describe('v1.0.0 ==> v2.0.0', function () {
         });
 
         _.forEach(samples, function (sample, sampleName) {
-            it('must create a valid V2 collection from ' + sampleName + '.json', function (done) {
+            !_.includes(['echo', 'helpers'], sampleName) &&
+            it('must create a valid V2.1.0 collection from ' + sampleName + '.json', function (done) {
                 converter.convert(sample, {}, function (err, converted) {
                     var validator = tv4.freshApi(),
                         result;
@@ -40,7 +41,7 @@ describe('v1.0.0 ==> v2.0.0', function () {
                     converted = JSON.parse(JSON.stringify(converted));
 
                     result = validator.validate(converted, schema);
-                    if (!result) {
+                    if (!result && process.env.CI) { // eslint-disable-line no-process-env
                         console.log(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
                     }
                     if (validator.missing.length) {
@@ -55,7 +56,8 @@ describe('v1.0.0 ==> v2.0.0', function () {
         });
 
         _.forEach(samples, function (sample, sampleName) {
-            it('must create a valid V2 collection from ' + sampleName + '.json with synchronous API', function (done) {
+            !_.includes(['echo', 'helpers'], sampleName) &&
+            it(`must create a valid V2.1.0 collection from ${sampleName}.json with synchronous API`, function (done) {
                 var validator = tv4.freshApi(),
                     result,
                     converted;
@@ -68,7 +70,7 @@ describe('v1.0.0 ==> v2.0.0', function () {
                 converted = JSON.parse(JSON.stringify(converted));
 
                 result = validator.validate(converted, schema);
-                if (!result) {
+                if (!result && process.env.CI) { // eslint-disable-line no-process-env
                     console.log(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
                 }
                 if (validator.missing.length) {
@@ -83,46 +85,46 @@ describe('v1.0.0 ==> v2.0.0', function () {
 
     describe('Exceptional cases', function () {
         it('should handle the edge case of "data" vs "rawModeData"', function () {
-            var v1 = require('../../examples/v1.0.0/simplest.json'),
-                v2 = converter.convert(v1);
-            expect(v2.item[0].request.body.raw).to.eql('something');
+            var v1 = require('../../../examples/v1.0.0/simplest.json'),
+                v21 = converter.convert(v1);
+            expect(v21.item[0].request.body.raw).to.eql('something');
         });
 
         it('should strip out all request and folder ids by default', function () {
-            var v1 = require('../../examples/v1.0.0/simplest.json'),
-                v2 = JSON.parse(JSON.stringify(converter.convert(v1)));
-            expect(v2.item[0]).to.not.have.property('id');
-            expect(v2.item[0]).to.not.have.property('_postman_id');
+            var v1 = require('../../../examples/v1.0.0/simplest.json'),
+                v21 = JSON.parse(JSON.stringify(converter.convert(v1)));
+            expect(v21.item[0]).to.not.have.property('id');
+            expect(v21.item[0]).to.not.have.property('_postman_id');
         });
 
         it('should retain all request and folder ids if asked to', function () {
-            var v1 = require('../../examples/v1.0.0/simplest.json'),
-                v2 = JSON.parse(JSON.stringify(converter.convert(v1, {
+            var v1 = require('../../../examples/v1.0.0/simplest.json'),
+                v21 = JSON.parse(JSON.stringify(converter.convert(v1, {
                     retainIds: true
                 })));
-            expect(v2.item[0]).to.have.property('_postman_id');
+            expect(v21.item[0]).to.have.property('_postman_id');
         });
 
         it('should mark commented out headers as disabled', function () {
-            var v1 = require('../../examples/v1.0.0/disabledheaders.json'),
-                v2 = JSON.parse(JSON.stringify(converter.convert(v1, {
+            var v1 = require('../../../examples/v1.0.0/disabledheaders.json'),
+                v21 = JSON.parse(JSON.stringify(converter.convert(v1, {
                     retainIds: true
                 })));
-            expect(v2.item[0].request.header[1].disabled).to.equal(true);
+            expect(v21.item[0].request.header[1].disabled).to.equal(true);
         });
 
         it('should not set default request body for requests with no data', function () {
-            var v1 = require('../../examples/v1.0.0/emptydata.json'),
-                v2 = JSON.parse(JSON.stringify(converter.convert(v1, {
+            var v1 = require('../../../examples/v1.0.0/emptydata.json'),
+                v21 = JSON.parse(JSON.stringify(converter.convert(v1, {
                     retainIds: true
                 })));
-            expect(_.isEmpty(v2.item[0].request.body)).to.equal(true);
+            expect(_.isEmpty(v21.item[0].request.body)).to.equal(true);
         });
     });
 
     describe('Binary File reference', function () {
         it('should be converted to v2 correctly', function () {
-            var v1 = require('../../examples/v1.0.0/binary-upload.json'),
+            var v1 = require('../../../examples/v1.0.0/binary-upload.json'),
                 v2 = JSON.parse(JSON.stringify(converter.convert(v1, {
                     retainIds: true
                 })));

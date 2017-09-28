@@ -9,6 +9,7 @@
     "item": [
         {
             "id": "d66ea01e-803d-4827-91dc-adf1f379d508",
+            "name": "Request",
             "request": {
                 "url": "http://echo.getpostman.com",
                 "method": "GET"

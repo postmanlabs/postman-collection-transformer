@@ -118,6 +118,96 @@ module.exports = {
         id: '21c40bcc-c1d5-1f91-06df-d7f4e66d1647',
         name: 'Sample Response',
         originalRequest: {
+            url: 'https://google.com',
+            method: 'GET',
+            header: [],
+            body: { mode: 'raw', raw: 'akjshgdajhsgd' }
+        },
+        status: 'OK',
+        code: 200,
+        _postman_previewlanguage: 'html',
+        _postman_previewtype: 'text',
+        header: [
+            {
+                key: 'Alt-Svc',
+                value: 'quic=":443"; ma=2592000; v="37,36,35"',
+                name: 'Alt-Svc',
+                description: 'Custom header'
+            },
+            {
+                key: 'Cache-Control',
+                value: 'private, max-age=0',
+                name: 'Cache-Control',
+                description: 'Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds'
+            },
+            {
+                key: 'Content-Encoding',
+                value: 'gzip',
+                name: 'Content-Encoding',
+                description: 'The type of encoding used on the data.'
+            },
+            {
+                key: 'Content-Type',
+                value: 'text/html; charset=ISO-8859-1',
+                name: 'Content-Type',
+                description: 'The mime type of this content'
+            },
+            {
+                key: 'Date',
+                value: 'Fri, 19 May 2017 11:35:14 GMT',
+                name: 'Date',
+                description: 'The date and time that the message was sent'
+            },
+            {
+                key: 'Expires',
+                value: '-1',
+                name: 'Expires',
+                description: 'Gives the date/time after which the response is considered stale'
+            },
+            {
+                key: 'P3P',
+                value: 'CP="This is not a P3P policy! See https://www.google.com/support/accounts/answer/151657?hl=en for more info."',
+                name: 'P3P',
+                description: 'This header is supposed to set P3P policy, in the form of P3P:CP="your_compact_policy". However, P3P did not take off, most browsers have never fully implemented it, a lot of websites set this header with fake policy text, that was enough to fool browsers the existence of P3P policy and grant permissions for third party cookies.'
+            },
+            {
+                key: 'Server',
+                value: 'gws',
+                name: 'Server',
+                description: 'A name for the server'
+            },
+            {
+                key: 'Set-Cookie',
+                value: 'NID=103=Wk9XMnbuZ1pEP3Ur6SewyTklj1o9E0zaLgGG08eOOqFn4U7R2f7aQVLCKcccyXbjaNzl4ZzvIXHK2hYF9Mdk1ke7a3ftZIJx6nHlI4M83Mx-qGr7Ee-CH2rXVUAQUvdN; expires=Sat, 18-Nov-2017 11:35:14 GMT; path=/; domain=.google.co.in; HttpOnly',
+                name: 'Set-Cookie',
+                description: 'an HTTP cookie'
+            },
+            {
+                key: 'Transfer-Encoding',
+                value: 'chunked',
+                name: 'Transfer-Encoding',
+                description: 'The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity.'
+            },
+            {
+                key: 'X-Frame-Options',
+                value: 'SAMEORIGIN',
+                name: 'X-Frame-Options',
+                description: 'Clickjacking protection: "deny" - no rendering within a frame, "sameorigin" - no rendering if origin mismatch'
+            },
+            {
+                key: 'X-XSS-Protection',
+                value: '1; mode=block',
+                name: 'X-XSS-Protection',
+                description: 'Cross-site scripting (XSS) filter'
+            }],
+        cookie: [],
+        responseTime: 412,
+        body: '<!doctype html><html itemscope="" itemtype="http://schema.org/WebPage" lang="en-IN"><head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"><meta content="/images/branding/googleg/1x/googleg_standard_color_128dp.png" itemprop="image"><title>Google</title><script>(function(){window.google={kEI:\'ctgeWeqbLYTivASs04-gCw\',kEXPI:\'201761,1352961,1353394,3700339,3700347,3700410,3700425,4029815,4031109,4032678,4036527,4039268,4043492,4045841,4048347,4065787,4071842,4072364,4072774,4076096,4076999,4078430,4081039,4081164,4084179,4084977,4085472,4090550,4090553,4091420,4092231,4093169,4093314,4094251,4094542,4095910,4096324,4097153,4097922,4097929,4097951,4098096,4098733,4098740,4098752,4101429,4101430,4101437,4101750,4102238,4103475,4103845,4104204,4105085,4105178,4105317,4105321,4106164,4106606,4106949,4107417,4107555,4107628,4108505,4108537,4108539,4109221,4109316,4109439,4109489,4109498,4109524,4109539,4109629,4110259,4110361,4110380,4110425,4110656,4110899,4111127,4111421,4111607,4111612,4111792,4112009,4112041,4112316,4112318,4112827,8503585,8508229,8508607,8508931,8509037,8509091,8509373,8510343,8513026,10200083,10200096,10201957,19002115,19002174,19002281,19002294,19002296,19002297,41027340\',authuser:0,kscs:\'c9c918f0_24\'};google.kHL=\'en-IN\';})();(function(){google.lc=[];google.li=0;google.getEI=function(a){for(var b;a&&(!a.getAttribute||!(b=a.getAttribute("eid")));)a=a.parentNode;return b||google.kEI};google.getLEI=function(a){for(var b=null;a&&(!a.getAttribute||!(b=a.getAttribute("leid")));)a=a.parentNode;return b};google.https=function(){return"https:"==window.location.protocol};google.ml=function(){return null};google.wl=function(a,b){try{google.ml(Error(a),!1,b)}catch(c){}};google.time=function(){return(new Date).getTime()};google.log=function(a,b,c,d,g){a=google.logUrl(a,b,c,d,g);if(""!=a){b=new Image;var e=google.lc,f=google.li;e[f]=b;b.onerror=b.onload=b.onabort=function(){delete e[f]};window.google&&window.google.vel&&window.google.vel.lu&&window.google.vel.lu(a);b.src=a;google.li=f+1}};google.logUrl=function(a,b,c,d,g){var e="",f=google.ls||"";c||-1!=b.search("&ei=")||(e="&ei="+google.getEI(d),-1==b.search("&lei=")&&(d=google.getLEI(d))&&(e+="&lei="+d));a=c||"/"+(g||"gen_204")+"?atyp=i&ct="+a+"&cad="+b+e+f+"&zx="+google.time();/^http:/i.test(a)&&google.https()&&(google.ml(Error("a"),!1,{src:a,glmm:1}),a="");return a};google.y={};google.x=function(a,b){google.y[a.id]=[a,b];return!1};google.lq=[];google.load=function(a,b,c){google.lq.push([[a],b,c])};google.loadAll=function(a,b){google.lq.push([a,b])};}).call(this);google.f={};var a=window.location,b=a.href.indexOf("#");if(0<=b){var c=a.href.substring(b+1);/(^|&)q=/.test(c)&&-1==c.indexOf("#")&&a.replace("/search?"+c.replace(/(^|&)fp=[^&]*/g,"")+"&cad=h")};</script><style>#gbar,#guser{font-size:13px;padding-top:1px !important;}#gbar{height:22px}#guser{padding-bottom:7px !important;text-align:right}.gbh,.gbd{border-top:1px solid #c9d7f1;font-size:1px}.gbh{height:0;position:absolute;top:24px;width:100%}@media all{.gb1{height:22px;margin-right:.5em;vertical-align:top}#gbar{float:left}}a.gb1,a.gb4{text-decoration:underline !important}a.gb1,a.gb4{color:#00c !important}.gbi .gb4{color:#dd8e27 !important}.gbf .gb4{color:#900 !important}\n</style><style>body,td,a,p,.h{font-family:arial,sans-serif}body{margin:0;overflow-y:scroll}#gog{padding:3px 8px 0}td{line-height:.8em}.gac_m td{line-height:17px}form{margin-bottom:20px}.h{color:#36c}.q{color:#00c}.ts td{padding:0}.ts{border-collapse:collapse}em{font-weight:bold;font-style:normal}.lst{height:25px;width:496px}.gsfi,.lst{font:18px arial,sans-serif}.gsfs{font:17px arial,sans-serif}.ds{display:inline-box;display:inline-block;margin:3px 0 4px;margin-left:4px}input{font-family:inherit}a.gb1,a.gb2,a.gb3,a.gb4{color:#11c !important}body{background:#fff;color:black}a{color:#11c;text-decoration:none}a:hover,a:active{text-decoration:underline}.fl a{color:#36c}a:visited{color:#551a8b}a.gb1,a.gb4{text-decoration:underline}a.gb3:hover{text-decoration:none}#ghead a.gb2:hover{color:#fff !important}.sblc{padding-top:5px}.sblc a{display:block;margin:2px 0;margin-left:13px;font-size:11px}.lsbb{background:#eee;border:solid 1px;border-color:#ccc #999 #999 #ccc;height:30px}.lsbb{display:block}.ftl,#fll a{display:inline-block;margin:0 12px}.lsb{background:url(/images/nav_logo229.png) 0 -261px repeat-x;border:none;color:#000;cursor:pointer;height:30px;margin:0;outline:0;font:15px arial,sans-serif;vertical-align:top}.lsb:active{background:#ccc}.lst:focus{outline:none}</style><script>(function(){window.google.erd={sp:\'hp\',jsr:1,bv:11,cs:false};var f=0,g,h=google.erd,k=h.jsr,l;google.jsmp=!0;google.ml=function(a,b,c,e){google.dl&&google.dl(a,c,b);if(google._epc(a,b,c,e))return null;a=google._gld(a,"/gen_204?atyp=i",c||{},!1);e||google.log(0,"",a);return a};google._epc=function(a,b,c,e){var d=google.erd.jsr;if(0>d){window.console&&console.error(a,c);if(-2==d)throw a;return!0}if(!a||!a.message||"Error loading script"==a.message||!(m()&&1>f||e))return!0;f++;b&&(g=a&&a.message);return!1};google._gld=function(a,b,c,e){b=b+"&ei="+encodeURIComponent(google.kEI)+"&jexpid="+encodeURIComponent(google.kEXPI)+"&srcpg="+encodeURIComponent(h.sp)+"&jsr="+google.erd.jsr+"&bver="+encodeURIComponent(h.bv);for(var d in c)b+="&",b+=encodeURIComponent(d),b+="=",b+=encodeURIComponent(c[d]);b=b+"&emsg="+encodeURIComponent(a.name+": "+a.message);b=b+"&jsst="+encodeURIComponent(a.stack||"N/A");!e&&2E3<=b.length&&(b=b.substr(0,2E3));return b};function m(){if(!h.cs)return!0;var a=google.erd.jsr;void 0==l&&(l=0>a||1==a||1==Math.ceil(Math.random()*a));return l}google.ojsr=function(a){google.erd.jsr=a;l=void 0};google.rjsr=function(){google.erd.jsr=k;l=void 0};window.onerror=function(a,b,c,e,d){g!==a&&google.ml(d instanceof Error?d:Error(a),!1);g=null;m()&&1>f||(window.onerror=null)};})();</script><link href="/images/branding/product/ico/googleg_lodp.ico" rel="shortcut icon"></head><body bgcolor="#fff"><script>(function(){var src=\'/images/nav_logo229.png\';var iesg=false;document.body.onload = function(){window.n && window.n();if (document.images){new Image().src=src;}\nif (!iesg){document.f&&document.f.q.focus();document.gbqf&&document.gbqf.q.focus();}\n}\n})();</script><div id="mngb"> <div id=gbar><nobr><b class=gb1>Search</b> <a class=gb1 href="https://www.google.co.in/imghp?hl=en&tab=wi">Images</a> <a class=gb1 href="https://maps.google.co.in/maps?hl=en&tab=wl">Maps</a> <a class=gb1 href="https://play.google.com/?hl=en&tab=w8">Play</a> <a class=gb1 href="https://www.youtube.com/?gl=IN&tab=w1">YouTube</a> <a class=gb1 href="https://news.google.co.in/nwshp?hl=en&tab=wn">News</a> <a class=gb1 href="https://mail.google.com/mail/?tab=wm">Gmail</a> <a class=gb1 href="https://drive.google.com/?tab=wo">Drive</a> <a class=gb1 style="text-decoration:none" href="https://www.google.co.in/intl/en/options/"><u>More</u> &raquo;</a></nobr></div><div id=guser width=100%><nobr><span id=gbn class=gbi></span><span id=gbf class=gbf></span><span id=gbe></span><a href="http://www.google.co.in/history/optout?hl=en" class=gb4>Web History</a> | <a  href="/preferences?hl=en" class=gb4>Settings</a> | <a target=_top id=gb_70 href="https://accounts.google.com/ServiceLogin?hl=en&passive=true&continue=https://www.google.co.in/%3Fgfe_rd%3Dcr%26ei%3DctgeWYSEILTv8weDpYToDw" class=gb4>Sign in</a></nobr></div><div class=gbh style=left:0></div><div class=gbh style=right:0></div> </div><center><br clear="all" id="lgpd"><div id="lga"><div style="padding:28px 0 3px"><div style="height:110px;width:276px;background:url(/images/branding/googlelogo/1x/googlelogo_white_background_color_272x92dp.png) no-repeat" title="Google" align="left" id="hplogo" onload="window.lol&&lol()"><div style="color:#777;font-size:16px;font-weight:bold;position:relative;top:70px;left:218px" nowrap="">India</div></div></div><br></div><form action="/search" name="f"><table cellpadding="0" cellspacing="0"><tr valign="top"><td width="25%">&nbsp;</td><td align="center" nowrap=""><input name="ie" value="ISO-8859-1" type="hidden"><input value="en-IN" name="hl" type="hidden"><input name="source" type="hidden" value="hp"><input name="biw" type="hidden"><input name="bih" type="hidden"><div class="ds" style="height:32px;margin:4px 0"><input style="color:#000;margin:0;padding:5px 8px 0 6px;vertical-align:top" autocomplete="off" class="lst" value="" title="Google Search" maxlength="2048" name="q" size="57"></div><br style="line-height:0"><span class="ds"><span class="lsbb"><input class="lsb" value="Google Search" name="btnG" type="submit"></span></span><span class="ds"><span class="lsbb"><input class="lsb" value="I\'m Feeling Lucky" name="btnI" onclick="if(this.form.q.value)this.checked=1; else top.location=\'/doodles/\'" type="submit"></span></span></td><td class="fl sblc" align="left" nowrap="" width="25%"><a href="/advanced_search?hl=en-IN&amp;authuser=0">Advanced search</a><a href="/language_tools?hl=en-IN&amp;authuser=0">Language tools</a></td></tr></table><input id="gbv" name="gbv" type="hidden" value="1"></form><div id="gac_scont"></div><div style="font-size:83%;min-height:3.5em"><br><div id="als"><style>#als{font-size:small;margin-bottom:24px}#_eEe{display:inline-block;line-height:28px;}#_eEe a{padding:0 3px;}._lEe{display:inline-block;margin:0 2px;white-space:nowrap}._PEe{display:inline-block;margin:0 2px}</style><div id="_eEe">Google.co.in offered in: <a href="/url?q=https://www.google.co.in/setprefs%3Fsig%3D0_ituMoNH2uBXbs-3dFlfEhowK_aI%253D%26hl%3Dhi%26source%3Dhomepage&amp;sa=U&amp;ved=0ahUKEwjqnPPR7vvTAhUEMY8KHazpA7QQ2ZgBCAU&amp;usg=AFQjCNEzHKdbfZ_VSo1opJlces7A1atK7A">&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</a>  <a href="/url?q=https://www.google.co.in/setprefs%3Fsig%3D0_ituMoNH2uBXbs-3dFlfEhowK_aI%253D%26hl%3Dbn%26source%3Dhomepage&amp;sa=U&amp;ved=0ahUKEwjqnPPR7vvTAhUEMY8KHazpA7QQ2ZgBCAY&amp;usg=AFQjCNHhIpeaJx72UucgbAfReq0kKwF5OA">&#2476;&#2494;&#2434;&#2482;&#2494;</a>  <a href="/url?q=https://www.google.co.in/setprefs%3Fsig%3D0_ituMoNH2uBXbs-3dFlfEhowK_aI%253D%26hl%3Dte%26source%3Dhomepage&amp;sa=U&amp;ved=0ahUKEwjqnPPR7vvTAhUEMY8KHazpA7QQ2ZgBCAc&amp;usg=AFQjCNHSrS2O2ofUSQdJTYEbXhh10Z8MLw">&#3108;&#3142;&#3122;&#3137;&#3095;&#3137;</a>  <a href="/url?q=https://www.google.co.in/setprefs%3Fsig%3D0_ituMoNH2uBXbs-3dFlfEhowK_aI%253D%26hl%3Dmr%26source%3Dhomepage&amp;sa=U&amp;ved=0ahUKEwjqnPPR7vvTAhUEMY8KHazpA7QQ2ZgBCAg&amp;usg=AFQjCNFdcHaQpNcEUD2flKcypO7rdxJwUw">&#2350;&#2352;&#2366;&#2336;&#2368;</a>  <a href="/url?q=https://www.google.co.in/setprefs%3Fsig%3D0_ituMoNH2uBXbs-3dFlfEhowK_aI%253D%26hl%3Dta%26source%3Dhomepage&amp;sa=U&amp;ved=0ahUKEwjqnPPR7vvTAhUEMY8KHazpA7QQ2ZgBCAk&amp;usg=AFQjCNGPdZunfVWRCphl3V9Tnewhx8Rhsw">&#2980;&#2990;&#3007;&#2996;&#3021;</a>  <a href="/url?q=https://www.google.co.in/setprefs%3Fsig%3D0_ituMoNH2uBXbs-3dFlfEhowK_aI%253D%26hl%3Dgu%26source%3Dhomepage&amp;sa=U&amp;ved=0ahUKEwjqnPPR7vvTAhUEMY8KHazpA7QQ2ZgBCAo&amp;usg=AFQjCNEXDBxLu826juq0JDNlpMKdGGLY7w">&#2711;&#2753;&#2716;&#2736;&#2750;&#2724;&#2752;</a>  <a href="/url?q=https://www.google.co.in/setprefs%3Fsig%3D0_ituMoNH2uBXbs-3dFlfEhowK_aI%253D%26hl%3Dkn%26source%3Dhomepage&amp;sa=U&amp;ved=0ahUKEwjqnPPR7vvTAhUEMY8KHazpA7QQ2ZgBCAs&amp;usg=AFQjCNHt4gbjZX4RQWTZKB3vDpEVHvbDag">&#3221;&#3240;&#3277;&#3240;&#3233;</a>  <a href="/url?q=https://www.google.co.in/setprefs%3Fsig%3D0_ituMoNH2uBXbs-3dFlfEhowK_aI%253D%26hl%3Dml%26source%3Dhomepage&amp;sa=U&amp;ved=0ahUKEwjqnPPR7vvTAhUEMY8KHazpA7QQ2ZgBCAw&amp;usg=AFQjCNHCxBbG6vS6UI-awXTsM3IZaVf6jQ">&#3374;&#3378;&#3375;&#3390;&#3379;&#3330;</a>  <a href="/url?q=https://www.google.co.in/setprefs%3Fsig%3D0_ituMoNH2uBXbs-3dFlfEhowK_aI%253D%26hl%3Dpa%26source%3Dhomepage&amp;sa=U&amp;ved=0ahUKEwjqnPPR7vvTAhUEMY8KHazpA7QQ2ZgBCA0&amp;usg=AFQjCNEIeXb2FY73rPeXzNmUB4441453UQ">&#2602;&#2672;&#2588;&#2622;&#2604;&#2624;</a> </div></div></div><span id="footer"><div style="font-size:10pt"><div style="margin:19px auto;text-align:center" id="fll"><a href="/intl/en/ads/">Advertising Programs</a><a href="http://www.google.co.in/services/">Business Solutions</a><a href="https://plus.google.com/104205742743787718296" rel="publisher">+Google</a><a href="/intl/en/about.html">About Google</a><a href="https://www.google.co.in/setprefdomain?prefdom=US&amp;sig=__TreHjR8x1Is3H1TXAuZgUWYzPPY%3D" id="fehl">Google.com</a></div></div><p style="color:#767676;font-size:8pt">&copy; 2017 - <a href="/intl/en/policies/privacy/">Privacy</a> - <a href="/intl/en/policies/terms/">Terms</a></p></span></center><script>(function(){window.google.cdo={height:0,width:0};(function(){var a=window.innerWidth,b=window.innerHeight;if(!a||!b)var c=window.document,d="CSS1Compat"==c.compatMode?c.documentElement:c.body,a=d.clientWidth,b=d.clientHeight;a&&b&&(a!=google.cdo.width||b!=google.cdo.height)&&google.log("","","/client_204?&atyp=i&biw="+a+"&bih="+b+"&ei="+google.kEI);}).call(this);})();</script><div id="xjsd"></div><div id="xjsi"><script>(function(){function c(b){window.setTimeout(function(){var a=document.createElement("script");a.src=b;document.getElementById("xjsd").appendChild(a)},0)}google.dljp=function(b,a){google.xjsu=b;c(a)};google.dlj=c;}).call(this);(function(){window.google.xjsrm=[];})();if(google.y)google.y.first=[];if(!google.xjs){window._=window._||{};window._DumpException=window._._DumpException=function(e){throw e};if(google.timers&&google.timers.load.t){google.timers.load.t.xjsls=new Date().getTime();}google.dljp(\'/xjs/_/js/k\\x3dxjs.hp.en_US.jpg35lljDw8.O/m\\x3dsb_he,d/am\\x3dAAY/rt\\x3dj/d\\x3d1/t\\x3dzcms/rs\\x3dACT90oHWQP6BUfNV29m3nDJl2BYgb4wwZA\',\'/xjs/_/js/k\\x3dxjs.hp.en_US.jpg35lljDw8.O/m\\x3dsb_he,d/am\\x3dAAY/rt\\x3dj/d\\x3d1/t\\x3dzcms/rs\\x3dACT90oHWQP6BUfNV29m3nDJl2BYgb4wwZA\');google.xjs=1;}google.pmc={"sb_he":{"agen":false,"cgen":false,"client":"heirloom-hp","dh":true,"dhqt":true,"ds":"","fl":true,"host":"google.co.in","isbh":28,"jam":0,"jsonp":true,"msgs":{"cibl":"Clear Search","dym":"Did you mean:","lcky":"I\\u0026#39;m Feeling Lucky","lml":"Learn more","oskt":"Input tools","psrc":"This search was removed from your \\u003Ca href=\\"/history\\"\\u003EWeb History\\u003C/a\\u003E","psrl":"Remove","sbit":"Search by image","srch":"Google Search"},"nds":true,"ovr":{},"pq":"","refpd":true,"rfs":[],"sbpl":24,"sbpr":24,"scd":10,"sce":5,"stok":"EB7eP-qzYuUnYszeMLmFkgvvB_c"},"d":{},"aWiv7g":{},"YFCs/g":{}};google.y.first.push(function(){if(google.med){google.med(\'init\');google.initHistory();google.med(\'history\');}});if(google.j&&google.j.en&&google.j.xi){window.setTimeout(google.j.xi,0);}\n</script></div></body></html>'
+    },
+    v21: {
+        id: '21c40bcc-c1d5-1f91-06df-d7f4e66d1647',
+        name: 'Sample Response',
+        originalRequest: {
             url: {
                 raw: 'https://google.com',
                 protocol: 'https',

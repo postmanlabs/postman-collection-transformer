@@ -4,19 +4,19 @@
         "name": "Twitter",
         "_postman_id": "d362bd3b-ab81-2b7d-0ce5-345df1826043",
         "description": "Description",
-        "schema": "https://schema.getpostman.com/json/collection/v2.1.0-draft.1/collection.json"
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
-    "items": [
+    "item": [
         {
             "name": "User Specific",
             "description": "These requests are specific to the user whos auth tokens you have",
-            "items": [
+            "item": [
                 {
                     "name": "Mentions",
                     "request": {
                         "auth": {
                             "type": "oauth1",
-                            "oauth1": {}
+                            "oauth1": []
                         },
                         "url": "https://api.twitter.com/1.1/statuses/home_timeline.json",
                         "method": "GET",
@@ -40,7 +40,7 @@
                     "request": {
                         "auth": {
                             "type": "oauth1",
-                            "oauth1": {}
+                            "oauth1": []
                         },
                         "url": "https://api.twitter.com/1.1/statuses/home_timeline.json",
                         "method": "GET",
@@ -64,7 +64,7 @@
                     "request": {
                         "auth": {
                             "type": "oauth1",
-                            "oauth1": {}
+                            "oauth1": []
                         },
                         "url": "https://api.twitter.com/1.1/statuses/retweets_of_me.json",
                         "method": "GET",
@@ -88,7 +88,7 @@
                     "request": {
                         "auth": {
                             "type": "oauth1",
-                            "oauth1": {}
+                            "oauth1": []
                         },
                         "url": {
                             "raw": "https://api.twitter.com/1.1/statuses/destroy/:id.json",
@@ -133,7 +133,7 @@
         {
             "name": "Search Demo",
             "description": "Description",
-            "items": [
+            "item": [
                 {
                     "name": "Search",
                     "events": [
@@ -148,7 +148,7 @@
                     "request": {
                         "auth": {
                             "type": "oauth1",
-                            "oauth1": {}
+                            "oauth1": []
                         },
                         "url": "https://api.twitter.com/1.1/search/tweets.json?q=postman&count={{count}}&since_id={{since_id}}",
                         "method": "GET",
@@ -172,13 +172,13 @@
         {
             "name": "Demo",
             "description": "Description",
-            "items": [
+            "item": [
                 {
                     "name": "User timeline",
                     "request": {
                         "auth": {
                             "type": "oauth1",
-                            "oauth1": {}
+                            "oauth1": []
                         },
                         "url": "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=sobtiankit",
                         "method": "GET",
@@ -251,7 +251,7 @@
                     "request": {
                         "auth": {
                             "type": "oauth1",
-                            "oauth1": {}
+                            "oauth1": []
                         },
                         "url": "https://api.twitter.com/1.1/search/tweets.json?q=test",
                         "method": "GET",
@@ -275,7 +275,7 @@
         {
             "name": "Collections",
             "description": "Description",
-            "items": [
+            "item": [
                 {
                     "name": "All collections",
                     "request": {
@@ -312,7 +312,7 @@
             "request": {
                 "auth": {
                     "type": "oauth1",
-                    "oauth1": {}
+                    "oauth1": []
                 },
                 "url": "https://api.twitter.com/1.1/statuses/show.json?id={{tweet_id}}",
                 "method": "GET",
@@ -345,7 +345,7 @@
             "request": {
                 "auth": {
                     "type": "oauth1",
-                    "oauth1": {}
+                    "oauth1": []
                 },
                 "url": "https://api.twitter.com/1.1/statuses/retweeters/ids.json?id={{tweet_id}}&count=100&stringify_ids=true",
                 "method": "GET",
@@ -385,7 +385,7 @@
             "request": {
                 "auth": {
                     "type": "oauth1",
-                    "oauth1": {}
+                    "oauth1": []
                 },
                 "url": "https://api.twitter.com/1.1/users/show.json?user_id={{user_id}}",
                 "method": "GET",
@@ -418,7 +418,7 @@
             "request": {
                 "auth": {
                     "type": "oauth1",
-                    "oauth1": {}
+                    "oauth1": []
                 },
                 "url": "https://api.twitter.com/1.1/search/tweets.json?q=postman&count={{count}}&since_id={{since_id}}",
                 "method": "GET",
@@ -491,7 +491,7 @@
             "request": {
                 "auth": {
                     "type": "oauth1",
-                    "oauth1": {}
+                    "oauth1": []
                 },
                 "url": "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=sobtiankit",
                 "method": "GET",
@@ -573,7 +573,7 @@
             "request": {
                 "auth": {
                     "type": "oauth1",
-                    "oauth1": {}
+                    "oauth1": []
                 },
                 "url": "https://api.twitter.com/1.1/statuses/user_timeline.json?user_id={{user_id}}",
                 "method": "GET",
@@ -606,7 +606,7 @@
             "request": {
                 "auth": {
                     "type": "oauth1",
-                    "oauth1": {}
+                    "oauth1": []
                 },
                 "url": "https://api.twitter.com/1.1/statuses/retweets/{{tweet_id}}.json",
                 "method": "GET",
@@ -630,7 +630,7 @@
             "request": {
                 "auth": {
                     "type": "oauth1",
-                    "oauth1": {}
+                    "oauth1": []
                 },
                 "url": "https://api.twitter.com/1.1/lists/list.json?screen_name=alexjv89",
                 "method": "GET",
@@ -663,7 +663,7 @@
             "request": {
                 "auth": {
                     "type": "oauth1",
-                    "oauth1": {}
+                    "oauth1": []
                 },
                 "url": "https://api.twitter.com/1.1/lists/memberships.json?screen_name=runscope&count=200",
                 "method": "GET",
@@ -687,7 +687,7 @@
             "request": {
                 "auth": {
                     "type": "oauth1",
-                    "oauth1": {}
+                    "oauth1": []
                 },
                 "url": "https://api.twitter.com/1.1/statuses/update.json?status=Testing out Twitter integration with Postman",
                 "method": "POST",
