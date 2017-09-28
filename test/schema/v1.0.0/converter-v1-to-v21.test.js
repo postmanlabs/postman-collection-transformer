@@ -41,7 +41,7 @@ describe('v1.0.0 ==> v2.1.0', function () {
                     converted = JSON.parse(JSON.stringify(converted));
 
                     result = validator.validate(converted, schema);
-                    if (!result) {
+                    if (!result && process.env.CI) { // eslint-disable-line no-process-env
                         console.log(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
                     }
                     if (validator.missing.length) {
@@ -70,9 +70,8 @@ describe('v1.0.0 ==> v2.1.0', function () {
                 converted = JSON.parse(JSON.stringify(converted));
 
                 result = validator.validate(converted, schema);
-                if (!result) {
-                    console.log(JSON.stringify(validator.error.subErrors, null, 4));
-                    // console.log(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
+                if (!result && process.env.CI) { // eslint-disable-line no-process-env
+                    console.log(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
                 }
                 if (validator.missing.length) {
                     console.log(validator.missing);
