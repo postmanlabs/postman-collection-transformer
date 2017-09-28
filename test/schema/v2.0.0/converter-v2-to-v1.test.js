@@ -11,9 +11,9 @@ var expect = require('chai').expect,
 
 /* global describe, it, before */
 describe('v2.0.0 ==> v1.0.0', function () {
-    var converter = require('../../lib/converters/v2.0.0/converter-v2-to-v1'),
+    var converter = require('../../../lib/converters/v2.0.0/converter-v2-to-v1'),
         schemaUrl = require('../../../lib/constants').SCHEMA_V1_URL,
-        examplesDir = path.join(__dirname, '../../examples/v2.0.0');
+        examplesDir = path.join(__dirname, '../../../examples/v2.0.0');
 
     describe('sample conversions', function () {
         var schema,
@@ -37,7 +37,7 @@ describe('v2.0.0 ==> v1.0.0', function () {
                     // Converting to and parsing from JSON does this.
                     converted = JSON.parse(JSON.stringify(converted));
                     result = validator.validate(converted, schema);
-                    if (!result) {
+                    if (!result && process.env.CI) { // eslint-disable-line no-process-env
                         console.log(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
                     }
                     if (validator.missing.length) {
@@ -65,7 +65,7 @@ describe('v2.0.0 ==> v1.0.0', function () {
                 converted = JSON.parse(JSON.stringify(converted));
 
                 result = validator.validate(converted, schema);
-                if (!result) {
+                if (!result && process.env.CI) { // eslint-disable-line no-process-env
                     console.log(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
                 }
                 if (validator.missing.length) {
