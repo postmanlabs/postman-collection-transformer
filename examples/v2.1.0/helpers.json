@@ -134,13 +134,6 @@
                 },
                 "url": "http://echo.getpostman.com/auth/bearer",
                 "method": "GET",
-                "header": [
-                    {
-                        "key": "Authorization",
-                        "value": "Bearer wkjehbxoqnunc2k3",
-                        "description": ""
-                    }
-                ],
                 "data": {
                     "mode": "formdata",
                     "formdata": []

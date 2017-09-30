@@ -70,7 +70,6 @@
 		},
     {
       "id": "951fc3e8-c6b6-5c19-9f69-4e7499b3127f",
-      "headers": "Authorization: Bearer wkjehbxoqnunc2k3",
       "url": "http://echo.getpostman.com/auth/bearer",
       "preRequestScript": "",
       "pathVariables": {},
