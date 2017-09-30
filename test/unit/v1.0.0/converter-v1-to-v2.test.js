@@ -124,4 +124,25 @@ describe('v1.0.0 to v2.0.0', function () {
             });
         });
     });
+
+    describe('auth', function () {
+        it('should be handled correctly in v1 -> v2 conversions', function (done) {
+            var fixture = require('../fixtures/sample-auth'),
+                options = {
+                    inputVersion: '1.0.0',
+                    outputVersion: '2.0.0',
+                    retainIds: true
+                };
+
+            transformer.convert(fixture.v1, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql(fixture.v2);
+                done();
+            });
+        });
+    });
 });

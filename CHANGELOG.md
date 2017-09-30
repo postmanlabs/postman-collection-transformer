@@ -1,5 +1,8 @@
 # Postman Collection Transformer Changelog
 
+#### v2.3.0 (September 30, 2017)
+* :tada: Added support for NTLM and Bearer Token auth transformations #76
+
 #### v2.2.1 (September 28, 2017)
 * Restored support for string-object hybrid v2 URLs #75
 

@@ -1554,6 +1554,7 @@ module.exports = {
                     clientNonce: "",
                     opaque: "",
                     qop: "",
+                    disableRetryRequest: false,
                     saveToRequest: true
                 },
                 collectionId: "03cf74df-32de-af8b-7db8-855b51b05e50",
@@ -1957,7 +1958,8 @@ module.exports = {
                                     nonceCount: "",
                                     clientNonce: "",
                                     opaque: "",
-                                    qop: ""
+                                    qop: "",
+                                    disableRetryRequest: false
                                 }
                             },
                             url: "https://echo.getpostman.com/digest-auth",
@@ -3924,7 +3926,8 @@ module.exports = {
                                     { key: 'nonceCount', value: '', type: 'string' },
                                     { key: 'clientNonce', value: '', type: 'string' },
                                     { key: 'opaque', value: '', type: 'string' },
-                                    { key: 'qop', value: '', type: 'string' }
+                                    { key: 'qop', value: '', type: 'string' },
+                                    { key: 'disableRetryRequest', value: false, type: 'boolean' }
                                 ]
                             },
                             url: {
