@@ -103,6 +103,35 @@
             "response": []
         },
         {
+            "id": "951fc3e8-c6b6-5c19-9f69-4e7499b3127f",
+            "name": "test bearer auth success",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "type": "text/javascript",
+                        "exec": "var response = JSON.parse(responseBody); tests['Bearer auth should pass'] = response.status === 'pass';"
+                    }
+                }
+            ],
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": {
+                      "token": "wkjehbxoqnunc2k3"
+                    }
+                },
+                "url": "http://echo.getpostman.com/auth/bearer",
+                "method": "GET",
+                "data": {
+                    "mode": "formdata",
+                    "formdata": []
+                },
+                "description": ""
+            },
+            "response": []
+        },
+        {
             "id": "16f05b20-6d85-7bcd-e236-d2fa85cc811f",
             "name": "DigestAuth",
             "event": [
