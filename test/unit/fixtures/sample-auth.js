@@ -28,6 +28,7 @@ module.exports = {
                 currentHelper: 'oAuth2',
                 helperAttributes: {
                     id: 'oAuth2',
+                    accessToken: 'secretToken',
                     addTokenTo: 'header',
                     callBackUrl: 'https://foo.com/cb',
                     authUrl: 'https://foo.com/au',
@@ -39,7 +40,9 @@ module.exports = {
                     scope: 'all',
                     username: 'postman',
                     password: 'randomSecretString',
-                    redirectUri: 'https://foo.com/rd'
+                    tokenType: 'bearer',
+                    redirectUri: 'https://foo.com/rd',
+                    refreshToken: 'refreshToken'
                 },
                 name: 'OAuth2',
                 collectionId: 'd497d10e-e280-8c83-709a-a4d4ea12ad14',
@@ -138,6 +141,7 @@ module.exports = {
                     auth: {
                         type: 'oauth2',
                         oauth2: {
+                            accessToken: 'secretToken',
                             addTokenTo: 'header',
                             callBackUrl: 'https://foo.com/cb',
                             authUrl: 'https://foo.com/au',
@@ -149,7 +153,9 @@ module.exports = {
                             scope: 'all',
                             username: 'postman',
                             password: 'randomSecretString',
-                            redirectUri: 'https://foo.com/rd'
+                            tokenType: 'bearer',
+                            redirectUri: 'https://foo.com/rd',
+                            refreshToken: 'refreshToken'
                         }
                     },
                     url: 'httpbin.org/post',
@@ -276,6 +282,11 @@ module.exports = {
                         type: 'oauth2',
                         oauth2: [
                             {
+                                key: 'accessToken',
+                                value: 'secretToken',
+                                type: 'string'
+                            },
+                            {
                                 key: 'addTokenTo',
                                 value: 'header',
                                 type: 'string'
@@ -331,8 +342,18 @@ module.exports = {
                                 type: 'string'
                             },
                             {
+                                key: 'tokenType',
+                                value: 'bearer',
+                                type: 'string'
+                            },
+                            {
                                 key: 'redirectUri',
                                 value: 'https://foo.com/rd',
+                                type: 'string'
+                            },
+                            {
+                                key: 'refreshToken',
+                                value: 'refreshToken',
                                 type: 'string'
                             }
                         ]

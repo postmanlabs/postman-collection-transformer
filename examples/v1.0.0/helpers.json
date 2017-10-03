@@ -139,6 +139,7 @@
       "currentHelper": "oAuth2",
       "helperAttributes": {
         "id": "oAuth2",
+        "accessToken": "secretToken",
         "addTokenTo": "header",
         "callBackUrl": "https://foo.com/cb",
         "authUrl": "https://foo.com/au",
@@ -150,7 +151,9 @@
         "scope": "all",
         "username": "postman",
         "password": "randomSecretString",
-        "redirectUri": "https://foo.com/rd"
+        "tokenType": "bearer",
+        "redirectUri": "https://foo.com/rd",
+        "refreshToken": "refreshToken"
       },
       "time": 1415542891315,
       "name": "OAuth2",

@@ -75,6 +75,7 @@
                 "auth": {
                     "type": "oauth2",
                     "oauth2": {
+                        "accessToken": "secretToken",
                         "addTokenTo": "header",
                         "callBackUrl": "https://foo.com/cb",
                         "authUrl": "https://foo.com/au",
@@ -86,7 +87,9 @@
                         "scope": "all",
                         "username": "postman",
                         "password": "randomSecretString",
-                        "redirectUri": "https://foo.com/rd"
+                        "tokenType": "bearer",
+                        "redirectUri": "https://foo.com/rd",
+                        "refreshToken": "refreshToken"
                     }
                 },
                 "url": "httpbin.org/post",

@@ -92,6 +92,11 @@
                     "type": "oauth2",
                     "oauth2": [
                         {
+                            "key": "accessToken",
+                            "value": "secretToken",
+                            "type": "string"
+                        },
+                        {
                             "key": "addTokenTo",
                             "value": "header",
                             "type": "string"
@@ -147,8 +152,18 @@
                             "type": "string"
                         },
                         {
+                            "key": "tokenType",
+                            "value": "bearer",
+                            "type": "string"
+                        },
+                        {
                             "key": "redirectUri",
                             "value": "https://foo.com/rd",
+                            "type": "string"
+                        },
+                        {
+                            "key": "refreshToken",
+                            "value": "refreshToken",
                             "type": "string"
                         }
                     ]
