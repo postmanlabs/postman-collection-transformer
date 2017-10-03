@@ -10,7 +10,7 @@ var expect = require('chai').expect,
     agent = require('superagent');
 
 /* global describe, it, before */
-describe('v2.0.0 ==> v1.0.0', function () {
+describe('v2.1.0 ==> v1.0.0', function () {
     var converter = require('../../../lib/converters/v2.1.0/converter-v21-to-v1'),
         schemaUrl = require('../../../lib/constants').SCHEMA_V1_URL,
         examplesDir = path.join(__dirname, '../../../examples/v2.1.0');
