@@ -60,6 +60,50 @@
             "response": []
         },
         {
+            "id": "51e6ecc7-ff3c-9bc0-8aea-b417c4723f69",
+            "name": "OAuth2",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "type": "text/javascript",
+                        "exec": "var data = JSON.parse(responseBody);\nvar oldNonce = environment.oldNonce;\nvar newNonce = data.form.oauth_nonce;\ntests[\"NewNonce\"]=(oldNonce != newNonce);\npostman.setEnvironmentVariable(\"oldNonce\", newNonce);\ntests[\"HasNonce\"]=data.form.oauth_nonce;console.log('oldNonce: '+oldNonce+', newNonce='+newNonce);console.log('Signature: '+data.form.oauth_signature);"
+                    }
+                }
+            ],
+            "request": {
+                "auth": {
+                    "type": "oauth2",
+                    "oauth2": {
+                        "accessToken": "secretToken",
+                        "addTokenTo": "header",
+                        "callBackUrl": "https://foo.com/cb",
+                        "authUrl": "https://foo.com/au",
+                        "accessTokenUrl": "https://foo.com/at",
+                        "clientId": "uniqueClientIdentifier",
+                        "clientSecret": "secretClientValue",
+                        "clientAuth": "body",
+                        "grantType": "implicit",
+                        "scope": "all",
+                        "username": "postman",
+                        "password": "randomSecretString",
+                        "tokenType": "bearer",
+                        "redirectUri": "https://foo.com/rd",
+                        "refreshToken": "refreshToken"
+                    }
+                },
+                "url": "httpbin.org/post",
+                "method": "POST",
+                "header": [],
+                "data": {
+                    "mode": "formdata",
+                    "formdata": []
+                },
+                "description": ""
+            },
+            "response": []
+        },
+        {
             "id": "35c535b1-7e0f-fba7-ce6c-71162ce45dec",
             "name": "basicAuth",
             "event": [

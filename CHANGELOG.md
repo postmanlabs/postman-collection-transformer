@@ -1,5 +1,8 @@
 # Postman Collection Transformer Changelog
 
+#### v2.3.1 (October 3, 2017)
+* :bug: Corrected OAuth2 param transformations #77
+
 #### v2.3.0 (September 30, 2017)
 * :tada: Added support for NTLM and Bearer Token auth transformations #76
 
