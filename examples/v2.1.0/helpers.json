@@ -76,6 +76,95 @@
             "responses": []
         },
         {
+            "id": "51e6ecc7-ff3c-9bc0-8aea-b417c4723f69",
+            "name": "OAuth",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "type": "text/javascript",
+                        "exec": "var data = JSON.parse(responseBody);\nvar oldNonce = environment.oldNonce;\nvar newNonce = data.form.oauth_nonce;\ntests[\"NewNonce\"]=(oldNonce != newNonce);\npostman.setEnvironmentVariable(\"oldNonce\", newNonce);\ntests[\"HasNonce\"]=data.form.oauth_nonce;console.log('oldNonce: '+oldNonce+', newNonce='+newNonce);console.log('Signature: '+data.form.oauth_signature);"
+                    }
+                }
+            ],
+            "request": {
+                "auth": {
+                    "type": "oauth2",
+                    "oauth2": [
+                        {
+                            "key": "addTokenTo",
+                            "value": "header",
+                            "type": "string"
+                        },
+                        {
+                            "key": "callBackUrl",
+                            "value": "https://foo.com/cb",
+                            "type": "string"
+                        },
+                        {
+                            "key": "authUrl",
+                            "value": "https://foo.com/au",
+                            "type": "string"
+                        },
+                        {
+                            "key": "accessTokenUrl",
+                            "value": "https://foo.com/at",
+                            "type": "string"
+                        },
+                        {
+                            "key": "clientId",
+                            "value": "uniqueClientIdentifier",
+                            "type": "string"
+                        },
+                        {
+                            "key": "clientSecret",
+                            "value": "secretClientValue",
+                            "type": "string"
+                        },
+                        {
+                            "key": "clientAuth",
+                            "value": "body",
+                            "type": "string"
+                        },
+                        {
+                            "key": "grantType",
+                            "value": "implicit",
+                            "type": "string"
+                        },
+                        {
+                            "key": "scope",
+                            "value": "all",
+                            "type": "string"
+                        },
+                        {
+                            "key": "username",
+                            "value": "postman",
+                            "type": "string"
+                        },
+                        {
+                            "key": "password",
+                            "value": "randomSecretString",
+                            "type": "string"
+                        },
+                        {
+                            "key": "redirectUri",
+                            "value": "https://foo.com/rd",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "url": "httpbin.org/post",
+                "method": "POST",
+                "header": [],
+                "data": {
+                    "mode": "formdata",
+                    "formdata": []
+                },
+                "description": ""
+            },
+            "response": []
+        },
+        {
             "name": "basicAuth",
             "events": [
                 {
