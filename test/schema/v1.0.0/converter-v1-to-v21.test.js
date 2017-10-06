@@ -28,7 +28,7 @@ describe('v1.0.0 ==> v2.1.0', function () {
         });
 
         _.forEach(samples, function (sample, sampleName) {
-            !_.includes(['echo', 'helpers'], sampleName) &&
+            !_.includes(['echo', 'helpers', 'nestedEntities'], sampleName) &&
             it('must create a valid V2.1.0 collection from ' + sampleName + '.json', function (done) {
                 converter.convert(sample, {}, function (err, converted) {
                     var validator = tv4.freshApi(),
@@ -56,7 +56,7 @@ describe('v1.0.0 ==> v2.1.0', function () {
         });
 
         _.forEach(samples, function (sample, sampleName) {
-            !_.includes(['echo', 'helpers'], sampleName) &&
+            !_.includes(['echo', 'helpers', 'nestedEntities'], sampleName) &&
             it(`must create a valid V2.1.0 collection from ${sampleName}.json with synchronous API`, function (done) {
                 var validator = tv4.freshApi(),
                     result,
