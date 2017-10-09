@@ -1,11 +1,16 @@
 {
-	"variables": [],
 	"info": {
 		"name": "auth-v1",
 		"_postman_id": "46da69ac-9035-50c4-fcab-44d9167e06f4",
 		"description": "A simple V1 collection to elucidate nested auth helpers, variables, and scripts",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
+  "variable": [{
+    "id": "collection",
+    "value": "variable",
+    "type": "string",
+    "description": "This is a collection level variable"
+  }],
 	"auth": {
 		"type": "basic",
 		"basic": {
@@ -37,7 +42,12 @@
 		{
 			"name": "F1",
 			"description": "Folder 1",
-			"variables": [],
+      "variable": [{
+        "id": "folder",
+        "value": "variable",
+        "type": "string",
+        "description": "This is a folder level variable"
+      }],
 			"auth": {
 				"type": "basic",
 				"basic": {
@@ -68,7 +78,12 @@
 			"item": [
 				{
 					"name": "Basic",
-					"variables": [],
+          "variable": [{
+            "id": "request",
+            "value": "variable",
+            "type": "string",
+            "description": "This is a request level variable"
+          }],
 					"event": [
 						{
 							"listen": "test",
@@ -109,6 +124,12 @@
 		},
 		{
 			"name": "OAuth1",
+      "variable": [{
+        "id": "request",
+        "value": "variable",
+        "type": "string",
+        "description": "This is a request level variable"
+      }],
 			"event": [
 				{
 					"listen": "test",

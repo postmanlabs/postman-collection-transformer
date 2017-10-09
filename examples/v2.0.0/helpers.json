@@ -33,7 +33,6 @@
                         "version": "1.0",
                         "realm": "",
                         "addParamsToHeader": false,
-                        "autoAddParam": true,
                         "addEmptyParamsToSign": false
                     }
                 },
@@ -120,8 +119,7 @@
                     "type": "basic",
                     "basic": {
                         "username": "abhijit",
-                        "password": "kane",
-                        "showPassword": false
+                        "password": "kane"
                     }
                 },
                 "url": {
