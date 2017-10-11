@@ -17,25 +17,63 @@
 				"95b3bde0-96a2-7f91-8e65-e007bb28ae62",
 				"fd20f294-3f94-c979-3440-4934c89c353d"
 			],
-			"preRequestScript": "console.log('Folder level pre request script');",
-			"tests": "console.log('Folder level test script');",
 			"auth": {
         "type": "digest",
-        "digest": {
-          "algorithm": "MD5",
-          "username": "postman",
-          "realm": "{{echo_digest_realm}}",
-          "password": "password",
-          "nonce": "{{echo_digest_nonce}}",
-          "nonceCount": "",
-          "clientNonce": "",
-          "opaque": "",
-          "qop": "",
-          "saveToRequest": true
-        }
-			},
+        "digest": [
+          {
+            "key": "algorithm",
+            "value": "MD5",
+            "type": "string"
+          },
+          {
+            "key": "username",
+            "value": "postman",
+            "type": "string"
+          },
+          {
+            "key": "realm",
+            "value": "{{echo_digest_realm}}",
+            "type": "string"
+          },
+          {
+            "key": "password",
+            "value": "password",
+            "type": "string"
+          },
+          {
+            "key": "nonce",
+            "value": "{{echo_digest_nonce}}",
+            "type": "string"
+          },
+          {
+            "key": "nonceCount",
+            "value": "",
+            "type": "string"
+          },
+          {
+            "key": "clientNonce",
+            "value": "",
+            "type": "string"
+          },
+          {
+            "key": "opaque",
+            "value": "",
+            "type": "string"
+          },
+          {
+            "key": "qop",
+            "value": "",
+            "type": "string"
+          },
+          {
+            "key": "saveToRequest",
+            "value": true,
+            "type": "boolean"
+          }
+        ]
+      },
       "variables": [{
-        "id": "folder",
+        "key": "folder",
         "value": "variable",
         "type": "string",
         "description": "This is a folder level variable"
@@ -49,7 +87,7 @@
 		"5be148b3-0081-5a59-5273-9014161b0292"
 	],
   "variables": [{
-    "id": "collection",
+    "key": "collection",
     "value": "variable",
     "type": "string",
     "description": "This is a collection level variable"
@@ -72,14 +110,38 @@
   }],
   "auth": {
     "type": "awsv4",
-    "awsv4": {
-      "accessKey": "{{id}}",
-      "secretKey": "{{key}}",
-      "region": "us-east-1",
-      "service": "iam",
-      "sessionToken": "",
-      "saveToRequest": true
-    }
+    "awsv4": [
+      {
+        "key": "accessKey",
+        "value": "{{id}}",
+        "type": "string"
+      },
+      {
+        "key": "secretKey",
+        "value": "{{key}}",
+        "type": "string"
+      },
+      {
+        "key": "region",
+        "value": "us-east-1",
+        "type": "string"
+      },
+      {
+        "key": "service",
+        "value": "iam",
+        "type": "string"
+      },
+      {
+        "key": "sessionToken",
+        "value": "",
+        "type": "string"
+      },
+      {
+        "key": "saveToRequest",
+        "value": true,
+        "type": "boolean"
+      }
+    ]
   },
 	"requests": [
 		{
@@ -99,10 +161,18 @@
 			"tests": "console.log('Request level test script');",
       "auth": {
         "type": "basic",
-        "basic": {
-          "username": "{{username}}",
-          "password": "{{token}}"
-        }
+        "basic": [
+          {
+            "key": "username",
+            "value": "{{username}}",
+            "type": "string"
+          },
+          {
+            "key": "password",
+            "value": "{{token}}",
+            "type": "string"
+          }
+        ]
       },
 			"currentHelper": "basicAuth",
 			"helperAttributes": {
@@ -117,7 +187,7 @@
 			"collectionId": "371e9fa3-97d3-ca11-07c0-836a72a325c2",
 			"responses": [],
       "variables": [{
-        "id": "request",
+        "key": "request",
         "value": "variable",
         "type": "string",
         "description": "This is a request level variable"
@@ -141,21 +211,73 @@
 			"tests": "console.log('Request level test script');",
       "auth": {
         "type": "oauth1",
-        "oauth1": {
-          "consumerKey": "RKCGzna7bv9YD57c",
-          "consumerSecret": "D+EdQ-gs$-%@2Nu7",
-          "token": "",
-          "tokenSecret": "",
-          "signatureMethod": "HMAC-SHA1",
-          "timestamp": "1500452534",
-          "nonce": "S0kXloMHurS",
-          "version": "1.0",
-          "realm": "",
-          "encodeSignature": true,
-          "header": false,
-          "includeEmpty": false,
-          "saveToRequest": true
-        }
+        "oauth1": [
+          {
+            "key": "consumerKey",
+            "value": "RKCGzna7bv9YD57c",
+            "type": "string"
+          },
+          {
+            "key": "consumerSecret",
+            "value": "D+EdQ-gs$-%@2Nu7",
+            "type": "string"
+          },
+          {
+            "key": "token",
+            "value": "",
+            "type": "string"
+          },
+          {
+            "key": "tokenSecret",
+            "value": "",
+            "type": "string"
+          },
+          {
+            "key": "signatureMethod",
+            "value": "HMAC-SHA1",
+            "type": "string"
+          },
+          {
+            "key": "timestamp",
+            "value": "1500452534",
+            "type": "string"
+          },
+          {
+            "key": "nonce",
+            "value": "S0kXloMHurS",
+            "type": "string"
+          },
+          {
+            "key": "version",
+            "value": "1.0",
+            "type": "string"
+          },
+          {
+            "key": "realm",
+            "value": "",
+            "type": "string"
+          },
+          {
+            "key": "encodeSignature",
+            "value": true,
+            "type": "boolean"
+          },
+          {
+            "key": "header",
+            "value": false,
+            "type": "boolean"
+          },
+          {
+            "key": "includeEmpty",
+            "value": false,
+            "type": "boolean"
+          },
+          {
+            "key": "saveToRequest",
+            "value": true,
+            "type": "boolean"
+          }
+        ]
       },
 			"currentHelper": "oAuth1",
 			"helperAttributes": {
@@ -178,7 +300,7 @@
 			"name": "OAuth1",
 			"description": "",
       "variables": [{
-        "id": "request",
+        "key": "request",
         "value": "variable",
         "type": "string",
         "description": "This is a request level variable"
