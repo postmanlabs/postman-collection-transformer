@@ -1854,7 +1854,6 @@ module.exports = {
         ]
     },
     v2: {
-        variables: [],
         info: {
             name: "Postman Echo (shamasified)",
             _postman_id: "03cf74df-32de-af8b-7db8-855b51b05e50",
