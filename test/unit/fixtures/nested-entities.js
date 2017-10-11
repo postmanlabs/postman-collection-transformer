@@ -8,6 +8,7 @@ module.exports = {
         ],
         variables: [{
             id: 'collection',
+            key: 'collection',
             value: 'variable',
             type: 'string',
             description: 'This is a collection level variable'
@@ -20,6 +21,7 @@ module.exports = {
                 ],
                 variables: [{
                     id: 'folder',
+                    key: 'folder',
                     value: 'variable',
                     type: 'string',
                     description: 'This is a folder level variable'
@@ -154,6 +156,7 @@ module.exports = {
                 id: 'a742022f-ff24-18c5-6e8b-0c4e7d7aee08',
                 variables: [{
                     id: 'request',
+                    key: 'request',
                     value: 'variable',
                     type: 'string',
                     description: 'This is a request level variable'
@@ -218,6 +221,7 @@ module.exports = {
                 id: 'f619a417-7ab7-d28b-e75e-f110b5862eb6',
                 variables: [{
                     id: 'request',
+                    key: 'request',
                     value: 'variable',
                     type: 'string',
                     description: 'This is a request level variable'
@@ -331,6 +335,7 @@ module.exports = {
         },
         variable: [{
             id: 'collection',
+            key: 'collection',
             value: 'variable',
             type: 'string',
             description: 'This is a collection level variable'
@@ -372,6 +377,7 @@ module.exports = {
                 name: 'F1',
                 variable: [{
                     id: 'folder',
+                    key: 'folder',
                     value: 'variable',
                     type: 'string',
                     description: 'This is a folder level variable'
@@ -416,6 +422,7 @@ module.exports = {
                         name: 'Basic',
                         variable: [{
                             id: 'request',
+                            key: 'request',
                             value: 'variable',
                             type: 'string',
                             description: 'This is a request level variable'
@@ -465,6 +472,7 @@ module.exports = {
                 name: 'OAuth1',
                 variable: [{
                     id: 'request',
+                    key: 'request',
                     value: 'variable',
                     type: 'string',
                     description: 'This is a request level variable'
@@ -525,6 +533,7 @@ module.exports = {
         },
         variable: [{
             id: 'collection',
+            key: 'collection',
             value: 'variable',
             type: 'string',
             description: 'This is a collection level variable'
@@ -590,6 +599,7 @@ module.exports = {
                 name: 'F1',
                 variable: [{
                     id: 'folder',
+                    key: 'folder',
                     value: 'variable',
                     type: 'string',
                     description: 'This is a folder level variable'
@@ -669,6 +679,7 @@ module.exports = {
                         _postman_id: 'a742022f-ff24-18c5-6e8b-0c4e7d7aee08',
                         variable: [{
                             id: 'request',
+                            key: 'request',
                             value: 'variable',
                             type: 'string',
                             description: 'This is a request level variable'
@@ -731,6 +742,7 @@ module.exports = {
                 _postman_id: 'f619a417-7ab7-d28b-e75e-f110b5862eb6',
                 variable: [{
                     id: 'request',
+                    key: 'request',
                     value: 'variable',
                     type: 'string',
                     description: 'This is a request level variable'
