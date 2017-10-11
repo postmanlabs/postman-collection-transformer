@@ -6,7 +6,7 @@
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
   "variable": [{
-    "id": "collection",
+    "key": "collection",
     "value": "variable",
     "type": "string",
     "description": "This is a collection level variable"
@@ -43,7 +43,7 @@
 			"name": "F1",
 			"description": "Folder 1",
       "variable": [{
-        "id": "folder",
+        "key": "folder",
         "value": "variable",
         "type": "string",
         "description": "This is a folder level variable"
@@ -79,7 +79,7 @@
 				{
 					"name": "Basic",
           "variable": [{
-            "id": "request",
+            "key": "request",
             "value": "variable",
             "type": "string",
             "description": "This is a request level variable"
@@ -125,7 +125,7 @@
 		{
 			"name": "OAuth1",
       "variable": [{
-        "id": "request",
+        "key": "request",
         "value": "variable",
         "type": "string",
         "description": "This is a request level variable"
