@@ -50,9 +50,9 @@ All options:
         -w, --overwrite                 Overwrite the output file if it exists
 
 If you'd rather use the transformer as a library:
-
-    var transformer = require('../index'),
-        collection = require('../examples/v1/box.json'),
+```javascript
+    var transformer = require('postman-collection-transformer'),
+        collection = require('./path/to/collection.json'),
         inspect = require('util').inspect,
 
         options = {
@@ -69,6 +69,7 @@ If you'd rather use the transformer as a library:
         // result <== the converted collection as a raw Javascript object
         console.log(inspect(result, {colors: true, depth: 10000}));
     });
+```
     
 #### Converting Individual Requests
 
@@ -111,5 +112,59 @@ You can convert individual responses too if needed:
 
     transformer.convertResponse(objectToConvert, options, function (err, converted) {
         console.log(converted);
+    });
+```
+
+#### Normalizing v1 collections
+
+The transformer also provides a Command line API to normalize collections for full forward compatibility.
+
+Example:
+
+    $ transform-collection normalize \
+        --input ./v1-collection.json \
+        --normalize-version 1.0.0 \
+        --output ./v1-norm-collection.json \
+        --pretty \
+        --overwrite
+
+All options:
+
+    $ transform-collection normalize -h
+
+      Usage: normalize [options]
+
+      Normalizes a postman collection according to the provided version
+
+
+      Options:
+
+        -i, --input <path>                 Path to the collection JSON file to be normalized
+        -n, --normalize-version <version>  The version to normalizers the provided collection on
+        -o, --output <path>                Path to the target file, where the normalized collection will be written
+        -P, --pretty                       Pretty print the output
+        --retain-ids                       Retain the request and folder IDs during conversion (collection ID is always retained)
+        -w, --overwrite                    Overwrite the output file if it exists
+        -h, --help                         Output usage information
+
+
+If you'd rather use the transformer as a library:
+```javascript
+    var transformer = require('postman-collection-transformer'),
+        collection = require('./path/to/collection.json'),
+        inspect = require('util').inspect,
+
+        options = {
+            normalizeVersion: '1.0.0',
+            retainIds: true  // the transformer strips request-ids etc by default.
+        };
+
+    transformer.normalize(collection, options, function (error, result) {
+        if (error) {
+            return console.error(error);
+        }
+
+        // result <== the converted collection as a raw Javascript object
+        console.log(inspect(result, {colors: true, depth: 10000}));
     });
 ```
