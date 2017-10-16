@@ -114,7 +114,6 @@ program
             if (err) { return log.error('Unable to convert the input: ', err); }
 
             writeJSON(result, options, function (error) {
-                console.log('HERE');
                 error && log.error('Could not create output file %s', options.output, error);
             });
         });

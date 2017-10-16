@@ -39,7 +39,7 @@ module.exports = {
         method: 'POST',
         pathVariables: {},
         url: 'https://yo.postman.wtf/oauth2/token',
-        preRequestScript: '',
+        preRequestScript: 'console.log("This is a request level pre-request script");',
         // eslint-disable-next-line max-len
         tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\nvar body = JSON.parse(responseBody);\ntests[\'body has access token\'] = \'access_token\' in body;\ntests[\'body has bearer type\'] = \'token_type\' in body;',
         currentHelper: 'normal',
@@ -92,8 +92,7 @@ module.exports = {
                     headers: '',
                     dataMode: 'params',
                     method: 'POST',
-                    // eslint-disable-next-line max-len
-                    tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\nvar body = JSON.parse(responseBody);\ntests[\'body has access token\'] = \'access_token\' in body;\ntests[\'body has bearer type\'] = \'token_type\' in body;',
+                    preRequestScript: 'console.log("This is a request level pre-request script");',
                     isFromCollection: true,
                     write: true,
                     version: 2
@@ -226,8 +225,6 @@ module.exports = {
                     headers: '',
                     dataMode: 'params',
                     method: 'POST',
-                    // eslint-disable-next-line max-len
-                    tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\nvar body = JSON.parse(responseBody);\ntests[\'body has access token\'] = \'access_token\' in body;\ntests[\'body has bearer type\'] = \'token_type\' in body;',
                     isFromCollection: true,
                     write: true,
                     version: 2
@@ -357,6 +354,14 @@ module.exports = {
         rawModeData: null,
         descriptionFormat: null,
         events: [{
+            listen: 'prerequest',
+            script: {
+                type: 'text/javascript',
+                exec: [
+                    'console.log("This is a request level pre-request script");'
+                ]
+            }
+        }, {
             listen: 'test',
             script: {
                 type: 'text/javascript',
@@ -385,11 +390,9 @@ module.exports = {
         method: 'POST',
         pathVariables: {},
         url: 'https://yo.postman.wtf/oauth2/token',
-        preRequestScript: '',
+        preRequestScript: 'console.log("This is a request level pre-request script");',
         // eslint-disable-next-line max-len
         tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\nvar body = JSON.parse(responseBody);\ntests[\'body has access token\'] = \'access_token\' in body;\ntests[\'body has bearer type\'] = \'token_type\' in body;',
-        currentHelper: 'normal',
-        helperAttributes: {},
         collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
         responses: [
             {
@@ -402,14 +405,11 @@ module.exports = {
                     // eslint-disable-next-line max-len
                     description: 'Tries to get the access token by passing the clientId , clientSecret,\nauthentication code, redirect URI and grant type.\n',
                     events: [{
-                        listen: 'test',
+                        listen: 'prerequest',
                         script: {
                             type: 'text/javascript',
                             exec: [
-                                'tests[\'response code is 200\'] = responseCode.code === 200;',
-                                'var body = JSON.parse(responseBody);',
-                                'tests[\'body has access token\'] = \'access_token\' in body;',
-                                'tests[\'body has bearer type\'] = \'token_type\' in body;'
+                                'console.log("This is a request level pre-request script");'
                             ]
                         }
                     }],
@@ -450,8 +450,7 @@ module.exports = {
                     headers: '',
                     dataMode: 'params',
                     method: 'POST',
-                    // eslint-disable-next-line max-len
-                    tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\nvar body = JSON.parse(responseBody);\ntests[\'body has access token\'] = \'access_token\' in body;\ntests[\'body has bearer type\'] = \'token_type\' in body;',
+                    preRequestScript: 'console.log("This is a request level pre-request script");',
                     isFromCollection: true,
                     write: true,
                     version: 2
@@ -546,18 +545,6 @@ module.exports = {
                     name: 'Access Token',
                     // eslint-disable-next-line max-len
                     description: 'Tries to get the access token by passing the clientId , clientSecret,\nauthentication code, redirect URI and grant type.\n',
-                    events: [{
-                        listen: 'test',
-                        script: {
-                            type: 'text/javascript',
-                            exec: [
-                                'tests[\'response code is 200\'] = responseCode.code === 200;',
-                                'var body = JSON.parse(responseBody);',
-                                'tests[\'body has access token\'] = \'access_token\' in body;',
-                                'tests[\'body has bearer type\'] = \'token_type\' in body;'
-                            ]
-                        }
-                    }],
                     url: 'https://yo.postman.wtf/oauth2/token',
                     pathVariables: {},
                     data: [
@@ -595,8 +582,6 @@ module.exports = {
                     headers: '',
                     dataMode: 'params',
                     method: 'POST',
-                    // eslint-disable-next-line max-len
-                    tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\nvar body = JSON.parse(responseBody);\ntests[\'body has access token\'] = \'access_token\' in body;\ntests[\'body has bearer type\'] = \'token_type\' in body;',
                     isFromCollection: true,
                     write: true,
                     version: 2
