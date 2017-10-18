@@ -91,7 +91,8 @@ describe('v1.0.0 normalization', function () {
                             password: 'password'
                         },
                         auth: {
-                            type: 'noauth'
+                            type: 'bearer',
+                            bearer: [{key: 'token', value: 'randomSecretString', type: 'string'}]
                         }
                     };
 

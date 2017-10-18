@@ -159,7 +159,8 @@ describe('v1.0.0 to v2.0.0', function () {
                         password: 'password'
                     },
                     auth: {
-                        type: 'noauth'
+                        type: 'bearer',
+                        bearer: [{key: 'token', value: 'randomSecretString', type: 'string'}]
                     }
                 };
 
@@ -169,13 +170,24 @@ describe('v1.0.0 to v2.0.0', function () {
                 // remove `undefined` properties for testing
                 converted = JSON.parse(JSON.stringify(converted));
 
-                expect(converted.request.auth).to.eql({
-                    type: 'basic',
-                    basic: {
-                        username: 'username',
-                        password: 'password',
-                        showPassword: false
-                    }
+                expect(converted).to.eql({
+                    name: '',
+                    request: {
+                        auth: {
+                            type: 'basic',
+                            basic: {
+                                username: 'username',
+                                password: 'password',
+                                showPassword: false
+                            }
+                        },
+                        body: {
+                            mode: 'raw',
+                            raw: ''
+                        },
+                        header: []
+                    },
+                    response: []
                 });
                 done();
             });
@@ -208,12 +220,23 @@ describe('v1.0.0 to v2.0.0', function () {
                 // remove `undefined` properties for testing
                 converted = JSON.parse(JSON.stringify(converted));
 
-                expect(converted.request.auth).to.eql({
-                    type: 'basic',
-                    basic: {
-                        username: 'username',
-                        password: 'password'
-                    }
+                expect(converted).to.eql({
+                    name: '',
+                    request: {
+                        auth: {
+                            type: 'basic',
+                            basic: {
+                                username: 'username',
+                                password: 'password'
+                            }
+                        },
+                        body: {
+                            mode: 'raw',
+                            raw: ''
+                        },
+                        header: []
+                    },
+                    response: []
                 });
                 done();
             });
@@ -272,19 +295,30 @@ describe('v1.0.0 to v2.0.0', function () {
                 // remove `undefined` properties for testing
                 converted = JSON.parse(JSON.stringify(converted));
 
-                expect(converted.event).to.eql([{
-                    listen: 'test',
-                    script: {
-                        type: 'text/javascript',
-                        exec: ['console.log("Request level test script");']
-                    }
-                }, {
-                    listen: 'prerequest',
-                    script: {
-                        type: 'text/javascript',
-                        exec: ['console.log("Request level pre-request script");']
-                    }
-                }]);
+                expect(converted).to.eql({
+                    name: '',
+                    event: [{
+                        listen: 'test',
+                        script: {
+                            type: 'text/javascript',
+                            exec: ['console.log("Request level test script");']
+                        }
+                    }, {
+                        listen: 'prerequest',
+                        script: {
+                            type: 'text/javascript',
+                            exec: ['console.log("Request level pre-request script");']
+                        }
+                    }],
+                    request: {
+                        body: {
+                            mode: 'raw',
+                            raw: ''
+                        },
+                        header: []
+                    },
+                    response: []
+                });
                 done();
             });
         });
@@ -317,19 +351,30 @@ describe('v1.0.0 to v2.0.0', function () {
                 // remove `undefined` properties for testing
                 converted = JSON.parse(JSON.stringify(converted));
 
-                expect(converted.event).to.eql([{
-                    listen: 'prerequest',
-                    script: {
-                        type: 'text/javascript',
-                        exec: ['console.log("Alternative request level pre-request script");']
-                    }
-                }, {
-                    listen: 'test',
-                    script: {
-                        type: 'text/javascript',
-                        exec: ['console.log("Alternative request level test script");']
-                    }
-                }]);
+                expect(converted).to.eql({
+                    name: '',
+                    event: [{
+                        listen: 'prerequest',
+                        script: {
+                            type: 'text/javascript',
+                            exec: ['console.log("Alternative request level pre-request script");']
+                        }
+                    }, {
+                        listen: 'test',
+                        script: {
+                            type: 'text/javascript',
+                            exec: ['console.log("Alternative request level test script");']
+                        }
+                    }],
+                    request: {
+                        body: {
+                            mode: 'raw',
+                            raw: ''
+                        },
+                        header: []
+                    },
+                    response: []
+                });
                 done();
             });
         });

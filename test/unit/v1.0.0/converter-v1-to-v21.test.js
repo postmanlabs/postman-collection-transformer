@@ -144,6 +144,104 @@ describe('v1.0.0 to v2.1.0', function () {
                 done();
             });
         });
+
+        it('should override auth with legacy attributes if they exist', function (done) {
+            var options = {
+                    inputVersion: '1.0.0',
+                    outputVersion: '2.1.0',
+                    retainIds: true
+                },
+                source = {
+                    currentHelper: 'basicAuth',
+                    helperAttributes: {
+                        id: 'basic',
+                        username: 'username',
+                        password: 'password'
+                    },
+                    auth: {
+                        type: 'bearer',
+                        bearer: [{key: 'token', value: 'randomSecretString', type: 'string'}]
+                    }
+                };
+
+            transformer.convertSingle(source, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    name: '',
+                    request: {
+                        auth: {
+                            type: 'basic',
+                            basic: [
+                                { key: 'username', value: 'username', type: 'string' },
+                                { key: 'password', value: 'password', type: 'string' },
+                                { key: 'saveHelperData', type: 'any' },
+                                { key: 'showPassword', value: false, type: 'boolean' }
+                            ]
+                        },
+                        body: {
+                            mode: 'raw',
+                            raw: ''
+                        },
+                        header: []
+                    },
+                    response: []
+                });
+                done();
+            });
+        });
+
+        it('should use auth if legacy auth attributes are absent', function (done) {
+            var options = {
+                    inputVersion: '1.0.0',
+                    outputVersion: '2.1.0',
+                    retainIds: true
+                },
+                source = {
+                    auth: {
+                        type: 'basic',
+                        basic: [{
+                            key: 'username',
+                            value: 'username',
+                            type: 'string'
+                        }, {
+                            key: 'password',
+                            value: 'password',
+                            type: 'string'
+                        }]
+                    }
+                };
+
+            transformer.convertSingle(source, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    name: '',
+                    request: {
+                        auth: {
+                            type: 'basic',
+                            basic: [
+                                { key: 'username', value: 'username', type: 'string' },
+                                { key: 'password', value: 'password', type: 'string' }
+                            ]
+                        },
+                        body: {
+                            mode: 'raw',
+                            raw: ''
+                        },
+                        header: []
+                    },
+                    response: []
+                });
+                done();
+            });
+        });
     });
 
     describe('nested entities', function () {
@@ -162,6 +260,122 @@ describe('v1.0.0 to v2.1.0', function () {
                 converted = JSON.parse(JSON.stringify(converted));
 
                 expect(converted).to.eql(fixture.v21);
+                done();
+            });
+        });
+    });
+
+    describe('scripts', function () {
+        it('should override events with legacy properties if they exist', function (done) {
+            var options = {
+                    inputVersion: '1.0.0',
+                    outputVersion: '2.1.0',
+                    retainIds: true
+                },
+                source = {
+                    preRequestScript: 'console.log("Request level pre-request script");',
+                    tests: 'console.log("Request level test script");',
+                    events: [{
+                        listen: 'prerequest',
+                        script: {
+                            type: 'text/javascript',
+                            exec: ['console.log("Alternative request level pre-request script");']
+                        }
+                    }, {
+                        listen: 'test',
+                        script: {
+                            type: 'text/javascript',
+                            exec: ['console.log("Alternative request level test script");']
+                        }
+                    }]
+                };
+
+            transformer.convertSingle(source, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    name: '',
+                    event: [{
+                        listen: 'test',
+                        script: {
+                            type: 'text/javascript',
+                            exec: ['console.log("Request level test script");']
+                        }
+                    }, {
+                        listen: 'prerequest',
+                        script: {
+                            type: 'text/javascript',
+                            exec: ['console.log("Request level pre-request script");']
+                        }
+                    }],
+                    request: {
+                        body: {
+                            mode: 'raw',
+                            raw: ''
+                        },
+                        header: []
+                    },
+                    response: []
+                });
+                done();
+            });
+        });
+
+        it('should use events if legacy properties are absent', function (done) {
+            var options = {
+                    inputVersion: '1.0.0',
+                    outputVersion: '2.1.0',
+                    retainIds: true
+                },
+                source = {
+                    events: [{
+                        listen: 'prerequest',
+                        script: {
+                            type: 'text/javascript',
+                            exec: ['console.log("Alternative request level pre-request script");']
+                        }
+                    }, {
+                        listen: 'test',
+                        script: {
+                            type: 'text/javascript',
+                            exec: ['console.log("Alternative request level test script");']
+                        }
+                    }]
+                };
+
+            transformer.convertSingle(source, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    name: '',
+                    event: [{
+                        listen: 'prerequest',
+                        script: {
+                            type: 'text/javascript',
+                            exec: ['console.log("Alternative request level pre-request script");']
+                        }
+                    }, {
+                        listen: 'test',
+                        script: {
+                            type: 'text/javascript',
+                            exec: ['console.log("Alternative request level test script");']
+                        }
+                    }],
+                    request: {
+                        body: {
+                            mode: 'raw',
+                            raw: ''
+                        },
+                        header: []
+                    },
+                    response: []
+                });
                 done();
             });
         });
