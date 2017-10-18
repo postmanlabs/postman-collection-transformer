@@ -28,7 +28,7 @@ module.exports = function (exit) {
 
     var Mocha = require('mocha'),
         nyc = new NYC({
-            reporter: ['text'],
+            reporter: ['text', 'lcov'],
             reportDir: COV_REPORT_PATH,
             tempDirectory: COV_REPORT_PATH
         });

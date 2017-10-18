@@ -14,7 +14,7 @@
     "getter-return": "error",
     "no-await-in-loop": "error",
     "no-compare-neg-zero": "error",
-    "no-cond-assign": "error",
+    "no-cond-assign": "off",
     "no-console": "off",
     "no-constant-condition": "error",
     "no-control-regex": "error",

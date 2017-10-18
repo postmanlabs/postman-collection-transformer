@@ -204,6 +204,16 @@ module.exports = {
                             key: 'password',
                             value: '{{token}}',
                             type: 'string'
+                        },
+                        {
+                            key: 'saveHelperData',
+                            value: true,
+                            type: 'boolean'
+                        },
+                        {
+                            key: 'showPassword',
+                            value: false,
+                            type: 'boolean'
                         }
                     ]
                 },
@@ -211,6 +221,7 @@ module.exports = {
                 helperAttributes: {
                     id: 'basic',
                     username: '{{username}}',
+                    saveToRequest: true,
                     password: '{{token}}'
                 },
                 name: 'Basic',
@@ -304,14 +315,32 @@ module.exports = {
                             key: 'realm',
                             value: '',
                             type: 'string'
+                        },
+                        {
+                            key: 'addParamsToHeader',
+                            value: true,
+                            type: 'boolean'
+                        },
+                        {
+                            key: 'autoAddParam',
+                            value: true,
+                            type: 'boolean'
+                        },
+                        {
+                            key: 'addEmptyParamsToSign',
+                            value: false,
+                            type: 'boolean'
                         }
                     ]
                 },
                 currentHelper: 'oAuth1',
                 helperAttributes: {
                     id: 'oAuth1',
+                    auto: true,
+                    includeEmpty: false,
                     consumerKey: 'RKCGzna7bv9YD57c',
                     consumerSecret: 'D+EdQ-gs$-%@2Nu7',
+                    header: true,
                     token: '',
                     tokenSecret: '',
                     signatureMethod: 'HMAC-SHA1',
@@ -452,7 +481,9 @@ module.exports = {
                                 type: 'basic',
                                 basic: {
                                     username: '{{username}}',
-                                    password: '{{token}}'
+                                    password: '{{token}}',
+                                    saveHelperData: true,
+                                    showPassword: false
                                 }
                             },
                             method: 'GET',
@@ -509,7 +540,10 @@ module.exports = {
                             timestamp: '1500452534',
                             nonce: 'S0kXloMHurS',
                             version: '1.0',
-                            realm: ''
+                            realm: '',
+                            addParamsToHeader: true,
+                            autoAddParam: true,
+                            addEmptyParamsToSign: false
                         }
                     },
                     method: 'GET',
@@ -718,6 +752,16 @@ module.exports = {
                                         key: 'password',
                                         value: '{{token}}',
                                         type: 'string'
+                                    },
+                                    {
+                                        key: 'saveHelperData',
+                                        value: true,
+                                        type: 'boolean'
+                                    },
+                                    {
+                                        key: 'showPassword',
+                                        value: false,
+                                        type: 'boolean'
                                     }
                                 ]
                             },
@@ -816,6 +860,21 @@ module.exports = {
                                 key: 'realm',
                                 value: '',
                                 type: 'string'
+                            },
+                            {
+                                key: 'addParamsToHeader',
+                                value: true,
+                                type: 'boolean'
+                            },
+                            {
+                                key: 'autoAddParam',
+                                value: true,
+                                type: 'boolean'
+                            },
+                            {
+                                key: 'addEmptyParamsToSign',
+                                value: false,
+                                type: 'boolean'
                             }
                         ]
                     },
