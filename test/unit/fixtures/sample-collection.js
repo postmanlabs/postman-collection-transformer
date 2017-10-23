@@ -1896,6 +1896,7 @@ module.exports = {
                             url: "https://echo.getpostman.com/digest-auth",
                             method: "GET",
                             header: [],
+                            auth: { type: 'noauth' },
                             body: {
                                 mode: "formdata",
                                 formdata: [
@@ -2267,6 +2268,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: "https://echo.getpostman.com/oauth1",
                             method: "GET",
                             header: [
@@ -2337,6 +2339,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: {
                                 raw: "https://echo.getpostman.com/cookies/set?foo1=bar1&foo2=bar2",
                                 protocol: "https",
@@ -2450,6 +2453,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: "https://echo.getpostman.com/cookies",
                             method: "GET",
                             header: [],
@@ -2558,6 +2562,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: {
                                 raw: "https://echo.getpostman.com/cookies/delete?foo1&foo2",
                                 protocol: "https",
@@ -2680,6 +2685,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: "https://echo.getpostman.com/headers",
                             method: "GET",
                             header: [],
@@ -2704,6 +2710,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: {
                                 raw: "https://echo.getpostman.com/response-headers?Content-Type=text/html&Server=apibin",
                                 protocol: "https",
@@ -2775,6 +2782,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: {
                                 raw: "https://echo.getpostman.com/get?test=123",
                                 protocol: "https",
@@ -2840,6 +2848,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: "https://echo.getpostman.com/post",
                             method: "POST",
                             header: [
@@ -2884,6 +2893,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: "https://echo.getpostman.com/put",
                             method: "PUT",
                             header: [],
@@ -2918,6 +2928,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: "https://echo.getpostman.com/patch",
                             method: "PATCH",
                             header: [],
@@ -2952,6 +2963,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: "https://echo.getpostman.com/delete",
                             method: "DELETE",
                             header: [],
@@ -2989,6 +3001,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: "https://echo.getpostman.com/status/200",
                             method: "GET",
                             header: [],
@@ -3023,6 +3036,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: "https://echo.getpostman.com/stream/10",
                             method: "GET",
                             header: [],
@@ -3050,6 +3064,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: "https://echo.getpostman.com/delay/3",
                             method: "GET",
                             header: [],
@@ -3082,6 +3097,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: "https://echo.getpostman.com/encoding/utf8",
                             method: "GET",
                             header: [],
@@ -3115,6 +3131,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: "https://echo.getpostman.com/gzip",
                             method: "GET",
                             header: [],
@@ -3178,6 +3195,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: "https://echo.getpostman.com/deflate",
                             method: "GET",
                             header: [],
@@ -3208,6 +3226,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: {
                                 raw: "https://echo.getpostman.com/oauth2/authtoken?client_id=abc123&response_type=code",
                                 protocol: 'https',
@@ -3350,6 +3369,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: "https://echo.getpostman.com/oauth2/token",
                             method: "POST",
                             header: [],
@@ -3619,6 +3639,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: "https://echo.getpostman.com/oauth2/user/info",
                             method: "GET",
                             header: [
@@ -3856,6 +3877,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: {
                                 raw: "https://echo.getpostman.com/digest-auth",
                                 protocol: "https",
@@ -4245,6 +4267,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: {
                                 raw: "https://echo.getpostman.com/oauth1",
                                 protocol: "https",
@@ -4320,6 +4343,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: {
                                 raw: "https://echo.getpostman.com/cookies/set?foo1=bar1&foo2=bar2",
                                 protocol: "https",
@@ -4433,6 +4457,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: {
                                 raw: "https://echo.getpostman.com/cookies",
                                 protocol: "https",
@@ -4546,6 +4571,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: {
                                 raw: "https://echo.getpostman.com/cookies/delete?foo1&foo2",
                                 protocol: "https",
@@ -4668,6 +4694,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: {
                                 raw: "https://echo.getpostman.com/headers",
                                 protocol: "https",
@@ -4697,6 +4724,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: {
                                 raw: "https://echo.getpostman.com/response-headers?Content-Type=text/html&Server=apibin",
                                 protocol: "https",
@@ -4768,6 +4796,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: {
                                 raw: "https://echo.getpostman.com/get?test=123",
                                 protocol: "https",
@@ -4833,6 +4862,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: {
                                 raw: "https://echo.getpostman.com/post",
                                 protocol: "https",
@@ -4882,6 +4912,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: {
                                 raw: "https://echo.getpostman.com/put",
                                 protocol: "https",
@@ -4921,6 +4952,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: {
                                 raw: "https://echo.getpostman.com/patch",
                                 protocol: "https",
@@ -4960,6 +4992,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: {
                                 raw: "https://echo.getpostman.com/delete",
                                 protocol: "https",
@@ -5002,6 +5035,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: {
                                 raw: "https://echo.getpostman.com/status/200",
                                 protocol: "https",
@@ -5041,6 +5075,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: {
                                 raw: "https://echo.getpostman.com/stream/10",
                                 protocol: "https",
@@ -5073,6 +5108,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: {
                                 raw: "https://echo.getpostman.com/delay/3",
                                 protocol: "https",
@@ -5110,6 +5146,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: {
                                 raw: "https://echo.getpostman.com/encoding/utf8",
                                 protocol: "https",
@@ -5148,6 +5185,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: {
                                 raw: "https://echo.getpostman.com/gzip",
                                 protocol: "https",
@@ -5216,6 +5254,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: {
                                 raw: "https://echo.getpostman.com/deflate",
                                 protocol: "https",
@@ -5251,6 +5290,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: {
                                 raw: "https://echo.getpostman.com/oauth2/authtoken?client_id=abc123&response_type=code",
                                 protocol: "https",
@@ -5393,6 +5433,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: {
                                 raw: "https://echo.getpostman.com/oauth2/token",
                                 protocol: "https",
@@ -5677,6 +5718,7 @@ module.exports = {
                             }
                         ],
                         request: {
+                            auth: { type: 'noauth' },
                             url: {
                                 raw: "https://echo.getpostman.com/oauth2/user/info",
                                 protocol: "https",

@@ -528,6 +528,8 @@ describe('v1.0.0 normalization', function () {
                         url: 'https://google.com',
                         headers: [],
                         headerData: [],
+                        auth: { type: 'noauth' },
+                        currentHelper: 'normal',
                         data: 'akjshgdajhsgd',
                         method: 'GET',
                         dataMode: 'raw'
@@ -637,6 +639,8 @@ describe('v1.0.0 normalization', function () {
                             name: 'Request Headers',
                             dataMode: 'params',
                             data: [],
+                            auth: { type: 'noauth' },
+                            currentHelper: 'normal',
                             rawModeData: null,
                             descriptionFormat: null,
                             // eslint-disable-next-line max-len
@@ -676,6 +680,8 @@ describe('v1.0.0 normalization', function () {
                                     type: 'text'
                                 }
                             ],
+                            auth: { type: 'noauth' },
+                            currentHelper: 'normal',
                             rawModeData: null,
                             descriptionFormat: null,
                             // eslint-disable-next-line max-len
