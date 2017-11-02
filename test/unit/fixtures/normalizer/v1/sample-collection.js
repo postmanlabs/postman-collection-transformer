@@ -1920,6 +1920,11 @@ module.exports = {
     normalized: {
         id: '03cf74df-32de-af8b-7db8-855b51b05e50',
         name: 'Postman Echo (shamasified)',
+        order: [],
+        owner: '33232',
+        public: false,
+        remoteLink: '',
+        timestamp: 0,
         // eslint-disable-next-line max-len
         description: 'Postman Echo is service you can use to test your REST clients and make sample API calls. It provides endpoints for `GET`, `POST`, `PUT`, various auth mechanisms and other utility endpoints.',
         folders: [
@@ -2075,7 +2080,6 @@ module.exports = {
                 method: 'POST',
                 pathVariables: {},
                 url: 'https://echo.getpostman.com/oauth2/token',
-                preRequestScript: '',
                 currentHelper: 'normal',
                 auth: { type: 'noauth' },
                 // eslint-disable-next-line max-len
@@ -2414,7 +2418,6 @@ module.exports = {
                 auth: { type: 'noauth' },
                 currentHelper: 'normal',
                 url: 'https://echo.getpostman.com/put',
-                preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'var data;\n\ntry { responseJSON = JSON.parse(responseBody); }\ncatch (e) {}\n\ntests[\'Body contains files\'] = responseBody.has(\'files\');\ntests[\'Body contains args\'] = responseBody.has(\'args\');\ntests[\'Body contains form\'] = responseBody.has(\'form\');\ntests[\'Body contains headers\'] = responseBody.has(\'headers\');\ntests[\'Body contains url\'] = responseBody.has(\'url\');\n\n\n\ntests[\'Data has been passed\'] = (responseJSON && responseJSON.data && responseJSON.data.length)',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
@@ -2451,7 +2454,6 @@ module.exports = {
                 method: 'GET',
                 pathVariables: {},
                 url: 'https://echo.getpostman.com/cookies',
-                preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'Status code is 200\'] = responseCode.code === 200;\ntests[\'Body contains cookies\'] = responseBody.has(\'cookies\');\nvar body = JSON.parse(responseBody);\ntests[\'Body contains cookie foo2\'] = \'foo2\' in body.cookies;',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
@@ -2607,7 +2609,6 @@ module.exports = {
                 method: 'GET',
                 pathVariables: {},
                 url: 'https://echo.getpostman.com/get?test=123',
-                preRequestScript: '',
                 queryParams: [{
                     key: 'test',
                     value: '123'
@@ -2647,7 +2648,6 @@ module.exports = {
                 method: 'GET',
                 pathVariables: {},
                 url: 'https://echo.getpostman.com/cookies/delete?foo1&foo2',
-                preRequestScript: '',
                 queryParams: [{
                     key: 'foo1',
                     value: ''
@@ -2788,7 +2788,6 @@ module.exports = {
                 method: 'GET',
                 pathVariables: {},
                 url: 'https://echo.getpostman.com/delay/3',
-                preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\ntests[\'response body has key delay\'] = \'delay\' in data;',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50'
@@ -2827,7 +2826,6 @@ module.exports = {
                 method: 'GET',
                 pathVariables: [],
                 url: 'https://echo.getpostman.com/headers',
-                preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'Body contains headers\'] = responseBody.has(\'headers\');\n\nvar data = JSON.parse(responseBody).headers;\n\ntests[\'Header contains host\'] = \'host\' in data;\ntests[\'Header contains test parameter sent as part of request header\'] = \'my-sample-header\' in data;',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50'
@@ -2886,7 +2884,6 @@ module.exports = {
                 method: 'GET',
                 pathVariables: {},
                 url: 'https://echo.getpostman.com/response-headers?Content-Type=text/html&Server=apibin',
-                preRequestScript: '',
                 queryParams: [{
                     key: 'Content-Type',
                     value: 'text/html'
@@ -2932,7 +2929,6 @@ module.exports = {
                 method: 'PATCH',
                 pathVariables: {},
                 url: 'https://echo.getpostman.com/patch',
-                preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'Body contains files\'] = responseBody.has(\'files\');\ntests[\'Body contains args\'] = responseBody.has(\'args\');\ntests[\'Body contains form\'] = responseBody.has(\'form\');\ntests[\'Body contains headers\'] = responseBody.has(\'headers\');\ntests[\'Body contains url\'] = responseBody.has(\'url\');\n\nvar data = JSON.parse(responseBody)\n\ntests[\'form key has data passed in as form-data\'] = \'test\' in data.form',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
@@ -2978,7 +2974,6 @@ module.exports = {
                 method: 'POST',
                 pathVariables: {},
                 url: 'https://echo.getpostman.com/post',
-                preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'var responseJSON;\n\ntry { responseJSON = JSON.parse(responseBody); }\ncatch (e) { }\n\n\ntests[\'response has data\'] = responseJSON && responseJSON.data && (responseJSON.data.length === 256);\ntests[\'content-type equals text/plain\'] = responseJSON && responseJSON.headers && (responseJSON.headers[\'content-type\'] === \'text/plain\');',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
@@ -3023,7 +3018,6 @@ module.exports = {
                 method: 'GET',
                 pathVariables: {},
                 url: 'https://echo.getpostman.com/status/200',
-                preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'Body contains status\'] = responseBody.has(\'status\');\n\nvar data = JSON.parse(responseBody);\n\ntests[\'Status equals 200\'] = data.status === 200;\n',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50'
@@ -3066,7 +3060,6 @@ module.exports = {
                 method: 'GET',
                 pathVariables: {},
                 url: 'https://echo.getpostman.com/deflate',
-                preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\n\ntry {\n    var data = JSON.parse(responseBody);\n    tests[\'Body contains deflated\'] = responseBody.has(\'deflated\');\n    tests[\'Body contains headers\'] = responseBody.has(\'headers\');\n    tests[\'Body contains method\'] = responseBody.has(\'method\');\n}\ncatch(e) {\n    console.log(\'Cannot parse response,probably not a JSON\');\n}\n',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50'
@@ -3104,7 +3097,6 @@ module.exports = {
                 method: 'GET',
                 pathVariables: {},
                 url: 'https://echo.getpostman.com/cookies/set?foo1=bar1&foo2=bar2',
-                preRequestScript: '',
                 queryParams: [{
                     key: 'foo1',
                     value: 'bar1'
@@ -3237,7 +3229,6 @@ module.exports = {
                 method: 'GET',
                 pathVariables: {},
                 url: 'https://echo.getpostman.com/stream/10',
-                preRequestScript: '',
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\n\n',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50'
             },
@@ -3309,7 +3300,6 @@ module.exports = {
                 method: 'GET',
                 pathVariables: {},
                 url: 'https://echo.getpostman.com/digest-auth',
-                preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 401\'] = responseCode.code === 401;\ntests[\'response has WWW-Authenticate header\'] = (postman.getResponseHeader(\'WWW-Authenticate\'));\n\nvar authenticateHeader = postman.getResponseHeader(\'WWW-Authenticate\'),\n    realmStart = authenticateHeader.indexOf(\'\'\',authenticateHeader.indexOf(\'realm\')) + 1 ,\n    realmEnd = authenticateHeader.indexOf(\'\'\',realmStart),\n    realm = authenticateHeader.slice(realmStart,realmEnd),\n    nonceStart = authenticateHeader.indexOf(\'\'\',authenticateHeader.indexOf(\'nonce\')) + 1,\n    nonceEnd = authenticateHeader.indexOf(\'\'\',nonceStart),\n    nonce = authenticateHeader.slice(nonceStart,nonceEnd);\n    \npostman.setGlobalVariable(\'echo_digest_realm\', realm);\npostman.setGlobalVariable(\'echo_digest_nonce\', nonce);',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50'
@@ -3341,7 +3331,6 @@ module.exports = {
                 method: 'GET',
                 pathVariables: {},
                 url: 'https://echo.getpostman.com/encoding/utf8',
-                preRequestScript: '',
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50'
             },
@@ -3379,7 +3368,6 @@ module.exports = {
                 method: 'DELETE',
                 pathVariables: {},
                 url: 'https://echo.getpostman.com/delete',
-                preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'Body contains files\'] = responseBody.has(\'files\');\ntests[\'Body contains args\'] = responseBody.has(\'args\');\ntests[\'Body contains form\'] = responseBody.has(\'form\');\ntests[\'Body contains headers\'] = responseBody.has(\'headers\');\ntests[\'Body contains url\'] = responseBody.has(\'url\');\n\nvar data = JSON.parse(responseBody)\n\ntests[\'form key has data passed in as form-data\'] = \'test\' in data.form',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
@@ -3448,7 +3436,6 @@ module.exports = {
                 method: 'GET',
                 pathVariables: {},
                 url: 'https://echo.getpostman.com/oauth2/user/info',
-                preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 401\'] = (responseCode.code === 200);\nvar body = JSON.parse(responseBody);\ntests[\'body has user_id\'] = \'user_id\' in body;\ntests[\'body has name\'] = \'name\' in body;',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
@@ -3686,7 +3673,6 @@ module.exports = {
                 method: 'GET',
                 pathVariables: {},
                 url: 'https://echo.getpostman.com/oauth1',
-                preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\nvar body = JSON.parse(responseBody);\ntests[\'Body contains status pass\'] = body[\'status\'] == \'pass\'',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50'
@@ -3744,7 +3730,6 @@ module.exports = {
                 method: 'GET',
                 pathVariables: {},
                 url: 'https://echo.getpostman.com/oauth2/authtoken?client_id=abc123&response_type=code',
-                preRequestScript: '',
                 queryParams: [{
                     key: 'client_id',
                     value: 'abc123'
@@ -3910,7 +3895,6 @@ module.exports = {
                 method: 'GET',
                 pathVariables: {},
                 url: 'https://echo.getpostman.com/gzip',
-                preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\n\ntry {\n    var data = JSON.parse(responseBody);\n    tests[\'Body contains gzipped\'] = responseBody.has(\'gzipped\');\n    tests[\'Body contains headers\'] = responseBody.has(\'headers\');\n    tests[\'Body contains method\'] = responseBody.has(\'method\');\n}\ncatch(e) {\n    console.log(\'Cannot parse response,probably not a JSON\');\n}',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50'
@@ -3947,7 +3931,6 @@ module.exports = {
                 method: 'GET',
                 pathVariables: {},
                 url: 'https://echo.getpostman.com/digest-auth',
-                preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\ntests[\'body contains authenticated\'] = responseBody.has(\'authenticated\');',
                 auth: {
@@ -4145,7 +4128,6 @@ module.exports = {
                 method: 'GET',
                 pathVariables: {},
                 url: 'https://echo.getpostman.com/basic-auth',
-                preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\ntests[\'Body contains authenticated\'] = responseBody.has(\'authenticated\');',
                 auth: {
