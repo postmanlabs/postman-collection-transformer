@@ -78,7 +78,7 @@ describe('v1.0.0 normalization', function () {
 
     describe('special cases', function () {
         describe('auth', function () {
-            it('should handle no-auth correctly with', function () {
+            it('should handle no-auth correctly with legacy properties', function (done) {
                 transformer.normalizeSingle({ id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd', currentHelper: 'normal' }, {
                     retainIds: true,
                     normalizeVersion: '1.0.0'
@@ -91,10 +91,11 @@ describe('v1.0.0 normalization', function () {
                         currentHelper: 'normal',
                         auth: { type: 'noauth' }
                     });
+                    done();
                 });
             });
 
-            it('should handle no-auth correctly with noDefaults set to true', function () {
+            it('should handle legacy no-auth correctly with noDefaults set to true', function (done) {
                 transformer.normalizeSingle({ currentHelper: 'normal' }, {
                     noDefaults: true,
                     normalizeVersion: '1.0.0'
@@ -105,6 +106,39 @@ describe('v1.0.0 normalization', function () {
                         currentHelper: 'normal',
                         auth: { type: 'noauth' }
                     });
+                    done();
+                });
+            });
+
+            it('should recreate legacy properties for noauth correctly', function (done) {
+                transformer.normalizeSingle({ id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd', auth: { type: 'noauth' } }, {
+                    retainIds: true,
+                    normalizeVersion: '1.0.0'
+                }, function (err, result) {
+                    expect(err).to.not.be.ok;
+
+                    expect(result).to.eql({
+                        id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd',
+                        data: [],
+                        currentHelper: 'normal',
+                        auth: { type: 'noauth' }
+                    });
+                    done();
+                });
+            });
+
+            it('should recreate legacy properties for noauth correctly with noDefaults set to true', function (done) {
+                transformer.normalizeSingle({ auth: { type: 'noauth' } }, {
+                    noDefaults: true,
+                    normalizeVersion: '1.0.0'
+                }, function (err, result) {
+                    expect(err).to.not.be.ok;
+
+                    expect(result).to.eql({
+                        currentHelper: 'normal',
+                        auth: { type: 'noauth' }
+                    });
+                    done();
                 });
             });
 
