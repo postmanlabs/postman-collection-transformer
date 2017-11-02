@@ -1,4 +1,5 @@
-var expect = require('chai').expect,
+var _ = require('lodash'),
+    expect = require('chai').expect,
     transformer = require('../../../index');
 
 describe('v1.0.0 normalization', function () {
@@ -77,6 +78,36 @@ describe('v1.0.0 normalization', function () {
 
     describe('special cases', function () {
         describe('auth', function () {
+            it('should handle no-auth correctly with', function () {
+                transformer.normalizeSingle({ id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd', currentHelper: 'normal' }, {
+                    retainIds: true,
+                    normalizeVersion: '1.0.0'
+                }, function (err, result) {
+                    expect(err).to.not.be.ok;
+
+                    expect(result).to.eql({
+                        id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd',
+                        data: [],
+                        currentHelper: 'normal',
+                        auth: { type: 'noauth' }
+                    });
+                });
+            });
+
+            it('should handle no-auth correctly with noDefaults set to true', function () {
+                transformer.normalizeSingle({ currentHelper: 'normal' }, {
+                    noDefaults: true,
+                    normalizeVersion: '1.0.0'
+                }, function (err, result) {
+                    expect(err).to.not.be.ok;
+
+                    expect(result).to.eql({
+                        currentHelper: 'normal',
+                        auth: { type: 'noauth' }
+                    });
+                });
+            });
+
             it('should override auth with legacy properties if both are present', function (done) {
                 var options = {
                         normalizeVersion: '1.0.0',
@@ -648,7 +679,6 @@ describe('v1.0.0 normalization', function () {
                             method: 'GET',
                             pathVariables: [],
                             url: 'https://echo.getpostman.com/headers',
-                            preRequestScript: '',
                             // eslint-disable-next-line max-len
                             tests: 'tests[\'Body contains headers\'] = responseBody.has(\'headers\');\n\nvar data = JSON.parse(responseBody).headers;\n\ntests[\'Header contains host\'] = \'host\' in data;\ntests[\'Header contains test parameter sent as part of request header\'] = \'my-sample-header\' in data;',
                             events: [{
@@ -697,7 +727,6 @@ describe('v1.0.0 normalization', function () {
                                 key: 'Server',
                                 value: 'apibin'
                             }],
-                            preRequestScript: '',
                             // eslint-disable-next-line max-len
                             tests: 'tests[\'Body contains Content-Type\'] = responseBody.has(\'Content-Type\');\ntests[\'Body contains Server\'] = responseBody.has(\'Server\');',
                             events: [{
@@ -716,6 +745,433 @@ describe('v1.0.0 normalization', function () {
                 });
 
                 done();
+            });
+        });
+    });
+
+    describe('noDefaults', function () {
+        var options = {
+            retainIds: true,
+            noDefaults: true,
+            normalizeVersion: '1.0.0'
+        };
+
+        describe('requests', function () {
+            describe('non-mutated', function () {
+                it('should be handled correctly for legacy attributes', function () {
+                    var source = {
+                        auth: {
+                            type: 'noauth'
+                        },
+                        currentHelper: 'basicAuth',
+                        helperAttributes: {
+                            id: 'basic',
+                            username: 'postman',
+                            password: 'secret'
+                        },
+                        preRequestScript: 'console.log("Y");',
+                        tests: 'console.log("Y");',
+                        events: [
+                            { listen: 'prerequest', script: { type: 'test/javascript', exec: ['console.log("No");'] } },
+                            { listen: 'test', script: { type: 'test/javascript', exec: ['console.log("No");'] } }
+                        ]
+                    };
+
+                    transformer.normalizeSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+
+                        result = JSON.parse(JSON.stringify(result));
+                        expect(result).to.eql({
+                            auth: {
+                                type: 'basic',
+                                basic: [
+                                    { key: 'username', value: 'postman', type: 'string' },
+                                    { key: 'password', value: 'secret', type: 'string' },
+                                    { key: 'saveHelperData', type: 'any' },
+                                    { key: 'showPassword', value: false, type: 'boolean' }
+                                ]
+                            },
+                            events: [
+                                // eslint-disable-next-line max-len
+                                { listen: 'prerequest', script: { type: 'text/javascript', exec: ['console.log("Y");'] } },
+                                { listen: 'test', script: { type: 'text/javascript', exec: ['console.log("Y");'] } }
+                            ],
+                            preRequestScript: 'console.log("Y");',
+                            tests: 'console.log("Y");',
+                            currentHelper: 'basicAuth',
+                            helperAttributes: {
+                                id: 'basic',
+                                username: 'postman',
+                                password: 'secret'
+                            }
+                        });
+                    });
+                });
+
+                it('should not remove currentHelper if helperAttributes are missing', function () {
+                    var source = { currentHelper: 'basicAuth' };
+
+                    transformer.normalizeSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+
+                        result = JSON.parse(JSON.stringify(result));
+                        expect(result).to.eql(source);
+                    });
+                });
+
+                it('should not delete helperAttributes if currentHelper is missing', function () {
+                    var source = {
+                        helperAttributes: {
+                            id: 'basic',
+                            username: 'postman',
+                            password: 'secret'
+                        }
+                    };
+
+                    transformer.normalizeSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+
+                        result = JSON.parse(JSON.stringify(result));
+                        expect(result).to.eql({
+                            helperAttributes: {
+                                id: 'basic',
+                                username: 'postman',
+                                password: 'secret'
+                            },
+                            currentHelper: 'basicAuth',
+                            auth: {
+                                type: 'basic',
+                                basic: [
+                                    { key: 'username', value: 'postman', type: 'string' },
+                                    { key: 'password', value: 'secret', type: 'string' },
+                                    { key: 'saveHelperData', type: 'any' },
+                                    { key: 'showPassword', value: false, type: 'boolean' }
+                                ]
+                            }
+                        });
+                    });
+                });
+
+                it('should recreate only prerequests from legacy if sent', function () {
+                    var source = {
+                        preRequestScript: 'console.log("Pre-request script");'
+                    };
+
+                    transformer.normalizeSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+
+                        result = JSON.parse(JSON.stringify(result));
+                        expect(result).to.eql({
+                            preRequestScript: 'console.log("Pre-request script");',
+                            events: [
+                                {
+                                    listen: 'prerequest',
+                                    script: {
+                                        type: 'text/javascript',
+                                        exec: [ 'console.log("Pre-request script");' ]
+                                    }
+                                }
+                            ]
+                        });
+                    });
+                });
+
+                it('should recreate only prerequests in legacy if sent from events', function () {
+                    var source = {
+                        events: [
+                            {
+                                listen: 'prerequest',
+                                script: {
+                                    type: 'text/javascript',
+                                    exec: ['console.log("Pre-request script");']
+                                }
+                            }
+                        ]
+                    };
+
+                    transformer.normalizeSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+
+                        result = JSON.parse(JSON.stringify(result));
+                        expect(result).to.eql({
+                            preRequestScript: 'console.log("Pre-request script");',
+                            events: [
+                                {
+                                    listen: 'prerequest',
+                                    script: {
+                                        type: 'text/javascript',
+                                        exec: ['console.log("Pre-request script");']
+                                    }
+                                }
+                            ]
+                        });
+                    });
+                });
+
+                it('should recreate only tests from legacy if sent', function () {
+                    var source = {
+                        tests: 'console.log("Test script");'
+                    };
+
+                    transformer.normalizeSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+
+                        result = JSON.parse(JSON.stringify(result));
+                        expect(result).to.eql({
+                            tests: 'console.log("Test script");',
+                            events: [
+                                {
+                                    listen: 'test',
+                                    script: {
+                                        type: 'text/javascript',
+                                        exec: ['console.log("Test script");']
+                                    }
+                                }
+                            ]
+                        });
+                    });
+                });
+
+                it('should recreate only tests in legacy if sent from events', function () {
+                    var source = {
+                        events: [
+                            {
+                                listen: 'test',
+                                script: {
+                                    type: 'text/javascript',
+                                    exec: ['console.log("Test script");']
+                                }
+                            }
+                        ]
+                    };
+
+                    transformer.normalizeSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+
+                        result = JSON.parse(JSON.stringify(result));
+                        expect(result).to.eql({
+                            tests: 'console.log("Test script");',
+                            events: [
+                                {
+                                    listen: 'test',
+                                    script: {
+                                        type: 'text/javascript',
+                                        exec: ['console.log("Test script");']
+                                    }
+                                }
+                            ]
+                        });
+                    });
+                });
+            });
+
+            describe('mutated', function () {
+                var opts = _.defaults({ mutate: true }, options);
+
+                it('should be handled correctly for legacy attributes', function () {
+                    var source = {
+                        auth: {
+                            type: 'noauth'
+                        },
+                        currentHelper: 'basicAuth',
+                        helperAttributes: {
+                            id: 'basic',
+                            username: 'postman',
+                            password: 'secret',
+                            saveToRequest: false
+                        },
+                        preRequestScript: 'console.log("Y");',
+                        tests: 'console.log("Y");',
+                        events: [
+                            { listen: 'prerequest', script: { type: 'test/javascript', exec: ['console.log("No");'] } },
+                            { listen: 'test', script: { type: 'test/javascript', exec: ['console.log("No");'] } }
+                        ]
+                    };
+
+                    transformer.normalizeSingle(source, opts, function (err) {
+                        expect(err).to.not.be.ok;
+
+                        expect(source).to.eql({
+                            auth: {
+                                type: 'basic',
+                                basic: [
+                                    { key: 'username', value: 'postman', type: 'string' },
+                                    { key: 'password', value: 'secret', type: 'string' },
+                                    { key: 'saveHelperData', value: false, type: 'boolean' },
+                                    { key: 'showPassword', value: false, type: 'boolean' }
+                                ]
+                            },
+                            events: [
+                                // eslint-disable-next-line max-len
+                                { listen: 'prerequest', script: { type: 'text/javascript', exec: ['console.log("Y");'] } },
+                                { listen: 'test', script: { type: 'text/javascript', exec: ['console.log("Y");'] } }
+                            ],
+                            preRequestScript: 'console.log("Y");',
+                            tests: 'console.log("Y");',
+                            currentHelper: 'basicAuth',
+                            helperAttributes: {
+                                id: 'basic',
+                                username: 'postman',
+                                password: 'secret',
+                                saveToRequest: false
+                            }
+                        });
+                    });
+                });
+
+                it('should not remove currentHelper if helperAttributes are missing', function () {
+                    var source = { currentHelper: 'basicAuth' };
+
+                    transformer.normalizeSingle(source, opts, function (err) {
+                        expect(err).to.not.be.ok;
+
+                        expect(source).to.eql({
+                            currentHelper: 'basicAuth'
+                        });
+                    });
+                });
+
+                it('should not delete helperAttributes if currentHelper is missing', function () {
+                    var source = {
+                        helperAttributes: {
+                            id: 'basic',
+                            username: 'postman',
+                            password: 'secret',
+                            saveToRequest: false
+                        }
+                    };
+
+                    transformer.normalizeSingle(source, opts, function (err) {
+                        expect(err).to.not.be.ok;
+
+                        expect(source).to.eql({
+                            currentHelper: 'basicAuth',
+                            helperAttributes: {
+                                id: 'basic',
+                                username: 'postman',
+                                password: 'secret',
+                                saveToRequest: false
+                            },
+                            auth: {
+                                type: 'basic',
+                                basic: [
+                                    { key: 'username', value: 'postman', type: 'string' },
+                                    { key: 'password', value: 'secret', type: 'string' },
+                                    { key: 'saveHelperData', value: false, type: 'boolean' },
+                                    { key: 'showPassword', value: false, type: 'boolean' }
+                                ]
+                            }
+                        });
+                    });
+                });
+
+                it('should recreate only prerequests from legacy if sent', function () {
+                    var source = {
+                        preRequestScript: 'console.log("Pre-request script");'
+                    };
+
+                    transformer.normalizeSingle(source, opts, function (err) {
+                        expect(err).to.not.be.ok;
+
+                        expect(source).to.eql({
+                            preRequestScript: 'console.log("Pre-request script");',
+                            events: [
+                                {
+                                    listen: 'prerequest',
+                                    script: {
+                                        type: 'text/javascript',
+                                        exec: [ 'console.log("Pre-request script");' ]
+                                    }
+                                }
+                            ]
+                        });
+                    });
+                });
+
+                it('should recreate only prerequests in legacy if sent from events', function () {
+                    var source = {
+                        events: [
+                            {
+                                listen: 'prerequest',
+                                script: {
+                                    type: 'text/javascript',
+                                    exec: ['console.log("Pre-request script");']
+                                }
+                            }
+                        ]
+                    };
+
+                    transformer.normalizeSingle(source, opts, function (err) {
+                        expect(err).to.not.be.ok;
+
+                        expect(source).to.eql({
+                            preRequestScript: 'console.log("Pre-request script");',
+                            events: [
+                                {
+                                    listen: 'prerequest',
+                                    script: {
+                                        type: 'text/javascript',
+                                        exec: ['console.log("Pre-request script");']
+                                    }
+                                }
+                            ]
+                        });
+                    });
+                });
+
+                it('should recreate only tests from legacy if sent', function () {
+                    var source = {
+                        tests: 'console.log("Test script");'
+                    };
+
+                    transformer.normalizeSingle(source, opts, function (err) {
+                        expect(err).to.not.be.ok;
+
+                        expect(source).to.eql({
+                            tests: 'console.log("Test script");',
+                            events: [
+                                {
+                                    listen: 'test',
+                                    script: {
+                                        type: 'text/javascript',
+                                        exec: ['console.log("Test script");']
+                                    }
+                                }
+                            ]
+                        });
+                    });
+                });
+
+                it('should recreate only tests in legacy if sent from events', function () {
+                    var source = {
+                        events: [
+                            {
+                                listen: 'test',
+                                script: {
+                                    type: 'text/javascript',
+                                    exec: ['console.log("Test script");']
+                                }
+                            }
+                        ]
+                    };
+
+                    transformer.normalizeSingle(source, opts, function (err) {
+                        expect(err).to.not.be.ok;
+
+                        expect(source).to.eql({
+                            tests: 'console.log("Test script");',
+                            events: [
+                                {
+                                    listen: 'test',
+                                    script: {
+                                        type: 'text/javascript',
+                                        exec: ['console.log("Test script");']
+                                    }
+                                }
+                            ]
+                        });
+                    });
+                });
             });
         });
     });
