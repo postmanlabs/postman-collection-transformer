@@ -1,5 +1,13 @@
 # Postman Collection Transformer Changelog
 
+#### v2.4.0 (November 7, 2017)
+* #87 Tested code on Node v8 :tada:
+* #84 Added support for `noDefaults` for v1 normalizations :tada:
+* #82 `noauth` and `normal` auth handlers are now left alone :bug:
+* #81 Added support for `mutate` to v1 normalizations :tada:
+* #79 Added `normalize.*` function to sanitize v1 collections. :tada:
+* #78 Added support for inherited entity transformations :tada:
+
 #### v2.3.1 (October 3, 2017)
 * :bug: Corrected OAuth2 param transformations #77
 
