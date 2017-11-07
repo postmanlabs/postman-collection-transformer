@@ -80,7 +80,6 @@ module.exports = {
         ]
     },
     v2: {
-        variables: [],
         info: {
             name: 'Sample descriptions',
             _postman_id: 'e1036383-ba43-d240-5e9d-19614febed77',

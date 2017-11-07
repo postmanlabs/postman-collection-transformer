@@ -23,8 +23,43 @@ module.exports = {
                 data: [],
                 dataMode: 'raw',
                 headerData: [],
+                events: [{
+                    listen: 'test',
+                    script: {
+                        type: 'text/javascript',
+                        exec: [
+                            'var data = JSON.parse(responseBody);',
+                            'var oldNonce = environment.oldNonce;',
+                            'var newNonce = data.form.oauth_nonce;',
+                            'tests["NewNonce"]=(oldNonce != newNonce);',
+                            'postman.setEnvironmentVariable("oldNonce", newNonce);',
+                            // eslint-disable-next-line max-len
+                            'tests["HasNonce"]=data.form.oauth_nonce;console.log("oldNonce: "+oldNonce+", newNonce="+newNonce);console.log("Signature: "+data.form.oauth_signature);'
+                        ]
+                    }
+                }],
                 // eslint-disable-next-line max-len
                 tests: 'var data = JSON.parse(responseBody);\nvar oldNonce = environment.oldNonce;\nvar newNonce = data.form.oauth_nonce;\ntests["NewNonce"]=(oldNonce != newNonce);\npostman.setEnvironmentVariable("oldNonce", newNonce);\ntests["HasNonce"]=data.form.oauth_nonce;console.log("oldNonce: "+oldNonce+", newNonce="+newNonce);console.log("Signature: "+data.form.oauth_signature);',
+                auth: {
+                    type: 'oauth2',
+                    oauth2: [
+                        { key: 'accessToken', value: 'secretToken', type: 'string' },
+                        { key: 'addTokenTo', value: 'header', type: 'string' },
+                        { key: 'callBackUrl', value: 'https://foo.com/cb', type: 'string' },
+                        { key: 'authUrl', value: 'https://foo.com/au', type: 'string' },
+                        { key: 'accessTokenUrl', value: 'https://foo.com/at', type: 'string' },
+                        { key: 'clientId', value: 'uniqueClientIdentifier', type: 'string' },
+                        { key: 'clientSecret', value: 'secretClientValue', type: 'string' },
+                        { key: 'clientAuth', value: 'body', type: 'string' },
+                        { key: 'grantType', value: 'implicit', type: 'string' },
+                        { key: 'scope', value: 'all', type: 'string' },
+                        { key: 'username', value: 'postman', type: 'string' },
+                        { key: 'password', value: 'randomSecretString', type: 'string' },
+                        { key: 'tokenType', value: 'bearer', type: 'string' },
+                        { key: 'redirectUri', value: 'https://foo.com/rd', type: 'string' },
+                        { key: 'refreshToken', value: 'refreshToken', type: 'string' }
+                    ]
+                },
                 currentHelper: 'oAuth2',
                 helperAttributes: {
                     id: 'oAuth2',
@@ -63,8 +98,20 @@ module.exports = {
                 }],
                 dataMode: 'raw',
                 pathVariableData: [],
+                events: [{
+                    listen: 'test',
+                    script: {
+                        type: 'text/javascript',
+                        // eslint-disable-next-line max-len
+                        exec: ['var response = JSON.parse(responseBody); tests["Bearer auth should pass"] = response.status === "pass";']
+                    }
+                }],
                 // eslint-disable-next-line max-len
                 tests: 'var response = JSON.parse(responseBody); tests["Bearer auth should pass"] = response.status === "pass";',
+                auth: {
+                    type: 'bearer',
+                    bearer: [{ key: 'token', value: 'wkjehbxoqnunc2k3', type: 'string' }]
+                },
                 currentHelper: 'bearerAuth',
                 helperAttributes: {
                     id: 'bearer',
@@ -91,8 +138,26 @@ module.exports = {
                 }],
                 dataMode: 'raw',
                 pathVariableData: [],
+                events: [{
+                    listen: 'test',
+                    script: {
+                        type: 'text/javascript',
+                        // eslint-disable-next-line max-len
+                        exec: ['var response = JSON.parse(responseBody); tests["NTLM auth should pass"] = response.status === "pass";']
+                    }
+                }],
                 // eslint-disable-next-line max-len
                 tests: 'var response = JSON.parse(responseBody); tests["NTLM auth should pass"] = response.status === "pass";',
+                auth: {
+                    type: 'ntlm',
+                    ntlm: [
+                        { key: 'username', value: 'foo', type: 'string' },
+                        { key: 'password', value: 'password', type: 'string' },
+                        { key: 'domain', value: 'domain', type: 'string' },
+                        { key: 'workstation', value: 'workstation', type: 'string' },
+                        { key: 'disableRetryRequest', value: false, type: 'boolean' }
+                    ]
+                },
                 currentHelper: 'ntlmAuth',
                 helperAttributes: {
                     id: 'ntlm',
@@ -109,7 +174,6 @@ module.exports = {
         ]
     },
     v2: {
-        variables: [],
         info: {
             name: 'AuthTest',
             _postman_id: 'd497d10e-e280-8c83-709a-a4d4ea12ad14',

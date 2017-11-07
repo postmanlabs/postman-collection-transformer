@@ -92,6 +92,33 @@ program
         });
     });
 
+program
+    .command('normalize')
+    .description('Normalizes a postman collection according to the provided version')
+    .option('-i, --input <path>', 'Path to the collection JSON file to be normalized')
+    .option('-n, --normalize-version <version>', 'The version to normalize the provided collection on')
+    .option('-o, --output <path>', 'Path to the target file, where the normalized collection will be written')
+    .option('-P, --pretty', 'Pretty print the output')
+    .option('--retain-ids', 'Retain the request and folder IDs during conversion (collection ID is always retained)')
+    .option('-w, --overwrite', 'Overwrite the output file if it exists')
+    .action(function (options) {
+        if (!options.input) { return log.error('Input file must be specified!'); }
+        if (!options.output) { return log.error('Output file must be specified!'); }
+
+        var input;
+
+        try { input = loadJSON(options.input); }
+        catch (e) { return log.error('Unable to load the input file!', e); }
+
+        transformer.normalize(input, options, function (err, result) {
+            if (err) { return log.error('Unable to convert the input: ', err); }
+
+            writeJSON(result, options, function (error) {
+                error && log.error('Could not create output file %s', options.output, error);
+            });
+        });
+    });
+
 // Describe the options and usage instructions for the `validate` command
 program
     .command('validate')

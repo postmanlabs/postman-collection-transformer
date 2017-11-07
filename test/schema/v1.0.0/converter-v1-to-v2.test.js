@@ -21,10 +21,13 @@ describe('v1.0.0 ==> v2.0.0', function () {
             samples = requireAll(examplesDir);
 
         before(function (done) {
-            agent.get(schemaUrl, function (error, response) {
-                schema = _.isString(response.body) ? JSON.parse(response.body) : response.body;
-                done(error);
-            });
+            agent
+                .get(schemaUrl)
+                .set('Cache-Control', 'no-cache; no-store; must-revalidate')
+                .end(function (error, response) {
+                    schema = _.isString(response.body) ? JSON.parse(response.body) : response.body;
+                    done(error);
+                });
         });
 
         _.forEach(samples, function (sample, sampleName) {

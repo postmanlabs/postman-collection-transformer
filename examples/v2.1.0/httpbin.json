@@ -1,5 +1,5 @@
 {
-    "variables": [],
+    "variable": [],
     "info": {
         "name": "httpbin",
         "_postman_id": "65d8dc8f-fb76-8d61-8adc-f96d2109ec7d",
@@ -229,7 +229,7 @@
                         "status",
                         ":code"
                     ],
-                    "variables": [
+                    "variable": [
                         {
                             "value": "201",
                             "id": "code"
