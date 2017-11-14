@@ -8,6 +8,12 @@ var _ = require('lodash'),
 
 /* global describe, it */
 describe('v2.1.0 to v1.0.0', function () {
+    var options = {
+        inputVersion: '2.1.0',
+        outputVersion: '1.0.0',
+        retainIds: true
+    };
+
     describe('api', function () {
         it('should have a .convertSingle() function', function () {
             expect(transformer.convertSingle).to.be.a('function');
@@ -235,6 +241,138 @@ describe('v2.1.0 to v1.0.0', function () {
 
                 expect(converted).to.eql(fixture.v1);
                 done();
+            });
+        });
+
+        describe('with requests', function () {
+            it('should correctly infer a noauth type from the auth object for requests with noauth', function (done) {
+                var source = {
+                    _postman_id: '969e90b1-0742-41b5-8602-e137d25274ac',
+                    request: {
+                        auth: {
+                            type: 'noauth'
+                        }
+                    }
+                };
+
+                transformer.convertSingle(source, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        id: '969e90b1-0742-41b5-8602-e137d25274ac',
+                        currentHelper: null,
+                        auth: null,
+                        headers: '',
+                        data: [],
+                        rawModeData: '',
+                        url: '',
+                        headerData: []
+                    });
+                    done();
+                });
+            });
+
+            it('should correctly infer a noauth type from the auth object for requests with null', function (done) {
+                var source = {
+                    _postman_id: '969e90b1-0742-41b5-8602-e137d25274ac',
+                    request: {
+                        auth: null
+                    }
+                };
+
+                transformer.convertSingle(source, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        id: '969e90b1-0742-41b5-8602-e137d25274ac',
+                        currentHelper: null,
+                        auth: null,
+                        headers: '',
+                        data: [],
+                        rawModeData: '',
+                        url: '',
+                        headerData: []
+                    });
+                    done();
+                });
+            });
+        });
+
+        describe('with collections', function () {
+            it('should correctly infer a noauth type from the auth object for requests', function (done) {
+                var source = {
+                    info: {
+                        _postman_id: '969e90b1-0742-41b5-8602-e137d25274ac'
+                    },
+                    auth: { type: 'noauth' },
+                    item: [{
+                        _postman_id: 'a9832f4d-657c-4cd2-a5a4-7ddd6bc4948e',
+                        auth: { type: 'noauth' },
+                        item: []
+                    }]
+                };
+
+                transformer.convert(source, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        id: '969e90b1-0742-41b5-8602-e137d25274ac',
+                        folders: [{
+                            id: 'a9832f4d-657c-4cd2-a5a4-7ddd6bc4948e',
+                            auth: null,
+                            folders_order: [],
+                            order: []
+                        }],
+                        order: [],
+                        requests: [],
+                        folders_order: ['a9832f4d-657c-4cd2-a5a4-7ddd6bc4948e']
+                    });
+                    done();
+                });
+            });
+
+            it('should correctly infer a noauth type from the null auth object for requests', function (done) {
+                var source = {
+                    info: {
+                        _postman_id: '969e90b1-0742-41b5-8602-e137d25274ac'
+                    },
+                    auth: null,
+                    item: [{
+                        _postman_id: 'a9832f4d-657c-4cd2-a5a4-7ddd6bc4948e',
+                        auth: null,
+                        item: []
+                    }]
+                };
+
+                transformer.convert(source, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        id: '969e90b1-0742-41b5-8602-e137d25274ac',
+                        folders: [{
+                            id: 'a9832f4d-657c-4cd2-a5a4-7ddd6bc4948e',
+                            auth: null,
+                            folders_order: [],
+                            order: []
+                        }],
+                        order: [],
+                        requests: [],
+                        folders_order: ['a9832f4d-657c-4cd2-a5a4-7ddd6bc4948e']
+                    });
+                    done();
+                });
             });
         });
     });
