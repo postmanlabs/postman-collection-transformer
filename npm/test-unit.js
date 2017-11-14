@@ -8,12 +8,12 @@
 // ---------------------------------------------------------------------------------------------------------------------
 
 require('shelljs/global');
-require('colors');
 
 // set directories and files for test and coverage report
 var path = require('path'),
 
     NYC = require('nyc'),
+    chalk = require('chalk'),
     recursive = require('recursive-readdir'),
 
     COV_REPORT_PATH = '.coverage',
@@ -21,7 +21,7 @@ var path = require('path'),
 
 module.exports = function (exit) {
     // banner line
-    console.info('Running unit tests using mocha on node...'.yellow.bold);
+    console.info(chalk.yellow.bold('Running unit tests using mocha on node...'));
 
     test('-d', COV_REPORT_PATH) && rm('-rf', COV_REPORT_PATH);
     mkdir('-p', COV_REPORT_PATH);
