@@ -42,7 +42,7 @@ module.exports = {
         url: "https://yo.postman.wtf/oauth2/token",
         preRequestScript: "",
         tests: "tests[\"response code is 200\"] = responseCode.code === 200;\nvar body = JSON.parse(responseBody);\ntests[\"body has access token\"] = \"access_token\" in body;\ntests[\"body has bearer type\"] = \"token_type\" in body;",
-        currentHelper: "normal",
+        currentHelper: null,
         helperAttributes: {},
         collectionId: "03cf74df-32de-af8b-7db8-855b51b05e50",
         responses: [
@@ -338,7 +338,7 @@ module.exports = {
                 { key: 'C', value: 'D' },
                 { key: 'E', value: 'F', disabled: true }
             ],
-            auth: { type: 'noauth' },
+            auth: null,
             body: {
                 mode: "formdata",
                 formdata: [
@@ -605,7 +605,7 @@ module.exports = {
             }
         ],
         request: {
-            auth: { type: 'noauth' },
+            auth: null,
             url: {
                 raw: 'https://yo.postman.wtf/oauth2/token',
                 protocol: 'https',
