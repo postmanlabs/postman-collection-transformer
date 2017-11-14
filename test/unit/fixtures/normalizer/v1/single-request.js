@@ -42,7 +42,7 @@ module.exports = {
         preRequestScript: 'console.log("This is a request level pre-request script");',
         // eslint-disable-next-line max-len
         tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\nvar body = JSON.parse(responseBody);\ntests[\'body has access token\'] = \'access_token\' in body;\ntests[\'body has bearer type\'] = \'token_type\' in body;',
-        currentHelper: 'normal',
+        currentHelper: null,
         helperAttributes: {},
         collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
         responses: [
@@ -373,10 +373,8 @@ module.exports = {
                 ]
             }
         }],
-        auth: {
-            type: 'noauth'
-        },
-        currentHelper: 'normal',
+        auth: null,
+        currentHelper: null,
         // eslint-disable-next-line max-len
         description: 'This endpoint is used to get the `access_token`\n\nIt requires the following secret client credentials to be sent as part of the form body along with the `authentication code` obtained as part of the `redirect_uri` from the previous request.\n\n> code: xWnkliVQJURqB2x1\n>\n> grant_type: authorization_code\n>\n> redirect_uri: https://www.getpostman.com/oauth2/callback\n>\n> client_id: abc123\n>\n> client_secret: ssh-secret\n\nIf the correct credentials are not passed, the server returns with a `401 Unauthorized` response.',
         headers: 'A:B\nC:D\n// E: F',
