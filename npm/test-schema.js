@@ -8,18 +8,18 @@
 // ---------------------------------------------------------------------------------------------------------------------
 
 require('shelljs/global');
-require('colors');
 
 // set directories and files for test and coverage report
 var path = require('path'),
 
+    chalk = require('chalk'),
     recursive = require('recursive-readdir'),
 
     SPEC_SOURCE_DIR = path.join(__dirname, '..', 'test', 'schema');
 
 module.exports = function (exit) {
     // banner line
-    console.info('Running schema tests using mocha on node...'.yellow.bold);
+    console.info(chalk.yellow.bold('Running schema tests using mocha on node...'));
 
     var Mocha = require('mocha');
 

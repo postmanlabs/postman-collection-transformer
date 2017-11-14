@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 require('shelljs/global');
-require('colors');
 
-var async = require('async'),
+var chalk = require('chalk'),
+    async = require('async'),
     _ = require('lodash'),
     path = require('path'),
     packity = require('packity'),
@@ -29,7 +29,7 @@ var async = require('async'),
 
 module.exports = function (exit) {
     // banner line
-    console.info('\nRunning system tests...\n'.yellow.bold);
+    console.info(chalk.yellow.bold('\nRunning system tests...\n'));
 
     async.series([
 
@@ -97,8 +97,8 @@ module.exports = function (exit) {
             }, function (err, result) {
                 // if processing nsp had an error, simply print that and exit
                 if (err) {
-                    console.error('There was an error processing NSP!\n'.red + (err.message || err).gray + '\n\n' +
-                        'Since NSP server failure is not a blocker for tests, tests are not marked as failure!');
+                    console.error(chalk.red('There was an error processing NSP!\n') + chalk.gray(err.message || err) +
+                        '\n\nSince NSP server failure is not a blocker for tests, tests are not marked as failure!');
                     return next();
                 }
 
@@ -108,7 +108,7 @@ module.exports = function (exit) {
                     return next(1);
                 }
 
-                console.info('nsp ok!\n'.green);
+                console.info(chalk.green('nsp ok!\n'));
                 return next();
             });
         }
