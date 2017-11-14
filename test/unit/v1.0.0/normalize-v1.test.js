@@ -88,8 +88,8 @@ describe('v1.0.0 normalization', function () {
                     expect(result).to.eql({
                         id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd',
                         data: [],
-                        currentHelper: 'normal',
-                        auth: { type: 'noauth' }
+                        currentHelper: null,
+                        auth: null
                     });
                     done();
                 });
@@ -103,8 +103,8 @@ describe('v1.0.0 normalization', function () {
                     expect(err).to.not.be.ok;
 
                     expect(result).to.eql({
-                        currentHelper: 'normal',
-                        auth: { type: 'noauth' }
+                        currentHelper: null,
+                        auth: null
                     });
                     done();
                 });
@@ -120,8 +120,8 @@ describe('v1.0.0 normalization', function () {
                     expect(result).to.eql({
                         id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd',
                         data: [],
-                        currentHelper: 'normal',
-                        auth: { type: 'noauth' }
+                        currentHelper: null,
+                        auth: null
                     });
                     done();
                 });
@@ -135,8 +135,8 @@ describe('v1.0.0 normalization', function () {
                     expect(err).to.not.be.ok;
 
                     expect(result).to.eql({
-                        currentHelper: 'normal',
-                        auth: { type: 'noauth' }
+                        currentHelper: null,
+                        auth: null
                     });
                     done();
                 });
@@ -230,6 +230,107 @@ describe('v1.0.0 normalization', function () {
                         }
                     });
                     done();
+                });
+            });
+
+            describe('requests with null', function () {
+                it('should handle no-auth correctly with legacy properties', function (done) {
+                    transformer.normalizeSingle({
+                        id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd',
+                        currentHelper: null
+                    }, {
+                        retainIds: true,
+                        normalizeVersion: '1.0.0'
+                    }, function (err, result) {
+                        expect(err).to.not.be.ok;
+
+                        expect(result).to.eql({
+                            id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd',
+                            data: [],
+                            currentHelper: null,
+                            auth: null
+                        });
+                        done();
+                    });
+                });
+
+                it('should handle legacy no-auth correctly with noDefaults set to true', function (done) {
+                    transformer.normalizeSingle({ currentHelper: null }, {
+                        noDefaults: true,
+                        normalizeVersion: '1.0.0'
+                    }, function (err, result) {
+                        expect(err).to.not.be.ok;
+
+                        expect(result).to.eql({
+                            currentHelper: null,
+                            auth: null
+                        });
+                        done();
+                    });
+                });
+
+                it('should recreate legacy properties for noauth correctly', function (done) {
+                    transformer.normalizeSingle({ id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd', auth: null }, {
+                        retainIds: true,
+                        normalizeVersion: '1.0.0'
+                    }, function (err, result) {
+                        expect(err).to.not.be.ok;
+
+                        expect(result).to.eql({
+                            id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd',
+                            data: [],
+                            currentHelper: null,
+                            auth: null
+                        });
+                        done();
+                    });
+                });
+
+                it('should recreate legacy noauth properties correctly with noDefaults set to true', function (done) {
+                    transformer.normalizeSingle({ auth: null }, {
+                        noDefaults: true,
+                        normalizeVersion: '1.0.0'
+                    }, function (err, result) {
+                        expect(err).to.not.be.ok;
+
+                        expect(result).to.eql({
+                            currentHelper: null,
+                            auth: null
+                        });
+                        done();
+                    });
+                });
+            });
+
+            describe('collections', function () {
+                var options = { retainIds: true, normalizeVersion: '1.0.0' };
+
+                it('should handle auth set to null correctly', function (done) {
+                    transformer.normalize({
+                        id: 'b7e8cb01-bc32-4389-a130-3e4bc6fc844c',
+                        auth: null
+                    }, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+
+                        expect(result).to.eql({
+                            id: 'b7e8cb01-bc32-4389-a130-3e4bc6fc844c'
+                        });
+                        done();
+                    });
+                });
+
+                it('should handle auth set to noauth correctly', function (done) {
+                    transformer.normalize({
+                        id: 'f29edacb-89b6-4e36-9954-db399f1cdc9e',
+                        auth: { type: 'noauth' }
+                    }, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+
+                        expect(result).to.eql({
+                            id: 'f29edacb-89b6-4e36-9954-db399f1cdc9e'
+                        });
+                        done();
+                    });
                 });
             });
         });
@@ -593,8 +694,8 @@ describe('v1.0.0 normalization', function () {
                         url: 'https://google.com',
                         headers: [],
                         headerData: [],
-                        auth: { type: 'noauth' },
-                        currentHelper: 'normal',
+                        auth: null,
+                        currentHelper: null,
                         data: 'akjshgdajhsgd',
                         method: 'GET',
                         dataMode: 'raw'
@@ -704,8 +805,8 @@ describe('v1.0.0 normalization', function () {
                             name: 'Request Headers',
                             dataMode: 'params',
                             data: [],
-                            auth: { type: 'noauth' },
-                            currentHelper: 'normal',
+                            auth: null,
+                            currentHelper: null,
                             rawModeData: null,
                             descriptionFormat: null,
                             // eslint-disable-next-line max-len
@@ -744,8 +845,8 @@ describe('v1.0.0 normalization', function () {
                                     type: 'text'
                                 }
                             ],
-                            auth: { type: 'noauth' },
-                            currentHelper: 'normal',
+                            auth: null,
+                            currentHelper: null,
                             rawModeData: null,
                             descriptionFormat: null,
                             // eslint-disable-next-line max-len
