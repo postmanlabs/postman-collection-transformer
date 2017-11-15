@@ -328,7 +328,7 @@ describe('v2.1.0 to v1.0.0', function () {
                         id: '969e90b1-0742-41b5-8602-e137d25274ac',
                         folders: [{
                             id: 'a9832f4d-657c-4cd2-a5a4-7ddd6bc4948e',
-                            auth: null,
+                            auth: { type: 'noauth' },
                             folders_order: [],
                             order: []
                         }],
