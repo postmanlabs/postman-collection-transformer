@@ -1,7 +1,6 @@
 #!/usr/bin/env node
-require('colors');
-
-var exit = require('shelljs').exit,
+var chalk = require('chalk'),
+    exit = require('shelljs').exit,
     prettyms = require('pretty-ms'),
     startedAt = Date.now(),
     name = require('../package.json').name;
@@ -12,11 +11,9 @@ require('async').series([
     require('./test-unit'),
     require('./test-schema'),
     require('./test-browser')
-    // require('./test-integration'),
     // require('./test-cli'),
-    // require('./test-library')
 ], function (code) {
-    console.info(`\n${name}: duration ${prettyms(Date.now() - startedAt)}\n${name}: ${code ? 'not ok' : 'ok'}!`[code ?
-        'red' : 'green']);
+    // eslint-disable-next-line max-len
+    console.info(chalk[code ? 'red' : 'green'](`\n${name}: duration ${prettyms(Date.now() - startedAt)}\n${name}: ${code ? 'not ok' : 'ok'}!`));
     exit(code && (typeof code === 'number' ? code : 1) || 0);
 });
