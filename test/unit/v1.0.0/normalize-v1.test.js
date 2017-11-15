@@ -308,12 +308,20 @@ describe('v1.0.0 normalization', function () {
                 it('should handle auth set to null correctly', function (done) {
                     transformer.normalize({
                         id: 'b7e8cb01-bc32-4389-a130-3e4bc6fc844c',
-                        auth: null
+                        auth: null,
+                        folders: [{
+                            id: '570325c5-c4cc-4caf-a527-7ac71f25c5ac',
+                            auth: null
+                        }]
                     }, options, function (err, result) {
                         expect(err).to.not.be.ok;
 
                         expect(result).to.eql({
-                            id: 'b7e8cb01-bc32-4389-a130-3e4bc6fc844c'
+                            id: 'b7e8cb01-bc32-4389-a130-3e4bc6fc844c',
+                            folders: [{
+                                id: '570325c5-c4cc-4caf-a527-7ac71f25c5ac',
+                                auth: null
+                            }]
                         });
                         done();
                     });
@@ -322,12 +330,20 @@ describe('v1.0.0 normalization', function () {
                 it('should handle auth set to noauth correctly', function (done) {
                     transformer.normalize({
                         id: 'f29edacb-89b6-4e36-9954-db399f1cdc9e',
-                        auth: { type: 'noauth' }
+                        auth: { type: 'noauth' },
+                        folders: [{
+                            id: '5ee15d58-2945-48bb-89d0-9219210d6daa',
+                            auth: { type: 'noauth' }
+                        }]
                     }, options, function (err, result) {
                         expect(err).to.not.be.ok;
 
                         expect(result).to.eql({
-                            id: 'f29edacb-89b6-4e36-9954-db399f1cdc9e'
+                            id: 'f29edacb-89b6-4e36-9954-db399f1cdc9e',
+                            folders: [{
+                                id: '5ee15d58-2945-48bb-89d0-9219210d6daa',
+                                auth: { type: 'noauth' }
+                            }]
                         });
                         done();
                     });
