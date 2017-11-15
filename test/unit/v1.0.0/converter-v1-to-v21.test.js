@@ -411,7 +411,7 @@ describe('v1.0.0 to v2.1.0', function () {
                             schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                         },
                         item: [{
-                            auth: null,
+                            auth: { type: 'noauth' },
                             item: []
                         }]
                     });
