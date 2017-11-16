@@ -260,7 +260,7 @@ describe('v1.0.0 to v2.0.0', function () {
                         expect(JSON.parse(JSON.stringify(converted))).to.eql({
                             name: '',
                             request: {
-                                auth: null,
+                                auth: { type: 'noauth' },
                                 body: { mode: 'raw', raw: '' },
                                 header: []
                             },

@@ -89,7 +89,7 @@ describe('v1.0.0 normalization', function () {
                         id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd',
                         data: [],
                         currentHelper: null,
-                        auth: null
+                        auth: { type: 'noauth' }
                     });
                     done();
                 });
@@ -103,8 +103,7 @@ describe('v1.0.0 normalization', function () {
                     expect(err).to.not.be.ok;
 
                     expect(result).to.eql({
-                        currentHelper: null,
-                        auth: null
+                        currentHelper: null
                     });
                     done();
                 });
@@ -121,7 +120,7 @@ describe('v1.0.0 normalization', function () {
                         id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd',
                         data: [],
                         currentHelper: null,
-                        auth: null
+                        auth: { type: 'noauth' }
                     });
                     done();
                 });
@@ -136,7 +135,7 @@ describe('v1.0.0 normalization', function () {
 
                     expect(result).to.eql({
                         currentHelper: null,
-                        auth: null
+                        auth: { type: 'noauth' }
                     });
                     done();
                 });
@@ -248,7 +247,7 @@ describe('v1.0.0 normalization', function () {
                             id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd',
                             data: [],
                             currentHelper: null,
-                            auth: null
+                            auth: { type: 'noauth' }
                         });
                         done();
                     });
@@ -262,8 +261,7 @@ describe('v1.0.0 normalization', function () {
                         expect(err).to.not.be.ok;
 
                         expect(result).to.eql({
-                            currentHelper: null,
-                            auth: null
+                            currentHelper: null
                         });
                         done();
                     });
@@ -710,7 +708,7 @@ describe('v1.0.0 normalization', function () {
                         url: 'https://google.com',
                         headers: [],
                         headerData: [],
-                        auth: null,
+                        auth: { type: 'noauth' },
                         currentHelper: null,
                         data: 'akjshgdajhsgd',
                         method: 'GET',
@@ -821,7 +819,7 @@ describe('v1.0.0 normalization', function () {
                             name: 'Request Headers',
                             dataMode: 'params',
                             data: [],
-                            auth: null,
+                            auth: { type: 'noauth' },
                             currentHelper: null,
                             rawModeData: null,
                             descriptionFormat: null,
@@ -861,7 +859,7 @@ describe('v1.0.0 normalization', function () {
                                     type: 'text'
                                 }
                             ],
-                            auth: null,
+                            auth: { type: 'noauth' },
                             currentHelper: null,
                             rawModeData: null,
                             descriptionFormat: null,
