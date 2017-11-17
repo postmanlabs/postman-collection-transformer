@@ -146,7 +146,7 @@ module.exports = {
                 preRequestScript: "",
                 tests: "tests[\"response code is 200\"] = responseCode.code === 200;\nvar body = JSON.parse(responseBody);\ntests[\"body has access token\"] = \"access_token\" in body;\ntests[\"body has bearer type\"] = \"token_type\" in body;",
                 currentHelper: null,
-                helperAttributes: {},
+                helperAttributes: null,
                 collectionId: "03cf74df-32de-af8b-7db8-855b51b05e50",
                 responses: [
                     {
@@ -421,7 +421,7 @@ module.exports = {
                 preRequestScript: "",
                 tests: "var data;\n\ntry { responseJSON = JSON.parse(responseBody); }\ncatch (e) {}\n\ntests[\"Body contains files\"] = responseBody.has(\"files\");\ntests[\"Body contains args\"] = responseBody.has(\"args\");\ntests[\"Body contains form\"] = responseBody.has(\"form\");\ntests[\"Body contains headers\"] = responseBody.has(\"headers\");\ntests[\"Body contains url\"] = responseBody.has(\"url\");\n\n\n\ntests[\"Data has been passed\"] = (responseJSON && responseJSON.data && responseJSON.data.length)",
                 currentHelper: null,
-                helperAttributes: {},
+                helperAttributes: null,
                 collectionId: "03cf74df-32de-af8b-7db8-855b51b05e50",
                 rawModeData: "Etiam mi lacus, cursus vitae felis et, blandit pellentesque neque. Vestibulum eget nisi a tortor commodo dignissim.\nQuisque ipsum ligula, faucibus a felis a, commodo elementum nisl. Mauris vulputate sapien et tincidunt viverra. Donec vitae velit nec metus."
             },
@@ -441,7 +441,7 @@ module.exports = {
                 preRequestScript: "",
                 tests: "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"Body contains cookies\"] = responseBody.has(\"cookies\");\nvar body = JSON.parse(responseBody);\ntests[\"Body contains cookie foo2\"] = 'foo2' in body.cookies;",
                 currentHelper: null,
-                helperAttributes: {},
+                helperAttributes: null,
                 collectionId: "03cf74df-32de-af8b-7db8-855b51b05e50",
                 responses: [
                     {
@@ -579,7 +579,7 @@ module.exports = {
                 preRequestScript: "",
                 tests: "tests[\"Body contains headers\"] = responseBody.has(\"headers\");\ntests[\"Body contains args\"] = responseBody.has(\"args\");\ntests[\"Body contains url\"] = responseBody.has(\"url\");\n\nvar data = JSON.parse(responseBody)\n\ntests[\"Args key contains argument passed as url parameter\"] = 'test' in data.args",
                 currentHelper: null,
-                helperAttributes: {},
+                helperAttributes: null,
                 collectionId: "03cf74df-32de-af8b-7db8-855b51b05e50"
             },
             {
@@ -598,7 +598,7 @@ module.exports = {
                 preRequestScript: "",
                 tests: "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"Body contains key cookies\"] = responseBody.has(\"cookies\");\nvar body = JSON.parse(responseBody);\ntests[\"Body contains cookie foo2\"] = 'foo2' in body.cookies;\ntests[\"Body does not contain cookie foo2\"] = !('foo1' in body.cookies);",
                 currentHelper: null,
-                helperAttributes: {},
+                helperAttributes: null,
                 collectionId: "03cf74df-32de-af8b-7db8-855b51b05e50",
                 responses: [
                     {
@@ -716,7 +716,7 @@ module.exports = {
                 preRequestScript: "",
                 tests: "tests[\"response code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\ntests[\"response body has key delay\"] = 'delay' in data;",
                 currentHelper: null,
-                helperAttributes: {},
+                helperAttributes: null,
                 collectionId: "03cf74df-32de-af8b-7db8-855b51b05e50"
             },
             {
@@ -735,7 +735,7 @@ module.exports = {
                 preRequestScript: "",
                 tests: "tests[\"Body contains headers\"] = responseBody.has(\"headers\");\n\nvar data = JSON.parse(responseBody).headers;\n\ntests[\"Header contains host\"] = \"host\" in data;\ntests[\"Header contains test parameter sent as part of request header\"] = \"my-sample-header\" in data;",
                 currentHelper: null,
-                helperAttributes: {},
+                helperAttributes: null,
                 collectionId: "03cf74df-32de-af8b-7db8-855b51b05e50"
             },
             {
@@ -780,7 +780,7 @@ module.exports = {
                 preRequestScript: "",
                 tests: "tests[\"Body contains Content-Type\"] = responseBody.has(\"Content-Type\");\ntests[\"Body contains Server\"] = responseBody.has(\"Server\");",
                 currentHelper: null,
-                helperAttributes: {},
+                helperAttributes: null,
                 collectionId: "03cf74df-32de-af8b-7db8-855b51b05e50"
             },
             {
@@ -798,7 +798,7 @@ module.exports = {
                 preRequestScript: "",
                 tests: "tests[\"Body contains files\"] = responseBody.has(\"files\");\ntests[\"Body contains args\"] = responseBody.has(\"args\");\ntests[\"Body contains form\"] = responseBody.has(\"form\");\ntests[\"Body contains headers\"] = responseBody.has(\"headers\");\ntests[\"Body contains url\"] = responseBody.has(\"url\");\n\nvar data = JSON.parse(responseBody)\n\ntests[\"form key has data passed in as form-data\"] = 'test' in data.form",
                 currentHelper: null,
-                helperAttributes: {},
+                helperAttributes: null,
                 collectionId: "03cf74df-32de-af8b-7db8-855b51b05e50",
                 rawModeData: "Curabitur auctor, elit nec pulvinar porttitor, ex augue condimentum enim, eget suscipit urna felis quis neque.\nSuspendisse sit amet luctus massa, nec venenatis mi. Suspendisse tincidunt massa at nibh efficitur fringilla. Nam quis congue mi. Etiam volutpat."
             },
@@ -817,7 +817,7 @@ module.exports = {
                 preRequestScript: "",
                 tests: "var responseJSON;\n\ntry { responseJSON = JSON.parse(responseBody); }\ncatch (e) { }\n\n\ntests[\"response has data\"] = responseJSON && responseJSON.data && (responseJSON.data.length === 256);\ntests[\"content-type equals text/plain\"] = responseJSON && responseJSON.headers && (responseJSON.headers[\"content-type\"] === 'text/plain');",
                 currentHelper: null,
-                helperAttributes: {},
+                helperAttributes: null,
                 collectionId: "03cf74df-32de-af8b-7db8-855b51b05e50",
                 rawModeData: "Duis posuere augue vel cursus pharetra. In luctus a ex nec pretium. Praesent neque quam, tincidunt nec leo eget, rutrum vehicula magna.\nMaecenas consequat elementum elit, id semper sem tristique et. Integer pulvinar enim quis consectetur interdum volutpat."
             },
@@ -843,7 +843,7 @@ module.exports = {
                 preRequestScript: "",
                 tests: "tests[\"Body contains status\"] = responseBody.has(\"status\");\n\nvar data = JSON.parse(responseBody);\n\ntests[\"Status equals 200\"] = data.status === 200;\n",
                 currentHelper: null,
-                helperAttributes: {},
+                helperAttributes: null,
                 collectionId: "03cf74df-32de-af8b-7db8-855b51b05e50"
             },
             {
@@ -862,7 +862,7 @@ module.exports = {
                 preRequestScript: "",
                 tests: "tests[\"response code is 200\"] = responseCode.code === 200;\n\ntry {\n    var data = JSON.parse(responseBody);\n    tests[\"Body contains deflated\"] = responseBody.has(\"deflated\");\n    tests[\"Body contains headers\"] = responseBody.has(\"headers\");\n    tests[\"Body contains method\"] = responseBody.has(\"method\");\n}\ncatch(e) {\n    console.log('Cannot parse response,probably not a JSON');\n}\n",
                 currentHelper: null,
-                helperAttributes: {},
+                helperAttributes: null,
                 collectionId: "03cf74df-32de-af8b-7db8-855b51b05e50"
             },
             {
@@ -881,7 +881,7 @@ module.exports = {
                 preRequestScript: "",
                 tests: "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"Body contains cookies\"] = responseBody.has(\"cookies\");\nvar body = JSON.parse(responseBody);\ntests[\"Body contains cookie foo1\"] = 'foo1' in body.cookies;\ntests[\"Body contains cookie foo2\"] = 'foo2' in body.cookies;\n\n",
                 currentHelper: null,
-                helperAttributes: {},
+                helperAttributes: null,
                 collectionId: "03cf74df-32de-af8b-7db8-855b51b05e50",
                 responses: [
                     {
@@ -993,7 +993,7 @@ module.exports = {
                 preRequestScript: "",
                 tests: "tests[\"response code is 200\"] = responseCode.code === 200;\n\n",
                 currentHelper: null,
-                helperAttributes: {},
+                helperAttributes: null,
                 collectionId: "03cf74df-32de-af8b-7db8-855b51b05e50"
             },
             {
@@ -1038,7 +1038,7 @@ module.exports = {
                 preRequestScript: "",
                 tests: "tests[\"response code is 401\"] = responseCode.code === 401;\ntests[\"response has WWW-Authenticate header\"] = (postman.getResponseHeader('WWW-Authenticate'));\n\nvar authenticateHeader = postman.getResponseHeader('WWW-Authenticate'),\n    realmStart = authenticateHeader.indexOf('\"',authenticateHeader.indexOf(\"realm\")) + 1 ,\n    realmEnd = authenticateHeader.indexOf('\"',realmStart),\n    realm = authenticateHeader.slice(realmStart,realmEnd),\n    nonceStart = authenticateHeader.indexOf('\"',authenticateHeader.indexOf(\"nonce\")) + 1,\n    nonceEnd = authenticateHeader.indexOf('\"',nonceStart),\n    nonce = authenticateHeader.slice(nonceStart,nonceEnd);\n    \npostman.setGlobalVariable('echo_digest_realm', realm);\npostman.setGlobalVariable('echo_digest_nonce', nonce);",
                 currentHelper: null,
-                helperAttributes: {},
+                helperAttributes: null,
                 collectionId: "03cf74df-32de-af8b-7db8-855b51b05e50"
             },
             {
@@ -1057,7 +1057,7 @@ module.exports = {
                 preRequestScript: "",
                 tests: "tests[\"response code is 200\"] = responseCode.code === 200;",
                 currentHelper: null,
-                helperAttributes: {},
+                helperAttributes: null,
                 collectionId: "03cf74df-32de-af8b-7db8-855b51b05e50"
             },
             {
@@ -1075,7 +1075,7 @@ module.exports = {
                 preRequestScript: "",
                 tests: "tests[\"Body contains files\"] = responseBody.has(\"files\");\ntests[\"Body contains args\"] = responseBody.has(\"args\");\ntests[\"Body contains form\"] = responseBody.has(\"form\");\ntests[\"Body contains headers\"] = responseBody.has(\"headers\");\ntests[\"Body contains url\"] = responseBody.has(\"url\");\n\nvar data = JSON.parse(responseBody)\n\ntests[\"form key has data passed in as form-data\"] = 'test' in data.form",
                 currentHelper: null,
-                helperAttributes: {},
+                helperAttributes: null,
                 collectionId: "03cf74df-32de-af8b-7db8-855b51b05e50",
                 rawModeData: "Donec fermentum, nisi sed cursus eleifend, nulla tortor ultricies tellus, ut vehicula orci arcu ut velit. In volutpat egestas dapibus. \nMorbi condimentum vestibulum sapien. Etiam dignissim diam quis eros lobortis gravida vel lobortis est. Etiam gravida sed."
             },
@@ -1121,7 +1121,7 @@ module.exports = {
                 preRequestScript: "",
                 tests: "tests[\"response code is 401\"] = (responseCode.code === 200);\nvar body = JSON.parse(responseBody);\ntests[\"body has user_id\"] = \"user_id\" in body;\ntests[\"body has name\"] = \"name\" in body;",
                 currentHelper: null,
-                helperAttributes: {},
+                helperAttributes: null,
                 collectionId: "03cf74df-32de-af8b-7db8-855b51b05e50",
                 responses: [
                     {
@@ -1340,7 +1340,7 @@ module.exports = {
                 preRequestScript: "",
                 tests: "tests[\"response code is 200\"] = responseCode.code === 200;\nvar body = JSON.parse(responseBody);\ntests[\"Body contains status pass\"] = body[\"status\"] == \"pass\"",
                 currentHelper: null,
-                helperAttributes: {},
+                helperAttributes: null,
                 collectionId: "03cf74df-32de-af8b-7db8-855b51b05e50"
             },
             {
@@ -1385,7 +1385,7 @@ module.exports = {
                 preRequestScript: "",
                 tests: "tests[\"response code is 200\"] = responseCode.code === 200;",
                 currentHelper: null,
-                helperAttributes: {},
+                helperAttributes: null,
                 collectionId: "03cf74df-32de-af8b-7db8-855b51b05e50",
                 responses: [
                     {
@@ -1523,7 +1523,7 @@ module.exports = {
                 preRequestScript: "",
                 tests: "tests[\"response code is 200\"] = responseCode.code === 200;\n\ntry {\n    var data = JSON.parse(responseBody);\n    tests[\"Body contains gzipped\"] = responseBody.has(\"gzipped\");\n    tests[\"Body contains headers\"] = responseBody.has(\"headers\");\n    tests[\"Body contains method\"] = responseBody.has(\"method\");\n}\ncatch(e) {\n    console.log('Cannot parse response,probably not a JSON');\n}",
                 currentHelper: null,
-                helperAttributes: {},
+                helperAttributes: null,
                 collectionId: "03cf74df-32de-af8b-7db8-855b51b05e50"
             },
             {

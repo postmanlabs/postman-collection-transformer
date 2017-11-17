@@ -43,7 +43,7 @@ module.exports = {
         preRequestScript: "",
         tests: "tests[\"response code is 200\"] = responseCode.code === 200;\nvar body = JSON.parse(responseBody);\ntests[\"body has access token\"] = \"access_token\" in body;\ntests[\"body has bearer type\"] = \"token_type\" in body;",
         currentHelper: null,
-        helperAttributes: {},
+        helperAttributes: null,
         collectionId: "03cf74df-32de-af8b-7db8-855b51b05e50",
         responses: [
             {
