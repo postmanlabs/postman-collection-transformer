@@ -264,6 +264,7 @@ describe('v2.1.0 to v1.0.0', function () {
                     expect(converted).to.eql({
                         id: '969e90b1-0742-41b5-8602-e137d25274ac',
                         currentHelper: null,
+                        helperAttributes: null,
                         auth: { type: 'noauth' },
                         headers: '',
                         data: [],
@@ -292,6 +293,7 @@ describe('v2.1.0 to v1.0.0', function () {
                     expect(converted).to.eql({
                         id: '969e90b1-0742-41b5-8602-e137d25274ac',
                         currentHelper: null,
+                        helperAttributes: null,
                         auth: null,
                         headers: '',
                         data: [],

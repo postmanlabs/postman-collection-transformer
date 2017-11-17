@@ -89,6 +89,7 @@ describe('v1.0.0 normalization', function () {
                         id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd',
                         data: [],
                         currentHelper: null,
+                        helperAttributes: null,
                         auth: { type: 'noauth' }
                     });
                     done();
@@ -103,7 +104,8 @@ describe('v1.0.0 normalization', function () {
                     expect(err).to.not.be.ok;
 
                     expect(result).to.eql({
-                        currentHelper: null
+                        currentHelper: null,
+                        helperAttributes: null
                     });
                     done();
                 });
@@ -120,6 +122,7 @@ describe('v1.0.0 normalization', function () {
                         id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd',
                         data: [],
                         currentHelper: null,
+                        helperAttributes: null,
                         auth: { type: 'noauth' }
                     });
                     done();
@@ -135,6 +138,7 @@ describe('v1.0.0 normalization', function () {
 
                     expect(result).to.eql({
                         currentHelper: null,
+                        helperAttributes: null,
                         auth: { type: 'noauth' }
                     });
                     done();
@@ -247,6 +251,7 @@ describe('v1.0.0 normalization', function () {
                             id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd',
                             data: [],
                             currentHelper: null,
+                            helperAttributes: null,
                             auth: { type: 'noauth' }
                         });
                         done();
@@ -261,7 +266,8 @@ describe('v1.0.0 normalization', function () {
                         expect(err).to.not.be.ok;
 
                         expect(result).to.eql({
-                            currentHelper: null
+                            currentHelper: null,
+                            helperAttributes: null
                         });
                         done();
                     });
@@ -278,6 +284,7 @@ describe('v1.0.0 normalization', function () {
                             id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd',
                             data: [],
                             currentHelper: null,
+                            helperAttributes: null,
                             auth: null
                         });
                         done();
@@ -293,6 +300,7 @@ describe('v1.0.0 normalization', function () {
 
                         expect(result).to.eql({
                             currentHelper: null,
+                            helperAttributes: null,
                             auth: null
                         });
                         done();
@@ -710,6 +718,7 @@ describe('v1.0.0 normalization', function () {
                         headerData: [],
                         auth: { type: 'noauth' },
                         currentHelper: null,
+                        helperAttributes: null,
                         data: 'akjshgdajhsgd',
                         method: 'GET',
                         dataMode: 'raw'
@@ -821,6 +830,7 @@ describe('v1.0.0 normalization', function () {
                             data: [],
                             auth: { type: 'noauth' },
                             currentHelper: null,
+                            helperAttributes: null,
                             rawModeData: null,
                             descriptionFormat: null,
                             // eslint-disable-next-line max-len
@@ -861,6 +871,7 @@ describe('v1.0.0 normalization', function () {
                             ],
                             auth: { type: 'noauth' },
                             currentHelper: null,
+                            helperAttributes: null,
                             rawModeData: null,
                             descriptionFormat: null,
                             // eslint-disable-next-line max-len
