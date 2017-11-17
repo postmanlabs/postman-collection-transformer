@@ -2081,6 +2081,7 @@ module.exports = {
                 pathVariables: {},
                 url: 'https://echo.getpostman.com/oauth2/token',
                 currentHelper: null,
+                helperAttributes: null,
                 auth: { type: 'noauth' },
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\nvar body = JSON.parse(responseBody);\ntests[\'body has access token\'] = \'access_token\' in body;\ntests[\'body has bearer type\'] = \'token_type\' in body;',
@@ -2417,6 +2418,7 @@ module.exports = {
                 pathVariables: {},
                 auth: { type: 'noauth' },
                 currentHelper: null,
+                helperAttributes: null,
                 url: 'https://echo.getpostman.com/put',
                 // eslint-disable-next-line max-len
                 tests: 'var data;\n\ntry { responseJSON = JSON.parse(responseBody); }\ncatch (e) {}\n\ntests[\'Body contains files\'] = responseBody.has(\'files\');\ntests[\'Body contains args\'] = responseBody.has(\'args\');\ntests[\'Body contains form\'] = responseBody.has(\'form\');\ntests[\'Body contains headers\'] = responseBody.has(\'headers\');\ntests[\'Body contains url\'] = responseBody.has(\'url\');\n\n\n\ntests[\'Data has been passed\'] = (responseJSON && responseJSON.data && responseJSON.data.length)',
@@ -2448,6 +2450,7 @@ module.exports = {
                 ],
                 auth: { type: 'noauth' },
                 currentHelper: null,
+                helperAttributes: null,
                 // eslint-disable-next-line max-len
                 description: 'Use this endpoint to get a list of all cookies that are stored with respect to this domain. Whatever key-value pairs that has been previously set by calling the \'Set Cookies\' endpoint, will be returned as response JSON.',
                 headers: '',
@@ -2603,6 +2606,7 @@ module.exports = {
                 ],
                 auth: { type: 'noauth' },
                 currentHelper: null,
+                helperAttributes: null,
                 // eslint-disable-next-line max-len
                 description: 'The HTTP `GET` request method is meant to retrieve data from a server. The data\nis identified by a unique URI (Uniform Resource Identifier). \n\nA `GET` request can pass parameters to the server using \'Query String \nParameters\'. For example, in the following request,\n\n> http://example.com/hi/there?hand=wave\n\nThe parameter \'hand\' has the value \'wave\'.\n\nThis endpoint echoes the HTTP headers, request parameters and the complete\nURI requested.',
                 headers: '',
@@ -2642,6 +2646,7 @@ module.exports = {
                 ],
                 auth: { type: 'noauth' },
                 currentHelper: null,
+                helperAttributes: null,
                 // eslint-disable-next-line max-len
                 description: 'One or more cookies that has been set for this domain can be deleted by providing the cookie names as part of the URL parameter. The response of this request is a JSON containing the list of currently set cookies.',
                 headers: '',
@@ -2782,6 +2787,7 @@ module.exports = {
                 ],
                 auth: { type: 'noauth' },
                 currentHelper: null,
+                helperAttributes: null,
                 // eslint-disable-next-line max-len
                 description: 'Using this endpoint one can configure how long it takes for the server to come back with a response. Appending a number to the URL defines the time (in seconds) the server will wait before responding.\n\nNote that a maximum delay of 10 seconds is accepted by the server.',
                 headers: '',
@@ -2819,6 +2825,7 @@ module.exports = {
                 ],
                 auth: { type: 'noauth' },
                 currentHelper: null,
+                helperAttributes: null,
                 // eslint-disable-next-line max-len
                 description: 'A `GET` request to this endpoint returns the list of all request headers as part of the response JSON.\nIn Postman, sending your own set of headers through the [Headers tab](https://www.getpostman.com/docs/requests#headers) will reveal the headers as part of the response.',
                 headers: '[object Object]',
@@ -2878,6 +2885,7 @@ module.exports = {
                 ],
                 auth: { type: 'noauth' },
                 currentHelper: null,
+                helperAttributes: null,
                 // eslint-disable-next-line max-len
                 description: 'This endpoint causes the server to send custom set of response headers. Providing header values as part of the URL parameters of a `GET` request to this endpoint returns the same as part of response header.\n\nTo send your own set of headers, simply add or replace the the URL parameters with your own set.',
                 headers: '',
@@ -2923,6 +2931,7 @@ module.exports = {
                 ],
                 auth: { type: 'noauth' },
                 currentHelper: null,
+                helperAttributes: null,
                 // eslint-disable-next-line max-len
                 description: 'The HTTP `PATCH` method is used to update resources on a server. The exact\nuse of `PATCH` requests depends on the server in question. There are a number\nof server implementations which handle `PATCH` differently. Technically, \n`PATCH` supports both Query String parameters and a Request Body.\n\nThis endpoint accepts an HTTP `PATCH` request and provides debug information\nsuch as the HTTP headers, Query String arguments, and the Request Body.',
                 headers: '',
@@ -2964,6 +2973,7 @@ module.exports = {
                 ],
                 auth: { type: 'noauth' },
                 currentHelper: null,
+                helperAttributes: null,
                 // eslint-disable-next-line max-len
                 description: 'The HTTP `POST` request method is meant to transfer data to a server \n(and elicit a response). What data is returned depends on the implementation\nof the server.\n\nA `POST` request can pass parameters to the server using \'Query String \nParameters\', as well as the Request Body. For example, in the following request,\n\n> POST /hi/there?hand=wave\n>\n> <request-body>\n\nThe parameter \'hand\' has the value \'wave\'. The request body can be in multiple\nformats. These formats are defined by the MIME type of the request. The MIME \nType can be set using the ``Content-Type`` HTTP header. The most commonly used \nMIME types are:\n\n* `multipart/form-data`\n* `application/x-www-form-urlencoded`\n* `application/json`\n\nThis endpoint echoes the HTTP headers, request parameters, the contents of\nthe request body and the complete URI requested.',
                 headers: 'Content-Type: text/plain\n',
@@ -3012,6 +3022,7 @@ module.exports = {
                 ],
                 auth: { type: 'noauth' },
                 currentHelper: null,
+                helperAttributes: null,
                 // eslint-disable-next-line max-len
                 description: 'This endpoint allows one to instruct the server which status code to respond with.\n\nEvery response is accompanied by a status code. The status code provides a summary of the nature of response sent by the server. For example, a status code of `200` means everything is okay with the response and a code of `404` implies that the requested URL does not exist on server. \nA list of all valid HTTP status code can be found at the [List of Status Codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) wikipedia article. When using Postman, the response status code is described for easy reference.\n\nNote that if an invalid status code is requested to be sent, the server returns a status code of `400 Bad Request`.',
                 headers: '',
@@ -3054,6 +3065,7 @@ module.exports = {
                 ],
                 auth: { type: 'noauth' },
                 currentHelper: null,
+                helperAttributes: null,
                 // eslint-disable-next-line max-len
                 description: 'This endpoint returns the response using [deflate compression algoritm](https://en.wikipedia.org/wiki/DEFLATE). \nThe uncompressed response is a JSON string containing the details of the request sent by the client. For this endpoint to work, one should request with `Accept-encoding` header containing `deflate` as part of its value. Postman supports gzip, deflate and SDCH decoding and automatically sends them as part of the request.\n\nHTTP Compression allows the server to send responses in a compressed format, which is uncompressed by the client before processing. This reduces network bandwidth consumption at the cost of increase in CPU usage.\nTo know more about this, refer the [HTTP Compression](https://en.wikipedia.org/wiki/HTTP_compression) wikipedia article.',
                 headers: '',
@@ -3091,6 +3103,7 @@ module.exports = {
                 ],
                 auth: { type: 'noauth' },
                 currentHelper: null,
+                helperAttributes: null,
                 // eslint-disable-next-line max-len
                 description: 'The cookie setter endpoint accepts a list of cookies and their values as part of URL parameters of a `GET` request. These cookies are saved and can be subsequently retrieved or deleted. The response of this request returns a JSON with all cookies listed.\n\nTo set your own set of cookies, simply replace the URL parameters \'foo1=bar1&foo2=bar2\' with your own set of key-value pairs.',
                 headers: '',
@@ -3223,6 +3236,7 @@ module.exports = {
                 ],
                 auth: { type: 'noauth' },
                 currentHelper: null,
+                helperAttributes: null,
                 // eslint-disable-next-line max-len
                 description: 'This endpoint allows one to recieve streaming http response using [chunked transfer encoding](https://en.wikipedia.org/wiki/Chunked_transfer_encoding) of a configurable length.\n\nA streaming response does not wait for the entire response to be generated on server before flushing it out. This implies that for a fairly large response, parts of it can be streamed to the requestee as and when it is generated on server. The client can then take actions of processing this partially received data.',
                 headers: '',
@@ -3294,6 +3308,7 @@ module.exports = {
                 ],
                 auth: { type: 'noauth' },
                 currentHelper: null,
+                helperAttributes: null,
                 // eslint-disable-next-line max-len
                 description: 'Performing a simple `GET` request to this endpoint returns status code `401 Unauthorized` with `WWW-Authenticate` header containing information to successfully authenticate subsequent requests.\nThe `WWW-Authenticate` header must be processed to extract `realm` and `nonce` values to hash subsequent requests.\n\nWhen this request is executed within Postman, the script attached with this request does the hard work of extracting realm and nonce from the header and set it as [global variables](https://www.getpostman.com/docs/environments#global-variables) named `echo_digest_nonce` and `echo_digest_realm`.\nThese variables are re-used in subsequent request for seamless integration of the two requests.',
                 headers: '',
@@ -3325,6 +3340,7 @@ module.exports = {
                 ],
                 auth: { type: 'noauth' },
                 currentHelper: null,
+                helperAttributes: null,
                 // eslint-disable-next-line max-len
                 description: 'If a response of an endpoint requires to send data beyond the basic English / ASCII character set, the `charset` parameter in the `Content-Type` response header defines the character encoding policy.\n\nThis endpoint returns an `UTF8` character encoded response body with text in various languages such as Greek, Latin, East Asian, etc. Postman can interpret the character encoding and use appropriate methods to display the character set in responses.',
                 headers: '',
@@ -3362,6 +3378,7 @@ module.exports = {
                 ],
                 auth: { type: 'noauth' },
                 currentHelper: null,
+                helperAttributes: null,
                 // eslint-disable-next-line max-len
                 description: 'The HTTP `DELETE` method is used to delete resources on a server. The exact\nuse of `DELETE` requests depends on the server implementation. In general, \n`DELETE` requests support both, Query String parameters as well as a Request \nBody.\n\nThis endpoint accepts an HTTP `DELETE` request and provides debug information\nsuch as the HTTP headers, Query String arguments, and the Request Body.',
                 headers: '',
@@ -3424,6 +3441,7 @@ module.exports = {
                 ],
                 auth: { type: 'noauth' },
                 currentHelper: null,
+                helperAttributes: null,
                 // eslint-disable-next-line max-len
                 description: 'Once the bearer token has been obtained, it can be passed as `Authorization` header to access user\'s resources.\n\n> Authorization: Bearer vp7jx...\n\nIf the `Authorization` header is not passed the endpoint returns `401 Unauthorized`.\n',
                 // eslint-disable-next-line max-len
@@ -3661,6 +3679,7 @@ module.exports = {
                 ],
                 auth: { type: 'noauth' },
                 currentHelper: null,
+                helperAttributes: null,
                 // eslint-disable-next-line max-len
                 description: 'OAuth1.0a is a specification that defines a protocol that can be used by one\nservice to access \'protected\' resources (endpoints) on another service. A\nmajor part of OAuth1.0 is HTTP Request Signing. This endpoint allows you to \ncheck whether the request calculation works properly in the client. \n\nThe endpoint supports the HTTP ``Authorization`` header. In case the signature\nverification fails, the endpoint provides the four debug values,\n\n* ``base_uri``\n* ``normalized_param_string``\n* ``base_string``\n* ``signing_key``\n\nFor more details about these parameters, check the [OAuth1.0a Specification](http://oauth.net/core/1.0a/)\n\nIn order to use this endpoint, you can set the following values:\n\n> Consumer Key: ``RKCGzna7bv9YD57c``\n>\n> Consumer Secret: ``D+EdQ-gs$-%@2Nu7``\n\nIf you are using Postman, also check the \'Add params to header\' and \n\'Auto add parameters\' boxes.',
                 // eslint-disable-next-line max-len
@@ -3724,6 +3743,7 @@ module.exports = {
                 ],
                 auth: { type: 'noauth' },
                 currentHelper: null,
+                helperAttributes: null,
                 // eslint-disable-next-line max-len
                 description: 'In the first request for the OAuth 2.0 flow, the client tries to get an authentication code by passing in `client_id` and `response_type`.\n\n> client_id: `abc123`\n>\n> response_type: `code`\n\nThe authentication code is returned as a part of the redirect URI and can be used to get the access token.',
                 headers: '',
@@ -3889,6 +3909,7 @@ module.exports = {
                 ],
                 auth: { type: 'noauth' },
                 currentHelper: null,
+                helperAttributes: null,
                 // eslint-disable-next-line max-len
                 description: 'This endpoint returns the response using [gzip compression algoritm](https://en.wikipedia.org/wiki/Gzip).\nThe uncompressed response is a JSON string containing the details of the request sent by the client. For this endpoint to work, one should request with `Accept-encoding` header containing `gzip` as part of its value. Postman supports gzip, deflate and SDCH decoding and automatically sends them as part of the request.\n\nHTTP Compression allows the server to send responses in a compressed format, which is uncompressed by the client before processing. This reduces network bandwidth consumption at the cost of increase in CPU usage.\nTo know more about this, refer the [HTTP Compression](https://en.wikipedia.org/wiki/HTTP_compression) wikipedia article.',
                 headers: '',
