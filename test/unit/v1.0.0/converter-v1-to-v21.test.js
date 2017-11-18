@@ -7,6 +7,12 @@ var expect = require('chai').expect,
 
 /* global describe, it */
 describe('v1.0.0 to v2.1.0', function () {
+    var options = {
+        inputVersion: '1.0.0',
+        outputVersion: '2.1.0',
+        retainIds: true
+    };
+
     describe('api', function () {
         it('should have a .convertSingle() function', function () {
             expect(transformer.convertSingle).to.be.a('function');
@@ -240,6 +246,200 @@ describe('v1.0.0 to v2.1.0', function () {
                     response: []
                 });
                 done();
+            });
+        });
+
+        describe('requests', function () {
+            describe('with noauth', function () {
+                it('should correctly infer a noauth type from the auth object.', function (done) {
+                    var source = { auth: { type: 'noauth' } };
+
+                    transformer.convertSingle(source, options, function (err, converted) {
+                        expect(err).to.not.be.ok;
+
+                        // remove `undefined` properties for testing
+                        expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                            name: '',
+                            request: {
+                                auth: { type: 'noauth' },
+                                body: { mode: 'raw', raw: '' },
+                                header: []
+                            },
+                            response: []
+                        });
+                        done();
+                    });
+                });
+
+                it('should correctly infer a noauth type from `currentHelper`', function (done) {
+                    var source = {
+                        currentHelper: 'normal',
+                        helperAttributes: { id: 'normal', foo: 'bar' }
+                    };
+
+                    transformer.convertSingle(source, options, function (err, converted) {
+                        expect(err).to.not.be.ok;
+
+                        // remove `undefined` properties for testing
+                        expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                            name: '',
+                            request: {
+                                auth: null,
+                                body: { mode: 'raw', raw: '' },
+                                header: []
+                            },
+                            response: []
+                        });
+                        done();
+                    });
+                });
+
+                it('should correctly infer a noauth type from `currentHelper`, even if auth exists', function (done) {
+                    var source = {
+                        currentHelper: 'normal',
+                        helperAttributes: { id: 'normal', foo: 'bar' },
+                        auth: {
+                            type: 'basic',
+                            basic: { username: 'postman', password: 'password' }
+                        }
+                    };
+
+                    transformer.convertSingle(source, options, function (err, converted) {
+                        expect(err).to.not.be.ok;
+
+                        // remove `undefined` properties for testing
+                        expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                            name: '',
+                            request: {
+                                auth: null,
+                                body: { mode: 'raw', raw: '' },
+                                header: []
+                            },
+                            response: []
+                        });
+                        done();
+                    });
+                });
+            });
+
+            describe('with null', function () {
+                it('should correctly infer a noauth type from the auth object.', function (done) {
+                    var source = { auth: null };
+
+                    transformer.convertSingle(source, options, function (err, converted) {
+                        expect(err).to.not.be.ok;
+
+                        // remove `undefined` properties for testing
+                        expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                            name: '',
+                            request: {
+                                auth: null,
+                                body: { mode: 'raw', raw: '' },
+                                header: []
+                            },
+                            response: []
+                        });
+                        done();
+                    });
+                });
+
+                it('should correctly infer a noauth type from `currentHelper`', function (done) {
+                    var source = {
+                        currentHelper: null,
+                        helperAttributes: { id: 'normal', foo: 'bar' }
+                    };
+
+                    transformer.convertSingle(source, options, function (err, converted) {
+                        expect(err).to.not.be.ok;
+
+                        // remove `undefined` properties for testing
+                        expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                            name: '',
+                            request: {
+                                auth: null,
+                                body: { mode: 'raw', raw: '' },
+                                header: []
+                            },
+                            response: []
+                        });
+                        done();
+                    });
+                });
+
+                it('should correctly infer a noauth type from `currentHelper`, even if auth exists', function (done) {
+                    var source = {
+                        currentHelper: null,
+                        helperAttributes: { id: 'normal', foo: 'bar' },
+                        auth: {
+                            type: 'basic',
+                            basic: { username: 'postman', password: 'password' }
+                        }
+                    };
+
+                    transformer.convertSingle(source, options, function (err, converted) {
+                        expect(err).to.not.be.ok;
+
+                        // remove `undefined` properties for testing
+                        expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                            name: '',
+                            request: {
+                                auth: null,
+                                body: { mode: 'raw', raw: '' },
+                                header: []
+                            },
+                            response: []
+                        });
+                        done();
+                    });
+                });
+            });
+        });
+
+        describe('collections', function () {
+            it('should correctly infer a noauth type from a regular auth object', function (done) {
+                var source = {
+                    auth: { type: 'noauth' },
+                    folders: [{ auth: { type: 'noauth' } }]
+                };
+
+                transformer.convert(source, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                        info: {
+                            schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+                        },
+                        item: [{
+                            auth: { type: 'noauth' },
+                            item: []
+                        }]
+                    });
+                    done();
+                });
+            });
+
+            it('should correctly infer a noauth type from a null auth object', function (done) {
+                var source = {
+                    auth: null,
+                    folders: [{ auth: null }]
+                };
+
+                transformer.convert(source, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                        info: {
+                            schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+                        },
+                        item: [{
+                            auth: null,
+                            item: []
+                        }]
+                    });
+                    done();
+                });
             });
         });
     });

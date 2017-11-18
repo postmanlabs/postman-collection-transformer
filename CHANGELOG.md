@@ -1,5 +1,10 @@
 # Postman Collection Transformer Changelog
 
+#### v2.4.1 (November 18, 2017)
+* :arrow_up: Updated dependencies #88
+* :bug: Fixed empty stage handling logic for auth helpers #90
+* :art: Reorganized package structure #89
+
 #### v2.4.0 (November 7, 2017)
 * #87 Tested code on Node v8 :tada:
 * #84 Added support for `noDefaults` for v1 normalizations :tada:
