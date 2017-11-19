@@ -248,6 +248,26 @@ describe('v1.0.0 to v2.0.0', function () {
             });
         });
 
+        it('should correctly handle currentHelper (normal) and auth (noauth)', function (done) {
+            var source = { auth: { type: 'noauth' }, currentHelper: 'normal' };
+
+            transformer.convertSingle(source, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                    name: '',
+                    request: {
+                        auth: null,
+                        body: { mode: 'raw', raw: '' },
+                        header: []
+                    },
+                    response: []
+                });
+                done();
+            });
+        });
+
         describe('requests', function () {
             describe('with noauth', function () {
                 it('should correctly infer a noauth type from the auth object.', function (done) {
@@ -347,6 +367,46 @@ describe('v1.0.0 to v2.0.0', function () {
                         currentHelper: null,
                         helperAttributes: { id: 'normal', foo: 'bar' }
                     };
+
+                    transformer.convertSingle(source, options, function (err, converted) {
+                        expect(err).to.not.be.ok;
+
+                        // remove `undefined` properties for testing
+                        expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                            name: '',
+                            request: {
+                                auth: null,
+                                body: { mode: 'raw', raw: '' },
+                                header: []
+                            },
+                            response: []
+                        });
+                        done();
+                    });
+                });
+
+                it('should correctly handle currentHelper and auth set to null', function (done) {
+                    var source = { auth: null, currentHelper: null };
+
+                    transformer.convertSingle(source, options, function (err, converted) {
+                        expect(err).to.not.be.ok;
+
+                        // remove `undefined` properties for testing
+                        expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                            name: '',
+                            request: {
+                                auth: null,
+                                body: { mode: 'raw', raw: '' },
+                                header: []
+                            },
+                            response: []
+                        });
+                        done();
+                    });
+                });
+
+                it('should correctly handle currentHelper (null) and auth (noauth)', function (done) {
+                    var source = { auth: { type: 'noauth' }, currentHelper: null };
 
                     transformer.convertSingle(source, options, function (err, converted) {
                         expect(err).to.not.be.ok;
