@@ -237,6 +237,37 @@ describe('v1.0.0 normalization', function () {
                 });
             });
 
+            describe('malformed requests', function () {
+                it('should handle valid currentHelper with invalid helperAttributes correctly', function (done) {
+                    var options = {
+                            normalizeVersion: '1.0.0',
+                            retainIds: true
+                        },
+                        source = {
+                            id: '722795b9-c9bc-4a01-a024-dd9358548dc1',
+                            currentHelper: 'basicAuth',
+                            // this should ideally never happen, but we don't live in an ideal world
+                            helperAttributes: undefined
+                        };
+
+                    transformer.normalizeSingle(source, options, function (err, normalized) {
+                        expect(err).to.not.be.ok;
+
+                        // remove `undefined` properties for testing
+                        normalized = JSON.parse(JSON.stringify(normalized));
+
+                        expect(normalized).to.eql({
+                            id: '722795b9-c9bc-4a01-a024-dd9358548dc1',
+                            data: [],
+                            currentHelper: null,
+                            helperAttributes: null,
+                            auth: null
+                        });
+                        done();
+                    });
+                });
+            });
+
             describe('requests with null', function () {
                 it('should handle no-auth correctly with legacy properties', function (done) {
                     transformer.normalizeSingle({
