@@ -373,7 +373,7 @@ module.exports = {
                 ]
             }
         }],
-        auth: { type: 'noauth' },
+        auth: null,
         currentHelper: null,
         helperAttributes: null,
         // eslint-disable-next-line max-len
