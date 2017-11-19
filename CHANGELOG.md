@@ -1,5 +1,8 @@
 # Postman Collection Transformer Changelog
 
+#### v2.4.2 (November 20, 2017)
+* #91 Fixed default auth state derivation logic :bug:
+
 #### v2.4.1 (November 18, 2017)
 * :arrow_up: Updated dependencies #88
 * :bug: Fixed empty stage handling logic for auth helpers #90

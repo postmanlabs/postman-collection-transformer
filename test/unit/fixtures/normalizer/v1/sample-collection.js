@@ -2082,7 +2082,7 @@ module.exports = {
                 url: 'https://echo.getpostman.com/oauth2/token',
                 currentHelper: null,
                 helperAttributes: null,
-                auth: { type: 'noauth' },
+                auth: null,
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\nvar body = JSON.parse(responseBody);\ntests[\'body has access token\'] = \'access_token\' in body;\ntests[\'body has bearer type\'] = \'token_type\' in body;',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
@@ -2416,7 +2416,7 @@ module.exports = {
                 headers: '',
                 method: 'PUT',
                 pathVariables: {},
-                auth: { type: 'noauth' },
+                auth: null,
                 currentHelper: null,
                 helperAttributes: null,
                 url: 'https://echo.getpostman.com/put',
@@ -2448,7 +2448,7 @@ module.exports = {
                         }
                     }
                 ],
-                auth: { type: 'noauth' },
+                auth: null,
                 currentHelper: null,
                 helperAttributes: null,
                 // eslint-disable-next-line max-len
@@ -2604,7 +2604,7 @@ module.exports = {
                         }
                     }
                 ],
-                auth: { type: 'noauth' },
+                auth: null,
                 currentHelper: null,
                 helperAttributes: null,
                 // eslint-disable-next-line max-len
@@ -2644,7 +2644,7 @@ module.exports = {
                         }
                     }
                 ],
-                auth: { type: 'noauth' },
+                auth: null,
                 currentHelper: null,
                 helperAttributes: null,
                 // eslint-disable-next-line max-len
@@ -2785,7 +2785,7 @@ module.exports = {
                         }
                     }
                 ],
-                auth: { type: 'noauth' },
+                auth: null,
                 currentHelper: null,
                 helperAttributes: null,
                 // eslint-disable-next-line max-len
@@ -2823,7 +2823,7 @@ module.exports = {
                         }
                     }
                 ],
-                auth: { type: 'noauth' },
+                auth: null,
                 currentHelper: null,
                 helperAttributes: null,
                 // eslint-disable-next-line max-len
@@ -2883,7 +2883,7 @@ module.exports = {
                         }
                     }
                 ],
-                auth: { type: 'noauth' },
+                auth: null,
                 currentHelper: null,
                 helperAttributes: null,
                 // eslint-disable-next-line max-len
@@ -2929,7 +2929,7 @@ module.exports = {
                         }
                     }
                 ],
-                auth: { type: 'noauth' },
+                auth: null,
                 currentHelper: null,
                 helperAttributes: null,
                 // eslint-disable-next-line max-len
@@ -2971,7 +2971,7 @@ module.exports = {
                         }
                     }
                 ],
-                auth: { type: 'noauth' },
+                auth: null,
                 currentHelper: null,
                 helperAttributes: null,
                 // eslint-disable-next-line max-len
@@ -3020,7 +3020,7 @@ module.exports = {
                         }
                     }
                 ],
-                auth: { type: 'noauth' },
+                auth: null,
                 currentHelper: null,
                 helperAttributes: null,
                 // eslint-disable-next-line max-len
@@ -3063,7 +3063,7 @@ module.exports = {
                         }
                     }
                 ],
-                auth: { type: 'noauth' },
+                auth: null,
                 currentHelper: null,
                 helperAttributes: null,
                 // eslint-disable-next-line max-len
@@ -3101,7 +3101,7 @@ module.exports = {
                         }
                     }
                 ],
-                auth: { type: 'noauth' },
+                auth: null,
                 currentHelper: null,
                 helperAttributes: null,
                 // eslint-disable-next-line max-len
@@ -3234,7 +3234,7 @@ module.exports = {
                         }
                     }
                 ],
-                auth: { type: 'noauth' },
+                auth: null,
                 currentHelper: null,
                 helperAttributes: null,
                 // eslint-disable-next-line max-len
@@ -3306,7 +3306,7 @@ module.exports = {
                         }
                     }
                 ],
-                auth: { type: 'noauth' },
+                auth: null,
                 currentHelper: null,
                 helperAttributes: null,
                 // eslint-disable-next-line max-len
@@ -3338,7 +3338,7 @@ module.exports = {
                         }
                     }
                 ],
-                auth: { type: 'noauth' },
+                auth: null,
                 currentHelper: null,
                 helperAttributes: null,
                 // eslint-disable-next-line max-len
@@ -3376,7 +3376,7 @@ module.exports = {
                         }
                     }
                 ],
-                auth: { type: 'noauth' },
+                auth: null,
                 currentHelper: null,
                 helperAttributes: null,
                 // eslint-disable-next-line max-len
@@ -3439,7 +3439,7 @@ module.exports = {
                         }
                     }
                 ],
-                auth: { type: 'noauth' },
+                auth: null,
                 currentHelper: null,
                 helperAttributes: null,
                 // eslint-disable-next-line max-len
@@ -3677,7 +3677,7 @@ module.exports = {
                         }
                     }
                 ],
-                auth: { type: 'noauth' },
+                auth: null,
                 currentHelper: null,
                 helperAttributes: null,
                 // eslint-disable-next-line max-len
@@ -3741,7 +3741,7 @@ module.exports = {
                         }
                     }
                 ],
-                auth: { type: 'noauth' },
+                auth: null,
                 currentHelper: null,
                 helperAttributes: null,
                 // eslint-disable-next-line max-len
@@ -3907,7 +3907,7 @@ module.exports = {
                         }
                     }
                 ],
-                auth: { type: 'noauth' },
+                auth: null,
                 currentHelper: null,
                 helperAttributes: null,
                 // eslint-disable-next-line max-len
