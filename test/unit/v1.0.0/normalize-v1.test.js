@@ -90,7 +90,7 @@ describe('v1.0.0 normalization', function () {
                         data: [],
                         currentHelper: null,
                         helperAttributes: null,
-                        auth: { type: 'noauth' }
+                        auth: null
                     });
                     done();
                 });
@@ -104,6 +104,7 @@ describe('v1.0.0 normalization', function () {
                     expect(err).to.not.be.ok;
 
                     expect(result).to.eql({
+                        auth: null,
                         currentHelper: null,
                         helperAttributes: null
                     });
@@ -252,7 +253,7 @@ describe('v1.0.0 normalization', function () {
                             data: [],
                             currentHelper: null,
                             helperAttributes: null,
-                            auth: { type: 'noauth' }
+                            auth: null
                         });
                         done();
                     });
@@ -266,6 +267,7 @@ describe('v1.0.0 normalization', function () {
                         expect(err).to.not.be.ok;
 
                         expect(result).to.eql({
+                            auth: null,
                             currentHelper: null,
                             helperAttributes: null
                         });
@@ -716,7 +718,7 @@ describe('v1.0.0 normalization', function () {
                         url: 'https://google.com',
                         headers: [],
                         headerData: [],
-                        auth: { type: 'noauth' },
+                        auth: null,
                         currentHelper: null,
                         helperAttributes: null,
                         data: 'akjshgdajhsgd',
@@ -828,7 +830,7 @@ describe('v1.0.0 normalization', function () {
                             name: 'Request Headers',
                             dataMode: 'params',
                             data: [],
-                            auth: { type: 'noauth' },
+                            auth: null,
                             currentHelper: null,
                             helperAttributes: null,
                             rawModeData: null,
@@ -869,7 +871,7 @@ describe('v1.0.0 normalization', function () {
                                     type: 'text'
                                 }
                             ],
-                            auth: { type: 'noauth' },
+                            auth: null,
                             currentHelper: null,
                             helperAttributes: null,
                             rawModeData: null,
