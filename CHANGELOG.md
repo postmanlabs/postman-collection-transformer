@@ -1,5 +1,8 @@
 # Postman Collection Transformer Changelog
 
+#### v2.4.3 (November 20, 2017)
+* #92 Fixed legacy property handling for non-complete event normalization :bug:
+
 #### v2.4.2 (November 20, 2017)
 * #91 Fixed default auth state derivation logic :bug:
 
