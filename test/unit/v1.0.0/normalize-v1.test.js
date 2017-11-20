@@ -1304,6 +1304,7 @@ describe('v1.0.0 normalization', function () {
 
                         result = JSON.parse(JSON.stringify(result));
                         expect(result).to.eql({
+                            tests: null,
                             preRequestScript: 'console.log("Pre-request script");',
                             events: [
                                 {
@@ -1360,6 +1361,7 @@ describe('v1.0.0 normalization', function () {
 
                         result = JSON.parse(JSON.stringify(result));
                         expect(result).to.eql({
+                            preRequestScript: null,
                             tests: 'console.log("Test script");',
                             events: [
                                 {
@@ -1515,6 +1517,7 @@ describe('v1.0.0 normalization', function () {
                         expect(err).to.not.be.ok;
 
                         expect(source).to.eql({
+                            tests: null,
                             preRequestScript: 'console.log("Pre-request script");',
                             events: [
                                 {
@@ -1569,6 +1572,7 @@ describe('v1.0.0 normalization', function () {
                         expect(err).to.not.be.ok;
 
                         expect(source).to.eql({
+                            preRequestScript: null,
                             tests: 'console.log("Test script");',
                             events: [
                                 {
