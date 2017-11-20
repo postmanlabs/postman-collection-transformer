@@ -27,16 +27,20 @@ module.exports = {
                     description: 'This is a folder level variable'
                 }],
                 events: [{
-                    listen: 'test',
-                    script: {
-                        type: 'text/javascript',
-                        exec: ['console.log("Folder level test script");']
-                    }
-                }, {
+                    id: '76da1ffd-ed85-4219-a01c-cc014b4c69be',
                     listen: 'prerequest',
                     script: {
+                        id: '2201375d-5c94-4328-a546-fa0870fc491f',
                         type: 'text/javascript',
                         exec: ['console.log("Folder level pre request script");']
+                    }
+                }, {
+                    id: 'd3652aab-b884-47cb-877b-2165f722ecdc',
+                    listen: 'test',
+                    script: {
+                        id: '4706619b-0fea-4d61-8257-6a54e35b2852',
+                        type: 'text/javascript',
+                        exec: ['console.log("Folder level test script");']
                     }
                 }],
                 auth: {
@@ -98,20 +102,24 @@ module.exports = {
         ],
         events: [
             {
-                listen: 'test',
+                id: 'da38471e-5f93-4e94-90d2-e912bcd131cb',
+                listen: 'prerequest',
                 script: {
+                    id: 'da5d1694-6dbf-4f0f-a2ab-6dbbe84b325b',
                     type: 'text/javascript',
                     exec: [
-                        'console.log("Collection level test script");'
+                        'console.log("Collection level pre request script");'
                     ]
                 }
             },
             {
-                listen: 'prerequest',
+                id: '768ce224-699f-46cf-86e8-2c864a5ca19e',
+                listen: 'test',
                 script: {
+                    id: 'c90c18e9-7c8c-40f7-b396-08046545e346',
                     type: 'text/javascript',
                     exec: [
-                        'console.log("Collection level pre request script");'
+                        'console.log("Collection level test script");'
                     ]
                 }
             }
@@ -167,20 +175,24 @@ module.exports = {
                 queryParams: [],
                 events: [
                     {
-                        listen: 'test',
+                        id: 'adeb27f6-724d-4e54-9d99-6a8b282032d8',
+                        listen: 'prerequest',
                         script: {
+                            id: '076be57a-6f25-4058-865f-57b059c203ca',
                             type: 'text/javascript',
                             exec: [
-                                'console.log("Request level test script");'
+                                'console.log("Request level pre request script");'
                             ]
                         }
                     },
                     {
-                        listen: 'prerequest',
+                        id: 'b0acd08b-a88e-4570-8085-49edaf885fe1',
+                        listen: 'test',
                         script: {
+                            id: '8f25e55f-ee00-4453-87e2-4ed3297d9388',
                             type: 'text/javascript',
                             exec: [
-                                'console.log("Request level pre request script");'
+                                'console.log("Request level test script");'
                             ]
                         }
                     }
@@ -243,20 +255,24 @@ module.exports = {
                 queryParams: [],
                 events: [
                     {
-                        listen: 'test',
+                        id: '0b080d65-32f5-4ebe-bc5f-311c595dbffa',
+                        listen: 'prerequest',
                         script: {
+                            id: '611d6b24-8a54-4f3d-a813-553d3d98434b',
                             type: 'text/javascript',
                             exec: [
-                                'console.log("Request level test script");'
+                                'console.log("Request level pre request script");'
                             ]
                         }
                     },
                     {
-                        listen: 'prerequest',
+                        id: '02e6143d-cbb4-492e-bf84-e3943d2c5ac8',
+                        listen: 'test',
                         script: {
+                            id: '6efbceeb-e9e9-439b-8bc3-3a76152ce714',
                             type: 'text/javascript',
                             exec: [
-                                'console.log("Request level pre request script");'
+                                'console.log("Request level test script");'
                             ]
                         }
                     }
@@ -382,20 +398,24 @@ module.exports = {
         },
         event: [
             {
-                listen: 'test',
+                id: 'da38471e-5f93-4e94-90d2-e912bcd131cb',
+                listen: 'prerequest',
                 script: {
+                    id: 'da5d1694-6dbf-4f0f-a2ab-6dbbe84b325b',
                     type: 'text/javascript',
                     exec: [
-                        'console.log("Collection level test script");'
+                        'console.log("Collection level pre request script");'
                     ]
                 }
             },
             {
-                listen: 'prerequest',
+                id: '768ce224-699f-46cf-86e8-2c864a5ca19e',
+                listen: 'test',
                 script: {
+                    id: 'c90c18e9-7c8c-40f7-b396-08046545e346',
                     type: 'text/javascript',
                     exec: [
-                        'console.log("Collection level pre request script");'
+                        'console.log("Collection level test script");'
                     ]
                 }
             }
@@ -427,20 +447,24 @@ module.exports = {
                 },
                 event: [
                     {
-                        listen: 'test',
+                        id: '76da1ffd-ed85-4219-a01c-cc014b4c69be',
+                        listen: 'prerequest',
                         script: {
+                            id: '2201375d-5c94-4328-a546-fa0870fc491f',
                             type: 'text/javascript',
                             exec: [
-                                'console.log("Folder level test script");'
+                                'console.log("Folder level pre request script");'
                             ]
                         }
                     },
                     {
-                        listen: 'prerequest',
+                        id: 'd3652aab-b884-47cb-877b-2165f722ecdc',
+                        listen: 'test',
                         script: {
+                            id: '4706619b-0fea-4d61-8257-6a54e35b2852',
                             type: 'text/javascript',
                             exec: [
-                                'console.log("Folder level pre request script");'
+                                'console.log("Folder level test script");'
                             ]
                         }
                     }
@@ -458,20 +482,24 @@ module.exports = {
                         }],
                         event: [
                             {
-                                listen: 'test',
+                                id: 'adeb27f6-724d-4e54-9d99-6a8b282032d8',
+                                listen: 'prerequest',
                                 script: {
+                                    id: '076be57a-6f25-4058-865f-57b059c203ca',
                                     type: 'text/javascript',
                                     exec: [
-                                        'console.log("Request level test script");'
+                                        'console.log("Request level pre request script");'
                                     ]
                                 }
                             },
                             {
-                                listen: 'prerequest',
+                                id: 'b0acd08b-a88e-4570-8085-49edaf885fe1',
+                                listen: 'test',
                                 script: {
+                                    id: '8f25e55f-ee00-4453-87e2-4ed3297d9388',
                                     type: 'text/javascript',
                                     exec: [
-                                        'console.log("Request level pre request script");'
+                                        'console.log("Request level test script");'
                                     ]
                                 }
                             }
@@ -510,20 +538,24 @@ module.exports = {
                 }],
                 event: [
                     {
-                        listen: 'test',
+                        id: '0b080d65-32f5-4ebe-bc5f-311c595dbffa',
+                        listen: 'prerequest',
                         script: {
+                            id: '611d6b24-8a54-4f3d-a813-553d3d98434b',
                             type: 'text/javascript',
                             exec: [
-                                'console.log("Request level test script");'
+                                'console.log("Request level pre request script");'
                             ]
                         }
                     },
                     {
-                        listen: 'prerequest',
+                        id: '02e6143d-cbb4-492e-bf84-e3943d2c5ac8',
+                        listen: 'test',
                         script: {
+                            id: '6efbceeb-e9e9-439b-8bc3-3a76152ce714',
                             type: 'text/javascript',
                             exec: [
-                                'console.log("Request level pre request script");'
+                                'console.log("Request level test script");'
                             ]
                         }
                     }
@@ -609,20 +641,24 @@ module.exports = {
         },
         event: [
             {
-                listen: 'test',
+                id: 'da38471e-5f93-4e94-90d2-e912bcd131cb',
+                listen: 'prerequest',
                 script: {
+                    id: 'da5d1694-6dbf-4f0f-a2ab-6dbbe84b325b',
                     type: 'text/javascript',
                     exec: [
-                        'console.log("Collection level test script");'
+                        'console.log("Collection level pre request script");'
                     ]
                 }
             },
             {
-                listen: 'prerequest',
+                id: '768ce224-699f-46cf-86e8-2c864a5ca19e',
+                listen: 'test',
                 script: {
+                    id: 'c90c18e9-7c8c-40f7-b396-08046545e346',
                     type: 'text/javascript',
                     exec: [
-                        'console.log("Collection level pre request script");'
+                        'console.log("Collection level test script");'
                     ]
                 }
             }
@@ -690,20 +726,24 @@ module.exports = {
                 },
                 event: [
                     {
-                        listen: 'test',
+                        id: '76da1ffd-ed85-4219-a01c-cc014b4c69be',
+                        listen: 'prerequest',
                         script: {
+                            id: '2201375d-5c94-4328-a546-fa0870fc491f',
                             type: 'text/javascript',
                             exec: [
-                                'console.log("Folder level test script");'
+                                'console.log("Folder level pre request script");'
                             ]
                         }
                     },
                     {
-                        listen: 'prerequest',
+                        id: 'd3652aab-b884-47cb-877b-2165f722ecdc',
+                        listen: 'test',
                         script: {
+                            id: '4706619b-0fea-4d61-8257-6a54e35b2852',
                             type: 'text/javascript',
                             exec: [
-                                'console.log("Folder level pre request script");'
+                                'console.log("Folder level test script");'
                             ]
                         }
                     }
@@ -721,20 +761,24 @@ module.exports = {
                         name: 'Basic',
                         event: [
                             {
-                                listen: 'test',
+                                id: 'adeb27f6-724d-4e54-9d99-6a8b282032d8',
+                                listen: 'prerequest',
                                 script: {
+                                    id: '076be57a-6f25-4058-865f-57b059c203ca',
                                     type: 'text/javascript',
                                     exec: [
-                                        'console.log("Request level test script");'
+                                        'console.log("Request level pre request script");'
                                     ]
                                 }
                             },
                             {
-                                listen: 'prerequest',
+                                id: 'b0acd08b-a88e-4570-8085-49edaf885fe1',
+                                listen: 'test',
                                 script: {
+                                    id: '8f25e55f-ee00-4453-87e2-4ed3297d9388',
                                     type: 'text/javascript',
                                     exec: [
-                                        'console.log("Request level pre request script");'
+                                        'console.log("Request level test script");'
                                     ]
                                 }
                             }
@@ -794,20 +838,24 @@ module.exports = {
                 name: 'OAuth1',
                 event: [
                     {
-                        listen: 'test',
+                        id: '0b080d65-32f5-4ebe-bc5f-311c595dbffa',
+                        listen: 'prerequest',
                         script: {
+                            id: '611d6b24-8a54-4f3d-a813-553d3d98434b',
                             type: 'text/javascript',
                             exec: [
-                                'console.log("Request level test script");'
+                                'console.log("Request level pre request script");'
                             ]
                         }
                     },
                     {
-                        listen: 'prerequest',
+                        id: '02e6143d-cbb4-492e-bf84-e3943d2c5ac8',
+                        listen: 'test',
                         script: {
+                            id: '6efbceeb-e9e9-439b-8bc3-3a76152ce714',
                             type: 'text/javascript',
                             exec: [
-                                'console.log("Request level pre request script");'
+                                'console.log("Request level test script");'
                             ]
                         }
                     }

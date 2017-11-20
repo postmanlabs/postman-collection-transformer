@@ -669,14 +669,18 @@ describe('v1.0.0 normalization', function () {
                     source = {
                         id: '53540ee4-8499-44af-9b74-20d415a6fd43',
                         events: [{
+                            id: '66c5c957-78b3-4229-9013-ebae6cbbd1bd',
                             listen: 'prerequest',
                             script: {
+                                id: '90d60fab-ad71-47ab-b29b-9260f426b7d1',
                                 type: 'text/javascript',
                                 exec: ['console.log("Alternative request level pre-request script");']
                             }
                         }, {
+                            id: '880fb53c-1b0f-4381-81c1-37300d40954c',
                             listen: 'test',
                             script: {
+                                id: 'fb34a50d-6905-4002-8c95-ccda2e071a81',
                                 type: 'text/javascript',
                                 exec: ['console.log("Alternative request level test script");']
                             }
@@ -695,14 +699,18 @@ describe('v1.0.0 normalization', function () {
                         preRequestScript: 'console.log("Alternative request level pre-request script");',
                         tests: 'console.log("Alternative request level test script");',
                         events: [{
+                            id: '66c5c957-78b3-4229-9013-ebae6cbbd1bd',
                             listen: 'prerequest',
                             script: {
+                                id: '90d60fab-ad71-47ab-b29b-9260f426b7d1',
                                 type: 'text/javascript',
                                 exec: ['console.log("Alternative request level pre-request script");']
                             }
                         }, {
+                            id: '880fb53c-1b0f-4381-81c1-37300d40954c',
                             listen: 'test',
                             script: {
+                                id: 'fb34a50d-6905-4002-8c95-ccda2e071a81',
                                 type: 'text/javascript',
                                 exec: ['console.log("Alternative request level test script");']
                             }
@@ -1290,8 +1298,10 @@ describe('v1.0.0 normalization', function () {
                     var source = {
                         events: [
                             {
+                                id: '22cc6e49-8b4c-4938-bc24-e20fb7e1976f',
                                 listen: 'prerequest',
                                 script: {
+                                    id: 'c44439cd-ceaf-42e1-b0fa-16d31c8e171d',
                                     type: 'text/javascript',
                                     exec: ['console.log("Pre-request script");']
                                 }
@@ -1308,8 +1318,10 @@ describe('v1.0.0 normalization', function () {
                             preRequestScript: 'console.log("Pre-request script");',
                             events: [
                                 {
+                                    id: '22cc6e49-8b4c-4938-bc24-e20fb7e1976f',
                                     listen: 'prerequest',
                                     script: {
+                                        id: 'c44439cd-ceaf-42e1-b0fa-16d31c8e171d',
                                         type: 'text/javascript',
                                         exec: ['console.log("Pre-request script");']
                                     }
@@ -1347,8 +1359,10 @@ describe('v1.0.0 normalization', function () {
                     var source = {
                         events: [
                             {
+                                id: 'bb475867-4a5a-4718-a513-4a626f25f687',
                                 listen: 'test',
                                 script: {
+                                    id: '4b327f21-63f2-428d-bec3-ac9cd30043fb',
                                     type: 'text/javascript',
                                     exec: ['console.log("Test script");']
                                 }
@@ -1365,8 +1379,10 @@ describe('v1.0.0 normalization', function () {
                             tests: 'console.log("Test script");',
                             events: [
                                 {
+                                    id: 'bb475867-4a5a-4718-a513-4a626f25f687',
                                     listen: 'test',
                                     script: {
+                                        id: '4b327f21-63f2-428d-bec3-ac9cd30043fb',
                                         type: 'text/javascript',
                                         exec: ['console.log("Test script");']
                                     }
@@ -1504,8 +1520,10 @@ describe('v1.0.0 normalization', function () {
                     var source = {
                         events: [
                             {
+                                id: 'a59fa055-93ac-4aa5-ae0e-912c7f490516',
                                 listen: 'prerequest',
                                 script: {
+                                    id: '2b591aa3-a552-44ba-9198-fb63b7d5fd21',
                                     type: 'text/javascript',
                                     exec: ['console.log("Pre-request script");']
                                 }
@@ -1521,8 +1539,10 @@ describe('v1.0.0 normalization', function () {
                             preRequestScript: 'console.log("Pre-request script");',
                             events: [
                                 {
+                                    id: 'a59fa055-93ac-4aa5-ae0e-912c7f490516',
                                     listen: 'prerequest',
                                     script: {
+                                        id: '2b591aa3-a552-44ba-9198-fb63b7d5fd21',
                                         type: 'text/javascript',
                                         exec: ['console.log("Pre-request script");']
                                     }
@@ -1559,8 +1579,10 @@ describe('v1.0.0 normalization', function () {
                     var source = {
                         events: [
                             {
+                                id: '1c178e66-3871-427c-96e5-6b6680c13248',
                                 listen: 'test',
                                 script: {
+                                    id: 'd6f53778-b693-4416-a4c5-37c5fe7d6949',
                                     type: 'text/javascript',
                                     exec: ['console.log("Test script");']
                                 }
@@ -1576,8 +1598,10 @@ describe('v1.0.0 normalization', function () {
                             tests: 'console.log("Test script");',
                             events: [
                                 {
+                                    id: '1c178e66-3871-427c-96e5-6b6680c13248',
                                     listen: 'test',
                                     script: {
+                                        id: 'd6f53778-b693-4416-a4c5-37c5fe7d6949',
                                         type: 'text/javascript',
                                         exec: ['console.log("Test script");']
                                     }

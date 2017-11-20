@@ -24,8 +24,10 @@ module.exports = {
                 dataMode: 'raw',
                 headerData: [],
                 events: [{
+                    id: 'f48bdb26-1b74-4876-af4d-92416460d1af',
                     listen: 'test',
                     script: {
+                        id: 'cfc2b693-1a7d-4314-bb2e-62f184b6ee16',
                         type: 'text/javascript',
                         exec: [
                             'var data = JSON.parse(responseBody);',
@@ -99,8 +101,10 @@ module.exports = {
                 dataMode: 'raw',
                 pathVariableData: [],
                 events: [{
+                    id: 'b1c5de55-6fbf-4579-a75f-0e7cfef5b04b',
                     listen: 'test',
                     script: {
+                        id: 'e23a69e6-4c9b-440e-b56c-1b19d682708d',
                         type: 'text/javascript',
                         // eslint-disable-next-line max-len
                         exec: ['var response = JSON.parse(responseBody); tests["Bearer auth should pass"] = response.status === "pass";']
@@ -139,8 +143,10 @@ module.exports = {
                 dataMode: 'raw',
                 pathVariableData: [],
                 events: [{
+                    id: '86d8e33f-557b-464d-a27a-8687139ed427',
                     listen: 'test',
                     script: {
+                        id: '3572ec70-6338-4666-b27d-f83befe951eb',
                         type: 'text/javascript',
                         // eslint-disable-next-line max-len
                         exec: ['var response = JSON.parse(responseBody); tests["NTLM auth should pass"] = response.status === "pass";']
@@ -186,8 +192,10 @@ module.exports = {
                 name: 'OAuth2',
                 event: [
                     {
+                        id: 'f48bdb26-1b74-4876-af4d-92416460d1af',
                         listen: 'test',
                         script: {
+                            id: 'cfc2b693-1a7d-4314-bb2e-62f184b6ee16',
                             type: 'text/javascript',
                             exec: [
                                 'var data = JSON.parse(responseBody);',
@@ -237,8 +245,10 @@ module.exports = {
                 name: 'test bearer auth success',
                 event: [
                     {
+                        id: 'b1c5de55-6fbf-4579-a75f-0e7cfef5b04b',
                         listen: 'test',
                         script: {
+                            id: 'e23a69e6-4c9b-440e-b56c-1b19d682708d',
                             type: 'text/javascript',
                             exec: [
                                 // eslint-disable-next-line max-len
@@ -274,8 +284,10 @@ module.exports = {
                 name: 'test ntlm auth success',
                 event: [
                     {
+                        id: '86d8e33f-557b-464d-a27a-8687139ed427',
                         listen: 'test',
                         script: {
+                            id: '3572ec70-6338-4666-b27d-f83befe951eb',
                             type: 'text/javascript',
                             exec: [
                                 // eslint-disable-next-line max-len
@@ -326,8 +338,10 @@ module.exports = {
                 name: 'OAuth2',
                 event: [
                     {
+                        id: 'f48bdb26-1b74-4876-af4d-92416460d1af',
                         listen: 'test',
                         script: {
+                            id: 'cfc2b693-1a7d-4314-bb2e-62f184b6ee16',
                             type: 'text/javascript',
                             exec: [
                                 'var data = JSON.parse(responseBody);',
@@ -441,8 +455,10 @@ module.exports = {
                 name: 'test bearer auth success',
                 event: [
                     {
+                        id: 'b1c5de55-6fbf-4579-a75f-0e7cfef5b04b',
                         listen: 'test',
                         script: {
+                            id: 'e23a69e6-4c9b-440e-b56c-1b19d682708d',
                             type: 'text/javascript',
                             exec: [
                                 // eslint-disable-next-line max-len
@@ -487,8 +503,10 @@ module.exports = {
                 name: 'test ntlm auth success',
                 event: [
                     {
+                        id: '86d8e33f-557b-464d-a27a-8687139ed427',
                         listen: 'test',
                         script: {
+                            id: '3572ec70-6338-4666-b27d-f83befe951eb',
                             type: 'text/javascript',
                             exec: [
                                 // eslint-disable-next-line max-len

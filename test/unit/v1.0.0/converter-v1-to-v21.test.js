@@ -2,7 +2,8 @@
  * @fileoverview This test suite runs tests on the V1 to V2 converter.
  */
 
-var expect = require('chai').expect,
+var _ = require('lodash'),
+    expect = require('chai').expect,
     transformer = require('../../../index');
 
 /* global describe, it */
@@ -138,7 +139,9 @@ describe('v1.0.0 to v2.1.0', function () {
                     inputVersion: '1.0.0',
                     outputVersion: '2.1.0',
                     retainIds: true
-                };
+                },
+                // eslint-disable-next-line max-len
+                result = _.omit(_.cloneDeep(fixture.v21), ['item.0.event.0.id', 'item.0.event.0.script.id', 'item.1.event.0.id', 'item.1.event.0.script.id', 'item.2.event.0.id', 'item.2.event.0.script.id']);
 
             transformer.convert(fixture.v1, options, function (err, converted) {
                 expect(err).to.not.be.ok;
@@ -146,7 +149,7 @@ describe('v1.0.0 to v2.1.0', function () {
                 // remove `undefined` properties for testing
                 converted = JSON.parse(JSON.stringify(converted));
 
-                expect(converted).to.eql(fixture.v21);
+                expect(converted).to.eql(result);
                 done();
             });
         });
@@ -158,6 +161,7 @@ describe('v1.0.0 to v2.1.0', function () {
                     retainIds: true
                 },
                 source = {
+                    id: 'daa896ba-1aff-49e4-a2eb-8db0dd099caa',
                     currentHelper: 'basicAuth',
                     helperAttributes: {
                         id: 'basic',
@@ -177,6 +181,7 @@ describe('v1.0.0 to v2.1.0', function () {
                 converted = JSON.parse(JSON.stringify(converted));
 
                 expect(converted).to.eql({
+                    _postman_id: 'daa896ba-1aff-49e4-a2eb-8db0dd099caa',
                     name: '',
                     request: {
                         auth: {
@@ -207,6 +212,7 @@ describe('v1.0.0 to v2.1.0', function () {
                     retainIds: true
                 },
                 source = {
+                    id: '5f858c21-b6cc-4b8d-85e9-a04f1055a79b',
                     auth: {
                         type: 'basic',
                         basic: [{
@@ -228,6 +234,7 @@ describe('v1.0.0 to v2.1.0', function () {
                 converted = JSON.parse(JSON.stringify(converted));
 
                 expect(converted).to.eql({
+                    _postman_id: '5f858c21-b6cc-4b8d-85e9-a04f1055a79b',
                     name: '',
                     request: {
                         auth: {
@@ -250,13 +257,18 @@ describe('v1.0.0 to v2.1.0', function () {
         });
 
         it('should correctly handle currentHelper (normal) and auth (noauth)', function (done) {
-            var source = { auth: { type: 'noauth' }, currentHelper: 'normal' };
+            var source = {
+                id: 'd4f21d96-6bee-4184-aa65-5632634b8cf0',
+                auth: { type: 'noauth' },
+                currentHelper: 'normal'
+            };
 
             transformer.convertSingle(source, options, function (err, converted) {
                 expect(err).to.not.be.ok;
 
                 // remove `undefined` properties for testing
                 expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                    _postman_id: 'd4f21d96-6bee-4184-aa65-5632634b8cf0',
                     name: '',
                     request: {
                         auth: null,
@@ -272,13 +284,14 @@ describe('v1.0.0 to v2.1.0', function () {
         describe('requests', function () {
             describe('with noauth', function () {
                 it('should correctly infer a noauth type from the auth object.', function (done) {
-                    var source = { auth: { type: 'noauth' } };
+                    var source = { id: '7cf0cb18-f63b-4ee2-a340-ed7c71687ada', auth: { type: 'noauth' } };
 
                     transformer.convertSingle(source, options, function (err, converted) {
                         expect(err).to.not.be.ok;
 
                         // remove `undefined` properties for testing
                         expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                            _postman_id: '7cf0cb18-f63b-4ee2-a340-ed7c71687ada',
                             name: '',
                             request: {
                                 auth: { type: 'noauth' },
@@ -293,6 +306,7 @@ describe('v1.0.0 to v2.1.0', function () {
 
                 it('should correctly infer a noauth type from `currentHelper`', function (done) {
                     var source = {
+                        id: '9f66b4e4-cfef-4114-808c-0e28ede1c5e2',
                         currentHelper: 'normal',
                         helperAttributes: { id: 'normal', foo: 'bar' }
                     };
@@ -302,6 +316,7 @@ describe('v1.0.0 to v2.1.0', function () {
 
                         // remove `undefined` properties for testing
                         expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                            _postman_id: '9f66b4e4-cfef-4114-808c-0e28ede1c5e2',
                             name: '',
                             request: {
                                 auth: null,
@@ -316,6 +331,7 @@ describe('v1.0.0 to v2.1.0', function () {
 
                 it('should correctly infer a noauth type from `currentHelper`, even if auth exists', function (done) {
                     var source = {
+                        id: '885a3729-d5ca-4b09-b4cf-57a3bb2ae4ba',
                         currentHelper: 'normal',
                         helperAttributes: { id: 'normal', foo: 'bar' },
                         auth: {
@@ -329,6 +345,7 @@ describe('v1.0.0 to v2.1.0', function () {
 
                         // remove `undefined` properties for testing
                         expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                            _postman_id: '885a3729-d5ca-4b09-b4cf-57a3bb2ae4ba',
                             name: '',
                             request: {
                                 auth: null,
@@ -344,13 +361,14 @@ describe('v1.0.0 to v2.1.0', function () {
 
             describe('with null', function () {
                 it('should correctly infer a noauth type from the auth object.', function (done) {
-                    var source = { auth: null };
+                    var source = { id: '0b288977-3f4e-4b0a-8218-e0959e21cd37', auth: null };
 
                     transformer.convertSingle(source, options, function (err, converted) {
                         expect(err).to.not.be.ok;
 
                         // remove `undefined` properties for testing
                         expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                            _postman_id: '0b288977-3f4e-4b0a-8218-e0959e21cd37',
                             name: '',
                             request: {
                                 auth: null,
@@ -365,6 +383,7 @@ describe('v1.0.0 to v2.1.0', function () {
 
                 it('should correctly infer a noauth type from `currentHelper`', function (done) {
                     var source = {
+                        id: '261c7dec-ef36-42b0-a1cd-19c0132823c4',
                         currentHelper: null,
                         helperAttributes: { id: 'normal', foo: 'bar' }
                     };
@@ -374,6 +393,7 @@ describe('v1.0.0 to v2.1.0', function () {
 
                         // remove `undefined` properties for testing
                         expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                            _postman_id: '261c7dec-ef36-42b0-a1cd-19c0132823c4',
                             name: '',
                             request: {
                                 auth: null,
@@ -387,13 +407,18 @@ describe('v1.0.0 to v2.1.0', function () {
                 });
 
                 it('should correctly handle currentHelper and auth set to null', function (done) {
-                    var source = { auth: null, currentHelper: null };
+                    var source = {
+                        id: 'af35f2fc-ed73-425c-b5e7-ef9e9cc92938',
+                        auth: null,
+                        currentHelper: null
+                    };
 
                     transformer.convertSingle(source, options, function (err, converted) {
                         expect(err).to.not.be.ok;
 
                         // remove `undefined` properties for testing
                         expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                            _postman_id: 'af35f2fc-ed73-425c-b5e7-ef9e9cc92938',
                             name: '',
                             request: {
                                 auth: null,
@@ -407,13 +432,18 @@ describe('v1.0.0 to v2.1.0', function () {
                 });
 
                 it('should correctly handle currentHelper (null) and auth (noauth)', function (done) {
-                    var source = { auth: { type: 'noauth' }, currentHelper: null };
+                    var source = {
+                        id: '571d3422-2a63-4bef-a966-1c3bffc230d1',
+                        auth: { type: 'noauth' },
+                        currentHelper: null
+                    };
 
                     transformer.convertSingle(source, options, function (err, converted) {
                         expect(err).to.not.be.ok;
 
                         // remove `undefined` properties for testing
                         expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                            _postman_id: '571d3422-2a63-4bef-a966-1c3bffc230d1',
                             name: '',
                             request: {
                                 auth: null,
@@ -428,6 +458,7 @@ describe('v1.0.0 to v2.1.0', function () {
 
                 it('should correctly infer a noauth type from `currentHelper`, even if auth exists', function (done) {
                     var source = {
+                        id: '8faaec24-9f2e-418e-9b29-479f4ef31cad',
                         currentHelper: null,
                         helperAttributes: { id: 'normal', foo: 'bar' },
                         auth: {
@@ -441,6 +472,7 @@ describe('v1.0.0 to v2.1.0', function () {
 
                         // remove `undefined` properties for testing
                         expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                            _postman_id: '8faaec24-9f2e-418e-9b29-479f4ef31cad',
                             name: '',
                             request: {
                                 auth: null,
@@ -511,7 +543,9 @@ describe('v1.0.0 to v2.1.0', function () {
                     inputVersion: '1.0.0',
                     outputVersion: '2.1.0',
                     retainIds: true
-                };
+                },
+                // eslint-disable-next-line max-len
+                result = _.omit(_.cloneDeep(fixture.v21), ['item.0.item.0.event.0.id', 'item.0.item.0.event.1.id', 'item.0.item.0.event.0.script.id', 'item.0.item.0.event.1.script.id', 'item.1.event.0.id', 'item.1.event.1.id', 'item.1.event.0.script.id', 'item.1.event.1.script.id']);
 
             transformer.convert(fixture.v1, options, function (err, converted) {
                 expect(err).to.not.be.ok;
@@ -519,7 +553,7 @@ describe('v1.0.0 to v2.1.0', function () {
                 // remove `undefined` properties for testing
                 converted = JSON.parse(JSON.stringify(converted));
 
-                expect(converted).to.eql(fixture.v21);
+                expect(converted).to.eql(result);
                 done();
             });
         });
@@ -533,6 +567,7 @@ describe('v1.0.0 to v2.1.0', function () {
                     retainIds: true
                 },
                 source = {
+                    id: '34124d10-0acf-4ed2-afd4-be5de67b1e2a',
                     preRequestScript: 'console.log("Request level pre-request script");',
                     tests: 'console.log("Request level test script");',
                     events: [{
@@ -557,18 +592,19 @@ describe('v1.0.0 to v2.1.0', function () {
                 converted = JSON.parse(JSON.stringify(converted));
 
                 expect(converted).to.eql({
+                    _postman_id: '34124d10-0acf-4ed2-afd4-be5de67b1e2a',
                     name: '',
                     event: [{
-                        listen: 'test',
-                        script: {
-                            type: 'text/javascript',
-                            exec: ['console.log("Request level test script");']
-                        }
-                    }, {
                         listen: 'prerequest',
                         script: {
                             type: 'text/javascript',
                             exec: ['console.log("Request level pre-request script");']
+                        }
+                    }, {
+                        listen: 'test',
+                        script: {
+                            type: 'text/javascript',
+                            exec: ['console.log("Request level test script");']
                         }
                     }],
                     request: {
@@ -591,15 +627,20 @@ describe('v1.0.0 to v2.1.0', function () {
                     retainIds: true
                 },
                 source = {
+                    id: 'e6c691ca-400d-449a-9116-095c19a98107',
                     events: [{
+                        id: 'da8615db-85ca-457b-91e3-03d46c7a29b6',
                         listen: 'prerequest',
                         script: {
+                            id: '6eb833a2-08e7-4db3-bd77-4da34bf60f61',
                             type: 'text/javascript',
                             exec: ['console.log("Alternative request level pre-request script");']
                         }
                     }, {
+                        id: '7152f07e-60c3-432a-90f2-d5ac80746ae0',
                         listen: 'test',
                         script: {
+                            id: '67fc3412-0b01-4bc8-8658-ec02491aa46a',
                             type: 'text/javascript',
                             exec: ['console.log("Alternative request level test script");']
                         }
@@ -613,16 +654,21 @@ describe('v1.0.0 to v2.1.0', function () {
                 converted = JSON.parse(JSON.stringify(converted));
 
                 expect(converted).to.eql({
+                    _postman_id: 'e6c691ca-400d-449a-9116-095c19a98107',
                     name: '',
                     event: [{
+                        id: 'da8615db-85ca-457b-91e3-03d46c7a29b6',
                         listen: 'prerequest',
                         script: {
+                            id: '6eb833a2-08e7-4db3-bd77-4da34bf60f61',
                             type: 'text/javascript',
                             exec: ['console.log("Alternative request level pre-request script");']
                         }
                     }, {
+                        id: '7152f07e-60c3-432a-90f2-d5ac80746ae0',
                         listen: 'test',
                         script: {
+                            id: '67fc3412-0b01-4bc8-8658-ec02491aa46a',
                             type: 'text/javascript',
                             exec: ['console.log("Alternative request level test script");']
                         }
