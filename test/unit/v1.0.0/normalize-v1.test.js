@@ -606,6 +606,71 @@ describe('v1.0.0 normalization', function () {
                 });
             });
 
+            describe('with missing properties', function () {
+                var options = {
+                    noDefaults: true,
+                    normalizeVersion: '1.0.0'
+                };
+
+                it('should fall back to legacy properties if auth is missing', function (done) {
+                    var source = {
+                        currentHelper: 'basicAuth',
+                        helperAttributes: {
+                            id: 'basic',
+                            username: 'postman',
+                            password: 'secret'
+                        }
+                    };
+
+                    transformer.normalizeSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({
+                            currentHelper: 'basicAuth',
+                            helperAttributes: {
+                                id: 'basic',
+                                username: 'postman',
+                                password: 'secret'
+                            },
+                            auth: {
+                                type: 'basic',
+                                basic: [
+                                    { key: 'username', value: 'postman', type: 'string' },
+                                    { key: 'password', value: 'secret', type: 'string' },
+                                    { key: 'saveHelperData', type: 'any' },
+                                    { key: 'showPassword', value: false, type: 'boolean' }
+                                ]
+                            }
+                        });
+                        done();
+                    });
+                });
+
+                it('should discard auth creation if both: legacy and new attributes are missing', function (done) {
+                    var source = {};
+
+                    transformer.normalizeSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({});
+                        done();
+                    });
+                });
+
+                it('should discard auth if both: legacy is normal and new attributes are missing', function (done) {
+                    var source = { currentHelper: 'normal' };
+
+                    transformer.normalizeSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({
+                            auth: null,
+                            currentHelper: null,
+                            helperAttributes: null
+                        });
+                        done();
+                    });
+                });
+            });
+
             describe('prioritizeV2: true', function () {
                 var options = {
                     normalizeVersion: '1.0.0',
@@ -832,6 +897,103 @@ describe('v1.0.0 normalization', function () {
                         }]
                     });
                     done();
+                });
+            });
+
+            describe('with missing properties', function () {
+                var options = {
+                    normalizeVersion: '1.0.0',
+                    retainIds: true
+                };
+
+                it('should handle missing preRequestScript and tests correctly', function (done) {
+                    var source = {
+                        id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        events: [{
+                            listen: 'prerequest',
+                            script: {
+                                type: 'text/javascript',
+                                exec: ['console.log("Pre-request script");']
+                            }
+                        }, {
+                            listen: 'test',
+                            script: {
+                                type: 'text/javascript',
+                                exec: ['console.log("Test script");']
+                            }
+                        }]
+                    };
+
+                    transformer.normalizeSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({
+                            id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                            data: [],
+                            preRequestScript: 'console.log("Pre-request script");',
+                            tests: 'console.log("Test script");',
+                            events: [{
+                                listen: 'prerequest',
+                                script: {
+                                    type: 'text/javascript',
+                                    exec: ['console.log("Pre-request script");']
+                                }
+                            }, {
+                                listen: 'test',
+                                script: {
+                                    type: 'text/javascript',
+                                    exec: ['console.log("Test script");']
+                                }
+                            }]
+                        });
+                        done();
+                    });
+                });
+
+                it('should handle missing events correctly', function (done) {
+                    var source = {
+                        id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        preRequestScript: 'console.log("Pre-request script");',
+                        tests: 'console.log("Test script");'
+                    };
+
+                    transformer.normalizeSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({
+                            id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                            data: [],
+                            events: [{
+                                listen: 'prerequest',
+                                script: {
+                                    type: 'text/javascript',
+                                    exec: ['console.log("Pre-request script");']
+                                }
+                            }, {
+                                listen: 'test',
+                                script: {
+                                    type: 'text/javascript',
+                                    exec: ['console.log("Test script");']
+                                }
+                            }],
+                            preRequestScript: 'console.log("Pre-request script");',
+                            tests: 'console.log("Test script");'
+                        });
+                        done();
+                    });
+                });
+
+                it('should discard property creation if both are absent', function (done) {
+                    var source = {
+                        id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c'
+                    };
+
+                    transformer.normalizeSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({
+                            id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                            data: []
+                        });
+                        done();
+                    });
                 });
             });
 
