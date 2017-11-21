@@ -669,6 +669,31 @@ describe('v1.0.0 normalization', function () {
                         done();
                     });
                 });
+
+                it('should handle valid auth and missing currentHelper correctly', function (done) {
+                    var source = {
+                        auth: {
+                            type: 'bearer',
+                            bearer: [{ key: 'token', value: 'secret', type: 'string' }]
+                        }
+                    };
+
+                    transformer.normalizeSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({
+                            auth: {
+                                type: 'bearer',
+                                bearer: [{ key: 'token', value: 'secret', type: 'string' }]
+                            },
+                            currentHelper: 'bearerAuth',
+                            helperAttributes: {
+                                id: 'bearer',
+                                token: 'secret'
+                            }
+                        });
+                        done();
+                    });
+                });
             });
 
             describe('prioritizeV2: true', function () {
@@ -788,6 +813,34 @@ describe('v1.0.0 normalization', function () {
                             currentHelper: null,
                             helperAttributes: null,
                             auth: null
+                        });
+                        done();
+                    });
+                });
+
+                it('should handle valid auth and missing currentHelper correctly', function (done) {
+                    var source = {
+                        id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        auth: {
+                            type: 'bearer',
+                            bearer: [{ key: 'token', value: 'secret', type: 'string' }]
+                        }
+                    };
+
+                    transformer.normalizeSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({
+                            id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                            data: [],
+                            auth: {
+                                type: 'bearer',
+                                bearer: [{ key: 'token', value: 'secret', type: 'string' }]
+                            },
+                            currentHelper: 'bearerAuth',
+                            helperAttributes: {
+                                id: 'bearer',
+                                token: 'secret'
+                            }
                         });
                         done();
                     });
