@@ -444,6 +444,27 @@ describe('v1.0.0 to v2.1.0', function () {
                         done();
                     });
                 });
+
+                it('should discard auth if both: legacy is null and new attributes are missing', function (done) {
+                    var source = {
+                        id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        currentHelper: null
+                    };
+
+                    transformer.convertSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({
+                            _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                            name: '',
+                            request: {
+                                header: [],
+                                body: { mode: 'raw', raw: '' }
+                            },
+                            response: []
+                        });
+                        done();
+                    });
+                });
             });
         });
 
@@ -569,6 +590,34 @@ describe('v1.0.0 to v2.1.0', function () {
                         request: {
                             header: [],
                             body: { mode: 'raw', raw: '' }
+                        },
+                        response: []
+                    });
+                    done();
+                });
+            });
+
+            it('should handle valid auth and missing legacy properties correctly', function (done) {
+                var source = {
+                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                    auth: {
+                        type: 'bearer',
+                        bearer: [{ key: 'token', value: 'secret', type: 'string' }]
+                    }
+                };
+
+                transformer.convertSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        name: '',
+                        request: {
+                            header: [],
+                            body: { mode: 'raw', raw: '' },
+                            auth: {
+                                type: 'bearer',
+                                bearer: [{ key: 'token', value: 'secret', type: 'string' }]
+                            }
                         },
                         response: []
                     });
@@ -704,10 +753,33 @@ describe('v1.0.0 to v2.1.0', function () {
                 });
             });
 
-            it('should discard auth creation if both: legacy is normal and new attributes is falsy', function (done) {
+            it('should discard auth creation if both: legacy is normal and new attributes are falsy', function (done) {
                 var source = {
                     id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                     currentHelper: 'normal',
+                    helperAttributes: null,
+                    auth: null
+                };
+
+                transformer.convertSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        name: '',
+                        request: {
+                            header: [],
+                            body: { mode: 'raw', raw: '' }
+                        },
+                        response: []
+                    });
+                    done();
+                });
+            });
+
+            it('should discard auth creation if both: legacy is null and new attributes are falsy', function (done) {
+                var source = {
+                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                    currentHelper: null,
                     helperAttributes: null,
                     auth: null
                 };
@@ -796,6 +868,34 @@ describe('v1.0.0 to v2.1.0', function () {
                             request: {
                                 header: [],
                                 body: { mode: 'raw', raw: '' }
+                            },
+                            response: []
+                        });
+                        done();
+                    });
+                });
+
+                it('should handle valid auth and missing legacy properties correctly', function (done) {
+                    var source = {
+                        id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        auth: {
+                            type: 'bearer',
+                            bearer: [{ key: 'token', value: 'secret', type: 'string' }]
+                        }
+                    };
+
+                    transformer.convertSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({
+                            _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                            name: '',
+                            request: {
+                                header: [],
+                                body: { mode: 'raw', raw: '' },
+                                auth: {
+                                    type: 'bearer',
+                                    bearer: [{ key: 'token', value: 'secret', type: 'string' }]
+                                }
                             },
                             response: []
                         });
@@ -949,52 +1049,6 @@ describe('v1.0.0 to v2.1.0', function () {
                 retainIds: true
             };
 
-            it('should handle missing preRequestScript and tests correctly', function (done) {
-                var source = {
-                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
-                    events: [{
-                        listen: 'prerequest',
-                        script: {
-                            type: 'text/javascript',
-                            exec: ['console.log("Pre-request script");']
-                        }
-                    }, {
-                        listen: 'test',
-                        script: {
-                            type: 'text/javascript',
-                            exec: ['console.log("Test script");']
-                        }
-                    }]
-                };
-
-                transformer.convertSingle(source, options, function (err, result) {
-                    expect(err).to.not.be.ok;
-                    expect(JSON.parse(JSON.stringify(result))).to.eql({
-                        _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
-                        name: '',
-                        event: [{
-                            listen: 'prerequest',
-                            script: {
-                                type: 'text/javascript',
-                                exec: ['console.log("Pre-request script");']
-                            }
-                        }, {
-                            listen: 'test',
-                            script: {
-                                type: 'text/javascript',
-                                exec: ['console.log("Test script");']
-                            }
-                        }],
-                        request: {
-                            header: [],
-                            body: { mode: 'raw', raw: '' }
-                        },
-                        response: []
-                    });
-                    done();
-                });
-            });
-
             it('should handle missing events correctly', function (done) {
                 var source = {
                     id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
@@ -1142,6 +1196,29 @@ describe('v1.0.0 to v2.1.0', function () {
                     id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                     preRequestScript: null,
                     tests: null,
+                    events: []
+                };
+
+                transformer.convertSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        name: '',
+                        request: {
+                            body: { mode: 'raw', raw: '' },
+                            header: []
+                        },
+                        response: []
+                    });
+                    done();
+                });
+            });
+
+            it('should handle empty legacy script strings correctly', function (done) {
+                var source = {
+                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                    preRequestScript: '',
+                    tests: '',
                     events: []
                 };
 
