@@ -933,6 +933,98 @@ describe('v1.0.0 normalization', function () {
                         done();
                     });
                 });
+
+                describe('with missing properties', function () {
+                    it('should handle missing preRequestScript and tests correctly', function (done) {
+                        var source = {
+                            id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                            events: [{
+                                listen: 'prerequest',
+                                script: {
+                                    type: 'text/javascript',
+                                    exec: ['console.log("Pre-request script");']
+                                }
+                            }, {
+                                listen: 'test',
+                                script: {
+                                    type: 'text/javascript',
+                                    exec: ['console.log("Test script");']
+                                }
+                            }]
+                        };
+
+                        transformer.normalizeSingle(source, options, function (err, result) {
+                            expect(err).to.not.be.ok;
+                            expect(JSON.parse(JSON.stringify(result))).to.eql({
+                                id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                                data: [],
+                                preRequestScript: 'console.log("Pre-request script");',
+                                tests: 'console.log("Test script");',
+                                events: [{
+                                    listen: 'prerequest',
+                                    script: {
+                                        type: 'text/javascript',
+                                        exec: ['console.log("Pre-request script");']
+                                    }
+                                }, {
+                                    listen: 'test',
+                                    script: {
+                                        type: 'text/javascript',
+                                        exec: ['console.log("Test script");']
+                                    }
+                                }]
+                            });
+                            done();
+                        });
+                    });
+
+                    it('should handle missing events correctly', function (done) {
+                        var source = {
+                            id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                            preRequestScript: 'console.log("Pre-request script");',
+                            tests: 'console.log("Test script");'
+                        };
+
+                        transformer.normalizeSingle(source, options, function (err, result) {
+                            expect(err).to.not.be.ok;
+                            expect(JSON.parse(JSON.stringify(result))).to.eql({
+                                id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                                data: [],
+                                events: [{
+                                    listen: 'prerequest',
+                                    script: {
+                                        type: 'text/javascript',
+                                        exec: ['console.log("Pre-request script");']
+                                    }
+                                }, {
+                                    listen: 'test',
+                                    script: {
+                                        type: 'text/javascript',
+                                        exec: ['console.log("Test script");']
+                                    }
+                                }],
+                                preRequestScript: 'console.log("Pre-request script");',
+                                tests: 'console.log("Test script");'
+                            });
+                            done();
+                        });
+                    });
+
+                    it('should discard property creation if both are absent', function (done) {
+                        var source = {
+                            id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c'
+                        };
+
+                        transformer.normalizeSingle(source, options, function (err, result) {
+                            expect(err).to.not.be.ok;
+                            expect(JSON.parse(JSON.stringify(result))).to.eql({
+                                id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                                data: []
+                            });
+                            done();
+                        });
+                    });
+                });
             });
         });
     });
@@ -1807,6 +1899,361 @@ describe('v1.0.0 normalization', function () {
                                 }
                             ]
                         });
+                    });
+                });
+            });
+        });
+    });
+
+    describe('prioritizeV2, noDefaults: true', function () {
+        var options = {
+            noDefaults: true,
+            prioritizeV2: true,
+            normalizeVersion: '1.0.0'
+        };
+
+        describe('auth', function () {
+            it('should correctly prioritize v2 auth whilst normalizing', function (done) {
+                var source = {
+                    currentHelper: 'basicAuth',
+                    helperAttributes: {
+                        id: 'basic',
+                        username: 'postman',
+                        password: 'secret'
+                    },
+                    auth: {
+                        type: 'bearer',
+                        bearer: [{ key: 'token', value: 'secret', type: 'string' }]
+                    }
+                };
+
+                transformer.normalizeSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+
+                    expect(result).to.eql({
+                        currentHelper: 'bearerAuth',
+                        helperAttributes: {
+                            id: 'bearer',
+                            token: 'secret'
+                        },
+                        auth: {
+                            type: 'bearer',
+                            bearer: [{ key: 'token', value: 'secret', type: 'string' }]
+                        }
+                    });
+                    done();
+                });
+            });
+
+            it('should fall back to legacy properties if auth is falsy', function (done) {
+                var source = {
+                    currentHelper: 'basicAuth',
+                    helperAttributes: {
+                        id: 'basic',
+                        username: 'postman',
+                        password: 'secret'
+                    },
+                    auth: null
+                };
+
+                transformer.normalizeSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        currentHelper: 'basicAuth',
+                        helperAttributes: {
+                            id: 'basic',
+                            username: 'postman',
+                            password: 'secret'
+                        },
+                        auth: {
+                            type: 'basic',
+                            basic: [
+                                { key: 'username', value: 'postman', type: 'string' },
+                                { key: 'password', value: 'secret', type: 'string' },
+                                { key: 'saveHelperData', type: 'any' },
+                                { key: 'showPassword', value: false, type: 'boolean' }
+                            ]
+                        }
+                    });
+                    done();
+                });
+            });
+
+            it('should retain type noauth if auth is noauth and currentHelper is null', function (done) {
+                var source = {
+                    currentHelper: null,
+                    auth: { type: 'noauth' }
+                };
+
+                transformer.normalizeSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        currentHelper: null,
+                        helperAttributes: null,
+                        auth: { type: 'noauth' }
+                    });
+                    done();
+                });
+            });
+
+            it('should nullify if both: legacy and new attributes are falsy', function (done) {
+                var source = {
+                    currentHelper: null,
+                    helperAttributes: null,
+                    auth: null
+                };
+
+                transformer.normalizeSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.eql({
+                        currentHelper: null,
+                        helperAttributes: null,
+                        auth: null
+                    });
+                    done();
+                });
+            });
+
+            it('should nullify auth if both: legacy is normal and the new attribute is falsy', function (done) {
+                var source = {
+                    currentHelper: 'normal',
+                    helperAttributes: null,
+                    auth: null
+                };
+
+                transformer.normalizeSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.eql({
+                        currentHelper: null,
+                        helperAttributes: null,
+                        auth: null
+                    });
+                    done();
+                });
+            });
+
+            describe('with missing properties', function () {
+                it('should fall back to legacy properties if auth is missing', function (done) {
+                    var source = {
+                        currentHelper: 'basicAuth',
+                        helperAttributes: {
+                            id: 'basic',
+                            username: 'postman',
+                            password: 'secret'
+                        }
+                    };
+
+                    transformer.normalizeSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({
+                            currentHelper: 'basicAuth',
+                            helperAttributes: {
+                                id: 'basic',
+                                username: 'postman',
+                                password: 'secret'
+                            },
+                            auth: {
+                                type: 'basic',
+                                basic: [
+                                    { key: 'username', value: 'postman', type: 'string' },
+                                    { key: 'password', value: 'secret', type: 'string' },
+                                    { key: 'saveHelperData', type: 'any' },
+                                    { key: 'showPassword', value: false, type: 'boolean' }
+                                ]
+                            }
+                        });
+                        done();
+                    });
+                });
+
+                it('should discard auth creation if both: legacy and new attributes are missing', function (done) {
+                    var source = {};
+
+                    transformer.normalizeSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({});
+                        done();
+                    });
+                });
+
+                it('should discard auth if both: legacy is normal and new attributes are missing', function (done) {
+                    var source = { currentHelper: 'normal' };
+
+                    transformer.normalizeSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({
+                            auth: null,
+                            currentHelper: null,
+                            helperAttributes: null
+                        });
+                        done();
+                    });
+                });
+            });
+        });
+
+        describe('scripts', function () {
+            it('should correctly prioritize `events` over preRequestScript/tests', function (done) {
+                var source = {
+                    preRequestScript: 'console.log("Legacy prerequest script");',
+                    tests: 'console.log("Legacy test script");',
+                    events: [{
+                        listen: 'prerequest',
+                        script: { exec: ['console.log("Actual prerequest script");'] }
+                    }, {
+                        listen: 'test',
+                        script: { exec: ['console.log("Actual test script");'] }
+                    }]
+                };
+
+                transformer.normalizeSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.eql({
+                        preRequestScript: 'console.log("Actual prerequest script");',
+                        tests: 'console.log("Actual test script");',
+                        events: [{
+                            listen: 'prerequest',
+                            script: {
+                                type: 'text/javascript',
+                                exec: ['console.log("Actual prerequest script");']
+                            }
+                        }, {
+                            listen: 'test',
+                            script: {
+                                type: 'text/javascript',
+                                exec: ['console.log("Actual test script");']
+                            }
+                        }]
+                    });
+                    done();
+                });
+            });
+
+            it('should correctly fall back to preRequestScript/tests if `events` is empty', function (done) {
+                var source = {
+                    preRequestScript: 'console.log("Legacy prerequest script");',
+                    tests: 'console.log("Legacy test script");',
+                    events: []
+                };
+
+                transformer.normalizeSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.eql({
+                        preRequestScript: 'console.log("Legacy prerequest script");',
+                        tests: 'console.log("Legacy test script");',
+                        events: [{
+                            listen: 'prerequest',
+                            script: {
+                                type: 'text/javascript',
+                                exec: ['console.log("Legacy prerequest script");']
+                            }
+                        }, {
+                            listen: 'test',
+                            script: {
+                                type: 'text/javascript',
+                                exec: ['console.log("Legacy test script");']
+                            }
+                        }]
+                    });
+                    done();
+                });
+            });
+
+            it('should nullify the event if both legacy and current attributes are empty', function (done) {
+                var source = {
+                    preRequestScript: null,
+                    tests: null,
+                    events: []
+                };
+
+                transformer.normalizeSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.eql({
+                        preRequestScript: null,
+                        tests: null
+                    });
+                    done();
+                });
+            });
+
+            describe('with missing properties', function () {
+                it('should handle missing preRequestScript and tests correctly', function (done) {
+                    var source = {
+                        events: [{
+                            listen: 'prerequest',
+                            script: {
+                                type: 'text/javascript',
+                                exec: ['console.log("Pre-request script");']
+                            }
+                        }, {
+                            listen: 'test',
+                            script: {
+                                type: 'text/javascript',
+                                exec: ['console.log("Test script");']
+                            }
+                        }]
+                    };
+
+                    transformer.normalizeSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({
+                            preRequestScript: 'console.log("Pre-request script");',
+                            tests: 'console.log("Test script");',
+                            events: [{
+                                listen: 'prerequest',
+                                script: {
+                                    type: 'text/javascript',
+                                    exec: ['console.log("Pre-request script");']
+                                }
+                            }, {
+                                listen: 'test',
+                                script: {
+                                    type: 'text/javascript',
+                                    exec: ['console.log("Test script");']
+                                }
+                            }]
+                        });
+                        done();
+                    });
+                });
+
+                it('should handle missing events correctly', function (done) {
+                    var source = {
+                        preRequestScript: 'console.log("Pre-request script");',
+                        tests: 'console.log("Test script");'
+                    };
+
+                    transformer.normalizeSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({
+                            events: [{
+                                listen: 'prerequest',
+                                script: {
+                                    type: 'text/javascript',
+                                    exec: ['console.log("Pre-request script");']
+                                }
+                            }, {
+                                listen: 'test',
+                                script: {
+                                    type: 'text/javascript',
+                                    exec: ['console.log("Test script");']
+                                }
+                            }],
+                            preRequestScript: 'console.log("Pre-request script");',
+                            tests: 'console.log("Test script");'
+                        });
+                        done();
+                    });
+                });
+
+                it('should discard property creation if both are absent', function (done) {
+                    transformer.normalizeSingle({}, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({});
+                        done();
                     });
                 });
             });
