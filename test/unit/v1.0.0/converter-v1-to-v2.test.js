@@ -568,6 +568,30 @@ describe('v1.0.0 to v2.0.0', function () {
                 });
             });
 
+            it('should retain type noauth if auth is noauth and currentHelper is null', function (done) {
+                var source = {
+                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                    currentHelper: null,
+                    auth: { type: 'noauth' }
+                };
+
+                transformer.convertSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        name: '',
+                        request: {
+                            header: [],
+                            body: { mode: 'raw', raw: '' },
+                            auth: { type: 'noauth' }
+                        },
+                        response: []
+                    });
+                    done();
+                });
+            });
+
             it('should discard auth creation if both: legacy and new attributes are falsy', function (done) {
                 var source = {
                     id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
@@ -611,6 +635,78 @@ describe('v1.0.0 to v2.0.0', function () {
                         response: []
                     });
                     done();
+                });
+            });
+
+            describe('with missing properties', function () {
+                it('should fall back to legacy properties if auth is missing', function (done) {
+                    var source = {
+                        id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        currentHelper: 'basicAuth',
+                        helperAttributes: {
+                            id: 'basic',
+                            username: 'postman',
+                            password: 'secret'
+                        }
+                    };
+
+                    transformer.convertSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({
+                            _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                            name: '',
+                            request: {
+                                header: [],
+                                body: { mode: 'raw', raw: '' },
+                                auth: {
+                                    type: 'basic',
+                                    basic: { username: 'postman', password: 'secret', showPassword: false }
+                                }
+                            },
+                            response: []
+                        });
+                        done();
+                    });
+                });
+
+                it('should discard auth creation if both: legacy and new attributes are missing', function (done) {
+                    var source = { id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c' };
+
+                    transformer.convertSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({
+                            _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                            name: '',
+                            request: {
+                                header: [],
+                                body: { mode: 'raw', raw: '' }
+                            },
+                            response: []
+                        });
+                        done();
+                    });
+                });
+
+                it('should discard auth if both: legacy is normal and new attributes are missing', function (done) {
+                    var source = {
+                        id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        currentHelper: 'normal'
+                    };
+
+                    transformer.convertSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({
+                            _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                            name: '',
+                            request: {
+                                header: [],
+                                body: { mode: 'raw', raw: '' }
+                            },
+                            response: []
+                        });
+                        done();
+                    });
                 });
             });
         });
@@ -858,6 +954,109 @@ describe('v1.0.0 to v2.0.0', function () {
                         response: []
                     });
                     done();
+                });
+            });
+
+            describe('with missing properties', function () {
+                it('should handle missing preRequestScript and tests correctly', function (done) {
+                    var source = {
+                        id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        events: [{
+                            listen: 'prerequest',
+                            script: {
+                                type: 'text/javascript',
+                                exec: ['console.log("Pre-request script");']
+                            }
+                        }, {
+                            listen: 'test',
+                            script: {
+                                type: 'text/javascript',
+                                exec: ['console.log("Test script");']
+                            }
+                        }]
+                    };
+
+                    transformer.convertSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({
+                            _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                            name: '',
+                            event: [{
+                                listen: 'prerequest',
+                                script: {
+                                    type: 'text/javascript',
+                                    exec: ['console.log("Pre-request script");']
+                                }
+                            }, {
+                                listen: 'test',
+                                script: {
+                                    type: 'text/javascript',
+                                    exec: ['console.log("Test script");']
+                                }
+                            }],
+                            request: {
+                                header: [],
+                                body: { mode: 'raw', raw: '' }
+                            },
+                            response: []
+                        });
+                        done();
+                    });
+                });
+
+                it('should handle missing events correctly', function (done) {
+                    var source = {
+                        id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        preRequestScript: 'console.log("Pre-request script");',
+                        tests: 'console.log("Test script");'
+                    };
+
+                    transformer.convertSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({
+                            _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                            name: '',
+                            event: [{
+                                listen: 'test',
+                                script: {
+                                    type: 'text/javascript',
+                                    exec: ['console.log("Test script");']
+                                }
+                            }, {
+                                listen: 'prerequest',
+                                script: {
+                                    type: 'text/javascript',
+                                    exec: ['console.log("Pre-request script");']
+                                }
+                            }],
+                            request: {
+                                header: [],
+                                body: { mode: 'raw', raw: '' }
+                            },
+                            response: []
+                        });
+                        done();
+                    });
+                });
+
+                it('should discard property creation if both are absent', function (done) {
+                    var source = {
+                        id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c'
+                    };
+
+                    transformer.convertSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({
+                            _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                            name: '',
+                            request: {
+                                header: [],
+                                body: { mode: 'raw', raw: '' }
+                            },
+                            response: []
+                        });
+                        done();
+                    });
                 });
             });
         });
