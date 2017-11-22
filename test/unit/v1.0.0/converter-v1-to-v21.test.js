@@ -259,7 +259,6 @@ describe('v1.0.0 to v2.1.0', function () {
                 expect(JSON.parse(JSON.stringify(converted))).to.eql({
                     name: '',
                     request: {
-                        auth: null,
                         body: { mode: 'raw', raw: '' },
                         header: []
                     },
@@ -304,7 +303,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         expect(JSON.parse(JSON.stringify(converted))).to.eql({
                             name: '',
                             request: {
-                                auth: null,
                                 body: { mode: 'raw', raw: '' },
                                 header: []
                             },
@@ -331,7 +329,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         expect(JSON.parse(JSON.stringify(converted))).to.eql({
                             name: '',
                             request: {
-                                auth: null,
                                 body: { mode: 'raw', raw: '' },
                                 header: []
                             },
@@ -353,7 +350,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         expect(JSON.parse(JSON.stringify(converted))).to.eql({
                             name: '',
                             request: {
-                                auth: null,
                                 body: { mode: 'raw', raw: '' },
                                 header: []
                             },
@@ -376,7 +372,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         expect(JSON.parse(JSON.stringify(converted))).to.eql({
                             name: '',
                             request: {
-                                auth: null,
                                 body: { mode: 'raw', raw: '' },
                                 header: []
                             },
@@ -396,7 +391,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         expect(JSON.parse(JSON.stringify(converted))).to.eql({
                             name: '',
                             request: {
-                                auth: null,
                                 body: { mode: 'raw', raw: '' },
                                 header: []
                             },
@@ -416,7 +410,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         expect(JSON.parse(JSON.stringify(converted))).to.eql({
                             name: '',
                             request: {
-                                auth: null,
                                 body: { mode: 'raw', raw: '' },
                                 header: []
                             },
@@ -443,9 +436,29 @@ describe('v1.0.0 to v2.1.0', function () {
                         expect(JSON.parse(JSON.stringify(converted))).to.eql({
                             name: '',
                             request: {
-                                auth: null,
                                 body: { mode: 'raw', raw: '' },
                                 header: []
+                            },
+                            response: []
+                        });
+                        done();
+                    });
+                });
+
+                it('should discard auth if both: legacy is null and new attributes are missing', function (done) {
+                    var source = {
+                        id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        currentHelper: null
+                    };
+
+                    transformer.convertSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({
+                            _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                            name: '',
+                            request: {
+                                header: [],
+                                body: { mode: 'raw', raw: '' }
                             },
                             response: []
                         });
@@ -494,11 +507,400 @@ describe('v1.0.0 to v2.1.0', function () {
                             schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                         },
                         item: [{
-                            auth: null,
                             item: []
                         }]
                     });
                     done();
+                });
+            });
+        });
+
+        describe('with missing properties', function () {
+            var options = {
+                inputVersion: '1.0.0',
+                outputVersion: '2.1.0',
+                retainIds: true
+            };
+
+            it('should fall back to legacy properties if auth is missing', function (done) {
+                var source = {
+                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                    currentHelper: 'basicAuth',
+                    helperAttributes: {
+                        id: 'basic',
+                        username: 'postman',
+                        password: 'secret'
+                    }
+                };
+
+                transformer.convertSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        name: '',
+                        request: {
+                            header: [],
+                            body: { mode: 'raw', raw: '' },
+                            auth: {
+                                type: 'basic',
+                                basic: [
+                                    { key: 'username', value: 'postman', type: 'string' },
+                                    { key: 'password', value: 'secret', type: 'string' },
+                                    { key: 'saveHelperData', type: 'any' },
+                                    { key: 'showPassword', value: false, type: 'boolean' }
+                                ]
+                            }
+                        },
+                        response: []
+                    });
+                    done();
+                });
+            });
+
+            it('should discard auth creation if both: legacy and new attributes are missing', function (done) {
+                var source = { id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c' };
+
+                transformer.convertSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        name: '',
+                        request: {
+                            header: [],
+                            body: { mode: 'raw', raw: '' }
+                        },
+                        response: []
+                    });
+                    done();
+                });
+            });
+
+            it('should discard auth if both: legacy is normal and new attributes are missing', function (done) {
+                var source = {
+                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                    currentHelper: 'normal'
+                };
+
+                transformer.convertSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        name: '',
+                        request: {
+                            header: [],
+                            body: { mode: 'raw', raw: '' }
+                        },
+                        response: []
+                    });
+                    done();
+                });
+            });
+
+            it('should handle valid auth and missing legacy properties correctly', function (done) {
+                var source = {
+                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                    auth: {
+                        type: 'bearer',
+                        bearer: [{ key: 'token', value: 'secret', type: 'string' }]
+                    }
+                };
+
+                transformer.convertSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        name: '',
+                        request: {
+                            header: [],
+                            body: { mode: 'raw', raw: '' },
+                            auth: {
+                                type: 'bearer',
+                                bearer: [{ key: 'token', value: 'secret', type: 'string' }]
+                            }
+                        },
+                        response: []
+                    });
+                    done();
+                });
+            });
+        });
+
+        describe('prioritizeV2: true', function () {
+            var options = {
+                inputVersion: '1.0.0',
+                outputVersion: '2.1.0',
+                prioritizeV2: true,
+                retainIds: true
+            };
+
+            it('should correctly prioritize v2 auth whilst converting', function (done) {
+                var source = {
+                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                    currentHelper: 'basicAuth',
+                    helperAttributes: {
+                        id: 'basic',
+                        username: 'postman',
+                        password: 'secret'
+                    },
+                    auth: {
+                        type: 'bearer',
+                        bearer: [{ key: 'token', value: 'secret', type: 'string' }]
+                    }
+                };
+
+                transformer.convertSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        name: '',
+                        request: {
+                            header: [],
+                            body: { mode: 'raw', raw: '' },
+                            auth: {
+                                type: 'bearer',
+                                bearer: [{ key: 'token', value: 'secret', type: 'string' }]
+                            }
+                        },
+                        response: []
+                    });
+                    done();
+                });
+            });
+
+            it('should fall back to legacy properties if auth is falsy', function (done) {
+                var source = {
+                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                    currentHelper: 'basicAuth',
+                    helperAttributes: {
+                        id: 'basic',
+                        username: 'postman',
+                        password: 'secret'
+                    },
+                    auth: null
+                };
+
+                transformer.convertSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        name: '',
+                        request: {
+                            header: [],
+                            body: { mode: 'raw', raw: '' },
+                            auth: {
+                                type: 'basic',
+                                basic: [
+                                    { key: 'username', value: 'postman', type: 'string' },
+                                    { key: 'password', value: 'secret', type: 'string' },
+                                    { key: 'saveHelperData', type: 'any' },
+                                    { key: 'showPassword', type: 'boolean', value: false }
+                                ]
+                            }
+                        },
+                        response: []
+                    });
+                    done();
+                });
+            });
+
+            it('should retain type noauth if auth is noauth and currentHelper is null', function (done) {
+                var source = {
+                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                    currentHelper: null,
+                    auth: { type: 'noauth' }
+                };
+
+                transformer.convertSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        name: '',
+                        request: {
+                            header: [],
+                            body: { mode: 'raw', raw: '' },
+                            auth: { type: 'noauth' }
+                        },
+                        response: []
+                    });
+                    done();
+                });
+            });
+
+            it('should discard auth creation if both: legacy and new attributes are falsy', function (done) {
+                var source = {
+                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                    currentHelper: null,
+                    helperAttributes: null,
+                    auth: null
+                };
+
+                transformer.convertSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        name: '',
+                        request: {
+                            header: [],
+                            body: { mode: 'raw', raw: '' }
+                        },
+                        response: []
+                    });
+                    done();
+                });
+            });
+
+            it('should discard auth creation if both: legacy is normal and new attributes are falsy', function (done) {
+                var source = {
+                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                    currentHelper: 'normal',
+                    helperAttributes: null,
+                    auth: null
+                };
+
+                transformer.convertSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        name: '',
+                        request: {
+                            header: [],
+                            body: { mode: 'raw', raw: '' }
+                        },
+                        response: []
+                    });
+                    done();
+                });
+            });
+
+            it('should discard auth creation if both: legacy is null and new attributes are falsy', function (done) {
+                var source = {
+                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                    currentHelper: null,
+                    helperAttributes: null,
+                    auth: null
+                };
+
+                transformer.convertSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        name: '',
+                        request: {
+                            header: [],
+                            body: { mode: 'raw', raw: '' }
+                        },
+                        response: []
+                    });
+                    done();
+                });
+            });
+
+            describe('with missing properties', function () {
+                it('should fall back to legacy properties if auth is missing', function (done) {
+                    var source = {
+                        id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        currentHelper: 'basicAuth',
+                        helperAttributes: {
+                            id: 'basic',
+                            username: 'postman',
+                            password: 'secret'
+                        }
+                    };
+
+                    transformer.convertSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({
+                            _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                            name: '',
+                            request: {
+                                header: [],
+                                body: { mode: 'raw', raw: '' },
+                                auth: {
+                                    type: 'basic',
+                                    basic: [
+                                        { key: 'username', value: 'postman', type: 'string' },
+                                        { key: 'password', value: 'secret', type: 'string' },
+                                        { key: 'saveHelperData', type: 'any' },
+                                        { key: 'showPassword', value: false, type: 'boolean' }
+                                    ]
+                                }
+                            },
+                            response: []
+                        });
+                        done();
+                    });
+                });
+
+                it('should discard auth creation if both: legacy and new attributes are missing', function (done) {
+                    var source = { id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c' };
+
+                    transformer.convertSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({
+                            _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                            name: '',
+                            request: {
+                                header: [],
+                                body: { mode: 'raw', raw: '' }
+                            },
+                            response: []
+                        });
+                        done();
+                    });
+                });
+
+                it('should discard auth if both: legacy is normal and new attributes are missing', function (done) {
+                    var source = {
+                        id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        currentHelper: 'normal'
+                    };
+
+                    transformer.convertSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({
+                            _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                            name: '',
+                            request: {
+                                header: [],
+                                body: { mode: 'raw', raw: '' }
+                            },
+                            response: []
+                        });
+                        done();
+                    });
+                });
+
+                it('should handle valid auth and missing legacy properties correctly', function (done) {
+                    var source = {
+                        id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        auth: {
+                            type: 'bearer',
+                            bearer: [{ key: 'token', value: 'secret', type: 'string' }]
+                        }
+                    };
+
+                    transformer.convertSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({
+                            _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                            name: '',
+                            request: {
+                                header: [],
+                                body: { mode: 'raw', raw: '' },
+                                auth: {
+                                    type: 'bearer',
+                                    bearer: [{ key: 'token', value: 'secret', type: 'string' }]
+                                }
+                            },
+                            response: []
+                        });
+                        done();
+                    });
                 });
             });
         });
@@ -637,6 +1039,305 @@ describe('v1.0.0 to v2.1.0', function () {
                     response: []
                 });
                 done();
+            });
+        });
+
+        describe('with missing properties', function () {
+            var options = {
+                inputVersion: '1.0.0',
+                outputVersion: '2.1.0',
+                retainIds: true
+            };
+
+            it('should handle missing events correctly', function (done) {
+                var source = {
+                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                    preRequestScript: 'console.log("Pre-request script");',
+                    tests: 'console.log("Test script");'
+                };
+
+                transformer.convertSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        name: '',
+                        event: [{
+                            listen: 'test',
+                            script: {
+                                type: 'text/javascript',
+                                exec: ['console.log("Test script");']
+                            }
+                        }, {
+                            listen: 'prerequest',
+                            script: {
+                                type: 'text/javascript',
+                                exec: ['console.log("Pre-request script");']
+                            }
+                        }],
+                        request: {
+                            header: [],
+                            body: { mode: 'raw', raw: '' }
+                        },
+                        response: []
+                    });
+                    done();
+                });
+            });
+
+            it('should discard property creation if both are absent', function (done) {
+                var source = {
+                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c'
+                };
+
+                transformer.convertSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        name: '',
+                        request: {
+                            header: [],
+                            body: { mode: 'raw', raw: '' }
+                        },
+                        response: []
+                    });
+                    done();
+                });
+            });
+        });
+
+        describe('prioritizeV2: true', function () {
+            var options = {
+                inputVersion: '1.0.0',
+                outputVersion: '2.1.0',
+                prioritizeV2: true,
+                retainIds: true
+            };
+
+            it('should correctly prioritize `events` over preRequestScript/tests', function (done) {
+                var source = {
+                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                    preRequestScript: 'console.log("Legacy prerequest script");',
+                    tests: 'console.log("Legacy test script");',
+                    events: [{
+                        listen: 'prerequest',
+                        script: { exec: ['console.log("Actual prerequest script");'] }
+                    }, {
+                        listen: 'test',
+                        script: { exec: ['console.log("Actual test script");'] }
+                    }]
+                };
+
+                transformer.convertSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        name: '',
+                        request: {
+                            header: [],
+                            body: { mode: 'raw', raw: '' }
+                        },
+                        response: [],
+                        event: [{
+                            listen: 'prerequest',
+                            script: {
+                                type: 'text/javascript',
+                                exec: ['console.log("Actual prerequest script");']
+                            }
+                        }, {
+                            listen: 'test',
+                            script: {
+                                type: 'text/javascript',
+                                exec: ['console.log("Actual test script");']
+                            }
+                        }]
+                    });
+                    done();
+                });
+            });
+
+            it('should correctly fall back to preRequestScript/tests if `events` is empty', function (done) {
+                var source = {
+                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                    preRequestScript: 'console.log("Legacy prerequest script");',
+                    tests: 'console.log("Legacy test script");',
+                    events: []
+                };
+
+                transformer.convertSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        name: '',
+                        request: {
+                            header: [],
+                            body: { mode: 'raw', raw: '' }
+                        },
+                        response: [],
+                        event: [{
+                            listen: 'test',
+                            script: {
+                                type: 'text/javascript',
+                                exec: ['console.log("Legacy test script");']
+                            }
+                        }, {
+                            listen: 'prerequest',
+                            script: {
+                                type: 'text/javascript',
+                                exec: ['console.log("Legacy prerequest script");']
+                            }
+                        }]
+                    });
+                    done();
+                });
+            });
+
+            it('should discard event from the result if both legacy and current attributes are empty', function (done) {
+                var source = {
+                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                    preRequestScript: null,
+                    tests: null,
+                    events: []
+                };
+
+                transformer.convertSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        name: '',
+                        request: {
+                            body: { mode: 'raw', raw: '' },
+                            header: []
+                        },
+                        response: []
+                    });
+                    done();
+                });
+            });
+
+            it('should handle empty legacy script strings correctly', function (done) {
+                var source = {
+                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                    preRequestScript: '',
+                    tests: '',
+                    events: []
+                };
+
+                transformer.convertSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        name: '',
+                        request: {
+                            body: { mode: 'raw', raw: '' },
+                            header: []
+                        },
+                        response: []
+                    });
+                    done();
+                });
+            });
+
+            describe('with missing properties', function () {
+                it('should handle missing preRequestScript and tests correctly', function (done) {
+                    var source = {
+                        id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        events: [{
+                            listen: 'prerequest',
+                            script: {
+                                type: 'text/javascript',
+                                exec: ['console.log("Pre-request script");']
+                            }
+                        }, {
+                            listen: 'test',
+                            script: {
+                                type: 'text/javascript',
+                                exec: ['console.log("Test script");']
+                            }
+                        }]
+                    };
+
+                    transformer.convertSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({
+                            _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                            name: '',
+                            event: [{
+                                listen: 'prerequest',
+                                script: {
+                                    type: 'text/javascript',
+                                    exec: ['console.log("Pre-request script");']
+                                }
+                            }, {
+                                listen: 'test',
+                                script: {
+                                    type: 'text/javascript',
+                                    exec: ['console.log("Test script");']
+                                }
+                            }],
+                            request: {
+                                header: [],
+                                body: { mode: 'raw', raw: '' }
+                            },
+                            response: []
+                        });
+                        done();
+                    });
+                });
+
+                it('should handle missing events correctly', function (done) {
+                    var source = {
+                        id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        preRequestScript: 'console.log("Pre-request script");',
+                        tests: 'console.log("Test script");'
+                    };
+
+                    transformer.convertSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({
+                            _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                            name: '',
+                            event: [{
+                                listen: 'test',
+                                script: {
+                                    type: 'text/javascript',
+                                    exec: ['console.log("Test script");']
+                                }
+                            }, {
+                                listen: 'prerequest',
+                                script: {
+                                    type: 'text/javascript',
+                                    exec: ['console.log("Pre-request script");']
+                                }
+                            }],
+                            request: {
+                                header: [],
+                                body: { mode: 'raw', raw: '' }
+                            },
+                            response: []
+                        });
+                        done();
+                    });
+                });
+
+                it('should discard property creation if both are absent', function (done) {
+                    var source = {
+                        id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c'
+                    };
+
+                    transformer.convertSingle(source, options, function (err, result) {
+                        expect(err).to.not.be.ok;
+                        expect(JSON.parse(JSON.stringify(result))).to.eql({
+                            _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                            name: '',
+                            request: {
+                                header: [],
+                                body: { mode: 'raw', raw: '' }
+                            },
+                            response: []
+                        });
+                        done();
+                    });
+                });
             });
         });
     });

@@ -338,7 +338,6 @@ module.exports = {
                 { key: 'C', value: 'D' },
                 { key: 'E', value: 'F', disabled: true }
             ],
-            auth: null,
             body: {
                 mode: "formdata",
                 formdata: [
@@ -605,7 +604,6 @@ module.exports = {
             }
         ],
         request: {
-            auth: null,
             url: {
                 raw: 'https://yo.postman.wtf/oauth2/token',
                 protocol: 'https',
