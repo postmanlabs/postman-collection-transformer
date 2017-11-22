@@ -1,5 +1,8 @@
 # Postman Collection Transformer Changelog
 
+#### v2.5.0 (November 22, 2017)
+* #94 Added support for the `prioritizeV2` option to v1 normalization and v1 -> v2.x conversions. :tada:
+
 #### v2.4.3 (November 20, 2017)
 * #92 Fixed legacy property handling for non-complete event normalization :bug:
 
