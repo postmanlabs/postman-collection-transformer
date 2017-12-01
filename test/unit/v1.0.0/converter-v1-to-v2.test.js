@@ -1331,4 +1331,40 @@ describe('v1.0.0 to v2.0.0', function () {
             });
         });
     });
+
+    describe('malformed collections', function () {
+        it('should be handled correctly', function (done) {
+            transformer.convert({
+                folders: [false, null, { id: 'F1' }, 0, NaN, '', undefined],
+                folders_order: [false, null, 'F1', 0, NaN, '', undefined],
+                requests: [false, null, {
+                    id: 'R1'
+                }, 0, NaN, '', undefined],
+                order: [false, null, 'R1', 0, NaN, '', undefined]
+            }, options, function (err, result) {
+                expect(err).to.not.be.ok;
+                expect(JSON.parse(JSON.stringify(result))).to.eql({
+                    info: {
+                        schema: 'https://schema.getpostman.com/json/collection/v2.0.0/collection.json'
+                    },
+                    item: [{
+                        _postman_id: 'F1',
+                        item: []
+                    }, {
+                        _postman_id: 'R1',
+                        name: '',
+                        request: {
+                            body: {
+                                mode: 'raw',
+                                raw: ''
+                            },
+                            header: []
+                        },
+                        response: []
+                    }]
+                });
+                done();
+            });
+        });
+    });
 });
