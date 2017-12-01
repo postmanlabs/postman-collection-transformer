@@ -2474,4 +2474,28 @@ describe('v1.0.0 normalization', function () {
             });
         });
     });
+
+    describe('malformed collections', function () {
+        it('should be handled correctly', function (done) {
+            transformer.normalize({
+                id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                folders: [false, null, { id: 'F1' }, 0, NaN, '', undefined],
+                folders_order: [false, null, 'F1', 0, NaN, '', undefined],
+                requests: [false, null, {
+                    id: 'R1'
+                }, 0, NaN, '', undefined],
+                order: [false, null, 'R1', 0, NaN, '', undefined]
+            }, options, function (err, result) {
+                expect(err).to.not.be.ok;
+                expect(JSON.parse(JSON.stringify(result))).to.eql({
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    folders: [{ id: 'F1' }],
+                    folders_order: ['F1'],
+                    requests: [{ id: 'R1', data: [] }],
+                    order: ['R1']
+                });
+                done();
+            });
+        });
+    });
 });

@@ -399,4 +399,33 @@ describe('v2.1.0 to v1.0.0', function () {
             });
         });
     });
+
+    describe('malformed collections', function () {
+        it('should be handled correctly', function (done) {
+            transformer.convert({
+                info: { _postman_id: '2509a94e-eca1-43ca-a8aa-0e200636764f' },
+                item: [false, null, {
+                    _postman_id: 'F1',
+                    item: [false, null, { _postman_id: 'R1' }, 0, NaN, '', undefined]
+                }, 0, NaN, '', undefined]
+            }, options, function (err, result) {
+                expect(err).to.not.be.ok;
+                expect(JSON.parse(JSON.stringify(result))).to.eql({
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    folders: [{ id: 'F1', folders_order: [], order: ['R1'] }],
+                    folders_order: ['F1'],
+                    order: [],
+                    requests: [{
+                        collectionId: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                        data: [],
+                        headerData: [],
+                        id: 'R1',
+                        rawModeData: '',
+                        url: ''
+                    }]
+                });
+                done();
+            });
+        });
+    });
 });
