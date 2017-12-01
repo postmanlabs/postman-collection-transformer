@@ -1,5 +1,8 @@
 # Postman Collection Transformer Changelog
 
+#### v2.5.1 (December 1, 2017)
+* #95 Improved type safety in folder and request transformations :bug:
+
 #### v2.5.0 (November 22, 2017)
 * #94 Added support for the `prioritizeV2` option to v1 normalization and v1 -> v2.x conversions. :tada:
 
