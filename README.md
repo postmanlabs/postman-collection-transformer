@@ -156,6 +156,10 @@ If you'd rather use the transformer as a library:
 
         options = {
             normalizeVersion: '1.0.0',
+            mutate: false, // performs in-place normalization, false by default.
+            noDefaults: false, // when set to true, sensible defaults for missing properties are skipped. Default: false
+            prioritizeV2: false, // when set to true, v2 attributes are used as the source of truth for normalization.
+            nullifyEmptyValues: false, // when set to true, empty values are set to null, not removed. False by default.
             retainIds: true  // the transformer strips request-ids etc by default.
         };
 
