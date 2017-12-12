@@ -159,7 +159,7 @@ If you'd rather use the transformer as a library:
             mutate: false, // performs in-place normalization, false by default.
             noDefaults: false, // when set to true, sensible defaults for missing properties are skipped. Default: false
             prioritizeV2: false, // when set to true, v2 attributes are used as the source of truth for normalization.
-            retainEmptyValues: false, // when set to true, empty values are set to null, not removed. False by default.
+            retainEmptyValues: false, // when set to true, empty values are set to '', not removed. False by default.
             retainIds: true  // the transformer strips request-ids etc by default.
         };
 
