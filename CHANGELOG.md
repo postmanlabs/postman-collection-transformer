@@ -1,5 +1,8 @@
 # Postman Collection Transformer Changelog
 
+#### v2.5.2 (December 12, 2017)
+* #96 Made empty description pruning optional with `retainEmptyValues` :bug:
+
 #### v2.5.1 (December 1, 2017)
 * #95 Improved type safety in folder and request transformations :bug:
 
