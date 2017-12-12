@@ -1689,10 +1689,10 @@ describe('v1.0.0 normalization', function () {
         });
     });
 
-    describe('nullifyEmptyValues', function () {
+    describe('retainEmptyValues', function () {
         var options = {
             retainIds: true,
-            nullifyEmptyValues: true,
+            retainEmptyValues: true,
             normalizeVersion: '1.0.0'
         };
 
@@ -1714,18 +1714,18 @@ describe('v1.0.0 normalization', function () {
                 expect(err).to.not.be.ok;
                 expect(result).to.eql({
                     id: '9ac7325c-cc3f-4c20-b0f8-a435766cb74c',
-                    description: null,
-                    folders: [{ id: 'f3285fa0-e361-43ba-ba15-618c7a911e84', description: null }],
+                    description: '',
+                    folders: [{ id: 'f3285fa0-e361-43ba-ba15-618c7a911e84', description: '' }],
                     requests: [{
                         id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
-                        description: null,
+                        description: '',
                         dataMode: 'formdata',
-                        data: [{ key: 'body_foo', value: 'body_bar', description: null }],
+                        data: [{ key: 'body_foo', value: 'body_bar', description: '' }],
                         auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random', type: 'string' }] },
                         currentHelper: 'bearerAuth',
                         helperAttributes: { id: 'bearer', token: 'random' },
-                        headerData: [{ key: 'header_foo', value: 'header_bar', description: null }],
-                        queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }]
+                        headerData: [{ key: 'header_foo', value: 'header_bar', description: '' }],
+                        queryParams: [{ key: 'query_foo', value: 'query_bar', description: '' }]
                     }]
                 });
             });
