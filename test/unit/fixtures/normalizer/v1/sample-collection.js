@@ -2655,10 +2655,10 @@ module.exports = {
                 url: 'https://echo.getpostman.com/cookies/delete?foo1&foo2',
                 queryParams: [{
                     key: 'foo1',
-                    value: ''
+                    value: null
                 }, {
                     key: 'foo2',
-                    value: ''
+                    value: null
                 }],
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'Status code is 200\'] = responseCode.code === 200;\ntests[\'Body contains key cookies\'] = responseBody.has(\'cookies\');\nvar body = JSON.parse(responseBody);\ntests[\'Body contains cookie foo2\'] = \'foo2\' in body.cookies;\ntests[\'Body does not contain cookie foo2\'] = !(\'foo1\' in body.cookies);',
