@@ -2563,7 +2563,7 @@ module.exports = {
                                 protocol: "https",
                                 host: ["echo", "getpostman", "com"],
                                 path: ["cookies", "delete"],
-                                query: [{key: "foo1", value: ""}, {key: "foo2", value: ""}]
+                                query: [{key: "foo1", value: null}, {key: "foo2", value: null}]
                             },
                             method: "GET",
                             header: [],
@@ -4551,7 +4551,7 @@ module.exports = {
                                 protocol: "https",
                                 host: ["echo", "getpostman", "com"],
                                 path: ["cookies", "delete"],
-                                query: [{ key: "foo1", value: "" }, { key: "foo2", value: "" }]
+                                query: [{ key: "foo1", value: null }, { key: "foo2", value: null }]
                             },
                             method: "GET",
                             header: [],
