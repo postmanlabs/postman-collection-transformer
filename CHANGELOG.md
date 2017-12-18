@@ -1,5 +1,8 @@
 # Postman Collection Transformer Changelog
 
+#### v2.5.3 (December 18, 2017)
+* #97 Fixed a bug that caused query params to be duplicted :bug:
+
 #### v2.5.2 (December 12, 2017)
 * #96 Made empty description pruning optional with `retainEmptyValues` :bug:
 
