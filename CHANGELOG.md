@@ -1,5 +1,9 @@
 # Postman Collection Transformer Changelog
 
+#### v2.5.5 (February 6, 2018)
+* :arrow_up: Updated dependencies
+* :bug: Fixed empty description bug for v1 -> v2 transformations #99
+
 #### v2.5.4 (January 7, 2018)
 * :arrow_up: Updated dependencies
 * #98 Improved `script.exec` type safety in v1 normalization :bug:
