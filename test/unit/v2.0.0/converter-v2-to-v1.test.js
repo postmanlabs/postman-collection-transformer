@@ -187,13 +187,14 @@ describe('v2.0.0 to v1.0.0', function () {
     });
 
     describe('descriptions', function () {
+        var options = {
+            inputVersion: '2.0.0',
+            outputVersion: '1.0.0',
+            retainIds: true
+        };
+
         it('should correctly handle descriptions whilst converting from v2 to v1', function (done) {
-            var fixture = require('../fixtures/sample-description'),
-                options = {
-                    inputVersion: '2.0.0',
-                    outputVersion: '1.0.0',
-                    retainIds: true
-                };
+            var fixture = require('../fixtures/sample-description');
 
             transformer.convert(fixture.v2, options, function (err, converted) {
                 expect(err).to.not.be.ok;
@@ -202,6 +203,52 @@ describe('v2.0.0 to v1.0.0', function () {
                 converted = JSON.parse(JSON.stringify(converted));
 
                 expect(converted).to.eql(fixture.v1);
+                done();
+            });
+        });
+
+        it('should correctly handle falsy descriptions whilst converting from v2.0.0 to v1', function (done) {
+            transformer.convert({
+                info: {
+                    _postman_id: 'C1',
+                    name: 'collection',
+                    description: null
+                },
+                item: [{
+                    _postman_id: 'F1',
+                    name: 'folder one',
+                    description: undefined,
+                    item: [{
+                        _postman_id: 'R1',
+                        name: 'request one',
+                        description: ''
+                    }]
+                }]
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                    id: 'C1',
+                    name: 'collection',
+                    requests: [{
+                        id: 'R1',
+                        url: '',
+                        data: [],
+                        headerData: [],
+                        rawModeData: '',
+                        collectionId: 'C1',
+                        name: 'request one'
+                    }],
+                    folders: [{
+                        id: 'F1',
+                        order: ['R1'],
+                        folders_order: [],
+                        name: 'folder one'
+                    }],
+                    order: [],
+                    folders_order: ['F1']
+                });
                 done();
             });
         });
