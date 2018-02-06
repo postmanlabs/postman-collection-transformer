@@ -90,13 +90,14 @@ describe('v1.0.0 to v2.0.0', function () {
     });
 
     describe('descriptions', function () {
+        var options = {
+            inputVersion: '1.0.0',
+            outputVersion: '2.0.0',
+            retainIds: true
+        };
+
         it('should correctly handle descriptions whilst converting from v1 to v2', function (done) {
-            var fixture = require('../fixtures/sample-description'),
-                options = {
-                    inputVersion: '1.0.0',
-                    outputVersion: '2.0.0',
-                    retainIds: true
-                };
+            var fixture = require('../fixtures/sample-description');
 
             transformer.convert(fixture.v1, options, function (err, converted) {
                 expect(err).to.not.be.ok;
@@ -105,6 +106,56 @@ describe('v1.0.0 to v2.0.0', function () {
                 converted = JSON.parse(JSON.stringify(converted));
 
                 expect(converted).to.eql(fixture.v2);
+                done();
+            });
+        });
+
+        it('should correctly handle falsy descriptions whilst converting from v1.0.0 to v2.0.0', function (done) {
+            transformer.convert({
+                id: 'C1',
+                name: 'collection',
+                description: null,
+                requests: [{
+                    id: 'R1',
+                    collectionId: 'C1',
+                    name: 'request one',
+                    description: ''
+                }],
+                folders: [{
+                    id: 'F1',
+                    order: ['R1'],
+                    name: 'folder one',
+                    description: undefined
+                }],
+                order: [],
+                folders_order: ['F1']
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                    info: {
+                        _postman_id: 'C1',
+                        name: 'collection',
+                        schema: 'https://schema.getpostman.com/json/collection/v2.0.0/collection.json'
+                    },
+                    item: [{
+                        _postman_id: 'F1',
+                        name: 'folder one',
+                        item: [{
+                            _postman_id: 'R1',
+                            name: 'request one',
+                            request: {
+                                body: {
+                                    mode: 'raw',
+                                    raw: ''
+                                },
+                                header: []
+                            },
+                            response: []
+                        }]
+                    }]
+                });
                 done();
             });
         });
