@@ -108,6 +108,56 @@ describe('v1.0.0 to v2.1.0', function () {
                 done();
             });
         });
+
+        it('should correctly handle falsy descriptions whilst converting from v1.0.0 to v2.1.0', function (done) {
+            transformer.convert({
+                id: 'C1',
+                name: 'collection',
+                description: null,
+                requests: [{
+                    id: 'R1',
+                    collectionId: 'C1',
+                    name: 'request one',
+                    description: ''
+                }],
+                folders: [{
+                    id: 'F1',
+                    order: ['R1'],
+                    name: 'folder one',
+                    description: undefined
+                }],
+                order: [],
+                folders_order: ['F1']
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                    info: {
+                        _postman_id: 'C1',
+                        name: 'collection',
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+                    },
+                    item: [{
+                        _postman_id: 'F1',
+                        name: 'folder one',
+                        item: [{
+                            _postman_id: 'R1',
+                            name: 'request one',
+                            request: {
+                                body: {
+                                    mode: 'raw',
+                                    raw: ''
+                                },
+                                header: []
+                            },
+                            response: []
+                        }]
+                    }]
+                });
+                done();
+            });
+        });
     });
 
     describe('request file body', function () {
