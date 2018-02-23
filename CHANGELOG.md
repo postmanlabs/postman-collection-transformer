@@ -1,5 +1,8 @@
 # Postman Collection Transformer Changelog
 
+#### v2.5.6 (February 23, 2018)
+* #100 Auth mapping improvements
+
 #### v2.5.5 (February 6, 2018)
 * :arrow_up: Updated dependencies
 * :bug: Fixed empty description bug for v1 -> v2 transformations #99
