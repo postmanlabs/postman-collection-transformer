@@ -1,5 +1,8 @@
 # Postman Collection Transformer Changelog
 
+#### v2.5.7 (March 1, 2018)
+* #101 Fixed text `type` mapping for `auth` and `variable` fields. :bug:
+
 #### v2.5.6 (February 23, 2018)
 * #100 Auth mapping improvements
 
