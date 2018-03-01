@@ -2569,5 +2569,31 @@ describe('v1.0.0 normalization', function () {
                 done();
             });
         });
+
+        it('should correctly convert text to string', function (done) {
+            transformer.normalize({
+                id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                auth: {
+                    type: 'bearer',
+                    bearer: [{ key: 'token', value: 'bar', type: 'text' }]
+                },
+                variables: [{
+                    id: 'f42cc664-4823-4012-b7dd-9e9f965b736a', key: 'foo', value: 'bar', type: 'text'
+                }]
+            }, options, function (err, result) {
+                expect(err).to.not.be.ok;
+                expect(JSON.parse(JSON.stringify(result))).to.eql({
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    auth: {
+                        type: 'bearer',
+                        bearer: [{ key: 'token', value: 'bar', type: 'string' }]
+                    },
+                    variables: [{
+                        id: 'f42cc664-4823-4012-b7dd-9e9f965b736a', key: 'foo', value: 'bar', type: 'string'
+                    }]
+                });
+                done();
+            });
+        });
     });
 });
