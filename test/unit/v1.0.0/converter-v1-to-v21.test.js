@@ -1457,4 +1457,199 @@ describe('v1.0.0 to v2.1.0', function () {
             });
         });
     });
+
+    describe('query parameters', function () {
+        it('should work correctly for .convertSingle', function () {
+            transformer.convertSingle({
+                id: '0628a95f-c283-94e2-fa9f-53477775692f',
+                name: 'A world of foo!',
+                url: 'https://postman-echo.com/get?alpha&beta&gamma&delta=&epsilon=&gamma=',
+                collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
+                queryParams: [
+                    { key: 'alpha', value: null, equals: false },
+                    { key: 'beta', value: null, equals: true },
+                    { key: 'gamma', value: null },
+                    { key: 'delta', value: '', equals: false },
+                    { key: 'epsilon', value: '', equals: true },
+                    { key: 'gamma', value: '' }
+                ]
+            }, options, function (err, result) {
+                expect(err).to.not.be.ok;
+                expect(JSON.parse(JSON.stringify(result))).to.eql({
+                    _postman_id: '0628a95f-c283-94e2-fa9f-53477775692f',
+                    name: 'A world of foo!',
+                    request: {
+                        header: [],
+                        body: { mode: 'raw', raw: '' },
+                        url: {
+                            raw: 'https://postman-echo.com/get?alpha&beta=&gamma=&delta&epsilon=&gamma=',
+                            protocol: 'https',
+                            host: ['postman-echo', 'com'],
+                            path: ['get'],
+                            query: [
+                                { key: 'alpha', value: null },
+                                { key: 'beta', value: '' },
+                                { key: 'gamma', value: '' },
+                                { key: 'delta', value: null },
+                                { key: 'epsilon', value: '' },
+                                { key: 'gamma', value: '' }
+                            ]
+                        }
+                    },
+                    response: []
+                });
+            });
+        });
+
+        it('should work correctly for .convert', function () {
+            transformer.convert({
+                id: '03cf74df-32de-af8b-7db8-855b51b05e50',
+                name: 'Mini echo',
+                order: ['ef90671a-ab14-16f5-0a57-41b32fc2a36f'],
+                requests: [
+                    {
+                        id: 'ef90671a-ab14-16f5-0a57-41b32fc2a36f',
+                        name: 'GET request',
+                        method: 'GET',
+                        url: 'https://postman-echo.com/get?alpha&beta&gamma&delta=&epsilon=&gamma=',
+                        queryParams: [
+                            { key: 'alpha', value: null, equals: false },
+                            { key: 'beta', value: null, equals: true },
+                            { key: 'gamma', value: null },
+                            { key: 'delta', value: '', equals: false },
+                            { key: 'epsilon', value: '', equals: true },
+                            { key: 'gamma', value: '' }
+                        ],
+                        collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50'
+                    }
+                ]
+            }, options, function (err, result) {
+                expect(err).to.not.be.ok;
+                expect(JSON.parse(JSON.stringify(result))).to.eql({
+                    info: {
+                        _postman_id: '03cf74df-32de-af8b-7db8-855b51b05e50',
+                        name: 'Mini echo',
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+                    },
+                    item: [
+                        {
+                            _postman_id: 'ef90671a-ab14-16f5-0a57-41b32fc2a36f',
+                            name: 'GET request',
+                            request: {
+                                body: { mode: 'raw', raw: '' },
+                                header: [],
+                                method: 'GET',
+                                url: {
+                                    protocol: 'https',
+                                    host: ['postman-echo', 'com'],
+                                    path: ['get'],
+                                    query: [
+                                        { key: 'alpha', value: null },
+                                        { key: 'beta', value: '' },
+                                        { key: 'gamma', value: '' },
+                                        { key: 'delta', value: null },
+                                        { key: 'epsilon', value: '' },
+                                        { key: 'gamma', value: '' }
+                                    ],
+                                    raw: 'https://postman-echo.com/get?alpha&beta=&gamma=&delta&epsilon=&gamma='
+                                }
+                            },
+                            response: []
+                        }
+                    ]
+                });
+            });
+        });
+
+        it('should work correctly for .convertResponse', function () {
+            transformer.convertResponse({
+                responseCode: { code: 200, name: 'OK' },
+                time: 412,
+                headers: [
+                    {
+                        key: 'Content-Type',
+                        value: 'text/html; charset=ISO-8859-1',
+                        name: 'Content-Type',
+                        description: 'The mime type of this content'
+                    },
+                    {
+                        key: 'Date',
+                        value: 'Fri, 19 May 2017 11:35:14 GMT',
+                        name: 'Date',
+                        description: 'The date and time that the message was sent'
+                    }
+                ],
+                cookies: [],
+                text: '<html></html>',
+                code: 200,
+                responseSize: {
+                    body: 14560,
+                    header: 669
+                },
+                mimeType: 'text',
+                fileName: 'response.html',
+                dataURI: 'data:text/html;base64, PGh0bWw+PC9odG1sPg==',
+                id: '21c40bcc-c1d5-1f91-06df-d7f4e66d1647',
+                name: 'Sample Response',
+                request: {
+                    url: 'https://foo.com?alpha&beta&gamma&delta=&epsilon=&gamma=',
+                    queryParams: [
+                        { key: 'alpha', value: null, equals: false },
+                        { key: 'beta', value: null, equals: true },
+                        { key: 'gamma', value: null },
+                        { key: 'delta', value: '', equals: false },
+                        { key: 'epsilon', value: '', equals: true },
+                        { key: 'gamma', value: '' }
+                    ],
+                    headers: [],
+                    data: 'akjshgdajhsgd',
+                    method: 'GET',
+                    dataMode: 'raw'
+                }
+            }, options, function (err, result) {
+                expect(err).to.not.be.ok;
+                expect(JSON.parse(JSON.stringify(result))).to.eql({
+                    body: '<html></html>',
+                    code: 200,
+                    cookie: [],
+                    header: [
+                        {
+                            key: 'Content-Type',
+                            value: 'text/html; charset=ISO-8859-1',
+                            name: 'Content-Type',
+                            description: 'The mime type of this content'
+                        },
+                        {
+                            key: 'Date',
+                            value: 'Fri, 19 May 2017 11:35:14 GMT',
+                            name: 'Date',
+                            description: 'The date and time that the message was sent'
+                        }
+                    ],
+                    id: '21c40bcc-c1d5-1f91-06df-d7f4e66d1647',
+                    name: 'Sample Response',
+                    originalRequest: {
+                        body: { mode: 'raw', raw: 'akjshgdajhsgd' },
+                        header: [],
+                        method: 'GET',
+                        url: {
+                            host: ['foo', 'com'],
+                            protocol: 'https',
+                            query: [
+                                { key: 'alpha', value: null },
+                                { key: 'beta', value: '' },
+                                { key: 'gamma', value: '' },
+                                { key: 'delta', value: null },
+                                { key: 'epsilon', value: '' },
+                                { key: 'gamma', value: '' }
+                            ],
+                            raw: 'https://foo.com?alpha&beta=&gamma=&delta&epsilon=&gamma='
+                        }
+                    },
+                    responseTime: 412,
+                    status: 'OK'
+                });
+            });
+        });
+    });
 });
