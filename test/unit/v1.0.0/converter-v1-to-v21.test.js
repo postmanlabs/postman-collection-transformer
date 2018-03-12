@@ -1482,14 +1482,14 @@ describe('v1.0.0 to v2.1.0', function () {
                         header: [],
                         body: { mode: 'raw', raw: '' },
                         url: {
-                            raw: 'https://postman-echo.com/get?alpha&beta=&gamma=&delta&epsilon=&gamma=',
+                            raw: 'https://postman-echo.com/get?alpha&beta=&gamma&delta&epsilon=&gamma=',
                             protocol: 'https',
                             host: ['postman-echo', 'com'],
                             path: ['get'],
                             query: [
                                 { key: 'alpha', value: null },
                                 { key: 'beta', value: '' },
-                                { key: 'gamma', value: '' },
+                                { key: 'gamma', value: null },
                                 { key: 'delta', value: null },
                                 { key: 'epsilon', value: '' },
                                 { key: 'gamma', value: '' }
@@ -1546,12 +1546,12 @@ describe('v1.0.0 to v2.1.0', function () {
                                     query: [
                                         { key: 'alpha', value: null },
                                         { key: 'beta', value: '' },
-                                        { key: 'gamma', value: '' },
+                                        { key: 'gamma', value: null },
                                         { key: 'delta', value: null },
                                         { key: 'epsilon', value: '' },
                                         { key: 'gamma', value: '' }
                                     ],
-                                    raw: 'https://postman-echo.com/get?alpha&beta=&gamma=&delta&epsilon=&gamma='
+                                    raw: 'https://postman-echo.com/get?alpha&beta=&gamma&delta&epsilon=&gamma='
                                 }
                             },
                             response: []
@@ -1638,12 +1638,12 @@ describe('v1.0.0 to v2.1.0', function () {
                             query: [
                                 { key: 'alpha', value: null },
                                 { key: 'beta', value: '' },
-                                { key: 'gamma', value: '' },
+                                { key: 'gamma', value: null },
                                 { key: 'delta', value: null },
                                 { key: 'epsilon', value: '' },
                                 { key: 'gamma', value: '' }
                             ],
-                            raw: 'https://foo.com?alpha&beta=&gamma=&delta&epsilon=&gamma='
+                            raw: 'https://foo.com?alpha&beta=&gamma&delta&epsilon=&gamma='
                         }
                     },
                     responseTime: 412,
