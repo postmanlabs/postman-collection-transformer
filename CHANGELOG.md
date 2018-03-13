@@ -1,5 +1,9 @@
 # Postman Collection Transformer Changelog
 
+#### v2.5.8 (March 13, 2018)
+* :arrow_up: Updated dependencies
+* #102 Improved handling for `null` valued query parameters in transformations from `v1`
+
 #### v2.5.7 (March 1, 2018)
 * #101 Fixed text `type` mapping for `auth` and `variable` fields. :bug:
 
