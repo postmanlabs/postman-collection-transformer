@@ -2596,4 +2596,59 @@ describe('v1.0.0 normalization', function () {
             });
         });
     });
+
+    describe('retainIds', function () {
+        it('should handle IDs correctly when set to true', function () {
+            transformer.normalize({
+                id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                requests: [{}, { id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }]
+            }, options, function (err, result) {
+                expect(err).to.not.be.ok;
+                expect(result).to.be.ok;
+
+                expect(result).to.have.property('id', '2509a94e-eca1-43ca-a8aa-0e200636764f');
+                expect(result.requests).to.have.length(7);
+
+                _.forEach(result.requests, function (request) {
+                    expect(request.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                });
+            });
+        });
+
+        it('should handle IDs correctly when set to false', function () {
+            transformer.normalize({
+                id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                requests: [{}, { id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }]
+            }, _.defaults({ retainIds: false }, options), function (err, result) {
+                expect(err).to.not.be.ok;
+                expect(result).to.be.ok;
+
+                expect(result.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                expect(result.id).to.not.equal('2509a94e-eca1-43ca-a8aa-0e200636764f');
+
+                expect(result.requests).to.have.length(7);
+                _.forEach(result.requests, function (request) {
+                    expect(request.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                });
+            });
+        });
+
+        it('should handle IDs correctly when missing', function () {
+            transformer.normalize({
+                id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                requests: [{}, { id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }]
+            }, _.omit(options, ['retainIds']), function (err, result) {
+                expect(err).to.not.be.ok;
+                expect(result).to.be.ok;
+
+                expect(result.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                expect(result.id).to.not.equal('2509a94e-eca1-43ca-a8aa-0e200636764f');
+
+                expect(result.requests).to.have.length(7);
+                _.forEach(result.requests, function (request) {
+                    expect(request.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                });
+            });
+        });
+    });
 });
