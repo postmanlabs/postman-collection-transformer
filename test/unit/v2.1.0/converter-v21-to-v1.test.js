@@ -507,4 +507,78 @@ describe('v2.1.0 to v1.0.0', function () {
             });
         });
     });
+
+    describe('retainIds', function () {
+        it('should handle IDs correctly when set to true', function () {
+            transformer.convert({
+                info: {_postman_id: '2509a94e-eca1-43ca-a8aa-0e200636764f'},
+                item: [
+                    {_postman_id: null},
+                    {_postman_id: NaN},
+                    {_postman_id: undefined},
+                    {_postman_id: false},
+                    {_postman_id: ''},
+                    {_postman_id: 0}
+                ]
+            }, options, function (err, result) {
+                expect(err).to.not.be.ok;
+
+                expect(result).to.have.property('id', '2509a94e-eca1-43ca-a8aa-0e200636764f');
+                expect(result.requests).to.have.length(6);
+
+                _.forEach(result.requests, function (elem, index) {
+                    expect(elem.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                    expect(elem.id).to.equal(result.order[index]);
+                });
+            });
+        });
+
+        it('should handle IDs correctly when set to false', function () {
+            transformer.convert({
+                info: {_postman_id: 'R1'},
+                item: [
+                    {_postman_id: null},
+                    {_postman_id: NaN},
+                    {_postman_id: undefined},
+                    {_postman_id: false},
+                    {_postman_id: ''},
+                    {_postman_id: 0}
+                ]
+            }, _.defaults({retainIds: false}, options), function (err, result) {
+                expect(err).to.not.be.ok;
+
+                expect(result.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                expect(result.requests).to.have.length(6);
+
+                _.forEach(result.requests, function (elem, index) {
+                    expect(elem.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                    expect(elem.id).to.equal(result.order[index]);
+                });
+            });
+        });
+
+        it('should handle IDs correctly when missing', function () {
+            transformer.convert({
+                info: {_postman_id: 'R1'},
+                item: [
+                    {_postman_id: null},
+                    {_postman_id: NaN},
+                    {_postman_id: undefined},
+                    {_postman_id: false},
+                    {_postman_id: ''},
+                    {_postman_id: 0}
+                ]
+            }, _.omit(options, ['retainIds']), function (err, result) {
+                expect(err).to.not.be.ok;
+
+                expect(result.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                expect(result.requests).to.have.length(6);
+
+                _.forEach(result.requests, function (elem, index) {
+                    expect(elem.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                    expect(elem.id).to.equal(result.order[index]);
+                });
+            });
+        });
+    });
 });
