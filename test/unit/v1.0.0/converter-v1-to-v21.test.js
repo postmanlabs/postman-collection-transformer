@@ -2,7 +2,8 @@
  * @fileoverview This test suite runs tests on the V1 to V2 converter.
  */
 
-var expect = require('chai').expect,
+var _ = require('lodash'),
+    expect = require('chai').expect,
     transformer = require('../../../index');
 
 /* global describe, it */
@@ -208,6 +209,7 @@ describe('v1.0.0 to v2.1.0', function () {
                     retainIds: true
                 },
                 source = {
+                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                     currentHelper: 'basicAuth',
                     helperAttributes: {
                         id: 'basic',
@@ -227,6 +229,7 @@ describe('v1.0.0 to v2.1.0', function () {
                 converted = JSON.parse(JSON.stringify(converted));
 
                 expect(converted).to.eql({
+                    _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                     name: '',
                     request: {
                         auth: {
@@ -257,6 +260,7 @@ describe('v1.0.0 to v2.1.0', function () {
                     retainIds: true
                 },
                 source = {
+                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                     auth: {
                         type: 'basic',
                         basic: [{
@@ -278,6 +282,7 @@ describe('v1.0.0 to v2.1.0', function () {
                 converted = JSON.parse(JSON.stringify(converted));
 
                 expect(converted).to.eql({
+                    _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                     name: '',
                     request: {
                         auth: {
@@ -300,13 +305,18 @@ describe('v1.0.0 to v2.1.0', function () {
         });
 
         it('should correctly handle currentHelper (normal) and auth (noauth)', function (done) {
-            var source = { auth: { type: 'noauth' }, currentHelper: 'normal' };
+            var source = {
+                id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                auth: { type: 'noauth' },
+                currentHelper: 'normal'
+            };
 
             transformer.convertSingle(source, options, function (err, converted) {
                 expect(err).to.not.be.ok;
 
                 // remove `undefined` properties for testing
                 expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                    _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                     name: '',
                     request: {
                         body: { mode: 'raw', raw: '' },
@@ -321,13 +331,17 @@ describe('v1.0.0 to v2.1.0', function () {
         describe('requests', function () {
             describe('with noauth', function () {
                 it('should correctly infer a noauth type from the auth object.', function (done) {
-                    var source = { auth: { type: 'noauth' } };
+                    var source = {
+                        id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        auth: { type: 'noauth' }
+                    };
 
                     transformer.convertSingle(source, options, function (err, converted) {
                         expect(err).to.not.be.ok;
 
                         // remove `undefined` properties for testing
                         expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                            _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
                                 auth: { type: 'noauth' },
@@ -342,6 +356,7 @@ describe('v1.0.0 to v2.1.0', function () {
 
                 it('should correctly infer a noauth type from `currentHelper`', function (done) {
                     var source = {
+                        id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                         currentHelper: 'normal',
                         helperAttributes: { id: 'normal', foo: 'bar' }
                     };
@@ -351,6 +366,7 @@ describe('v1.0.0 to v2.1.0', function () {
 
                         // remove `undefined` properties for testing
                         expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                            _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
                                 body: { mode: 'raw', raw: '' },
@@ -364,6 +380,7 @@ describe('v1.0.0 to v2.1.0', function () {
 
                 it('should correctly infer a noauth type from `currentHelper`, even if auth exists', function (done) {
                     var source = {
+                        id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                         currentHelper: 'normal',
                         helperAttributes: { id: 'normal', foo: 'bar' },
                         auth: {
@@ -377,6 +394,7 @@ describe('v1.0.0 to v2.1.0', function () {
 
                         // remove `undefined` properties for testing
                         expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                            _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
                                 body: { mode: 'raw', raw: '' },
@@ -391,13 +409,17 @@ describe('v1.0.0 to v2.1.0', function () {
 
             describe('with null', function () {
                 it('should correctly infer a noauth type from the auth object.', function (done) {
-                    var source = { auth: null };
+                    var source = {
+                        id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        auth: null
+                    };
 
                     transformer.convertSingle(source, options, function (err, converted) {
                         expect(err).to.not.be.ok;
 
                         // remove `undefined` properties for testing
                         expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                            _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
                                 body: { mode: 'raw', raw: '' },
@@ -411,6 +433,7 @@ describe('v1.0.0 to v2.1.0', function () {
 
                 it('should correctly infer a noauth type from `currentHelper`', function (done) {
                     var source = {
+                        id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                         currentHelper: null,
                         helperAttributes: { id: 'normal', foo: 'bar' }
                     };
@@ -420,6 +443,7 @@ describe('v1.0.0 to v2.1.0', function () {
 
                         // remove `undefined` properties for testing
                         expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                            _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
                                 body: { mode: 'raw', raw: '' },
@@ -432,13 +456,18 @@ describe('v1.0.0 to v2.1.0', function () {
                 });
 
                 it('should correctly handle currentHelper and auth set to null', function (done) {
-                    var source = { auth: null, currentHelper: null };
+                    var source = {
+                        id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        auth: null,
+                        currentHelper: null
+                    };
 
                     transformer.convertSingle(source, options, function (err, converted) {
                         expect(err).to.not.be.ok;
 
                         // remove `undefined` properties for testing
                         expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                            _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
                                 body: { mode: 'raw', raw: '' },
@@ -451,13 +480,18 @@ describe('v1.0.0 to v2.1.0', function () {
                 });
 
                 it('should correctly handle currentHelper (null) and auth (noauth)', function (done) {
-                    var source = { auth: { type: 'noauth' }, currentHelper: null };
+                    var source = {
+                        id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                        auth: { type: 'noauth' },
+                        currentHelper: null
+                    };
 
                     transformer.convertSingle(source, options, function (err, converted) {
                         expect(err).to.not.be.ok;
 
                         // remove `undefined` properties for testing
                         expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                            _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
                                 body: { mode: 'raw', raw: '' },
@@ -471,6 +505,7 @@ describe('v1.0.0 to v2.1.0', function () {
 
                 it('should correctly infer a noauth type from `currentHelper`, even if auth exists', function (done) {
                     var source = {
+                        id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                         currentHelper: null,
                         helperAttributes: { id: 'normal', foo: 'bar' },
                         auth: {
@@ -484,6 +519,7 @@ describe('v1.0.0 to v2.1.0', function () {
 
                         // remove `undefined` properties for testing
                         expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                            _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
                                 body: { mode: 'raw', raw: '' },
@@ -521,8 +557,12 @@ describe('v1.0.0 to v2.1.0', function () {
         describe('collections', function () {
             it('should correctly infer a noauth type from a regular auth object', function (done) {
                 var source = {
+                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                     auth: { type: 'noauth' },
-                    folders: [{ auth: { type: 'noauth' } }]
+                    folders: [{
+                        id: '3658e838-9cee-434b-ac17-2fd2bae386bb',
+                        auth: { type: 'noauth' }
+                    }]
                 };
 
                 transformer.convert(source, options, function (err, converted) {
@@ -531,9 +571,11 @@ describe('v1.0.0 to v2.1.0', function () {
                     // remove `undefined` properties for testing
                     expect(JSON.parse(JSON.stringify(converted))).to.eql({
                         info: {
+                            _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                         },
                         item: [{
+                            _postman_id: '3658e838-9cee-434b-ac17-2fd2bae386bb',
                             auth: { type: 'noauth' },
                             item: []
                         }]
@@ -544,8 +586,12 @@ describe('v1.0.0 to v2.1.0', function () {
 
             it('should correctly infer a noauth type from a null auth object', function (done) {
                 var source = {
+                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                     auth: null,
-                    folders: [{ auth: null }]
+                    folders: [{
+                        id: '3658e838-9cee-434b-ac17-2fd2bae386bb',
+                        auth: null
+                    }]
                 };
 
                 transformer.convert(source, options, function (err, converted) {
@@ -554,9 +600,11 @@ describe('v1.0.0 to v2.1.0', function () {
                     // remove `undefined` properties for testing
                     expect(JSON.parse(JSON.stringify(converted))).to.eql({
                         info: {
+                            _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                         },
                         item: [{
+                            _postman_id: '3658e838-9cee-434b-ac17-2fd2bae386bb',
                             item: []
                         }]
                     });
@@ -985,6 +1033,7 @@ describe('v1.0.0 to v2.1.0', function () {
                     retainIds: true
                 },
                 source = {
+                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                     preRequestScript: 'console.log("Request level pre-request script");',
                     tests: 'console.log("Request level test script");',
                     events: [{
@@ -1009,6 +1058,7 @@ describe('v1.0.0 to v2.1.0', function () {
                 converted = JSON.parse(JSON.stringify(converted));
 
                 expect(converted).to.eql({
+                    _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                     name: '',
                     event: [{
                         listen: 'test',
@@ -1043,6 +1093,7 @@ describe('v1.0.0 to v2.1.0', function () {
                     retainIds: true
                 },
                 source = {
+                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                     events: [{
                         listen: 'prerequest',
                         script: {
@@ -1065,6 +1116,7 @@ describe('v1.0.0 to v2.1.0', function () {
                 converted = JSON.parse(JSON.stringify(converted));
 
                 expect(converted).to.eql({
+                    _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                     name: '',
                     event: [{
                         listen: 'prerequest',
@@ -1395,6 +1447,7 @@ describe('v1.0.0 to v2.1.0', function () {
     describe('malformed collections', function () {
         it('should be handled correctly', function (done) {
             transformer.convert({
+                id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                 folders: [false, null, { id: 'F1' }, 0, NaN, '', undefined],
                 folders_order: [false, null, 'F1', 0, NaN, '', undefined],
                 requests: [false, null, {
@@ -1405,6 +1458,7 @@ describe('v1.0.0 to v2.1.0', function () {
                 expect(err).to.not.be.ok;
                 expect(JSON.parse(JSON.stringify(result))).to.eql({
                     info: {
+                        _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                         schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                     },
                     item: [{
@@ -1648,6 +1702,62 @@ describe('v1.0.0 to v2.1.0', function () {
                     },
                     responseTime: 412,
                     status: 'OK'
+                });
+            });
+        });
+    });
+
+    describe('retainIds', function () {
+        it('should handle IDs correctly when set to true', function () {
+            transformer.convert({
+                id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                order: [null, NaN, undefined, false, '', 0],
+                requests: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]
+            }, options, function (err, result) {
+                expect(err).to.not.be.ok;
+                expect(result && result.info).to.be.ok;
+
+                expect(result.info).to.have.property('_postman_id', '2509a94e-eca1-43ca-a8aa-0e200636764f');
+                expect(result.item).to.have.length(6);
+
+                _.forEach(result.item, function (elem) {
+                    expect(elem._postman_id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                });
+            });
+        });
+
+        it('should handle IDs correctly when set to false', function () {
+            transformer.convert({
+                id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                order: [null, NaN, undefined, false, '', 0, 'R1'],
+                requests: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}, {id: 'R1'}]
+            }, _.defaults({ retainIds: false }, options), function (err, result) {
+                expect(err).to.not.be.ok;
+                expect(result && result.info).to.be.ok;
+
+                expect(result.info._postman_id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                expect(result.info._postman_id).to.not.equal('2509a94e-eca1-43ca-a8aa-0e200636764f');
+
+                expect(result.item).to.have.length(7);
+                expect(result.item[0]._postman_id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+            });
+        });
+
+        it('should handle IDs correctly when missing', function () {
+            transformer.convert({
+                id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                order: [null, NaN, undefined, false, '', 0, 'R1'],
+                requests: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}, {id: 'R1'}]
+            }, _.omit(options, ['retainIds']), function (err, result) {
+                expect(err).to.not.be.ok;
+                expect(result && result.info).to.be.ok;
+
+                expect(result.info._postman_id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                expect(result.info._postman_id).to.not.equal('2509a94e-eca1-43ca-a8aa-0e200636764f');
+
+                expect(result.item).to.have.length(7);
+                _.forEach(result.requests, function (elem) {
+                    expect(elem._postman_id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
                 });
             });
         });
