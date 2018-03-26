@@ -2601,15 +2601,31 @@ describe('v1.0.0 normalization', function () {
         it('should handle IDs correctly when set to true', function () {
             transformer.normalize({
                 id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
-                requests: [{}, { id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }]
+                folders_order: [null, NaN, undefined, false, '', 0],
+                folders: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}],
+                requests: [
+                    {id: null, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    {id: NaN, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    // eslint-disable-next-line max-len
+                    {id: undefined, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    {id: false, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    {id: '', responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    {id: 0, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]}
+                ]
             }, options, function (err, result) {
                 expect(err).to.not.be.ok;
                 expect(result).to.be.ok;
 
                 expect(result).to.have.property('id', '2509a94e-eca1-43ca-a8aa-0e200636764f');
-                expect(result.requests).to.have.length(7);
+                expect(result.requests).to.have.length(6);
 
+                _.forEach(result.folders, function (folder) {
+                    expect(folder.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                });
                 _.forEach(result.requests, function (request) {
+                    _.forEach(request.responses, function (response) {
+                        expect(response.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                    });
                     expect(request.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
                 });
             });
@@ -2618,7 +2634,17 @@ describe('v1.0.0 normalization', function () {
         it('should handle IDs correctly when set to false', function () {
             transformer.normalize({
                 id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
-                requests: [{}, { id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }]
+                folders_order: [null, NaN, undefined, false, '', 0],
+                folders: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}],
+                requests: [
+                    {id: null, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    {id: NaN, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    // eslint-disable-next-line max-len
+                    {id: undefined, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    {id: false, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    {id: '', responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    {id: 0, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]}
+                ]
             }, _.defaults({ retainIds: false }, options), function (err, result) {
                 expect(err).to.not.be.ok;
                 expect(result).to.be.ok;
@@ -2626,8 +2652,15 @@ describe('v1.0.0 normalization', function () {
                 expect(result.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
                 expect(result.id).to.not.equal('2509a94e-eca1-43ca-a8aa-0e200636764f');
 
-                expect(result.requests).to.have.length(7);
+                expect(result.requests).to.have.length(6);
+
+                _.forEach(result.folders, function (folder) {
+                    expect(folder.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                });
                 _.forEach(result.requests, function (request) {
+                    _.forEach(request.responses, function (response) {
+                        expect(response.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                    });
                     expect(request.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
                 });
             });
@@ -2636,7 +2669,17 @@ describe('v1.0.0 normalization', function () {
         it('should handle IDs correctly when missing', function () {
             transformer.normalize({
                 id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
-                requests: [{}, { id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }]
+                folders_order: [null, NaN, undefined, false, '', 0],
+                folders: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}],
+                requests: [
+                    {id: null, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    {id: NaN, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    // eslint-disable-next-line max-len
+                    {id: undefined, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    {id: false, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    {id: '', responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    {id: 0, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]}
+                ]
             }, _.omit(options, ['retainIds']), function (err, result) {
                 expect(err).to.not.be.ok;
                 expect(result).to.be.ok;
@@ -2644,8 +2687,15 @@ describe('v1.0.0 normalization', function () {
                 expect(result.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
                 expect(result.id).to.not.equal('2509a94e-eca1-43ca-a8aa-0e200636764f');
 
-                expect(result.requests).to.have.length(7);
+                expect(result.requests).to.have.length(6);
+
+                _.forEach(result.folders, function (folder) {
+                    expect(folder.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                });
                 _.forEach(result.requests, function (request) {
+                    _.forEach(request.responses, function (response) {
+                        expect(response.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                    });
                     expect(request.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
                 });
             });
