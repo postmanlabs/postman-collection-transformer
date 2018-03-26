@@ -1712,15 +1712,31 @@ describe('v1.0.0 to v2.1.0', function () {
             transformer.convert({
                 id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
                 order: [null, NaN, undefined, false, '', 0],
-                requests: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]
+                folders_order: [null, NaN, undefined, false, '', 0],
+                folders: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}],
+                requests: [
+                    {id: null, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    {id: NaN, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    // eslint-disable-next-line max-len
+                    {id: undefined, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    {id: false, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    {id: '', responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    {id: 0, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]}
+                ]
             }, options, function (err, result) {
                 expect(err).to.not.be.ok;
                 expect(result && result.info).to.be.ok;
 
                 expect(result.info).to.have.property('_postman_id', '2509a94e-eca1-43ca-a8aa-0e200636764f');
-                expect(result.item).to.have.length(6);
+                expect(result.item).to.have.length(12);
 
                 _.forEach(result.item, function (elem) {
+                    _.forEach(elem.item, function (item) {
+                        expect(item._postman_id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                        _.forEach(item.response, function (response) {
+                            expect(response.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                        });
+                    });
                     expect(elem._postman_id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
                 });
             });
@@ -1730,16 +1746,34 @@ describe('v1.0.0 to v2.1.0', function () {
             transformer.convert({
                 id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
                 order: [null, NaN, undefined, false, '', 0, 'R1'],
-                requests: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}, {id: 'R1'}]
-            }, _.defaults({ retainIds: false }, options), function (err, result) {
+                folders_order: [null, NaN, undefined, false, '', 0],
+                folders: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}],
+                requests: [
+                    {id: null, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    {id: NaN, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    // eslint-disable-next-line max-len
+                    {id: undefined, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    {id: false, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    {id: '', responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    {id: 0, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]}
+                ]
+            }, _.defaults({retainIds: false}, options), function (err, result) {
                 expect(err).to.not.be.ok;
                 expect(result && result.info).to.be.ok;
 
                 expect(result.info._postman_id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
                 expect(result.info._postman_id).to.not.equal('2509a94e-eca1-43ca-a8aa-0e200636764f');
 
-                expect(result.item).to.have.length(7);
-                expect(result.item[0]._postman_id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                expect(result.item).to.have.length(12);
+                _.forEach(result.item, function (elem) {
+                    _.forEach(elem.item, function (item) {
+                        expect(item._postman_id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                        _.forEach(item.response, function (response) {
+                            expect(response.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                        });
+                    });
+                    expect(elem._postman_id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                });
             });
         });
 
@@ -1747,7 +1781,17 @@ describe('v1.0.0 to v2.1.0', function () {
             transformer.convert({
                 id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
                 order: [null, NaN, undefined, false, '', 0, 'R1'],
-                requests: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}, {id: 'R1'}]
+                folders_order: [null, NaN, undefined, false, '', 0],
+                folders: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}],
+                requests: [
+                    {id: null, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    {id: NaN, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    // eslint-disable-next-line max-len
+                    {id: undefined, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    {id: false, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    {id: '', responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
+                    {id: 0, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]}
+                ]
             }, _.omit(options, ['retainIds']), function (err, result) {
                 expect(err).to.not.be.ok;
                 expect(result && result.info).to.be.ok;
@@ -1755,8 +1799,14 @@ describe('v1.0.0 to v2.1.0', function () {
                 expect(result.info._postman_id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
                 expect(result.info._postman_id).to.not.equal('2509a94e-eca1-43ca-a8aa-0e200636764f');
 
-                expect(result.item).to.have.length(7);
-                _.forEach(result.requests, function (elem) {
+                expect(result.item).to.have.length(12);
+                _.forEach(result.item, function (elem) {
+                    _.forEach(elem.item, function (item) {
+                        expect(item._postman_id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                        _.forEach(item.response, function (response) {
+                            expect(response.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                        });
+                    });
                     expect(elem._postman_id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
                 });
             });
