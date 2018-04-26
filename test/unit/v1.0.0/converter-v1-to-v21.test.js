@@ -1742,7 +1742,7 @@ describe('v1.0.0 to v2.1.0', function () {
             });
         });
 
-        it('should handle IDs correctly when set to false', function () {
+        it('should handle IDs correctly when set to false (collection id should be retained)', function () {
             transformer.convert({
                 id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
                 order: [null, NaN, undefined, false, '', 0, 'R1'],
@@ -1761,8 +1761,8 @@ describe('v1.0.0 to v2.1.0', function () {
                 expect(err).to.not.be.ok;
                 expect(result && result.info).to.be.ok;
 
-                expect(result.info._postman_id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
-                expect(result.info._postman_id).to.not.equal('2509a94e-eca1-43ca-a8aa-0e200636764f');
+                // collection ids should be retained even when retainIds is set to false
+                expect(result.info._postman_id).to.equal('2509a94e-eca1-43ca-a8aa-0e200636764f');
 
                 expect(result.item).to.have.length(12);
                 _.forEach(result.item, function (elem) {
@@ -1777,7 +1777,7 @@ describe('v1.0.0 to v2.1.0', function () {
             });
         });
 
-        it('should handle IDs correctly when missing', function () {
+        it('should handle IDs correctly when missing (collection id should be retained)', function () {
             transformer.convert({
                 id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
                 order: [null, NaN, undefined, false, '', 0, 'R1'],
@@ -1796,8 +1796,8 @@ describe('v1.0.0 to v2.1.0', function () {
                 expect(err).to.not.be.ok;
                 expect(result && result.info).to.be.ok;
 
-                expect(result.info._postman_id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
-                expect(result.info._postman_id).to.not.equal('2509a94e-eca1-43ca-a8aa-0e200636764f');
+                // collection ids should be retained even when retainIds is set to false
+                expect(result.info._postman_id).to.equal('2509a94e-eca1-43ca-a8aa-0e200636764f');
 
                 expect(result.item).to.have.length(12);
                 _.forEach(result.item, function (elem) {
