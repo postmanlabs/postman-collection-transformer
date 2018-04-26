@@ -2631,7 +2631,7 @@ describe('v1.0.0 normalization', function () {
             });
         });
 
-        it('should handle IDs correctly when set to false', function () {
+        it('should handle IDs correctly when set to false (collection id should be retained)', function () {
             transformer.normalize({
                 id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
                 folders_order: [null, NaN, undefined, false, '', 0],
@@ -2649,8 +2649,8 @@ describe('v1.0.0 normalization', function () {
                 expect(err).to.not.be.ok;
                 expect(result).to.be.ok;
 
-                expect(result.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
-                expect(result.id).to.not.equal('2509a94e-eca1-43ca-a8aa-0e200636764f');
+                // collection ids should be retained even when retainIds is set to false
+                expect(result.id).to.equal('2509a94e-eca1-43ca-a8aa-0e200636764f');
 
                 expect(result.requests).to.have.length(6);
 
@@ -2666,7 +2666,7 @@ describe('v1.0.0 normalization', function () {
             });
         });
 
-        it('should handle IDs correctly when missing', function () {
+        it('should handle IDs correctly when missing (collection id should be retained)', function () {
             transformer.normalize({
                 id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
                 folders_order: [null, NaN, undefined, false, '', 0],
@@ -2684,8 +2684,8 @@ describe('v1.0.0 normalization', function () {
                 expect(err).to.not.be.ok;
                 expect(result).to.be.ok;
 
-                expect(result.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
-                expect(result.id).to.not.equal('2509a94e-eca1-43ca-a8aa-0e200636764f');
+                // collection ids should be retained even when retainIds is set to false
+                expect(result.id).to.equal('2509a94e-eca1-43ca-a8aa-0e200636764f');
 
                 expect(result.requests).to.have.length(6);
 
