@@ -546,7 +546,7 @@ describe('v2.0.0 to v1.0.0', function () {
             });
         });
 
-        it('should handle IDs correctly when set to false', function () {
+        it('should handle IDs correctly when set to false (collection id should be retained)', function () {
             transformer.convert({
                 info: {_postman_id: 'R1'},
                 item: [
@@ -560,7 +560,8 @@ describe('v2.0.0 to v1.0.0', function () {
             }, _.defaults({retainIds: false}, options), function (err, result) {
                 expect(err).to.not.be.ok;
 
-                expect(result.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                // collection ids should be retained even when retainIds is set to false
+                expect(result.id).to.equal('R1');
                 expect(result.requests).to.have.length(36);
 
 
@@ -576,7 +577,7 @@ describe('v2.0.0 to v1.0.0', function () {
             });
         });
 
-        it('should handle IDs correctly when missing', function () {
+        it('should handle IDs correctly when missing (collection id should be retained)', function () {
             transformer.convert({
                 info: {_postman_id: 'R1'},
                 item: [
@@ -590,7 +591,8 @@ describe('v2.0.0 to v1.0.0', function () {
             }, _.omit(options, ['retainIds']), function (err, result) {
                 expect(err).to.not.be.ok;
 
-                expect(result.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                // collection ids should be retained even when retainIds is set to false
+                expect(result.id).to.equal('R1');
                 expect(result.requests).to.have.length(36);
 
                 _.forEach(result.folders, function (folder) {
