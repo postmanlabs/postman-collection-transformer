@@ -91,7 +91,7 @@ describe('v1.0.0 ==> v2.0.0', function () {
             expect(v2.item[0].request.body.raw).to.eql('something');
         });
 
-        it('should not strip out all request and folder ids by default', function () {
+        it('should replace .id with _postman_id', function () {
             var v1 = require('../../../examples/v1.0.0/simplest.json'),
                 v2 = JSON.parse(JSON.stringify(converter.convert(v1)));
             expect(v2.item[0]).to.not.have.property('id');

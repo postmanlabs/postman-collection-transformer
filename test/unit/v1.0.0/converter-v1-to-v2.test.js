@@ -1718,6 +1718,8 @@ describe('v1.0.0 to v2.0.0', function () {
                 expect(err).to.not.be.ok;
                 expect(result && result.info).to.be.ok;
 
+                expect(result.info).to.not.have.property('id');
+                expect(result).to.not.have.property('id');
                 expect(result.info).to.have.property('_postman_id', '2509a94e-eca1-43ca-a8aa-0e200636764f');
                 expect(result.item).to.have.length(12);
 
@@ -1733,7 +1735,7 @@ describe('v1.0.0 to v2.0.0', function () {
             });
         });
 
-        it('should handle IDs correctly when set to false (collection id should be retained)', function () {
+        it('should handle IDs correctly when false (collection.info._postman_id should be retained)', function () {
             transformer.convert({
                 id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
                 order: [null, NaN, undefined, false, '', 0, 'R1'],
@@ -1752,8 +1754,10 @@ describe('v1.0.0 to v2.0.0', function () {
                 expect(err).to.not.be.ok;
                 expect(result && result.info).to.be.ok;
 
-                // truthy collection ids should be left as is even when retainIds is set to false
+                // collection.info._postman_id should not change even if retainIds is set to false
                 expect(result.info._postman_id).to.equal('2509a94e-eca1-43ca-a8aa-0e200636764f');
+                expect(result).to.not.have.property('id');
+                expect(result.info).to.not.have.property('id');
 
                 expect(result.item).to.have.length(12);
                 _.forEach(result.item, function (elem) {
@@ -1768,7 +1772,7 @@ describe('v1.0.0 to v2.0.0', function () {
             });
         });
 
-        it('should handle IDs correctly when missing (collection id should be retained)', function () {
+        it('should handle IDs correctly when missing (collection.info._postman_id should be retained)', function () {
             transformer.convert({
                 id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
                 order: [null, NaN, undefined, false, '', 0, 'R1'],
@@ -1787,8 +1791,10 @@ describe('v1.0.0 to v2.0.0', function () {
                 expect(err).to.not.be.ok;
                 expect(result && result.info).to.be.ok;
 
-                // collection id should not change even if retainIds is set to false
+                // collection.info._postman_id should not change even if retainIds is set to false
                 expect(result.info._postman_id).to.equal('2509a94e-eca1-43ca-a8aa-0e200636764f');
+                expect(result).to.not.have.property('id');
+                expect(result.info).to.not.have.property('id');
 
                 expect(result.item).to.have.length(12);
                 _.forEach(result.item, function (elem) {
