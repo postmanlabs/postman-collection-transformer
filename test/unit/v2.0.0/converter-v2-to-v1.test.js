@@ -505,4 +505,104 @@ describe('v2.0.0 to v1.0.0', function () {
             });
         });
     });
+
+    describe('retainIds', function () {
+        var responses = [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}],
+            items = [
+                { _postman_id: null, response: responses },
+                { _postman_id: NaN, response: responses },
+                { _postman_id: undefined, response: responses },
+                { _postman_id: false, response: responses },
+                { _postman_id: '', response: responses },
+                { _postman_id: 0, response: responses }
+            ];
+
+        it('should handle IDs correctly when set to true', function () {
+            transformer.convert({
+                info: {_postman_id: '2509a94e-eca1-43ca-a8aa-0e200636764f'},
+                item: [
+                    { _postman_id: null, item: items },
+                    { _postman_id: NaN, item: items },
+                    { _postman_id: undefined, item: items },
+                    { _postman_id: false, item: items },
+                    { _postman_id: '', item: items },
+                    { _postman_id: 0, item: items }
+                ]
+            }, options, function (err, result) {
+                expect(err).to.not.be.ok;
+
+                expect(result).to.have.property('id', '2509a94e-eca1-43ca-a8aa-0e200636764f');
+                expect(result.requests).to.have.length(36);
+
+                _.forEach(result.folders, function (folder) {
+                    expect(folder.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                });
+                _.forEach(result.requests, function (request) {
+                    expect(request.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                    _.forEach(request.responses, function (response) {
+                        expect(response.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                    });
+                });
+            });
+        });
+
+        it('should handle IDs correctly when set to false', function () {
+            transformer.convert({
+                info: {_postman_id: 'R1'},
+                item: [
+                    { _postman_id: null, item: items },
+                    { _postman_id: NaN, item: items },
+                    { _postman_id: undefined, item: items },
+                    { _postman_id: false, item: items },
+                    { _postman_id: '', item: items },
+                    { _postman_id: 0, item: items }
+                ]
+            }, _.defaults({retainIds: false}, options), function (err, result) {
+                expect(err).to.not.be.ok;
+
+                expect(result.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                expect(result.requests).to.have.length(36);
+
+
+                _.forEach(result.folders, function (folder) {
+                    expect(folder.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                });
+                _.forEach(result.requests, function (request) {
+                    expect(request.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                    _.forEach(request.responses, function (response) {
+                        expect(response.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                    });
+                });
+            });
+        });
+
+        it('should handle IDs correctly when missing', function () {
+            transformer.convert({
+                info: {_postman_id: 'R1'},
+                item: [
+                    { _postman_id: null, item: items },
+                    { _postman_id: NaN, item: items },
+                    { _postman_id: undefined, item: items },
+                    { _postman_id: false, item: items },
+                    { _postman_id: '', item: items },
+                    { _postman_id: 0, item: items }
+                ]
+            }, _.omit(options, ['retainIds']), function (err, result) {
+                expect(err).to.not.be.ok;
+
+                expect(result.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                expect(result.requests).to.have.length(36);
+
+                _.forEach(result.folders, function (folder) {
+                    expect(folder.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                });
+                _.forEach(result.requests, function (request) {
+                    expect(request.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                    _.forEach(request.responses, function (response) {
+                        expect(response.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                    });
+                });
+            });
+        });
+    });
 });
