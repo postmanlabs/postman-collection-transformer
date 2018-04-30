@@ -1,5 +1,9 @@
 # Postman Collection Transformer Changelog
 
+#### v2.5.9 (April 30, 2018)
+* #103 Fixed `retainIds` behaviour for v1 to v2 conversions :bug:
+* #104 Updated dependencies :arrow_up:
+
 #### v2.5.8 (March 13, 2018)
 * :arrow_up: Updated dependencies
 * #102 Improved handling for `null` valued query parameters in transformations from `v1`
