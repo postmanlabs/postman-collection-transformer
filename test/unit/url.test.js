@@ -25,6 +25,43 @@ describe('url', function () {
             });
             done();
         });
+
+        it('should extract protocol from the url', function (done) {
+            var fixture = 'https://postman-echo.com/get?go=http://getpostman.com',
+                parsed;
+
+            parsed = JSON.parse(JSON.stringify(url.parse(fixture)));
+
+            expect(parsed).to.eql({
+                raw: fixture,
+                protocol: 'https',
+                host: ['postman-echo', 'com'],
+                path: ['get'],
+                query: [{
+                    key: 'go',
+                    value: 'http://getpostman.com'
+                }]
+            });
+            done();
+        });
+
+        it('should correctly handle the absence of a protocol', function (done) {
+            var fixture = 'postman-echo.com/get?go=http://getpostman.com',
+                parsed;
+
+            parsed = JSON.parse(JSON.stringify(url.parse(fixture)));
+
+            expect(parsed).to.eql({
+                raw: fixture,
+                host: ['postman-echo', 'com'],
+                path: ['get'],
+                query: [{
+                    key: 'go',
+                    value: 'http://getpostman.com'
+                }]
+            });
+            done();
+        });
     });
 
     describe('unparsing', function () {
