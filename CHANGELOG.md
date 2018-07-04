@@ -1,5 +1,9 @@
 # Postman Collection Transformer Changelog
 
+#### v2.5.10 (July 4, 2018)
+* #106 Updated dependencies :arrow_up:
+* #105 Fixed a bug in url parsing protocol extraction :bug:
+
 #### v2.5.9 (April 30, 2018)
 * #103 Fixed `retainIds` behaviour for v1 to v2 conversions :bug:
 * #104 Updated dependencies :arrow_up:
