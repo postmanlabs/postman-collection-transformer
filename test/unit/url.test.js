@@ -45,7 +45,7 @@ describe('url', function () {
             done();
         });
 
-        it('should handle absent of protocol', function (done) {
+        it('should handle the absent of protocol', function (done) {
             var fixture = 'postman-echo.com/get?go=http://getpostman.com',
                 parsed;
 
