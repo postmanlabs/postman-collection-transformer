@@ -605,4 +605,108 @@ describe('v2.0.0 to v1.0.0', function () {
             });
         });
     });
+
+    describe('retainEmptyValues', function () {
+        var options = {
+            inputVersion: '2.0.0',
+            outputVersion: '1.0.0',
+            retainIds: true,
+            retainEmptyValues: true
+        };
+
+        it('should nullify empty descriptions in when set to true', function () {
+            transformer.convert({
+                info: {
+                    _postman_id: '9ac7325c-cc3f-4c20-b0f8-a435766cb74c',
+                    description: 0,
+                    schema: 'https://schema.getpostman.com/json/collection/v2.0.0/collection.json'
+                },
+                item: [{
+                    _postman_id: 'f3285fa0-e361-43ba-ba15-618c7a911e84',
+                    item: [{
+                        _postman_id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
+                        name: '',
+                        request: {
+                            auth: { type: 'bearer', bearer: { token: 'random' } },
+                            description: '',
+                            body: { mode: 'raw', raw: '' },
+                            header: [{ description: NaN, key: 'header_foo', value: 'header_bar' }],
+                            url: {
+                                query: [{ description: false, key: 'query_foo', value: 'query_bar' }],
+                                raw: ''
+                            }
+                        },
+                        response: []
+                    }],
+                    description: undefined
+                }]
+            }, options, function (err, result) {
+                expect(err).not.to.be.ok;
+                expect(JSON.parse(JSON.stringify(result))).to.eql({
+                    id: '9ac7325c-cc3f-4c20-b0f8-a435766cb74c',
+                    description: null, // this represents the case where descriptions are removed
+                    order: [],
+                    folders_order: ['f3285fa0-e361-43ba-ba15-618c7a911e84'],
+                    folders: [{
+                        id: 'f3285fa0-e361-43ba-ba15-618c7a911e84',
+                        description: null,
+                        folders_order: [],
+                        order: ['9d123ce5-314a-40cd-9852-6a8569513f4e']
+                    }],
+                    requests: [{
+                        id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
+                        collectionId: '9ac7325c-cc3f-4c20-b0f8-a435766cb74c',
+                        description: null,
+                        dataMode: 'raw',
+                        name: '',
+                        pathVariableData: [],
+                        rawModeData: '',
+                        responses: [],
+                        url: '?query_foo=query_bar',
+                        data: [],
+                        headers: 'header_foo: header_bar',
+                        currentHelper: 'bearerAuth',
+                        helperAttributes: { id: 'bearer', token: 'random' },
+                        auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random', type: 'string' }] },
+                        headerData: [{ key: 'header_foo', value: 'header_bar', description: null }],
+                        queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }]
+                    }]
+                });
+            });
+        });
+
+        it('should nullify empty descriptions in requests when set to true', function () {
+            transformer.convertSingle({
+                _postman_id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
+                request: {
+                    auth: { type: 'bearer', bearer: { token: 'random' } },
+                    description: null,
+                    header: [{ description: NaN, key: 'header_foo', value: 'header_bar' }],
+                    url: {
+                        query: [{ description: undefined, key: 'query_foo', value: 'query_bar' }],
+                        raw: ''
+                    }
+                },
+                response: []
+            }, options, function (err, result) {
+                expect(err).not.to.be.ok;
+
+                expect(JSON.parse(JSON.stringify(result))).to.eql({
+                    id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
+                    description: null,
+                    data: [],
+                    pathVariableData: [],
+                    responses: [],
+                    currentHelper: 'bearerAuth',
+                    helperAttributes: { id: 'bearer', token: 'random' },
+                    auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random', type: 'string' }] },
+                    headers: 'header_foo: header_bar',
+                    url: '?query_foo=query_bar',
+                    rawModeData: '',
+                    headerData: [{ key: 'header_foo', value: 'header_bar', description: null }],
+                    queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }]
+                });
+            });
+        });
+    });
 });
