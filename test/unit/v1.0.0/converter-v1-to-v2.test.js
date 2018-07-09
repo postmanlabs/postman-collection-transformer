@@ -1830,9 +1830,10 @@ describe('v1.0.0 to v2.0.0', function () {
                 requests: [{
                     id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
                     description: false,
-                    dataMode: 'formdata',
+                    dataMode: 'params',
                     data: [{ key: 'body_foo', value: 'body_bar', description: 0 }],
                     auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random' }] },
+                    pathVariableData: [{ key: 'pv_foo', value: 'pv_bar', description: '' }],
                     headerData: [{ key: 'header_foo', value: 'header_bar', description: undefined }],
                     queryParams: [{ key: 'query_foo', value: 'query_bar', description: NaN }]
                 }]
@@ -1853,11 +1854,15 @@ describe('v1.0.0 to v2.0.0', function () {
                             request: {
                                 auth: { type: 'bearer', bearer: { token: 'random' } },
                                 description: null,
-                                body: { mode: 'raw', raw: '' },
+                                body: {
+                                    mode: 'formdata',
+                                    formdata: [{ description: null, key: 'body_foo', value: 'body_bar' }]
+                                },
                                 header: [{ description: null, key: 'header_foo', value: 'header_bar' }],
                                 url: {
                                     query: [{ description: null, key: 'query_foo', value: 'query_bar' }],
-                                    raw: ''
+                                    raw: '',
+                                    variable: [{ description: null, key: 'pv_foo', value: 'pv_bar' }]
                                 }
                             },
                             response: []
@@ -1872,9 +1877,10 @@ describe('v1.0.0 to v2.0.0', function () {
             transformer.convertSingle({
                 id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
                 description: false,
-                dataMode: 'formdata',
+                dataMode: 'params',
                 data: [{ key: 'body_foo', value: 'body_bar', description: 0 }],
                 auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random' }] },
+                pathVariableData: [{ key: 'pv_foo', value: 'pv_bar', description: '' }],
                 headerData: [{ key: 'header_foo', value: 'header_bar', description: undefined }],
                 queryParams: [{ key: 'query_foo', value: 'query_bar', description: NaN }]
             }, options, function (err, result) {
@@ -1885,12 +1891,51 @@ describe('v1.0.0 to v2.0.0', function () {
                     name: '',
                     request: {
                         auth: { type: 'bearer', bearer: { token: 'random' } },
-                        body: { mode: 'raw', raw: '' },
+                        body: {
+                            mode: 'formdata',
+                            formdata: [{ description: null, key: 'body_foo', value: 'body_bar' }]
+                        },
                         description: null,
                         header: [{ description: null, key: 'header_foo', value: 'header_bar' }],
                         url: {
                             query: [{ description: null, key: 'query_foo', value: 'query_bar' }],
-                            raw: ''
+                            raw: '',
+                            variable: [{ description: null, key: 'pv_foo', value: 'pv_bar' }]
+                        }
+                    },
+                    response: []
+                });
+            });
+        });
+
+        it('should work correctly for urlencoded bodies as well', function () {
+            transformer.convertSingle({
+                id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
+                description: false,
+                dataMode: 'urlencoded',
+                data: [{ key: 'body_foo', value: 'body_bar', description: 0 }],
+                auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random' }] },
+                pathVariableData: [{ key: 'pv_foo', value: 'pv_bar', description: '' }],
+                headerData: [{ key: 'header_foo', value: 'header_bar', description: undefined }],
+                queryParams: [{ key: 'query_foo', value: 'query_bar', description: NaN }]
+            }, options, function (err, result) {
+                expect(err).not.to.be.ok;
+
+                expect(JSON.parse(JSON.stringify(result))).to.eql({
+                    _postman_id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
+                    name: '',
+                    request: {
+                        auth: { type: 'bearer', bearer: { token: 'random' } },
+                        body: {
+                            mode: 'urlencoded',
+                            urlencoded: [{ description: null, key: 'body_foo', value: 'body_bar' }]
+                        },
+                        description: null,
+                        header: [{ description: null, key: 'header_foo', value: 'header_bar' }],
+                        url: {
+                            query: [{ description: null, key: 'query_foo', value: 'query_bar' }],
+                            raw: '',
+                            variable: [{ description: null, key: 'pv_foo', value: 'pv_bar' }]
                         }
                     },
                     response: []
