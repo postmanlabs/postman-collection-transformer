@@ -1713,7 +1713,6 @@ describe('v1.0.0 normalization', function () {
                 }]
             }, options, function (err, result) {
                 expect(err).to.not.be.ok;
-                console.log(result);
                 expect(result).to.eql({
                     id: '9ac7325c-cc3f-4c20-b0f8-a435766cb74c',
                     description: null,
