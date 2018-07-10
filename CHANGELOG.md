@@ -1,5 +1,8 @@
 # Postman Collection Transformer Changelog
 
+#### v2.6.0 (July 10, 2018)
+* #107 Added support for `retainEmptyValues` in **all** flows :tada:.
+
 #### v2.5.10 (July 4, 2018)
 * #106 Updated dependencies :arrow_up:
 * #105 Fixed a bug in url parsing protocol extraction :bug:
