@@ -1704,9 +1704,10 @@ describe('v1.0.0 normalization', function () {
                 requests: [{
                     id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
                     description: false,
-                    dataMode: 'formdata',
+                    dataMode: 'params',
                     data: [{ key: 'body_foo', value: 'body_bar', description: 0 }],
                     auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random' }] },
+                    pathVariableData: [{ id: 'pv1', key: 'pv_foo', value: 'pv_bar', description: '' }],
                     headerData: [{ key: 'header_foo', value: 'header_bar', description: undefined }],
                     queryParams: [{ key: 'query_foo', value: 'query_bar', description: NaN }]
                 }]
@@ -1714,18 +1715,21 @@ describe('v1.0.0 normalization', function () {
                 expect(err).to.not.be.ok;
                 expect(result).to.eql({
                     id: '9ac7325c-cc3f-4c20-b0f8-a435766cb74c',
-                    description: '',
-                    folders: [{ id: 'f3285fa0-e361-43ba-ba15-618c7a911e84', description: '' }],
+                    description: null,
+                    folders: [{ id: 'f3285fa0-e361-43ba-ba15-618c7a911e84', description: null }],
                     requests: [{
                         id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
-                        description: '',
-                        dataMode: 'formdata',
-                        data: [{ key: 'body_foo', value: 'body_bar', description: '' }],
+                        description: null,
+                        dataMode: 'params',
+                        data: [{ key: 'body_foo', value: 'body_bar', description: null }],
                         auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random', type: 'string' }] },
                         currentHelper: 'bearerAuth',
                         helperAttributes: { id: 'bearer', token: 'random' },
-                        headerData: [{ key: 'header_foo', value: 'header_bar', description: '' }],
-                        queryParams: [{ key: 'query_foo', value: 'query_bar', description: '' }]
+                        headerData: [{ key: 'header_foo', value: 'header_bar', description: null }],
+                        queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }],
+                        pathVariableData: [{
+                            id: 'pv1', key: 'pv_foo', value: 'pv_bar', description: null, type: 'string'
+                        }]
                     }]
                 });
             });
@@ -1735,23 +1739,52 @@ describe('v1.0.0 normalization', function () {
             transformer.normalizeSingle({
                 id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
                 description: false,
-                dataMode: 'formdata',
+                dataMode: 'params',
                 data: [{ key: 'body_foo', value: 'body_bar', description: 0 }],
                 auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random' }] },
+                pathVariableData: [{ id: 'pv1', key: 'pv_foo', value: 'pv_bar', description: '' }],
                 headerData: [{ key: 'header_foo', value: 'header_bar', description: undefined }],
                 queryParams: [{ key: 'query_foo', value: 'query_bar', description: NaN }]
             }, options, function (err, result) {
                 expect(err).to.not.be.ok;
                 expect(result).to.eql({
                     id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
-                    description: '',
-                    dataMode: 'formdata',
-                    data: [{ key: 'body_foo', value: 'body_bar', description: '' }],
+                    description: null,
+                    dataMode: 'params',
+                    data: [{ key: 'body_foo', value: 'body_bar', description: null }],
                     auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random', type: 'string' }] },
                     currentHelper: 'bearerAuth',
                     helperAttributes: { id: 'bearer', token: 'random' },
-                    headerData: [{ key: 'header_foo', value: 'header_bar', description: '' }],
-                    queryParams: [{ key: 'query_foo', value: 'query_bar', description: '' }]
+                    headerData: [{ key: 'header_foo', value: 'header_bar', description: null }],
+                    queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }],
+                    pathVariableData: [{ id: 'pv1', key: 'pv_foo', value: 'pv_bar', description: null, type: 'string' }]
+                });
+            });
+        });
+
+        it('should work correctly for urlencoded bodies as well', function () {
+            transformer.normalizeSingle({
+                id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
+                description: false,
+                dataMode: 'urlencoded',
+                data: [{ key: 'body_foo', value: 'body_bar', description: 0 }],
+                auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random' }] },
+                pathVariableData: [{ id: 'pv1', key: 'pv_foo', value: 'pv_bar', description: '' }],
+                headerData: [{ key: 'header_foo', value: 'header_bar', description: undefined }],
+                queryParams: [{ key: 'query_foo', value: 'query_bar', description: NaN }]
+            }, options, function (err, result) {
+                expect(err).to.not.be.ok;
+                expect(result).to.eql({
+                    id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
+                    description: null,
+                    dataMode: 'urlencoded',
+                    data: [{ key: 'body_foo', value: 'body_bar', description: null }],
+                    auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random', type: 'string' }] },
+                    currentHelper: 'bearerAuth',
+                    helperAttributes: { id: 'bearer', token: 'random' },
+                    headerData: [{ key: 'header_foo', value: 'header_bar', description: null }],
+                    queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }],
+                    pathVariableData: [{ id: 'pv1', key: 'pv_foo', value: 'pv_bar', description: null, type: 'string' }]
                 });
             });
         });
