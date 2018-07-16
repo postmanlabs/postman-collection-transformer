@@ -25,16 +25,17 @@ describe('Example validity', function () {
             it('must be a valid V1 collection: ' + sampleName + '.json', function (done) {
                 var validator = tv4.freshApi(),
                     result;
+
                 validator.addSchema(schema);
                 // Some of the converter functions assign "undefined" value to some properties,
                 // It is necessary to get rid of them (otherwise schema validation sees an "undefined" and fails).
                 // Converting to and parsing from JSON does this.
                 result = validator.validate(sample, schema);
                 if (!result) {
-                    console.log(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
+                    console.error(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
                 }
                 if (validator.missing.length) {
-                    console.log(validator.missing);
+                    console.error(validator.missing);
                     result = false;
                 }
                 expect(result).to.equal(true);
@@ -60,16 +61,17 @@ describe('Example validity', function () {
             it('must be a valid V2 collection: ' + sampleName + '.json', function (done) {
                 var validator = tv4.freshApi(),
                     result;
+
                 validator.addSchema(schema);
                 // Some of the converter functions assign "undefined" value to some properties,
                 // It is necessary to get rid of them (otherwise schema validation sees an "undefined" and fails).
                 // Converting to and parsing from JSON does this.
                 result = validator.validate(sample, schema);
                 if (!result) {
-                    console.log(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
+                    console.error(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
                 }
                 if (validator.missing.length) {
-                    console.log(validator.missing);
+                    console.error(validator.missing);
                     result = false;
                 }
                 expect(result).to.equal(true);
@@ -95,16 +97,17 @@ describe('Example validity', function () {
             it('must be a valid V2 collection: ' + sampleName + '.json', function (done) {
                 var validator = tv4.freshApi(),
                     result;
+
                 validator.addSchema(schema);
                 // Some of the converter functions assign "undefined" value to some properties,
                 // It is necessary to get rid of them (otherwise schema validation sees an "undefined" and fails).
                 // Converting to and parsing from JSON does this.
                 result = validator.validate(sample, schema);
                 if (!result) {
-                    console.log(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
+                    console.error(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
                 }
                 if (validator.missing.length) {
-                    console.log(validator.missing);
+                    console.error(validator.missing);
                     result = false;
                 }
                 expect(result).to.equal(true);
