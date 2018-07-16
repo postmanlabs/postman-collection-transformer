@@ -24,11 +24,7 @@ describe('v1.0.0 normalization', function () {
 
     describe('transformer', function () {
         it('should work correctly for .normalizeSingle calls', function (done) {
-            var fixture = require('../fixtures/normalizer/v1/single-request'),
-                options = {
-                    normalizeVersion: '1.0.0',
-                    retainIds: true
-                };
+            var fixture = require('../fixtures/normalizer/v1/single-request');
 
             transformer.normalizeSingle(fixture.raw, options, function (err, normalized) {
                 expect(err).to.not.be.ok;
@@ -42,11 +38,7 @@ describe('v1.0.0 normalization', function () {
         });
 
         it('should work correctly for .normalizeResponse calls', function (done) {
-            var fixture = require('../fixtures/normalizer/v1/single-response'),
-                options = {
-                    normalizeVersion: '1.0.0',
-                    retainIds: true
-                };
+            var fixture = require('../fixtures/normalizer/v1/single-response');
 
             transformer.normalizeResponse(fixture.raw, options, function (err, normalized) {
                 expect(err).to.not.be.ok;
@@ -60,11 +52,7 @@ describe('v1.0.0 normalization', function () {
         });
 
         it('should work correctly for .normalize calls', function (done) {
-            var fixture = require('../fixtures/normalizer/v1/sample-collection'),
-                options = {
-                    normalizeVersion: '1.0.0',
-                    retainIds: true
-                };
+            var fixture = require('../fixtures/normalizer/v1/sample-collection');
 
             transformer.normalize(fixture.raw, options, function (err, normalized) {
                 expect(err).to.not.be.ok;
@@ -81,10 +69,8 @@ describe('v1.0.0 normalization', function () {
     describe('special cases', function () {
         describe('auth', function () {
             it('should handle no-auth correctly with legacy properties', function (done) {
-                transformer.normalizeSingle({ id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd', currentHelper: 'normal' }, {
-                    retainIds: true,
-                    normalizeVersion: '1.0.0'
-                }, function (err, result) {
+                // eslint-disable-next-line max-len
+                transformer.normalizeSingle({ id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd', currentHelper: 'normal' }, options, function (err, result) {
                     expect(err).to.not.be.ok;
 
                     expect(result).to.eql({
@@ -179,10 +165,7 @@ describe('v1.0.0 normalization', function () {
                                 id: '27c8c9ac-dd90-4234-b83a-b199d3a0e945',
                                 auth: { type: 'noauth' },
                                 currentHelper: null
-                            }, {
-                                retainIds: true,
-                                normalizeVersion: '1.0.0'
-                            }, function (err, result) {
+                            }, options, function (err, result) {
                                 expect(err).to.not.be.ok;
 
                                 expect(result).to.eql({
@@ -330,10 +313,8 @@ describe('v1.0.0 normalization', function () {
             });
 
             it('should recreate legacy properties for noauth correctly', function (done) {
-                transformer.normalizeSingle({ id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd', auth: { type: 'noauth' } }, {
-                    retainIds: true,
-                    normalizeVersion: '1.0.0'
-                }, function (err, result) {
+                // eslint-disable-next-line max-len
+                transformer.normalizeSingle({ id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd', auth: { type: 'noauth' } }, options, function (err, result) {
                     expect(err).to.not.be.ok;
 
                     expect(result).to.eql({
@@ -364,23 +345,19 @@ describe('v1.0.0 normalization', function () {
             });
 
             it('should override auth with legacy properties if both are present', function (done) {
-                var options = {
-                        normalizeVersion: '1.0.0',
-                        retainIds: true
+                var source = {
+                    id: 'bd79f978-d862-49f1-9cea-7c71a762cc12',
+                    currentHelper: 'basicAuth',
+                    helperAttributes: {
+                        id: 'basic',
+                        username: 'username',
+                        password: 'password'
                     },
-                    source = {
-                        id: 'bd79f978-d862-49f1-9cea-7c71a762cc12',
-                        currentHelper: 'basicAuth',
-                        helperAttributes: {
-                            id: 'basic',
-                            username: 'username',
-                            password: 'password'
-                        },
-                        auth: {
-                            type: 'bearer',
-                            bearer: [{key: 'token', value: 'randomSecretString', type: 'string'}]
-                        }
-                    };
+                    auth: {
+                        type: 'bearer',
+                        bearer: [{ key: 'token', value: 'randomSecretString', type: 'string' }]
+                    }
+                };
 
                 transformer.normalizeSingle(source, options, function (err, normalized) {
                     expect(err).to.not.be.ok;
@@ -400,10 +377,10 @@ describe('v1.0.0 normalization', function () {
                         auth: {
                             type: 'basic',
                             basic: [
-                                {key: 'username', value: 'username', type: 'string'},
-                                {key: 'password', value: 'password', type: 'string'},
-                                {key: 'saveHelperData', type: 'any'},
-                                {key: 'showPassword', value: false, type: 'boolean'}
+                                { key: 'username', value: 'username', type: 'string' },
+                                { key: 'password', value: 'password', type: 'string' },
+                                { key: 'saveHelperData', type: 'any' },
+                                { key: 'showPassword', value: false, type: 'boolean' }
                             ]
                         }
                     });
@@ -412,20 +389,16 @@ describe('v1.0.0 normalization', function () {
             });
 
             it('should fall back to auth if legacy properties are absent', function (done) {
-                var options = {
-                        normalizeVersion: '1.0.0',
-                        retainIds: true
-                    },
-                    source = {
-                        id: '722795b9-c9bc-4a01-a024-dd9358548dc1',
-                        auth: {
-                            type: 'basic',
-                            basic: [
-                                {key: 'username', value: 'username', type: 'string'},
-                                {key: 'password', value: 'password', type: 'string'}
-                            ]
-                        }
-                    };
+                var source = {
+                    id: '722795b9-c9bc-4a01-a024-dd9358548dc1',
+                    auth: {
+                        type: 'basic',
+                        basic: [
+                            { key: 'username', value: 'username', type: 'string' },
+                            { key: 'password', value: 'password', type: 'string' }
+                        ]
+                    }
+                };
 
                 transformer.normalizeSingle(source, options, function (err, normalized) {
                     expect(err).to.not.be.ok;
@@ -445,8 +418,8 @@ describe('v1.0.0 normalization', function () {
                         auth: {
                             type: 'basic',
                             basic: [
-                                {key: 'username', value: 'username', type: 'string'},
-                                {key: 'password', value: 'password', type: 'string'}
+                                { key: 'username', value: 'username', type: 'string' },
+                                { key: 'password', value: 'password', type: 'string' }
                             ]
                         }
                     });
@@ -456,16 +429,12 @@ describe('v1.0.0 normalization', function () {
 
             describe('malformed requests', function () {
                 it('should handle valid currentHelper with invalid helperAttributes correctly', function (done) {
-                    var options = {
-                            normalizeVersion: '1.0.0',
-                            retainIds: true
-                        },
-                        source = {
-                            id: '722795b9-c9bc-4a01-a024-dd9358548dc1',
-                            currentHelper: 'basicAuth',
-                            // this should ideally never happen, but we don't live in an ideal world
-                            helperAttributes: undefined
-                        };
+                    var source = {
+                        id: '722795b9-c9bc-4a01-a024-dd9358548dc1',
+                        currentHelper: 'basicAuth',
+                        // this should ideally never happen, but we don't live in an ideal world
+                        helperAttributes: undefined
+                    };
 
                     transformer.normalizeSingle(source, options, function (err, normalized) {
                         expect(err).to.not.be.ok;
@@ -490,10 +459,7 @@ describe('v1.0.0 normalization', function () {
                     transformer.normalizeSingle({
                         id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd',
                         currentHelper: null
-                    }, {
-                        retainIds: true,
-                        normalizeVersion: '1.0.0'
-                    }, function (err, result) {
+                    }, options, function (err, result) {
                         expect(err).to.not.be.ok;
 
                         expect(result).to.eql({
@@ -524,10 +490,8 @@ describe('v1.0.0 normalization', function () {
                 });
 
                 it('should recreate legacy properties for noauth correctly', function (done) {
-                    transformer.normalizeSingle({ id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd', auth: null }, {
-                        retainIds: true,
-                        normalizeVersion: '1.0.0'
-                    }, function (err, result) {
+                    // eslint-disable-next-line max-len
+                    transformer.normalizeSingle({ id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd', auth: null }, options, function (err, result) {
                         expect(err).to.not.be.ok;
 
                         expect(result).to.eql({
@@ -559,8 +523,6 @@ describe('v1.0.0 normalization', function () {
             });
 
             describe('collections', function () {
-                var options = { retainIds: true, normalizeVersion: '1.0.0' };
-
                 it('should handle auth set to null correctly', function (done) {
                     transformer.normalize({
                         id: 'b7e8cb01-bc32-4389-a130-3e4bc6fc844c',
@@ -850,28 +812,24 @@ describe('v1.0.0 normalization', function () {
 
         describe('scripts', function () {
             it('should override events with legacy properties if they exist', function (done) {
-                var options = {
-                        normalizeVersion: '1.0.0',
-                        retainIds: true
-                    },
-                    source = {
-                        id: '95df70cd-8631-4459-bc42-3830f30ecae0',
-                        preRequestScript: 'console.log("Request level pre-request script");',
-                        tests: 'console.log("Request level test script");',
-                        events: [{
-                            listen: 'prerequest',
-                            script: {
-                                type: 'text/javascript',
-                                exec: ['console.log("Alternative request level pre-request script");']
-                            }
-                        }, {
-                            listen: 'test',
-                            script: {
-                                type: 'text/javascript',
-                                exec: ['console.log("Alternative request level test script");']
-                            }
-                        }]
-                    };
+                var source = {
+                    id: '95df70cd-8631-4459-bc42-3830f30ecae0',
+                    preRequestScript: 'console.log("Request level pre-request script");',
+                    tests: 'console.log("Request level test script");',
+                    events: [{
+                        listen: 'prerequest',
+                        script: {
+                            type: 'text/javascript',
+                            exec: ['console.log("Alternative request level pre-request script");']
+                        }
+                    }, {
+                        listen: 'test',
+                        script: {
+                            type: 'text/javascript',
+                            exec: ['console.log("Alternative request level test script");']
+                        }
+                    }]
+                };
 
                 transformer.normalizeSingle(source, options, function (err, normalized) {
                     expect(err).to.not.be.ok;
@@ -903,26 +861,22 @@ describe('v1.0.0 normalization', function () {
             });
 
             it('should use events if legacy properties are absent', function (done) {
-                var options = {
-                        normalizeVersion: '1.0.0',
-                        retainIds: true
-                    },
-                    source = {
-                        id: '53540ee4-8499-44af-9b74-20d415a6fd43',
-                        events: [{
-                            listen: 'prerequest',
-                            script: {
-                                type: 'text/javascript',
-                                exec: ['console.log("Alternative request level pre-request script");']
-                            }
-                        }, {
-                            listen: 'test',
-                            script: {
-                                type: 'text/javascript',
-                                exec: ['console.log("Alternative request level test script");']
-                            }
-                        }]
-                    };
+                var source = {
+                    id: '53540ee4-8499-44af-9b74-20d415a6fd43',
+                    events: [{
+                        listen: 'prerequest',
+                        script: {
+                            type: 'text/javascript',
+                            exec: ['console.log("Alternative request level pre-request script");']
+                        }
+                    }, {
+                        listen: 'test',
+                        script: {
+                            type: 'text/javascript',
+                            exec: ['console.log("Alternative request level test script");']
+                        }
+                    }]
+                };
 
                 transformer.normalizeSingle(source, options, function (err, normalized) {
                     expect(err).to.not.be.ok;
@@ -954,11 +908,6 @@ describe('v1.0.0 normalization', function () {
             });
 
             describe('with missing properties', function () {
-                var options = {
-                    normalizeVersion: '1.0.0',
-                    retainIds: true
-                };
-
                 it('should handle missing preRequestScript and tests correctly', function (done) {
                     var source = {
                         id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
@@ -1311,8 +1260,8 @@ describe('v1.0.0 normalization', function () {
                         basic: [
                             { key: 'username', value: 'username', type: 'string' },
                             { key: 'password', value: 'password', type: 'string' },
-                            {key: 'saveHelperData', type: 'any'},
-                            {key: 'showPassword', value: false, type: 'boolean'}
+                            { key: 'saveHelperData', type: 'any' },
+                            { key: 'showPassword', value: false, type: 'boolean' }
                         ]
                     },
                     dataMode: 'params',
@@ -1909,7 +1858,7 @@ describe('v1.0.0 normalization', function () {
                                     listen: 'prerequest',
                                     script: {
                                         type: 'text/javascript',
-                                        exec: [ 'console.log("Pre-request script");' ]
+                                        exec: ['console.log("Pre-request script");']
                                     }
                                 }
                             ]
@@ -2123,7 +2072,7 @@ describe('v1.0.0 normalization', function () {
                                     listen: 'prerequest',
                                     script: {
                                         type: 'text/javascript',
-                                        exec: [ 'console.log("Pre-request script");' ]
+                                        exec: ['console.log("Pre-request script");']
                                     }
                                 }
                             ]
@@ -2635,15 +2584,20 @@ describe('v1.0.0 normalization', function () {
             transformer.normalize({
                 id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
                 folders_order: [null, NaN, undefined, false, '', 0],
-                folders: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}],
+                folders: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }],
                 requests: [
-                    {id: null, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: NaN, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
                     // eslint-disable-next-line max-len
-                    {id: undefined, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: false, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: '', responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: 0, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]}
+                    { id: null, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: NaN, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: undefined, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: false, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: '', responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: 0, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] }
                 ]
             }, options, function (err, result) {
                 expect(err).to.not.be.ok;
@@ -2668,15 +2622,20 @@ describe('v1.0.0 normalization', function () {
             transformer.normalize({
                 id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
                 folders_order: [null, NaN, undefined, false, '', 0],
-                folders: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}],
+                folders: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }],
                 requests: [
-                    {id: null, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: NaN, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
                     // eslint-disable-next-line max-len
-                    {id: undefined, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: false, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: '', responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: 0, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]}
+                    { id: null, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: NaN, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: undefined, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: false, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: '', responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: 0, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] }
                 ]
             }, _.defaults({ retainIds: false }, options), function (err, result) {
                 expect(err).to.not.be.ok;
@@ -2703,15 +2662,20 @@ describe('v1.0.0 normalization', function () {
             transformer.normalize({
                 id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
                 folders_order: [null, NaN, undefined, false, '', 0],
-                folders: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}],
+                folders: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }],
                 requests: [
-                    {id: null, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: NaN, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
                     // eslint-disable-next-line max-len
-                    {id: undefined, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: false, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: '', responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: 0, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]}
+                    { id: null, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: NaN, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: undefined, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: false, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: '', responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: 0, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] }
                 ]
             }, _.omit(options, ['retainIds']), function (err, result) {
                 expect(err).to.not.be.ok;

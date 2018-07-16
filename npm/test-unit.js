@@ -28,15 +28,19 @@ module.exports = function (exit) {
 
     var Mocha = require('mocha'),
         nyc = new NYC({
-            reporter: ['text', 'lcov'],
             reportDir: COV_REPORT_PATH,
-            tempDirectory: COV_REPORT_PATH
+            tempDirectory: COV_REPORT_PATH,
+            reporter: ['text', 'lcov', 'text-summary']
         });
 
     nyc.wrap();
     // add all spec files to mocha
     recursive(SPEC_SOURCE_DIR, function (err, files) {
-        if (err) { console.error(err); return exit(1); }
+        if (err) {
+            console.error(err);
+
+            return exit(1);
+        }
 
         var mocha = new Mocha({ timeout: 1000 * 60 });
 
@@ -44,7 +48,7 @@ module.exports = function (exit) {
             return (file.substr(-8) === '.test.js');
         }).forEach(mocha.addFile.bind(mocha));
 
-        mocha.run(function (runError) {
+        return mocha.run(function (runError) {
             runError && console.error(runError.stack || runError);
 
             nyc.writeCoverageFile();

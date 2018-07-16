@@ -34,6 +34,7 @@ describe('v2.1.0 ==> v1.0.0', function () {
                 converter.convert(sample, {}, function (err, converted) {
                     var validator = tv4.freshApi(),
                         result;
+
                     validator.addSchema(schema);
                     // Some of the converter functions assign "undefined" value to some properties,
                     // It is necessary to get rid of them (otherwise schema validation sees an "undefined" and fails).
@@ -41,10 +42,10 @@ describe('v2.1.0 ==> v1.0.0', function () {
                     converted = JSON.parse(JSON.stringify(converted));
                     result = validator.validate(converted, schema);
                     if (!result && process.env.CI) { // eslint-disable-line no-process-env
-                        console.log(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
+                        console.error(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
                     }
                     if (validator.missing.length) {
-                        console.log(validator.missing);
+                        console.error(validator.missing);
                         result = false;
                     }
                     expect(result).to.equal(true);
@@ -59,6 +60,7 @@ describe('v2.1.0 ==> v1.0.0', function () {
                 var validator = tv4.freshApi(),
                     result,
                     converted;
+
                 validator.addSchema(schema);
                 converted = converter.convert(sample);
 
@@ -69,10 +71,10 @@ describe('v2.1.0 ==> v1.0.0', function () {
 
                 result = validator.validate(converted, schema);
                 if (!result && process.env.CI) { // eslint-disable-line no-process-env
-                    console.log(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
+                    console.error(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
                 }
                 if (validator.missing.length) {
-                    console.log(validator.missing);
+                    console.error(validator.missing);
                     result = false;
                 }
                 expect(result).to.equal(true);
@@ -86,6 +88,7 @@ describe('v2.1.0 ==> v1.0.0', function () {
             it('should be converted to v1 correctly', function () {
                 var v21 = require('../../../examples/v2.1.0/binary-upload.json'),
                     v1 = JSON.parse(JSON.stringify(converter.convert(v21)));
+
                 expect(_.get(v1, 'requests[0].dataMode')).to.equal('binary');
                 expect(_.get(v1, 'requests[0].rawModeData')).to.equal('sample.txt');
                 expect(_.isEmpty(_.get(v1, 'requests[0].data'))).to.equal(true);

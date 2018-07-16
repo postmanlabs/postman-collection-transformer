@@ -1,17 +1,22 @@
 #!/usr/bin/env node
-var program = require('commander'),
-    transformer = require('../index'),
+var fs = require('fs'),
+
     log = require('intel'),
-    fs = require('fs'),
+    transformer = require('..'),
+    program = require('commander'),
     stripJSONComments = require('strip-json-comments'),
+
+    FSWF_FLAG_W = { flag: 'w' },
+    FSWF_FLAG_WX = { flag: 'wx' },
 
     /**
      * Loads a JSON in a safe and compatible way from a file
      *
-     * @param  {string} path
+     * @param {String} path - The file path to read JSON content from.
      */
     loadJSON = function (path) {
-        var data = fs.readFileSync(path);
+        var data = fs.readFileSync(path); // eslint-disable-line security/detect-non-literal-fs-filename
+
         return JSON.parse(stripJSONComments(data.toString()));
     },
 
@@ -21,14 +26,15 @@ var program = require('commander'),
      * If ``options.pretty`` is true, output will be pretty printed. (Default false)
      * If ``options.overwrite`` is false, output file will be overwritten (Default true)
      *
-     * @param data
-     * @param options
-     * @param callback
+     * @param {Object} data - The JSON data to be written.
+     * @param {Object} options - The options for JSON data writing.
+     * @param {Boolean} [options.pretty=false] - When set to true, indents JSON data by 4 spaces.
+     * @param {String} options.output - The file to write data to.
+     * @param {Boolean} [options.overwrite=false] - When set to true, allows overwriting files that exist.
+     * @param {Function} callback - A function to be invoked after writing is complete ,
      */
     writeJSON = function (data, options, callback) {
-        var json,
-            FSWF_FLAG_W = {flag: 'w'},
-            FSWF_FLAG_WX = {flag: 'wx'};
+        var json;
 
         try {
             json = JSON.stringify(data, null, options.pretty ? 4 : 0);
@@ -36,7 +42,9 @@ var program = require('commander'),
         catch (e) {
             return callback(e);
         }
-        fs.writeFile(options.output, json, options.overwrite ? FSWF_FLAG_W : FSWF_FLAG_WX, callback);
+
+        // eslint-disable-next-line security/detect-non-literal-fs-filename
+        return fs.writeFile(options.output, json, options.overwrite ? FSWF_FLAG_W : FSWF_FLAG_WX, callback);
     };
 
 // Setup logging
@@ -75,16 +83,15 @@ program
             input = loadJSON(options.input);
         }
         catch (e) {
-            log.error('Unable to load the input file!', e);
-            return;
+            return log.error('Unable to load the input file!', e);
         }
 
-        transformer.convert(input, options, function (err, result) {
+        return transformer.convert(input, options, function (err, result) {
             if (err) {
-                log.error('Unable to convert the input:', err);
-                return;
+                return log.error('Unable to convert the input:', err);
             }
-            writeJSON(result, options, function (error) {
+
+            return writeJSON(result, options, function (error) {
                 if (error) {
                     log.error('Could not create output file %s', options.output, error);
                 }
@@ -110,10 +117,10 @@ program
         try { input = loadJSON(options.input); }
         catch (e) { return log.error('Unable to load the input file!', e); }
 
-        transformer.normalize(input, options, function (err, result) {
+        return transformer.normalize(input, options, function (err, result) {
             if (err) { return log.error('Unable to convert the input: ', err); }
 
-            writeJSON(result, options, function (error) {
+            return writeJSON(result, options, function (error) {
                 error && log.error('Could not create output file %s', options.output, error);
             });
         });
@@ -126,12 +133,12 @@ program
     .option('-i, --input <path>', 'path to the input postman collection file')
     .option('-s, --schema [version]', 'the version of the input collection format standard')
     .action(function (options) {
-        console.log('yet to be implemented', options, transformer);
+        console.warn('yet to be implemented', options, transformer);
         // @todo implement with as little and concise code as possible with least external dependencies
     });
 
 program
-    .command('*', 'Display usage text', {isDefault: true})
+    .command('*', 'Display usage text', { isDefault: true })
     .action(function () {
         program.outputHelp();
     });

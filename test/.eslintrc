@@ -2,12 +2,23 @@
   "plugins": [
     "mocha"
   ],
+  "globals": {
+    "test": true,
+    "rm": true,
+    "mkdir": true,
+    "exit": true
+  },
   "env": {
     "mocha": true,
     "node": true,
     "es6": true
   },
   "rules": {
+    "security/detect-unsafe-regex": "off",
+    "security/detect-non-literal-regexp": "off",
+    "security/detect-non-literal-fs-filename": "off",
+    "security/detect-non-literal-require": "off",
+
     // Mocha
     "mocha/handle-done-callback": "error",
     "mocha/max-top-level-suites": "error",

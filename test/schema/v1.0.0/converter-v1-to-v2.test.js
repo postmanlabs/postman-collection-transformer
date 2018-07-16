@@ -35,6 +35,7 @@ describe('v1.0.0 ==> v2.0.0', function () {
                 converter.convert(sample, {}, function (err, converted) {
                     var validator = tv4.freshApi(),
                         result;
+
                     validator.addSchema(schema);
 
                     // Some of the converter functions assign "undefined" value to some properties,
@@ -44,10 +45,10 @@ describe('v1.0.0 ==> v2.0.0', function () {
 
                     result = validator.validate(converted, schema);
                     if (!result && process.env.CI) { // eslint-disable-line no-process-env
-                        console.log(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
+                        console.error(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
                     }
                     if (validator.missing.length) {
-                        console.log(validator.missing);
+                        console.error(validator.missing);
                         result = false;
                     }
                     expect(err).to.equal(null);
@@ -62,6 +63,7 @@ describe('v1.0.0 ==> v2.0.0', function () {
                 var validator = tv4.freshApi(),
                     result,
                     converted;
+
                 validator.addSchema(schema);
                 converted = converter.convert(sample);
 
@@ -72,10 +74,10 @@ describe('v1.0.0 ==> v2.0.0', function () {
 
                 result = validator.validate(converted, schema);
                 if (!result && process.env.CI) { // eslint-disable-line no-process-env
-                    console.log(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
+                    console.error(JSON.stringify(validator.error, null, 4)); // Helps debug on CI
                 }
                 if (validator.missing.length) {
-                    console.log(validator.missing);
+                    console.error(validator.missing);
                     result = false;
                 }
                 expect(result).to.equal(true);
@@ -88,12 +90,14 @@ describe('v1.0.0 ==> v2.0.0', function () {
         it('should handle the edge case of "data" vs "rawModeData"', function () {
             var v1 = require('../../../examples/v1.0.0/simplest.json'),
                 v2 = converter.convert(v1);
+
             expect(v2.item[0].request.body.raw).to.eql('something');
         });
 
         it('should replace .id with _postman_id', function () {
             var v1 = require('../../../examples/v1.0.0/simplest.json'),
                 v2 = JSON.parse(JSON.stringify(converter.convert(v1)));
+
             expect(v2.item[0]).to.not.have.property('id');
             expect(v2.item[0]).to.have.property('_postman_id');
         });
@@ -103,6 +107,7 @@ describe('v1.0.0 ==> v2.0.0', function () {
                 v2 = JSON.parse(JSON.stringify(converter.convert(v1, {
                     retainIds: true
                 })));
+
             expect(v2.item[0]).to.have.property('_postman_id');
         });
 
@@ -111,6 +116,7 @@ describe('v1.0.0 ==> v2.0.0', function () {
                 v2 = JSON.parse(JSON.stringify(converter.convert(v1, {
                     retainIds: true
                 })));
+
             expect(v2.item[0].request.header[1].disabled).to.equal(true);
         });
 
@@ -119,6 +125,7 @@ describe('v1.0.0 ==> v2.0.0', function () {
                 v2 = JSON.parse(JSON.stringify(converter.convert(v1, {
                     retainIds: true
                 })));
+
             expect(_.isEmpty(v2.item[0].request.body)).to.equal(true);
         });
     });
@@ -129,6 +136,7 @@ describe('v1.0.0 ==> v2.0.0', function () {
                 v2 = JSON.parse(JSON.stringify(converter.convert(v1, {
                     retainIds: true
                 })));
+
             expect(_.get(v2, 'item[0].request.body.file.src')).to.equal('sample.txt');
         });
     });
