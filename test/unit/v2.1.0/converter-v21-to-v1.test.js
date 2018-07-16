@@ -24,12 +24,7 @@ describe('v2.1.0 to v1.0.0', function () {
     describe('transformer', function () {
         describe('.convertSingle()', function () {
             it('should work as intended', function (done) {
-                var fixture = require('../fixtures/single-request'),
-                    options = {
-                        inputVersion: '2.1.0',
-                        outputVersion: '1.0.0',
-                        retainIds: true
-                    };
+                var fixture = require('../fixtures/single-request');
 
                 transformer.convertSingle(fixture.v21, options, function (err, converted) {
                     expect(err).to.not.be.ok;
@@ -59,15 +54,10 @@ describe('v2.1.0 to v1.0.0', function () {
 
         describe('.convertResponse()', function () {
             it('should work as intended', function (done) {
-                var fixture = require('../fixtures/single-response'),
-                    options = {
-                        inputVersion: '2.1.0',
-                        outputVersion: '1.0.0',
-                        retainIds: true
-                    };
+                var fixture = require('../fixtures/single-response');
 
                 transformer.convertResponse(fixture.v21, options, function (err, converted) {
-                    if (err) { return done(err); }
+                    expect(err).not.to.be.ok;
 
                     // remove `undefined` properties for testing
                     converted = JSON.parse(JSON.stringify(converted));
@@ -108,25 +98,20 @@ describe('v2.1.0 to v1.0.0', function () {
         describe('path variables', function () {
             it('should work with id as indexing property', function (done) {
                 var fixture = {
-                        id: 'some-id',
-                        name: 'some-name',
-                        request: {
-                            url: {
-                                host: ['postman-echo', 'com'],
-                                path: [':method'],
-                                variable: [{
-                                    id: 'method',
-                                    value: 'get'
-                                }]
-                            },
-                            method: 'GET'
-                        }
-                    },
-                    options = {
-                        inputVersion: '2.1.0',
-                        outputVersion: '1.0.0',
-                        retainIds: true
-                    };
+                    id: 'some-id',
+                    name: 'some-name',
+                    request: {
+                        url: {
+                            host: ['postman-echo', 'com'],
+                            path: [':method'],
+                            variable: [{
+                                id: 'method',
+                                value: 'get'
+                            }]
+                        },
+                        method: 'GET'
+                    }
+                };
 
                 transformer.convertSingle(fixture, options, function (err, converted) {
                     expect(err).to.not.be.ok;
@@ -145,25 +130,20 @@ describe('v2.1.0 to v1.0.0', function () {
 
             it('should work with key as indexing property', function (done) {
                 var fixture = {
-                        id: 'some-id',
-                        name: 'some-name',
-                        request: {
-                            url: {
-                                host: ['postman-echo', 'com'],
-                                path: [':method'],
-                                variable: [{
-                                    key: 'method',
-                                    value: 'get'
-                                }]
-                            },
-                            method: 'GET'
-                        }
-                    },
-                    options = {
-                        inputVersion: '2.1.0',
-                        outputVersion: '1.0.0',
-                        retainIds: true
-                    };
+                    id: 'some-id',
+                    name: 'some-name',
+                    request: {
+                        url: {
+                            host: ['postman-echo', 'com'],
+                            path: [':method'],
+                            variable: [{
+                                key: 'method',
+                                value: 'get'
+                            }]
+                        },
+                        method: 'GET'
+                    }
+                };
 
                 transformer.convertSingle(fixture, options, function (err, converted) {
                     expect(err).to.not.be.ok;
@@ -183,12 +163,6 @@ describe('v2.1.0 to v1.0.0', function () {
     });
 
     describe('descriptions', function () {
-        var options = {
-            inputVersion: '2.1.0',
-            outputVersion: '1.0.0',
-            retainIds: true
-        };
-
         it('should correctly handle descriptions whilst converting from v2.1.0 to v1', function (done) {
             var fixture = require('../fixtures/sample-description');
 
@@ -252,12 +226,7 @@ describe('v2.1.0 to v1.0.0', function () {
 
     describe('request file body', function () {
         it('should correctly handle request file bodies whilst converting from v2.1.0 to v1', function (done) {
-            var fixture = require('../fixtures/request-body-file'),
-                options = {
-                    inputVersion: '2.1.0',
-                    outputVersion: '1.0.0',
-                    retainIds: true
-                };
+            var fixture = require('../fixtures/request-body-file');
 
             transformer.convert(fixture.v21, options, function (err, converted) {
                 expect(err).to.not.be.ok;
@@ -273,12 +242,7 @@ describe('v2.1.0 to v1.0.0', function () {
 
     describe('auth', function () {
         it('should be handled correctly in v2.1.0 -> v1 conversions', function (done) {
-            var fixture = require('../fixtures/sample-auth'),
-                options = {
-                    inputVersion: '2.1.0',
-                    outputVersion: '1.0.0',
-                    retainIds: true
-                };
+            var fixture = require('../fixtures/sample-auth');
 
             transformer.convert(fixture.v21, options, function (err, converted) {
                 expect(err).to.not.be.ok;
@@ -428,12 +392,7 @@ describe('v2.1.0 to v1.0.0', function () {
 
     describe('nested entities', function () {
         it('should be handled correctly in v2.1 -> v1 conversions', function (done) {
-            var fixture = require('../fixtures/nested-entities'),
-                options = {
-                    inputVersion: '2.1.0',
-                    outputVersion: '1.0.0',
-                    retainIds: true
-                };
+            var fixture = require('../fixtures/nested-entities');
 
             transformer.convert(fixture.v21, options, function (err, converted) {
                 expect(err).to.not.be.ok;
@@ -509,7 +468,7 @@ describe('v2.1.0 to v1.0.0', function () {
     });
 
     describe('retainIds', function () {
-        var responses = [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}],
+        var responses = [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }],
             items = [
                 { _postman_id: null, response: responses },
                 { _postman_id: NaN, response: responses },
@@ -521,7 +480,7 @@ describe('v2.1.0 to v1.0.0', function () {
 
         it('should handle IDs correctly when set to true', function () {
             transformer.convert({
-                info: {_postman_id: '2509a94e-eca1-43ca-a8aa-0e200636764f'},
+                info: { _postman_id: '2509a94e-eca1-43ca-a8aa-0e200636764f' },
                 item: [
                     { _postman_id: null, item: items },
                     { _postman_id: NaN, item: items },
@@ -550,7 +509,7 @@ describe('v2.1.0 to v1.0.0', function () {
 
         it('should handle IDs correctly when set to false', function () {
             transformer.convert({
-                info: {_postman_id: 'R1'},
+                info: { _postman_id: 'R1' },
                 item: [
                     { _postman_id: null, item: items },
                     { _postman_id: NaN, item: items },
@@ -559,7 +518,7 @@ describe('v2.1.0 to v1.0.0', function () {
                     { _postman_id: '', item: items },
                     { _postman_id: 0, item: items }
                 ]
-            }, _.defaults({retainIds: false}, options), function (err, result) {
+            }, _.defaults({ retainIds: false }, options), function (err, result) {
                 expect(err).to.not.be.ok;
 
                 expect(result.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
@@ -580,7 +539,7 @@ describe('v2.1.0 to v1.0.0', function () {
 
         it('should handle IDs correctly when missing', function () {
             transformer.convert({
-                info: {_postman_id: 'R1'},
+                info: { _postman_id: 'R1' },
                 item: [
                     { _postman_id: null, item: items },
                     { _postman_id: NaN, item: items },
