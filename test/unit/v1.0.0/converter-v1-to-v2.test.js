@@ -41,6 +41,12 @@ describe('v1.0.0 to v2.0.0', function () {
                     done();
                 });
             });
+
+            it('should work as intended without callbacks', function () {
+                var fixture = require('../fixtures/single-request');
+
+                expect(JSON.parse(JSON.stringify(transformer.convertSingle(fixture.v1, options)))).to.eql(fixture.v2);
+            });
         });
 
         describe('.convert()', function () {
@@ -57,6 +63,12 @@ describe('v1.0.0 to v2.0.0', function () {
                     done();
                 });
             });
+
+            it('should work as intended without callbacks', function () {
+                var fixture = require('../fixtures/sample-collection');
+
+                expect(JSON.parse(JSON.stringify(transformer.convert(fixture.v1, options)))).to.eql(fixture.v2);
+            });
         });
 
         describe('.convertResponse()', function () {
@@ -71,6 +83,71 @@ describe('v1.0.0 to v2.0.0', function () {
                     expect(converted).to.eql(fixture.v2);
                     done();
                 });
+            });
+
+            it('should handle invalid stringified JSON in requestObject', function (done) {
+                transformer.convertResponse({
+                    id: 'd8c94ea6-a389-405c-aed0-75280308edc3',
+                    requestObject: 'Res1'
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+                    expect(converted).to.eql({
+                        id: 'd8c94ea6-a389-405c-aed0-75280308edc3',
+                        name: 'response',
+                        cookie: []
+                    });
+                    done();
+                });
+            });
+
+            it('should handle object like requestObject values correctly', function (done) {
+                transformer.convertResponse({
+                    id: '27d65eb8-8109-445b-a106-f61281056876',
+                    requestObject: { url: 'https://postman-echo.com/get' }
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+                    expect(converted).to.eql({
+                        id: '27d65eb8-8109-445b-a106-f61281056876',
+                        name: 'response',
+                        cookie: [],
+                        originalRequest: {
+                            body: { mode: 'raw', raw: '' },
+                            header: [],
+                            url: 'https://postman-echo.com/get'
+                        }
+                    });
+                    done();
+                });
+            });
+
+            it('should handle an invalid stringified JSON request values correctly', function (done) {
+                transformer.convertResponse({
+                    id: '27d65eb8-8109-445b-a106-f61281056876',
+                    request: 'Foo'
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+                    expect(converted).to.eql({
+                        id: '27d65eb8-8109-445b-a106-f61281056876',
+                        name: 'response',
+                        cookie: []
+                    });
+                    done();
+                });
+            });
+
+            it('should work as intended without callbacks', function () {
+                var fixture = require('../fixtures/single-response');
+
+                expect(JSON.parse(JSON.stringify(transformer.convertResponse(fixture.v1, options)))).to.eql(fixture.v2);
             });
         });
     });
