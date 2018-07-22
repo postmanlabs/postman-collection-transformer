@@ -53,7 +53,14 @@ module.exports = function (exit) {
 
             nyc.writeCoverageFile();
             nyc.report();
-            exit(runError ? 1 : 0);
+            nyc.checkCoverage({
+                statements: 90,
+                branches: 90,
+                functions: 90,
+                lines: 90
+            });
+
+            exit(process.exitCode || runError ? 1 : 0);
         });
     });
 };

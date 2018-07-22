@@ -50,6 +50,18 @@ describe('v2.0.0 to v1.0.0', function () {
                     done();
                 });
             });
+
+            it('should work as intended without callbacks', function () {
+                expect(JSON.parse(JSON.stringify(transformer.convertSingle({
+                    id: '4b546663-ab04-4b39-a629-930bb53b7fac'
+                }, options)))).to.eql({
+                    id: '4b546663-ab04-4b39-a629-930bb53b7fac',
+                    data: [],
+                    headerData: [],
+                    rawModeData: '',
+                    url: ''
+                });
+            });
         });
 
         describe('.convertResponse()', function () {
@@ -91,9 +103,145 @@ describe('v2.0.0 to v1.0.0', function () {
                         'write'
                     ]));
 
-                    [].forEach(function (p) {
-                        expect(converted).to.have.property(p);
+                    done();
+                });
+            });
+
+            it('should work as intended without callbacks', function () {
+                expect(JSON.parse(JSON.stringify(transformer.convertResponse({
+                    id: 'cacf4174-5d45-415d-9699-b7b355572080'
+                }, options)))).to.eql({
+                    id: 'cacf4174-5d45-415d-9699-b7b355572080',
+                    cookies: [],
+                    language: 'Text',
+                    previewType: 'html',
+                    rawDataType: 'text',
+                    responseCode: { detail: '' }
+                });
+            });
+        });
+
+        describe('.convert', function () {
+            it('should work as intended without callbacks', function () {
+                expect(JSON.parse(JSON.stringify(transformer.convert({
+                    info: { _postman_id: 'e9b616ae-8f0f-40d8-a79e-b61dbf9a41a1' }
+                }, options)))).to.eql({
+                    id: 'e9b616ae-8f0f-40d8-a79e-b61dbf9a41a1',
+                    folders: [],
+                    folders_order: [],
+                    order: [],
+                    requests: []
+                });
+            });
+
+            it('should correctly fall back to default values', function (done) {
+                transformer.convert({
+                    id: 'C1',
+                    info: {
+                        id: 'C1',
+                        description: { content: 'foo' }
+                    },
+                    event: [{
+                        script: { exec: 'console.log("Foo");' }
+                    }, {
+                        listen: 'prerequest'
+                    }],
+                    item: [null, {
+                        _postman_id: 'R1',
+                        event: [{
+                            listen: 'test',
+                            script: { exec: 'console.log("Foo");' }
+                        }, {
+                            listen: 'prerequest',
+                            script: { exec: 'console.log("Foo");' }
+                        }],
+                        responses: [{
+                            id: 'Res1',
+                            cookie: [{ name: 'foo' }]
+                        }],
+                        request: {
+                            body: {
+                                mode: 'formdata',
+                                formdata: [{ key: 'foo', value: 'bar', disabled: true }]
+                            },
+                            url: {
+                                variables: [{ id: 'v1', key: 'foo', value: 'bar', description: 'foo' }]
+                            }
+                        }
+                    }, {
+                        _postman_id: 'F1',
+                        description: 'root Folder F1',
+                        item: [{
+                            _postman_id: 'F1.F2',
+                            item: [],
+                            description: 'nested Folder F1.F2'
+                        }]
+                    }]
+                }, options, function (err, result) {
+                    expect(err).not.to.be.ok;
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        id: 'C1',
+                        description: 'foo',
+                        events: [{
+                            listen: 'test',
+                            script: {
+                                type: 'text/javascript',
+                                exec: ['console.log("Foo");']
+                            }
+                        }, {
+                            listen: 'prerequest'
+                        }],
+                        folders: [{
+                            id: 'F1',
+                            description: 'root Folder F1',
+                            order: [],
+                            folders_order: ['F1.F2']
+                        }, {
+                            description: 'nested Folder F1.F2',
+                            folders_order: [],
+                            id: 'F1.F2',
+                            order: []
+                        }],
+                        folders_order: ['F1'],
+                        order: ['R1'],
+                        requests: [{
+                            collectionId: 'C1',
+                            dataMode: 'params',
+                            events: [{
+                                listen: 'test',
+                                script: {
+                                    type: 'text/javascript',
+                                    exec: ['console.log("Foo");']
+                                }
+                            }, {
+                                listen: 'prerequest',
+                                script: {
+                                    type: 'text/javascript',
+                                    exec: ['console.log("Foo");']
+                                }
+                            }],
+                            data: [{ key: 'foo', value: 'bar', enabled: false }],
+                            headers: '',
+                            headerData: [],
+                            id: 'R1',
+                            responses: [{
+                                id: 'Res1',
+                                language: 'Text',
+                                previewType: 'html',
+                                rawDataType: 'text',
+                                cookies: [{ name: 'foo' }],
+                                responseCode: { detail: '' }
+                            }],
+                            pathVariableData: [{ key: 'foo', value: 'bar', description: 'foo' }],
+                            pathVariables: { foo: 'bar' },
+                            preRequestScript: 'console.log("Foo");',
+                            tests: 'console.log("Foo");',
+                            queryParams: [],
+                            rawModeData: '',
+                            url: ''
+                        }]
                     });
+
                     done();
                 });
             });

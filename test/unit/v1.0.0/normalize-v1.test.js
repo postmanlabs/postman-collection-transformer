@@ -7,18 +7,15 @@ describe('v1.0.0 normalization', function () {
 
     describe('api', function () {
         it('should have a .normalizeSingle() function', function () {
-            expect(transformer.normalizeSingle).to.be.a('function');
-            expect(transformer.normalizeSingle.length).to.equal(3);
+            expect(transformer.normalizeSingle).to.be.a('function').with.length(3);
         });
 
         it('should have a .normalizeResponse() function', function () {
-            expect(transformer.normalizeResponse).to.be.a('function');
-            expect(transformer.normalizeResponse.length).to.equal(3);
+            expect(transformer.normalizeResponse).to.be.a('function').with.length(3);
         });
 
         it('should have a .normalize() function', function () {
-            expect(transformer.normalize).to.be.a('function');
-            expect(transformer.normalize.length).to.equal(3);
+            expect(transformer.normalize).to.be.a('function').with.length(3);
         });
     });
 
@@ -37,6 +34,43 @@ describe('v1.0.0 normalization', function () {
             });
         });
 
+        it('should handle fallback values correctly for .normalizeSingle calls', function (done) {
+            transformer.normalizeSingle({
+                id: '012500fa-4ee5-49fe-bd3d-a473366f1dcd',
+                collectionId: 'C1',
+                currentHelper: false,
+                variables: [{ id: 'v1', key: 'foo', value: 'bar' }],
+                events: [{ listen: 'random', script: { exec: [] } }]
+            }, options, function (err, normalized) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                normalized = JSON.parse(JSON.stringify(normalized));
+
+                expect(normalized).to.eql({
+                    id: '012500fa-4ee5-49fe-bd3d-a473366f1dcd',
+                    collectionId: 'C1',
+                    auth: null,
+                    currentHelper: null,
+                    data: [],
+                    helperAttributes: null,
+                    tests: null,
+                    preRequestScript: null,
+                    variables: [{ id: 'v1', key: 'foo', value: 'bar', type: 'string' }],
+                    pathVariableData: [{ id: 'v1', key: 'foo', value: 'bar', type: 'string' }],
+                    events: [{ listen: 'random', script: { exec: [], type: 'text/javascript' } }]
+                });
+                done();
+            });
+        });
+
+        it('should work correctly for .normalizeSingle calls without a callback', function () {
+            var fixture = require('../fixtures/normalizer/v1/single-request');
+
+            expect(JSON.parse(JSON.stringify(transformer.normalizeSingle(fixture.raw, options))))
+                .to.eql(fixture.normalized);
+        });
+
         it('should work correctly for .normalizeResponse calls', function (done) {
             var fixture = require('../fixtures/normalizer/v1/single-response');
 
@@ -51,6 +85,13 @@ describe('v1.0.0 normalization', function () {
             });
         });
 
+        it('should work correctly for .normalizeResponse calls without a callback', function () {
+            var fixture = require('../fixtures/normalizer/v1/single-response');
+
+            expect(JSON.parse(JSON.stringify(transformer.normalizeResponse(fixture.raw, options))))
+                .to.eql(fixture.normalized);
+        });
+
         it('should work correctly for .normalize calls', function (done) {
             var fixture = require('../fixtures/normalizer/v1/sample-collection');
 
@@ -63,6 +104,56 @@ describe('v1.0.0 normalization', function () {
                 expect(normalized).to.eql(fixture.normalized);
                 done();
             });
+        });
+
+        it('should work correctly for nested folders', function (done) {
+            transformer.normalize({
+                id: 'C1',
+                folders: [{
+                    id: 'F1',
+                    events: [{
+                        script: { exec: 'console.log("Legacy test script");' }
+                    }],
+                    variables: [{ id: '78650897-72b7-4a59-8f23-3d4970e2afdc', key: 'foo', value: 'bar' }],
+                    folders_order: ['F1.F2']
+                }, {
+                    id: 'F1.F2'
+                }],
+                folders_order: ['F1']
+            }, options, function (err, normalized) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                normalized = JSON.parse(JSON.stringify(normalized));
+
+                expect(normalized).to.eql({
+                    id: 'C1',
+                    folders: [{
+                        id: 'F1',
+                        events: [{
+                            listen: 'test',
+                            script: {
+                                type: 'text/javascript',
+                                exec: ['console.log("Legacy test script");']
+                            }
+                        }],
+                        variables: [{
+                            id: '78650897-72b7-4a59-8f23-3d4970e2afdc', key: 'foo', value: 'bar', type: 'string'
+                        }],
+                        folders_order: ['F1.F2']
+                    }, {
+                        id: 'F1.F2'
+                    }],
+                    folders_order: ['F1']
+                });
+                done();
+            });
+        });
+
+        it('should work correctly for .normalize calls without a callback', function () {
+            var fixture = require('../fixtures/normalizer/v1/sample-collection');
+
+            expect(JSON.parse(JSON.stringify(transformer.normalize(fixture.raw, options)))).to.eql(fixture.normalized);
         });
     });
 
@@ -2372,6 +2463,55 @@ describe('v1.0.0 normalization', function () {
                         listen: 'test',
                         script: { exec: ['console.log("Actual test script");'] }
                     }]
+                };
+
+                transformer.normalizeSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.eql({
+                        preRequestScript: 'console.log("Actual prerequest script");',
+                        tests: 'console.log("Actual test script");',
+                        events: [{
+                            listen: 'prerequest',
+                            script: {
+                                type: 'text/javascript',
+                                exec: ['console.log("Actual prerequest script");']
+                            }
+                        }, {
+                            listen: 'test',
+                            script: {
+                                type: 'text/javascript',
+                                exec: ['console.log("Actual test script");']
+                            }
+                        }]
+                    });
+                    done();
+                });
+            });
+
+            it('should correctly handle events with falsy scripts', function (done) {
+                var source = {
+                    events: [{
+                        listen: 'prerequest'
+                    }, {
+                        listen: 'test'
+                    }]
+                };
+
+                transformer.normalizeSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.eql({
+                        tests: null,
+                        preRequestScript: null,
+                        events: [{ listen: 'prerequest' }, { listen: 'test' }]
+                    });
+                    done();
+                });
+            });
+
+            it('should correctly handle array legacy scripts', function (done) {
+                var source = {
+                    preRequestScript: ['console.log("Actual prerequest script");'],
+                    tests: ['console.log("Actual test script");']
                 };
 
                 transformer.normalizeSingle(source, options, function (err, result) {

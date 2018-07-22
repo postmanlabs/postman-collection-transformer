@@ -62,6 +62,51 @@ describe('url', function () {
             });
             done();
         });
+
+        it('should correctly extract auth', function (done) {
+            var parsed,
+                fixture = 'https://user:pass@postman-echo.com';
+
+            parsed = JSON.parse(JSON.stringify(url.parse(fixture)));
+
+            expect(parsed).to.eql({
+                raw: fixture,
+                protocol: 'https',
+                auth: { user: 'user', password: 'pass' },
+                host: ['postman-echo', 'com']
+            });
+            done();
+        });
+
+        it('should correctly extract port', function (done) {
+            var parsed,
+                fixture = 'https://postman-echo.com:8443';
+
+            parsed = JSON.parse(JSON.stringify(url.parse(fixture)));
+
+            expect(parsed).to.eql({
+                raw: fixture,
+                protocol: 'https',
+                host: ['postman-echo', 'com'],
+                port: '8443'
+            });
+            done();
+        });
+
+        it('should correctly handle querystrings with consecutive &', function (done) {
+            var parsed,
+                fixture = 'https://postman-echo.com?foo=bar&&bar=baz';
+
+            parsed = JSON.parse(JSON.stringify(url.parse(fixture)));
+
+            expect(parsed).to.eql({
+                raw: fixture,
+                protocol: 'https',
+                host: ['postman-echo', 'com'],
+                query: [{ key: 'foo', value: 'bar' }, { key: null, value: null }, { key: 'bar', value: 'baz' }]
+            });
+            done();
+        });
     });
 
     describe('unparsing', function () {
@@ -80,6 +125,105 @@ describe('url', function () {
             };
 
             expect(url.unparse(fixture)).to.eql('postman-echo.com/get?user_email=fred@gmail.com');
+            done();
+        });
+
+        it('should remove trailing separators if present in the protocol', function (done) {
+            var fixture = {
+                raw: 'https://postman-echo.com',
+                protocol: 'https://',
+                host: ['postman-echo', 'com']
+            };
+
+            expect(url.unparse(fixture)).to.eql('https://postman-echo.com');
+            done();
+        });
+
+        it('should handle auth without password correctly', function (done) {
+            var fixture = {
+                raw: 'https://postman-echo.com',
+                protocol: 'https',
+                auth: {
+                    user: 'foo'
+                },
+                host: 'postman-echo.com'
+            };
+
+            expect(url.unparse(fixture)).to.eql('https://foo@postman-echo.com');
+            done();
+        });
+
+        it('should handle auth with password correctly', function (done) {
+            var fixture = {
+                raw: 'https://postman-echo.com',
+                protocol: 'https',
+                auth: {
+                    user: 'foo',
+                    password: 'pass'
+                },
+                host: 'postman-echo.com'
+            };
+
+            expect(url.unparse(fixture)).to.eql('https://foo:pass@postman-echo.com');
+            done();
+        });
+
+        it('should handle string hosts correctly', function (done) {
+            var fixture = {
+                raw: 'https://postman-echo.com',
+                protocol: 'https',
+                host: 'postman-echo.com'
+            };
+
+            expect(url.unparse(fixture)).to.eql('https://postman-echo.com');
+            done();
+        });
+
+        it('should handle ports correctly', function (done) {
+            var fixture = {
+                raw: 'https://postman-echo.com',
+                protocol: 'https',
+                port: 8443,
+                host: ['postman-echo', 'com']
+            };
+
+            expect(url.unparse(fixture)).to.eql('https://postman-echo.com:8443');
+            done();
+        });
+
+        it('should handle string paths correctly', function (done) {
+            var fixture = {
+                raw: 'https://postman-echo.com',
+                protocol: 'https',
+                host: ['postman-echo', 'com'],
+                path: '/type/html'
+            };
+
+            expect(url.unparse(fixture)).to.eql('https://postman-echo.com/type/html');
+            done();
+        });
+
+        it('should handle empty keyed query params correctly', function (done) {
+            var fixture = {
+                raw: 'https://postman-echo.com',
+                protocol: 'https',
+                host: ['postman-echo', 'com'],
+                query: [{ value: 'foo' }]
+            };
+
+            expect(url.unparse(fixture)).to.eql('https://postman-echo.com?=foo');
+            done();
+        });
+
+        it('should handle hashes correctly', function (done) {
+            var fixture = {
+                raw: 'https://postman-echo.com',
+                protocol: 'https',
+                host: ['postman-echo', 'com'],
+                hash: 'foo'
+            };
+
+            expect(url.unparse(fixture)).to.eql('https://postman-echo.com#foo');
             done();
         });
     });

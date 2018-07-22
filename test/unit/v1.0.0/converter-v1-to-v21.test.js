@@ -41,6 +41,66 @@ describe('v1.0.0 to v2.1.0', function () {
                     done();
                 });
             });
+
+            it('should handle pathVariables correctly', function (done) {
+                transformer.convertSingle({
+                    id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
+                    pathVariables: { foo: 'bar' }
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        _postman_id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
+                        name: '',
+                        request: {
+                            body: { mode: 'raw', raw: '' },
+                            header: [],
+                            url: {
+                                raw: '',
+                                variable: [{ id: 'foo', value: 'bar' }]
+                            }
+                        },
+                        response: []
+                    });
+                    done();
+                });
+            });
+
+            it('should handle disabled body elements correctly', function (done) {
+                transformer.convertSingle({
+                    id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
+                    dataMode: 'params',
+                    data: [{ key: 'foo', value: 'bar', enabled: false }]
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        _postman_id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
+                        name: '',
+                        request: {
+                            body: {
+                                mode: 'formdata',
+                                formdata: [{ key: 'foo', value: 'bar', disabled: true }]
+                            },
+                            header: []
+                        },
+                        response: []
+                    });
+                    done();
+                });
+            });
+
+            it('should work as intended without callbacks', function () {
+                var fixture = require('../fixtures/single-request');
+
+                expect(JSON.parse(JSON.stringify(transformer.convertSingle(fixture.v1, options)))).to.eql(fixture.v21);
+            });
         });
 
         describe('.convert()', function () {
@@ -54,6 +114,59 @@ describe('v1.0.0 to v2.1.0', function () {
                     converted = JSON.parse(JSON.stringify(converted));
 
                     expect(converted).to.eql(fixture.v21);
+                    done();
+                });
+            });
+
+            it('should work as intended without callbacks', function () {
+                var fixture = require('../fixtures/sample-collection');
+
+                expect(JSON.parse(JSON.stringify(transformer.convert(fixture.v1, options)))).to.eql(fixture.v21);
+            });
+
+            it('should generate new collection IDs when missing', function (done) {
+                transformer.convert({}, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.include.keys({
+                        info: {
+                            schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+                        },
+                        item: []
+                    });
+                    expect(converted.info._postman_id).to.match(/^[a-f0-9]{4}([a-f0-9]{4}-){4}[a-f0-9]{12}$/);
+                    done();
+                });
+            });
+
+            it('should work correctly for nested folders', function (done) {
+                transformer.convert({
+                    id: '9be04d9c-511b-4089-a184-9f0dedc7b21d',
+                    folders: [{ id: 'F1', folders_order: ['F1.F2'] }, { id: 'F1.F2' }],
+                    folders_order: ['F1']
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        info: {
+                            _postman_id: '9be04d9c-511b-4089-a184-9f0dedc7b21d',
+                            schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+                        },
+                        item: [{
+                            _postman_id: 'F1',
+                            item: [{
+                                _postman_id: 'F1.F2',
+                                _postman_isSubFolder: true,
+                                item: []
+                            }]
+                        }]
+                    });
                     done();
                 });
             });
@@ -71,6 +184,50 @@ describe('v1.0.0 to v2.1.0', function () {
                     expect(converted).to.eql(fixture.v21);
                     done();
                 });
+            });
+
+            it('should handle cookies correctly', function (done) {
+                transformer.convertResponse({
+                    id: '7b007f3d-dc1a-4e55-9795-c6a88315a0cd',
+                    cookies: [{
+                        expirationDate: 1532253966,
+                        hostOnly: true,
+                        httpOnly: true,
+                        domain: 'postman-echo.com',
+                        path: '/',
+                        secure: true,
+                        value: 'Foo',
+                        name: 'Session'
+                    }]
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+                    expect(converted).to.include.keys({
+                        id: '7b007f3d-dc1a-4e55-9795-c6a88315a0cd',
+                        name: 'response',
+                        cookie: [{
+                            // eslint-disable-next-line max-len
+                            expires: `Sun Jul 22 2018 15:36:06 GMT+0530 (${typeof browser === 'undefined' ? 'IST' : 'India Standard Time'})`,
+                            hostOnly: true,
+                            httpOnly: true,
+                            domain: 'postman-echo.com',
+                            path: '/',
+                            secure: true,
+                            value: 'Foo',
+                            key: 'Session'
+                        }]
+                    });
+                    done();
+                });
+            });
+
+            it('should work as intended without callbacks', function () {
+                var fixture = require('../fixtures/single-response');
+
+                expect(JSON.parse(JSON.stringify(transformer.convertResponse(fixture.v1, options))))
+                    .to.eql(fixture.v21);
             });
         });
     });
@@ -276,6 +433,32 @@ describe('v1.0.0 to v2.1.0', function () {
 
                 // remove `undefined` properties for testing
                 expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                    _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                    name: '',
+                    request: {
+                        body: { mode: 'raw', raw: '' },
+                        header: []
+                    },
+                    response: []
+                });
+                done();
+            });
+        });
+
+        it('should handle invalid legacy data correctly', function (done) {
+            var source = {
+                id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                currentHelper: 'random',
+                helperAttributes: ''
+            };
+
+            transformer.convertSingle(source, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
                     _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                     name: '',
                     request: {
@@ -1030,6 +1213,48 @@ describe('v1.0.0 to v2.1.0', function () {
             });
         });
 
+        it('should use legacy array properties correctly', function (done) {
+            var source = {
+                id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                preRequestScript: ['console.log("Request level pre-request script");'],
+                tests: ['console.log("Request level test script");']
+            };
+
+            transformer.convertSingle(source, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                    name: '',
+                    event: [{
+                        listen: 'test',
+                        script: {
+                            type: 'text/javascript',
+                            exec: ['console.log("Request level test script");']
+                        }
+                    }, {
+                        listen: 'prerequest',
+                        script: {
+                            type: 'text/javascript',
+                            exec: ['console.log("Request level pre-request script");']
+                        }
+                    }],
+                    request: {
+                        body: {
+                            mode: 'raw',
+                            raw: ''
+                        },
+                        header: []
+                    },
+                    response: []
+                });
+                done();
+            });
+        });
+
         it('should use events if legacy properties are absent', function (done) {
             var source = {
                 id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
@@ -1075,6 +1300,46 @@ describe('v1.0.0 to v2.1.0', function () {
                             mode: 'raw',
                             raw: ''
                         },
+                        header: []
+                    },
+                    response: []
+                });
+                done();
+            });
+        });
+
+        it('should correctly use fallbacks in event definitions as applicable', function (done) {
+            var source = {
+                id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                events: [{
+                    listen: 'prerequest',
+                    script: {
+                        type: 'text/javascript',
+                        exec: 'console.log("Alternative request level pre-request script");'
+                    }
+                }, {}]
+            };
+
+            transformer.convertSingle(source, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                    name: '',
+                    event: [{
+                        listen: 'prerequest',
+                        script: {
+                            type: 'text/javascript',
+                            exec: ['console.log("Alternative request level pre-request script");']
+                        }
+                    }, {
+                        listen: 'test'
+                    }],
+                    request: {
+                        body: { mode: 'raw', raw: '' },
                         header: []
                     },
                     response: []

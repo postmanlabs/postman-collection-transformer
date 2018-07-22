@@ -4,7 +4,7 @@
 
 var _ = require('lodash'),
     expect = require('chai').expect,
-    transformer = require('../../../index');
+    transformer = require('../../..');
 
 /* global describe, it */
 describe('v2.1.0 to v1.0.0', function () {
@@ -16,8 +16,15 @@ describe('v2.1.0 to v1.0.0', function () {
 
     describe('api', function () {
         it('should have a .convertSingle() function', function () {
-            expect(transformer.convertSingle).to.be.a('function');
-            expect(transformer.convertSingle.length).to.equal(3);
+            expect(transformer.convertSingle).to.be.a('function').with.length(3);
+        });
+
+        it('should have a .convert() function', function () {
+            expect(transformer.convert).to.be.a('function').with.length(3);
+        });
+
+        it('should have a .convertResponse() function', function () {
+            expect(transformer.convertResponse).to.be.a('function').with.length(3);
         });
     });
 
@@ -50,9 +57,21 @@ describe('v2.1.0 to v1.0.0', function () {
                     done();
                 });
             });
+
+            it('should work correctly without a callback', function () {
+                expect(JSON.parse(JSON.stringify(transformer.convertSingle({
+                    _postman_id: '9a5c1db2-beb3-42a5-bdff-689321f6dca8'
+                }, options)))).to.eql({
+                    id: '9a5c1db2-beb3-42a5-bdff-689321f6dca8',
+                    data: [],
+                    headerData: [],
+                    rawModeData: '',
+                    url: ''
+                });
+            });
         });
 
-        describe('.convertResponse()', function () {
+        describe('.convertResponse', function () {
             it('should work as intended', function (done) {
                 var fixture = require('../fixtures/single-response');
 
@@ -91,6 +110,39 @@ describe('v2.1.0 to v1.0.0', function () {
                         'write'
                     ]));
                     done();
+                });
+            });
+
+            it('should work correctly without a callback', function () {
+                expect(JSON.parse(JSON.stringify(transformer.convertResponse({
+                    _postman_id: 'ec9fcac1-1e12-4e23-9580-2f5049cbb83e'
+                }, options)))).to.eql({
+                    id: 'ec9fcac1-1e12-4e23-9580-2f5049cbb83e',
+                    cookies: [],
+                    language: 'Text',
+                    previewType: 'html',
+                    rawDataType: 'text',
+                    responseCode: { detail: '' }
+                });
+            });
+        });
+
+        describe('.convert', function () {
+            it('should work correctly without a callback', function () {
+                var result;
+
+                expect(function () {
+                    result = JSON.parse(JSON.stringify(transformer.convert({
+                        info: { id: 'ec9fcac1-1e12-4e23-9580-2f5049cbb83e' }
+                    }, options)));
+                }).not.to.throw();
+
+                expect(result).to.eql({
+                    id: 'ec9fcac1-1e12-4e23-9580-2f5049cbb83e',
+                    folders: [],
+                    folders_order: [],
+                    order: [],
+                    requests: []
                 });
             });
         });
