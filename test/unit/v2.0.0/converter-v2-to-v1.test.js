@@ -4,7 +4,8 @@
 
 var _ = require('lodash'),
     expect = require('chai').expect,
-    transformer = require('../../../index');
+    transformer = require('../../../index'),
+    nestedEntitiesCollection = require('../fixtures/multi-level.v2.json');
 
 /* global describe, it */
 describe('v2.0.0 to v1.0.0', function () {
@@ -709,6 +710,46 @@ describe('v2.0.0 to v1.0.0', function () {
                         expect(response.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
                     });
                 });
+            });
+        });
+
+        it('should convert IDs and order references everywhere', function () {
+            transformer.convert(nestedEntitiesCollection, _.omit(options, ['retainIds']), function (err, result) {
+                var folderIds = [],
+                    folderOrderIds = [],
+                    requestIds = [],
+                    requestOrderIds = [];
+
+                expect(err).to.not.be.ok;
+
+                folderOrderIds = folderOrderIds.concat(result.folders_order);
+
+                _.forEach(result.folders, function (folder) {
+                    folderOrderIds = folderOrderIds.concat(folder.folders_order);
+                    requestOrderIds = requestOrderIds.concat(folder.order);
+                });
+
+                requestIds = _.map(result.requests, 'id');
+                folderIds = _.map(result.folders, 'id');
+
+                expect(folderIds).to.not.be.empty;
+                expect(requestIds).to.not.be.empty;
+
+                // validate the format of request and folder ids
+                _.forEach(folderIds, function (folderId) {
+                    expect(folderId).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                });
+                _.forEach(requestIds, function (requestId) {
+                    expect(requestId).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                });
+
+                // validate the folder ids are the same as their references from parent via `folders_order`
+                expect(folderIds.length).to.equal(folderOrderIds.length);
+                expect(folderIds).to.have.members(folderOrderIds);
+
+                // validate the request ids are the same as their references from parent via `order`
+                expect(requestIds.length).to.equal(requestOrderIds.length);
+                expect(requestIds).to.have.members(requestOrderIds);
             });
         });
     });
