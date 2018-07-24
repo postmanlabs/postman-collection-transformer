@@ -7,28 +7,21 @@ describe('v1.0.0 normalization', function () {
 
     describe('api', function () {
         it('should have a .normalizeSingle() function', function () {
-            expect(transformer.normalizeSingle).to.be.a('function');
-            expect(transformer.normalizeSingle.length).to.equal(3);
+            expect(transformer.normalizeSingle).to.be.a('function').with.length(3);
         });
 
         it('should have a .normalizeResponse() function', function () {
-            expect(transformer.normalizeResponse).to.be.a('function');
-            expect(transformer.normalizeResponse.length).to.equal(3);
+            expect(transformer.normalizeResponse).to.be.a('function').with.length(3);
         });
 
         it('should have a .normalize() function', function () {
-            expect(transformer.normalize).to.be.a('function');
-            expect(transformer.normalize.length).to.equal(3);
+            expect(transformer.normalize).to.be.a('function').with.length(3);
         });
     });
 
     describe('transformer', function () {
         it('should work correctly for .normalizeSingle calls', function (done) {
-            var fixture = require('../fixtures/normalizer/v1/single-request'),
-                options = {
-                    normalizeVersion: '1.0.0',
-                    retainIds: true
-                };
+            var fixture = require('../fixtures/normalizer/v1/single-request');
 
             transformer.normalizeSingle(fixture.raw, options, function (err, normalized) {
                 expect(err).to.not.be.ok;
@@ -41,12 +34,45 @@ describe('v1.0.0 normalization', function () {
             });
         });
 
+        it('should handle fallback values correctly for .normalizeSingle calls', function (done) {
+            transformer.normalizeSingle({
+                id: '012500fa-4ee5-49fe-bd3d-a473366f1dcd',
+                collectionId: 'C1',
+                currentHelper: false,
+                variables: [{ id: 'v1', key: 'foo', value: 'bar' }],
+                events: [{ listen: 'random', script: { exec: [] } }]
+            }, options, function (err, normalized) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                normalized = JSON.parse(JSON.stringify(normalized));
+
+                expect(normalized).to.eql({
+                    id: '012500fa-4ee5-49fe-bd3d-a473366f1dcd',
+                    collectionId: 'C1',
+                    auth: null,
+                    currentHelper: null,
+                    data: [],
+                    helperAttributes: null,
+                    tests: null,
+                    preRequestScript: null,
+                    variables: [{ id: 'v1', key: 'foo', value: 'bar', type: 'string' }],
+                    pathVariableData: [{ id: 'v1', key: 'foo', value: 'bar', type: 'string' }],
+                    events: [{ listen: 'random', script: { exec: [], type: 'text/javascript' } }]
+                });
+                done();
+            });
+        });
+
+        it('should work correctly for .normalizeSingle calls without a callback', function () {
+            var fixture = require('../fixtures/normalizer/v1/single-request');
+
+            expect(JSON.parse(JSON.stringify(transformer.normalizeSingle(fixture.raw, options))))
+                .to.eql(fixture.normalized);
+        });
+
         it('should work correctly for .normalizeResponse calls', function (done) {
-            var fixture = require('../fixtures/normalizer/v1/single-response'),
-                options = {
-                    normalizeVersion: '1.0.0',
-                    retainIds: true
-                };
+            var fixture = require('../fixtures/normalizer/v1/single-response');
 
             transformer.normalizeResponse(fixture.raw, options, function (err, normalized) {
                 expect(err).to.not.be.ok;
@@ -59,12 +85,15 @@ describe('v1.0.0 normalization', function () {
             });
         });
 
+        it('should work correctly for .normalizeResponse calls without a callback', function () {
+            var fixture = require('../fixtures/normalizer/v1/single-response');
+
+            expect(JSON.parse(JSON.stringify(transformer.normalizeResponse(fixture.raw, options))))
+                .to.eql(fixture.normalized);
+        });
+
         it('should work correctly for .normalize calls', function (done) {
-            var fixture = require('../fixtures/normalizer/v1/sample-collection'),
-                options = {
-                    normalizeVersion: '1.0.0',
-                    retainIds: true
-                };
+            var fixture = require('../fixtures/normalizer/v1/sample-collection');
 
             transformer.normalize(fixture.raw, options, function (err, normalized) {
                 expect(err).to.not.be.ok;
@@ -76,15 +105,63 @@ describe('v1.0.0 normalization', function () {
                 done();
             });
         });
+
+        it('should work correctly for nested folders', function (done) {
+            transformer.normalize({
+                id: 'C1',
+                folders: [{
+                    id: 'F1',
+                    events: [{
+                        script: { exec: 'console.log("Legacy test script");' }
+                    }],
+                    variables: [{ id: '78650897-72b7-4a59-8f23-3d4970e2afdc', key: 'foo', value: 'bar' }],
+                    folders_order: ['F1.F2']
+                }, {
+                    id: 'F1.F2'
+                }],
+                folders_order: ['F1']
+            }, options, function (err, normalized) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                normalized = JSON.parse(JSON.stringify(normalized));
+
+                expect(normalized).to.eql({
+                    id: 'C1',
+                    folders: [{
+                        id: 'F1',
+                        events: [{
+                            listen: 'test',
+                            script: {
+                                type: 'text/javascript',
+                                exec: ['console.log("Legacy test script");']
+                            }
+                        }],
+                        variables: [{
+                            id: '78650897-72b7-4a59-8f23-3d4970e2afdc', key: 'foo', value: 'bar', type: 'string'
+                        }],
+                        folders_order: ['F1.F2']
+                    }, {
+                        id: 'F1.F2'
+                    }],
+                    folders_order: ['F1']
+                });
+                done();
+            });
+        });
+
+        it('should work correctly for .normalize calls without a callback', function () {
+            var fixture = require('../fixtures/normalizer/v1/sample-collection');
+
+            expect(JSON.parse(JSON.stringify(transformer.normalize(fixture.raw, options)))).to.eql(fixture.normalized);
+        });
     });
 
     describe('special cases', function () {
         describe('auth', function () {
             it('should handle no-auth correctly with legacy properties', function (done) {
-                transformer.normalizeSingle({ id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd', currentHelper: 'normal' }, {
-                    retainIds: true,
-                    normalizeVersion: '1.0.0'
-                }, function (err, result) {
+                // eslint-disable-next-line max-len
+                transformer.normalizeSingle({ id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd', currentHelper: 'normal' }, options, function (err, result) {
                     expect(err).to.not.be.ok;
 
                     expect(result).to.eql({
@@ -179,10 +256,7 @@ describe('v1.0.0 normalization', function () {
                                 id: '27c8c9ac-dd90-4234-b83a-b199d3a0e945',
                                 auth: { type: 'noauth' },
                                 currentHelper: null
-                            }, {
-                                retainIds: true,
-                                normalizeVersion: '1.0.0'
-                            }, function (err, result) {
+                            }, options, function (err, result) {
                                 expect(err).to.not.be.ok;
 
                                 expect(result).to.eql({
@@ -330,10 +404,8 @@ describe('v1.0.0 normalization', function () {
             });
 
             it('should recreate legacy properties for noauth correctly', function (done) {
-                transformer.normalizeSingle({ id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd', auth: { type: 'noauth' } }, {
-                    retainIds: true,
-                    normalizeVersion: '1.0.0'
-                }, function (err, result) {
+                // eslint-disable-next-line max-len
+                transformer.normalizeSingle({ id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd', auth: { type: 'noauth' } }, options, function (err, result) {
                     expect(err).to.not.be.ok;
 
                     expect(result).to.eql({
@@ -364,23 +436,19 @@ describe('v1.0.0 normalization', function () {
             });
 
             it('should override auth with legacy properties if both are present', function (done) {
-                var options = {
-                        normalizeVersion: '1.0.0',
-                        retainIds: true
+                var source = {
+                    id: 'bd79f978-d862-49f1-9cea-7c71a762cc12',
+                    currentHelper: 'basicAuth',
+                    helperAttributes: {
+                        id: 'basic',
+                        username: 'username',
+                        password: 'password'
                     },
-                    source = {
-                        id: 'bd79f978-d862-49f1-9cea-7c71a762cc12',
-                        currentHelper: 'basicAuth',
-                        helperAttributes: {
-                            id: 'basic',
-                            username: 'username',
-                            password: 'password'
-                        },
-                        auth: {
-                            type: 'bearer',
-                            bearer: [{key: 'token', value: 'randomSecretString', type: 'string'}]
-                        }
-                    };
+                    auth: {
+                        type: 'bearer',
+                        bearer: [{ key: 'token', value: 'randomSecretString', type: 'string' }]
+                    }
+                };
 
                 transformer.normalizeSingle(source, options, function (err, normalized) {
                     expect(err).to.not.be.ok;
@@ -400,10 +468,10 @@ describe('v1.0.0 normalization', function () {
                         auth: {
                             type: 'basic',
                             basic: [
-                                {key: 'username', value: 'username', type: 'string'},
-                                {key: 'password', value: 'password', type: 'string'},
-                                {key: 'saveHelperData', type: 'any'},
-                                {key: 'showPassword', value: false, type: 'boolean'}
+                                { key: 'username', value: 'username', type: 'string' },
+                                { key: 'password', value: 'password', type: 'string' },
+                                { key: 'saveHelperData', type: 'any' },
+                                { key: 'showPassword', value: false, type: 'boolean' }
                             ]
                         }
                     });
@@ -412,20 +480,16 @@ describe('v1.0.0 normalization', function () {
             });
 
             it('should fall back to auth if legacy properties are absent', function (done) {
-                var options = {
-                        normalizeVersion: '1.0.0',
-                        retainIds: true
-                    },
-                    source = {
-                        id: '722795b9-c9bc-4a01-a024-dd9358548dc1',
-                        auth: {
-                            type: 'basic',
-                            basic: [
-                                {key: 'username', value: 'username', type: 'string'},
-                                {key: 'password', value: 'password', type: 'string'}
-                            ]
-                        }
-                    };
+                var source = {
+                    id: '722795b9-c9bc-4a01-a024-dd9358548dc1',
+                    auth: {
+                        type: 'basic',
+                        basic: [
+                            { key: 'username', value: 'username', type: 'string' },
+                            { key: 'password', value: 'password', type: 'string' }
+                        ]
+                    }
+                };
 
                 transformer.normalizeSingle(source, options, function (err, normalized) {
                     expect(err).to.not.be.ok;
@@ -445,8 +509,8 @@ describe('v1.0.0 normalization', function () {
                         auth: {
                             type: 'basic',
                             basic: [
-                                {key: 'username', value: 'username', type: 'string'},
-                                {key: 'password', value: 'password', type: 'string'}
+                                { key: 'username', value: 'username', type: 'string' },
+                                { key: 'password', value: 'password', type: 'string' }
                             ]
                         }
                     });
@@ -456,16 +520,12 @@ describe('v1.0.0 normalization', function () {
 
             describe('malformed requests', function () {
                 it('should handle valid currentHelper with invalid helperAttributes correctly', function (done) {
-                    var options = {
-                            normalizeVersion: '1.0.0',
-                            retainIds: true
-                        },
-                        source = {
-                            id: '722795b9-c9bc-4a01-a024-dd9358548dc1',
-                            currentHelper: 'basicAuth',
-                            // this should ideally never happen, but we don't live in an ideal world
-                            helperAttributes: undefined
-                        };
+                    var source = {
+                        id: '722795b9-c9bc-4a01-a024-dd9358548dc1',
+                        currentHelper: 'basicAuth',
+                        // this should ideally never happen, but we don't live in an ideal world
+                        helperAttributes: undefined
+                    };
 
                     transformer.normalizeSingle(source, options, function (err, normalized) {
                         expect(err).to.not.be.ok;
@@ -490,10 +550,7 @@ describe('v1.0.0 normalization', function () {
                     transformer.normalizeSingle({
                         id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd',
                         currentHelper: null
-                    }, {
-                        retainIds: true,
-                        normalizeVersion: '1.0.0'
-                    }, function (err, result) {
+                    }, options, function (err, result) {
                         expect(err).to.not.be.ok;
 
                         expect(result).to.eql({
@@ -524,10 +581,8 @@ describe('v1.0.0 normalization', function () {
                 });
 
                 it('should recreate legacy properties for noauth correctly', function (done) {
-                    transformer.normalizeSingle({ id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd', auth: null }, {
-                        retainIds: true,
-                        normalizeVersion: '1.0.0'
-                    }, function (err, result) {
+                    // eslint-disable-next-line max-len
+                    transformer.normalizeSingle({ id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd', auth: null }, options, function (err, result) {
                         expect(err).to.not.be.ok;
 
                         expect(result).to.eql({
@@ -559,8 +614,6 @@ describe('v1.0.0 normalization', function () {
             });
 
             describe('collections', function () {
-                var options = { retainIds: true, normalizeVersion: '1.0.0' };
-
                 it('should handle auth set to null correctly', function (done) {
                     transformer.normalize({
                         id: 'b7e8cb01-bc32-4389-a130-3e4bc6fc844c',
@@ -850,28 +903,24 @@ describe('v1.0.0 normalization', function () {
 
         describe('scripts', function () {
             it('should override events with legacy properties if they exist', function (done) {
-                var options = {
-                        normalizeVersion: '1.0.0',
-                        retainIds: true
-                    },
-                    source = {
-                        id: '95df70cd-8631-4459-bc42-3830f30ecae0',
-                        preRequestScript: 'console.log("Request level pre-request script");',
-                        tests: 'console.log("Request level test script");',
-                        events: [{
-                            listen: 'prerequest',
-                            script: {
-                                type: 'text/javascript',
-                                exec: ['console.log("Alternative request level pre-request script");']
-                            }
-                        }, {
-                            listen: 'test',
-                            script: {
-                                type: 'text/javascript',
-                                exec: ['console.log("Alternative request level test script");']
-                            }
-                        }]
-                    };
+                var source = {
+                    id: '95df70cd-8631-4459-bc42-3830f30ecae0',
+                    preRequestScript: 'console.log("Request level pre-request script");',
+                    tests: 'console.log("Request level test script");',
+                    events: [{
+                        listen: 'prerequest',
+                        script: {
+                            type: 'text/javascript',
+                            exec: ['console.log("Alternative request level pre-request script");']
+                        }
+                    }, {
+                        listen: 'test',
+                        script: {
+                            type: 'text/javascript',
+                            exec: ['console.log("Alternative request level test script");']
+                        }
+                    }]
+                };
 
                 transformer.normalizeSingle(source, options, function (err, normalized) {
                     expect(err).to.not.be.ok;
@@ -903,26 +952,22 @@ describe('v1.0.0 normalization', function () {
             });
 
             it('should use events if legacy properties are absent', function (done) {
-                var options = {
-                        normalizeVersion: '1.0.0',
-                        retainIds: true
-                    },
-                    source = {
-                        id: '53540ee4-8499-44af-9b74-20d415a6fd43',
-                        events: [{
-                            listen: 'prerequest',
-                            script: {
-                                type: 'text/javascript',
-                                exec: ['console.log("Alternative request level pre-request script");']
-                            }
-                        }, {
-                            listen: 'test',
-                            script: {
-                                type: 'text/javascript',
-                                exec: ['console.log("Alternative request level test script");']
-                            }
-                        }]
-                    };
+                var source = {
+                    id: '53540ee4-8499-44af-9b74-20d415a6fd43',
+                    events: [{
+                        listen: 'prerequest',
+                        script: {
+                            type: 'text/javascript',
+                            exec: ['console.log("Alternative request level pre-request script");']
+                        }
+                    }, {
+                        listen: 'test',
+                        script: {
+                            type: 'text/javascript',
+                            exec: ['console.log("Alternative request level test script");']
+                        }
+                    }]
+                };
 
                 transformer.normalizeSingle(source, options, function (err, normalized) {
                     expect(err).to.not.be.ok;
@@ -954,11 +999,6 @@ describe('v1.0.0 normalization', function () {
             });
 
             describe('with missing properties', function () {
-                var options = {
-                    normalizeVersion: '1.0.0',
-                    retainIds: true
-                };
-
                 it('should handle missing preRequestScript and tests correctly', function (done) {
                     var source = {
                         id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
@@ -1311,8 +1351,8 @@ describe('v1.0.0 normalization', function () {
                         basic: [
                             { key: 'username', value: 'username', type: 'string' },
                             { key: 'password', value: 'password', type: 'string' },
-                            {key: 'saveHelperData', type: 'any'},
-                            {key: 'showPassword', value: false, type: 'boolean'}
+                            { key: 'saveHelperData', type: 'any' },
+                            { key: 'showPassword', value: false, type: 'boolean' }
                         ]
                     },
                     dataMode: 'params',
@@ -1909,7 +1949,7 @@ describe('v1.0.0 normalization', function () {
                                     listen: 'prerequest',
                                     script: {
                                         type: 'text/javascript',
-                                        exec: [ 'console.log("Pre-request script");' ]
+                                        exec: ['console.log("Pre-request script");']
                                     }
                                 }
                             ]
@@ -2123,7 +2163,7 @@ describe('v1.0.0 normalization', function () {
                                     listen: 'prerequest',
                                     script: {
                                         type: 'text/javascript',
-                                        exec: [ 'console.log("Pre-request script");' ]
+                                        exec: ['console.log("Pre-request script");']
                                     }
                                 }
                             ]
@@ -2448,6 +2488,55 @@ describe('v1.0.0 normalization', function () {
                 });
             });
 
+            it('should correctly handle events with falsy scripts', function (done) {
+                var source = {
+                    events: [{
+                        listen: 'prerequest'
+                    }, {
+                        listen: 'test'
+                    }]
+                };
+
+                transformer.normalizeSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.eql({
+                        tests: null,
+                        preRequestScript: null,
+                        events: [{ listen: 'prerequest' }, { listen: 'test' }]
+                    });
+                    done();
+                });
+            });
+
+            it('should correctly handle array legacy scripts', function (done) {
+                var source = {
+                    preRequestScript: ['console.log("Actual prerequest script");'],
+                    tests: ['console.log("Actual test script");']
+                };
+
+                transformer.normalizeSingle(source, options, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.eql({
+                        preRequestScript: 'console.log("Actual prerequest script");',
+                        tests: 'console.log("Actual test script");',
+                        events: [{
+                            listen: 'prerequest',
+                            script: {
+                                type: 'text/javascript',
+                                exec: ['console.log("Actual prerequest script");']
+                            }
+                        }, {
+                            listen: 'test',
+                            script: {
+                                type: 'text/javascript',
+                                exec: ['console.log("Actual test script");']
+                            }
+                        }]
+                    });
+                    done();
+                });
+            });
+
             it('should correctly fall back to preRequestScript/tests if `events` is empty', function (done) {
                 var source = {
                     preRequestScript: 'console.log("Legacy prerequest script");',
@@ -2635,15 +2724,20 @@ describe('v1.0.0 normalization', function () {
             transformer.normalize({
                 id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
                 folders_order: [null, NaN, undefined, false, '', 0],
-                folders: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}],
+                folders: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }],
                 requests: [
-                    {id: null, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: NaN, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
                     // eslint-disable-next-line max-len
-                    {id: undefined, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: false, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: '', responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: 0, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]}
+                    { id: null, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: NaN, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: undefined, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: false, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: '', responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: 0, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] }
                 ]
             }, options, function (err, result) {
                 expect(err).to.not.be.ok;
@@ -2668,15 +2762,20 @@ describe('v1.0.0 normalization', function () {
             transformer.normalize({
                 id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
                 folders_order: [null, NaN, undefined, false, '', 0],
-                folders: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}],
+                folders: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }],
                 requests: [
-                    {id: null, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: NaN, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
                     // eslint-disable-next-line max-len
-                    {id: undefined, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: false, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: '', responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: 0, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]}
+                    { id: null, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: NaN, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: undefined, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: false, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: '', responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: 0, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] }
                 ]
             }, _.defaults({ retainIds: false }, options), function (err, result) {
                 expect(err).to.not.be.ok;
@@ -2703,15 +2802,20 @@ describe('v1.0.0 normalization', function () {
             transformer.normalize({
                 id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
                 folders_order: [null, NaN, undefined, false, '', 0],
-                folders: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}],
+                folders: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }],
                 requests: [
-                    {id: null, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: NaN, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
                     // eslint-disable-next-line max-len
-                    {id: undefined, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: false, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: '', responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: 0, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]}
+                    { id: null, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: NaN, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: undefined, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: false, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: '', responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: 0, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] }
                 ]
             }, _.omit(options, ['retainIds']), function (err, result) {
                 expect(err).to.not.be.ok;

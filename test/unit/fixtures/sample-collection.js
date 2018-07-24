@@ -2342,7 +2342,7 @@ module.exports = {
                                 protocol: "https",
                                 host: ["echo", "getpostman", "com"],
                                 path: ["cookies", "set"],
-                                query: [{key: "foo1", value: "bar1"}, {key: "foo2", value: "bar2"}]
+                                query: [{ key: "foo1", value: "bar1" }, { key: "foo2", value: "bar2" }]
                             },
                             method: "GET",
                             header: [],
@@ -2563,7 +2563,7 @@ module.exports = {
                                 protocol: "https",
                                 host: ["echo", "getpostman", "com"],
                                 path: ["cookies", "delete"],
-                                query: [{key: "foo1", value: null}, {key: "foo2", value: null}]
+                                query: [{ key: "foo1", value: null }, { key: "foo2", value: null }]
                             },
                             method: "GET",
                             header: [],
@@ -2709,7 +2709,7 @@ module.exports = {
                                 protocol: "https",
                                 host: ["echo", "getpostman", "com"],
                                 path: ["response-headers"],
-                                query: [{key: "Content-Type", value: "text/html"}, {key: "Server", value: "apibin"}]
+                                query: [{ key: "Content-Type", value: "text/html" }, { key: "Server", value: "apibin" }]
                             },
                             method: "GET",
                             header: [],
@@ -2780,7 +2780,7 @@ module.exports = {
                                 protocol: "https",
                                 host: ["echo", "getpostman", "com"],
                                 path: ["get"],
-                                query: [{key: "test", value: "123"}]
+                                query: [{ key: "test", value: "123" }]
                             },
                             method: "GET",
                             header: [],
@@ -3213,7 +3213,7 @@ module.exports = {
                                 protocol: 'https',
                                 host: ['echo', 'getpostman', 'com'],
                                 path: ['oauth2', 'authtoken'],
-                                query: [{key: 'client_id', value: 'abc123'}, {key: 'response_type', value: 'code'}]
+                                query: [{ key: 'client_id', value: 'abc123' }, { key: 'response_type', value: 'code' }]
                             },
                             method: "GET",
                             header: [],
@@ -5396,8 +5396,8 @@ module.exports = {
                             url: {
                                 raw: "https://echo.getpostman.com/oauth2/token",
                                 protocol: "https",
-                                host: [ "echo", "getpostman", "com" ],
-                                path: [ "oauth2", "token" ]
+                                host: ["echo", "getpostman", "com"],
+                                path: ["oauth2", "token"]
                             },
                             method: "POST",
                             header: [],

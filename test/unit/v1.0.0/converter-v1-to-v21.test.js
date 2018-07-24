@@ -29,12 +29,7 @@ describe('v1.0.0 to v2.1.0', function () {
     describe('transformer', function () {
         describe('.convertSingle()', function () {
             it('should work as intended', function (done) {
-                var fixture = require('../fixtures/single-request'),
-                    options = {
-                        inputVersion: '1.0.0',
-                        outputVersion: '2.1.0',
-                        retainIds: true
-                    };
+                var fixture = require('../fixtures/single-request');
 
                 transformer.convertSingle(fixture.v1, options, function (err, converted) {
                     expect(err).to.not.be.ok;
@@ -46,16 +41,71 @@ describe('v1.0.0 to v2.1.0', function () {
                     done();
                 });
             });
+
+            it('should handle pathVariables correctly', function (done) {
+                transformer.convertSingle({
+                    id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
+                    pathVariables: { foo: 'bar' }
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        _postman_id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
+                        name: '',
+                        request: {
+                            body: { mode: 'raw', raw: '' },
+                            header: [],
+                            url: {
+                                raw: '',
+                                variable: [{ id: 'foo', value: 'bar' }]
+                            }
+                        },
+                        response: []
+                    });
+                    done();
+                });
+            });
+
+            it('should handle disabled body elements correctly', function (done) {
+                transformer.convertSingle({
+                    id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
+                    dataMode: 'params',
+                    data: [{ key: 'foo', value: 'bar', enabled: false }]
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        _postman_id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
+                        name: '',
+                        request: {
+                            body: {
+                                mode: 'formdata',
+                                formdata: [{ key: 'foo', value: 'bar', disabled: true }]
+                            },
+                            header: []
+                        },
+                        response: []
+                    });
+                    done();
+                });
+            });
+
+            it('should work as intended without callbacks', function () {
+                var fixture = require('../fixtures/single-request');
+
+                expect(JSON.parse(JSON.stringify(transformer.convertSingle(fixture.v1, options)))).to.eql(fixture.v21);
+            });
         });
 
         describe('.convert()', function () {
             it('should work as intended', function (done) {
-                var fixture = require('../fixtures/sample-collection'),
-                    options = {
-                        inputVersion: '1.0.0',
-                        outputVersion: '2.1.0',
-                        retainIds: true
-                    };
+                var fixture = require('../fixtures/sample-collection');
 
                 transformer.convert(fixture.v1, options, function (err, converted) {
                     expect(err).to.not.be.ok;
@@ -67,16 +117,64 @@ describe('v1.0.0 to v2.1.0', function () {
                     done();
                 });
             });
+
+            it('should work as intended without callbacks', function () {
+                var fixture = require('../fixtures/sample-collection');
+
+                expect(JSON.parse(JSON.stringify(transformer.convert(fixture.v1, options)))).to.eql(fixture.v21);
+            });
+
+            it('should generate new collection IDs when missing', function (done) {
+                transformer.convert({}, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.include.keys({
+                        info: {
+                            schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+                        },
+                        item: []
+                    });
+                    expect(converted.info._postman_id).to.match(/^[a-f0-9]{4}([a-f0-9]{4}-){4}[a-f0-9]{12}$/);
+                    done();
+                });
+            });
+
+            it('should work correctly for nested folders', function (done) {
+                transformer.convert({
+                    id: '9be04d9c-511b-4089-a184-9f0dedc7b21d',
+                    folders: [{ id: 'F1', folders_order: ['F1.F2'] }, { id: 'F1.F2' }],
+                    folders_order: ['F1']
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        info: {
+                            _postman_id: '9be04d9c-511b-4089-a184-9f0dedc7b21d',
+                            schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+                        },
+                        item: [{
+                            _postman_id: 'F1',
+                            item: [{
+                                _postman_id: 'F1.F2',
+                                _postman_isSubFolder: true,
+                                item: []
+                            }]
+                        }]
+                    });
+                    done();
+                });
+            });
         });
 
         describe('.convertResponse()', function () {
             it('should work as intended', function (done) {
-                var fixture = require('../fixtures/single-response'),
-                    options = {
-                        inputVersion: '1.0.0',
-                        outputVersion: '2.1.0',
-                        retainIds: true
-                    };
+                var fixture = require('../fixtures/single-response');
 
                 transformer.convertResponse(fixture.v1, options, function (err, converted) {
                     expect(err).to.not.be.ok;
@@ -87,17 +185,56 @@ describe('v1.0.0 to v2.1.0', function () {
                     done();
                 });
             });
+
+            it('should handle cookies correctly', function (done) {
+                transformer.convertResponse({
+                    id: '7b007f3d-dc1a-4e55-9795-c6a88315a0cd',
+                    cookies: [{
+                        expirationDate: 1532253966,
+                        hostOnly: true,
+                        httpOnly: true,
+                        domain: 'postman-echo.com',
+                        path: '/',
+                        secure: true,
+                        value: 'Foo',
+                        name: 'Session'
+                    }]
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+                    expect(converted).to.include.keys({
+                        id: '7b007f3d-dc1a-4e55-9795-c6a88315a0cd',
+                        name: 'response',
+                        cookie: [{
+                            // eslint-disable-next-line max-len
+                            expires: `Sun Jul 22 2018 15:36:06 GMT+0530 (${typeof browser === 'undefined' ? 'IST' : 'India Standard Time'})`,
+                            hostOnly: true,
+                            httpOnly: true,
+                            domain: 'postman-echo.com',
+                            path: '/',
+                            secure: true,
+                            value: 'Foo',
+                            key: 'Session'
+                        }]
+                    });
+                    done();
+                });
+            });
+
+            it('should work as intended without callbacks', function () {
+                var fixture = require('../fixtures/single-response');
+
+                expect(JSON.parse(JSON.stringify(transformer.convertResponse(fixture.v1, options))))
+                    .to.eql(fixture.v21);
+            });
         });
     });
 
     describe('descriptions', function () {
         it('should correctly handle descriptions whilst converting from v1 to v2.1.0', function (done) {
-            var fixture = require('../fixtures/sample-description'),
-                options = {
-                    inputVersion: '1.0.0',
-                    outputVersion: '2.1.0',
-                    retainIds: true
-                };
+            var fixture = require('../fixtures/sample-description');
 
             transformer.convert(fixture.v1, options, function (err, converted) {
                 expect(err).to.not.be.ok;
@@ -163,12 +300,7 @@ describe('v1.0.0 to v2.1.0', function () {
 
     describe('request file body', function () {
         it('should correctly handle request file bodies whilst converting from v1 to v2', function (done) {
-            var fixture = require('../fixtures/request-body-file'),
-                options = {
-                    inputVersion: '1.0.0',
-                    outputVersion: '2.1.0',
-                    retainIds: true
-                };
+            var fixture = require('../fixtures/request-body-file');
 
             transformer.convert(fixture.v1, options, function (err, converted) {
                 expect(err).to.not.be.ok;
@@ -184,12 +316,7 @@ describe('v1.0.0 to v2.1.0', function () {
 
     describe('auth', function () {
         it('should be handled correctly in v1 -> v2.1.0 conversions', function (done) {
-            var fixture = require('../fixtures/sample-auth'),
-                options = {
-                    inputVersion: '1.0.0',
-                    outputVersion: '2.1.0',
-                    retainIds: true
-                };
+            var fixture = require('../fixtures/sample-auth');
 
             transformer.convert(fixture.v1, options, function (err, converted) {
                 expect(err).to.not.be.ok;
@@ -203,24 +330,19 @@ describe('v1.0.0 to v2.1.0', function () {
         });
 
         it('should override auth with legacy attributes if they exist', function (done) {
-            var options = {
-                    inputVersion: '1.0.0',
-                    outputVersion: '2.1.0',
-                    retainIds: true
+            var source = {
+                id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                currentHelper: 'basicAuth',
+                helperAttributes: {
+                    id: 'basic',
+                    username: 'username',
+                    password: 'password'
                 },
-                source = {
-                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
-                    currentHelper: 'basicAuth',
-                    helperAttributes: {
-                        id: 'basic',
-                        username: 'username',
-                        password: 'password'
-                    },
-                    auth: {
-                        type: 'bearer',
-                        bearer: [{key: 'token', value: 'randomSecretString', type: 'string'}]
-                    }
-                };
+                auth: {
+                    type: 'bearer',
+                    bearer: [{ key: 'token', value: 'randomSecretString', type: 'string' }]
+                }
+            };
 
             transformer.convertSingle(source, options, function (err, converted) {
                 expect(err).to.not.be.ok;
@@ -254,26 +376,21 @@ describe('v1.0.0 to v2.1.0', function () {
         });
 
         it('should use auth if legacy auth attributes are absent', function (done) {
-            var options = {
-                    inputVersion: '1.0.0',
-                    outputVersion: '2.1.0',
-                    retainIds: true
-                },
-                source = {
-                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
-                    auth: {
-                        type: 'basic',
-                        basic: [{
-                            key: 'username',
-                            value: 'username',
-                            type: 'string'
-                        }, {
-                            key: 'password',
-                            value: 'password',
-                            type: 'string'
-                        }]
-                    }
-                };
+            var source = {
+                id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                auth: {
+                    type: 'basic',
+                    basic: [{
+                        key: 'username',
+                        value: 'username',
+                        type: 'string'
+                    }, {
+                        key: 'password',
+                        value: 'password',
+                        type: 'string'
+                    }]
+                }
+            };
 
             transformer.convertSingle(source, options, function (err, converted) {
                 expect(err).to.not.be.ok;
@@ -316,6 +433,32 @@ describe('v1.0.0 to v2.1.0', function () {
 
                 // remove `undefined` properties for testing
                 expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                    _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                    name: '',
+                    request: {
+                        body: { mode: 'raw', raw: '' },
+                        header: []
+                    },
+                    response: []
+                });
+                done();
+            });
+        });
+
+        it('should handle invalid legacy data correctly', function (done) {
+            var source = {
+                id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                currentHelper: 'random',
+                helperAttributes: ''
+            };
+
+            transformer.convertSingle(source, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
                     _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                     name: '',
                     request: {
@@ -614,12 +757,6 @@ describe('v1.0.0 to v2.1.0', function () {
         });
 
         describe('with missing properties', function () {
-            var options = {
-                inputVersion: '1.0.0',
-                outputVersion: '2.1.0',
-                retainIds: true
-            };
-
             it('should fall back to legacy properties if auth is missing', function (done) {
                 var source = {
                     id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
@@ -1006,12 +1143,7 @@ describe('v1.0.0 to v2.1.0', function () {
 
     describe('nested entities', function () {
         it('should be handled correctly in v1 -> v2.1.0 conversions', function (done) {
-            var fixture = require('../fixtures/nested-entities'),
-                options = {
-                    inputVersion: '1.0.0',
-                    outputVersion: '2.1.0',
-                    retainIds: true
-                };
+            var fixture = require('../fixtures/nested-entities');
 
             transformer.convert(fixture.v1, options, function (err, converted) {
                 expect(err).to.not.be.ok;
@@ -1027,29 +1159,66 @@ describe('v1.0.0 to v2.1.0', function () {
 
     describe('scripts', function () {
         it('should override events with legacy properties if they exist', function (done) {
-            var options = {
-                    inputVersion: '1.0.0',
-                    outputVersion: '2.1.0',
-                    retainIds: true
-                },
-                source = {
-                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
-                    preRequestScript: 'console.log("Request level pre-request script");',
-                    tests: 'console.log("Request level test script");',
-                    events: [{
-                        listen: 'prerequest',
-                        script: {
-                            type: 'text/javascript',
-                            exec: ['console.log("Alternative request level pre-request script");']
-                        }
-                    }, {
+            var source = {
+                id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                preRequestScript: 'console.log("Request level pre-request script");',
+                tests: 'console.log("Request level test script");',
+                events: [{
+                    listen: 'prerequest',
+                    script: {
+                        type: 'text/javascript',
+                        exec: ['console.log("Alternative request level pre-request script");']
+                    }
+                }, {
+                    listen: 'test',
+                    script: {
+                        type: 'text/javascript',
+                        exec: ['console.log("Alternative request level test script");']
+                    }
+                }]
+            };
+
+            transformer.convertSingle(source, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                    name: '',
+                    event: [{
                         listen: 'test',
                         script: {
                             type: 'text/javascript',
-                            exec: ['console.log("Alternative request level test script");']
+                            exec: ['console.log("Request level test script");']
                         }
-                    }]
-                };
+                    }, {
+                        listen: 'prerequest',
+                        script: {
+                            type: 'text/javascript',
+                            exec: ['console.log("Request level pre-request script");']
+                        }
+                    }],
+                    request: {
+                        body: {
+                            mode: 'raw',
+                            raw: ''
+                        },
+                        header: []
+                    },
+                    response: []
+                });
+                done();
+            });
+        });
+
+        it('should use legacy array properties correctly', function (done) {
+            var source = {
+                id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                preRequestScript: ['console.log("Request level pre-request script");'],
+                tests: ['console.log("Request level test script");']
+            };
 
             transformer.convertSingle(source, options, function (err, converted) {
                 expect(err).to.not.be.ok;
@@ -1087,27 +1256,22 @@ describe('v1.0.0 to v2.1.0', function () {
         });
 
         it('should use events if legacy properties are absent', function (done) {
-            var options = {
-                    inputVersion: '1.0.0',
-                    outputVersion: '2.1.0',
-                    retainIds: true
-                },
-                source = {
-                    id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
-                    events: [{
-                        listen: 'prerequest',
-                        script: {
-                            type: 'text/javascript',
-                            exec: ['console.log("Alternative request level pre-request script");']
-                        }
-                    }, {
-                        listen: 'test',
-                        script: {
-                            type: 'text/javascript',
-                            exec: ['console.log("Alternative request level test script");']
-                        }
-                    }]
-                };
+            var source = {
+                id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                events: [{
+                    listen: 'prerequest',
+                    script: {
+                        type: 'text/javascript',
+                        exec: ['console.log("Alternative request level pre-request script");']
+                    }
+                }, {
+                    listen: 'test',
+                    script: {
+                        type: 'text/javascript',
+                        exec: ['console.log("Alternative request level test script");']
+                    }
+                }]
+            };
 
             transformer.convertSingle(source, options, function (err, converted) {
                 expect(err).to.not.be.ok;
@@ -1144,13 +1308,47 @@ describe('v1.0.0 to v2.1.0', function () {
             });
         });
 
-        describe('with missing properties', function () {
-            var options = {
-                inputVersion: '1.0.0',
-                outputVersion: '2.1.0',
-                retainIds: true
+        it('should correctly use fallbacks in event definitions as applicable', function (done) {
+            var source = {
+                id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                events: [{
+                    listen: 'prerequest',
+                    script: {
+                        type: 'text/javascript',
+                        exec: 'console.log("Alternative request level pre-request script");'
+                    }
+                }, {}]
             };
 
+            transformer.convertSingle(source, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                    name: '',
+                    event: [{
+                        listen: 'prerequest',
+                        script: {
+                            type: 'text/javascript',
+                            exec: ['console.log("Alternative request level pre-request script");']
+                        }
+                    }, {
+                        listen: 'test'
+                    }],
+                    request: {
+                        body: { mode: 'raw', raw: '' },
+                        header: []
+                    },
+                    response: []
+                });
+                done();
+            });
+        });
+
+        describe('with missing properties', function () {
             it('should handle missing events correctly', function (done) {
                 var source = {
                     id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
@@ -1713,15 +1911,20 @@ describe('v1.0.0 to v2.1.0', function () {
                 id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
                 order: [null, NaN, undefined, false, '', 0],
                 folders_order: [null, NaN, undefined, false, '', 0],
-                folders: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}],
+                folders: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }],
                 requests: [
-                    {id: null, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: NaN, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
                     // eslint-disable-next-line max-len
-                    {id: undefined, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: false, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: '', responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: 0, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]}
+                    { id: null, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: NaN, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: undefined, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: false, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: '', responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: 0, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] }
                 ]
             }, options, function (err, result) {
                 expect(err).to.not.be.ok;
@@ -1749,17 +1952,22 @@ describe('v1.0.0 to v2.1.0', function () {
                 id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
                 order: [null, NaN, undefined, false, '', 0, 'R1'],
                 folders_order: [null, NaN, undefined, false, '', 0],
-                folders: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}],
+                folders: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }],
                 requests: [
-                    {id: null, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: NaN, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
                     // eslint-disable-next-line max-len
-                    {id: undefined, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: false, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: '', responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: 0, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]}
+                    { id: null, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: NaN, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: undefined, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: false, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: '', responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: 0, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] }
                 ]
-            }, _.defaults({retainIds: false}, options), function (err, result) {
+            }, _.defaults({ retainIds: false }, options), function (err, result) {
                 expect(err).to.not.be.ok;
                 expect(result && result.info).to.be.ok;
 
@@ -1786,15 +1994,20 @@ describe('v1.0.0 to v2.1.0', function () {
                 id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
                 order: [null, NaN, undefined, false, '', 0, 'R1'],
                 folders_order: [null, NaN, undefined, false, '', 0],
-                folders: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}],
+                folders: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }],
                 requests: [
-                    {id: null, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: NaN, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
                     // eslint-disable-next-line max-len
-                    {id: undefined, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: false, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: '', responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]},
-                    {id: 0, responses: [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}]}
+                    { id: null, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: NaN, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: undefined, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: false, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: '', responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] },
+                    // eslint-disable-next-line max-len
+                    { id: 0, responses: [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }] }
                 ]
             }, _.omit(options, ['retainIds']), function (err, result) {
                 expect(err).to.not.be.ok;

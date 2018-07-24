@@ -4,7 +4,8 @@
 
 var _ = require('lodash'),
     expect = require('chai').expect,
-    transformer = require('../../../index');
+    transformer = require('../../../index'),
+    nestedEntitiesCollection = require('../fixtures/multi-level.v2.json');
 
 /* global describe, it */
 describe('v2.0.0 to v1.0.0', function () {
@@ -24,12 +25,7 @@ describe('v2.0.0 to v1.0.0', function () {
     describe('transformer', function () {
         describe('.convertSingle()', function () {
             it('should work as intended', function (done) {
-                var fixture = require('../fixtures/single-request'),
-                    options = {
-                        inputVersion: '2.0.0',
-                        outputVersion: '1.0.0',
-                        retainIds: true
-                    };
+                var fixture = require('../fixtures/single-request');
 
                 transformer.convertSingle(fixture.v2, options, function (err, converted) {
                     expect(err).to.not.be.ok;
@@ -55,19 +51,26 @@ describe('v2.0.0 to v1.0.0', function () {
                     done();
                 });
             });
+
+            it('should work as intended without callbacks', function () {
+                expect(JSON.parse(JSON.stringify(transformer.convertSingle({
+                    id: '4b546663-ab04-4b39-a629-930bb53b7fac'
+                }, options)))).to.eql({
+                    id: '4b546663-ab04-4b39-a629-930bb53b7fac',
+                    data: [],
+                    headerData: [],
+                    rawModeData: '',
+                    url: ''
+                });
+            });
         });
 
         describe('.convertResponse()', function () {
             it('should work as intended', function (done) {
-                var fixture = require('../fixtures/single-response'),
-                    options = {
-                        inputVersion: '2.0.0',
-                        outputVersion: '1.0.0',
-                        retainIds: true
-                    };
+                var fixture = require('../fixtures/single-response');
 
                 transformer.convertResponse(fixture.v2, options, function (err, converted) {
-                    if (err) { return done(err); }
+                    expect(err).not.to.be.ok;
 
                     // remove `undefined` properties for testing
                     converted = JSON.parse(JSON.stringify(converted));
@@ -101,9 +104,145 @@ describe('v2.0.0 to v1.0.0', function () {
                         'write'
                     ]));
 
-                    [].forEach(function (p) {
-                        expect(converted).to.have.property(p);
+                    done();
+                });
+            });
+
+            it('should work as intended without callbacks', function () {
+                expect(JSON.parse(JSON.stringify(transformer.convertResponse({
+                    id: 'cacf4174-5d45-415d-9699-b7b355572080'
+                }, options)))).to.eql({
+                    id: 'cacf4174-5d45-415d-9699-b7b355572080',
+                    cookies: [],
+                    language: 'Text',
+                    previewType: 'html',
+                    rawDataType: 'text',
+                    responseCode: { detail: '' }
+                });
+            });
+        });
+
+        describe('.convert', function () {
+            it('should work as intended without callbacks', function () {
+                expect(JSON.parse(JSON.stringify(transformer.convert({
+                    info: { _postman_id: 'e9b616ae-8f0f-40d8-a79e-b61dbf9a41a1' }
+                }, options)))).to.eql({
+                    id: 'e9b616ae-8f0f-40d8-a79e-b61dbf9a41a1',
+                    folders: [],
+                    folders_order: [],
+                    order: [],
+                    requests: []
+                });
+            });
+
+            it('should correctly fall back to default values', function (done) {
+                transformer.convert({
+                    id: 'C1',
+                    info: {
+                        id: 'C1',
+                        description: { content: 'foo' }
+                    },
+                    event: [{
+                        script: { exec: 'console.log("Foo");' }
+                    }, {
+                        listen: 'prerequest'
+                    }],
+                    item: [null, {
+                        _postman_id: 'R1',
+                        event: [{
+                            listen: 'test',
+                            script: { exec: 'console.log("Foo");' }
+                        }, {
+                            listen: 'prerequest',
+                            script: { exec: 'console.log("Foo");' }
+                        }],
+                        responses: [{
+                            id: 'Res1',
+                            cookie: [{ name: 'foo' }]
+                        }],
+                        request: {
+                            body: {
+                                mode: 'formdata',
+                                formdata: [{ key: 'foo', value: 'bar', disabled: true }]
+                            },
+                            url: {
+                                variables: [{ id: 'v1', key: 'foo', value: 'bar', description: 'foo' }]
+                            }
+                        }
+                    }, {
+                        _postman_id: 'F1',
+                        description: 'root Folder F1',
+                        item: [{
+                            _postman_id: 'F1.F2',
+                            item: [],
+                            description: 'nested Folder F1.F2'
+                        }]
+                    }]
+                }, options, function (err, result) {
+                    expect(err).not.to.be.ok;
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        id: 'C1',
+                        description: 'foo',
+                        events: [{
+                            listen: 'test',
+                            script: {
+                                type: 'text/javascript',
+                                exec: ['console.log("Foo");']
+                            }
+                        }, {
+                            listen: 'prerequest'
+                        }],
+                        folders: [{
+                            id: 'F1',
+                            description: 'root Folder F1',
+                            order: [],
+                            folders_order: ['F1.F2']
+                        }, {
+                            description: 'nested Folder F1.F2',
+                            folders_order: [],
+                            id: 'F1.F2',
+                            order: []
+                        }],
+                        folders_order: ['F1'],
+                        order: ['R1'],
+                        requests: [{
+                            collectionId: 'C1',
+                            dataMode: 'params',
+                            events: [{
+                                listen: 'test',
+                                script: {
+                                    type: 'text/javascript',
+                                    exec: ['console.log("Foo");']
+                                }
+                            }, {
+                                listen: 'prerequest',
+                                script: {
+                                    type: 'text/javascript',
+                                    exec: ['console.log("Foo");']
+                                }
+                            }],
+                            data: [{ key: 'foo', value: 'bar', enabled: false }],
+                            headers: '',
+                            headerData: [],
+                            id: 'R1',
+                            responses: [{
+                                id: 'Res1',
+                                language: 'Text',
+                                previewType: 'html',
+                                rawDataType: 'text',
+                                cookies: [{ name: 'foo' }],
+                                responseCode: { detail: '' }
+                            }],
+                            pathVariableData: [{ key: 'foo', value: 'bar', description: 'foo' }],
+                            pathVariables: { foo: 'bar' },
+                            preRequestScript: 'console.log("Foo");',
+                            tests: 'console.log("Foo");',
+                            queryParams: [],
+                            rawModeData: '',
+                            url: ''
+                        }]
                     });
+
                     done();
                 });
             });
@@ -112,25 +251,20 @@ describe('v2.0.0 to v1.0.0', function () {
         describe('path variables', function () {
             it('should work with id as indexing property', function (done) {
                 var fixture = {
-                        id: 'some-id',
-                        name: 'some-name',
-                        request: {
-                            url: {
-                                host: ['postman-echo', 'com'],
-                                path: [':method'],
-                                variable: [{
-                                    id: 'method',
-                                    value: 'get'
-                                }]
-                            },
-                            method: 'GET'
-                        }
-                    },
-                    options = {
-                        inputVersion: '2.0.0',
-                        outputVersion: '1.0.0',
-                        retainIds: true
-                    };
+                    id: 'some-id',
+                    name: 'some-name',
+                    request: {
+                        url: {
+                            host: ['postman-echo', 'com'],
+                            path: [':method'],
+                            variable: [{
+                                id: 'method',
+                                value: 'get'
+                            }]
+                        },
+                        method: 'GET'
+                    }
+                };
 
                 transformer.convertSingle(fixture, options, function (err, converted) {
                     expect(err).to.not.be.ok;
@@ -149,25 +283,20 @@ describe('v2.0.0 to v1.0.0', function () {
 
             it('should work with key as indexing property', function (done) {
                 var fixture = {
-                        id: 'some-id',
-                        name: 'some-name',
-                        request: {
-                            url: {
-                                host: ['postman-echo', 'com'],
-                                path: [':method'],
-                                variable: [{
-                                    key: 'method',
-                                    value: 'get'
-                                }]
-                            },
-                            method: 'GET'
-                        }
-                    },
-                    options = {
-                        inputVersion: '2.0.0',
-                        outputVersion: '1.0.0',
-                        retainIds: true
-                    };
+                    id: 'some-id',
+                    name: 'some-name',
+                    request: {
+                        url: {
+                            host: ['postman-echo', 'com'],
+                            path: [':method'],
+                            variable: [{
+                                key: 'method',
+                                value: 'get'
+                            }]
+                        },
+                        method: 'GET'
+                    }
+                };
 
                 transformer.convertSingle(fixture, options, function (err, converted) {
                     expect(err).to.not.be.ok;
@@ -187,12 +316,6 @@ describe('v2.0.0 to v1.0.0', function () {
     });
 
     describe('descriptions', function () {
-        var options = {
-            inputVersion: '2.0.0',
-            outputVersion: '1.0.0',
-            retainIds: true
-        };
-
         it('should correctly handle descriptions whilst converting from v2 to v1', function (done) {
             var fixture = require('../fixtures/sample-description');
 
@@ -256,12 +379,7 @@ describe('v2.0.0 to v1.0.0', function () {
 
     describe('request file body', function () {
         it('should correctly handle request file bodies whilst converting from v2 to v1', function (done) {
-            var fixture = require('../fixtures/request-body-file'),
-                options = {
-                    inputVersion: '2.0.0',
-                    outputVersion: '1.0.0',
-                    retainIds: true
-                };
+            var fixture = require('../fixtures/request-body-file');
 
             transformer.convert(fixture.v2, options, function (err, converted) {
                 expect(err).to.not.be.ok;
@@ -277,12 +395,7 @@ describe('v2.0.0 to v1.0.0', function () {
 
     describe('auth', function () {
         it('should be handled correctly in v2 -> v1 conversions', function (done) {
-            var fixture = require('../fixtures/sample-auth'),
-                options = {
-                    inputVersion: '2.0.0',
-                    outputVersion: '1.0.0',
-                    retainIds: true
-                };
+            var fixture = require('../fixtures/sample-auth');
 
             transformer.convert(fixture.v2, options, function (err, converted) {
                 expect(err).to.not.be.ok;
@@ -426,12 +539,7 @@ describe('v2.0.0 to v1.0.0', function () {
 
     describe('nested entities', function () {
         it('should be handled correctly in v2 -> v1 conversions', function (done) {
-            var fixture = require('../fixtures/nested-entities'),
-                options = {
-                    inputVersion: '2.0.0',
-                    outputVersion: '1.0.0',
-                    retainIds: true
-                };
+            var fixture = require('../fixtures/nested-entities');
 
             transformer.convert(fixture.v2, options, function (err, converted) {
                 expect(err).to.not.be.ok;
@@ -507,7 +615,7 @@ describe('v2.0.0 to v1.0.0', function () {
     });
 
     describe('retainIds', function () {
-        var responses = [{id: null}, {id: NaN}, {id: undefined}, {id: false}, {id: ''}, {id: 0}],
+        var responses = [{ id: null }, { id: NaN }, { id: undefined }, { id: false }, { id: '' }, { id: 0 }],
             items = [
                 { _postman_id: null, response: responses },
                 { _postman_id: NaN, response: responses },
@@ -519,7 +627,7 @@ describe('v2.0.0 to v1.0.0', function () {
 
         it('should handle IDs correctly when set to true', function () {
             transformer.convert({
-                info: {_postman_id: '2509a94e-eca1-43ca-a8aa-0e200636764f'},
+                info: { _postman_id: '2509a94e-eca1-43ca-a8aa-0e200636764f' },
                 item: [
                     { _postman_id: null, item: items },
                     { _postman_id: NaN, item: items },
@@ -548,7 +656,7 @@ describe('v2.0.0 to v1.0.0', function () {
 
         it('should handle IDs correctly when set to false', function () {
             transformer.convert({
-                info: {_postman_id: 'R1'},
+                info: { _postman_id: 'R1' },
                 item: [
                     { _postman_id: null, item: items },
                     { _postman_id: NaN, item: items },
@@ -557,7 +665,7 @@ describe('v2.0.0 to v1.0.0', function () {
                     { _postman_id: '', item: items },
                     { _postman_id: 0, item: items }
                 ]
-            }, _.defaults({retainIds: false}, options), function (err, result) {
+            }, _.defaults({ retainIds: false }, options), function (err, result) {
                 expect(err).to.not.be.ok;
 
                 expect(result.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
@@ -578,7 +686,7 @@ describe('v2.0.0 to v1.0.0', function () {
 
         it('should handle IDs correctly when missing', function () {
             transformer.convert({
-                info: {_postman_id: 'R1'},
+                info: { _postman_id: 'R1' },
                 item: [
                     { _postman_id: null, item: items },
                     { _postman_id: NaN, item: items },
@@ -602,6 +710,46 @@ describe('v2.0.0 to v1.0.0', function () {
                         expect(response.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
                     });
                 });
+            });
+        });
+
+        it('should convert IDs and order references everywhere', function () {
+            transformer.convert(nestedEntitiesCollection, _.omit(options, ['retainIds']), function (err, result) {
+                var folderIds = [],
+                    folderOrderIds = [],
+                    requestIds = [],
+                    requestOrderIds = [];
+
+                expect(err).to.not.be.ok;
+
+                folderOrderIds = folderOrderIds.concat(result.folders_order);
+
+                _.forEach(result.folders, function (folder) {
+                    folderOrderIds = folderOrderIds.concat(folder.folders_order);
+                    requestOrderIds = requestOrderIds.concat(folder.order);
+                });
+
+                requestIds = _.map(result.requests, 'id');
+                folderIds = _.map(result.folders, 'id');
+
+                expect(folderIds).to.not.be.empty;
+                expect(requestIds).to.not.be.empty;
+
+                // validate the format of request and folder ids
+                _.forEach(folderIds, function (folderId) {
+                    expect(folderId).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                });
+                _.forEach(requestIds, function (requestId) {
+                    expect(requestId).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                });
+
+                // validate the folder ids are the same as their references from parent via `folders_order`
+                expect(folderIds.length).to.equal(folderOrderIds.length);
+                expect(folderIds).to.have.members(folderOrderIds);
+
+                // validate the request ids are the same as their references from parent via `order`
+                expect(requestIds.length).to.equal(requestOrderIds.length);
+                expect(requestIds).to.have.members(requestOrderIds);
             });
         });
     });

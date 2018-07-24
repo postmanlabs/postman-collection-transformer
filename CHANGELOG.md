@@ -1,5 +1,9 @@
 # Postman Collection Transformer Changelog
 
+#### v2.6.1 (July 24, 2018)
+* #110 Prevent folder id replacement in v2.x -> v1 transformations :bug:
+* #109 Increased test coveragee to 95% :arrow_up:
+
 #### v2.6.0 (July 10, 2018)
 * #107 Added support for `retainEmptyValues` in **all** flows :tada:.
 
