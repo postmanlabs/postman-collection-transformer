@@ -630,18 +630,16 @@ describe('v2.1.0 to v1.0.0', function () {
 
                 folderOrderIds = folderOrderIds.concat(result.folders_order);
 
-                _.forEach(result.folders, function (folder) { // eslint-disable-line lodash/prefer-map
-                    folderIds.push(folder.id);
+                _.forEach(result.folders, function (folder) {
                     folderOrderIds = folderOrderIds.concat(folder.folders_order);
                     requestOrderIds = requestOrderIds.concat(folder.order);
                 });
 
-                _.forEach(result.requests, function (request) { // eslint-disable-line lodash/prefer-map
-                    requestIds.push(request.id);
-                });
+                requestIds = _.map(result.requests, 'id');
+                folderIds = _.map(result.folders, 'id');
 
-                expect(folderIds.length).to.be.ok;
-                expect(requestIds.length).to.be.ok;
+                expect(folderIds).to.not.be.empty;
+                expect(requestIds).to.not.be.empty;
 
                 // validate the format of request and folder ids
                 _.forEach(folderIds, function (folderId) {
