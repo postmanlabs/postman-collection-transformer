@@ -107,6 +107,38 @@ describe('url', function () {
             });
             done();
         });
+
+        it('should correctly extract path variables', function (done) {
+            var parsed,
+                fixture = 'http://127.0.0.1/:a/:ab.json/:a+b';
+
+            parsed = JSON.parse(JSON.stringify(url.parse(fixture)));
+
+            expect(parsed).to.eql({
+                raw: 'http://127.0.0.1/:a/:ab.json/:a+b',
+                protocol: 'http',
+                host: ['127', '0', '0', '1'],
+                path: [':a', ':ab.json', ':a+b'],
+                variable: [{ key: 'a' }, { key: 'ab.json' }, { key: 'a+b' }]
+            });
+            done();
+        });
+
+        it('should correctly handle empty path variables', function (done) {
+            var parsed,
+                fixture = 'http://127.0.0.1/:/:/:var';
+
+            parsed = JSON.parse(JSON.stringify(url.parse(fixture)));
+
+            expect(parsed).to.eql({
+                raw: 'http://127.0.0.1/:/:/:var',
+                protocol: 'http',
+                host: ['127', '0', '0', '1'],
+                path: [':', ':', ':var'],
+                variable: [{ key: 'var' }]
+            });
+            done();
+        });
     });
 
     describe('unparsing', function () {
