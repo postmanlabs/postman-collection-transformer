@@ -96,7 +96,7 @@ describe('v1.0.0 ==> v2.1.0', function () {
             expect(v21.item[0].request.body.raw).to.eql('something');
         });
 
-        it('should not strip out all request and folder ids by default', function () {
+        it('should strip out all request and folder ids by default', function () {
             var v1 = require('../../../examples/v1.0.0/simplest.json'),
                 v21 = JSON.parse(JSON.stringify(converter.convert(v1)));
 
