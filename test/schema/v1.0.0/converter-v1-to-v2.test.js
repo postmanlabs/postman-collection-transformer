@@ -99,7 +99,7 @@ describe('v1.0.0 ==> v2.0.0', function () {
                 v2 = JSON.parse(JSON.stringify(converter.convert(v1)));
 
             expect(v2.item[0]).to.not.have.property('id');
-            expect(v2.item[0]).to.have.property('_postman_id');
+            expect(v2.item[0]).not.to.have.property('_postman_id');
         });
 
         it('should retain all request and folder ids if asked to', function () {
