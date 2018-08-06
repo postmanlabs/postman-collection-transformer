@@ -1,5 +1,8 @@
 # Postman Collection Transformer Changelog
 
+#### v2.6.2 (August 6, 2018)
+* #111 Updated `url.parse` to correctly account for path variables
+
 #### v2.6.1 (July 24, 2018)
 * #110 Prevent folder id replacement in v2.x -> v1 transformations :bug:
 * #109 Increased test coveragee to 95% :arrow_up:
