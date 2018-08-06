@@ -71,7 +71,8 @@ module.exports = {
                 // eslint-disable-next-line max-len
                 description: 'A simple `POST` request to demonstrate the usage of descriptions across various parts of a request.',
                 collectionId: 'e1036383-ba43-d240-5e9d-19614febed77',
-                pathVariableData: [],
+                pathVariableData: [{ key: 'a' }],
+                pathVariables: {},
                 responses: []
             }
         ],
@@ -123,7 +124,8 @@ module.exports = {
                                 disabled: true,
                                 description: 'This is the fourth url query parameter (disabled)'
                             }
-                        ]
+                        ],
+                        variable: [{ key: 'a' }]
                     },
                     method: 'POST',
                     header: [
@@ -212,7 +214,8 @@ module.exports = {
                                 disabled: true,
                                 description: 'This is the fourth url query parameter (disabled)'
                             }
-                        ]
+                        ],
+                        variable: [{ key: 'a' }]
                     },
                     method: 'POST',
                     header: [
