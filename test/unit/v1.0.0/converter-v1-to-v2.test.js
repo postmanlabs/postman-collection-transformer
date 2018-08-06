@@ -1739,12 +1739,12 @@ describe('v1.0.0 to v2.0.0', function () {
 
                 _.forEach(result.item, function (elem) {
                     _.forEach(elem.item, function (item) {
-                        expect(item).not.to.have.property('_postman_id');
+                        expect(item._postman_id).to.match(/^[a-f0-9]{4}([a-f0-9]{4}-){4}[a-f0-9]{12}$/);
                         _.forEach(item.response, function (response) {
-                            expect(response).not.to.have.property('id');
+                            expect(response.id).to.match(/^[a-f0-9]{4}([a-f0-9]{4}-){4}[a-f0-9]{12}$/);
                         });
                     });
-                    expect(elem).not.to.have.property('_postman_id');
+                    expect(elem._postman_id).to.match(/^[a-f0-9]{4}([a-f0-9]{4}-){4}[a-f0-9]{12}$/);
                 });
             });
         });
