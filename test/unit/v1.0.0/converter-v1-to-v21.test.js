@@ -1937,12 +1937,12 @@ describe('v1.0.0 to v2.1.0', function () {
 
                 _.forEach(result.item, function (elem) {
                     _.forEach(elem.item, function (item) {
-                        expect(item._postman_id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                        expect(item).not.to.have.property('_postman_id');
                         _.forEach(item.response, function (response) {
-                            expect(response.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                            expect(response).not.to.have.property('id');
                         });
                     });
-                    expect(elem._postman_id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                    expect(elem).not.to.have.property('_postman_id');
                 });
             });
         });
@@ -1979,12 +1979,12 @@ describe('v1.0.0 to v2.1.0', function () {
                 expect(result.item).to.have.length(12);
                 _.forEach(result.item, function (elem) {
                     _.forEach(elem.item, function (item) {
-                        expect(item._postman_id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                        expect(item).not.to.have.property('_postman_id');
                         _.forEach(item.response, function (response) {
-                            expect(response.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                            expect(response).not.to.have.property('id');
                         });
                     });
-                    expect(elem._postman_id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                    expect(elem).not.to.have.property('_postman_id');
                 });
             });
         });
@@ -2021,12 +2021,12 @@ describe('v1.0.0 to v2.1.0', function () {
                 expect(result.item).to.have.length(12);
                 _.forEach(result.item, function (elem) {
                     _.forEach(elem.item, function (item) {
-                        expect(item._postman_id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                        expect(item).not.to.have.property('_postman_id');
                         _.forEach(item.response, function (response) {
-                            expect(response.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                            expect(response).not.to.have.property('id');
                         });
                     });
-                    expect(elem._postman_id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                    expect(elem).not.to.have.property('_postman_id');
                 });
             });
         });
