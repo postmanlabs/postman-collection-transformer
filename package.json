@@ -9,7 +9,9 @@
     "test-browser": "node npm/test-browser.js",
     "test-schema": "node npm/test-schema.js",
     "test-unit": "node npm/test-unit.js",
-    "test-system": "node npm/test-system.js"
+    "test-system": "node npm/test-system.js",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -53,7 +55,7 @@
     "karma-mocha": "1.3.0",
     "karma-mocha-reporter": "2.2.5",
     "mocha": "5.2.0",
-    "nsp": "2.6.3",
+    "nsp": "3.0.0",
     "nyc": "12.0.2",
     "packity": "0.3.2",
     "parse-gitignore": "0.5.1",
@@ -71,6 +73,8 @@
     "intel": "1.2.0",
     "lodash": "4.17.10",
     "semver": "5.5.0",
-    "strip-json-comments": "2.0.1"
-  }
+    "strip-json-comments": "2.0.1",
+    "snyk": "^1.91.0"
+  },
+  "snyk": true
 }
