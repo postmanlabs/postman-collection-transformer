@@ -1378,6 +1378,79 @@ describe('v1.0.0 normalization', function () {
                     done();
                 });
             });
+
+            it('should set missing file values to null when missing and noDefaults is false', function (done) {
+                transformer.normalizeSingle({
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    headers: '',
+                    url: 'https://postman-echo.com/post',
+                    method: 'POST',
+                    data: [
+                        {
+                            key: 'file',
+                            type: 'file'
+                        }
+                    ],
+                    dataMode: 'params',
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                }, _.defaults({ noDefaults: false }, options), function (err, result) {
+                    expect(err).not.to.be.ok;
+
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        headers: '',
+                        url: 'https://postman-echo.com/post',
+                        method: 'POST',
+                        data: [
+                            {
+                                key: 'file',
+                                value: null,
+                                type: 'file'
+                            }
+                        ],
+                        dataMode: 'params',
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                    });
+                    done();
+                });
+            });
+
+            it('should retain string valued file entities in request bodies', function (done) {
+                transformer.normalizeSingle({
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    headers: '',
+                    url: 'https://postman-echo.com/post',
+                    method: 'POST',
+                    data: [
+                        {
+                            key: 'file',
+                            value: 't.csv',
+                            type: 'file'
+                        }
+                    ],
+                    dataMode: 'params',
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                }, _.defaults({ noDefaults: false }, options), function (err, result) {
+                    expect(err).not.to.be.ok;
+
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        headers: '',
+                        url: 'https://postman-echo.com/post',
+                        method: 'POST',
+                        data: [
+                            {
+                                key: 'file',
+                                value: 't.csv',
+                                type: 'file'
+                            }
+                        ],
+                        dataMode: 'params',
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                    });
+                    done();
+                });
+            });
         });
     });
 
