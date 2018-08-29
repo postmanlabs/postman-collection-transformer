@@ -312,6 +312,113 @@ describe('v1.0.0 to v2.1.0', function () {
                 done();
             });
         });
+
+        it('should convert non-string values to an explicit null', function (done) {
+            transformer.convert({
+                id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                name: 'body-src-check',
+                order: [
+                    '4f65e265-dd38-0a67-71a5-d9dd50fa37a1'
+                ],
+                folders: [],
+                folders_order: [],
+                requests: [
+                    {
+                        id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        headers: '',
+                        url: 'https://postman-echo.com/post',
+                        method: 'POST',
+                        data: [
+                            { key: 'alpha', value: [], type: 'file' },
+                            { key: 'beta', value: {}, type: 'file' }
+                        ],
+                        dataMode: 'params',
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                    }
+                ]
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    info: {
+                        _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        name: 'body-src-check',
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+                    },
+                    item: [
+                        {
+                            _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                            name: '',
+                            request: {
+                                body: {
+                                    mode: 'formdata',
+                                    formdata: [
+                                        { key: 'alpha', src: null, type: 'file' },
+                                        { key: 'beta', src: null, type: 'file' }
+                                    ]
+                                },
+                                header: [],
+                                method: 'POST',
+                                url: {
+                                    raw: 'https://postman-echo.com/post',
+                                    protocol: 'https',
+                                    host: ['postman-echo', 'com'],
+                                    path: ['post']
+                                }
+                            },
+                            response: []
+                        }
+                    ]
+                });
+                done();
+            });
+        });
+
+        it('should convert non-string values to an explicit null in requests', function (done) {
+            transformer.convertSingle({
+                id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                headers: '',
+                url: 'https://postman-echo.com/post',
+                method: 'POST',
+                data: [
+                    { key: 'alpha', value: [], type: 'file' },
+                    { key: 'beta', value: {}, type: 'file' }
+                ],
+                dataMode: 'params'
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    name: '',
+                    request: {
+                        body: {
+                            mode: 'formdata',
+                            formdata: [
+                                { key: 'alpha', src: null, type: 'file' },
+                                { key: 'beta', src: null, type: 'file' }
+                            ]
+                        },
+                        header: [],
+                        method: 'POST',
+                        url: {
+                            raw: 'https://postman-echo.com/post',
+                            protocol: 'https',
+                            host: ['postman-echo', 'com'],
+                            path: ['post']
+                        }
+                    },
+                    response: []
+                });
+                done();
+            });
+        });
     });
 
     describe('auth', function () {

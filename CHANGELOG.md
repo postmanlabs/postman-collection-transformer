@@ -1,5 +1,8 @@
 # Postman Collection Transformer Changelog
 
+#### v2.6.3 (August 29, 2018)
+* #115 Coerced non-string formdata file values in request bodies to `null`
+
 #### v2.6.2 (August 6, 2018)
 * #111 Updated `url.parse` to correctly account for path variables
 

@@ -391,6 +391,101 @@ describe('v2.0.0 to v1.0.0', function () {
                 done();
             });
         });
+
+        it('should correctly handle non-string bodies whilst converting from v2 to v1', function (done) {
+            transformer.convert({
+                info: {
+                    name: 'body-src-check',
+                    _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                    schema: 'https://schema.getpostman.com/json/collection/v2.0.0/collection.json'
+                },
+                item: [
+                    {
+                        _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        request: {
+                            url: 'https://postman-echo.com/post',
+                            method: 'POST',
+                            body: {
+                                mode: 'formdata',
+                                formdata: [
+                                    { key: 'alpha', src: [], type: 'file' },
+                                    { key: 'beta', src: {}, type: 'file' }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                    name: 'body-src-check',
+                    order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                    folders: [],
+                    folders_order: [],
+                    requests: [{
+                        id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        url: 'https://postman-echo.com/post',
+                        method: 'POST',
+                        dataMode: 'params',
+                        data: [
+                            { key: 'alpha', value: null, type: 'file' },
+                            { key: 'beta', value: null, type: 'file' }
+                        ],
+                        headers: '',
+                        headerData: [],
+                        queryParams: [],
+                        pathVariableData: [],
+                        rawModeData: ''
+                    }]
+                });
+                done();
+            });
+        });
+
+        it('should correctly handle non-string bodies whilst converting requests from v2 to v1', function (done) {
+            transformer.convertSingle({
+                _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                request: {
+                    url: 'https://postman-echo.com/post',
+                    method: 'POST',
+                    body: {
+                        mode: 'formdata',
+                        formdata: [
+                            { key: 'alpha', type: 'file', src: [] },
+                            { key: 'beta', type: 'file', src: {} }
+                        ]
+                    }
+                }
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    url: 'https://postman-echo.com/post',
+                    method: 'POST',
+                    dataMode: 'params',
+                    data: [
+                        { key: 'alpha', type: 'file', value: null },
+                        { key: 'beta', type: 'file', value: null }
+                    ],
+                    headers: '',
+                    headerData: [],
+                    queryParams: [],
+                    pathVariableData: [],
+                    rawModeData: ''
+                });
+                done();
+            });
+        });
     });
 
     describe('auth', function () {
