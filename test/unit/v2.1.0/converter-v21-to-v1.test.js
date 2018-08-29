@@ -313,11 +313,8 @@ describe('v2.1.0 to v1.0.0', function () {
                             body: {
                                 mode: 'formdata',
                                 formdata: [
-                                    {
-                                        key: 'file',
-                                        type: 'file',
-                                        src: []
-                                    }
+                                    { key: 'alpha', src: [], type: 'file' },
+                                    { key: 'beta', src: {}, type: 'file' }
                                 ]
                             }
                         }
@@ -341,11 +338,10 @@ describe('v2.1.0 to v1.0.0', function () {
                         url: 'https://postman-echo.com/post',
                         method: 'POST',
                         dataMode: 'params',
-                        data: [{
-                            key: 'file',
-                            type: 'file',
-                            value: null
-                        }],
+                        data: [
+                            { key: 'alpha', value: null, type: 'file' },
+                            { key: 'beta', value: null, type: 'file' }
+                        ],
                         headers: '',
                         headerData: [],
                         queryParams: [],
@@ -371,11 +367,8 @@ describe('v2.1.0 to v1.0.0', function () {
                     body: {
                         mode: 'formdata',
                         formdata: [
-                            {
-                                key: 'file',
-                                type: 'file',
-                                src: []
-                            }
+                            { key: 'alpha', type: 'file', src: [] },
+                            { key: 'beta', type: 'file', src: {} }
                         ]
                     }
                 }
@@ -390,11 +383,10 @@ describe('v2.1.0 to v1.0.0', function () {
                     url: 'https://postman-echo.com/post',
                     method: 'POST',
                     dataMode: 'params',
-                    data: [{
-                        key: 'file',
-                        type: 'file',
-                        value: null
-                    }],
+                    data: [
+                        { key: 'alpha', type: 'file', value: null },
+                        { key: 'beta', type: 'file', value: null }
+                    ],
                     headers: '',
                     headerData: [],
                     queryParams: [],
