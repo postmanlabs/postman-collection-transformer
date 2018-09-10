@@ -894,7 +894,7 @@ describe('v2.1.0 to v1.0.0', function () {
             retainEmptyValues: true
         };
 
-        it('should nullify empty descriptions in when set to true', function () {
+        it('should nullify empty descriptions and retain disabled states in collections when set to true', function () {
             transformer.convert({
                 info: {
                     _postman_id: '9ac7325c-cc3f-4c20-b0f8-a435766cb74c',
@@ -910,6 +910,7 @@ describe('v2.1.0 to v1.0.0', function () {
                             auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random', type: 'string' }] },
                             description: '',
                             body: {
+                                disabled: false,
                                 mode: 'formdata',
                                 formdata: [{ description: undefined, key: 'body_foo', value: 'body_bar' }]
                             },
@@ -942,6 +943,7 @@ describe('v2.1.0 to v1.0.0', function () {
                         collectionId: '9ac7325c-cc3f-4c20-b0f8-a435766cb74c',
                         description: null,
                         dataMode: 'params',
+                        dataDisabled: false,
                         name: '',
                         pathVariables: { pv_foo: 'pv_bar' },
                         pathVariableData: [{ description: null, key: 'pv_foo', value: 'pv_bar' }],
@@ -960,13 +962,14 @@ describe('v2.1.0 to v1.0.0', function () {
             });
         });
 
-        it('should nullify empty descriptions in requests when set to true', function () {
+        it('should nullify empty descriptions and retain disabled states in requests when set to true', function () {
             transformer.convertSingle({
                 _postman_id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
                 request: {
                     auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random', type: 'string' }] },
                     description: null,
                     body: {
+                        disabled: false,
                         mode: 'formdata',
                         formdata: [{ description: undefined, key: 'body_foo', value: 'body_bar' }]
                     },
@@ -985,6 +988,7 @@ describe('v2.1.0 to v1.0.0', function () {
                     id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
                     description: null,
                     dataMode: 'params',
+                    dataDisabled: false,
                     data: [{ description: null, key: 'body_foo', value: 'body_bar' }],
                     pathVariables: { pv_foo: 'pv_bar' },
                     pathVariableData: [{ description: null, key: 'pv_foo', value: 'pv_bar' }],
@@ -1008,6 +1012,7 @@ describe('v2.1.0 to v1.0.0', function () {
                     auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random', type: 'string' }] },
                     description: null,
                     body: {
+                        disabled: false,
                         mode: 'urlencoded',
                         urlencoded: [{ description: undefined, key: 'body_foo', value: 'body_bar' }]
                     },
@@ -1026,6 +1031,7 @@ describe('v2.1.0 to v1.0.0', function () {
                     id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
                     description: null,
                     dataMode: 'urlencoded',
+                    dataDisabled: false,
                     data: [{ description: null, key: 'body_foo', value: 'body_bar' }],
                     pathVariables: { pv_foo: 'pv_bar' },
                     pathVariableData: [{ description: null, key: 'pv_foo', value: 'pv_bar' }],
@@ -1038,6 +1044,36 @@ describe('v2.1.0 to v1.0.0', function () {
                     rawModeData: '',
                     headerData: [{ key: 'header_foo', value: 'header_bar', description: null }],
                     queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }]
+                });
+            });
+        });
+
+        it('should work correctly for raw bodies', function () {
+            transformer.convertSingle({
+                _postman_id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
+                request: {
+                    body: {
+                        disabled: false,
+                        mode: 'raw',
+                        raw: 'foobar'
+                    },
+                    url: 'https://postman-echo.com/get'
+                }
+            }, options, function (err, result) {
+                expect(err).not.to.be.ok;
+
+                expect(JSON.parse(JSON.stringify(result))).to.eql({
+                    id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
+                    dataMode: 'raw',
+                    data: [],
+                    description: null,
+                    pathVariableData: [],
+                    headers: '',
+                    headerData: [],
+                    queryParams: [],
+                    rawModeData: 'foobar',
+                    dataDisabled: false,
+                    url: 'https://postman-echo.com/get'
                 });
             });
         });
