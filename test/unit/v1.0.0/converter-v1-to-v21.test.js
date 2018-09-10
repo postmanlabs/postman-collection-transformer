@@ -421,6 +421,115 @@ describe('v1.0.0 to v2.1.0', function () {
         });
     });
 
+    describe('disabled request body', function () {
+        it('should handle disabled request body correctly', function (done) {
+            transformer.convert({
+                id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                name: 'disabled-body',
+                order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                folders: [],
+                folders_order: [],
+                requests: [{
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    headers: '',
+                    url: 'https://postman-echo.com/post',
+                    data: 'foo=bar',
+                    method: 'POST',
+                    dataMode: 'raw',
+                    dataDisabled: true,
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                }]
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    info: {
+                        _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        name: 'disabled-body',
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+                    },
+                    item: [{
+                        _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        name: '',
+                        request: {
+                            body: {
+                                disabled: true,
+                                mode: 'raw',
+                                raw: 'foo=bar'
+                            },
+                            header: [],
+                            method: 'POST',
+                            url: {
+                                host: ['postman-echo', 'com'],
+                                path: ['post'],
+                                protocol: 'https',
+                                raw: 'https://postman-echo.com/post'
+                            }
+                        },
+                        response: []
+                    }]
+                });
+                done();
+            });
+        });
+
+        it('should not include disabled property unless its true', function (done) {
+            transformer.convert({
+                id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                name: 'disabled-body',
+                order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                folders: [],
+                folders_order: [],
+                requests: [{
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    headers: '',
+                    url: 'https://postman-echo.com/post',
+                    data: 'foo=bar',
+                    method: 'POST',
+                    dataMode: 'raw',
+                    dataDisabled: false,
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                }]
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    info: {
+                        _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        name: 'disabled-body',
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+                    },
+                    item: [{
+                        _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        name: '',
+                        request: {
+                            body: {
+                                mode: 'raw',
+                                raw: 'foo=bar'
+                            },
+                            header: [],
+                            method: 'POST',
+                            url: {
+                                host: ['postman-echo', 'com'],
+                                path: ['post'],
+                                protocol: 'https',
+                                raw: 'https://postman-echo.com/post'
+                            }
+                        },
+                        response: []
+                    }]
+                });
+                done();
+            });
+        });
+    });
+
     describe('auth', function () {
         it('should be handled correctly in v1 -> v2.1.0 conversions', function (done) {
             var fixture = require('../fixtures/sample-auth');
