@@ -1,5 +1,8 @@
 # Postman Collection Transformer Changelog
 
+#### v2.7.0 (September 11, 2018)
+* #117 Added support for disabled request body flag
+
 #### v2.6.3 (August 29, 2018)
 * #115 Coerced non-string formdata file values in request bodies to `null`
 
