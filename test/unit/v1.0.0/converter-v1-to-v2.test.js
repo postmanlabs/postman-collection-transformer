@@ -331,6 +331,105 @@ describe('v1.0.0 to v2.0.0', function () {
         });
     });
 
+    describe('disabled request body', function () {
+        it('should handle disabled request body correctly', function (done) {
+            transformer.convert({
+                id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                name: 'disabled-body',
+                order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                folders: [],
+                folders_order: [],
+                requests: [{
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    headers: '',
+                    url: 'https://postman-echo.com/post',
+                    data: 'foo=bar',
+                    method: 'POST',
+                    dataMode: 'raw',
+                    dataDisabled: true,
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                }]
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    info: {
+                        _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        name: 'disabled-body',
+                        schema: 'https://schema.getpostman.com/json/collection/v2.0.0/collection.json'
+                    },
+                    item: [{
+                        _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        name: '',
+                        request: {
+                            body: {
+                                disabled: true,
+                                mode: 'raw',
+                                raw: 'foo=bar'
+                            },
+                            header: [],
+                            method: 'POST',
+                            url: 'https://postman-echo.com/post'
+                        },
+                        response: []
+                    }]
+                });
+                done();
+            });
+        });
+
+        it('should not include disabled property unless its true', function (done) {
+            transformer.convert({
+                id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                name: 'disabled-body',
+                order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                folders: [],
+                folders_order: [],
+                requests: [{
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    headers: '',
+                    url: 'https://postman-echo.com/post',
+                    data: 'foo=bar',
+                    method: 'POST',
+                    dataMode: 'raw',
+                    dataDisabled: false,
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                }]
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    info: {
+                        _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        name: 'disabled-body',
+                        schema: 'https://schema.getpostman.com/json/collection/v2.0.0/collection.json'
+                    },
+                    item: [{
+                        _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        name: '',
+                        request: {
+                            body: {
+                                mode: 'raw',
+                                raw: 'foo=bar'
+                            },
+                            header: [],
+                            method: 'POST',
+                            url: 'https://postman-echo.com/post'
+                        },
+                        response: []
+                    }]
+                });
+                done();
+            });
+        });
+    });
+
     describe('auth', function () {
         it('should be handled correctly in v1 -> v2 conversions', function (done) {
             var fixture = require('../fixtures/sample-auth');
@@ -1939,7 +2038,7 @@ describe('v1.0.0 to v2.0.0', function () {
             retainEmptyValues: true
         };
 
-        it('should nullify empty descriptions when set to true', function () {
+        it('should nullify empty descriptions and retain disabled states when set to true', function () {
             transformer.convert({
                 id: '9ac7325c-cc3f-4c20-b0f8-a435766cb74c',
                 description: '', // this represents the case where descriptions are removed
@@ -1952,6 +2051,7 @@ describe('v1.0.0 to v2.0.0', function () {
                     id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
                     description: false,
                     dataMode: 'params',
+                    dataDisabled: false,
                     data: [{ key: 'body_foo', value: 'body_bar', description: 0 }],
                     auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random' }] },
                     pathVariableData: [{ key: 'pv_foo', value: 'pv_bar', description: '' }],
@@ -1976,6 +2076,7 @@ describe('v1.0.0 to v2.0.0', function () {
                                 auth: { type: 'bearer', bearer: { token: 'random' } },
                                 description: null,
                                 body: {
+                                    disabled: false,
                                     mode: 'formdata',
                                     formdata: [{ description: null, key: 'body_foo', value: 'body_bar' }]
                                 },
@@ -1999,6 +2100,7 @@ describe('v1.0.0 to v2.0.0', function () {
                 id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
                 description: false,
                 dataMode: 'params',
+                dataDisabled: false,
                 data: [{ key: 'body_foo', value: 'body_bar', description: 0 }],
                 auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random' }] },
                 pathVariableData: [{ key: 'pv_foo', value: 'pv_bar', description: '' }],
@@ -2013,6 +2115,7 @@ describe('v1.0.0 to v2.0.0', function () {
                     request: {
                         auth: { type: 'bearer', bearer: { token: 'random' } },
                         body: {
+                            disabled: false,
                             mode: 'formdata',
                             formdata: [{ description: null, key: 'body_foo', value: 'body_bar' }]
                         },
@@ -2034,6 +2137,7 @@ describe('v1.0.0 to v2.0.0', function () {
                 id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
                 description: false,
                 dataMode: 'urlencoded',
+                dataDisabled: false,
                 data: [{ key: 'body_foo', value: 'body_bar', description: 0 }],
                 auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random' }] },
                 pathVariableData: [{ key: 'pv_foo', value: 'pv_bar', description: '' }],
@@ -2048,6 +2152,7 @@ describe('v1.0.0 to v2.0.0', function () {
                     request: {
                         auth: { type: 'bearer', bearer: { token: 'random' } },
                         body: {
+                            disabled: false,
                             mode: 'urlencoded',
                             urlencoded: [{ description: null, key: 'body_foo', value: 'body_bar' }]
                         },
@@ -2058,6 +2163,34 @@ describe('v1.0.0 to v2.0.0', function () {
                             raw: '',
                             variable: [{ description: null, key: 'pv_foo', value: 'pv_bar' }]
                         }
+                    },
+                    response: []
+                });
+            });
+        });
+
+        it('should work correctly for raw bodies', function () {
+            transformer.convertSingle({
+                id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
+                dataDisabled: false,
+                dataMode: 'raw',
+                rawModeData: 'foobar',
+                url: 'https://postman-echo.com/get'
+            }, options, function (err, result) {
+                expect(err).not.to.be.ok;
+
+                expect(JSON.parse(JSON.stringify(result))).to.eql({
+                    _postman_id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
+                    name: '',
+                    request: {
+                        description: null,
+                        header: [],
+                        body: {
+                            disabled: false,
+                            mode: 'raw',
+                            raw: 'foobar'
+                        },
+                        url: 'https://postman-echo.com/get'
                     },
                     response: []
                 });
