@@ -2038,7 +2038,7 @@ describe('v1.0.0 to v2.0.0', function () {
             retainEmptyValues: true
         };
 
-        it('should nullify empty descriptions when set to true', function () {
+        it('should nullify empty descriptions and retain disabled states when set to true', function () {
             transformer.convert({
                 id: '9ac7325c-cc3f-4c20-b0f8-a435766cb74c',
                 description: '', // this represents the case where descriptions are removed
@@ -2051,6 +2051,7 @@ describe('v1.0.0 to v2.0.0', function () {
                     id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
                     description: false,
                     dataMode: 'params',
+                    dataDisabled: false,
                     data: [{ key: 'body_foo', value: 'body_bar', description: 0 }],
                     auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random' }] },
                     pathVariableData: [{ key: 'pv_foo', value: 'pv_bar', description: '' }],
@@ -2075,6 +2076,7 @@ describe('v1.0.0 to v2.0.0', function () {
                                 auth: { type: 'bearer', bearer: { token: 'random' } },
                                 description: null,
                                 body: {
+                                    disabled: false,
                                     mode: 'formdata',
                                     formdata: [{ description: null, key: 'body_foo', value: 'body_bar' }]
                                 },
@@ -2098,6 +2100,7 @@ describe('v1.0.0 to v2.0.0', function () {
                 id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
                 description: false,
                 dataMode: 'params',
+                dataDisabled: false,
                 data: [{ key: 'body_foo', value: 'body_bar', description: 0 }],
                 auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random' }] },
                 pathVariableData: [{ key: 'pv_foo', value: 'pv_bar', description: '' }],
@@ -2112,6 +2115,7 @@ describe('v1.0.0 to v2.0.0', function () {
                     request: {
                         auth: { type: 'bearer', bearer: { token: 'random' } },
                         body: {
+                            disabled: false,
                             mode: 'formdata',
                             formdata: [{ description: null, key: 'body_foo', value: 'body_bar' }]
                         },
@@ -2133,6 +2137,7 @@ describe('v1.0.0 to v2.0.0', function () {
                 id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
                 description: false,
                 dataMode: 'urlencoded',
+                dataDisabled: false,
                 data: [{ key: 'body_foo', value: 'body_bar', description: 0 }],
                 auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random' }] },
                 pathVariableData: [{ key: 'pv_foo', value: 'pv_bar', description: '' }],
@@ -2147,6 +2152,7 @@ describe('v1.0.0 to v2.0.0', function () {
                     request: {
                         auth: { type: 'bearer', bearer: { token: 'random' } },
                         body: {
+                            disabled: false,
                             mode: 'urlencoded',
                             urlencoded: [{ description: null, key: 'body_foo', value: 'body_bar' }]
                         },
@@ -2157,6 +2163,34 @@ describe('v1.0.0 to v2.0.0', function () {
                             raw: '',
                             variable: [{ description: null, key: 'pv_foo', value: 'pv_bar' }]
                         }
+                    },
+                    response: []
+                });
+            });
+        });
+
+        it('should work correctly for raw bodies', function () {
+            transformer.convertSingle({
+                id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
+                dataDisabled: false,
+                dataMode: 'raw',
+                rawModeData: 'foobar',
+                url: 'https://postman-echo.com/get'
+            }, options, function (err, result) {
+                expect(err).not.to.be.ok;
+
+                expect(JSON.parse(JSON.stringify(result))).to.eql({
+                    _postman_id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
+                    name: '',
+                    request: {
+                        description: null,
+                        header: [],
+                        body: {
+                            disabled: false,
+                            mode: 'raw',
+                            raw: 'foobar'
+                        },
+                        url: 'https://postman-echo.com/get'
                     },
                     response: []
                 });
