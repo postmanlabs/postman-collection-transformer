@@ -588,7 +588,7 @@ describe('v2.1.0 to v1.0.0', function () {
             transformer.convert({
                 info: {
                     _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
-                    name: 'disabled-body',
+                    name: 'get-with-body',
                     schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                 },
                 item: [{
@@ -619,7 +619,7 @@ describe('v2.1.0 to v1.0.0', function () {
 
                 expect(converted).to.eql({
                     id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
-                    name: 'disabled-body',
+                    name: 'get-with-body',
                     order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
                     folders_order: [],
                     folders: [],
