@@ -67,4 +67,46 @@ describe('util', function () {
             });
         });
     });
+
+    describe('addProtocolProfileBehavior', function () {
+        it('should add protocolProfileBehavior property to the destination object', function () {
+            var source = {
+                    protocolProfileBehavior: {
+                        disableBodyPruning: true
+                    }
+                },
+                destination = {};
+
+            expect(util.addProtocolProfileBehavior(source, destination)).to.be.true;
+            expect(destination).to.eql(source);
+        });
+
+        it('should not add protocolProfileBehavior property for invalid values', function () {
+            var source = {
+                    protocolProfileBehavior: 'random'
+                },
+                destination = {};
+
+            expect(util.addProtocolProfileBehavior(source, destination)).to.be.false;
+            expect(destination).to.eql({});
+        });
+
+        it('should handle missing destination object correctly', function () {
+            expect(util.addProtocolProfileBehavior({
+                protocolProfileBehavior: {
+                    disableBodyPruning: true
+                }
+            })).to.be.true;
+
+            expect(util.addProtocolProfileBehavior({
+                protocolProfileBehavior: 'random'
+            })).to.be.false;
+
+            expect(util.addProtocolProfileBehavior({
+                foo: 'bar'
+            })).to.be.false;
+
+            expect(util.addProtocolProfileBehavior('random')).to.be.false;
+        });
+    });
 });
