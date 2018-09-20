@@ -71,6 +71,7 @@ describe('util', function () {
     describe('addProtocolProfileBehavior', function () {
         it('should add protocolProfileBehavior property to the destination object', function () {
             var source = {
+                    foo: 'bar',
                     protocolProfileBehavior: {
                         disableBodyPruning: true
                     }
@@ -78,7 +79,11 @@ describe('util', function () {
                 destination = {};
 
             expect(util.addProtocolProfileBehavior(source, destination)).to.be.true;
-            expect(destination).to.eql(source);
+            expect(destination).to.eql({
+                protocolProfileBehavior: {
+                    disableBodyPruning: true
+                }
+            });
         });
 
         it('should not add protocolProfileBehavior property for invalid values', function () {
@@ -107,6 +112,8 @@ describe('util', function () {
             })).to.be.false;
 
             expect(util.addProtocolProfileBehavior('random')).to.be.false;
+
+            expect(util.addProtocolProfileBehavior()).to.be.false;
         });
     });
 });
