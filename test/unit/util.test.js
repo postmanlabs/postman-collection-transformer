@@ -108,6 +108,10 @@ describe('util', function () {
             })).to.be.false;
 
             expect(util.addProtocolProfileBehavior({
+                protocolProfileBehavior: null
+            })).to.be.false;
+
+            expect(util.addProtocolProfileBehavior({
                 foo: 'bar'
             })).to.be.false;
 
