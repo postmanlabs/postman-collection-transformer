@@ -1653,6 +1653,41 @@ describe('v1.0.0 normalization', function () {
                 done();
             });
         });
+
+        it('should work correctly for single request', function (done) {
+            transformer.normalizeSingle({
+                id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                headers: '',
+                url: 'https://postman-echo.com/get',
+                data: 'foo=bar',
+                method: 'GET',
+                dataMode: 'raw',
+                protocolProfileBehavior: {
+                    disableBodyPruning: true
+                },
+                collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    headers: '',
+                    url: 'https://postman-echo.com/get',
+                    data: 'foo=bar',
+                    method: 'GET',
+                    dataMode: 'raw',
+                    protocolProfileBehavior: {
+                        disableBodyPruning: true
+                    },
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                });
+
+                done();
+            });
+        });
     });
 
     describe('mutate', function () {
