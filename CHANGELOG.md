@@ -1,5 +1,8 @@
 # Postman Collection Transformer Changelog
 
+#### v2.8.0 (September 20, 2018)
+* #118 Added support for the `protocolProfileBehaviour` data element
+
 #### v2.7.0 (September 11, 2018)
 * #117 Added support for disabled request body flag
 
