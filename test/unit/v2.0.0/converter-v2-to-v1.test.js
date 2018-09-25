@@ -375,6 +375,110 @@ describe('v2.0.0 to v1.0.0', function () {
                 done();
             });
         });
+
+        describe('as objects', function () {
+            it('should be flattened in collections if their content is truthy', function (done) {
+                transformer.convert({
+                    info: {
+                        _postman_id: 'C1',
+                        name: 'collection',
+                        description: { content: 'This is a collection' }
+                    }
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                        id: 'C1',
+                        name: 'collection',
+                        description: 'This is a collection',
+                        requests: [],
+                        folders: [],
+                        order: [],
+                        folders_order: []
+                    });
+
+                    done();
+                });
+            });
+
+            it('should be flattened in requests if their content is truthy', function (done) {
+                transformer.convertSingle({
+                    _postman_id: 'R1',
+                    request: {
+                        description: { content: 'This is a request' },
+                        url: 'https://postman-echo.com/get'
+                    }
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                        id: 'R1',
+                        description: 'This is a request',
+                        data: [],
+                        headerData: [],
+                        headers: '',
+                        pathVariableData: [],
+                        queryParams: [],
+                        rawModeData: '',
+                        url: 'https://postman-echo.com/get'
+                    });
+
+                    done();
+                });
+            });
+
+            it('should be pruned from collections if their content is falsy', function (done) {
+                transformer.convert({
+                    info: {
+                        _postman_id: 'C1',
+                        name: 'collection',
+                        description: { content: null }
+                    }
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                        id: 'C1',
+                        name: 'collection',
+                        requests: [],
+                        folders: [],
+                        order: [],
+                        folders_order: []
+                    });
+
+                    done();
+                });
+            });
+
+            it('should be pruned from requests if their content is falsy', function (done) {
+                transformer.convertSingle({
+                    _postman_id: 'R1',
+                    request: {
+                        description: { content: '' },
+                        url: 'https://postman-echo.com/get'
+                    }
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                        id: 'R1',
+                        data: [],
+                        headerData: [],
+                        headers: '',
+                        pathVariableData: [],
+                        queryParams: [],
+                        rawModeData: '',
+                        url: 'https://postman-echo.com/get'
+                    });
+
+                    done();
+                });
+            });
+        });
     });
 
     describe('request file body', function () {
@@ -1245,7 +1349,7 @@ describe('v2.0.0 to v1.0.0', function () {
                         formdata: [{ description: undefined, key: 'body_foo', value: 'body_bar' }]
                     },
                     url: {
-                        query: [{ description: undefined, key: 'query_foo', value: 'query_bar' }],
+                        query: [{ description: { content: '' }, key: 'query_foo', value: 'query_bar' }],
                         raw: '',
                         variable: [{ description: '', key: 'pv_foo', value: 'pv_bar' }]
                     }
@@ -1288,7 +1392,7 @@ describe('v2.0.0 to v1.0.0', function () {
                         urlencoded: [{ description: undefined, key: 'body_foo', value: 'body_bar' }]
                     },
                     url: {
-                        query: [{ description: undefined, key: 'query_foo', value: 'query_bar' }],
+                        query: [{ description: { content: '' }, key: 'query_foo', value: 'query_bar' }],
                         raw: '',
                         variable: [{ description: '', key: 'pv_foo', value: 'pv_bar' }]
                     }
