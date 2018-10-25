@@ -1969,7 +1969,10 @@ module.exports = {
                                     value: "Digest username=\"postman\", realm=\"Users\", nonce=\"ni1LiL0O37PRRhofWdCLmwFsnEtH1lew\", uri=\"/digest-auth\", response=\"254679099562cf07df9b6f5d8d15db44\", opaque=\"\""
                                 }
                             ],
-                            body: {},
+                            body: {
+                                formdata: [],
+                                mode: "formdata"
+                            },
                             description: "This endpoint sends a hashed Digest Authorization header to gain access to a valid `200 Ok` response code. In Postman, it uses the stored [global variables](https://www.getpostman.com/docs/environments#gloval-variables), `echo_digest_realm` and `echo_digest_nonce`, to generate the hashed authorisation header.\n\nWithin Postman, for this request to successfully authenticate, running the previous request \"DigestAuth Request\" stores the relevant information within the global variables."
                         },
                         response: [
@@ -2090,7 +2093,10 @@ module.exports = {
                                     value: "Basic cG9zdG1hbjpwYXNzd29yZA=="
                                 }
                             ],
-                            body: {},
+                            body: {
+                                formdata: [],
+                                mode: "formdata"
+                            },
                             description: "This endpoint simulates a **basic-auth** protected endpoint. \nThe endpoint accepts a default username and password and returns a status code of `200 ok` only if the same is provided. \nOtherwise it will return a status code `401 unauthorized`.\n\n> Username: `postman`\n> \n> Password: `password`\n\nTo use this endpoint, send a request with the header `Authorization: Basic cG9zdG1hbjpwYXNzd29yZA==`. \nThe cryptic latter half of the header value is a base64 encoded concatenation of the default username and password. \nUsing Postman, to send this request, you can simply fill in the username and password in the \"Authorization\" tab and Postman will do the rest for you.\n\nTo know more about basic authentication, refer to the [Basic Access Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.getpostman.com/docs/helpers#basic-auth) elaborates how to use the same within the Postman app."
                         },
                         response: [
@@ -2334,7 +2340,10 @@ module.exports = {
                             },
                             method: "GET",
                             header: [],
-                            body: {},
+                            body: {
+                                formdata: [],
+                                mode: "formdata"
+                            },
                             description: "The cookie setter endpoint accepts a list of cookies and their values as part of URL parameters of a `GET` request. These cookies are saved and can be subsequently retrieved or deleted. The response of this request returns a JSON with all cookies listed.\n\nTo set your own set of cookies, simply replace the URL parameters \"foo1=bar1&foo2=bar2\" with your own set of key-value pairs."
                         },
                         response: [
@@ -2437,7 +2446,10 @@ module.exports = {
                             url: "https://echo.getpostman.com/cookies",
                             method: "GET",
                             header: [],
-                            body: {},
+                            body: {
+                                formdata: [],
+                                mode: "formdata"
+                            },
                             description: "Use this endpoint to get a list of all cookies that are stored with respect to this domain. Whatever key-value pairs that has been previously set by calling the \"Set Cookies\" endpoint, will be returned as response JSON."
                         },
                         response: [
@@ -2547,7 +2559,10 @@ module.exports = {
                             },
                             method: "GET",
                             header: [],
-                            body: {},
+                            body: {
+                                formdata: [],
+                                mode: "formdata"
+                            },
                             description: "One or more cookies that has been set for this domain can be deleted by providing the cookie names as part of the URL parameter. The response of this request is a JSON containing the list of currently set cookies."
                         },
                         response: [
@@ -2659,7 +2674,10 @@ module.exports = {
                             url: "https://echo.getpostman.com/headers",
                             method: "GET",
                             header: [],
-                            body: {},
+                            body: {
+                                formdata: [],
+                                mode: "formdata"
+                            },
                             description: "A `GET` request to this endpoint returns the list of all request headers as part of the response JSON.\nIn Postman, sending your own set of headers through the [Headers tab](https://www.getpostman.com/docs/requests#headers) will reveal the headers as part of the response."
                         },
                         response: []
@@ -3002,7 +3020,10 @@ module.exports = {
                             url: "https://echo.getpostman.com/stream/10",
                             method: "GET",
                             header: [],
-                            body: {},
+                            body: {
+                                formdata: [],
+                                mode: "formdata"
+                            },
                             description: "This endpoint allows one to recieve streaming http response using [chunked transfer encoding](https://en.wikipedia.org/wiki/Chunked_transfer_encoding) of a configurable length.\n\nA streaming response does not wait for the entire response to be generated on server before flushing it out. This implies that for a fairly large response, parts of it can be streamed to the requestee as and when it is generated on server. The client can then take actions of processing this partially received data."
                         },
                         response: []
@@ -3061,7 +3082,10 @@ module.exports = {
                             url: "https://echo.getpostman.com/encoding/utf8",
                             method: "GET",
                             header: [],
-                            body: {},
+                            body: {
+                                formdata: [],
+                                mode: "formdata"
+                            },
                             description: "If a response of an endpoint requires to send data beyond the basic English / ASCII character set, the `charset` parameter in the `Content-Type` response header defines the character encoding policy.\n\nThis endpoint returns an `UTF8` character encoded response body with text in various languages such as Greek, Latin, East Asian, etc. Postman can interpret the character encoding and use appropriate methods to display the character set in responses."
                         },
                         response: []
@@ -3157,7 +3181,10 @@ module.exports = {
                             url: "https://echo.getpostman.com/deflate",
                             method: "GET",
                             header: [],
-                            body: {},
+                            body: {
+                                formdata: [],
+                                mode: "formdata"
+                            },
                             description: "This endpoint returns the response using [deflate compression algoritm](https://en.wikipedia.org/wiki/DEFLATE). \nThe uncompressed response is a JSON string containing the details of the request sent by the client. For this endpoint to work, one should request with `Accept-encoding` header containing `deflate` as part of its value. Postman supports gzip, deflate and SDCH decoding and automatically sends them as part of the request.\n\nHTTP Compression allows the server to send responses in a compressed format, which is uncompressed by the client before processing. This reduces network bandwidth consumption at the cost of increase in CPU usage.\nTo know more about this, refer the [HTTP Compression](https://en.wikipedia.org/wiki/HTTP_compression) wikipedia article."
                         },
                         response: []
@@ -3906,7 +3933,10 @@ module.exports = {
                                     value: "Digest username=\"postman\", realm=\"Users\", nonce=\"ni1LiL0O37PRRhofWdCLmwFsnEtH1lew\", uri=\"/digest-auth\", response=\"254679099562cf07df9b6f5d8d15db44\", opaque=\"\""
                                 }
                             ],
-                            body: {},
+                            body: {
+                                formdata: [],
+                                mode: "formdata"
+                            },
                             description: "This endpoint sends a hashed Digest Authorization header to gain access to a valid `200 Ok` response code. In Postman, it uses the stored [global variables](https://www.getpostman.com/docs/environments#gloval-variables), `echo_digest_realm` and `echo_digest_nonce`, to generate the hashed authorisation header.\n\nWithin Postman, for this request to successfully authenticate, running the previous request \"DigestAuth Request\" stores the relevant information within the global variables."
                         },
                         response: [
@@ -4032,7 +4062,10 @@ module.exports = {
                                     value: "Basic cG9zdG1hbjpwYXNzd29yZA=="
                                 }
                             ],
-                            body: {},
+                            body: {
+                                formdata: [],
+                                mode: "formdata"
+                            },
                             description: "This endpoint simulates a **basic-auth** protected endpoint. \nThe endpoint accepts a default username and password and returns a status code of `200 ok` only if the same is provided. \nOtherwise it will return a status code `401 unauthorized`.\n\n> Username: `postman`\n> \n> Password: `password`\n\nTo use this endpoint, send a request with the header `Authorization: Basic cG9zdG1hbjpwYXNzd29yZA==`. \nThe cryptic latter half of the header value is a base64 encoded concatenation of the default username and password. \nUsing Postman, to send this request, you can simply fill in the username and password in the \"Authorization\" tab and Postman will do the rest for you.\n\nTo know more about basic authentication, refer to the [Basic Access Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.getpostman.com/docs/helpers#basic-auth) elaborates how to use the same within the Postman app."
                         },
                         response: [
@@ -4281,7 +4314,10 @@ module.exports = {
                             },
                             method: "GET",
                             header: [],
-                            body: {},
+                            body: {
+                                formdata: [],
+                                mode: "formdata"
+                            },
                             description: "The cookie setter endpoint accepts a list of cookies and their values as part of URL parameters of a `GET` request. These cookies are saved and can be subsequently retrieved or deleted. The response of this request returns a JSON with all cookies listed.\n\nTo set your own set of cookies, simply replace the URL parameters \"foo1=bar1&foo2=bar2\" with your own set of key-value pairs."
                         },
                         response: [
@@ -4389,7 +4425,10 @@ module.exports = {
                             },
                             method: "GET",
                             header: [],
-                            body: {},
+                            body: {
+                                formdata: [],
+                                mode: "formdata"
+                            },
                             description: "Use this endpoint to get a list of all cookies that are stored with respect to this domain. Whatever key-value pairs that has been previously set by calling the \"Set Cookies\" endpoint, will be returned as response JSON."
                         },
                         response: [
@@ -4499,7 +4538,10 @@ module.exports = {
                             },
                             method: "GET",
                             header: [],
-                            body: {},
+                            body: {
+                                formdata: [],
+                                mode: "formdata"
+                            },
                             description: "One or more cookies that has been set for this domain can be deleted by providing the cookie names as part of the URL parameter. The response of this request is a JSON containing the list of currently set cookies."
                         },
                         response: [
@@ -4616,7 +4658,10 @@ module.exports = {
                             },
                             method: "GET",
                             header: [],
-                            body: {},
+                            body: {
+                                formdata: [],
+                                mode: "formdata"
+                            },
                             description: "A `GET` request to this endpoint returns the list of all request headers as part of the response JSON.\nIn Postman, sending your own set of headers through the [Headers tab](https://www.getpostman.com/docs/requests#headers) will reveal the headers as part of the response."
                         },
                         response: []
@@ -4989,7 +5034,10 @@ module.exports = {
                             },
                             method: "GET",
                             header: [],
-                            body: {},
+                            body: {
+                                formdata: [],
+                                mode: "formdata"
+                            },
                             description: "This endpoint allows one to recieve streaming http response using [chunked transfer encoding](https://en.wikipedia.org/wiki/Chunked_transfer_encoding) of a configurable length.\n\nA streaming response does not wait for the entire response to be generated on server before flushing it out. This implies that for a fairly large response, parts of it can be streamed to the requestee as and when it is generated on server. The client can then take actions of processing this partially received data."
                         },
                         response: []
@@ -5058,7 +5106,10 @@ module.exports = {
                             },
                             method: "GET",
                             header: [],
-                            body: {},
+                            body: {
+                                formdata: [],
+                                mode: "formdata"
+                            },
                             description: "If a response of an endpoint requires to send data beyond the basic English / ASCII character set, the `charset` parameter in the `Content-Type` response header defines the character encoding policy.\n\nThis endpoint returns an `UTF8` character encoded response body with text in various languages such as Greek, Latin, East Asian, etc. Postman can interpret the character encoding and use appropriate methods to display the character set in responses."
                         },
                         response: []
@@ -5164,7 +5215,10 @@ module.exports = {
                             },
                             method: "GET",
                             header: [],
-                            body: {},
+                            body: {
+                                formdata: [],
+                                mode: "formdata"
+                            },
                             description: "This endpoint returns the response using [deflate compression algoritm](https://en.wikipedia.org/wiki/DEFLATE). \nThe uncompressed response is a JSON string containing the details of the request sent by the client. For this endpoint to work, one should request with `Accept-encoding` header containing `deflate` as part of its value. Postman supports gzip, deflate and SDCH decoding and automatically sends them as part of the request.\n\nHTTP Compression allows the server to send responses in a compressed format, which is uncompressed by the client before processing. This reduces network bandwidth consumption at the cost of increase in CPU usage.\nTo know more about this, refer the [HTTP Compression](https://en.wikipedia.org/wiki/HTTP_compression) wikipedia article."
                         },
                         response: []
