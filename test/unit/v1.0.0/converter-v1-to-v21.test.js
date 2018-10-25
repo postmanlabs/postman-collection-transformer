@@ -56,7 +56,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         _postman_id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
                         name: '',
                         request: {
-                            body: { mode: 'raw', raw: '' },
                             header: [],
                             url: {
                                 raw: '',
@@ -283,10 +282,6 @@ describe('v1.0.0 to v2.1.0', function () {
                             _postman_id: 'R1',
                             name: 'request one',
                             request: {
-                                body: {
-                                    mode: 'raw',
-                                    raw: ''
-                                },
                                 header: []
                             },
                             response: []
@@ -775,10 +770,6 @@ describe('v1.0.0 to v2.1.0', function () {
                                 { key: 'showPassword', value: false, type: 'boolean' }
                             ]
                         },
-                        body: {
-                            mode: 'raw',
-                            raw: ''
-                        },
                         header: []
                     },
                     response: []
@@ -821,10 +812,6 @@ describe('v1.0.0 to v2.1.0', function () {
                                 { key: 'password', value: 'password', type: 'string' }
                             ]
                         },
-                        body: {
-                            mode: 'raw',
-                            raw: ''
-                        },
                         header: []
                     },
                     response: []
@@ -848,7 +835,6 @@ describe('v1.0.0 to v2.1.0', function () {
                     _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                     name: '',
                     request: {
-                        body: { mode: 'raw', raw: '' },
                         header: []
                     },
                     response: []
@@ -874,7 +860,6 @@ describe('v1.0.0 to v2.1.0', function () {
                     _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                     name: '',
                     request: {
-                        body: { mode: 'raw', raw: '' },
                         header: []
                     },
                     response: []
@@ -900,7 +885,6 @@ describe('v1.0.0 to v2.1.0', function () {
                             name: '',
                             request: {
                                 auth: { type: 'noauth' },
-                                body: { mode: 'raw', raw: '' },
                                 header: []
                             },
                             response: []
@@ -924,7 +908,6 @@ describe('v1.0.0 to v2.1.0', function () {
                             _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
-                                body: { mode: 'raw', raw: '' },
                                 header: []
                             },
                             response: []
@@ -952,7 +935,6 @@ describe('v1.0.0 to v2.1.0', function () {
                             _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
-                                body: { mode: 'raw', raw: '' },
                                 header: []
                             },
                             response: []
@@ -977,7 +959,6 @@ describe('v1.0.0 to v2.1.0', function () {
                             _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
-                                body: { mode: 'raw', raw: '' },
                                 header: []
                             },
                             response: []
@@ -1001,7 +982,6 @@ describe('v1.0.0 to v2.1.0', function () {
                             _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
-                                body: { mode: 'raw', raw: '' },
                                 header: []
                             },
                             response: []
@@ -1025,7 +1005,6 @@ describe('v1.0.0 to v2.1.0', function () {
                             _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
-                                body: { mode: 'raw', raw: '' },
                                 header: []
                             },
                             response: []
@@ -1049,7 +1028,6 @@ describe('v1.0.0 to v2.1.0', function () {
                             _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
-                                body: { mode: 'raw', raw: '' },
                                 header: []
                             },
                             response: []
@@ -1077,7 +1055,6 @@ describe('v1.0.0 to v2.1.0', function () {
                             _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
-                                body: { mode: 'raw', raw: '' },
                                 header: []
                             },
                             response: []
@@ -1098,8 +1075,7 @@ describe('v1.0.0 to v2.1.0', function () {
                             _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
-                                header: [],
-                                body: { mode: 'raw', raw: '' }
+                                header: []
                             },
                             response: []
                         });
@@ -1188,7 +1164,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         name: '',
                         request: {
                             header: [],
-                            body: { mode: 'raw', raw: '' },
                             auth: {
                                 type: 'basic',
                                 basic: [
@@ -1214,8 +1189,7 @@ describe('v1.0.0 to v2.1.0', function () {
                         _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                         name: '',
                         request: {
-                            header: [],
-                            body: { mode: 'raw', raw: '' }
+                            header: []
                         },
                         response: []
                     });
@@ -1235,8 +1209,7 @@ describe('v1.0.0 to v2.1.0', function () {
                         _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                         name: '',
                         request: {
-                            header: [],
-                            body: { mode: 'raw', raw: '' }
+                            header: []
                         },
                         response: []
                     });
@@ -1260,7 +1233,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         name: '',
                         request: {
                             header: [],
-                            body: { mode: 'raw', raw: '' },
                             auth: {
                                 type: 'bearer',
                                 bearer: [{ key: 'token', value: 'secret', type: 'string' }]
@@ -1304,7 +1276,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         name: '',
                         request: {
                             header: [],
-                            body: { mode: 'raw', raw: '' },
                             auth: {
                                 type: 'bearer',
                                 bearer: [{ key: 'token', value: 'secret', type: 'string' }]
@@ -1336,7 +1307,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         name: '',
                         request: {
                             header: [],
-                            body: { mode: 'raw', raw: '' },
                             auth: {
                                 type: 'basic',
                                 basic: [
@@ -1368,7 +1338,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         name: '',
                         request: {
                             header: [],
-                            body: { mode: 'raw', raw: '' },
                             auth: { type: 'noauth' }
                         },
                         response: []
@@ -1391,8 +1360,7 @@ describe('v1.0.0 to v2.1.0', function () {
                         _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                         name: '',
                         request: {
-                            header: [],
-                            body: { mode: 'raw', raw: '' }
+                            header: []
                         },
                         response: []
                     });
@@ -1414,8 +1382,7 @@ describe('v1.0.0 to v2.1.0', function () {
                         _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                         name: '',
                         request: {
-                            header: [],
-                            body: { mode: 'raw', raw: '' }
+                            header: []
                         },
                         response: []
                     });
@@ -1437,8 +1404,7 @@ describe('v1.0.0 to v2.1.0', function () {
                         _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                         name: '',
                         request: {
-                            header: [],
-                            body: { mode: 'raw', raw: '' }
+                            header: []
                         },
                         response: []
                     });
@@ -1466,7 +1432,6 @@ describe('v1.0.0 to v2.1.0', function () {
                             name: '',
                             request: {
                                 header: [],
-                                body: { mode: 'raw', raw: '' },
                                 auth: {
                                     type: 'basic',
                                     basic: [
@@ -1492,8 +1457,7 @@ describe('v1.0.0 to v2.1.0', function () {
                             _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
-                                header: [],
-                                body: { mode: 'raw', raw: '' }
+                                header: []
                             },
                             response: []
                         });
@@ -1513,8 +1477,7 @@ describe('v1.0.0 to v2.1.0', function () {
                             _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
-                                header: [],
-                                body: { mode: 'raw', raw: '' }
+                                header: []
                             },
                             response: []
                         });
@@ -1538,7 +1501,6 @@ describe('v1.0.0 to v2.1.0', function () {
                             name: '',
                             request: {
                                 header: [],
-                                body: { mode: 'raw', raw: '' },
                                 auth: {
                                     type: 'bearer',
                                     bearer: [{ key: 'token', value: 'secret', type: 'string' }]
@@ -1613,10 +1575,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         }
                     }],
                     request: {
-                        body: {
-                            mode: 'raw',
-                            raw: ''
-                        },
                         header: []
                     },
                     response: []
@@ -1655,10 +1613,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         }
                     }],
                     request: {
-                        body: {
-                            mode: 'raw',
-                            raw: ''
-                        },
                         header: []
                     },
                     response: []
@@ -1708,10 +1662,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         }
                     }],
                     request: {
-                        body: {
-                            mode: 'raw',
-                            raw: ''
-                        },
                         header: []
                     },
                     response: []
@@ -1751,7 +1701,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         listen: 'test'
                     }],
                     request: {
-                        body: { mode: 'raw', raw: '' },
                         header: []
                     },
                     response: []
@@ -1787,8 +1736,7 @@ describe('v1.0.0 to v2.1.0', function () {
                             }
                         }],
                         request: {
-                            header: [],
-                            body: { mode: 'raw', raw: '' }
+                            header: []
                         },
                         response: []
                     });
@@ -1807,8 +1755,7 @@ describe('v1.0.0 to v2.1.0', function () {
                         _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                         name: '',
                         request: {
-                            header: [],
-                            body: { mode: 'raw', raw: '' }
+                            header: []
                         },
                         response: []
                     });
@@ -1845,8 +1792,7 @@ describe('v1.0.0 to v2.1.0', function () {
                         _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                         name: '',
                         request: {
-                            header: [],
-                            body: { mode: 'raw', raw: '' }
+                            header: []
                         },
                         response: [],
                         event: [{
@@ -1881,8 +1827,7 @@ describe('v1.0.0 to v2.1.0', function () {
                         _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                         name: '',
                         request: {
-                            header: [],
-                            body: { mode: 'raw', raw: '' }
+                            header: []
                         },
                         response: [],
                         event: [{
@@ -1917,7 +1862,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                         name: '',
                         request: {
-                            body: { mode: 'raw', raw: '' },
                             header: []
                         },
                         response: []
@@ -1940,7 +1884,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                         name: '',
                         request: {
-                            body: { mode: 'raw', raw: '' },
                             header: []
                         },
                         response: []
@@ -1987,8 +1930,7 @@ describe('v1.0.0 to v2.1.0', function () {
                                 }
                             }],
                             request: {
-                                header: [],
-                                body: { mode: 'raw', raw: '' }
+                                header: []
                             },
                             response: []
                         });
@@ -2022,8 +1964,7 @@ describe('v1.0.0 to v2.1.0', function () {
                                 }
                             }],
                             request: {
-                                header: [],
-                                body: { mode: 'raw', raw: '' }
+                                header: []
                             },
                             response: []
                         });
@@ -2042,8 +1983,7 @@ describe('v1.0.0 to v2.1.0', function () {
                             _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
-                                header: [],
-                                body: { mode: 'raw', raw: '' }
+                                header: []
                             },
                             response: []
                         });
@@ -2078,10 +2018,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         _postman_id: 'R1',
                         name: '',
                         request: {
-                            body: {
-                                mode: 'raw',
-                                raw: ''
-                            },
                             header: []
                         },
                         response: []
@@ -2144,7 +2080,6 @@ describe('v1.0.0 to v2.1.0', function () {
                     name: 'A world of foo!',
                     request: {
                         header: [],
-                        body: { mode: 'raw', raw: '' },
                         url: {
                             raw: 'https://postman-echo.com/get?alpha&beta=&gamma&delta&epsilon=&gamma=',
                             protocol: 'https',
@@ -2200,7 +2135,6 @@ describe('v1.0.0 to v2.1.0', function () {
                             _postman_id: 'ef90671a-ab14-16f5-0a57-41b32fc2a36f',
                             name: 'GET request',
                             request: {
-                                body: { mode: 'raw', raw: '' },
                                 header: [],
                                 method: 'GET',
                                 url: {
