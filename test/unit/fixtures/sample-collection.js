@@ -1977,11 +1977,7 @@ module.exports = {
                                 id: "13fb4261-112d-c199-0a77-3e657047b9ac",
                                 name: "200",
                                 originalRequest: {
-                                    header: [],
-                                    body: {
-                                        mode: "raw",
-                                        raw: ""
-                                    }
+                                    header: []
                                 },
                                 status: "OK",
                                 code: 200,
@@ -2102,11 +2098,7 @@ module.exports = {
                                 id: "42787973-b3b3-4a53-d31a-e59e17f7154e",
                                 name: "401",
                                 originalRequest: {
-                                    header: [],
-                                    body: {
-                                        mode: "raw",
-                                        raw: ""
-                                    }
+                                    header: []
                                 },
                                 status: "Unauthorized",
                                 code: 401,
@@ -2172,11 +2164,7 @@ module.exports = {
                                 id: "821c95e4-e3c3-5906-233d-eab41b095470",
                                 name: "200",
                                 originalRequest: {
-                                    header: [],
-                                    body: {
-                                        mode: "raw",
-                                        raw: ""
-                                    }
+                                    header: []
                                 },
                                 status: "OK",
                                 code: 200,
@@ -2354,11 +2342,7 @@ module.exports = {
                                 id: "987189b6-1a24-395b-8e4b-b601a193d13c",
                                 name: "Cookies",
                                 originalRequest: {
-                                    header: [],
-                                    body: {
-                                        mode: "raw",
-                                        raw: ""
-                                    }
+                                    header: []
                                 },
                                 status: "OK",
                                 code: 200,
@@ -2461,11 +2445,7 @@ module.exports = {
                                 id: "e1fe98b4-1384-a4bb-efb8-7e6115a173f3",
                                 name: "Cookies",
                                 originalRequest: {
-                                    header: [],
-                                    body: {
-                                        mode: "raw",
-                                        raw: ""
-                                    }
+                                    header: []
                                 },
                                 status: "OK",
                                 code: 200,
@@ -2575,11 +2555,7 @@ module.exports = {
                                 id: "85285106-9936-af7e-064a-201442533a7d",
                                 name: "Cookies Response",
                                 originalRequest: {
-                                    header: [],
-                                    body: {
-                                        mode: "raw",
-                                        raw: ""
-                                    }
+                                    header: []
                                 },
                                 status: "OK",
                                 code: 200,
@@ -3254,11 +3230,7 @@ module.exports = {
                                 id: "a8413763-0cd4-8a55-b20d-35a41574fe9a",
                                 name: "401",
                                 originalRequest: {
-                                    header: [],
-                                    body: {
-                                        mode: "raw",
-                                        raw: ""
-                                    }
+                                    header: []
                                 },
                                 status: "Unauthorized",
                                 code: 401,
@@ -3664,11 +3636,7 @@ module.exports = {
                                 id: "59c43487-94b4-2bcb-7c23-f516759ae799",
                                 name: "401",
                                 originalRequest: {
-                                    header: [],
-                                    body: {
-                                        mode: "raw",
-                                        raw: ""
-                                    }
+                                    header: []
                                 },
                                 status: "Unauthorized",
                                 code: 401,
@@ -3734,11 +3702,7 @@ module.exports = {
                                 id: "7a184607-2299-c702-1860-f00026b41b5f",
                                 name: "200",
                                 originalRequest: {
-                                    header: [],
-                                    body: {
-                                        mode: "raw",
-                                        raw: ""
-                                    }
+                                    header: []
                                 },
                                 status: "OK",
                                 code: 200,
@@ -3950,11 +3914,7 @@ module.exports = {
                                 id: "13fb4261-112d-c199-0a77-3e657047b9ac",
                                 name: "200",
                                 originalRequest: {
-                                    header: [],
-                                    body: {
-                                        mode: "raw",
-                                        raw: ""
-                                    }
+                                    header: []
                                 },
                                 status: "OK",
                                 code: 200,
@@ -4080,11 +4040,7 @@ module.exports = {
                                 id: "42787973-b3b3-4a53-d31a-e59e17f7154e",
                                 name: "401",
                                 originalRequest: {
-                                    header: [],
-                                    body: {
-                                        mode: "raw",
-                                        raw: ""
-                                    }
+                                    header: []
                                 },
                                 status: "Unauthorized",
                                 code: 401,
@@ -4150,11 +4106,7 @@ module.exports = {
                                 id: "821c95e4-e3c3-5906-233d-eab41b095470",
                                 name: "200",
                                 originalRequest: {
-                                    header: [],
-                                    body: {
-                                        mode: "raw",
-                                        raw: ""
-                                    }
+                                    header: []
                                 },
                                 status: "OK",
                                 code: 200,
@@ -4337,11 +4289,7 @@ module.exports = {
                                 id: "987189b6-1a24-395b-8e4b-b601a193d13c",
                                 name: "Cookies",
                                 originalRequest: {
-                                    header: [],
-                                    body: {
-                                        mode: "raw",
-                                        raw: ""
-                                    }
+                                    header: []
                                 },
                                 status: "OK",
                                 code: 200,
@@ -4449,11 +4397,7 @@ module.exports = {
                                 id: "e1fe98b4-1384-a4bb-efb8-7e6115a173f3",
                                 name: "Cookies",
                                 originalRequest: {
-                                    header: [],
-                                    body: {
-                                        mode: "raw",
-                                        raw: ""
-                                    }
+                                    header: []
                                 },
                                 status: "OK",
                                 code: 200,
@@ -4563,11 +4507,7 @@ module.exports = {
                                 id: "85285106-9936-af7e-064a-201442533a7d",
                                 name: "Cookies Response",
                                 originalRequest: {
-                                    header: [],
-                                    body: {
-                                        mode: "raw",
-                                        raw: ""
-                                    }
+                                    header: []
                                 },
                                 status: "OK",
                                 code: 200,
@@ -5297,11 +5237,7 @@ module.exports = {
                                 id: "a8413763-0cd4-8a55-b20d-35a41574fe9a",
                                 name: "401",
                                 originalRequest: {
-                                    header: [],
-                                    body: {
-                                        mode: "raw",
-                                        raw: ""
-                                    }
+                                    header: []
                                 },
                                 status: "Unauthorized",
                                 code: 401,
@@ -5727,11 +5663,7 @@ module.exports = {
                                 id: "59c43487-94b4-2bcb-7c23-f516759ae799",
                                 name: "401",
                                 originalRequest: {
-                                    header: [],
-                                    body: {
-                                        mode: "raw",
-                                        raw: ""
-                                    }
+                                    header: []
                                 },
                                 status: "Unauthorized",
                                 code: 401,
@@ -5797,11 +5729,7 @@ module.exports = {
                                 id: "7a184607-2299-c702-1860-f00026b41b5f",
                                 name: "200",
                                 originalRequest: {
-                                    header: [],
-                                    body: {
-                                        mode: "raw",
-                                        raw: ""
-                                    }
+                                    header: []
                                 },
                                 status: "OK",
                                 code: 200,
