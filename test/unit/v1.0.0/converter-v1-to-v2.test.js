@@ -558,7 +558,7 @@ describe('v1.0.0 to v2.0.0', function () {
             });
         });
 
-        it('should set body.mode even if data or rawModeData is not set', function (done) {
+        it('should set dataMode even if data or rawModeData is not set', function (done) {
             transformer.convert({
                 id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                 name: 'null-data',
