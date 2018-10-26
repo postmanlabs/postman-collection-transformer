@@ -52,7 +52,6 @@ describe('v1.0.0 normalization', function () {
                     collectionId: 'C1',
                     auth: null,
                     currentHelper: null,
-                    data: [],
                     helperAttributes: null,
                     tests: null,
                     preRequestScript: null,
@@ -166,7 +165,6 @@ describe('v1.0.0 normalization', function () {
 
                     expect(result).to.eql({
                         id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd',
-                        data: [],
                         currentHelper: null,
                         helperAttributes: null,
                         auth: null
@@ -184,7 +182,6 @@ describe('v1.0.0 normalization', function () {
 
                     expect(result).to.eql({
                         id: '27c8c9ac-dd90-4234-b83a-b199d3a0e945',
-                        data: [],
                         auth: null,
                         currentHelper: null,
                         helperAttributes: null
@@ -202,7 +199,6 @@ describe('v1.0.0 normalization', function () {
 
                     expect(result).to.eql({
                         id: '27c8c9ac-dd90-4234-b83a-b199d3a0e945',
-                        data: [],
                         auth: null,
                         currentHelper: null,
                         helperAttributes: null
@@ -220,7 +216,6 @@ describe('v1.0.0 normalization', function () {
 
                     expect(result).to.eql({
                         id: '27c8c9ac-dd90-4234-b83a-b199d3a0e945',
-                        data: [],
                         auth: null,
                         currentHelper: null,
                         helperAttributes: null
@@ -242,7 +237,6 @@ describe('v1.0.0 normalization', function () {
 
                                 expect(result).to.eql({
                                     id: '27c8c9ac-dd90-4234-b83a-b199d3a0e945',
-                                    data: [],
                                     auth: null,
                                     currentHelper: null,
                                     helperAttributes: null
@@ -261,7 +255,6 @@ describe('v1.0.0 normalization', function () {
 
                                 expect(result).to.eql({
                                     id: '27c8c9ac-dd90-4234-b83a-b199d3a0e945',
-                                    data: [],
                                     auth: null,
                                     currentHelper: null,
                                     helperAttributes: null
@@ -320,7 +313,6 @@ describe('v1.0.0 normalization', function () {
 
                                 expect(result).to.eql({
                                     id: '27c8c9ac-dd90-4234-b83a-b199d3a0e945',
-                                    data: [],
                                     auth: null,
                                     currentHelper: null,
                                     helperAttributes: null
@@ -339,7 +331,6 @@ describe('v1.0.0 normalization', function () {
 
                                 expect(result).to.eql({
                                     id: '27c8c9ac-dd90-4234-b83a-b199d3a0e945',
-                                    data: [],
                                     auth: null,
                                     currentHelper: null,
                                     helperAttributes: null
@@ -410,7 +401,6 @@ describe('v1.0.0 normalization', function () {
 
                     expect(result).to.eql({
                         id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd',
-                        data: [],
                         currentHelper: null,
                         helperAttributes: null,
                         auth: { type: 'noauth' }
@@ -458,7 +448,6 @@ describe('v1.0.0 normalization', function () {
 
                     expect(normalized).to.eql({
                         id: 'bd79f978-d862-49f1-9cea-7c71a762cc12',
-                        data: [],
                         currentHelper: 'basicAuth',
                         helperAttributes: {
                             id: 'basic',
@@ -499,7 +488,6 @@ describe('v1.0.0 normalization', function () {
 
                     expect(normalized).to.eql({
                         id: '722795b9-c9bc-4a01-a024-dd9358548dc1',
-                        data: [],
                         currentHelper: 'basicAuth',
                         helperAttributes: {
                             id: 'basic',
@@ -535,7 +523,6 @@ describe('v1.0.0 normalization', function () {
 
                         expect(normalized).to.eql({
                             id: '722795b9-c9bc-4a01-a024-dd9358548dc1',
-                            data: [],
                             currentHelper: null,
                             helperAttributes: null,
                             auth: null
@@ -555,7 +542,6 @@ describe('v1.0.0 normalization', function () {
 
                         expect(result).to.eql({
                             id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd',
-                            data: [],
                             currentHelper: null,
                             helperAttributes: null,
                             auth: null
@@ -587,7 +573,6 @@ describe('v1.0.0 normalization', function () {
 
                         expect(result).to.eql({
                             id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd',
-                            data: [],
                             currentHelper: null,
                             helperAttributes: null,
                             auth: null
@@ -776,7 +761,6 @@ describe('v1.0.0 normalization', function () {
 
                         expect(result).to.eql({
                             id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
-                            data: [],
                             currentHelper: 'bearerAuth',
                             helperAttributes: {
                                 id: 'bearer',
@@ -808,7 +792,6 @@ describe('v1.0.0 normalization', function () {
 
                         expect(JSON.parse(JSON.stringify(result))).to.eql({
                             id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
-                            data: [],
                             currentHelper: 'basicAuth',
                             helperAttributes: {
                                 id: 'basic',
@@ -841,7 +824,6 @@ describe('v1.0.0 normalization', function () {
                         expect(err).to.not.be.ok;
                         expect(result).to.eql({
                             id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
-                            data: [],
                             currentHelper: null,
                             helperAttributes: null,
                             auth: null
@@ -862,7 +844,6 @@ describe('v1.0.0 normalization', function () {
                         expect(err).to.not.be.ok;
                         expect(result).to.eql({
                             id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
-                            data: [],
                             currentHelper: null,
                             helperAttributes: null,
                             auth: null
@@ -884,7 +865,6 @@ describe('v1.0.0 normalization', function () {
                         expect(err).to.not.be.ok;
                         expect(JSON.parse(JSON.stringify(result))).to.eql({
                             id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
-                            data: [],
                             auth: {
                                 type: 'bearer',
                                 bearer: [{ key: 'token', value: 'secret', type: 'string' }]
@@ -930,7 +910,6 @@ describe('v1.0.0 normalization', function () {
 
                     expect(normalized).to.eql({
                         id: '95df70cd-8631-4459-bc42-3830f30ecae0',
-                        data: [],
                         preRequestScript: 'console.log("Request level pre-request script");',
                         tests: 'console.log("Request level test script");',
                         events: [{
@@ -977,7 +956,6 @@ describe('v1.0.0 normalization', function () {
 
                     expect(normalized).to.eql({
                         id: '53540ee4-8499-44af-9b74-20d415a6fd43',
-                        data: [],
                         preRequestScript: 'console.log("Alternative request level pre-request script");',
                         tests: 'console.log("Alternative request level test script");',
                         events: [{
@@ -1021,7 +999,6 @@ describe('v1.0.0 normalization', function () {
                         expect(err).to.not.be.ok;
                         expect(JSON.parse(JSON.stringify(result))).to.eql({
                             id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
-                            data: [],
                             preRequestScript: 'console.log("Pre-request script");',
                             tests: 'console.log("Test script");',
                             events: [{
@@ -1053,7 +1030,6 @@ describe('v1.0.0 normalization', function () {
                         expect(err).to.not.be.ok;
                         expect(JSON.parse(JSON.stringify(result))).to.eql({
                             id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
-                            data: [],
                             events: [{
                                 listen: 'prerequest',
                                 script: {
@@ -1082,8 +1058,7 @@ describe('v1.0.0 normalization', function () {
                     transformer.normalizeSingle(source, options, function (err, result) {
                         expect(err).to.not.be.ok;
                         expect(JSON.parse(JSON.stringify(result))).to.eql({
-                            id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
-                            data: []
+                            id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c'
                         });
                         done();
                     });
@@ -1115,7 +1090,6 @@ describe('v1.0.0 normalization', function () {
                         expect(err).to.not.be.ok;
                         expect(result).to.eql({
                             id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
-                            data: [],
                             preRequestScript: 'console.log("Actual prerequest script");',
                             tests: 'console.log("Actual test script");',
                             events: [{
@@ -1148,7 +1122,6 @@ describe('v1.0.0 normalization', function () {
                         expect(err).to.not.be.ok;
                         expect(result).to.eql({
                             id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
-                            data: [],
                             preRequestScript: 'console.log("Legacy prerequest script");',
                             tests: 'console.log("Legacy test script");',
                             events: [{
@@ -1181,7 +1154,6 @@ describe('v1.0.0 normalization', function () {
                         expect(err).to.not.be.ok;
                         expect(result).to.eql({
                             id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
-                            data: [],
                             preRequestScript: null,
                             tests: null
                         });
@@ -1212,7 +1184,6 @@ describe('v1.0.0 normalization', function () {
                             expect(err).to.not.be.ok;
                             expect(JSON.parse(JSON.stringify(result))).to.eql({
                                 id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
-                                data: [],
                                 preRequestScript: 'console.log("Pre-request script");',
                                 tests: 'console.log("Test script");',
                                 events: [{
@@ -1244,7 +1215,6 @@ describe('v1.0.0 normalization', function () {
                             expect(err).to.not.be.ok;
                             expect(JSON.parse(JSON.stringify(result))).to.eql({
                                 id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
-                                data: [],
                                 events: [{
                                     listen: 'prerequest',
                                     script: {
@@ -1273,8 +1243,7 @@ describe('v1.0.0 normalization', function () {
                         transformer.normalizeSingle(source, options, function (err, result) {
                             expect(err).to.not.be.ok;
                             expect(JSON.parse(JSON.stringify(result))).to.eql({
-                                id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
-                                data: []
+                                id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c'
                             });
                             done();
                         });
@@ -1559,6 +1528,111 @@ describe('v1.0.0 normalization', function () {
                         collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
                     }]
                 });
+                done();
+            });
+        });
+    });
+
+    describe('null request body', function () {
+        it('should handle null request body correctly', function (done) {
+            transformer.normalize({
+                id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                name: 'disabled-body',
+                order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                folders: [],
+                folders_order: [],
+                requests: [{
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    headers: '',
+                    url: 'https://postman-echo.com/post',
+                    method: 'POST',
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                }]
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                    name: 'disabled-body',
+                    order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                    folders_order: [],
+                    requests: [{
+                        id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        headers: '',
+                        url: 'https://postman-echo.com/post',
+                        method: 'POST',
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                    }]
+                });
+                done();
+            });
+        });
+
+        it('should set dataMode even if data or rawModeData is not set', function (done) {
+            transformer.normalize({
+                id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                name: 'null-data',
+                order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                folders: [],
+                folders_order: [],
+                requests: [{
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    headers: '',
+                    url: 'https://postman-echo.com/post',
+                    dataMode: 'params',
+                    method: 'POST',
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                }]
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                    name: 'null-data',
+                    order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                    folders_order: [],
+                    requests: [{
+                        id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        headers: '',
+                        url: 'https://postman-echo.com/post',
+                        dataMode: 'params',
+                        method: 'POST',
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                    }]
+                });
+                done();
+            });
+        });
+
+        it('should work correctly with normalizeSingle', function (done) {
+            transformer.normalizeSingle({
+                id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                headers: '',
+                url: 'https://postman-echo.com/get',
+                data: 'foo=bar',
+                method: 'GET',
+                collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    headers: '',
+                    url: 'https://postman-echo.com/get',
+                    data: 'foo=bar',
+                    method: 'GET',
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                });
+
                 done();
             });
         });
@@ -2016,7 +2090,6 @@ describe('v1.0.0 normalization', function () {
                         id: '557b9d4d-bc9a-5172-5edf-d43a27055c89',
                         name: 'Request Headers',
                         dataMode: 'params',
-                        data: [],
                         rawModeData: null,
                         descriptionFormat: null,
                         // eslint-disable-next-line max-len
@@ -2087,7 +2160,6 @@ describe('v1.0.0 normalization', function () {
                             id: '557b9d4d-bc9a-5172-5edf-d43a27055c89',
                             name: 'Request Headers',
                             dataMode: 'params',
-                            data: [],
                             auth: null,
                             currentHelper: null,
                             helperAttributes: null,
@@ -3131,7 +3203,7 @@ describe('v1.0.0 normalization', function () {
                     event: [null, {}, { script: {} }],
                     folders: [{ id: 'F1' }],
                     folders_order: ['F1'],
-                    requests: [{ id: 'R1', data: [] }],
+                    requests: [{ id: 'R1' }],
                     order: ['R1']
                 });
                 done();
