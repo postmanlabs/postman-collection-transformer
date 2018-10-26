@@ -2428,6 +2428,49 @@ describe('v1.0.0 to v2.0.0', function () {
             });
         });
 
+        it('should handle null request body correctly', function (done) {
+            transformer.convert({
+                id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                name: 'null-request-body',
+                order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                folders: [],
+                folders_order: [],
+                requests: [{
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    url: 'https://postman-echo.com/post',
+                    method: 'POST',
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                }]
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    info: {
+                        _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        description: null,
+                        name: 'null-request-body',
+                        schema: 'https://schema.getpostman.com/json/collection/v2.0.0/collection.json'
+                    },
+                    item: [{
+                        _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        name: '',
+                        request: {
+                            description: null,
+                            header: [],
+                            body: null,
+                            method: 'POST',
+                            url: 'https://postman-echo.com/post'
+                        },
+                        response: []
+                    }]
+                });
+                done();
+            });
+        });
+
         it('should work correctly for urlencoded bodies as well', function () {
             transformer.convertSingle({
                 id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
