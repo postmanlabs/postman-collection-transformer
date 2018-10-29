@@ -6,7 +6,7 @@
 v2 property: request.body.mode
 
 
-#### `mode` is set based on the following conversion table:
+**`mode` is set based on the following conversion table:**
 | v1         | v2         |
 |------------|------------|
 | raw        | raw        |
@@ -14,10 +14,9 @@ v2 property: request.body.mode
 | params     | formdata   |
 | urlencoded | urlencoded |
 
-#### If `dataMode` is not set or invalid then `mode` is inferred from `rawModeData` or `data`
+**If `dataMode` is not set or invalid then `mode` is inferred from `rawModeData` or `data`**
 
-- `raw`: if `isRawModeData` is true
-- `formdata`: if `isRawModeData` is false OR `data` is an array
+- `formdata`: if `isRawModeData` is false AND `data` is an array
 - `raw`: otherwise
 
 ```
@@ -27,59 +26,74 @@ isRawModeData:
 - `rawModeData` is an array of length 1 and the element is of type string
 ```
 
+---
 
 ### Request Body Data
 
 > v1 property: requests.data or requests.rawModeData  
 v2 property: request.body[request.body.mode]
 
-#### Mode: raw
+**Mode: raw**
 ```javascript
-    if (isRawModeData) {
-        body.raw = Array.isArray(v1.rawModeData) ? v1.rawModeData[0] : v1.rawModeData;
-    }
-    else if (typeof v1.data === 'string') {
-        body.raw = v1.data;
-    }
+if (isRawModeData) {
+    body.raw = Array.isArray(v1.rawModeData) ? v1.rawModeData[0] : v1.rawModeData;
+}
+else if (typeof v1.data === 'string') {
+    body.raw = v1.data;
+}
 ```
 
-#### Mode: file
+**Mode: file**
 ```javascript
-    body.file = { src: v1.rawModeData }
+body.file = { src: v1.rawModeData }
 ```
 
-#### Mode: formdata
+**Mode: formdata**
 ```javascript
-    // TODO: make sure param is an object having property: `key`
-    body.formdata = _.map(v1.data || v1.rawModeData, function (param) {
-        if (param.type === 'file' && _.has(param, 'value')) {
-            param.src = _.isString(param.value) ? param.value : null;
+body.formdata = parseFormData (v1.data || v1.rawModeData, retainEmpty);
+```
+
+**Mode: urlencoded**
+```javascript
+// TODO: make sure param is an object having property: `key`
+body.urlencoded = parseFormData (v1.data || v1.rawModeData, retainEmpty);
+```
+
+```javascript
+ function parseFormData (data, retainEmpty) {
+    if (!Array.isArray(data)) { return []; }
+
+    var formdata = [],
+        i,
+        ii,
+        param;
+
+    for (i = 0, ii = data.length; i < ii; i++) {
+        param = typeof data[i] === 'object' && Object.assign({}, data[i]);
+
+        // skip if param is missing property `key`
+        if (!(param && param.key)) {
+            continue;
+        }
+
+        if (param.type === 'file' && param.value) {
+            param.src = typeof param.value === 'string' ? param.value : null;
             delete param.value;
         }
+
         if (param.enabled === false) {
             param.disabled = true;
         }
 
-        delete param.enabled;
-
-        return param;
-    });
-```
-
-#### Mode: urlencoded
-```javascript
-    // TODO: make sure param is an object having property: `key`
-    body.urlencoded = _.map(v1.data || v1.rawModeData, function (param) {
-        if (param.type === 'file' && _.has(param, 'value')) {
-            param.src = _.isString(param.value) ? param.value : null;
-            delete param.value;
-        }
-        if (param.enabled === false) {
-            param.disabled = true;
-        }
+        // Prevent empty descriptions from showing up in the converted results. This keeps collections clean.
+        util.cleanEmptyValue(param, 'description', retainEmpty);
 
         delete param.enabled;
 
-        return param;
-    });
+        formdata.push(param);
+    }
+
+    return formdata;
+};
+
 ```
