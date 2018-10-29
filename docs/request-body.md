@@ -2,10 +2,11 @@
 
 ### Request Body Mode
 
-> v1 property: requests.dataMode
-> v2 property: request.body.mode
+> v1 property: requests.dataMode  
+v2 property: request.body.mode
 
-#### `mode` is set based on the following conversion table
+
+#### `mode` is set based on the following conversion table:
 | v1         | v2         |
 |------------|------------|
 | raw        | raw        |
@@ -15,19 +16,22 @@
 
 #### If `dataMode` is not set or invalid then `mode` is inferred from `rawModeData` or `data`
 
-**isRawModeData**:
-    - `rawModeData` is not null `AND`
-    - `rawModeData` is of type string `OR`
-    - `rawModeData` is an array of length 1 and the element is of type string
-
 - `raw`: if `isRawModeData` is true
 - `formdata`: if `isRawModeData` is false OR `data` is an array
 - `raw`: otherwise
 
+```
+isRawModeData:
+- `rawModeData` is not null `AND`
+- `rawModeData` is of type string `OR`
+- `rawModeData` is an array of length 1 and the element is of type string
+```
+
+
 ### Request Body Data
 
-> v1 property: requests.data or requests.rawModeData
-> v2 property: request.body[request.body.mode]
+> v1 property: requests.data or requests.rawModeData  
+v2 property: request.body[request.body.mode]
 
 #### Mode: raw
 ```javascript
