@@ -1534,7 +1534,7 @@ describe('v1.0.0 normalization', function () {
     });
 
     describe('null request body', function () {
-        it('should handle null request body correctly', function (done) {
+        it('should handle request without body correctly', function (done) {
             transformer.normalize({
                 id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                 name: 'disabled-body',
