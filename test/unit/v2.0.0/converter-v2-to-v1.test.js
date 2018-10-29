@@ -1296,7 +1296,7 @@ describe('v2.0.0 to v1.0.0', function () {
                         name: '',
                         pathVariables: { pv_foo: 'pv_bar' },
                         pathVariableData: [{ description: null, key: 'pv_foo', value: 'pv_bar' }],
-                        rawModeData: '',
+                        rawModeData: null,
                         responses: [],
                         url: '?query_foo=query_bar',
                         data: [{ description: null, key: 'body_foo', value: 'body_bar' }],
@@ -1347,7 +1347,7 @@ describe('v2.0.0 to v1.0.0', function () {
                     auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random', type: 'string' }] },
                     headers: 'header_foo: header_bar',
                     url: '?query_foo=query_bar',
-                    rawModeData: '',
+                    rawModeData: null,
                     headerData: [{ key: 'header_foo', value: 'header_bar', description: null }],
                     queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }]
                 });
@@ -1370,11 +1370,11 @@ describe('v2.0.0 to v1.0.0', function () {
 
                 expect(JSON.parse(JSON.stringify(result))).to.eql({
                     id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
-                    data: [],
+                    data: null,
                     description: null,
                     responses: [],
                     url: '?query_foo=query_bar',
-                    rawModeData: '',
+                    rawModeData: null,
                     headerData: [],
                     headers: '',
                     pathVariableData: [],
@@ -1419,7 +1419,7 @@ describe('v2.0.0 to v1.0.0', function () {
                     auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random', type: 'string' }] },
                     headers: 'header_foo: header_bar',
                     url: '?query_foo=query_bar',
-                    rawModeData: '',
+                    rawModeData: null,
                     headerData: [{ key: 'header_foo', value: 'header_bar', description: null }],
                     queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }]
                 });
@@ -1443,7 +1443,7 @@ describe('v2.0.0 to v1.0.0', function () {
                 expect(JSON.parse(JSON.stringify(result))).to.eql({
                     id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
                     dataMode: 'raw',
-                    data: [],
+                    data: null,
                     description: null,
                     pathVariableData: [],
                     headers: '',
