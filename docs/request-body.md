@@ -7,6 +7,7 @@ v2 property: request.body.mode
 
 
 **`mode` is set based on the following conversion table:**
+
 | v1         | v2         |
 |------------|------------|
 | raw        | raw        |
@@ -55,7 +56,6 @@ body.formdata = parseFormData (v1.data || v1.rawModeData, retainEmpty);
 
 **Mode: urlencoded**
 ```javascript
-// TODO: make sure param is an object having property: `key`
 body.urlencoded = parseFormData (v1.data || v1.rawModeData, retainEmpty);
 ```
 
