@@ -71,49 +71,6 @@ module.exports = function (exit) {
                 // start the mocha run
                 return mocha.run(next);
             });
-        },
-
-        /**
-         * Execute nsp checks on project dependencies. In-program usage of nsp is a bit tricky as we have to emulate the
-         * cli script's usage of internal nsp functions.
-         *
-         * @param {Function} next - The callback function invoked upon completion of the NSP check.
-         * @returns {*}
-         */
-        function (next) {
-            var nsp = require('nsp'),
-                pkg = loadJSON('../package.json'),
-                nsprc = loadJSON('../.nsprc');
-
-            console.info('processing nsp for security vulnerabilities...\n');
-
-            // we do not pass full package for privacy concerns and also to add the ability to ignore exclude packages,
-            // hence we customise the package before we send it
-            nsp.check({
-                offline: false,
-                package: _.merge({
-                    dependencies: _.omit(pkg.dependencies, nsprc.exclusions || [])
-                }, _.pick(pkg, ['name', 'version', 'homepage', 'repository']))
-            }, function (err, result) {
-                // if processing nsp had an error, simply print that and exit
-                if (err) {
-                    console.error(chalk.red('There was an error processing NSP!\n') + chalk.gray(err.message || err) +
-                        '\n\nSince NSP server failure is not a blocker for tests, tests are not marked as failure!');
-
-                    return next();
-                }
-
-                // in case an nsp violation is found, we raise an error
-                if (result.length) {
-                    console.error(nsp.formatters.default(err, result));
-
-                    return next(1);
-                }
-
-                console.info(chalk.green('nsp ok!\n'));
-
-                return next();
-            });
         }
     ], exit);
 };
