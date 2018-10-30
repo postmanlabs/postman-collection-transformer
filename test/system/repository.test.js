@@ -184,4 +184,14 @@ describe('project repository', function () {
             expect(fs.readFileSync('./.eslintrc').toString()).to.be.ok;
         });
     });
+
+    describe('.gitattributes', function () {
+        it('should exist', function (done) {
+            fs.stat('./.gitattributes', done);
+        });
+
+        it('should have readable content', function () {
+            expect(fs.readFileSync('./.gitattributes').toString()).to.be.ok;
+        });
+    });
 });
