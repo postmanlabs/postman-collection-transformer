@@ -3,8 +3,6 @@ require('shelljs/global');
 
 var chalk = require('chalk'),
     async = require('async'),
-    _ = require('lodash'),
-    path = require('path'),
     packity = require('packity'),
     Mocha = require('mocha'),
     recursive = require('recursive-readdir'),
@@ -14,18 +12,7 @@ var chalk = require('chalk'),
      *
      * @type {String}
      */
-    SPEC_SOURCE_DIR = './test/system',
-
-    /**
-     * Load a JSON from file synchronously, used as an alternative to dynamic requires.
-     *
-     * @param {String} file - The path to the JSON file to load from.
-     * @returns {Object} - The parsed JSON object contained in the file at the provided path.
-     * @throws {SyntaxError} - Throws an error if the provided JSON file is invalid.
-     */
-    loadJSON = function (file) {
-        return JSON.parse(require('fs').readFileSync(path.join(__dirname, file)).toString());
-    };
+    SPEC_SOURCE_DIR = './test/system';
 
 module.exports = function (exit) {
     // banner line
