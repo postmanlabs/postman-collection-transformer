@@ -59,41 +59,4 @@ body.formdata = parseFormData (v1.data || v1.rawModeData, retainEmpty);
 body.urlencoded = parseFormData (v1.data || v1.rawModeData, retainEmpty);
 ```
 
-```javascript
- function parseFormData (data, retainEmpty) {
-    if (!Array.isArray(data)) { return []; }
-
-    var formdata = [],
-        i,
-        ii,
-        param;
-
-    for (i = 0, ii = data.length; i < ii; i++) {
-        param = typeof data[i] === 'object' && Object.assign({}, data[i]);
-
-        // skip if param is missing property `key`
-        if (!(param && param.key)) {
-            continue;
-        }
-
-        if (param.type === 'file' && param.value) {
-            param.src = typeof param.value === 'string' ? param.value : null;
-            delete param.value;
-        }
-
-        if (param.enabled === false) {
-            param.disabled = true;
-        }
-
-        // Prevent empty descriptions from showing up in the converted results. This keeps collections clean.
-        util.cleanEmptyValue(param, 'description', retainEmpty);
-
-        delete param.enabled;
-
-        formdata.push(param);
-    }
-
-    return formdata;
-};
-
-```
+**parseFormData**: [source](../lib/converters/v1.0.0/converter-v1-to-v2.js#L30)
