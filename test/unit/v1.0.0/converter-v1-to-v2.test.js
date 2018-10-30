@@ -558,7 +558,7 @@ describe('v1.0.0 to v2.0.0', function () {
             });
         });
 
-        it('should set mode to raw if dataMode is not set but rawModeData is set as an array', function (done) {
+        it('should set mode to raw if dataMode is not set but rawModeData is a singleton array', function (done) {
             transformer.convert({
                 id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                 name: 'null-dataMode',
@@ -707,7 +707,7 @@ describe('v1.0.0 to v2.0.0', function () {
                     id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
                     headers: '',
                     url: 'https://postman-echo.com/post',
-                    data: ['invalid', { key: 'foo', value: 'bar' }, { value: 'missing key' }],
+                    data: ['invalid', { key: 'foo', value: 'bar' }, { value: 'missing key' }, { key: 'valid' }],
                     method: 'POST',
                     collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
                 }]
@@ -729,7 +729,7 @@ describe('v1.0.0 to v2.0.0', function () {
                         request: {
                             body: {
                                 mode: 'formdata',
-                                formdata: [{ key: 'foo', value: 'bar' }]
+                                formdata: [{ key: 'foo', value: 'bar' }, { key: 'valid' }]
                             },
                             header: [],
                             method: 'POST',
