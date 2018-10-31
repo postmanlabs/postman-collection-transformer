@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/postmanlabs/postman-collection-transformer#readme",
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "devDependencies": {
     "async": "2.6.1",
