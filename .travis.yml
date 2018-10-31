@@ -8,9 +8,7 @@ node_js:
   - '10'
 
 addons:
-  apt:
-    packages:
-      - google-chrome-stable
+  chrome: stable
 
 before_install:
   - export CHROME_BIN=google-chrome
