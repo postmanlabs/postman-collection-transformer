@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/postmanlabs/postman-collection-transformer.svg?branch=develop)](https://travis-ci.org/postmanlabs/postman-collection-transformer) [![Greenkeeper badge](https://badges.greenkeeper.io/postmanlabs/postman-collection-transformer.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/postmanlabs/postman-collection-transformer.svg?branch=develop)](https://travis-ci.org/postmanlabs/postman-collection-transformer)
 # postman-collection-transformer
 Perform rapid conversion of JSON structure between Postman Collection Format v1 and v2.
 
