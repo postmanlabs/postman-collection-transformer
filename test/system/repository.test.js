@@ -3,13 +3,12 @@
  * content of the file as well. Any change to package.json must be accompanied by valid test case in this spec-sheet.
  */
 var _ = require('lodash'),
+    fs = require('fs'),
     expect = require('chai').expect,
     parseIgnore = require('parse-gitignore');
 
 /* global describe, it */
 describe('project repository', function () {
-    var fs = require('fs');
-
     describe('package.json', function () {
         var content,
             json;
@@ -51,7 +50,7 @@ describe('project repository', function () {
                 expect(json.keywords).to.eql(['postman', 'collection', 'json', 'format', 'converter', 'transformer']);
 
                 expect(json).to.have.property('engines');
-                expect(json.engines).to.eql({ node: '>=4' });
+                expect(json.engines).to.eql({ node: '>=6' });
             });
 
             it('must have a valid version string in form of <major>.<minor>.<revision>', function () {
@@ -75,7 +74,7 @@ describe('project repository', function () {
                 json.scripts && Object.keys(json.scripts).forEach(function (scriptName) {
                     var fileContent = fs.readFileSync('npm/' + scriptName + '.js').toString();
 
-                    expect(/^#!\/(bin\/bash|usr\/bin\/env\snode)[\r\n][\W\w]*$/g.test(fileContent)).to.be.ok;
+                    expect((/^#!\/(bin\/bash|usr\/bin\/env\snode)[\r\n][\W\w]*$/g).test(fileContent)).to.be.ok;
                 });
             });
         });
@@ -147,8 +146,8 @@ describe('project repository', function () {
     describe('.ignore files', function () {
         var gitignorePath = '.gitignore',
             npmignorePath = '.npmignore',
-            npmignore = parseIgnore(npmignorePath),
-            gitignore = parseIgnore(gitignorePath);
+            npmignore = parseIgnore(fs.readFileSync(npmignorePath)),
+            gitignore = parseIgnore(fs.readFileSync(gitignorePath));
 
         describe(gitignorePath, function () {
             it('must exist', function (done) {
@@ -185,13 +184,13 @@ describe('project repository', function () {
         });
     });
 
-    describe('.nsprc', function () {
-        it('must exist', function (done) {
-            fs.stat('./.nsprc', done);
+    describe('.gitattributes', function () {
+        it('should exist', function (done) {
+            fs.stat('./.gitattributes', done);
         });
 
-        it('must have readable content', function () {
-            expect(fs.readFileSync('./.nsprc').toString()).to.be.ok;
+        it('should have readable content', function () {
+            expect(fs.readFileSync('./.gitattributes').toString()).to.be.ok;
         });
     });
 });

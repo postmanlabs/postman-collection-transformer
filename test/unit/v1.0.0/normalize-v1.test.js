@@ -1282,6 +1282,446 @@ describe('v1.0.0 normalization', function () {
                 });
             });
         });
+
+        describe('request file body', function () {
+            it('should correctly handle non-string file entities', function (done) {
+                transformer.normalize({
+                    id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                    name: 'body-src-check',
+                    order: [
+                        '4f65e265-dd38-0a67-71a5-d9dd50fa37a1'
+                    ],
+                    folders: [],
+                    folders_order: [],
+                    requests: [
+                        {
+                            id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                            headers: '',
+                            url: 'https://postman-echo.com/post',
+                            method: 'POST',
+                            data: [
+                                { key: 'alpha', value: [], type: 'file' },
+                                { key: 'beta', value: {}, type: 'file' }
+                            ],
+                            dataMode: 'params',
+                            collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                        }
+                    ]
+                }, options, function (err, result) {
+                    expect(err).not.to.be.ok;
+
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        name: 'body-src-check',
+                        order: [
+                            '4f65e265-dd38-0a67-71a5-d9dd50fa37a1'
+                        ],
+                        folders_order: [],
+                        requests: [
+                            {
+                                id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                                headers: '',
+                                url: 'https://postman-echo.com/post',
+                                method: 'POST',
+                                data: [
+                                    { key: 'alpha', value: null, type: 'file' },
+                                    { key: 'beta', value: null, type: 'file' }
+                                ],
+                                dataMode: 'params',
+                                collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                            }
+                        ]
+                    });
+                    done();
+                });
+            });
+
+            it('should correctly handle non-string file entities in requests', function (done) {
+                transformer.normalizeSingle({
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    headers: '',
+                    url: 'https://postman-echo.com/post',
+                    method: 'POST',
+                    data: [
+                        { key: 'alpha', value: [], type: 'file' },
+                        { key: 'beta', value: {}, type: 'file' }
+                    ],
+                    dataMode: 'params',
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                }, options, function (err, result) {
+                    expect(err).not.to.be.ok;
+
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        headers: '',
+                        url: 'https://postman-echo.com/post',
+                        method: 'POST',
+                        data: [
+                            { key: 'alpha', value: null, type: 'file' },
+                            { key: 'beta', value: null, type: 'file' }
+                        ],
+                        dataMode: 'params',
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                    });
+                    done();
+                });
+            });
+
+            it('should set missing file values to null when missing by default (noDefaults = false)', function (done) {
+                transformer.normalizeSingle({
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    headers: '',
+                    url: 'https://postman-echo.com/post',
+                    method: 'POST',
+                    data: [
+                        {
+                            key: 'file',
+                            type: 'file'
+                        }
+                    ],
+                    dataMode: 'params',
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                }, options, function (err, result) {
+                    expect(err).not.to.be.ok;
+
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        headers: '',
+                        url: 'https://postman-echo.com/post',
+                        method: 'POST',
+                        data: [
+                            {
+                                key: 'file',
+                                value: null,
+                                type: 'file'
+                            }
+                        ],
+                        dataMode: 'params',
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                    });
+                    done();
+                });
+            });
+
+            it('should not set missing file values to null when missing and noDefaults is true', function (done) {
+                transformer.normalizeSingle({
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    headers: '',
+                    url: 'https://postman-echo.com/post',
+                    method: 'POST',
+                    data: [
+                        {
+                            key: 'file',
+                            type: 'file'
+                        }
+                    ],
+                    dataMode: 'params',
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                }, _.defaults({ noDefaults: true }, options), function (err, result) {
+                    expect(err).not.to.be.ok;
+
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        headers: '',
+                        url: 'https://postman-echo.com/post',
+                        method: 'POST',
+                        data: [
+                            {
+                                key: 'file',
+                                type: 'file'
+                            }
+                        ],
+                        dataMode: 'params',
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                    });
+                    done();
+                });
+            });
+
+            it('should retain string valued file entities in request bodies', function (done) {
+                transformer.normalizeSingle({
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    headers: '',
+                    url: 'https://postman-echo.com/post',
+                    method: 'POST',
+                    data: [
+                        {
+                            key: 'file',
+                            value: 't.csv',
+                            type: 'file'
+                        }
+                    ],
+                    dataMode: 'params',
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                }, _.defaults({ noDefaults: false }, options), function (err, result) {
+                    expect(err).not.to.be.ok;
+
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        headers: '',
+                        url: 'https://postman-echo.com/post',
+                        method: 'POST',
+                        data: [
+                            {
+                                key: 'file',
+                                value: 't.csv',
+                                type: 'file'
+                            }
+                        ],
+                        dataMode: 'params',
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                    });
+                    done();
+                });
+            });
+        });
+    });
+
+    describe('disabled request bodies', function () {
+        it('should handle disabled request body correctly', function (done) {
+            transformer.normalize({
+                id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                name: 'disabled-body',
+                order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                folders: [],
+                folders_order: [],
+                requests: [{
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    headers: '',
+                    url: 'https://postman-echo.com/post',
+                    data: 'foo=bar',
+                    method: 'POST',
+                    dataMode: 'raw',
+                    dataDisabled: true,
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                }]
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                    name: 'disabled-body',
+                    order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                    folders_order: [],
+                    requests: [{
+                        id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        headers: '',
+                        url: 'https://postman-echo.com/post',
+                        data: 'foo=bar',
+                        method: 'POST',
+                        dataMode: 'raw',
+                        dataDisabled: true,
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                    }]
+                });
+                done();
+            });
+        });
+
+        it('should not include disabled property unless its true', function (done) {
+            transformer.normalize({
+                id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                name: 'disabled-body',
+                order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                folders: [],
+                folders_order: [],
+                requests: [{
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    headers: '',
+                    url: 'https://postman-echo.com/post',
+                    data: 'foo=bar',
+                    method: 'POST',
+                    dataMode: 'raw',
+                    dataDisabled: false,
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                }]
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                    name: 'disabled-body',
+                    order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                    folders_order: [],
+                    requests: [{
+                        id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        headers: '',
+                        url: 'https://postman-echo.com/post',
+                        data: 'foo=bar',
+                        method: 'POST',
+                        dataMode: 'raw',
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                    }]
+                });
+                done();
+            });
+        });
+    });
+
+    describe('protocolProfileBehavior', function () {
+        describe('normalize', function () {
+            it('should handle protocolProfileBehavior property correctly', function (done) {
+                transformer.normalize({
+                    id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                    name: 'get-with-body',
+                    order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                    folders: [],
+                    folders_order: [],
+                    requests: [{
+                        id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        headers: '',
+                        url: 'https://postman-echo.com/get',
+                        data: 'foo=bar',
+                        method: 'GET',
+                        dataMode: 'raw',
+                        protocolProfileBehavior: {
+                            disableBodyPruning: true
+                        },
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                    }]
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        name: 'get-with-body',
+                        order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                        folders_order: [],
+                        requests: [{
+                            id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                            headers: '',
+                            url: 'https://postman-echo.com/get',
+                            data: 'foo=bar',
+                            method: 'GET',
+                            dataMode: 'raw',
+                            protocolProfileBehavior: {
+                                disableBodyPruning: true
+                            },
+                            collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                        }]
+                    });
+                    done();
+                });
+            });
+
+            it('should not include protocolProfileBehavior property unless its an object', function (done) {
+                transformer.normalize({
+                    id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                    name: 'get-with-body',
+                    order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                    folders: [],
+                    folders_order: [],
+                    requests: [{
+                        id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        headers: '',
+                        url: 'https://postman-echo.com/get',
+                        data: 'foo=bar',
+                        method: 'GET',
+                        dataMode: 'raw',
+                        protocolProfileBehavior: 'random',
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                    }]
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        name: 'get-with-body',
+                        order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                        folders_order: [],
+                        requests: [{
+                            id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                            headers: '',
+                            url: 'https://postman-echo.com/get',
+                            data: 'foo=bar',
+                            method: 'GET',
+                            dataMode: 'raw',
+                            collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                        }]
+                    });
+                    done();
+                });
+            });
+        });
+
+        describe('normalizeSingle', function () {
+            it('should work correctly for single request', function (done) {
+                transformer.normalizeSingle({
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    headers: '',
+                    url: 'https://postman-echo.com/get',
+                    data: 'foo=bar',
+                    method: 'GET',
+                    dataMode: 'raw',
+                    protocolProfileBehavior: {
+                        disableBodyPruning: true
+                    },
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        headers: '',
+                        url: 'https://postman-echo.com/get',
+                        data: 'foo=bar',
+                        method: 'GET',
+                        dataMode: 'raw',
+                        protocolProfileBehavior: {
+                            disableBodyPruning: true
+                        },
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                    });
+
+                    done();
+                });
+            });
+
+            it('should not include protocolProfileBehavior property unless its an object', function (done) {
+                transformer.normalizeSingle({
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    headers: '',
+                    url: 'https://postman-echo.com/get',
+                    data: 'foo=bar',
+                    method: 'GET',
+                    dataMode: 'raw',
+                    protocolProfileBehavior: 'random',
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        headers: '',
+                        url: 'https://postman-echo.com/get',
+                        data: 'foo=bar',
+                        method: 'GET',
+                        dataMode: 'raw',
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                    });
+
+                    done();
+                });
+            });
+        });
     });
 
     describe('mutate', function () {
@@ -1745,6 +2185,7 @@ describe('v1.0.0 normalization', function () {
                     id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
                     description: false,
                     dataMode: 'params',
+                    dataDisabled: false,
                     data: [{ key: 'body_foo', value: 'body_bar', description: 0 }],
                     auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random' }] },
                     pathVariableData: [{ id: 'pv1', key: 'pv_foo', value: 'pv_bar', description: '' }],
@@ -1761,6 +2202,7 @@ describe('v1.0.0 normalization', function () {
                         id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
                         description: null,
                         dataMode: 'params',
+                        dataDisabled: false,
                         data: [{ key: 'body_foo', value: 'body_bar', description: null }],
                         auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random', type: 'string' }] },
                         currentHelper: 'bearerAuth',
@@ -1780,6 +2222,7 @@ describe('v1.0.0 normalization', function () {
                 id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
                 description: false,
                 dataMode: 'params',
+                dataDisabled: false,
                 data: [{ key: 'body_foo', value: 'body_bar', description: 0 }],
                 auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random' }] },
                 pathVariableData: [{ id: 'pv1', key: 'pv_foo', value: 'pv_bar', description: '' }],
@@ -1791,6 +2234,7 @@ describe('v1.0.0 normalization', function () {
                     id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
                     description: null,
                     dataMode: 'params',
+                    dataDisabled: false,
                     data: [{ key: 'body_foo', value: 'body_bar', description: null }],
                     auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random', type: 'string' }] },
                     currentHelper: 'bearerAuth',
@@ -1806,6 +2250,7 @@ describe('v1.0.0 normalization', function () {
             transformer.normalizeSingle({
                 id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
                 description: false,
+                dataDisabled: false,
                 dataMode: 'urlencoded',
                 data: [{ key: 'body_foo', value: 'body_bar', description: 0 }],
                 auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random' }] },
@@ -1817,6 +2262,7 @@ describe('v1.0.0 normalization', function () {
                 expect(result).to.eql({
                     id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
                     description: null,
+                    dataDisabled: false,
                     dataMode: 'urlencoded',
                     data: [{ key: 'body_foo', value: 'body_bar', description: null }],
                     auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random', type: 'string' }] },
