@@ -189,7 +189,6 @@ module.exports = {
                 pathVariableData: [],
                 rawModeData: '',
                 method: 'GET',
-                data: [],
                 dataMode: 'raw',
                 tests: 'console.log("Request level test script");',
                 auth: {
@@ -264,7 +263,6 @@ module.exports = {
                 preRequestScript: 'console.log("Request level pre request script");',
                 pathVariableData: [],
                 method: 'GET',
-                data: [],
                 dataMode: 'raw',
                 rawModeData: '',
                 tests: 'console.log("Request level test script");',

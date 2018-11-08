@@ -20,7 +20,6 @@ module.exports = {
                 rawModeData: '',
                 pathVariableData: [],
                 method: 'POST',
-                data: [],
                 dataMode: 'raw',
                 headerData: [],
                 events: [{
@@ -89,7 +88,6 @@ module.exports = {
                 url: 'http://echo.getpostman.com/auth/bearer',
                 preRequestScript: '',
                 method: 'GET',
-                data: [],
                 queryParams: [],
                 rawModeData: '',
                 headerData: [{
@@ -128,7 +126,6 @@ module.exports = {
                 url: 'http://echo.getpostman.com/auth/ntlm',
                 preRequestScript: '',
                 method: 'GET',
-                data: [],
                 queryParams: [],
                 rawModeData: '',
                 headerData: [{
