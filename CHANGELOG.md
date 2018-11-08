@@ -1,5 +1,14 @@
 # Postman Collection Transformer Changelog
 
+#### v3.0.0 (November 8, 2018)
+* Updated dependencies :arrow_up:
+* #112 Corrected retainIds behaviour for v1->v2 transformations
+* #121 Added handling for null valued request bodies
+* #126 Switched to Travis for Windows tests
+* #124 Dropped support for Node v4.
+* #123 Removed NSP (replaced with Snyk)
+* #122 Added `.gitattributes` to enforce consistent line endings
+
 #### v2.8.0 (September 20, 2018)
 * #118 Added support for the `protocolProfileBehaviour` data element
 
