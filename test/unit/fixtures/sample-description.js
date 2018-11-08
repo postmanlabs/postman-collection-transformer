@@ -50,7 +50,6 @@ module.exports = {
                         description: 'This is the fourth url query parameter (disabled)'
                     }
                 ],
-                rawModeData: '',
                 method: 'POST',
                 data: [
                     {

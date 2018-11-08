@@ -56,7 +56,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         _postman_id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
                         name: '',
                         request: {
-                            body: { mode: 'raw', raw: '' },
                             header: [],
                             url: {
                                 raw: '',
@@ -283,10 +282,6 @@ describe('v1.0.0 to v2.1.0', function () {
                             _postman_id: 'R1',
                             name: 'request one',
                             request: {
-                                body: {
-                                    mode: 'raw',
-                                    raw: ''
-                                },
                                 header: []
                             },
                             response: []
@@ -512,6 +507,359 @@ describe('v1.0.0 to v2.1.0', function () {
                             body: {
                                 mode: 'raw',
                                 raw: 'foo=bar'
+                            },
+                            header: [],
+                            method: 'POST',
+                            url: {
+                                host: ['postman-echo', 'com'],
+                                path: ['post'],
+                                protocol: 'https',
+                                raw: 'https://postman-echo.com/post'
+                            }
+                        },
+                        response: []
+                    }]
+                });
+                done();
+            });
+        });
+    });
+
+    describe('null request body', function () {
+        it('should handle request without body correctly', function (done) {
+            transformer.convert({
+                id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                name: 'null-request-body',
+                order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                folders: [],
+                folders_order: [],
+                requests: [{
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    url: 'https://postman-echo.com/post',
+                    method: 'POST',
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                }]
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    info: {
+                        _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        name: 'null-request-body',
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+                    },
+                    item: [{
+                        _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        name: '',
+                        request: {
+                            header: [],
+                            method: 'POST',
+                            url: {
+                                host: ['postman-echo', 'com'],
+                                path: ['post'],
+                                protocol: 'https',
+                                raw: 'https://postman-echo.com/post'
+                            }
+                        },
+                        response: []
+                    }]
+                });
+                done();
+            });
+        });
+
+        it('should set mode to raw if dataMode is not set but data is present', function (done) {
+            transformer.convert({
+                id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                name: 'null-dataMode',
+                order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                folders: [],
+                folders_order: [],
+                requests: [{
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    headers: '',
+                    url: 'https://postman-echo.com/post',
+                    data: 'foo=bar',
+                    method: 'POST',
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                }]
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    info: {
+                        _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        name: 'null-dataMode',
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+                    },
+                    item: [{
+                        _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        name: '',
+                        request: {
+                            body: {
+                                mode: 'raw',
+                                raw: 'foo=bar'
+                            },
+                            header: [],
+                            method: 'POST',
+                            url: {
+                                host: ['postman-echo', 'com'],
+                                path: ['post'],
+                                protocol: 'https',
+                                raw: 'https://postman-echo.com/post'
+                            }
+                        },
+                        response: []
+                    }]
+                });
+                done();
+            });
+        });
+
+        it('should set mode to raw if dataMode is not set but rawModeData is present', function (done) {
+            transformer.convert({
+                id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                name: 'null-dataMode',
+                order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                folders: [],
+                folders_order: [],
+                requests: [{
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    headers: '',
+                    url: 'https://postman-echo.com/post',
+                    rawModeData: 'foo=bar',
+                    method: 'POST',
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                }]
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    info: {
+                        _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        name: 'null-dataMode',
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+                    },
+                    item: [{
+                        _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        name: '',
+                        request: {
+                            body: {
+                                mode: 'raw',
+                                raw: 'foo=bar'
+                            },
+                            header: [],
+                            method: 'POST',
+                            url: {
+                                host: ['postman-echo', 'com'],
+                                path: ['post'],
+                                protocol: 'https',
+                                raw: 'https://postman-echo.com/post'
+                            }
+                        },
+                        response: []
+                    }]
+                });
+                done();
+            });
+        });
+
+        it('should set dataMode (file) even if data is not set', function (done) {
+            transformer.convert({
+                id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                name: 'null-data',
+                order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                folders: [],
+                folders_order: [],
+                requests: [{
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    headers: '',
+                    url: 'https://postman-echo.com/post',
+                    dataMode: 'binary',
+                    method: 'POST',
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                }]
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    info: {
+                        _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        name: 'null-data',
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+                    },
+                    item: [{
+                        _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        name: '',
+                        request: {
+                            body: {
+                                mode: 'file',
+                                file: {}
+                            },
+                            header: [],
+                            method: 'POST',
+                            url: {
+                                host: ['postman-echo', 'com'],
+                                path: ['post'],
+                                protocol: 'https',
+                                raw: 'https://postman-echo.com/post'
+                            }
+                        },
+                        response: []
+                    }]
+                });
+                done();
+            });
+        });
+
+        it('should set dataMode (raw) even if data is not set', function (done) {
+            transformer.convert({
+                id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                name: 'null-data',
+                order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                folders: [],
+                folders_order: [],
+                requests: [{
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    headers: '',
+                    url: 'https://postman-echo.com/post',
+                    dataMode: 'raw',
+                    method: 'POST',
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                }]
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    info: {
+                        _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        name: 'null-data',
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+                    },
+                    item: [{
+                        _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        name: '',
+                        request: {
+                            body: {
+                                mode: 'raw',
+                                raw: ''
+                            },
+                            header: [],
+                            method: 'POST',
+                            url: {
+                                host: ['postman-echo', 'com'],
+                                path: ['post'],
+                                protocol: 'https',
+                                raw: 'https://postman-echo.com/post'
+                            }
+                        },
+                        response: []
+                    }]
+                });
+                done();
+            });
+        });
+
+        it('should set dataMode (formdata) even if data is not set', function (done) {
+            transformer.convert({
+                id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                name: 'null-data',
+                order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                folders: [],
+                folders_order: [],
+                requests: [{
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    headers: '',
+                    url: 'https://postman-echo.com/post',
+                    dataMode: 'params',
+                    method: 'POST',
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                }]
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    info: {
+                        _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        name: 'null-data',
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+                    },
+                    item: [{
+                        _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        name: '',
+                        request: {
+                            body: {
+                                mode: 'formdata',
+                                formdata: []
+                            },
+                            header: [],
+                            method: 'POST',
+                            url: {
+                                host: ['postman-echo', 'com'],
+                                path: ['post'],
+                                protocol: 'https',
+                                raw: 'https://postman-echo.com/post'
+                            }
+                        },
+                        response: []
+                    }]
+                });
+                done();
+            });
+        });
+
+        it('should set dataMode (urlencoded) even if data is not set', function (done) {
+            transformer.convert({
+                id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                name: 'null-data',
+                order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                folders: [],
+                folders_order: [],
+                requests: [{
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    headers: '',
+                    url: 'https://postman-echo.com/post',
+                    dataMode: 'urlencoded',
+                    method: 'POST',
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                }]
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    info: {
+                        _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        name: 'null-data',
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+                    },
+                    item: [{
+                        _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        name: '',
+                        request: {
+                            body: {
+                                mode: 'urlencoded',
+                                urlencoded: []
                             },
                             header: [],
                             method: 'POST',
@@ -775,10 +1123,6 @@ describe('v1.0.0 to v2.1.0', function () {
                                 { key: 'showPassword', value: false, type: 'boolean' }
                             ]
                         },
-                        body: {
-                            mode: 'raw',
-                            raw: ''
-                        },
                         header: []
                     },
                     response: []
@@ -821,10 +1165,6 @@ describe('v1.0.0 to v2.1.0', function () {
                                 { key: 'password', value: 'password', type: 'string' }
                             ]
                         },
-                        body: {
-                            mode: 'raw',
-                            raw: ''
-                        },
                         header: []
                     },
                     response: []
@@ -848,7 +1188,6 @@ describe('v1.0.0 to v2.1.0', function () {
                     _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                     name: '',
                     request: {
-                        body: { mode: 'raw', raw: '' },
                         header: []
                     },
                     response: []
@@ -874,7 +1213,6 @@ describe('v1.0.0 to v2.1.0', function () {
                     _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                     name: '',
                     request: {
-                        body: { mode: 'raw', raw: '' },
                         header: []
                     },
                     response: []
@@ -900,7 +1238,6 @@ describe('v1.0.0 to v2.1.0', function () {
                             name: '',
                             request: {
                                 auth: { type: 'noauth' },
-                                body: { mode: 'raw', raw: '' },
                                 header: []
                             },
                             response: []
@@ -924,7 +1261,6 @@ describe('v1.0.0 to v2.1.0', function () {
                             _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
-                                body: { mode: 'raw', raw: '' },
                                 header: []
                             },
                             response: []
@@ -952,7 +1288,6 @@ describe('v1.0.0 to v2.1.0', function () {
                             _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
-                                body: { mode: 'raw', raw: '' },
                                 header: []
                             },
                             response: []
@@ -977,7 +1312,6 @@ describe('v1.0.0 to v2.1.0', function () {
                             _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
-                                body: { mode: 'raw', raw: '' },
                                 header: []
                             },
                             response: []
@@ -1001,7 +1335,6 @@ describe('v1.0.0 to v2.1.0', function () {
                             _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
-                                body: { mode: 'raw', raw: '' },
                                 header: []
                             },
                             response: []
@@ -1025,7 +1358,6 @@ describe('v1.0.0 to v2.1.0', function () {
                             _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
-                                body: { mode: 'raw', raw: '' },
                                 header: []
                             },
                             response: []
@@ -1049,7 +1381,6 @@ describe('v1.0.0 to v2.1.0', function () {
                             _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
-                                body: { mode: 'raw', raw: '' },
                                 header: []
                             },
                             response: []
@@ -1077,7 +1408,6 @@ describe('v1.0.0 to v2.1.0', function () {
                             _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
-                                body: { mode: 'raw', raw: '' },
                                 header: []
                             },
                             response: []
@@ -1098,8 +1428,7 @@ describe('v1.0.0 to v2.1.0', function () {
                             _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
-                                header: [],
-                                body: { mode: 'raw', raw: '' }
+                                header: []
                             },
                             response: []
                         });
@@ -1188,7 +1517,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         name: '',
                         request: {
                             header: [],
-                            body: { mode: 'raw', raw: '' },
                             auth: {
                                 type: 'basic',
                                 basic: [
@@ -1214,8 +1542,7 @@ describe('v1.0.0 to v2.1.0', function () {
                         _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                         name: '',
                         request: {
-                            header: [],
-                            body: { mode: 'raw', raw: '' }
+                            header: []
                         },
                         response: []
                     });
@@ -1235,8 +1562,7 @@ describe('v1.0.0 to v2.1.0', function () {
                         _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                         name: '',
                         request: {
-                            header: [],
-                            body: { mode: 'raw', raw: '' }
+                            header: []
                         },
                         response: []
                     });
@@ -1260,7 +1586,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         name: '',
                         request: {
                             header: [],
-                            body: { mode: 'raw', raw: '' },
                             auth: {
                                 type: 'bearer',
                                 bearer: [{ key: 'token', value: 'secret', type: 'string' }]
@@ -1304,7 +1629,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         name: '',
                         request: {
                             header: [],
-                            body: { mode: 'raw', raw: '' },
                             auth: {
                                 type: 'bearer',
                                 bearer: [{ key: 'token', value: 'secret', type: 'string' }]
@@ -1336,7 +1660,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         name: '',
                         request: {
                             header: [],
-                            body: { mode: 'raw', raw: '' },
                             auth: {
                                 type: 'basic',
                                 basic: [
@@ -1368,7 +1691,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         name: '',
                         request: {
                             header: [],
-                            body: { mode: 'raw', raw: '' },
                             auth: { type: 'noauth' }
                         },
                         response: []
@@ -1391,8 +1713,7 @@ describe('v1.0.0 to v2.1.0', function () {
                         _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                         name: '',
                         request: {
-                            header: [],
-                            body: { mode: 'raw', raw: '' }
+                            header: []
                         },
                         response: []
                     });
@@ -1414,8 +1735,7 @@ describe('v1.0.0 to v2.1.0', function () {
                         _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                         name: '',
                         request: {
-                            header: [],
-                            body: { mode: 'raw', raw: '' }
+                            header: []
                         },
                         response: []
                     });
@@ -1437,8 +1757,7 @@ describe('v1.0.0 to v2.1.0', function () {
                         _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                         name: '',
                         request: {
-                            header: [],
-                            body: { mode: 'raw', raw: '' }
+                            header: []
                         },
                         response: []
                     });
@@ -1466,7 +1785,6 @@ describe('v1.0.0 to v2.1.0', function () {
                             name: '',
                             request: {
                                 header: [],
-                                body: { mode: 'raw', raw: '' },
                                 auth: {
                                     type: 'basic',
                                     basic: [
@@ -1492,8 +1810,7 @@ describe('v1.0.0 to v2.1.0', function () {
                             _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
-                                header: [],
-                                body: { mode: 'raw', raw: '' }
+                                header: []
                             },
                             response: []
                         });
@@ -1513,8 +1830,7 @@ describe('v1.0.0 to v2.1.0', function () {
                             _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
-                                header: [],
-                                body: { mode: 'raw', raw: '' }
+                                header: []
                             },
                             response: []
                         });
@@ -1538,7 +1854,6 @@ describe('v1.0.0 to v2.1.0', function () {
                             name: '',
                             request: {
                                 header: [],
-                                body: { mode: 'raw', raw: '' },
                                 auth: {
                                     type: 'bearer',
                                     bearer: [{ key: 'token', value: 'secret', type: 'string' }]
@@ -1613,10 +1928,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         }
                     }],
                     request: {
-                        body: {
-                            mode: 'raw',
-                            raw: ''
-                        },
                         header: []
                     },
                     response: []
@@ -1655,10 +1966,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         }
                     }],
                     request: {
-                        body: {
-                            mode: 'raw',
-                            raw: ''
-                        },
                         header: []
                     },
                     response: []
@@ -1708,10 +2015,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         }
                     }],
                     request: {
-                        body: {
-                            mode: 'raw',
-                            raw: ''
-                        },
                         header: []
                     },
                     response: []
@@ -1751,7 +2054,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         listen: 'test'
                     }],
                     request: {
-                        body: { mode: 'raw', raw: '' },
                         header: []
                     },
                     response: []
@@ -1787,8 +2089,7 @@ describe('v1.0.0 to v2.1.0', function () {
                             }
                         }],
                         request: {
-                            header: [],
-                            body: { mode: 'raw', raw: '' }
+                            header: []
                         },
                         response: []
                     });
@@ -1807,8 +2108,7 @@ describe('v1.0.0 to v2.1.0', function () {
                         _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                         name: '',
                         request: {
-                            header: [],
-                            body: { mode: 'raw', raw: '' }
+                            header: []
                         },
                         response: []
                     });
@@ -1845,8 +2145,7 @@ describe('v1.0.0 to v2.1.0', function () {
                         _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                         name: '',
                         request: {
-                            header: [],
-                            body: { mode: 'raw', raw: '' }
+                            header: []
                         },
                         response: [],
                         event: [{
@@ -1881,8 +2180,7 @@ describe('v1.0.0 to v2.1.0', function () {
                         _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                         name: '',
                         request: {
-                            header: [],
-                            body: { mode: 'raw', raw: '' }
+                            header: []
                         },
                         response: [],
                         event: [{
@@ -1917,7 +2215,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                         name: '',
                         request: {
-                            body: { mode: 'raw', raw: '' },
                             header: []
                         },
                         response: []
@@ -1940,7 +2237,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                         name: '',
                         request: {
-                            body: { mode: 'raw', raw: '' },
                             header: []
                         },
                         response: []
@@ -1987,8 +2283,7 @@ describe('v1.0.0 to v2.1.0', function () {
                                 }
                             }],
                             request: {
-                                header: [],
-                                body: { mode: 'raw', raw: '' }
+                                header: []
                             },
                             response: []
                         });
@@ -2022,8 +2317,7 @@ describe('v1.0.0 to v2.1.0', function () {
                                 }
                             }],
                             request: {
-                                header: [],
-                                body: { mode: 'raw', raw: '' }
+                                header: []
                             },
                             response: []
                         });
@@ -2042,8 +2336,7 @@ describe('v1.0.0 to v2.1.0', function () {
                             _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             name: '',
                             request: {
-                                header: [],
-                                body: { mode: 'raw', raw: '' }
+                                header: []
                             },
                             response: []
                         });
@@ -2078,10 +2371,6 @@ describe('v1.0.0 to v2.1.0', function () {
                         _postman_id: 'R1',
                         name: '',
                         request: {
-                            body: {
-                                mode: 'raw',
-                                raw: ''
-                            },
                             header: []
                         },
                         response: []
@@ -2144,7 +2433,6 @@ describe('v1.0.0 to v2.1.0', function () {
                     name: 'A world of foo!',
                     request: {
                         header: [],
-                        body: { mode: 'raw', raw: '' },
                         url: {
                             raw: 'https://postman-echo.com/get?alpha&beta=&gamma&delta&epsilon=&gamma=',
                             protocol: 'https',
@@ -2200,7 +2488,6 @@ describe('v1.0.0 to v2.1.0', function () {
                             _postman_id: 'ef90671a-ab14-16f5-0a57-41b32fc2a36f',
                             name: 'GET request',
                             request: {
-                                body: { mode: 'raw', raw: '' },
                                 header: [],
                                 method: 'GET',
                                 url: {
@@ -2349,12 +2636,12 @@ describe('v1.0.0 to v2.1.0', function () {
 
                 _.forEach(result.item, function (elem) {
                     _.forEach(elem.item, function (item) {
-                        expect(item._postman_id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                        expect(item._postman_id).to.match(/^[a-f0-9]{4}([a-f0-9]{4}-){4}[a-f0-9]{12}$/);
                         _.forEach(item.response, function (response) {
-                            expect(response.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                            expect(response.id).to.match(/^[a-f0-9]{4}([a-f0-9]{4}-){4}[a-f0-9]{12}$/);
                         });
                     });
-                    expect(elem._postman_id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                    expect(elem._postman_id).to.match(/^[a-f0-9]{4}([a-f0-9]{4}-){4}[a-f0-9]{12}$/);
                 });
             });
         });
@@ -2391,12 +2678,12 @@ describe('v1.0.0 to v2.1.0', function () {
                 expect(result.item).to.have.length(12);
                 _.forEach(result.item, function (elem) {
                     _.forEach(elem.item, function (item) {
-                        expect(item._postman_id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                        expect(item).not.to.have.property('_postman_id');
                         _.forEach(item.response, function (response) {
-                            expect(response.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                            expect(response).not.to.have.property('id');
                         });
                     });
-                    expect(elem._postman_id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                    expect(elem).not.to.have.property('_postman_id');
                 });
             });
         });
@@ -2433,12 +2720,12 @@ describe('v1.0.0 to v2.1.0', function () {
                 expect(result.item).to.have.length(12);
                 _.forEach(result.item, function (elem) {
                     _.forEach(elem.item, function (item) {
-                        expect(item._postman_id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                        expect(item).not.to.have.property('_postman_id');
                         _.forEach(item.response, function (response) {
-                            expect(response.id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                            expect(response).not.to.have.property('id');
                         });
                     });
-                    expect(elem._postman_id).to.match(/[a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8}/);
+                    expect(elem).not.to.have.property('_postman_id');
                 });
             });
         });
