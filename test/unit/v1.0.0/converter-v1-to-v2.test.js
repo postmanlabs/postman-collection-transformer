@@ -97,18 +97,17 @@ describe('v1.0.0 to v2.0.0', function () {
                     expect(converted).to.eql({
                         id: 'd8c94ea6-a389-405c-aed0-75280308edc3',
                         name: 'response',
-                        body: '',
                         cookie: []
                     });
                     done();
                 });
             });
 
-            it('should set response body as empty string if null', function (done) {
+            it('should not set response body if response.text is null', function (done) {
                 transformer.convertResponse({
                     id: 'd8c94ea6-a389-405c-aed0-75280308edc3',
                     requestObject: 'Res1',
-                    body: null
+                    text: null
                 }, options, function (err, converted) {
                     expect(err).to.not.be.ok;
 
@@ -117,7 +116,6 @@ describe('v1.0.0 to v2.0.0', function () {
                     expect(converted).to.eql({
                         id: 'd8c94ea6-a389-405c-aed0-75280308edc3',
                         name: 'response',
-                        body: '',
                         cookie: []
                     });
                     done();
@@ -136,7 +134,6 @@ describe('v1.0.0 to v2.0.0', function () {
                     expect(converted).to.eql({
                         id: '27d65eb8-8109-445b-a106-f61281056876',
                         name: 'response',
-                        body: '',
                         cookie: [],
                         originalRequest: {
                             header: [],
@@ -159,7 +156,6 @@ describe('v1.0.0 to v2.0.0', function () {
                     expect(converted).to.eql({
                         id: '27d65eb8-8109-445b-a106-f61281056876',
                         name: 'response',
-                        body: '',
                         cookie: []
                     });
                     done();
