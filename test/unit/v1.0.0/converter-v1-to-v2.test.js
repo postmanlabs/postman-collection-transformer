@@ -113,11 +113,8 @@ describe('v1.0.0 to v2.0.0', function () {
 
                     // remove `undefined` properties for testing
                     converted = JSON.parse(JSON.stringify(converted));
-                    expect(converted).to.eql({
-                        id: 'd8c94ea6-a389-405c-aed0-75280308edc3',
-                        name: 'response',
-                        cookie: []
-                    });
+                    expect(converted.body).to.be.undefined;
+
                     done();
                 });
             });
