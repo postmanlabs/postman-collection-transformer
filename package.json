@@ -57,7 +57,7 @@
     "packity": "0.3.2",
     "parse-gitignore": "1.0.1",
     "pretty-ms": "4.0.0",
-    "puppeteer": "1.12.1",
+    "puppeteer": "1.12.2",
     "recursive-readdir": "2.2.2",
     "require-all": "3.0.0",
     "shelljs": "0.8.3",
