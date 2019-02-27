@@ -1,15 +1,15 @@
 3.0.0:
   date: 2018-11-8
   breaking changes:
-    - GH-112 Corrected retainIds behaviour for v1->v2 transformations
     - GH-124 Dropped support for Node v4
-    - GH-123 Removed NSP (replaced with Snyk)
   fixed bugs:
+    - GH-112 Corrected retainIds behaviour for v1->v2 transformations
     - GH-121 Added handling for null valued request bodies
   chores:
-    - Updated dependencies
-    - GH-126 Switched to Travis for Windows tests
     - GH-122 Added `.gitattributes` to enforce consistent line endings
+    - GH-126 Switched to Travis for Windows tests
+    - GH-123 Removed NSP (replaced with Snyk)
+    - Updated dependencies
 
 2.8.0:
   date: 2018-09-20
@@ -33,10 +33,10 @@
 
 2.6.1:
   date: 2018-07-24
-  new features:
-    - GH-109 Increased test coveragee to 95%
   fixed bugs:
     - GH-110 Prevent folder id replacement in v2.x -> v1 transformations
+  chores:
+    - GH-109 Increased test coveragee to 95%
 
 2.6.0:
   date: 2018-07-10
@@ -73,7 +73,7 @@
 
 2.5.6:
   date: 2018-02-23
-  new features:
+  chores:
     - GH-100 Auth mapping improvements
 
 2.5.5:
@@ -126,25 +126,26 @@
   date: 2017-11-18
   fixed bugs:
     - GH-90 Fixed empty stage handling logic for auth helpers
-    - GH-89 Reorganized package structure
   chores:
+    - GH-89 Reorganized package structure
     - GH-88 Updated dependencies
 
 2.4.0:
   date: 2017-11-7
   new features:
-    - GH-87 Tested code on Node v8
     - GH-84 Added support for `noDefaults` for v1 normalizations
     - GH-81 Added support for `mutate` to v1 normalizations
     - GH-79 Added `normalize.*` function to sanitize v1 collections
     - GH-78 Added support for inherited entity transformations
   fixed bugs:
     - GH-82 `noauth` and `normal` auth handlers are now left alone
+  chores:
+    - GH-87 Tested code on Node v8
 
 2.3.1:
   date: 2017-10-3
   fixed bugs:
-    - ':bug: Corrected OAuth2 param transformations #77'
+    - 'GH-77 Corrected OAuth2 param transformations'
 
 2.3.0:
   date: 2017-09-30
