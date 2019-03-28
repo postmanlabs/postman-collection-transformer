@@ -482,7 +482,7 @@ describe('v1.0.0 to v2.0.0', function () {
                     method: 'POST',
                     collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
                 }]
-            }, Object.assign({}, options, {retainEmptyValues: true}), function (err, converted) {
+            }, Object.assign({}, options, { retainEmptyValues: true }), function (err, converted) {
                 expect(err).to.not.be.ok;
 
                 // remove `undefined` properties for testing
