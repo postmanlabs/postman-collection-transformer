@@ -15,6 +15,8 @@ v2 property: request.body.mode
 | params     | formdata   |
 | urlencoded | urlencoded |
 
+**If `dataMode` is explicity set to null then `body` will be set to `null`**
+
 **If `dataMode` is not set or invalid then `mode` is inferred from `rawModeData` or `data`**
 
 - `formdata`: if `isRawModeData` is false AND `data` is an array
