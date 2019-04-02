@@ -134,10 +134,21 @@ describe('v1.0.0 ==> v2.1.0', function () {
         it('should not set request body for requests with dataMode set to null but rawModeData set', function () {
             var v1 = require('../../../examples/v1.0.0/emptydatamode.json'),
                 v2 = JSON.parse(JSON.stringify(converter.convert(v1, {
-                    retainIds: true
+                    retainIds: true,
+                    retainEmptyValues: true
                 })));
 
             expect(v2.item[0].request.body).to.be.null;
+        });
+
+        it('should not set request body for requests with dataMode set to null but rawModeData set,' +
+            ' retainEmptyValues set to false', function () {
+            var v1 = require('../../../examples/v1.0.0/emptydatamode.json'),
+                v2 = JSON.parse(JSON.stringify(converter.convert(v1, {
+                    retainIds: true
+                })));
+
+            expect(v2.item[0].request.body).to.be.undefined;
         });
     });
 
