@@ -137,7 +137,7 @@ describe('v1.0.0 ==> v2.1.0', function () {
                     retainIds: true
                 })));
 
-            expect(_.isEmpty(v2.item[0].request.body)).to.equal(true);
+            expect(v2.item[0].request.body).to.be.null;
         });
     });
 
