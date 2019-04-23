@@ -1,3 +1,7 @@
+master:
+  new features:
+    - Added support for multiple file in form-data
+
 3.0.1:
   date: 2019-04-02
   bugs fixed:

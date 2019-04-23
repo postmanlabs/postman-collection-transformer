@@ -1253,7 +1253,7 @@ describe('v1.0.0 normalization', function () {
         });
 
         describe('request file body', function () {
-            it('should correctly handle non-string file entities', function (done) {
+            it('should correctly handle non-string and non-array file entities', function (done) {
                 transformer.normalize({
                     id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                     name: 'body-src-check',
@@ -1269,8 +1269,9 @@ describe('v1.0.0 normalization', function () {
                             url: 'https://postman-echo.com/post',
                             method: 'POST',
                             data: [
-                                { key: 'alpha', value: [], type: 'file' },
-                                { key: 'beta', value: {}, type: 'file' }
+                                { key: 'alpha', value: 1, type: 'file' },
+                                { key: 'beta', value: {}, type: 'file' },
+                                { key: 'gamma', value: true, type: 'file' }
                             ],
                             dataMode: 'params',
                             collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
@@ -1294,7 +1295,8 @@ describe('v1.0.0 normalization', function () {
                                 method: 'POST',
                                 data: [
                                     { key: 'alpha', value: null, type: 'file' },
-                                    { key: 'beta', value: null, type: 'file' }
+                                    { key: 'beta', value: null, type: 'file' },
+                                    { key: 'gamma', value: null, type: 'file' }
                                 ],
                                 dataMode: 'params',
                                 collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
@@ -1305,15 +1307,16 @@ describe('v1.0.0 normalization', function () {
                 });
             });
 
-            it('should correctly handle non-string file entities in requests', function (done) {
+            it('should correctly handle non-string and non-array file entities in requests', function (done) {
                 transformer.normalizeSingle({
                     id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
                     headers: '',
                     url: 'https://postman-echo.com/post',
                     method: 'POST',
                     data: [
-                        { key: 'alpha', value: [], type: 'file' },
-                        { key: 'beta', value: {}, type: 'file' }
+                        { key: 'alpha', value: 1, type: 'file' },
+                        { key: 'beta', value: {}, type: 'file' },
+                        { key: 'gamma', value: true, type: 'file' }
                     ],
                     dataMode: 'params',
                     collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
@@ -1327,7 +1330,8 @@ describe('v1.0.0 normalization', function () {
                         method: 'POST',
                         data: [
                             { key: 'alpha', value: null, type: 'file' },
-                            { key: 'beta', value: null, type: 'file' }
+                            { key: 'beta', value: null, type: 'file' },
+                            { key: 'gamma', value: null, type: 'file' }
                         ],
                         dataMode: 'params',
                         collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
