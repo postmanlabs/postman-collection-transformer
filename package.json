@@ -56,7 +56,7 @@
     "nyc": "13.3.0",
     "packity": "0.3.2",
     "parse-gitignore": "1.0.1",
-    "pretty-ms": "4.0.0",
+    "pretty-ms": "5.0.0",
     "puppeteer": "1.14.0",
     "recursive-readdir": "2.2.2",
     "require-all": "3.0.0",
