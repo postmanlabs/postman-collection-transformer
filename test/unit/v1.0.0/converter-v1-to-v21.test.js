@@ -324,8 +324,9 @@ describe('v1.0.0 to v2.1.0', function () {
                         url: 'https://postman-echo.com/post',
                         method: 'POST',
                         data: [
-                            { key: 'alpha', value: [], type: 'file' },
-                            { key: 'beta', value: {}, type: 'file' }
+                            { key: 'alpha', value: 1, type: 'file' },
+                            { key: 'beta', value: {}, type: 'file' },
+                            { key: 'gamma', value: true, type: 'file' }
                         ],
                         dataMode: 'params',
                         collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
@@ -352,7 +353,8 @@ describe('v1.0.0 to v2.1.0', function () {
                                     mode: 'formdata',
                                     formdata: [
                                         { key: 'alpha', src: null, type: 'file' },
-                                        { key: 'beta', src: null, type: 'file' }
+                                        { key: 'beta', src: null, type: 'file' },
+                                        { key: 'gamma', src: null, type: 'file' }
                                     ]
                                 },
                                 header: [],
@@ -379,8 +381,9 @@ describe('v1.0.0 to v2.1.0', function () {
                 url: 'https://postman-echo.com/post',
                 method: 'POST',
                 data: [
-                    { key: 'alpha', value: [], type: 'file' },
-                    { key: 'beta', value: {}, type: 'file' }
+                    { key: 'alpha', value: 1, type: 'file' },
+                    { key: 'beta', value: {}, type: 'file' },
+                    { key: 'gamma', value: true, type: 'file' }
                 ],
                 dataMode: 'params'
             }, options, function (err, converted) {
@@ -397,7 +400,8 @@ describe('v1.0.0 to v2.1.0', function () {
                             mode: 'formdata',
                             formdata: [
                                 { key: 'alpha', src: null, type: 'file' },
-                                { key: 'beta', src: null, type: 'file' }
+                                { key: 'beta', src: null, type: 'file' },
+                                { key: 'gamma', src: null, type: 'file' }
                             ]
                         },
                         header: [],

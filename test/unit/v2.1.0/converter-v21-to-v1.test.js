@@ -287,7 +287,7 @@ describe('v2.1.0 to v1.0.0', function () {
             });
         });
 
-        it('should correctly handle non-string bodies whilst converting from v2 to v1', function (done) {
+        it('should correctly handle non-string and non-array bodies whilst converting from v2 to v1', function (done) {
             transformer.convert({
                 info: {
                     name: 'body-src-check',
@@ -308,8 +308,9 @@ describe('v2.1.0 to v1.0.0', function () {
                             body: {
                                 mode: 'formdata',
                                 formdata: [
-                                    { key: 'alpha', src: [], type: 'file' },
-                                    { key: 'beta', src: {}, type: 'file' }
+                                    { key: 'alpha', src: 1, type: 'file' },
+                                    { key: 'beta', src: {}, type: 'file' },
+                                    { key: 'gamma', src: true, type: 'file' }
                                 ]
                             }
                         }
@@ -335,7 +336,8 @@ describe('v2.1.0 to v1.0.0', function () {
                         dataMode: 'params',
                         data: [
                             { key: 'alpha', value: null, type: 'file' },
-                            { key: 'beta', value: null, type: 'file' }
+                            { key: 'beta', value: null, type: 'file' },
+                            { key: 'gamma', value: null, type: 'file' }
                         ],
                         headers: '',
                         headerData: [],
@@ -347,48 +349,51 @@ describe('v2.1.0 to v1.0.0', function () {
             });
         });
 
-        it('should correctly handle non-string bodies whilst converting requests from v2 to v1', function (done) {
-            transformer.convertSingle({
-                _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
-                request: {
-                    url: {
-                        raw: 'https://postman-echo.com/post',
-                        protocol: 'https',
-                        host: ['postman-echo', 'com'],
-                        path: ['post']
-                    },
-                    method: 'POST',
-                    body: {
-                        mode: 'formdata',
-                        formdata: [
-                            { key: 'alpha', type: 'file', src: [] },
-                            { key: 'beta', type: 'file', src: {} }
-                        ]
+        it('should correctly handle non-string and non-array bodies whilst converting requests from v2 to v1',
+            function (done) {
+                transformer.convertSingle({
+                    _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    request: {
+                        url: {
+                            raw: 'https://postman-echo.com/post',
+                            protocol: 'https',
+                            host: ['postman-echo', 'com'],
+                            path: ['post']
+                        },
+                        method: 'POST',
+                        body: {
+                            mode: 'formdata',
+                            formdata: [
+                                { key: 'alpha', type: 'file', src: 1 },
+                                { key: 'beta', type: 'file', src: {} },
+                                { key: 'gamma', type: 'file', src: true }
+                            ]
+                        }
                     }
-                }
-            }, options, function (err, converted) {
-                expect(err).to.not.be.ok;
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
 
-                // remove `undefined` properties for testing
-                converted = JSON.parse(JSON.stringify(converted));
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
 
-                expect(converted).to.eql({
-                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
-                    url: 'https://postman-echo.com/post',
-                    method: 'POST',
-                    dataMode: 'params',
-                    data: [
-                        { key: 'alpha', type: 'file', value: null },
-                        { key: 'beta', type: 'file', value: null }
-                    ],
-                    headers: '',
-                    headerData: [],
-                    queryParams: [],
-                    pathVariableData: []
+                    expect(converted).to.eql({
+                        id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        url: 'https://postman-echo.com/post',
+                        method: 'POST',
+                        dataMode: 'params',
+                        data: [
+                            { key: 'alpha', type: 'file', value: null },
+                            { key: 'beta', type: 'file', value: null },
+                            { key: 'gamma', type: 'file', value: null }
+                        ],
+                        headers: '',
+                        headerData: [],
+                        queryParams: [],
+                        pathVariableData: []
+                    });
+                    done();
                 });
-                done();
             });
-        });
     });
 
     describe('disabled request body', function () {
