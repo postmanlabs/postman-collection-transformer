@@ -1,11 +1,12 @@
 master:
-  new features:
-    - Added support for multiple file in form-data
+  chores:
+    - GH-198 Added support for multiple file in form-data
+    - Updated dependencies
 
 3.0.1:
   date: 2019-04-02
   bugs fixed:
-    - Set null body if dataMode is null during v1 -> v2.x conversions
+    - GH-184 Set null body if dataMode is null during v1 -> v2.x conversions
   chores:
     - Updated dependencies
 
