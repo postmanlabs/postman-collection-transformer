@@ -1,7 +1,13 @@
+3.0.2:
+  date: 2019-04-29
+  chores:
+    - GH-198 Added support for multiple file in form-data
+    - Updated dependencies
+
 3.0.1:
   date: 2019-04-02
   bugs fixed:
-    - Set null body if dataMode is null during v1 -> v2.x conversions
+    - GH-184 Set null body if dataMode is null during v1 -> v2.x conversions
   chores:
     - Updated dependencies
 
@@ -152,7 +158,7 @@
 2.3.1:
   date: 2017-10-3
   fixed bugs:
-    - 'GH-77 Corrected OAuth2 param transformations'
+    - GH-77 Corrected OAuth2 param transformations
 
 2.3.0:
   date: 2017-09-30

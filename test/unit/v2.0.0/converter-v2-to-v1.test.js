@@ -402,8 +402,9 @@ describe('v2.0.0 to v1.0.0', function () {
                             body: {
                                 mode: 'formdata',
                                 formdata: [
-                                    { key: 'alpha', src: [], type: 'file' },
-                                    { key: 'beta', src: {}, type: 'file' }
+                                    { key: 'alpha', src: 1, type: 'file' },
+                                    { key: 'beta', src: {}, type: 'file' },
+                                    { key: 'gamma', src: true, type: 'file' }
                                 ]
                             }
                         }
@@ -429,7 +430,8 @@ describe('v2.0.0 to v1.0.0', function () {
                         dataMode: 'params',
                         data: [
                             { key: 'alpha', value: null, type: 'file' },
-                            { key: 'beta', value: null, type: 'file' }
+                            { key: 'beta', value: null, type: 'file' },
+                            { key: 'gamma', value: null, type: 'file' }
                         ],
                         headers: '',
                         headerData: [],
@@ -450,8 +452,9 @@ describe('v2.0.0 to v1.0.0', function () {
                     body: {
                         mode: 'formdata',
                         formdata: [
-                            { key: 'alpha', type: 'file', src: [] },
-                            { key: 'beta', type: 'file', src: {} }
+                            { key: 'alpha', type: 'file', src: 1 },
+                            { key: 'beta', type: 'file', src: {} },
+                            { key: 'gamma', type: 'file', src: true }
                         ]
                     }
                 }
@@ -468,7 +471,8 @@ describe('v2.0.0 to v1.0.0', function () {
                     dataMode: 'params',
                     data: [
                         { key: 'alpha', type: 'file', value: null },
-                        { key: 'beta', type: 'file', value: null }
+                        { key: 'beta', type: 'file', value: null },
+                        { key: 'gamma', type: 'file', value: null }
                     ],
                     headers: '',
                     headerData: [],
