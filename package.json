@@ -72,6 +72,6 @@
     "intel": "1.2.0",
     "lodash": "4.17.11",
     "semver": "6.0.0",
-    "strip-json-comments": "2.0.1"
+    "strip-json-comments": "3.0.0"
   }
 }
