@@ -42,6 +42,20 @@ describe('v1.0.0 to v2.1.0', function () {
                 });
             });
 
+            it('should work as intended with graphqlModeData', function (done) {
+                var fixture = require('../fixtures/single-request');
+
+                transformer.convertSingle(fixture.v1gql, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql(fixture.v21gql);
+                    done();
+                });
+            });
+
             it('should handle pathVariables correctly', function (done) {
                 transformer.convertSingle({
                     id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',

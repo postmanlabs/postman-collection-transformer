@@ -42,6 +42,20 @@ describe('v1.0.0 to v2.0.0', function () {
                 });
             });
 
+            it('should work as intended with graphql', function (done) {
+                var fixture = require('../fixtures/single-request');
+
+                transformer.convertSingle(fixture.v1gql, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql(fixture.v2gql);
+                    done();
+                });
+            });
+
             it('should work as intended without callbacks', function () {
                 var fixture = require('../fixtures/single-request');
 

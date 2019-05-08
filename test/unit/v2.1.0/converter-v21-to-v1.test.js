@@ -1421,6 +1421,7 @@ describe('v2.1.0 to v1.0.0', function () {
                         pathVariables: { pv_foo: 'pv_bar' },
                         pathVariableData: [{ description: null, key: 'pv_foo', value: 'pv_bar' }],
                         rawModeData: null,
+                        graphqlModeData: null,
                         responses: [],
                         url: '?query_foo=query_bar',
                         data: [{ description: null, key: 'body_foo', value: 'body_bar' }],
@@ -1472,6 +1473,7 @@ describe('v2.1.0 to v1.0.0', function () {
                     headers: 'header_foo: header_bar',
                     url: '?query_foo=query_bar',
                     rawModeData: null,
+                    graphqlModeData: null,
                     headerData: [{ key: 'header_foo', value: 'header_bar', description: null }],
                     queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }]
                 });
@@ -1502,6 +1504,7 @@ describe('v2.1.0 to v1.0.0', function () {
                     headers: '',
                     url: '?query_foo=query_bar',
                     rawModeData: null,
+                    graphqlModeData: null,
                     queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }]
                 });
             });
@@ -1544,6 +1547,7 @@ describe('v2.1.0 to v1.0.0', function () {
                     headers: 'header_foo: header_bar',
                     url: '?query_foo=query_bar',
                     rawModeData: null,
+                    graphqlModeData: null,
                     headerData: [{ key: 'header_foo', value: 'header_bar', description: null }],
                     queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }]
                 });
@@ -1574,6 +1578,7 @@ describe('v2.1.0 to v1.0.0', function () {
                     headerData: [],
                     queryParams: [],
                     rawModeData: 'foobar',
+                    graphqlModeData: null,
                     dataDisabled: false,
                     url: 'https://postman-echo.com/get'
                 });

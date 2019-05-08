@@ -51,6 +51,42 @@ describe('v2.0.0 to v1.0.0', function () {
                 });
             });
 
+            it('should work as intended with graphqlModeData', function (done) {
+                var fixture = require('../fixtures/single-request');
+
+                transformer.convertSingle(fixture.v2gql, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+                    [
+                        'id',
+                        'name',
+                        'description',
+                        'method',
+                        'headers',
+                        'dataMode',
+                        'graphqlModeData',
+                        'tests',
+                        'preRequestScript',
+                        'url',
+                        'responses'
+                    ].forEach(function (p) {
+                        expect(converted).to.have.property(p);
+                    });
+                    expect(converted.dataMode).to.be.equal('graphql');
+                    expect(converted.graphqlModeData).to.be.eql({
+                        data: {
+                            hero: {
+                                name: 'R2-D2'
+                            }
+                        }
+                    });
+                    done();
+                });
+            });
+
+
             it('should work as intended without callbacks', function () {
                 expect(JSON.parse(JSON.stringify(transformer.convertSingle({
                     id: '4b546663-ab04-4b39-a629-930bb53b7fac'
@@ -1452,6 +1488,7 @@ describe('v2.0.0 to v1.0.0', function () {
                         pathVariables: { pv_foo: 'pv_bar' },
                         pathVariableData: [{ description: null, key: 'pv_foo', value: 'pv_bar' }],
                         rawModeData: null,
+                        graphqlModeData: null,
                         responses: [],
                         url: '?query_foo=query_bar',
                         data: [{ description: null, key: 'body_foo', value: 'body_bar' }],
@@ -1503,6 +1540,7 @@ describe('v2.0.0 to v1.0.0', function () {
                     headers: 'header_foo: header_bar',
                     url: '?query_foo=query_bar',
                     rawModeData: null,
+                    graphqlModeData: null,
                     headerData: [{ key: 'header_foo', value: 'header_bar', description: null }],
                     queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }]
                 });
@@ -1530,6 +1568,7 @@ describe('v2.0.0 to v1.0.0', function () {
                     responses: [],
                     url: '?query_foo=query_bar',
                     rawModeData: null,
+                    graphqlModeData: null,
                     headerData: [],
                     headers: '',
                     pathVariableData: [],
@@ -1575,6 +1614,7 @@ describe('v2.0.0 to v1.0.0', function () {
                     headers: 'header_foo: header_bar',
                     url: '?query_foo=query_bar',
                     rawModeData: null,
+                    graphqlModeData: null,
                     headerData: [{ key: 'header_foo', value: 'header_bar', description: null }],
                     queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }]
                 });
@@ -1605,6 +1645,7 @@ describe('v2.0.0 to v1.0.0', function () {
                     headerData: [],
                     queryParams: [],
                     rawModeData: 'foobar',
+                    graphqlModeData: null,
                     dataDisabled: false,
                     url: 'https://postman-echo.com/get'
                 });
