@@ -2,7 +2,7 @@
 
 ### Request Body Mode
 
-> v1 property: requests.dataMode  
+> v1 property: requests.dataMode
 v2 property: request.body.mode
 
 
@@ -10,16 +10,19 @@ v2 property: request.body.mode
 
 | v1         | v2         |
 |------------|------------|
-| raw        | raw        |
 | binary     | file       |
+| graphql    | graphql    |
 | params     | formdata   |
+| raw        | raw        |
 | urlencoded | urlencoded |
 
-**If `dataMode` is explicity set to null then `body` will be set to `null`**
-
-**If `dataMode` is not set or invalid then `mode` is inferred from `rawModeData` or `data`**
+**Note**
+1. If `dataMode` is explicitly set to null then `body` will be set to `null`
+2. If `dataMode` is not set or invalid then `mode` is inferred from `rawModeData` or `data` or `graphqlModeData`
+3. If multiple types of body are set e.g, both `rawModeData` and `graphqlModeData` are set. Then mode selection priority will be: `raw → formdata → graphql`.
 
 - `formdata`: if `isRawModeData` is false AND `data` is an array
+- `graphql`: if `isRawModeData` is false AND `graphqlModeData` is non empty
 - `raw`: otherwise
 
 ```
@@ -33,7 +36,7 @@ isRawModeData:
 
 ### Request Body Data
 
-> v1 property: requests.data or requests.rawModeData  
+> v1 property: requests.data or requests.rawModeData
 v2 property: request.body[request.body.mode]
 
 **Mode: raw**
@@ -51,6 +54,11 @@ else if (typeof v1.data === 'string') {
 body.file = { src: v1.rawModeData }
 ```
 
+**Mode: graphql**
+```javascript
+body.graphql = v1.graphqlModeData;
+```
+
 **Mode: formdata**
 ```javascript
 body.formdata = parseFormData (v1.data || v1.rawModeData, retainEmpty);
@@ -61,4 +69,4 @@ body.formdata = parseFormData (v1.data || v1.rawModeData, retainEmpty);
 body.urlencoded = parseFormData (v1.data || v1.rawModeData, retainEmpty);
 ```
 
-**parseFormData**: [source](../lib/converters/v1.0.0/converter-v1-to-v2.js#L30)
+**parseFormData**: [source](https://github.com/postmanlabs/postman-collection-transformer/blob/v3.0.0/lib/converters/v1.0.0/converter-v1-to-v2.js#L30)
