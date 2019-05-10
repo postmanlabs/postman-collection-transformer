@@ -779,6 +779,118 @@ describe('v1.0.0 to v2.1.0', function () {
             });
         });
 
+        it('should set mode to raw if dataMode is not set but all other data props are set', function (done) {
+            transformer.convert({
+                id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                name: 'null-dataMode',
+                order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                folders: [],
+                folders_order: [],
+                requests: [{
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    headers: '',
+                    url: 'https://postman-echo.com/post',
+                    data: [{ key: 'foo', value: 'bar' }],
+                    rawModeData: 'RAW MODE HAVE HIGHEST PRECEDENCE',
+                    graphqlModeData: 'Am I a Joke To You?',
+                    method: 'POST',
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                }]
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    info: {
+                        _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        name: 'null-dataMode',
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+                    },
+                    item: [{
+                        _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        name: '',
+                        request: {
+                            body: {
+                                mode: 'raw',
+                                raw: 'RAW MODE HAVE HIGHEST PRECEDENCE'
+                            },
+                            header: [],
+                            method: 'POST',
+                            url: {
+                                host: ['postman-echo', 'com'],
+                                path: ['post'],
+                                protocol: 'https',
+                                raw: 'https://postman-echo.com/post'
+                            }
+                        },
+                        response: []
+                    }]
+                });
+                done();
+            });
+        });
+
+        it('should set mode to graphql if dataMode is not set but graphqlModeData is present', function (done) {
+            transformer.convert({
+                id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                name: 'null-dataMode',
+                order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                folders: [],
+                folders_order: [],
+                requests: [{
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    headers: '',
+                    url: 'https://postman-echo.com/post',
+                    graphqlModeData: {
+                        query: 'query Test { hello }',
+                        operationName: 'Test',
+                        variables: '{"foo":"bar"}'
+                    },
+                    method: 'POST',
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                }]
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    info: {
+                        _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        name: 'null-dataMode',
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+                    },
+                    item: [{
+                        _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        name: '',
+                        request: {
+                            body: {
+                                mode: 'graphql',
+                                graphql: {
+                                    query: 'query Test { hello }',
+                                    operationName: 'Test',
+                                    variables: '{"foo":"bar"}'
+                                }
+                            },
+                            header: [],
+                            method: 'POST',
+                            url: {
+                                host: ['postman-echo', 'com'],
+                                path: ['post'],
+                                protocol: 'https',
+                                raw: 'https://postman-echo.com/post'
+                            }
+                        },
+                        response: []
+                    }]
+                });
+                done();
+            });
+        });
+
         it('should set dataMode (file) even if data is not set', function (done) {
             transformer.convert({
                 id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
@@ -864,6 +976,56 @@ describe('v1.0.0 to v2.1.0', function () {
                             body: {
                                 mode: 'raw',
                                 raw: ''
+                            },
+                            header: [],
+                            method: 'POST',
+                            url: {
+                                host: ['postman-echo', 'com'],
+                                path: ['post'],
+                                protocol: 'https',
+                                raw: 'https://postman-echo.com/post'
+                            }
+                        },
+                        response: []
+                    }]
+                });
+                done();
+            });
+        });
+
+        it('should set dataMode (graphql) even if data is not set', function (done) {
+            transformer.convert({
+                id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                name: 'null-data',
+                order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                folders: [],
+                folders_order: [],
+                requests: [{
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    headers: '',
+                    url: 'https://postman-echo.com/post',
+                    dataMode: 'graphql',
+                    method: 'POST',
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                }]
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    info: {
+                        _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        name: 'null-data',
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+                    },
+                    item: [{
+                        _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        name: '',
+                        request: {
+                            body: {
+                                mode: 'graphql'
                             },
                             header: [],
                             method: 'POST',
@@ -2969,6 +3131,47 @@ describe('v1.0.0 to v2.1.0', function () {
                             query: [{ description: null, key: 'query_foo', value: 'query_bar' }],
                             raw: '',
                             variable: [{ description: null, key: 'pv_foo', value: 'pv_bar' }]
+                        }
+                    },
+                    response: []
+                });
+            });
+        });
+
+        it('should work correctly for graphql bodies', function () {
+            transformer.convertSingle({
+                id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
+                dataDisabled: false,
+                dataMode: 'graphql',
+                graphqlModeData: {
+                    query: 'query Test { hello }',
+                    operationName: 'Test',
+                    variables: '{"foo":"bar"}'
+                },
+                url: 'https://postman-echo.com/get'
+            }, options, function (err, result) {
+                expect(err).not.to.be.ok;
+
+                expect(JSON.parse(JSON.stringify(result))).to.eql({
+                    _postman_id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
+                    name: '',
+                    request: {
+                        description: null,
+                        header: [],
+                        body: {
+                            disabled: false,
+                            mode: 'graphql',
+                            graphql: {
+                                query: 'query Test { hello }',
+                                operationName: 'Test',
+                                variables: '{"foo":"bar"}'
+                            }
+                        },
+                        url: {
+                            protocol: 'https',
+                            raw: 'https://postman-echo.com/get',
+                            host: ['postman-echo', 'com'],
+                            path: ['get']
                         }
                     },
                     response: []
