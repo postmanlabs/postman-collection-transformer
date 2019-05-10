@@ -4,6 +4,6 @@
 # JavaScript files will always have LF line endings
 *.js text eol=lf
 
-# Avoid Binary file conversion
-.gitignore text eol=lf
-.npmignore text eol=lf
+# Avoid Binary file diff
+.gitignore diff
+.npmignore diff
