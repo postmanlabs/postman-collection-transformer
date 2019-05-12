@@ -710,7 +710,7 @@ describe('v1.0.0 to v2.0.0', function () {
                     headers: '',
                     url: 'https://postman-echo.com/post',
                     data: [{ key: 'foo', value: 'bar' }],
-                    rawModeData: 'RAW MODE HAVE HIGHEST PRECEDENCE',
+                    rawModeData: 'RAW MODE HAS HIGHEST PRECEDENCE',
                     graphqlModeData: 'Am I a Joke To You?',
                     method: 'POST',
                     collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
@@ -733,7 +733,7 @@ describe('v1.0.0 to v2.0.0', function () {
                         request: {
                             body: {
                                 mode: 'raw',
-                                raw: 'RAW MODE HAVE HIGHEST PRECEDENCE'
+                                raw: 'RAW MODE HAS HIGHEST PRECEDENCE'
                             },
                             header: [],
                             method: 'POST',

@@ -19,7 +19,7 @@ v2 property: request.body.mode
 **Note**
 1. If `dataMode` is explicitly set to null then `body` will be set to `null`
 2. If `dataMode` is not set or invalid then `mode` is inferred from `rawModeData` or `data` or `graphqlModeData`
-3. If multiple types of body are set e.g, both `rawModeData` and `graphqlModeData` are set. Then mode selection priority will be: `raw → formdata → graphql`.
+3. If multiple types of body are set e.g, both `rawModeData` and `graphqlModeData` are set. Then mode selection priority will be: `raw → formdata → graphql` (pre-graphql behavior).
 
 - `formdata`: if `isRawModeData` is false AND `data` is an array
 - `graphql`: if `isRawModeData` is false AND `graphqlModeData` is non empty
