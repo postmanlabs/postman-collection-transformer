@@ -841,6 +841,56 @@ describe('v2.0.0 to v1.0.0', function () {
                 done();
             });
         });
+
+        it('should set mode (graphql) even if data is not set', function (done) {
+            transformer.convert({
+                info: {
+                    _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                    name: 'null-mode',
+                    schema: 'https://schema.getpostman.com/json/collection/v2.0.0/collection.json'
+                },
+                item: [{
+                    _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    name: '',
+                    request: {
+                        body: {
+                            mode: 'graphql'
+                        },
+                        header: [],
+                        method: 'POST',
+                        url: 'https://postman-echo.com/post'
+                    },
+                    response: []
+                }]
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                    name: 'null-mode',
+                    order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                    folders_order: [],
+                    folders: [],
+                    requests: [{
+                        id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        name: '',
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        method: 'POST',
+                        headers: '',
+                        dataMode: 'graphql',
+                        url: 'https://postman-echo.com/post',
+                        responses: [],
+                        pathVariableData: [],
+                        queryParams: [],
+                        headerData: []
+                    }]
+                });
+                done();
+            });
+        });
     });
 
     describe('protocolProfileBehavior', function () {
@@ -1452,6 +1502,7 @@ describe('v2.0.0 to v1.0.0', function () {
                         pathVariables: { pv_foo: 'pv_bar' },
                         pathVariableData: [{ description: null, key: 'pv_foo', value: 'pv_bar' }],
                         rawModeData: null,
+                        graphqlModeData: null,
                         responses: [],
                         url: '?query_foo=query_bar',
                         data: [{ description: null, key: 'body_foo', value: 'body_bar' }],
@@ -1503,6 +1554,7 @@ describe('v2.0.0 to v1.0.0', function () {
                     headers: 'header_foo: header_bar',
                     url: '?query_foo=query_bar',
                     rawModeData: null,
+                    graphqlModeData: null,
                     headerData: [{ key: 'header_foo', value: 'header_bar', description: null }],
                     queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }]
                 });
@@ -1530,6 +1582,7 @@ describe('v2.0.0 to v1.0.0', function () {
                     responses: [],
                     url: '?query_foo=query_bar',
                     rawModeData: null,
+                    graphqlModeData: null,
                     headerData: [],
                     headers: '',
                     pathVariableData: [],
@@ -1575,6 +1628,7 @@ describe('v2.0.0 to v1.0.0', function () {
                     headers: 'header_foo: header_bar',
                     url: '?query_foo=query_bar',
                     rawModeData: null,
+                    graphqlModeData: null,
                     headerData: [{ key: 'header_foo', value: 'header_bar', description: null }],
                     queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }]
                 });
@@ -1605,6 +1659,46 @@ describe('v2.0.0 to v1.0.0', function () {
                     headerData: [],
                     queryParams: [],
                     rawModeData: 'foobar',
+                    graphqlModeData: null,
+                    dataDisabled: false,
+                    url: 'https://postman-echo.com/get'
+                });
+            });
+        });
+
+        it('should work correctly for graphql bodies', function () {
+            transformer.convertSingle({
+                _postman_id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
+                request: {
+                    body: {
+                        disabled: false,
+                        mode: 'graphql',
+                        graphql: {
+                            query: 'query Test { hello }',
+                            operationName: 'Test',
+                            variables: '{"foo":"bar"}'
+                        }
+                    },
+                    url: 'https://postman-echo.com/get'
+                }
+            }, options, function (err, result) {
+                expect(err).not.to.be.ok;
+
+                expect(JSON.parse(JSON.stringify(result))).to.eql({
+                    id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
+                    dataMode: 'graphql',
+                    data: null,
+                    description: null,
+                    pathVariableData: [],
+                    headers: '',
+                    headerData: [],
+                    queryParams: [],
+                    rawModeData: null,
+                    graphqlModeData: {
+                        query: 'query Test { hello }',
+                        operationName: 'Test',
+                        variables: '{"foo":"bar"}'
+                    },
                     dataDisabled: false,
                     url: 'https://postman-echo.com/get'
                 });
