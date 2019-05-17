@@ -1,4 +1,5 @@
-master:
+3.1.1:
+  date: 2019-05-17
   bugs fixed:
     - Fixed a bug where params with empty key get filtered
 
