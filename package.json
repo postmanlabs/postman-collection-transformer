@@ -73,5 +73,10 @@
     "lodash": "4.17.11",
     "semver": "6.1.1",
     "strip-json-comments": "3.0.1"
+  },
+  "greenkeeper": {
+    "ignore": [
+      "eslint-plugin-jsdoc"
+    ]
   }
 }
