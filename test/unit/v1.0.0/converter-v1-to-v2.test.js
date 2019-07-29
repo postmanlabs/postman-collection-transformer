@@ -3227,4 +3227,120 @@ describe('v1.0.0 to v2.0.0', function () {
             });
         });
     });
+
+    describe('handleBodyOptions', function () {
+        it('should transform from v1 to v2 when dataOptions are not present', function (done) {
+            transformer.convertSingle({
+                id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
+                dataMode: 'raw',
+                rawModeData: '[{ key: \'foo\', value: \'bar\', disabled: true }]'
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    _postman_id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
+                    name: '',
+                    request: {
+                        body: {
+                            mode: 'raw',
+                            raw: '[{ key: \'foo\', value: \'bar\', disabled: true }]'
+                        },
+                        header: []
+                    },
+                    response: []
+                });
+                done();
+            });
+        });
+
+
+        it('should transform body options from v1 to v2', function (done) {
+            transformer.convertSingle({
+                id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
+                dataMode: 'raw',
+                rawModeData: '[{ key: \'foo\', value: \'bar\', disabled: true }]',
+                dataOptions: {
+                    urlencoded: {
+                        contentType: 'application/x-www-form-urlencoded'
+                    },
+                    raw: {
+                        contentType: 'application/json'
+                    },
+                    params: {
+                        contentType: 'multipart/form-data'
+                    }
+                }
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    _postman_id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
+                    name: '',
+                    request: {
+                        body: {
+                            mode: 'raw',
+                            raw: '[{ key: \'foo\', value: \'bar\', disabled: true }]',
+                            options: {
+                                urlencoded: {
+                                    contentType: 'application/x-www-form-urlencoded'
+                                },
+                                raw: {
+                                    contentType: 'application/json'
+                                },
+                                formdata: {
+                                    contentType: 'multipart/form-data'
+                                }
+                            }
+                        },
+                        header: []
+                    },
+                    response: []
+                });
+                done();
+            });
+        });
+
+        it('should transform {params to fromdata} body options from v1 to v2', function (done) {
+            transformer.convertSingle({
+                id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
+                dataMode: 'params',
+                data: [{ key: 'foo', value: 'bar', enabled: false }],
+                dataOptions: {
+                    params: {
+                        contentType: 'multipart/form-data'
+                    }
+                }
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    _postman_id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
+                    name: '',
+                    request: {
+                        body: {
+                            mode: 'formdata',
+                            formdata: [{ key: 'foo', value: 'bar', disabled: true }],
+                            options: {
+                                formdata: {
+                                    contentType: 'multipart/form-data'
+                                }
+                            }
+                        },
+                        header: []
+                    },
+                    response: []
+                });
+                done();
+            });
+        });
+    });
 });
