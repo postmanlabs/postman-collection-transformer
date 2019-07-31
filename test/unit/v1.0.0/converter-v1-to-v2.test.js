@@ -1279,6 +1279,306 @@ describe('v1.0.0 to v2.0.0', function () {
         });
     });
 
+    describe('bodyOptions', function () {
+        describe('with convert', function () {
+            it('should transform body options', function (done) {
+                transformer.convert({
+                    id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                    name: 'get-with-body',
+                    order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                    folders: [],
+                    folders_order: [],
+                    requests: [{
+                        id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        headers: '',
+                        url: 'https://postman-echo.com/get',
+                        data: 'foo=bar',
+                        method: 'GET',
+                        dataMode: 'raw',
+                        dataOptions: {
+                            urlencoded: {
+                                contentType: 'application/x-www-form-urlencoded'
+                            },
+                            raw: {
+                                contentType: 'application/json'
+                            },
+                            params: {
+                                contentType: 'multipart/form-data'
+                            }
+                        },
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                    }]
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        info: {
+                            _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                            name: 'get-with-body',
+                            schema: 'https://schema.getpostman.com/json/collection/v2.0.0/collection.json'
+                        },
+                        item: [{
+                            _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                            name: '',
+                            request: {
+                                body: {
+                                    mode: 'raw',
+                                    raw: 'foo=bar',
+                                    options: {
+                                        urlencoded: {
+                                            contentType: 'application/x-www-form-urlencoded'
+                                        },
+                                        raw: {
+                                            contentType: 'application/json'
+                                        },
+                                        formdata: {
+                                            contentType: 'multipart/form-data'
+                                        }
+                                    }
+                                },
+                                header: [],
+                                method: 'GET',
+                                url: 'https://postman-echo.com/get'
+                            },
+                            response: []
+                        }]
+                    });
+                    done();
+                });
+            });
+
+            it('should transform when dataOptions are not present', function (done) {
+                transformer.convert({
+                    id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                    name: 'get-with-body',
+                    order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                    folders: [],
+                    folders_order: [],
+                    requests: [{
+                        id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        headers: '',
+                        url: 'https://postman-echo.com/get',
+                        data: 'foo=bar',
+                        method: 'GET',
+                        dataMode: 'raw',
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                    }]
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        info: {
+                            _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                            name: 'get-with-body',
+                            schema: 'https://schema.getpostman.com/json/collection/v2.0.0/collection.json'
+                        },
+                        item: [{
+                            _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                            name: '',
+                            request: {
+                                body: {
+                                    mode: 'raw',
+                                    raw: 'foo=bar'
+                                },
+                                header: [],
+                                method: 'GET',
+                                url: 'https://postman-echo.com/get'
+                            },
+                            response: []
+                        }]
+                    });
+                    done();
+                });
+            });
+
+            it('should transform body options {params to fromdata}', function (done) {
+                transformer.convert({
+                    id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                    name: 'get-with-body',
+                    order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                    folders: [],
+                    folders_order: [],
+                    requests: [{
+                        id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        headers: '',
+                        url: 'https://postman-echo.com/get',
+                        data: 'foo=bar',
+                        method: 'GET',
+                        dataMode: 'raw',
+                        dataOptions: {
+                            params: {
+                                contentType: 'multipart/form-data'
+                            }
+                        },
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                    }]
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        info: {
+                            _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                            name: 'get-with-body',
+                            schema: 'https://schema.getpostman.com/json/collection/v2.0.0/collection.json'
+                        },
+                        item: [{
+                            _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                            name: '',
+                            request: {
+                                body: {
+                                    mode: 'raw',
+                                    raw: 'foo=bar',
+                                    options: {
+                                        formdata: {
+                                            contentType: 'multipart/form-data'
+                                        }
+                                    }
+                                },
+                                header: [],
+                                method: 'GET',
+                                url: 'https://postman-echo.com/get'
+                            },
+                            response: []
+                        }]
+                    });
+                    done();
+                });
+            });
+        });
+
+        describe('with convertSingle', function () {
+            it('should transform body options', function (done) {
+                transformer.convertSingle({
+                    id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
+                    dataMode: 'raw',
+                    rawModeData: '[{ key: \'foo\', value: \'bar\', disabled: true }]',
+                    dataOptions: {
+                        urlencoded: {
+                            contentType: 'application/x-www-form-urlencoded'
+                        },
+                        raw: {
+                            contentType: 'application/json'
+                        },
+                        params: {
+                            contentType: 'multipart/form-data'
+                        }
+                    }
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        _postman_id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
+                        name: '',
+                        request: {
+                            body: {
+                                mode: 'raw',
+                                raw: '[{ key: \'foo\', value: \'bar\', disabled: true }]',
+                                options: {
+                                    urlencoded: {
+                                        contentType: 'application/x-www-form-urlencoded'
+                                    },
+                                    raw: {
+                                        contentType: 'application/json'
+                                    },
+                                    formdata: {
+                                        contentType: 'multipart/form-data'
+                                    }
+                                }
+                            },
+                            header: []
+                        },
+                        response: []
+                    });
+                    done();
+                });
+            });
+
+            it('should transform when dataOptions are not present', function (done) {
+                transformer.convertSingle({
+                    id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
+                    dataMode: 'raw',
+                    rawModeData: '[{ key: \'foo\', value: \'bar\', disabled: true }]'
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        _postman_id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
+                        name: '',
+                        request: {
+                            body: {
+                                mode: 'raw',
+                                raw: '[{ key: \'foo\', value: \'bar\', disabled: true }]'
+                            },
+                            header: []
+                        },
+                        response: []
+                    });
+                    done();
+                });
+            });
+
+            it('should transform body options {params to fromdata} ', function (done) {
+                transformer.convertSingle({
+                    id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
+                    dataMode: 'params',
+                    data: [{
+                        key: 'foo',
+                        value: 'bar',
+                        enabled: false
+                    }],
+                    dataOptions: {
+                        params: {
+                            contentType: 'multipart/form-data'
+                        }
+                    }
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        _postman_id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
+                        name: '',
+                        request: {
+                            body: {
+                                mode: 'formdata',
+                                formdata: [{
+                                    key: 'foo',
+                                    value: 'bar',
+                                    disabled: true
+                                }],
+                                options: {
+                                    formdata: {
+                                        contentType: 'multipart/form-data'
+                                    }
+                                }
+                            },
+                            header: []
+                        },
+                        response: []
+                    });
+                    done();
+                });
+            });
+        });
+    });
+
     describe('protocolProfileBehavior', function () {
         describe('with convert', function () {
             it('should be handled correctly', function (done) {
@@ -3224,122 +3524,6 @@ describe('v1.0.0 to v2.0.0', function () {
                     },
                     response: []
                 });
-            });
-        });
-    });
-
-    describe('handleBodyOptions', function () {
-        it('should transform from v1 to v2 when dataOptions are not present', function (done) {
-            transformer.convertSingle({
-                id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
-                dataMode: 'raw',
-                rawModeData: '[{ key: \'foo\', value: \'bar\', disabled: true }]'
-            }, options, function (err, converted) {
-                expect(err).to.not.be.ok;
-
-                // remove `undefined` properties for testing
-                converted = JSON.parse(JSON.stringify(converted));
-
-                expect(converted).to.eql({
-                    _postman_id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
-                    name: '',
-                    request: {
-                        body: {
-                            mode: 'raw',
-                            raw: '[{ key: \'foo\', value: \'bar\', disabled: true }]'
-                        },
-                        header: []
-                    },
-                    response: []
-                });
-                done();
-            });
-        });
-
-
-        it('should transform body options from v1 to v2', function (done) {
-            transformer.convertSingle({
-                id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
-                dataMode: 'raw',
-                rawModeData: '[{ key: \'foo\', value: \'bar\', disabled: true }]',
-                dataOptions: {
-                    urlencoded: {
-                        contentType: 'application/x-www-form-urlencoded'
-                    },
-                    raw: {
-                        contentType: 'application/json'
-                    },
-                    params: {
-                        contentType: 'multipart/form-data'
-                    }
-                }
-            }, options, function (err, converted) {
-                expect(err).to.not.be.ok;
-
-                // remove `undefined` properties for testing
-                converted = JSON.parse(JSON.stringify(converted));
-
-                expect(converted).to.eql({
-                    _postman_id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
-                    name: '',
-                    request: {
-                        body: {
-                            mode: 'raw',
-                            raw: '[{ key: \'foo\', value: \'bar\', disabled: true }]',
-                            options: {
-                                urlencoded: {
-                                    contentType: 'application/x-www-form-urlencoded'
-                                },
-                                raw: {
-                                    contentType: 'application/json'
-                                },
-                                formdata: {
-                                    contentType: 'multipart/form-data'
-                                }
-                            }
-                        },
-                        header: []
-                    },
-                    response: []
-                });
-                done();
-            });
-        });
-
-        it('should transform {params to fromdata} body options from v1 to v2', function (done) {
-            transformer.convertSingle({
-                id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
-                dataMode: 'params',
-                data: [{ key: 'foo', value: 'bar', enabled: false }],
-                dataOptions: {
-                    params: {
-                        contentType: 'multipart/form-data'
-                    }
-                }
-            }, options, function (err, converted) {
-                expect(err).to.not.be.ok;
-
-                // remove `undefined` properties for testing
-                converted = JSON.parse(JSON.stringify(converted));
-
-                expect(converted).to.eql({
-                    _postman_id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
-                    name: '',
-                    request: {
-                        body: {
-                            mode: 'formdata',
-                            formdata: [{ key: 'foo', value: 'bar', disabled: true }],
-                            options: {
-                                formdata: {
-                                    contentType: 'multipart/form-data'
-                                }
-                            }
-                        },
-                        header: []
-                    },
-                    response: []
-                });
-                done();
             });
         });
     });
