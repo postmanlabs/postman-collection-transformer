@@ -1,7 +1,7 @@
 master:
   new features:
     - >-
-      GH-235 Adding support for body options.
+      GH-235 Added support for request body options.
 
 3.1.1:
   date: 2019-05-17

@@ -1279,7 +1279,7 @@ describe('v1.0.0 to v2.0.0', function () {
         });
     });
 
-    describe('bodyOptions', function () {
+    describe('request body options', function () {
         describe('with convert', function () {
             it('should transform body options', function (done) {
                 transformer.convert({
@@ -1304,6 +1304,9 @@ describe('v1.0.0 to v2.0.0', function () {
                             },
                             params: {
                                 contentType: 'multipart/form-data'
+                            },
+                            binary: {
+                                contentType: 'application/json'
                             }
                         },
                         collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
@@ -1336,6 +1339,9 @@ describe('v1.0.0 to v2.0.0', function () {
                                         },
                                         formdata: {
                                             contentType: 'multipart/form-data'
+                                        },
+                                        file: {
+                                            contentType: 'application/json'
                                         }
                                     }
                                 },
@@ -1397,7 +1403,7 @@ describe('v1.0.0 to v2.0.0', function () {
                 });
             });
 
-            it('should transform body options {params to fromdata}', function (done) {
+            it('should transform body options to empty if invalid mode is provided', function (done) {
                 transformer.convert({
                     id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                     name: 'get-with-body',
@@ -1411,11 +1417,7 @@ describe('v1.0.0 to v2.0.0', function () {
                         data: 'foo=bar',
                         method: 'GET',
                         dataMode: 'raw',
-                        dataOptions: {
-                            params: {
-                                contentType: 'multipart/form-data'
-                            }
-                        },
+                        dataOptions: "INVALID_OPTIONS",
                         collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
                     }]
                 }, options, function (err, converted) {
@@ -1437,11 +1439,7 @@ describe('v1.0.0 to v2.0.0', function () {
                                 body: {
                                     mode: 'raw',
                                     raw: 'foo=bar',
-                                    options: {
-                                        formdata: {
-                                            contentType: 'multipart/form-data'
-                                        }
-                                    }
+                                    options: {}
                                 },
                                 header: [],
                                 method: 'GET',
@@ -1470,6 +1468,9 @@ describe('v1.0.0 to v2.0.0', function () {
                         },
                         params: {
                             contentType: 'multipart/form-data'
+                        },
+                        binary: {
+                            contentType: 'application/json'
                         }
                     }
                 }, options, function (err, converted) {
@@ -1494,6 +1495,9 @@ describe('v1.0.0 to v2.0.0', function () {
                                     },
                                     formdata: {
                                         contentType: 'multipart/form-data'
+                                    },
+                                    file: {
+                                        contentType: 'application/json'
                                     }
                                 }
                             },
@@ -1532,7 +1536,7 @@ describe('v1.0.0 to v2.0.0', function () {
                 });
             });
 
-            it('should transform body options {params to fromdata} ', function (done) {
+            it('should transform body options to empty if invalid mode is provided', function (done) {
                 transformer.convertSingle({
                     id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
                     dataMode: 'params',
@@ -1541,11 +1545,7 @@ describe('v1.0.0 to v2.0.0', function () {
                         value: 'bar',
                         enabled: false
                     }],
-                    dataOptions: {
-                        params: {
-                            contentType: 'multipart/form-data'
-                        }
-                    }
+                    dataOptions: "INVALID_OPTIONS"
                 }, options, function (err, converted) {
                     expect(err).to.not.be.ok;
 
@@ -1563,11 +1563,7 @@ describe('v1.0.0 to v2.0.0', function () {
                                     value: 'bar',
                                     disabled: true
                                 }],
-                                options: {
-                                    formdata: {
-                                        contentType: 'multipart/form-data'
-                                    }
-                                }
+                                options: {}
                             },
                             header: []
                         },

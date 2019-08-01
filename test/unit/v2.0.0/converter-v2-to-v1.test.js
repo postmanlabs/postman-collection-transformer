@@ -893,7 +893,7 @@ describe('v2.0.0 to v1.0.0', function () {
         });
     });
 
-    describe('body.options', function () {
+    describe('request body options', function () {
         describe('with convert', function () {
             it('should transform body options', function (done) {
                 transformer.convert({
@@ -926,6 +926,9 @@ describe('v2.0.0 to v1.0.0', function () {
                                     },
                                     formdata: {
                                         contentType: 'multipart/form-data'
+                                    },
+                                    file: {
+                                        contentType: 'application/json'
                                     }
                                 }
                             }
@@ -966,6 +969,9 @@ describe('v2.0.0 to v1.0.0', function () {
                                 },
                                 params: {
                                     contentType: 'multipart/form-data'
+                                },
+                                binary: {
+                                    contentType: 'application/json'
                                 }
                             }
                         }]
@@ -1031,7 +1037,7 @@ describe('v2.0.0 to v1.0.0', function () {
                 });
             });
 
-            it('should transform body options {formdata to params}', function (done) {
+            it('should transform body options to empty if invalid mode is provided', function (done) {
                 transformer.convert({
                     info: {
                         _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
@@ -1056,11 +1062,7 @@ describe('v2.0.0 to v1.0.0', function () {
                                     key: 'foo',
                                     value: 'bar'
                                 }],
-                                options: {
-                                    formdata: {
-                                        contentType: 'multipart/form-data'
-                                    }
-                                }
+                                options: "INVALID_OPTIONS"
                             }
                         },
                         response: []
@@ -1093,11 +1095,7 @@ describe('v2.0.0 to v1.0.0', function () {
                                 key: 'foo',
                                 value: 'bar'
                             }],
-                            dataOptions: {
-                                params: {
-                                    contentType: 'multipart/form-data'
-                                }
-                            }
+                            dataOptions: {}
                         }]
                     });
                     done();
@@ -1123,6 +1121,9 @@ describe('v2.0.0 to v1.0.0', function () {
                                 },
                                 formdata: {
                                     contentType: 'multipart/form-data'
+                                },
+                                file: {
+                                    contentType: 'application/json'
                                 }
                             }
                         },
@@ -1151,6 +1152,9 @@ describe('v2.0.0 to v1.0.0', function () {
                             },
                             params: {
                                 contentType: 'multipart/form-data'
+                            },
+                            binary: {
+                                contentType: 'application/json'
                             }
                         },
                         url: 'https://postman-echo.com/get',
@@ -1196,7 +1200,7 @@ describe('v2.0.0 to v1.0.0', function () {
                 });
             });
 
-            it('should transform body options {formdata to params}', function (done) {
+            it('should transform body options to empty if invalid mode is provided', function (done) {
                 transformer.convertSingle({
                     _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
                     name: '',
@@ -1204,11 +1208,7 @@ describe('v2.0.0 to v1.0.0', function () {
                         body: {
                             mode: 'raw',
                             raw: 'foo=bar',
-                            options: {
-                                formdata: {
-                                    contentType: 'multipart/form-data'
-                                }
-                            }
+                            options: "INVALID_OPTIONS"
                         },
                         method: 'GET',
                         url: 'https://postman-echo.com/get'
@@ -1226,11 +1226,7 @@ describe('v2.0.0 to v1.0.0', function () {
                         headers: '',
                         dataMode: 'raw',
                         rawModeData: 'foo=bar',
-                        dataOptions: {
-                            params: {
-                                contentType: 'multipart/form-data'
-                            }
-                        },
+                        dataOptions: {},
                         url: 'https://postman-echo.com/get',
                         pathVariableData: [],
                         queryParams: [],
