@@ -1192,7 +1192,7 @@ describe('v2.1.0 to v1.0.0', function () {
 
     describe('protocolProfileBehavior', function () {
         describe('with convert', function () {
-            it('should be handled correctly', function (done) {
+            it('should be converted at request level', function (done) {
                 transformer.convert({
                     info: {
                         _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
@@ -1250,6 +1250,108 @@ describe('v2.1.0 to v1.0.0', function () {
                             queryParams: [],
                             headerData: []
                         }]
+                    });
+                    done();
+                });
+            });
+
+            it('should be converted at collection level', function (done) {
+                transformer.convert({
+                    info: {
+                        _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        name: 'get-with-body',
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+                    },
+                    item: [{
+                        _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        name: '',
+                        request: {
+                            body: {
+                                mode: 'raw',
+                                raw: 'foo=bar'
+                            },
+                            header: [],
+                            method: 'GET',
+                            url: {
+                                host: ['postman-echo', 'com'],
+                                path: ['get'],
+                                protocol: 'https',
+                                raw: 'https://postman-echo.com/get'
+                            }
+                        },
+                        response: []
+                    }],
+                    protocolProfileBehavior: {
+                        disableBodyPruning: true
+                    }
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        name: 'get-with-body',
+                        order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                        folders_order: [],
+                        folders: [],
+                        requests: [{
+                            id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                            name: '',
+                            collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                            method: 'GET',
+                            headers: '',
+                            dataMode: 'raw',
+                            rawModeData: 'foo=bar',
+                            url: 'https://postman-echo.com/get',
+                            responses: [],
+                            pathVariableData: [],
+                            queryParams: [],
+                            headerData: []
+                        }],
+                        protocolProfileBehavior: {
+                            disableBodyPruning: true
+                        }
+                    });
+                    done();
+                });
+            });
+
+            it('should be converted at folder level', function (done) {
+                transformer.convert({
+                    info: {
+                        _postman_id: '969e90b1-0742-41b5-8602-e137d25274ac'
+                    },
+                    auth: { type: 'noauth' },
+                    item: [{
+                        _postman_id: 'a9832f4d-657c-4cd2-a5a4-7ddd6bc4948e',
+                        auth: { type: 'noauth' },
+                        item: [],
+                        protocolProfileBehavior: {
+                            disableBodyPruning: true
+                        }
+                    }]
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        id: '969e90b1-0742-41b5-8602-e137d25274ac',
+                        folders: [{
+                            id: 'a9832f4d-657c-4cd2-a5a4-7ddd6bc4948e',
+                            auth: { type: 'noauth' },
+                            folders_order: [],
+                            order: [],
+                            protocolProfileBehavior: {
+                                disableBodyPruning: true
+                            }
+                        }],
+                        order: [],
+                        requests: [],
+                        folders_order: ['a9832f4d-657c-4cd2-a5a4-7ddd6bc4948e']
                     });
                     done();
                 });
