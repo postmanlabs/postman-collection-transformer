@@ -1417,7 +1417,7 @@ describe('v1.0.0 to v2.0.0', function () {
                         data: 'foo=bar',
                         method: 'GET',
                         dataMode: 'raw',
-                        dataOptions: "INVALID_OPTIONS",
+                        dataOptions: 'INVALID_OPTIONS',
                         collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
                     }]
                 }, options, function (err, converted) {
@@ -1545,7 +1545,7 @@ describe('v1.0.0 to v2.0.0', function () {
                         value: 'bar',
                         enabled: false
                     }],
-                    dataOptions: "INVALID_OPTIONS"
+                    dataOptions: 'INVALID_OPTIONS'
                 }, options, function (err, converted) {
                     expect(err).to.not.be.ok;
 

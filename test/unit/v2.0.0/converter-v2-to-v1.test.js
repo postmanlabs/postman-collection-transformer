@@ -1062,7 +1062,7 @@ describe('v2.0.0 to v1.0.0', function () {
                                     key: 'foo',
                                     value: 'bar'
                                 }],
-                                options: "INVALID_OPTIONS"
+                                options: 'INVALID_OPTIONS'
                             }
                         },
                         response: []
@@ -1208,7 +1208,7 @@ describe('v2.0.0 to v1.0.0', function () {
                         body: {
                             mode: 'raw',
                             raw: 'foo=bar',
-                            options: "INVALID_OPTIONS"
+                            options: 'INVALID_OPTIONS'
                         },
                         method: 'GET',
                         url: 'https://postman-echo.com/get'
