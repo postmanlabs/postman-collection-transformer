@@ -1504,7 +1504,7 @@ describe('v1.0.0 to v2.1.0', function () {
 
     describe('protocolProfileBehavior', function () {
         describe('with convert', function () {
-            it('should be handled correctly', function (done) {
+            it('should be converted at request level', function (done) {
                 transformer.convert({
                     id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                     name: 'get-with-body',
@@ -1553,6 +1553,132 @@ describe('v1.0.0 to v2.1.0', function () {
                                 }
                             },
                             response: [],
+                            protocolProfileBehavior: {
+                                disableBodyPruning: true
+                            }
+                        }]
+                    });
+                    done();
+                });
+            });
+
+            it('should be converted at collection level', function (done) {
+                transformer.convert({
+                    id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                    name: 'get-with-body',
+                    order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                    folders: [],
+                    folders_order: [],
+                    requests: [{
+                        id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        headers: '',
+                        url: 'https://postman-echo.com/get',
+                        data: 'foo=bar',
+                        method: 'GET',
+                        dataMode: 'raw',
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                    }],
+                    protocolProfileBehavior: {
+                        disableBodyPruning: true
+                    }
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        info: {
+                            _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                            name: 'get-with-body',
+                            schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+                        },
+                        item: [{
+                            _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                            name: '',
+                            request: {
+                                body: {
+                                    mode: 'raw',
+                                    raw: 'foo=bar'
+                                },
+                                header: [],
+                                method: 'GET',
+                                url: {
+                                    host: ['postman-echo', 'com'],
+                                    path: ['get'],
+                                    protocol: 'https',
+                                    raw: 'https://postman-echo.com/get'
+                                }
+                            },
+                            response: []
+                        }],
+                        protocolProfileBehavior: {
+                            disableBodyPruning: true
+                        }
+                    });
+                    done();
+                });
+            });
+
+            it('should be converted at folder level', function (done) {
+                transformer.convert({
+                    id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                    name: 'get-with-body',
+                    order: [],
+                    folders: [{
+                        id: '5f321b3e-bfdd-4018-80d0-789351444674',
+                        order: [
+                            '4f65e265-dd38-0a67-71a5-d9dd50fa37a1'
+                        ],
+                        protocolProfileBehavior: {
+                            disableBodyPruning: true
+                        }
+                    }],
+                    folders_order: [
+                        '5f321b3e-bfdd-4018-80d0-789351444674'
+                    ],
+                    requests: [{
+                        id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        headers: '',
+                        url: 'https://postman-echo.com/get',
+                        data: 'foo=bar',
+                        method: 'GET',
+                        dataMode: 'raw',
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                    }]
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        info: {
+                            _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                            name: 'get-with-body',
+                            schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+                        },
+                        item: [{
+                            _postman_id: '5f321b3e-bfdd-4018-80d0-789351444674',
+                            item: [{
+                                _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                                name: '',
+                                request: {
+                                    body: {
+                                        mode: 'raw',
+                                        raw: 'foo=bar'
+                                    },
+                                    header: [],
+                                    method: 'GET',
+                                    url: {
+                                        host: ['postman-echo', 'com'],
+                                        path: ['get'],
+                                        protocol: 'https',
+                                        raw: 'https://postman-echo.com/get'
+                                    }
+                                },
+                                response: []
+                            }],
                             protocolProfileBehavior: {
                                 disableBodyPruning: true
                             }
