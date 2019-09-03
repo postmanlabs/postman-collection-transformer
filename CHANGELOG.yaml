@@ -1,10 +1,11 @@
 master:
   new features:
-    - >-
-      GH-235 Added support for request body options.
+    - GH-235 Added support for request body options
     - >-
       GH-236 Added support for converting `protocolProfileBehavior` at folder
-      and collection level.
+      and collection level
+  chores:
+    - Updated dependencies
 
 3.1.2:
   date: 2019-08-01
