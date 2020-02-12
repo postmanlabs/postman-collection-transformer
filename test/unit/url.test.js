@@ -788,5 +788,137 @@ describe('url', function () {
             expect(url.unparse(fixture)).to.eql('https://postman-echo.com#foo');
             done();
         });
+
+        it('should handle bare ipv4 addresses with variables', function () {
+            var fixture = '127.0.{{subnet}}.1';
+
+            expect(url.unparse(url.parse(fixture))).to.equal(fixture);
+        });
+
+        it('should handle bare ipv4 addresses with protocol and port as variables', function () {
+            var fixture = '{{my-protocol}}://127.0.0.1:{{my-port}}';
+
+            expect(url.unparse(url.parse(fixture))).to.equal(fixture);
+        });
+
+        it('should handle trailing path backslash in ipv4 address and port', function () {
+            var fixture = 'http://127.0.0.1:8080/';
+
+            expect(url.unparse(url.parse(fixture))).to.equal(fixture);
+        });
+
+        it('should handle url with file protocol and relative path to files', function () {
+            var fixture = 'file://../path/to/file';
+
+            expect(url.unparse(url.parse(fixture))).to.equal(fixture);
+        });
+
+        it('should handle path variables', function () {
+            var fixture = 'http://127.0.0.1/:郵差/:/:foo.json';
+
+            expect(url.unparse(url.parse(fixture))).to.equal(fixture);
+        });
+
+        it('should handle variables having reserved characters', function () {
+            var fixture = '{{p://}}://{{@}}:{{###}}@{{host.name}}:{{:p}}/{{f/o/o}}/bar?{{?}}={{&}}#{{[#]}}';
+
+            expect(url.unparse(url.parse(fixture))).to.equal(fixture);
+        });
+
+        it('should handle whitespace and newlines', function () {
+            var fixture = 'http://\n:\r@\r.\n:\n/\n/\n?\n=\r#\n';
+
+            expect(url.unparse(url.parse(fixture))).to.equal(fixture);
+        });
+
+        it('should trim whitespace on the left', function () {
+            var fixture = ' \n\t\rhttp://localhost/path\n/name\n ';
+
+            expect(url.unparse(url.parse(fixture))).to.equal(fixture.trimLeft());
+        });
+
+        it('should replace \\ in pathname with /', function () {
+            var fixture = 'http://localhost\\foo\\bar';
+
+            expect(url.unparse(url.parse(fixture))).to.equal('http://localhost/foo/bar');
+        });
+
+        it('should handle IPv6 with auth', function () {
+            var fixture = 'http://user:password@[1080:0:0:0:8:800:200C:417A]:8080';
+
+            expect(url.unparse(url.parse(fixture))).to.equal(fixture);
+        });
+
+        it('should handle multiple : and @ in auth', function () {
+            var fixture = 'http://us@r:p@ssword@localhost';
+
+            expect(url.unparse(url.parse(fixture))).to.equal(fixture);
+
+            fixture = 'http://user:p:a:s:s@localhost';
+            expect(url.unparse(url.parse(fixture))).to.equal(fixture);
+        });
+
+        it('should handle auth without user', function () {
+            var fixture = 'http://:password@localhost';
+
+            expect(url.unparse(url.parse(fixture))).to.equal(fixture);
+        });
+
+        it('should handle auth without password', function () {
+            var fixture = 'http://user@localhost';
+
+            expect(url.unparse(url.parse(fixture))).to.equal(fixture);
+        });
+
+        it('should retain @ in auth without user and password', function () {
+            var fixture = 'http://@localhost';
+
+            expect(url.unparse(url.parse(fixture))).to.equal(fixture);
+        });
+
+        it('should retain : in auth with empty user and password', function () {
+            var fixture = 'http://:@localhost';
+
+            expect(url.unparse(url.parse(fixture))).to.equal(fixture);
+        });
+
+        it('should retain : in empty port', function () {
+            var fixture = 'localhost:/path';
+
+            expect(url.unparse(url.parse(fixture))).to.equal(fixture);
+        });
+
+        it('should retain / in empty path', function () {
+            var fixture = 'localhost/';
+
+            expect(url.unparse(url.parse(fixture))).to.equal(fixture);
+        });
+
+        it('should retain # in empty hash', function () {
+            var fixture = 'localhost#';
+
+            expect(url.unparse(url.parse(fixture))).to.equal(fixture);
+        });
+
+        it('should retain ? in empty query param', function () {
+            var fixture = 'http://localhost?';
+
+            expect(url.unparse(url.parse(fixture))).to.equal(fixture);
+        });
+
+        it('should retain & in empty query params', function () {
+            var fixture = 'http://localhost?&';
+
+            expect(url.unparse(url.parse(fixture))).to.equal(fixture);
+
+            fixture = 'http://localhost?&&';
+            expect(url.unparse(url.parse(fixture))).to.equal(fixture);
+
+            fixture = 'http://localhost?foo&';
+            expect(url.unparse(url.parse(fixture))).to.equal(fixture);
+
+            fixture = 'http://localhost?&foo';
+            expect(url.unparse(url.parse(fixture))).to.equal(fixture);
+        });
     });
 });
