@@ -669,6 +669,16 @@ describe('url', function () {
                 }
             });
         });
+
+        it('should handle handle protocol with backslashes', function () {
+            var subject = url.parse('http:\\\\localhost');
+
+            expect(subject).to.deep.include({
+                raw: 'http:\\\\localhost',
+                protocol: 'http',
+                host: ['localhost']
+            });
+        });
     });
 
     describe('unparsing', function () {
@@ -839,6 +849,12 @@ describe('url', function () {
 
         it('should replace \\ in pathname with /', function () {
             var fixture = 'http://localhost\\foo\\bar';
+
+            expect(url.unparse(url.parse(fixture))).to.equal('http://localhost/foo/bar');
+        });
+
+        it('should replace \\ in protocol with /', function () {
+            var fixture = 'http:\\\\localhost/foo\\bar';
 
             expect(url.unparse(url.parse(fixture))).to.equal('http://localhost/foo/bar');
         });
