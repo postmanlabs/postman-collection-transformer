@@ -1,4 +1,12 @@
 master:
+  new features:
+    - >-
+      GH-259 Updated URL parsing and unparsing logic to allow variables with
+      reserved characters in URL
+  bugs fixed:
+    - >-
+      GH-260 Fixed a bug where params with null key were repeated during
+      v1 -> v2.x conversions
   chores:
     - Updated dependencies
 
