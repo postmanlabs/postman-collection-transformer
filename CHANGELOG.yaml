@@ -7,6 +7,8 @@ master:
     - >-
       GH-260 Fixed a bug where params with null key were repeated during
       v1 -> v2.x conversions
+  chores:
+    - Updated dependencies
 
 3.2.0:
   date: 2019-09-04
