@@ -799,6 +799,42 @@ describe('url', function () {
             done();
         });
 
+        it('should encode &, = and # in query parameters', function () {
+            var fixture = {
+                host: 'https://postman-echo.com',
+                query: [{
+                    key: '#&=',
+                    value: '#&='
+                }]
+            };
+
+            expect(url.unparse(fixture)).to.eql('https://postman-echo.com?%23%26%3D=%23%26=');
+        });
+
+        it('should not encode = in query parameters value', function () {
+            var fixture = {
+                host: 'https://postman-echo.com',
+                query: [{
+                    key: 'foo',
+                    value: 'bar='
+                }]
+            };
+
+            expect(url.unparse(fixture)).to.eql('https://postman-echo.com?foo=bar=');
+        });
+
+        it('should not encode &, = and # inside variables in query parameters', function () {
+            var fixture = {
+                host: 'https://postman-echo.com',
+                query: [{
+                    key: '{{#&=}}',
+                    value: '{{#&=}}'
+                }]
+            };
+
+            expect(url.unparse(fixture)).to.eql('https://postman-echo.com?{{#&=}}={{#&=}}');
+        });
+
         it('should handle bare ipv4 addresses with variables', function () {
             var fixture = '127.0.{{subnet}}.1';
 
