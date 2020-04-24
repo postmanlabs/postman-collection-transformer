@@ -3361,6 +3361,40 @@ describe('v1.0.0 to v2.0.0', function () {
                 });
             });
         });
+
+        // [GitHub #8251, #8374]
+        it('should preserve param value when equals is false', function () {
+            transformer.convertSingle({
+                id: '0628a95f-c283-94e2-fa9f-53477775692f',
+                name: 'A world of foo!',
+                url: 'https://postman-echo.com/get?alpha=beta',
+                collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
+                queryParams: [
+                    // param having `equals:false`
+                    { key: 'alpha', value: 'beta', equals: false }
+                ]
+            }, options, function (err, result) {
+                expect(err).to.not.be.ok;
+                expect(JSON.parse(JSON.stringify(result))).to.eql({
+                    _postman_id: '0628a95f-c283-94e2-fa9f-53477775692f',
+                    name: 'A world of foo!',
+                    request: {
+                        header: [],
+                        url: {
+                            raw: 'https://postman-echo.com/get?alpha=beta',
+                            protocol: 'https',
+                            host: ['postman-echo', 'com'],
+                            path: ['get'],
+                            query: [
+                                // param value is preserved here
+                                { key: 'alpha', value: 'beta' }
+                            ]
+                        }
+                    },
+                    response: []
+                });
+            });
+        });
     });
 
     describe('retainIds', function () {
