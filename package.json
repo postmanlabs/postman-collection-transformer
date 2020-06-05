@@ -71,7 +71,7 @@
     "inherits": "2.0.4",
     "intel": "1.2.0",
     "lodash": "4.17.15",
-    "semver": "6.3.0",
+    "semver": "7.3.2",
     "strip-json-comments": "3.0.1"
   },
   "greenkeeper": {
