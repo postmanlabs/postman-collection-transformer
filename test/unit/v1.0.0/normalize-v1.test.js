@@ -55,8 +55,8 @@ describe('v1.0.0 normalization', function () {
                     helperAttributes: null,
                     tests: null,
                     preRequestScript: null,
-                    variables: [{ id: 'v1', key: 'foo', value: 'bar', type: 'string' }],
-                    pathVariableData: [{ id: 'v1', key: 'foo', value: 'bar', type: 'string' }],
+                    variables: [{ id: 'v1', key: 'foo', value: 'bar' }],
+                    pathVariableData: [{ id: 'v1', key: 'foo', value: 'bar' }],
                     events: [{ listen: 'random', script: { exec: [], type: 'text/javascript' } }]
                 });
                 done();
@@ -137,7 +137,7 @@ describe('v1.0.0 normalization', function () {
                             }
                         }],
                         variables: [{
-                            id: '78650897-72b7-4a59-8f23-3d4970e2afdc', key: 'foo', value: 'bar', type: 'string'
+                            id: '78650897-72b7-4a59-8f23-3d4970e2afdc', key: 'foo', value: 'bar'
                         }],
                         folders_order: ['F1.F2']
                     }, {
@@ -2536,7 +2536,7 @@ describe('v1.0.0 normalization', function () {
                         headerData: [{ key: 'header_foo', value: 'header_bar', description: null }],
                         queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }],
                         pathVariableData: [{
-                            id: 'pv1', key: 'pv_foo', value: 'pv_bar', description: null, type: 'string'
+                            id: 'pv1', key: 'pv_foo', value: 'pv_bar', description: null
                         }]
                     }]
                 });
@@ -2567,7 +2567,7 @@ describe('v1.0.0 normalization', function () {
                     helperAttributes: { id: 'bearer', token: 'random' },
                     headerData: [{ key: 'header_foo', value: 'header_bar', description: null }],
                     queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }],
-                    pathVariableData: [{ id: 'pv1', key: 'pv_foo', value: 'pv_bar', description: null, type: 'string' }]
+                    pathVariableData: [{ id: 'pv1', key: 'pv_foo', value: 'pv_bar', description: null }]
                 });
             });
         });
@@ -2596,7 +2596,7 @@ describe('v1.0.0 normalization', function () {
                     helperAttributes: { id: 'bearer', token: 'random' },
                     headerData: [{ key: 'header_foo', value: 'header_bar', description: null }],
                     queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }],
-                    pathVariableData: [{ id: 'pv1', key: 'pv_foo', value: 'pv_bar', description: null, type: 'string' }]
+                    pathVariableData: [{ id: 'pv1', key: 'pv_foo', value: 'pv_bar', description: null }]
                 });
             });
         });

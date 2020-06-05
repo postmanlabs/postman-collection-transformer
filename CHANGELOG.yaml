@@ -1,3 +1,11 @@
+3.3.2:
+  date: 2020-06-05
+  bugs fixed:
+    - >-
+      GH-278 Fixed a bug where query param values are lost during v1 -> v2.x
+      conversions
+    - GH-307 Fixed a bug where variable type is always inferred or set as 'any'
+
 3.3.1:
   date: 2020-03-27
   bugs fixed:
