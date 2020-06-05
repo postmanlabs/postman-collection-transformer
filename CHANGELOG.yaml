@@ -1,4 +1,5 @@
-master:
+3.3.2:
+  date: 2020-06-05
   bugs fixed:
     - >-
       GH-278 Fixed a bug where query param values are lost during v1 -> v2.x
