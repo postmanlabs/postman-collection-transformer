@@ -67,7 +67,7 @@
     "yankee": "1.0.8"
   },
   "dependencies": {
-    "commander": "5.1.0",
+    "commander": "6.1.0",
     "inherits": "2.0.4",
     "intel": "1.2.0",
     "lodash": "4.17.19",
