@@ -3095,6 +3095,93 @@ describe('v1.0.0 to v2.1.0', function () {
                 });
             });
         });
+
+        describe('with retainIds', function () {
+            it('should retain event and script ids if retainIds is set', function (done) {
+                transformer.convertSingle({
+                    id: '#collection-id',
+                    events: [{
+                        id: '#event-id-1',
+                        listen: 'prerequest',
+                        script: { id: '#script-id-1', exec: ['console.log("Actual prerequest script");'] }
+                    }, {
+                        listen: 'test',
+                        script: { exec: ['console.log("Actual test script");'] }
+                    }]
+                }, {
+                    inputVersion: '1.0.0',
+                    outputVersion: '2.1.0',
+                    retainIds: true
+                }, function (err, result) {
+                    expect(err).to.be.undefined;
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        _postman_id: '#collection-id',
+                        name: '',
+                        request: {
+                            header: []
+                        },
+                        response: [],
+                        event: [{
+                            id: '#event-id-1',
+                            listen: 'prerequest',
+                            script: {
+                                id: '#script-id-1',
+                                type: 'text/javascript',
+                                exec: ['console.log("Actual prerequest script");']
+                            }
+                        }, {
+                            listen: 'test',
+                            script: {
+                                type: 'text/javascript',
+                                exec: ['console.log("Actual test script");']
+                            }
+                        }]
+                    });
+                    done();
+                });
+            });
+
+            it('should drop event and script ids if retainIds is not set', function (done) {
+                transformer.convertSingle({
+                    id: '#collection-id',
+                    events: [{
+                        id: '#event-id-1',
+                        listen: 'prerequest',
+                        script: { id: '#script-id-1', exec: ['console.log("Actual prerequest script");'] }
+                    }, {
+                        id: '#event-id-2',
+                        listen: 'test',
+                        script: { id: '#script-id-2', exec: ['console.log("Actual test script");'] }
+                    }]
+                }, {
+                    inputVersion: '1.0.0',
+                    outputVersion: '2.1.0'
+                }, function (err, result) {
+                    expect(err).to.be.undefined;
+                    expect(JSON.parse(JSON.stringify(result))).to.eql({
+                        name: '',
+                        request: {
+                            header: []
+                        },
+                        response: [],
+                        event: [{
+                            listen: 'prerequest',
+                            script: {
+                                type: 'text/javascript',
+                                exec: ['console.log("Actual prerequest script");']
+                            }
+                        }, {
+                            listen: 'test',
+                            script: {
+                                type: 'text/javascript',
+                                exec: ['console.log("Actual test script");']
+                            }
+                        }]
+                    });
+                    done();
+                });
+            });
+        });
     });
 
     describe('malformed collections', function () {
