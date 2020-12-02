@@ -179,7 +179,7 @@ module.exports = {
         },
         item: [
             {
-                _postman_id: '51e6ecc7-ff3c-9bc0-8aea-b417c4723f69',
+                id: '51e6ecc7-ff3c-9bc0-8aea-b417c4723f69',
                 name: 'OAuth2',
                 event: [
                     {
@@ -230,7 +230,7 @@ module.exports = {
                 response: []
             },
             {
-                _postman_id: '951fc3e8-c6b6-5c19-9f69-4e7499b3127f',
+                id: '951fc3e8-c6b6-5c19-9f69-4e7499b3127f',
                 name: 'test bearer auth success',
                 event: [
                     {
@@ -267,7 +267,7 @@ module.exports = {
                 response: []
             },
             {
-                _postman_id: '951fc3e8-c6b6-5c19-9f69-4e7499b3127g',
+                id: '951fc3e8-c6b6-5c19-9f69-4e7499b3127g',
                 name: 'test ntlm auth success',
                 event: [
                     {
@@ -319,7 +319,7 @@ module.exports = {
         },
         item: [
             {
-                _postman_id: '51e6ecc7-ff3c-9bc0-8aea-b417c4723f69',
+                id: '51e6ecc7-ff3c-9bc0-8aea-b417c4723f69',
                 name: 'OAuth2',
                 event: [
                     {
@@ -434,7 +434,7 @@ module.exports = {
                 response: []
             },
             {
-                _postman_id: '951fc3e8-c6b6-5c19-9f69-4e7499b3127f',
+                id: '951fc3e8-c6b6-5c19-9f69-4e7499b3127f',
                 name: 'test bearer auth success',
                 event: [
                     {
@@ -480,7 +480,7 @@ module.exports = {
                 response: []
             },
             {
-                _postman_id: '951fc3e8-c6b6-5c19-9f69-4e7499b3127g',
+                id: '951fc3e8-c6b6-5c19-9f69-4e7499b3127g',
                 name: 'test ntlm auth success',
                 event: [
                     {

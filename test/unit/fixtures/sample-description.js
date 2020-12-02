@@ -87,7 +87,7 @@ module.exports = {
         },
         item: [
             {
-                _postman_id: 'e18e734b-4259-db7d-3728-215b2df05a19',
+                id: 'e18e734b-4259-db7d-3728-215b2df05a19',
                 name: 'Simple POST request',
                 request: {
                     url: {
@@ -177,7 +177,7 @@ module.exports = {
         },
         item: [
             {
-                _postman_id: 'e18e734b-4259-db7d-3728-215b2df05a19',
+                id: 'e18e734b-4259-db7d-3728-215b2df05a19',
                 name: 'Simple POST request',
                 request: {
                     url: {
