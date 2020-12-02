@@ -59,7 +59,7 @@ describe('v1.0.0 to v2.1.0', function () {
                             header: [],
                             url: {
                                 raw: '',
-                                variable: [{ id: 'foo', value: 'bar' }]
+                                variable: [{ key: 'foo', value: 'bar' }]
                             }
                         },
                         response: []
