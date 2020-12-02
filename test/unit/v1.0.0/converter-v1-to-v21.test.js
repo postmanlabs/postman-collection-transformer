@@ -161,7 +161,6 @@ describe('v1.0.0 to v2.1.0', function () {
                             _postman_id: 'F1',
                             item: [{
                                 _postman_id: 'F1.F2',
-                                _postman_isSubFolder: true,
                                 item: []
                             }]
                         }]
