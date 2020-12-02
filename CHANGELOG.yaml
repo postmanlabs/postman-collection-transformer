@@ -1,3 +1,9 @@
+master:
+  bugs fixed:
+    - >-
+      GH-333 Fixed a bug where object descriptions are not converted to string
+      on v2->v1 conversions
+
 3.3.3:
   date: 2020-07-13
   chores:

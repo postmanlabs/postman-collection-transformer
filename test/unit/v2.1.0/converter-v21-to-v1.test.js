@@ -227,6 +227,79 @@ describe('v2.1.0 to v1.0.0', function () {
             });
         });
 
+        it('should convert descriptions object back to string', function () {
+            transformer.convert({
+                info: {
+                    _postman_id: '9ac7325c-cc3f-4c20-b0f8-a435766cb74c',
+                    description: { content: 'collection description' },
+                    schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+                },
+                item: [{
+                    _postman_id: 'f3285fa0-e361-43ba-ba15-618c7a911e84',
+                    item: [{
+                        _postman_id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
+                        request: {
+                            description: { content: 'request description' },
+                            body: {
+                                disabled: false,
+                                mode: 'formdata',
+                                formdata: [{
+                                    description: { content: 'data description' }, key: 'body_foo', value: 'body_bar'
+                                }]
+                            },
+                            header: [{
+                                description: { content: 'header description' }, key: 'header_foo', value: 'header_bar'
+                            }],
+                            url: {
+                                query: [{
+                                    description: { content: 'query description' }, key: 'query_foo', value: 'query_bar'
+                                }],
+                                variable: [{
+                                    description: { content: 'variable description' }, key: 'pv_foo', value: 'pv_bar'
+                                }]
+                            }
+                        }
+                    }],
+                    description: { content: 'folder description' }
+                }]
+            }, options, function (err, result) {
+                expect(err).not.to.be.ok;
+                expect(JSON.parse(JSON.stringify(result))).to.eql({
+                    id: '9ac7325c-cc3f-4c20-b0f8-a435766cb74c',
+                    description: 'collection description',
+                    order: [],
+                    folders_order: ['f3285fa0-e361-43ba-ba15-618c7a911e84'],
+                    folders: [{
+                        id: 'f3285fa0-e361-43ba-ba15-618c7a911e84',
+                        order: ['9d123ce5-314a-40cd-9852-6a8569513f4e'],
+                        folders_order: [],
+                        description: 'folder description'
+                    }],
+                    requests: [{
+                        id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
+                        collectionId: '9ac7325c-cc3f-4c20-b0f8-a435766cb74c',
+                        description: 'request description',
+                        headers: 'header_foo: header_bar',
+                        dataMode: 'params',
+                        data: [{
+                            description: 'data description', key: 'body_foo', value: 'body_bar'
+                        }],
+                        pathVariables: { pv_foo: 'pv_bar' },
+                        url: '?query_foo=query_bar',
+                        pathVariableData: [{
+                            description: 'variable description', key: 'pv_foo', value: 'pv_bar'
+                        }],
+                        queryParams: [{
+                            description: 'query description', key: 'query_foo', value: 'query_bar'
+                        }],
+                        headerData: [{
+                            description: 'header description', key: 'header_foo', value: 'header_bar'
+                        }]
+                    }]
+                });
+            });
+        });
+
         it('should correctly handle falsy descriptions whilst converting from v2.1.0 to v1', function (done) {
             transformer.convert({
                 info: {
