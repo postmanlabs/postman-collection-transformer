@@ -1941,6 +1941,67 @@ describe('v1.0.0 normalization', function () {
                 });
             });
 
+            it('should not include an empty protocolProfileBehavior property', function (done) {
+                transformer.normalize({
+                    id: '03cf74df-32de-af8b-7db8-855b51b05e50',
+                    name: 'Collection',
+                    order: [],
+                    folders: [
+                        {
+                            owner: '33232',
+                            lastUpdatedBy: '33232',
+                            lastRevision: 75211067,
+                            id: '997e9a45-51e0-98b1-1894-319a72efca57',
+                            name: 'Folder',
+                            protocolProfileBehavior: {},
+                            order: ['5ec6f591-4460-e4cf-fdc1-0de07c10b2b1']
+                        }
+                    ],
+                    requests: [
+                        {
+                            folder: '997e9a45-51e0-98b1-1894-319a72efca57',
+                            id: '5ec6f591-4460-e4cf-fdc1-0de07c10b2b1',
+                            name: 'Request',
+                            method: 'GET',
+                            url: 'https://echo.getpostman.com/get',
+                            protocolProfileBehavior: {}
+                        }
+                    ],
+                    protocolProfileBehavior: {}
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        id: '03cf74df-32de-af8b-7db8-855b51b05e50',
+                        name: 'Collection',
+                        order: [],
+                        folders: [
+                            {
+                                owner: '33232',
+                                lastUpdatedBy: '33232',
+                                lastRevision: 75211067,
+                                id: '997e9a45-51e0-98b1-1894-319a72efca57',
+                                name: 'Folder',
+                                order: ['5ec6f591-4460-e4cf-fdc1-0de07c10b2b1']
+                            }
+                        ],
+                        requests: [
+                            {
+                                folder: '997e9a45-51e0-98b1-1894-319a72efca57',
+                                id: '5ec6f591-4460-e4cf-fdc1-0de07c10b2b1',
+                                name: 'Request',
+                                method: 'GET',
+                                url: 'https://echo.getpostman.com/get'
+                            }
+                        ]
+                    });
+                    done();
+                });
+            });
+
             it('should not include protocolProfileBehavior property unless its an object', function (done) {
                 transformer.normalize({
                     id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
@@ -1955,7 +2016,7 @@ describe('v1.0.0 normalization', function () {
                         data: 'foo=bar',
                         method: 'GET',
                         dataMode: 'raw',
-                        protocolProfileBehavior: 'random',
+                        protocolProfileBehavior: [],
                         collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
                     }]
                 }, options, function (err, converted) {
@@ -2013,6 +2074,36 @@ describe('v1.0.0 normalization', function () {
                         protocolProfileBehavior: {
                             disableBodyPruning: true
                         },
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                    });
+
+                    done();
+                });
+            });
+
+            it('should not include an empty protocolProfileBehavior property', function (done) {
+                transformer.normalizeSingle({
+                    id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    headers: '',
+                    url: 'https://postman-echo.com/get',
+                    data: 'foo=bar',
+                    method: 'GET',
+                    dataMode: 'raw',
+                    protocolProfileBehavior: {},
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        headers: '',
+                        url: 'https://postman-echo.com/get',
+                        data: 'foo=bar',
+                        method: 'GET',
+                        dataMode: 'raw',
                         collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
                     });
 

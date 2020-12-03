@@ -5,6 +5,9 @@ master:
       as "_postman_id" instead of "id" on v1 -> v2.x conversions
   bugs fixed:
     - >-
+      GH-336 Fixed a bug where empty and object-like protocolProfileBehavior are
+      retained
+    - >-
       GH-333 Fixed a bug where object descriptions are not converted to string
       on v2->v1 conversions
     - >-

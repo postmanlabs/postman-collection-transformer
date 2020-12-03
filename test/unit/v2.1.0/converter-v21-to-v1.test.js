@@ -1486,6 +1486,46 @@ describe('v2.1.0 to v1.0.0', function () {
                     done();
                 });
             });
+
+            it('should not include an empty object', function (done) {
+                transformer.convert({
+                    info: {
+                        _postman_id: '969e90b1-0742-41b5-8602-e137d25274ac'
+                    },
+                    auth: { type: 'noauth' },
+                    item: [{
+                        _postman_id: 'a9832f4d-657c-4cd2-a5a4-7ddd6bc4948e',
+                        auth: { type: 'noauth' },
+                        item: [{ id: '123', protocolProfileBehavior: {} }],
+                        protocolProfileBehavior: {}
+                    }],
+                    protocolProfileBehavior: {}
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        id: '969e90b1-0742-41b5-8602-e137d25274ac',
+                        folders: [{
+                            id: 'a9832f4d-657c-4cd2-a5a4-7ddd6bc4948e',
+                            auth: { type: 'noauth' },
+                            folders_order: [],
+                            order: ['123']
+                        }],
+                        order: [],
+                        requests: [{
+                            collectionId: '969e90b1-0742-41b5-8602-e137d25274ac',
+                            headerData: [],
+                            id: '123',
+                            url: ''
+                        }],
+                        folders_order: ['a9832f4d-657c-4cd2-a5a4-7ddd6bc4948e']
+                    });
+                    done();
+                });
+            });
         });
 
         describe('with convertSingle', function () {

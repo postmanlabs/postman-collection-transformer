@@ -1474,6 +1474,70 @@ describe('v2.0.0 to v1.0.0', function () {
                     done();
                 });
             });
+
+            it('should not include an empty object', function (done) {
+                transformer.convert({
+                    info: {
+                        _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        name: 'collection',
+                        schema: 'https://schema.getpostman.com/json/collection/v2.0.0/collection.json'
+                    },
+                    item: [{
+                        name: 'folder',
+                        _postman_id: 'ed6e0a03-f4c3-429b-9df3-6dc332f17e78',
+                        item: [{
+                            name: '',
+                            _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                            request: {
+                                body: {
+                                    mode: 'raw',
+                                    raw: 'foo=bar'
+                                },
+                                header: [],
+                                method: 'GET',
+                                url: 'https://postman-echo.com/get'
+                            },
+                            response: [],
+                            protocolProfileBehavior: {}
+                        }],
+                        protocolProfileBehavior: {}
+                    }],
+                    protocolProfileBehavior: {}
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        name: 'collection',
+                        folders_order: ['ed6e0a03-f4c3-429b-9df3-6dc332f17e78'],
+                        folders: [{
+                            folders_order: [],
+                            id: 'ed6e0a03-f4c3-429b-9df3-6dc332f17e78',
+                            name: 'folder',
+                            order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1']
+                        }],
+                        order: [],
+                        requests: [{
+                            id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                            name: '',
+                            collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                            method: 'GET',
+                            headers: '',
+                            dataMode: 'raw',
+                            rawModeData: 'foo=bar',
+                            url: 'https://postman-echo.com/get',
+                            responses: [],
+                            pathVariableData: [],
+                            queryParams: [],
+                            headerData: []
+                        }]
+                    });
+                    done();
+                });
+            });
         });
 
         describe('with convertSingle', function () {
