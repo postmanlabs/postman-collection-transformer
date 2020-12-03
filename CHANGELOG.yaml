@@ -1,6 +1,9 @@
 master:
   bugs fixed:
     - >-
+      GH-331 Fixed a bug where variable.id was retained even if retainIds is set
+      to false
+    - >-
       GH-330 Fixed a bug where event.id and event.script.id was retained even if
       retainIds is set to false
 
