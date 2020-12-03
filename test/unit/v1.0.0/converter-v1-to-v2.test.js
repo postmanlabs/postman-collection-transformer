@@ -6,7 +6,6 @@ var _ = require('lodash'),
     expect = require('chai').expect,
     transformer = require('../../../index');
 
-/* global describe, it */
 describe('v1.0.0 to v2.0.0', function () {
     var options = {
         inputVersion: '1.0.0',
@@ -530,6 +529,7 @@ describe('v1.0.0 to v2.0.0', function () {
                     method: 'POST',
                     collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
                 }]
+            // eslint-disable-next-line prefer-object-spread
             }, Object.assign({}, options, { retainEmptyValues: true }), function (err, converted) {
                 expect(err).to.not.be.ok;
 

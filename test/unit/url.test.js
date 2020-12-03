@@ -5,7 +5,6 @@
 var expect = require('chai').expect,
     url = require('../../lib/url');
 
-/* global describe, it */
 describe('url', function () {
     describe('parsing', function () {
         it('should parse empty string', function () {

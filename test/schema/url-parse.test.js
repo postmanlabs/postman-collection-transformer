@@ -1,7 +1,6 @@
 var expect = require('chai').expect,
     util = require('../../lib/util');
 
-/* global describe, it */
 describe('url parsing', function () {
     it('should correctly unparse query parameters', function () {
         var v2url = {
