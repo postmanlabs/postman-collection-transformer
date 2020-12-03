@@ -9,7 +9,6 @@ var expect = require('chai').expect,
     _ = require('lodash').noConflict(),
     agent = require('superagent');
 
-/* global describe, it, before */
 describe('v1.0.0 ==> v2.0.0', function () {
     var converter = require('../../../lib/converters/v1.0.0/converter-v1-to-v2'),
         reverseConverter = require('../../../lib/converters/v2.0.0/converter-v2-to-v1'),

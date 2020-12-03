@@ -7,7 +7,6 @@ var _ = require('lodash'),
     transformer = require('../../..'),
     nestedEntitiesCollection = require('../fixtures/multi-level.v21.json');
 
-/* global describe, it */
 describe('v2.1.0 to v1.0.0', function () {
     var options = {
         inputVersion: '2.1.0',

@@ -16,6 +16,8 @@ master:
     - >-
       GH-330 Fixed a bug where event.id and event.script.id was retained even if
       retainIds is set to false
+  chores:
+    - GH-335 Updated dependencies
 
 3.3.3:
   date: 2020-07-13
