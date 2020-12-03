@@ -33,12 +33,14 @@ describe('project repository', function () {
                 expect(json).to.have.property('name', 'postman-collection-transformer');
                 // eslint-disable-next-line max-len
                 expect(json).to.have.property('description', 'Perform rapid conversation and validation of JSON structure between Postman Collection Format v1 and v2');
-                expect(json).to.have.property('author', 'Postman Labs <help@getpostman.com>');
+                expect(json).to.have.property('author', 'Postman Inc.');
                 expect(json).to.have.property('license', 'Apache-2.0');
                 // eslint-disable-next-line max-len
                 expect(json).to.have.property('homepage', 'https://github.com/postmanlabs/postman-collection-transformer#readme');
-                // eslint-disable-next-line max-len
-                expect(json.bugs).to.eql({ url: 'https://github.com/postmanlabs/postman-collection-transformer/issues' });
+                expect(json.bugs).to.eql({
+                    url: 'https://github.com/postmanlabs/postman-collection-transformer/issues',
+                    email: 'help@postman.com'
+                });
 
                 expect(json).to.have.property('repository');
                 expect(json.repository).to.eql({

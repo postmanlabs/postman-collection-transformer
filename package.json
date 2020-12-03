@@ -2,22 +2,17 @@
   "name": "postman-collection-transformer",
   "version": "3.3.3",
   "description": "Perform rapid conversation and validation of JSON structure between Postman Collection Format v1 and v2",
+  "author": "Postman Inc.",
+  "license": "Apache-2.0",
   "main": "index.js",
-  "scripts": {
-    "test": "npm run test-lint && npm run test-system && npm run test-unit && npm run test-schema && npm run test-browser",
-    "test-lint": "node npm/test-lint.js",
-    "test-browser": "node npm/test-browser.js",
-    "test-schema": "node npm/test-schema.js",
-    "test-unit": "nyc --nycrc-path=.nycrc.js node npm/test-unit.js",
-    "test-system": "node npm/test-system.js"
+  "homepage": "https://github.com/postmanlabs/postman-collection-transformer#readme",
+  "bugs": {
+    "url": "https://github.com/postmanlabs/postman-collection-transformer/issues",
+    "email": "help@postman.com"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/postmanlabs/postman-collection-transformer.git"
-  },
-  "directories": {
-    "lib": "lib",
-    "bin": "bin"
   },
   "keywords": [
     "postman",
@@ -27,14 +22,21 @@
     "converter",
     "transformer"
   ],
-  "author": "Postman Labs <help@getpostman.com>",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/postmanlabs/postman-collection-transformer/issues"
+  "scripts": {
+    "test": "npm run test-lint && npm run test-system && npm run test-unit && npm run test-schema && npm run test-browser",
+    "test-browser": "node npm/test-browser.js",
+    "test-lint": "node npm/test-lint.js",
+    "test-schema": "node npm/test-schema.js",
+    "test-system": "node npm/test-system.js",
+    "test-unit": "nyc --nycrc-path=.nycrc.js node npm/test-unit.js"
   },
-  "homepage": "https://github.com/postmanlabs/postman-collection-transformer#readme",
-  "engines": {
-    "node": ">=10"
+  "dependencies": {
+    "commander": "6.2.0",
+    "inherits": "2.0.4",
+    "intel": "1.2.0",
+    "lodash": "4.17.20",
+    "semver": "7.3.4",
+    "strip-json-comments": "3.1.1"
   },
   "devDependencies": {
     "async": "^3.2.0",
@@ -65,12 +67,7 @@
     "watchify": "^3.11.1",
     "yankee": "^1.0.8"
   },
-  "dependencies": {
-    "commander": "6.2.0",
-    "inherits": "2.0.4",
-    "intel": "1.2.0",
-    "lodash": "4.17.20",
-    "semver": "7.3.4",
-    "strip-json-comments": "3.1.1"
+  "engines": {
+    "node": ">=10"
   }
 }
