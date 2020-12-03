@@ -1,10 +1,12 @@
 #!/usr/bin/env node
-var fs = require('fs'),
+const fs = require('fs'),
 
     log = require('intel'),
-    transformer = require('..'),
-    program = require('commander'),
+    { Command } = require('commander'),
     stripJSONComments = require('strip-json-comments'),
+
+    transformer = require('..'),
+    program = new Command(),
 
     FSWF_FLAG_W = { flag: 'w' },
     FSWF_FLAG_WX = { flag: 'wx' },
@@ -15,7 +17,7 @@ var fs = require('fs'),
      * @param {String} path - The file path to read JSON content from.
      */
     loadJSON = function (path) {
-        var data = fs.readFileSync(path); // eslint-disable-line security/detect-non-literal-fs-filename
+        const data = fs.readFileSync(path); // eslint-disable-line security/detect-non-literal-fs-filename
 
         return JSON.parse(stripJSONComments(data.toString()));
     },
@@ -34,7 +36,7 @@ var fs = require('fs'),
      * @param {Function} callback - A function to be invoked after writing is complete ,
      */
     writeJSON = function (data, options, callback) {
-        var json;
+        let json;
 
         try {
             json = JSON.stringify(data, null, options.pretty ? 4 : 0);
@@ -69,8 +71,8 @@ program
     .option('-P, --pretty', 'Pretty print the output')
     .option('--retain-ids', 'Retain the request and folder IDs during conversion (collection ID is always retained)')
     .option('-w, --overwrite', 'Overwrite the output file if it exists')
-    .action(function (options) {
-        var input;
+    .action((options) => {
+        let input;
 
         if (!options.output) {
             return log.error('Output file must be specified!');
@@ -86,12 +88,12 @@ program
             return log.error('Unable to load the input file!', e);
         }
 
-        return transformer.convert(input, options, function (err, result) {
+        return transformer.convert(input, options, (err, result) => {
             if (err) {
                 return log.error('Unable to convert the input:', err);
             }
 
-            return writeJSON(result, options, function (error) {
+            return writeJSON(result, options, (error) => {
                 if (error) {
                     log.error('Could not create output file %s', options.output, error);
                 }
@@ -108,19 +110,19 @@ program
     .option('-P, --pretty', 'Pretty print the output')
     .option('--retain-ids', 'Retain the request and folder IDs during conversion (collection ID is always retained)')
     .option('-w, --overwrite', 'Overwrite the output file if it exists')
-    .action(function (options) {
+    .action((options) => {
         if (!options.input) { return log.error('Input file must be specified!'); }
         if (!options.output) { return log.error('Output file must be specified!'); }
 
-        var input;
+        let input;
 
         try { input = loadJSON(options.input); }
         catch (e) { return log.error('Unable to load the input file!', e); }
 
-        return transformer.normalize(input, options, function (err, result) {
+        return transformer.normalize(input, options, (err, result) => {
             if (err) { return log.error('Unable to convert the input: ', err); }
 
-            return writeJSON(result, options, function (error) {
+            return writeJSON(result, options, (error) => {
                 error && log.error('Could not create output file %s', options.output, error);
             });
         });
@@ -132,15 +134,15 @@ program
     .description('Verify whether a postman collection adheres to version specifications')
     .option('-i, --input <path>', 'path to the input postman collection file')
     .option('-s, --schema [version]', 'the version of the input collection format standard')
-    .action(function (options) {
-        console.warn('yet to be implemented', options, transformer);
+    .action((options) => {
+        console.warn('yet to be implemented', options);
         // @todo implement with as little and concise code as possible with least external dependencies
     });
 
-program
-    .command('*', 'Display usage text', { isDefault: true })
-    .action(function () {
-        program.outputHelp();
-    });
+// Warn on invalid command and then exits.
+program.on('command:*', (command) => {
+    console.error(`error: invalid command \`${command}\`\n`);
+    program.help();
+});
 
 program.parse(process.argv);

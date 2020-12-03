@@ -5,6 +5,7 @@
   "author": "Postman Inc.",
   "license": "Apache-2.0",
   "main": "index.js",
+  "bin": "./bin/transform-collection.js",
   "homepage": "https://github.com/postmanlabs/postman-collection-transformer#readme",
   "bugs": {
     "url": "https://github.com/postmanlabs/postman-collection-transformer/issues",
