@@ -1,6 +1,9 @@
 master:
   bugs fixed:
     - >-
+      GH-333 Fixed a bug where object descriptions are not converted to string
+      on v2->v1 conversions
+    - >-
       GH-332 Fixed a bug where private _postman_isSubFolder leaks on v1->v2
       conversions
     - >-
