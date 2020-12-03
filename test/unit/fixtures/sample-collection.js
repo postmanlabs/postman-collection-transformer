@@ -1844,12 +1844,12 @@ module.exports = {
         },
         item: [
             {
-                _postman_id: "ca633394-d946-8e44-f4fe-e0470be8cb64",
+                id: "ca633394-d946-8e44-f4fe-e0470be8cb64",
                 name: "Auth: Digest",
                 description: "Digest authentication protects an endpoint with a username and password without actually transmitting the password over network.\nOne has to apply a hash function (like MD5, etc) to the username and password before sending them over the network.\n\n> Username: `postman`\n>\n> Password: `password`\n\nUnlike Basic-Auth, authentication happens using two consecutive requests where the first request returns `401 Unauthorised` along with `WWW-Authenticate` header containing information that needs to be used to authenticate subsequent calls.\n\nTo know more about digest authentication, refer to the [Digest Access Authentication](https://en.wikipedia.org/wiki/Digest_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.getpostman.com/docs/helpers#digest-auth) elaborates how to use the same within the Postman app.",
                 item: [
                     {
-                        _postman_id: "a0d5867c-dd87-3f01-9560-8095271e2644",
+                        id: "a0d5867c-dd87-3f01-9560-8095271e2644",
                         name: "DigestAuth Request",
                         event: [
                             {
@@ -1913,7 +1913,7 @@ module.exports = {
                         response: []
                     },
                     {
-                        _postman_id: "eecb504e-1736-d34c-990a-b86d36f06ddd",
+                        id: "eecb504e-1736-d34c-990a-b86d36f06ddd",
                         name: "DigestAuth Success",
                         event: [
                             {
@@ -2035,11 +2035,11 @@ module.exports = {
                 ]
             },
             {
-                _postman_id: "b9707261-deb2-7bf3-f1ae-8edd1373f4b8",
+                id: "b9707261-deb2-7bf3-f1ae-8edd1373f4b8",
                 name: "Auth: Others",
                 item: [
                     {
-                        _postman_id: "ef90671a-ab14-16f5-0a57-41b32fc2a36f",
+                        id: "ef90671a-ab14-16f5-0a57-41b32fc2a36f",
                         name: "Basic Auth",
                         event: [
                             {
@@ -2219,7 +2219,7 @@ module.exports = {
                         ]
                     },
                     {
-                        _postman_id: "ced12b69-9604-99a9-65e3-03d09f68efbc",
+                        id: "ced12b69-9604-99a9-65e3-03d09f68efbc",
                         name: "OAuth1.0 Verify Signature",
                         event: [
                             {
@@ -2280,12 +2280,12 @@ module.exports = {
                 ]
             },
             {
-                _postman_id: "e3d0c773-6416-3c53-b933-96826acfa85a",
+                id: "e3d0c773-6416-3c53-b933-96826acfa85a",
                 name: "Cookies",
                 description: "The cookie related endpoints allow one to get, set and delete simple cookies.\n\nCookies are small snippets of information that is stored in the browser and sent back to the server with every subsequent requests in order to store useful information between requests.\nIf you want to know more about cookies, read the [HTTP Cookie](https://en.wikipedia.org/wiki/HTTP_cookie) article on wikipedia.",
                 item: [
                     {
-                        _postman_id: "96a24790-4951-ba7e-aa4f-fb40a45a7fcb",
+                        id: "96a24790-4951-ba7e-aa4f-fb40a45a7fcb",
                         name: "Set Cookies",
                         event: [
                             {
@@ -2396,7 +2396,7 @@ module.exports = {
                         ]
                     },
                     {
-                        _postman_id: "4118ca21-f216-410f-510c-2d0e465022c5",
+                        id: "4118ca21-f216-410f-510c-2d0e465022c5",
                         name: "Get Cookies",
                         event: [
                             {
@@ -2498,7 +2498,7 @@ module.exports = {
                         ]
                     },
                     {
-                        _postman_id: "4ac1e980-6990-fc1d-5f80-4e5cedce9812",
+                        id: "4ac1e980-6990-fc1d-5f80-4e5cedce9812",
                         name: "Delete Cookies",
                         event: [
                             {
@@ -2609,12 +2609,12 @@ module.exports = {
                 ]
             },
             {
-                _postman_id: "997e9a45-51e0-98b1-1894-319a72efca57",
+                id: "997e9a45-51e0-98b1-1894-319a72efca57",
                 name: "Headers",
                 description: "The following set of endpoints allow one to see the headers being sent as part of a request and to get a custom set of headers as part of response.\n\nHTTP header fields provide required information about the request or response, or about the object sent in the message body. Both request headers and response headers can be controlled using these endpoints.",
                 item: [
                     {
-                        _postman_id: "557b9d4d-bc9a-5172-5edf-d43a27055c89",
+                        id: "557b9d4d-bc9a-5172-5edf-d43a27055c89",
                         name: "Request Headers",
                         event: [
                             {
@@ -2641,7 +2641,7 @@ module.exports = {
                         response: []
                     },
                     {
-                        _postman_id: "5ec6f591-4460-e4cf-fdc1-0de07c10b2b1",
+                        id: "5ec6f591-4460-e4cf-fdc1-0de07c10b2b1",
                         name: "Response Headers",
                         event: [
                             {
@@ -2702,12 +2702,12 @@ module.exports = {
                 ]
             },
             {
-                _postman_id: "a3729195-78fd-52c3-0313-9aefed8af7eb",
+                id: "a3729195-78fd-52c3-0313-9aefed8af7eb",
                 name: "Request Methods",
                 description: "HTTP has multiple request \"verbs\", such as `GET`, `PUT`, `POST`, `DELETE`,\n`PATCH`, `HEAD`, etc. \n\nAn HTTP Method (verb) defines how a request should be interpreted by a server. \nThe endpoints in this section demonstrate various HTTP Verbs. Postman supports \nall the HTTP Verbs, including some rarely used ones, such as `PROPFIND`, `UNLINK`, \netc.\n\nFor details about HTTP Verbs, refer to [RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9)\n",
                 item: [
                     {
-                        _postman_id: "439a41a1-4bc7-0b90-6cb9-50accfd187ff",
+                        id: "439a41a1-4bc7-0b90-6cb9-50accfd187ff",
                         name: "GET Request ",
                         event: [
                             {
@@ -2771,7 +2771,7 @@ module.exports = {
                         response: []
                     },
                     {
-                        _postman_id: "6325e9fd-d3fc-3ea7-d014-f1d41a56177c",
+                        id: "6325e9fd-d3fc-3ea7-d014-f1d41a56177c",
                         name: "POST Request",
                         event: [
                             {
@@ -2809,7 +2809,7 @@ module.exports = {
                         response: []
                     },
                     {
-                        _postman_id: "21559428-a25b-cddc-c932-581e483e16e2",
+                        id: "21559428-a25b-cddc-c932-581e483e16e2",
                         name: "PUT Request",
                         event: [
                             {
@@ -2848,7 +2848,7 @@ module.exports = {
                         response: []
                     },
                     {
-                        _postman_id: "62be870e-f72e-eeeb-2efa-cd27ddae0d34",
+                        id: "62be870e-f72e-eeeb-2efa-cd27ddae0d34",
                         name: "PATCH Request",
                         event: [
                             {
@@ -2882,7 +2882,7 @@ module.exports = {
                         response: []
                     },
                     {
-                        _postman_id: "b4fcb293-1ef4-35f9-4f82-c4b519a55904",
+                        id: "b4fcb293-1ef4-35f9-4f82-c4b519a55904",
                         name: "DELETE Request",
                         event: [
                             {
@@ -2918,11 +2918,11 @@ module.exports = {
                 ]
             },
             {
-                _postman_id: "3448365f-6534-c34d-14ed-01915810374e",
+                id: "3448365f-6534-c34d-14ed-01915810374e",
                 name: "Utilities",
                 item: [
                     {
-                        _postman_id: "7212fe16-50d5-3f6d-2513-319d49a9ea44",
+                        id: "7212fe16-50d5-3f6d-2513-319d49a9ea44",
                         name: "Response Status Code",
                         event: [
                             {
@@ -2959,7 +2959,7 @@ module.exports = {
                         response: []
                     },
                     {
-                        _postman_id: "9fc9c5d1-51c3-aa36-fdb2-dd4ff7bd5e18",
+                        id: "9fc9c5d1-51c3-aa36-fdb2-dd4ff7bd5e18",
                         name: "Streamed Response",
                         event: [
                             {
@@ -2983,7 +2983,7 @@ module.exports = {
                         response: []
                     },
                     {
-                        _postman_id: "502f7f5b-b129-78a7-b27f-8dc36ce58f66",
+                        id: "502f7f5b-b129-78a7-b27f-8dc36ce58f66",
                         name: "Delay Response",
                         event: [
                             {
@@ -3019,7 +3019,7 @@ module.exports = {
                         response: []
                     },
                     {
-                        _postman_id: "b213d463-8587-8470-acdc-92f7dfb0660e",
+                        id: "b213d463-8587-8470-acdc-92f7dfb0660e",
                         name: "Get UTF8 Encoded Response",
                         event: [
                             {
@@ -3041,7 +3041,7 @@ module.exports = {
                         response: []
                     },
                     {
-                        _postman_id: "eb8e2717-56b0-6a61-5387-eb46530ec4be",
+                        id: "eb8e2717-56b0-6a61-5387-eb46530ec4be",
                         name: "GZip Compressed Response",
                         event: [
                             {
@@ -3103,7 +3103,7 @@ module.exports = {
                         response: []
                     },
                     {
-                        _postman_id: "947d31d6-16ce-2e3a-bf32-e0337c838ff8",
+                        id: "947d31d6-16ce-2e3a-bf32-e0337c838ff8",
                         name: "Deflate Compressed Response",
                         event: [
                             {
@@ -3138,12 +3138,12 @@ module.exports = {
                 ]
             },
             {
-                _postman_id: "58b0685d-5e5c-d03e-8899-c1084704d0d3",
+                id: "58b0685d-5e5c-d03e-8899-c1084704d0d3",
                 name: "[draft] Auth: OAuth2.0",
                 description: "OAuth 2.0 allows a client to access a resource owners(user) protected resources without direct access to the users credentials.\nThe client obtains an access token which can be used to access the resource owners resources.\nOAuth 2.0 implements 4 different types of grant flows. Postman Echo has implemented the [Authorization Code](https://tools.ietf.org/html/rfc6749#section-1.3.1) grant flow.\n\nThe OAuth flow typically consists of three steps. \nIn the first step the client requests an authentication code from the server implementing the OAuth flow.\nThe authentication code along with other client credentials is then used to get the access token.\nThe access token can be used by the client to access users resources.\n",
                 item: [
                     {
-                        _postman_id: "d8fbfb17-6993-d43e-43af-2996f5138b9a",
+                        id: "d8fbfb17-6993-d43e-43af-2996f5138b9a",
                         name: "OAuth2.0 Get Auth Code",
                         event: [
                             {
@@ -3278,7 +3278,7 @@ module.exports = {
                         ]
                     },
                     {
-                        _postman_id: "0628a95f-c283-94e2-fa9f-53477775692f",
+                        id: "0628a95f-c283-94e2-fa9f-53477775692f",
                         name: "OAuth2.0 Get Access Token",
                         event: [
                             {
@@ -3547,7 +3547,7 @@ module.exports = {
                         ]
                     },
                     {
-                        _postman_id: "b94ef436-e62e-bef3-bdbd-69be97d72579",
+                        id: "b94ef436-e62e-bef3-bdbd-69be97d72579",
                         name: "OAuth2.0 Get Resource",
                         event: [
                             {
@@ -3762,12 +3762,12 @@ module.exports = {
         },
         item: [
             {
-                _postman_id: "ca633394-d946-8e44-f4fe-e0470be8cb64",
+                id: "ca633394-d946-8e44-f4fe-e0470be8cb64",
                 name: "Auth: Digest",
                 description: "Digest authentication protects an endpoint with a username and password without actually transmitting the password over network.\nOne has to apply a hash function (like MD5, etc) to the username and password before sending them over the network.\n\n> Username: `postman`\n>\n> Password: `password`\n\nUnlike Basic-Auth, authentication happens using two consecutive requests where the first request returns `401 Unauthorised` along with `WWW-Authenticate` header containing information that needs to be used to authenticate subsequent calls.\n\nTo know more about digest authentication, refer to the [Digest Access Authentication](https://en.wikipedia.org/wiki/Digest_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.getpostman.com/docs/helpers#digest-auth) elaborates how to use the same within the Postman app.",
                 item: [
                     {
-                        _postman_id: "a0d5867c-dd87-3f01-9560-8095271e2644",
+                        id: "a0d5867c-dd87-3f01-9560-8095271e2644",
                         name: "DigestAuth Request",
                         event: [
                             {
@@ -3836,7 +3836,7 @@ module.exports = {
                         response: []
                     },
                     {
-                        _postman_id: "eecb504e-1736-d34c-990a-b86d36f06ddd",
+                        id: "eecb504e-1736-d34c-990a-b86d36f06ddd",
                         name: "DigestAuth Success",
                         event: [
                             {
@@ -3963,11 +3963,11 @@ module.exports = {
                 ]
             },
             {
-                _postman_id: "b9707261-deb2-7bf3-f1ae-8edd1373f4b8",
+                id: "b9707261-deb2-7bf3-f1ae-8edd1373f4b8",
                 name: "Auth: Others",
                 item: [
                     {
-                        _postman_id: "ef90671a-ab14-16f5-0a57-41b32fc2a36f",
+                        id: "ef90671a-ab14-16f5-0a57-41b32fc2a36f",
                         name: "Basic Auth",
                         event: [
                             {
@@ -4152,7 +4152,7 @@ module.exports = {
                         ]
                     },
                     {
-                        _postman_id: "ced12b69-9604-99a9-65e3-03d09f68efbc",
+                        id: "ced12b69-9604-99a9-65e3-03d09f68efbc",
                         name: "OAuth1.0 Verify Signature",
                         event: [
                             {
@@ -4218,12 +4218,12 @@ module.exports = {
                 ]
             },
             {
-                _postman_id: "e3d0c773-6416-3c53-b933-96826acfa85a",
+                id: "e3d0c773-6416-3c53-b933-96826acfa85a",
                 name: "Cookies",
                 description: "The cookie related endpoints allow one to get, set and delete simple cookies.\n\nCookies are small snippets of information that is stored in the browser and sent back to the server with every subsequent requests in order to store useful information between requests.\nIf you want to know more about cookies, read the [HTTP Cookie](https://en.wikipedia.org/wiki/HTTP_cookie) article on wikipedia.",
                 item: [
                     {
-                        _postman_id: "96a24790-4951-ba7e-aa4f-fb40a45a7fcb",
+                        id: "96a24790-4951-ba7e-aa4f-fb40a45a7fcb",
                         name: "Set Cookies",
                         event: [
                             {
@@ -4334,7 +4334,7 @@ module.exports = {
                         ]
                     },
                     {
-                        _postman_id: "4118ca21-f216-410f-510c-2d0e465022c5",
+                        id: "4118ca21-f216-410f-510c-2d0e465022c5",
                         name: "Get Cookies",
                         event: [
                             {
@@ -4441,7 +4441,7 @@ module.exports = {
                         ]
                     },
                     {
-                        _postman_id: "4ac1e980-6990-fc1d-5f80-4e5cedce9812",
+                        id: "4ac1e980-6990-fc1d-5f80-4e5cedce9812",
                         name: "Delete Cookies",
                         event: [
                             {
@@ -4552,12 +4552,12 @@ module.exports = {
                 ]
             },
             {
-                _postman_id: "997e9a45-51e0-98b1-1894-319a72efca57",
+                id: "997e9a45-51e0-98b1-1894-319a72efca57",
                 name: "Headers",
                 description: "The following set of endpoints allow one to see the headers being sent as part of a request and to get a custom set of headers as part of response.\n\nHTTP header fields provide required information about the request or response, or about the object sent in the message body. Both request headers and response headers can be controlled using these endpoints.",
                 item: [
                     {
-                        _postman_id: "557b9d4d-bc9a-5172-5edf-d43a27055c89",
+                        id: "557b9d4d-bc9a-5172-5edf-d43a27055c89",
                         name: "Request Headers",
                         event: [
                             {
@@ -4589,7 +4589,7 @@ module.exports = {
                         response: []
                     },
                     {
-                        _postman_id: "5ec6f591-4460-e4cf-fdc1-0de07c10b2b1",
+                        id: "5ec6f591-4460-e4cf-fdc1-0de07c10b2b1",
                         name: "Response Headers",
                         event: [
                             {
@@ -4650,12 +4650,12 @@ module.exports = {
                 ]
             },
             {
-                _postman_id: "a3729195-78fd-52c3-0313-9aefed8af7eb",
+                id: "a3729195-78fd-52c3-0313-9aefed8af7eb",
                 name: "Request Methods",
                 description: "HTTP has multiple request \"verbs\", such as `GET`, `PUT`, `POST`, `DELETE`,\n`PATCH`, `HEAD`, etc. \n\nAn HTTP Method (verb) defines how a request should be interpreted by a server. \nThe endpoints in this section demonstrate various HTTP Verbs. Postman supports \nall the HTTP Verbs, including some rarely used ones, such as `PROPFIND`, `UNLINK`, \netc.\n\nFor details about HTTP Verbs, refer to [RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9)\n",
                 item: [
                     {
-                        _postman_id: "439a41a1-4bc7-0b90-6cb9-50accfd187ff",
+                        id: "439a41a1-4bc7-0b90-6cb9-50accfd187ff",
                         name: "GET Request ",
                         event: [
                             {
@@ -4719,7 +4719,7 @@ module.exports = {
                         response: []
                     },
                     {
-                        _postman_id: "6325e9fd-d3fc-3ea7-d014-f1d41a56177c",
+                        id: "6325e9fd-d3fc-3ea7-d014-f1d41a56177c",
                         name: "POST Request",
                         event: [
                             {
@@ -4762,7 +4762,7 @@ module.exports = {
                         response: []
                     },
                     {
-                        _postman_id: "21559428-a25b-cddc-c932-581e483e16e2",
+                        id: "21559428-a25b-cddc-c932-581e483e16e2",
                         name: "PUT Request",
                         event: [
                             {
@@ -4806,7 +4806,7 @@ module.exports = {
                         response: []
                     },
                     {
-                        _postman_id: "62be870e-f72e-eeeb-2efa-cd27ddae0d34",
+                        id: "62be870e-f72e-eeeb-2efa-cd27ddae0d34",
                         name: "PATCH Request",
                         event: [
                             {
@@ -4845,7 +4845,7 @@ module.exports = {
                         response: []
                     },
                     {
-                        _postman_id: "b4fcb293-1ef4-35f9-4f82-c4b519a55904",
+                        id: "b4fcb293-1ef4-35f9-4f82-c4b519a55904",
                         name: "DELETE Request",
                         event: [
                             {
@@ -4886,11 +4886,11 @@ module.exports = {
                 ]
             },
             {
-                _postman_id: "3448365f-6534-c34d-14ed-01915810374e",
+                id: "3448365f-6534-c34d-14ed-01915810374e",
                 name: "Utilities",
                 item: [
                     {
-                        _postman_id: "7212fe16-50d5-3f6d-2513-319d49a9ea44",
+                        id: "7212fe16-50d5-3f6d-2513-319d49a9ea44",
                         name: "Response Status Code",
                         event: [
                             {
@@ -4932,7 +4932,7 @@ module.exports = {
                         response: []
                     },
                     {
-                        _postman_id: "9fc9c5d1-51c3-aa36-fdb2-dd4ff7bd5e18",
+                        id: "9fc9c5d1-51c3-aa36-fdb2-dd4ff7bd5e18",
                         name: "Streamed Response",
                         event: [
                             {
@@ -4961,7 +4961,7 @@ module.exports = {
                         response: []
                     },
                     {
-                        _postman_id: "502f7f5b-b129-78a7-b27f-8dc36ce58f66",
+                        id: "502f7f5b-b129-78a7-b27f-8dc36ce58f66",
                         name: "Delay Response",
                         event: [
                             {
@@ -5002,7 +5002,7 @@ module.exports = {
                         response: []
                     },
                     {
-                        _postman_id: "b213d463-8587-8470-acdc-92f7dfb0660e",
+                        id: "b213d463-8587-8470-acdc-92f7dfb0660e",
                         name: "Get UTF8 Encoded Response",
                         event: [
                             {
@@ -5029,7 +5029,7 @@ module.exports = {
                         response: []
                     },
                     {
-                        _postman_id: "eb8e2717-56b0-6a61-5387-eb46530ec4be",
+                        id: "eb8e2717-56b0-6a61-5387-eb46530ec4be",
                         name: "GZip Compressed Response",
                         event: [
                             {
@@ -5096,7 +5096,7 @@ module.exports = {
                         response: []
                     },
                     {
-                        _postman_id: "947d31d6-16ce-2e3a-bf32-e0337c838ff8",
+                        id: "947d31d6-16ce-2e3a-bf32-e0337c838ff8",
                         name: "Deflate Compressed Response",
                         event: [
                             {
@@ -5136,12 +5136,12 @@ module.exports = {
                 ]
             },
             {
-                _postman_id: "58b0685d-5e5c-d03e-8899-c1084704d0d3",
+                id: "58b0685d-5e5c-d03e-8899-c1084704d0d3",
                 name: "[draft] Auth: OAuth2.0",
                 description: "OAuth 2.0 allows a client to access a resource owners(user) protected resources without direct access to the users credentials.\nThe client obtains an access token which can be used to access the resource owners resources.\nOAuth 2.0 implements 4 different types of grant flows. Postman Echo has implemented the [Authorization Code](https://tools.ietf.org/html/rfc6749#section-1.3.1) grant flow.\n\nThe OAuth flow typically consists of three steps. \nIn the first step the client requests an authentication code from the server implementing the OAuth flow.\nThe authentication code along with other client credentials is then used to get the access token.\nThe access token can be used by the client to access users resources.\n",
                 item: [
                     {
-                        _postman_id: "d8fbfb17-6993-d43e-43af-2996f5138b9a",
+                        id: "d8fbfb17-6993-d43e-43af-2996f5138b9a",
                         name: "OAuth2.0 Get Auth Code",
                         event: [
                             {
@@ -5276,7 +5276,7 @@ module.exports = {
                         ]
                     },
                     {
-                        _postman_id: "0628a95f-c283-94e2-fa9f-53477775692f",
+                        id: "0628a95f-c283-94e2-fa9f-53477775692f",
                         name: "OAuth2.0 Get Access Token",
                         event: [
                             {
@@ -5560,7 +5560,7 @@ module.exports = {
                         ]
                     },
                     {
-                        _postman_id: "b94ef436-e62e-bef3-bdbd-69be97d72579",
+                        id: "b94ef436-e62e-bef3-bdbd-69be97d72579",
                         name: "OAuth2.0 Get Resource",
                         event: [
                             {

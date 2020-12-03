@@ -7,7 +7,6 @@ var _ = require('lodash'),
     transformer = require('../../..'),
     nestedEntitiesCollection = require('../fixtures/multi-level.v21.json');
 
-/* global describe, it */
 describe('v2.1.0 to v1.0.0', function () {
     var options = {
         inputVersion: '2.1.0',
@@ -224,6 +223,79 @@ describe('v2.1.0 to v1.0.0', function () {
 
                 expect(converted).to.eql(fixture.v1);
                 done();
+            });
+        });
+
+        it('should convert descriptions object back to string', function () {
+            transformer.convert({
+                info: {
+                    _postman_id: '9ac7325c-cc3f-4c20-b0f8-a435766cb74c',
+                    description: { content: 'collection description' },
+                    schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+                },
+                item: [{
+                    _postman_id: 'f3285fa0-e361-43ba-ba15-618c7a911e84',
+                    item: [{
+                        _postman_id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
+                        request: {
+                            description: { content: 'request description' },
+                            body: {
+                                disabled: false,
+                                mode: 'formdata',
+                                formdata: [{
+                                    description: { content: 'data description' }, key: 'body_foo', value: 'body_bar'
+                                }]
+                            },
+                            header: [{
+                                description: { content: 'header description' }, key: 'header_foo', value: 'header_bar'
+                            }],
+                            url: {
+                                query: [{
+                                    description: { content: 'query description' }, key: 'query_foo', value: 'query_bar'
+                                }],
+                                variable: [{
+                                    description: { content: 'variable description' }, key: 'pv_foo', value: 'pv_bar'
+                                }]
+                            }
+                        }
+                    }],
+                    description: { content: 'folder description' }
+                }]
+            }, options, function (err, result) {
+                expect(err).not.to.be.ok;
+                expect(JSON.parse(JSON.stringify(result))).to.eql({
+                    id: '9ac7325c-cc3f-4c20-b0f8-a435766cb74c',
+                    description: 'collection description',
+                    order: [],
+                    folders_order: ['f3285fa0-e361-43ba-ba15-618c7a911e84'],
+                    folders: [{
+                        id: 'f3285fa0-e361-43ba-ba15-618c7a911e84',
+                        order: ['9d123ce5-314a-40cd-9852-6a8569513f4e'],
+                        folders_order: [],
+                        description: 'folder description'
+                    }],
+                    requests: [{
+                        id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
+                        collectionId: '9ac7325c-cc3f-4c20-b0f8-a435766cb74c',
+                        description: 'request description',
+                        headers: 'header_foo: header_bar',
+                        dataMode: 'params',
+                        data: [{
+                            description: 'data description', key: 'body_foo', value: 'body_bar'
+                        }],
+                        pathVariables: { pv_foo: 'pv_bar' },
+                        url: '?query_foo=query_bar',
+                        pathVariableData: [{
+                            description: 'variable description', key: 'pv_foo', value: 'pv_bar'
+                        }],
+                        queryParams: [{
+                            description: 'query description', key: 'query_foo', value: 'query_bar'
+                        }],
+                        headerData: [{
+                            description: 'header description', key: 'header_foo', value: 'header_bar'
+                        }]
+                    }]
+                });
             });
         });
 
@@ -989,7 +1061,7 @@ describe('v2.1.0 to v1.0.0', function () {
                 });
             });
 
-            it('should transform body options to empty if invalid option is provided', function (done) {
+            it('should strip body options if invalid option is provided', function (done) {
                 transformer.convert({
                     info: {
                         _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
@@ -1046,8 +1118,7 @@ describe('v2.1.0 to v1.0.0', function () {
                             data: [{
                                 key: 'foo',
                                 value: 'bar'
-                            }],
-                            dataOptions: {}
+                            }]
                         }]
                     });
                     done();
@@ -1152,7 +1223,7 @@ describe('v2.1.0 to v1.0.0', function () {
                 });
             });
 
-            it('should transform body options to empty if invalid option is provided', function (done) {
+            it('should strip body options if empty option is provided', function (done) {
                 transformer.convertSingle({
                     _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
                     name: '',
@@ -1160,7 +1231,7 @@ describe('v2.1.0 to v1.0.0', function () {
                         body: {
                             mode: 'raw',
                             raw: 'foo=bar',
-                            options: 'INVALID_OPTIONS'
+                            options: { raw: {} }
                         },
                         method: 'GET',
                         url: 'https://postman-echo.com/get'
@@ -1178,7 +1249,6 @@ describe('v2.1.0 to v1.0.0', function () {
                         headers: '',
                         dataMode: 'raw',
                         rawModeData: 'foo=bar',
-                        dataOptions: {},
                         url: 'https://postman-echo.com/get',
                         pathVariableData: [],
                         queryParams: [],
@@ -1410,6 +1480,46 @@ describe('v2.1.0 to v1.0.0', function () {
                             queryParams: [],
                             headerData: []
                         }]
+                    });
+                    done();
+                });
+            });
+
+            it('should not include an empty object', function (done) {
+                transformer.convert({
+                    info: {
+                        _postman_id: '969e90b1-0742-41b5-8602-e137d25274ac'
+                    },
+                    auth: { type: 'noauth' },
+                    item: [{
+                        _postman_id: 'a9832f4d-657c-4cd2-a5a4-7ddd6bc4948e',
+                        auth: { type: 'noauth' },
+                        item: [{ id: '123', protocolProfileBehavior: {} }],
+                        protocolProfileBehavior: {}
+                    }],
+                    protocolProfileBehavior: {}
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        id: '969e90b1-0742-41b5-8602-e137d25274ac',
+                        folders: [{
+                            id: 'a9832f4d-657c-4cd2-a5a4-7ddd6bc4948e',
+                            auth: { type: 'noauth' },
+                            folders_order: [],
+                            order: ['123']
+                        }],
+                        order: [],
+                        requests: [{
+                            collectionId: '969e90b1-0742-41b5-8602-e137d25274ac',
+                            headerData: [],
+                            id: '123',
+                            url: ''
+                        }],
+                        folders_order: ['a9832f4d-657c-4cd2-a5a4-7ddd6bc4948e']
                     });
                     done();
                 });

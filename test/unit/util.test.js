@@ -6,7 +6,6 @@ var _ = require('lodash'),
     expect = require('chai').expect,
     util = require('../../lib/util');
 
-/* global describe, it */
 describe('util', function () {
     describe('handleVars', function () {
         it('should correctly fall back to defaults where applicable', function () {

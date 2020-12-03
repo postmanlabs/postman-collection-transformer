@@ -9,7 +9,6 @@ var expect = require('chai').expect,
     _ = require('lodash').noConflict(),
     agent = require('superagent');
 
-/* global describe, it, before */
 describe('v1.0.0 ==> v2.0.0', function () {
     var converter = require('../../../lib/converters/v1.0.0/converter-v1-to-v2'),
         reverseConverter = require('../../../lib/converters/v2.0.0/converter-v2-to-v1'),
@@ -108,7 +107,7 @@ describe('v1.0.0 ==> v2.0.0', function () {
                     retainIds: true
                 })));
 
-            expect(v2.item[0]).to.have.property('_postman_id');
+            expect(v2.item[0]).to.have.property('id');
         });
 
         it('should mark commented out headers as disabled', function () {

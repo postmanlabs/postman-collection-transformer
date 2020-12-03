@@ -1,3 +1,37 @@
+4.0.0:
+  date: 2020-12-03
+  breaking changes:
+    - >-
+      GH-334 Fixed a bug where item and item-group identifier is incorrectly set
+      as "_postman_id" instead of "id" on v1 -> v2.x conversions
+    - GH-335 Dropped support for Node < v10
+  fixed bugs:
+    - GH-337 Fixed a bug where empty body options are retained
+    - >-
+      GH-336 Fixed a bug where empty and object-like protocolProfileBehavior are
+      retained
+    - >-
+      GH-333 Fixed a bug where object descriptions are not converted to string
+      on v2->v1 conversions
+    - >-
+      GH-332 Fixed a bug where private _postman_isSubFolder leaks on v1->v2
+      conversions
+    - >-
+      GH-331 Fixed a bug where variable.id was retained even if retainIds is set
+      to false
+    - >-
+      GH-330 Fixed a bug where event.id and event.script.id was retained even if
+      retainIds is set to false
+  chores:
+    - GH-335 Updated dependencies
+    - >-
+      Updated .npmignore to prevent the addition of tests and config files in
+      the published package
+    - Added system test for published package content
+    - Removed puppeteer dependency for browser tests
+    - Updated nyc configuration
+    - Updated ESLint rules
+
 3.3.3:
   date: 2020-07-13
   chores:
@@ -5,7 +39,7 @@
 
 3.3.2:
   date: 2020-06-05
-  bugs fixed:
+  fixed bugs:
     - >-
       GH-278 Fixed a bug where query param values are lost during v1 -> v2.x
       conversions
@@ -13,7 +47,7 @@
 
 3.3.1:
   date: 2020-03-27
-  bugs fixed:
+  fixed bugs:
     - GH-269 Fixed a bug where null events are dropped during normalization
   chores:
     - Updated dependencies
@@ -24,7 +58,7 @@
     - >-
       GH-259 Updated URL parsing and unparsing logic to allow variables with
       reserved characters in URL
-  bugs fixed:
+  fixed bugs:
     - >-
       GH-260 Fixed a bug where params with null key were repeated during v1 ->
       v2.x conversions
@@ -48,7 +82,7 @@
 
 3.1.1:
   date: 2019-05-17
-  bugs fixed:
+  fixed bugs:
     - Fixed a bug where params with empty key get filtered
 
 3.1.0:
@@ -66,7 +100,7 @@
 
 3.0.1:
   date: 2019-04-02
-  bugs fixed:
+  fixed bugs:
     - GH-184 Set null body if dataMode is null during v1 -> v2.x conversions
   chores:
     - Updated dependencies

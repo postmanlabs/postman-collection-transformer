@@ -400,7 +400,7 @@ module.exports = {
         ],
         item: [
             {
-                _postman_id: '5be148b3-0081-5a59-5273-9014161b0292',
+                id: '5be148b3-0081-5a59-5273-9014161b0292',
                 name: 'F1',
                 variable: [{
                     id: 'folder',
@@ -445,7 +445,7 @@ module.exports = {
                 ],
                 item: [
                     {
-                        _postman_id: 'a742022f-ff24-18c5-6e8b-0c4e7d7aee08',
+                        id: 'a742022f-ff24-18c5-6e8b-0c4e7d7aee08',
                         name: 'Basic',
                         variable: [{
                             id: 'request',
@@ -497,7 +497,7 @@ module.exports = {
                 ]
             },
             {
-                _postman_id: 'f619a417-7ab7-d28b-e75e-f110b5862eb6',
+                id: 'f619a417-7ab7-d28b-e75e-f110b5862eb6',
                 name: 'OAuth1',
                 variable: [{
                     id: 'request',
@@ -627,7 +627,7 @@ module.exports = {
         ],
         item: [
             {
-                _postman_id: '5be148b3-0081-5a59-5273-9014161b0292',
+                id: '5be148b3-0081-5a59-5273-9014161b0292',
                 name: 'F1',
                 variable: [{
                     id: 'folder',
@@ -708,7 +708,7 @@ module.exports = {
                 ],
                 item: [
                     {
-                        _postman_id: 'a742022f-ff24-18c5-6e8b-0c4e7d7aee08',
+                        id: 'a742022f-ff24-18c5-6e8b-0c4e7d7aee08',
                         variable: [{
                             id: 'request',
                             key: 'request',
@@ -781,7 +781,7 @@ module.exports = {
                 ]
             },
             {
-                _postman_id: 'f619a417-7ab7-d28b-e75e-f110b5862eb6',
+                id: 'f619a417-7ab7-d28b-e75e-f110b5862eb6',
                 variable: [{
                     id: 'request',
                     key: 'request',
