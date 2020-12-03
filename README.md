@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/postmanlabs/postman-collection-transformer.svg?branch=develop)](https://travis-ci.org/postmanlabs/postman-collection-transformer)
+[![Build Status](https://travis-ci.org/postmanlabs/postman-collection-transformer.svg?branch=develop)](https://travis-ci.com/postmanlabs/postman-collection-transformer)
 # postman-collection-transformer
 Perform rapid conversion of JSON structure between Postman Collection Format v1 and v2.
 
