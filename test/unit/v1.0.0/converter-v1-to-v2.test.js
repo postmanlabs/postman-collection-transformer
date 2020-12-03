@@ -3046,7 +3046,7 @@ describe('v1.0.0 to v2.0.0', function () {
                 }, function (err, result) {
                     expect(err).to.be.undefined;
                     expect(JSON.parse(JSON.stringify(result))).to.eql({
-                        _postman_id: '#collection-id',
+                        id: '#collection-id',
                         name: '',
                         request: {
                             header: []
