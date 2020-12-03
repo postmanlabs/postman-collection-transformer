@@ -4,11 +4,11 @@
   "description": "Perform rapid conversation and validation of JSON structure between Postman Collection Format v1 and v2",
   "main": "index.js",
   "scripts": {
-    "test": "node npm/test.js",
+    "test": "npm run test-lint && npm run test-system && npm run test-unit && npm run test-schema && npm run test-browser",
     "test-lint": "node npm/test-lint.js",
     "test-browser": "node npm/test-browser.js",
     "test-schema": "node npm/test-schema.js",
-    "test-unit": "node npm/test-unit.js",
+    "test-unit": "nyc --nycrc-path=.nycrc.js node npm/test-unit.js",
     "test-system": "node npm/test-system.js"
   },
   "repository": {

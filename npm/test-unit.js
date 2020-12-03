@@ -2,65 +2,36 @@
 // ---------------------------------------------------------------------------------------------------------------------
 // This script is intended to execute all unit tests.
 // ---------------------------------------------------------------------------------------------------------------------
-/* eslint-env node, es6 */
-// ---------------------------------------------------------------------------------------------------------------------
-// This script is intended to execute all unit tests.
-// ---------------------------------------------------------------------------------------------------------------------
 
-require('shelljs/global');
+const path = require('path'),
 
-// set directories and files for test and coverage report
-var path = require('path'),
-
-    NYC = require('nyc'),
     chalk = require('chalk'),
+    Mocha = require('mocha'),
     recursive = require('recursive-readdir'),
 
-    COV_REPORT_PATH = '.coverage',
-    SPEC_SOURCE_DIR = path.join(__dirname, '..', 'test', 'unit');
+    SPEC_SOURCE_DIR = path.join('test', 'unit');
 
 module.exports = function (exit) {
     // banner line
     console.info(chalk.yellow.bold('Running unit tests using mocha on node...'));
 
-    test('-d', COV_REPORT_PATH) && rm('-rf', COV_REPORT_PATH);
-    mkdir('-p', COV_REPORT_PATH);
-
-    var Mocha = require('mocha'),
-        nyc = new NYC({
-            hookRequire: true,
-            reportDir: COV_REPORT_PATH,
-            tempDirectory: COV_REPORT_PATH,
-            reporter: ['text', 'lcov', 'text-summary']
-        });
-
-    nyc.wrap();
     // add all spec files to mocha
-    recursive(SPEC_SOURCE_DIR, function (err, files) {
+    recursive(SPEC_SOURCE_DIR, (err, files) => {
         if (err) {
             console.error(err);
 
             return exit(1);
         }
 
-        var mocha = new Mocha({ timeout: 1000 * 60 });
+        const mocha = new Mocha({ timeout: 1000 * 60 });
 
-        files.filter(function (file) { // extract all test files
+        files.filter((file) => { // extract all test files
             return (file.substr(-8) === '.test.js');
         }).forEach(mocha.addFile.bind(mocha));
 
-        return mocha.run(function (runError) {
+        // start the mocha run
+        mocha.run((runError) => {
             runError && console.error(runError.stack || runError);
-
-            nyc.reset();
-            nyc.writeCoverageFile();
-            nyc.report();
-            nyc.checkCoverage({
-                statements: 90,
-                branches: 90,
-                functions: 90,
-                lines: 90
-            });
 
             exit(process.exitCode || runError ? 1 : 0);
         });
@@ -68,4 +39,4 @@ module.exports = function (exit) {
 };
 
 // ensure we run this script exports if this is a direct stdin.tty run
-!module.parent && module.exports(exit);
+!module.parent && module.exports(process.exit);
