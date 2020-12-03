@@ -1,12 +1,12 @@
-master:
+4.0.0:
+  date: 2020-12-03
   breaking changes:
     - >-
       GH-334 Fixed a bug where item and item-group identifier is incorrectly set
       as "_postman_id" instead of "id" on v1 -> v2.x conversions
     - GH-335 Dropped support for Node < v10
   fixed bugs:
-    - >-
-      GH-337 Fixed a bug where empty body options are retained
+    - GH-337 Fixed a bug where empty body options are retained
     - >-
       GH-336 Fixed a bug where empty and object-like protocolProfileBehavior are
       retained
