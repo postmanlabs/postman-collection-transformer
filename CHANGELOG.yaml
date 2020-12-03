@@ -1,4 +1,8 @@
 master:
+  breaking changes:
+    - >-
+      GH-334 Fixed a bug where item and item-group identifier is incorrectly set
+      as "_postman_id" instead of "id" on v1 -> v2.x conversions
   bugs fixed:
     - >-
       GH-333 Fixed a bug where object descriptions are not converted to string

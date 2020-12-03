@@ -108,7 +108,7 @@ describe('v1.0.0 ==> v2.0.0', function () {
                     retainIds: true
                 })));
 
-            expect(v2.item[0]).to.have.property('_postman_id');
+            expect(v2.item[0]).to.have.property('id');
         });
 
         it('should mark commented out headers as disabled', function () {

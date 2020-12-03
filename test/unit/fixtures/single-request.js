@@ -314,7 +314,7 @@ module.exports = {
         ]
     },
     v2: {
-        _postman_id: "0628a95f-c283-94e2-fa9f-53477775692f",
+        id: "0628a95f-c283-94e2-fa9f-53477775692f",
         name: "OAuth2.0 Get Access Token",
         event: [
             {
@@ -587,7 +587,7 @@ module.exports = {
         ]
     },
     v21: {
-        _postman_id: "0628a95f-c283-94e2-fa9f-53477775692f",
+        id: "0628a95f-c283-94e2-fa9f-53477775692f",
         name: "OAuth2.0 Get Access Token",
         event: [
             {
