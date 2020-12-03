@@ -3,6 +3,15 @@ master:
     - >-
       GH-333 Fixed a bug where object descriptions are not converted to string
       on v2->v1 conversions
+    - >-
+      GH-332 Fixed a bug where private _postman_isSubFolder leaks on v1->v2
+      conversions
+    - >-
+      GH-331 Fixed a bug where variable.id was retained even if retainIds is set
+      to false
+    - >-
+      GH-330 Fixed a bug where event.id and event.script.id was retained even if
+      retainIds is set to false
 
 3.3.3:
   date: 2020-07-13
