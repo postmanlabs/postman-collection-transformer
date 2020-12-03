@@ -1061,7 +1061,7 @@ describe('v2.1.0 to v1.0.0', function () {
                 });
             });
 
-            it('should transform body options to empty if invalid option is provided', function (done) {
+            it('should strip body options if invalid option is provided', function (done) {
                 transformer.convert({
                     info: {
                         _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
@@ -1118,8 +1118,7 @@ describe('v2.1.0 to v1.0.0', function () {
                             data: [{
                                 key: 'foo',
                                 value: 'bar'
-                            }],
-                            dataOptions: {}
+                            }]
                         }]
                     });
                     done();
@@ -1224,7 +1223,7 @@ describe('v2.1.0 to v1.0.0', function () {
                 });
             });
 
-            it('should transform body options to empty if invalid option is provided', function (done) {
+            it('should strip body options if empty option is provided', function (done) {
                 transformer.convertSingle({
                     _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
                     name: '',
@@ -1232,7 +1231,7 @@ describe('v2.1.0 to v1.0.0', function () {
                         body: {
                             mode: 'raw',
                             raw: 'foo=bar',
-                            options: 'INVALID_OPTIONS'
+                            options: { raw: {} }
                         },
                         method: 'GET',
                         url: 'https://postman-echo.com/get'
@@ -1250,7 +1249,6 @@ describe('v2.1.0 to v1.0.0', function () {
                         headers: '',
                         dataMode: 'raw',
                         rawModeData: 'foo=bar',
-                        dataOptions: {},
                         url: 'https://postman-echo.com/get',
                         pathVariableData: [],
                         queryParams: [],

@@ -5,6 +5,8 @@ master:
       as "_postman_id" instead of "id" on v1 -> v2.x conversions
   bugs fixed:
     - >-
+      GH-337 Fixed a bug where empty body options are retained
+    - >-
       GH-336 Fixed a bug where empty and object-like protocolProfileBehavior are
       retained
     - >-

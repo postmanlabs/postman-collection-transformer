@@ -1323,7 +1323,7 @@ describe('v1.0.0 to v2.1.0', function () {
                 });
             });
 
-            it('should transform body options to empty if invalid option is provided', function (done) {
+            it('should strip body options if invalid option is provided', function (done) {
                 transformer.convert({
                     id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                     name: 'get-with-body',
@@ -1357,8 +1357,7 @@ describe('v1.0.0 to v2.1.0', function () {
                             request: {
                                 body: {
                                     mode: 'raw',
-                                    raw: 'foo=bar',
-                                    options: {}
+                                    raw: 'foo=bar'
                                 },
                                 header: [],
                                 method: 'GET'
@@ -1462,7 +1461,7 @@ describe('v1.0.0 to v2.1.0', function () {
                 });
             });
 
-            it('should transform body options to empty if invalid option is provided', function (done) {
+            it('should strip body options if empty option is provided', function (done) {
                 transformer.convertSingle({
                     id: '591dad6f-1067-4f1e-a51e-96f2c30cbcd9',
                     dataMode: 'params',
@@ -1471,7 +1470,7 @@ describe('v1.0.0 to v2.1.0', function () {
                         value: 'bar',
                         enabled: false
                     }],
-                    dataOptions: 'INVALID_OPTIONS'
+                    dataOptions: { raw: {} }
                 }, options, function (err, converted) {
                     expect(err).to.not.be.ok;
 
@@ -1488,8 +1487,7 @@ describe('v1.0.0 to v2.1.0', function () {
                                     key: 'foo',
                                     value: 'bar',
                                     disabled: true
-                                }],
-                                options: {}
+                                }]
                             },
                             header: []
                         },
