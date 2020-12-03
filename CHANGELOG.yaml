@@ -3,7 +3,8 @@ master:
     - >-
       GH-334 Fixed a bug where item and item-group identifier is incorrectly set
       as "_postman_id" instead of "id" on v1 -> v2.x conversions
-  bugs fixed:
+    - GH-335 Dropped support for Node < v10
+  fixed bugs:
     - >-
       GH-337 Fixed a bug where empty body options are retained
     - >-
@@ -23,6 +24,13 @@ master:
       retainIds is set to false
   chores:
     - GH-335 Updated dependencies
+    - >-
+      Updated .npmignore to prevent the addition of tests and config files in
+      the published package
+    - Added system test for published package content
+    - Removed puppeteer dependency for browser tests
+    - Updated nyc configuration
+    - Updated ESLint rules
 
 3.3.3:
   date: 2020-07-13
@@ -31,7 +39,7 @@ master:
 
 3.3.2:
   date: 2020-06-05
-  bugs fixed:
+  fixed bugs:
     - >-
       GH-278 Fixed a bug where query param values are lost during v1 -> v2.x
       conversions
@@ -39,7 +47,7 @@ master:
 
 3.3.1:
   date: 2020-03-27
-  bugs fixed:
+  fixed bugs:
     - GH-269 Fixed a bug where null events are dropped during normalization
   chores:
     - Updated dependencies
@@ -50,7 +58,7 @@ master:
     - >-
       GH-259 Updated URL parsing and unparsing logic to allow variables with
       reserved characters in URL
-  bugs fixed:
+  fixed bugs:
     - >-
       GH-260 Fixed a bug where params with null key were repeated during v1 ->
       v2.x conversions
@@ -74,7 +82,7 @@ master:
 
 3.1.1:
   date: 2019-05-17
-  bugs fixed:
+  fixed bugs:
     - Fixed a bug where params with empty key get filtered
 
 3.1.0:
@@ -92,7 +100,7 @@ master:
 
 3.0.1:
   date: 2019-04-02
-  bugs fixed:
+  fixed bugs:
     - GH-184 Set null body if dataMode is null during v1 -> v2.x conversions
   chores:
     - Updated dependencies
