@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/postmanlabs/postman-collection-transformer.svg?branch=develop)](https://travis-ci.com/postmanlabs/postman-collection-transformer)
+[![Build Status](https://travis-ci.com/postmanlabs/postman-collection-transformer.svg?branch=develop)](https://travis-ci.com/postmanlabs/postman-collection-transformer)
 # postman-collection-transformer
 Perform rapid conversion of JSON structure between Postman Collection Format v1 and v2.
 
@@ -70,7 +70,7 @@ If you'd rather use the transformer as a library:
         console.log(inspect(result, {colors: true, depth: 10000}));
     });
 ```
-    
+
 #### Converting Individual Requests
 
 The transformer also allows you to convert individual requests (only supported when used as a library):
@@ -79,7 +79,7 @@ The transformer also allows you to convert individual requests (only supported w
 ```javascript
 
     var transformer = require('postman-collection-transformer'),
-    
+
         objectToConvert = { /* A valid collection v1 Request or a collection v2 Item */ },
 
         options = {
@@ -101,7 +101,7 @@ You can convert individual responses too if needed:
 ```javascript
 
     var transformer = require('postman-collection-transformer'),
-    
+
         objectToConvert = { /* A v1 Response or a v2 Response */ },
 
         options = {
