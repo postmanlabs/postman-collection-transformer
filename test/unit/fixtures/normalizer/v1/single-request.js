@@ -676,6 +676,7 @@ module.exports = {
                 updatedAt: '2015-11-02T18:05:45.000Z',
                 write: true
             }
-        ]
+        ],
+        responses_order: []
     }
 };
