@@ -80,7 +80,8 @@ module.exports = {
                 },
                 name: 'OAuth2',
                 collectionId: 'd497d10e-e280-8c83-709a-a4d4ea12ad14',
-                responses: []
+                responses: [],
+                responses_order: []
             },
             {
                 id: '951fc3e8-c6b6-5c19-9f69-4e7499b3127f',
@@ -117,7 +118,8 @@ module.exports = {
                 },
                 name: 'test bearer auth success',
                 collectionId: 'd497d10e-e280-8c83-709a-a4d4ea12ad14',
-                responses: []
+                responses: [],
+                responses_order: []
             },
             {
                 id: '951fc3e8-c6b6-5c19-9f69-4e7499b3127g',
@@ -166,7 +168,8 @@ module.exports = {
                 },
                 name: 'test ntlm auth success',
                 collectionId: 'd497d10e-e280-8c83-709a-a4d4ea12ad14',
-                responses: []
+                responses: [],
+                responses_order: []
             }
         ]
     },
