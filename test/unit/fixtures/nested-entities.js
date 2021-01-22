@@ -225,7 +225,8 @@ module.exports = {
                 },
                 name: 'Basic',
                 collectionId: '371e9fa3-97d3-ca11-07c0-836a72a325c2',
-                responses: []
+                responses: [],
+                responses_order: []
             },
             {
                 id: 'f619a417-7ab7-d28b-e75e-f110b5862eb6',
@@ -349,7 +350,8 @@ module.exports = {
                 },
                 name: 'OAuth1',
                 collectionId: '371e9fa3-97d3-ca11-07c0-836a72a325c2',
-                responses: []
+                responses: [],
+                responses_order: []
             }
         ]
     },

@@ -63,7 +63,8 @@ describe('v2.1.0 to v1.0.0', function () {
                 }, options)))).to.eql({
                     id: '9a5c1db2-beb3-42a5-bdff-689321f6dca8',
                     headerData: [],
-                    url: ''
+                    url: '',
+                    responses_order: []
                 });
             });
         });
@@ -293,7 +294,8 @@ describe('v2.1.0 to v1.0.0', function () {
                         }],
                         headerData: [{
                             description: 'header description', key: 'header_foo', value: 'header_bar'
-                        }]
+                        }],
+                        responses_order: []
                     }]
                 });
             });
@@ -328,7 +330,8 @@ describe('v2.1.0 to v1.0.0', function () {
                         url: '',
                         headerData: [],
                         collectionId: 'C1',
-                        name: 'request one'
+                        name: 'request one',
+                        responses_order: []
                     }],
                     folders: [{
                         id: 'F1',
@@ -414,7 +417,8 @@ describe('v2.1.0 to v1.0.0', function () {
                         headers: '',
                         headerData: [],
                         queryParams: [],
-                        pathVariableData: []
+                        pathVariableData: [],
+                        responses_order: []
                     }]
                 });
                 done();
@@ -461,7 +465,8 @@ describe('v2.1.0 to v1.0.0', function () {
                         headers: '',
                         headerData: [],
                         queryParams: [],
-                        pathVariableData: []
+                        pathVariableData: [],
+                        responses_order: []
                     });
                     done();
                 });
@@ -521,7 +526,8 @@ describe('v2.1.0 to v1.0.0', function () {
                         responses: [],
                         pathVariableData: [],
                         queryParams: [],
-                        headerData: []
+                        headerData: [],
+                        responses_order: []
                     }]
                 });
                 done();
@@ -579,7 +585,8 @@ describe('v2.1.0 to v1.0.0', function () {
                         responses: [],
                         pathVariableData: [],
                         queryParams: [],
-                        headerData: []
+                        headerData: [],
+                        responses_order: []
                     }]
                 });
                 done();
@@ -632,7 +639,8 @@ describe('v2.1.0 to v1.0.0', function () {
                         responses: [],
                         pathVariableData: [],
                         queryParams: [],
-                        headerData: []
+                        headerData: [],
+                        responses_order: []
                     }]
                 });
                 done();
@@ -687,7 +695,8 @@ describe('v2.1.0 to v1.0.0', function () {
                         responses: [],
                         pathVariableData: [],
                         queryParams: [],
-                        headerData: []
+                        headerData: [],
+                        responses_order: []
                     }]
                 });
                 done();
@@ -743,7 +752,8 @@ describe('v2.1.0 to v1.0.0', function () {
                         responses: [],
                         pathVariableData: [],
                         queryParams: [],
-                        headerData: []
+                        headerData: [],
+                        responses_order: []
                     }]
                 });
                 done();
@@ -798,7 +808,8 @@ describe('v2.1.0 to v1.0.0', function () {
                         responses: [],
                         pathVariableData: [],
                         queryParams: [],
-                        headerData: []
+                        headerData: [],
+                        responses_order: []
                     }]
                 });
                 done();
@@ -854,7 +865,8 @@ describe('v2.1.0 to v1.0.0', function () {
                         responses: [],
                         pathVariableData: [],
                         queryParams: [],
-                        headerData: []
+                        headerData: [],
+                        responses_order: []
                     }]
                 });
                 done();
@@ -909,7 +921,8 @@ describe('v2.1.0 to v1.0.0', function () {
                         responses: [],
                         pathVariableData: [],
                         queryParams: [],
-                        headerData: []
+                        headerData: [],
+                        responses_order: []
                     }]
                 });
                 done();
@@ -997,7 +1010,8 @@ describe('v2.1.0 to v1.0.0', function () {
                                 binary: {
                                     contentType: 'application/json'
                                 }
-                            }
+                            },
+                            responses_order: []
                         }]
                     });
                     done();
@@ -1054,7 +1068,8 @@ describe('v2.1.0 to v1.0.0', function () {
                             queryParams: [],
                             headerData: [],
                             dataMode: 'raw',
-                            rawModeData: '[{ key: \'foo\', value: \'bar\', disabled: true }]'
+                            rawModeData: '[{ key: \'foo\', value: \'bar\', disabled: true }]',
+                            responses_order: []
                         }]
                     });
                     done();
@@ -1118,7 +1133,8 @@ describe('v2.1.0 to v1.0.0', function () {
                             data: [{
                                 key: 'foo',
                                 value: 'bar'
-                            }]
+                            }],
+                            responses_order: []
                         }]
                     });
                     done();
@@ -1183,7 +1199,8 @@ describe('v2.1.0 to v1.0.0', function () {
                         url: 'https://postman-echo.com/get',
                         pathVariableData: [],
                         queryParams: [],
-                        headerData: []
+                        headerData: [],
+                        responses_order: []
                     });
                     done();
                 });
@@ -1217,7 +1234,8 @@ describe('v2.1.0 to v1.0.0', function () {
                         url: 'https://postman-echo.com/get',
                         pathVariableData: [],
                         queryParams: [],
-                        headerData: []
+                        headerData: [],
+                        responses_order: []
                     });
                     done();
                 });
@@ -1252,7 +1270,8 @@ describe('v2.1.0 to v1.0.0', function () {
                         url: 'https://postman-echo.com/get',
                         pathVariableData: [],
                         queryParams: [],
-                        headerData: []
+                        headerData: [],
+                        responses_order: []
                     });
                     done();
                 });
@@ -1318,7 +1337,8 @@ describe('v2.1.0 to v1.0.0', function () {
                             responses: [],
                             pathVariableData: [],
                             queryParams: [],
-                            headerData: []
+                            headerData: [],
+                            responses_order: []
                         }]
                     });
                     done();
@@ -1378,7 +1398,8 @@ describe('v2.1.0 to v1.0.0', function () {
                             responses: [],
                             pathVariableData: [],
                             queryParams: [],
-                            headerData: []
+                            headerData: [],
+                            responses_order: []
                         }],
                         protocolProfileBehavior: {
                             disableBodyPruning: true
@@ -1478,7 +1499,8 @@ describe('v2.1.0 to v1.0.0', function () {
                             responses: [],
                             pathVariableData: [],
                             queryParams: [],
-                            headerData: []
+                            headerData: [],
+                            responses_order: []
                         }]
                     });
                     done();
@@ -1517,7 +1539,8 @@ describe('v2.1.0 to v1.0.0', function () {
                             collectionId: '969e90b1-0742-41b5-8602-e137d25274ac',
                             headerData: [],
                             id: '123',
-                            url: ''
+                            url: '',
+                            responses_order: []
                         }],
                         folders_order: ['a9832f4d-657c-4cd2-a5a4-7ddd6bc4948e']
                     });
@@ -1564,7 +1587,8 @@ describe('v2.1.0 to v1.0.0', function () {
                         url: 'https://postman-echo.com/get',
                         pathVariableData: [],
                         queryParams: [],
-                        headerData: []
+                        headerData: [],
+                        responses_order: []
                     });
                     done();
                 });
@@ -1602,7 +1626,8 @@ describe('v2.1.0 to v1.0.0', function () {
                         url: 'https://postman-echo.com/get',
                         pathVariableData: [],
                         queryParams: [],
-                        headerData: []
+                        headerData: [],
+                        responses_order: []
                     });
                     done();
                 });
@@ -1649,7 +1674,8 @@ describe('v2.1.0 to v1.0.0', function () {
                         auth: { type: 'noauth' },
                         headers: '',
                         url: '',
-                        headerData: []
+                        headerData: [],
+                        responses_order: []
                     });
                     done();
                 });
@@ -1676,7 +1702,8 @@ describe('v2.1.0 to v1.0.0', function () {
                         auth: null,
                         headers: '',
                         url: '',
-                        headerData: []
+                        headerData: [],
+                        responses_order: []
                     });
                     done();
                 });
@@ -1780,7 +1807,8 @@ describe('v2.1.0 to v1.0.0', function () {
                         { key: '', value: '' },
                         { key: null, value: null },
                         { key: 'beta', value: null }
-                    ]
+                    ],
+                    responses_order: []
                 });
             });
         });
@@ -1820,7 +1848,8 @@ describe('v2.1.0 to v1.0.0', function () {
                         { key: '', value: '' },
                         { key: null, value: null },
                         { key: 'beta', value: null }
-                    ]
+                    ],
+                    responses_order: []
                 });
             });
         });
@@ -1861,7 +1890,8 @@ describe('v2.1.0 to v1.0.0', function () {
                         collectionId: '2509a94e-eca1-43ca-a8aa-0e200636764f',
                         headerData: [],
                         id: 'R1',
-                        url: ''
+                        url: '',
+                        responses_order: []
                     }]
                 });
                 done();
@@ -2112,7 +2142,8 @@ describe('v2.1.0 to v1.0.0', function () {
                         helperAttributes: { id: 'bearer', token: 'random' },
                         auth: { type: 'bearer', bearer: [{ key: 'token', value: 'random', type: 'string' }] },
                         headerData: [{ key: 'header_foo', value: 'header_bar', description: null }],
-                        queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }]
+                        queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }],
+                        responses_order: []
                     }]
                 });
             });
@@ -2157,7 +2188,8 @@ describe('v2.1.0 to v1.0.0', function () {
                     rawModeData: null,
                     graphqlModeData: null,
                     headerData: [{ key: 'header_foo', value: 'header_bar', description: null }],
-                    queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }]
+                    queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }],
+                    responses_order: []
                 });
             });
         });
@@ -2187,7 +2219,8 @@ describe('v2.1.0 to v1.0.0', function () {
                     url: '?query_foo=query_bar',
                     rawModeData: null,
                     graphqlModeData: null,
-                    queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }]
+                    queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }],
+                    responses_order: []
                 });
             });
         });
@@ -2231,7 +2264,8 @@ describe('v2.1.0 to v1.0.0', function () {
                     rawModeData: null,
                     graphqlModeData: null,
                     headerData: [{ key: 'header_foo', value: 'header_bar', description: null }],
-                    queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }]
+                    queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }],
+                    responses_order: []
                 });
             });
         });
@@ -2262,7 +2296,8 @@ describe('v2.1.0 to v1.0.0', function () {
                     rawModeData: 'foobar',
                     graphqlModeData: null,
                     dataDisabled: false,
-                    url: 'https://postman-echo.com/get'
+                    url: 'https://postman-echo.com/get',
+                    responses_order: []
                 });
             });
         });
@@ -2301,7 +2336,8 @@ describe('v2.1.0 to v1.0.0', function () {
                         variables: '{"foo":"bar"}'
                     },
                     dataDisabled: false,
-                    url: 'https://postman-echo.com/get'
+                    url: 'https://postman-echo.com/get',
+                    responses_order: []
                 });
             });
         });

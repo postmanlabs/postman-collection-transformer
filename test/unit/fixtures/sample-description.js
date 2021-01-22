@@ -72,7 +72,8 @@ module.exports = {
                 collectionId: 'e1036383-ba43-d240-5e9d-19614febed77',
                 pathVariableData: [{ key: 'a' }],
                 pathVariables: {},
-                responses: []
+                responses: [],
+                responses_order: []
             }
         ],
         order: [
