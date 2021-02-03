@@ -3701,4 +3701,916 @@ describe('v1.0.0 normalization', function () {
             });
         });
     });
+
+    describe('object type variable descriptions', function () {
+        describe('on collections', function () {
+            it('should convert object descriptions to string using the `content` key', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    variables: [
+                        {
+                            id: 'v1',
+                            key: 'foo',
+                            value: 'bar',
+                            description: {
+                                content: 'This is the expected output'
+                            }
+                        },
+                        {
+                            id: '22',
+                            key: 'foo',
+                            value: 'bar',
+                            description: {
+                                content: 'This is the expected output'
+                            }
+                        }
+                    ]
+                };
+
+                transformer.normalize(collection, { normalizeVersion: '1.0.0' }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isStringDescription = result.variables.every(function (variable, idx) {
+                        var expected = collection.variables[idx].description.content;
+
+                        return variable.description === expected;
+                    });
+
+                    expect(isStringDescription).to.be.true;
+                });
+            });
+
+            it('should convert to `[object Object]` when `content` value is itself an object', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    variables: [
+                        {
+                            id: 'v1',
+                            key: 'foo',
+                            value: 'bar',
+                            description: {
+                                content: {
+                                    text: 'This will be ignored'
+                                }
+                            }
+                        },
+                        {
+                            id: '22',
+                            key: 'foo',
+                            value: 'bar',
+                            description: {
+                                content: {
+                                    text: 'This will be ignored'
+                                }
+                            }
+                        }
+                    ]
+                };
+
+                transformer.normalize(collection, { normalizeVersion: '1.0.0' }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isStringDescription = result.variables.every(function (variable) {
+                        var expected = '[object Object]';
+
+                        return variable.description === expected;
+                    });
+
+                    expect(isStringDescription).to.be.true;
+                });
+            });
+        });
+
+        describe('on folders', function () {
+            it('should convert object descriptions to string using the `content` key', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    folders: [
+                        {
+                            variables: [
+                                {
+                                    id: 'v1',
+                                    key: 'foo',
+                                    value: 'bar',
+                                    description: {
+                                        content: 'This is the expected output'
+                                    }
+                                },
+                                {
+                                    id: '22',
+                                    key: 'foo',
+                                    value: 'bar',
+                                    description: {
+                                        content: 'This is the expected output'
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                };
+
+                transformer.normalize(collection, { normalizeVersion: '1.0.0' }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isStringDescription = result.folders.every(function (folder, rIdx) {
+                        return folder.variables.every(function (variable, idx) {
+                            var expected = collection.folders[rIdx].variables[idx].description.content;
+
+                            return variable.description === expected;
+                        });
+                    });
+
+                    expect(isStringDescription).to.be.true;
+                });
+            });
+
+            it('should convert to `[object Object]` when `content` value is itself an object', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    folders: [
+                        {
+                            variables: [
+                                {
+                                    id: 'v1',
+                                    key: 'foo',
+                                    value: 'bar',
+                                    description: {
+                                        content: {
+                                            text: 'This will be ignored'
+                                        }
+                                    }
+                                },
+                                {
+                                    id: '22',
+                                    key: 'foo',
+                                    value: 'bar',
+                                    description: {
+                                        content: {
+                                            text: 'This will be ignored'
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                };
+
+                transformer.normalize(collection, { normalizeVersion: '1.0.0' }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isStringDescription = result.folders.every(function (folder) {
+                        return folder.variables.every(function (variable) {
+                            var expected = '[object Object]';
+
+                            return variable.description === expected;
+                        });
+                    });
+
+                    expect(isStringDescription).to.be.true;
+                });
+            });
+        });
+
+        describe('on request', function () {
+            it('should convert object descriptions to string using the `content` key', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    requests: [
+                        {
+                            description: {
+                                content: 'This is the expected output'
+                            }
+                        }
+                    ]
+                };
+
+                transformer.normalize(collection, { normalizeVersion: '1.0.0' }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isStringDescription = result.requests.every(function (request, rIdx) {
+                        var expected = collection.requests[rIdx].description.content;
+
+                        return request.description === expected;
+                    });
+
+                    expect(isStringDescription).to.be.true;
+                });
+            });
+
+            it('should convert to `[object Object]` when `content` value is itself an object', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    requests: [
+                        {
+                            description: {
+                                content: {
+                                    text: 'This will be ignored'
+                                }
+                            }
+                        }
+                    ]
+                };
+
+                transformer.normalize(collection, { normalizeVersion: '1.0.0' }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isStringDescription = result.requests.every(function (request) {
+                        var expected = '[object Object]';
+
+                        return request.description === expected;
+                    });
+
+                    expect(isStringDescription).to.be.true;
+                });
+            });
+
+            it('for empty description, should set description to `null` if `retainEmptyValues` is set', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    requests: [
+                        {
+                            id: 'unimportant'
+                        }
+                    ]
+                };
+
+                // eslint-disable-next-line max-len
+                transformer.normalize(collection, { normalizeVersion: '1.0.0', retainEmptyValues: true }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isNullDescription = result.requests.every(function (request) {
+                        return request.description === null;
+                    });
+
+                    expect(isNullDescription).to.be.true;
+                });
+            });
+
+            it('for empty description, should remove description if `retainEmptyValues` is not set', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    requests: [
+                        {
+                            id: 'unimportant'
+                        }
+                    ]
+                };
+
+                // eslint-disable-next-line max-len
+                transformer.normalize(collection, { normalizeVersion: '1.0.0', retainEmptyValues: false }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isUndefined = result.requests.every(function (request) {
+                        return !_.has(request, 'description');
+                    });
+
+                    expect(isUndefined).to.be.true;
+                });
+            });
+        });
+
+        describe('on request pathVariableData', function () {
+            it('should convert object descriptions to string using the `content` key', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    requests: [
+                        {
+                            pathVariableData: [
+                                {
+                                    id: 'v1',
+                                    key: 'foo',
+                                    value: 'bar',
+                                    description: {
+                                        content: 'This is the expected output'
+                                    }
+                                },
+                                {
+                                    id: '22',
+                                    key: 'foo',
+                                    value: 'bar',
+                                    description: {
+                                        content: 'This is the expected output'
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                };
+
+                transformer.normalize(collection, { normalizeVersion: '1.0.0' }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isStringDescription = result.requests.every(function (request, rIdx) {
+                        return request.pathVariableData.every(function (variable, idx) {
+                            var expected = collection.requests[rIdx].pathVariableData[idx].description.content;
+
+                            return variable.description === expected;
+                        });
+                    });
+
+                    expect(isStringDescription).to.be.true;
+                });
+            });
+
+            it('should convert to `[object Object]` when `content` value is itself an object', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    requests: [
+                        {
+                            pathVariableData: [
+                                {
+                                    id: 'v1',
+                                    key: 'foo',
+                                    value: 'bar',
+                                    description: {
+                                        content: {
+                                            text: 'This will be ignored'
+                                        }
+                                    }
+                                },
+                                {
+                                    id: '22',
+                                    key: 'foo',
+                                    value: 'bar',
+                                    description: {
+                                        content: {
+                                            text: 'This will be ignored'
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                };
+
+                transformer.normalize(collection, { normalizeVersion: '1.0.0' }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isStringDescription = result.requests.every(function (request) {
+                        return request.pathVariableData.every(function (variable) {
+                            var expected = '[object Object]';
+
+                            return variable.description === expected;
+                        });
+                    });
+
+                    expect(isStringDescription).to.be.true;
+                });
+            });
+
+            it('for empty description, should set description to `null` if `retainEmptyValues` is set', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    requests: [
+                        {
+                            pathVariableData: [
+                                {
+                                    id: 'v1',
+                                    key: 'foo',
+                                    value: 'bar'
+                                },
+                                {
+                                    id: '22',
+                                    key: 'foo',
+                                    value: 'bar'
+                                }
+                            ]
+                        }
+                    ]
+                };
+
+                // eslint-disable-next-line max-len
+                transformer.normalize(collection, { normalizeVersion: '1.0.0', retainEmptyValues: true }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isNullDescription = result.requests.every(function (request) {
+                        return request.pathVariableData.every(function (variable) {
+                            return variable.description === null;
+                        });
+                    });
+
+                    expect(isNullDescription).to.be.true;
+                });
+            });
+
+            it('for empty description, should remove description if `retainEmptyValues` is not set', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    requests: [
+                        {
+                            pathVariableData: [
+                                {
+                                    id: 'v1',
+                                    key: 'foo',
+                                    value: 'bar'
+                                },
+                                {
+                                    id: '22',
+                                    key: 'foo',
+                                    value: 'bar'
+                                }
+                            ]
+                        }
+                    ]
+                };
+
+                // eslint-disable-next-line max-len
+                transformer.normalize(collection, { normalizeVersion: '1.0.0', retainEmptyValues: false }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isUndefined = result.requests.every(function (request) {
+                        return request.pathVariableData.every(function (variable) {
+                            return !_.has(variable, 'description');
+                        });
+                    });
+
+                    expect(isUndefined).to.be.true;
+                });
+            });
+        });
+
+        describe('on request queryParams', function () {
+            it('should convert object descriptions to string using the `content` key', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    requests: [
+                        {
+                            queryParams: [
+                                {
+                                    key: 'foo',
+                                    value: 'bar',
+                                    description: {
+                                        content: 'This is the expected output'
+                                    }
+                                },
+                                {
+                                    key: 'foo',
+                                    value: 'bar',
+                                    description: {
+                                        content: 'This is the expected output'
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                };
+
+                transformer.normalize(collection, { normalizeVersion: '1.0.0' }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isStringDescription = result.requests.every(function (request, rIdx) {
+                        return request.queryParams.every(function (variable, idx) {
+                            var expected = collection.requests[rIdx].queryParams[idx].description.content;
+
+                            return variable.description === expected;
+                        });
+                    });
+
+                    expect(isStringDescription).to.be.true;
+                });
+            });
+
+            it('should convert to `[object Object]` when `content` value is itself an object', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    requests: [
+                        {
+                            queryParams: [
+                                {
+                                    key: 'foo',
+                                    value: 'bar',
+                                    description: {
+                                        content: {
+                                            text: 'This will be ignored'
+                                        }
+                                    }
+                                },
+                                {
+                                    key: 'foo',
+                                    value: 'bar',
+                                    description: {
+                                        content: {
+                                            text: 'This will be ignored'
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                };
+
+                transformer.normalize(collection, { normalizeVersion: '1.0.0' }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isStringDescription = result.requests.every(function (request) {
+                        return request.queryParams.every(function (variable) {
+                            var expected = '[object Object]';
+
+                            return variable.description === expected;
+                        });
+                    });
+
+                    expect(isStringDescription).to.be.true;
+                });
+            });
+
+            it('for empty description, should set description to `null` if `retainEmptyValues` is set', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    requests: [
+                        {
+                            queryParams: [
+                                {
+                                    key: 'foo',
+                                    value: 'bar'
+                                },
+                                {
+                                    key: 'foo',
+                                    value: 'bar'
+                                }
+                            ]
+                        }
+                    ]
+                };
+
+                // eslint-disable-next-line max-len
+                transformer.normalize(collection, { normalizeVersion: '1.0.0', retainEmptyValues: true }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isNullDescription = result.requests.every(function (request) {
+                        return request.queryParams.every(function (variable) {
+                            return variable.description === null;
+                        });
+                    });
+
+                    expect(isNullDescription).to.be.true;
+                });
+            });
+
+            it('for empty description, should remove description if `retainEmptyValues` is not set', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    requests: [
+                        {
+                            queryParams: [
+                                {
+                                    key: 'foo',
+                                    value: 'bar'
+                                },
+                                {
+                                    key: 'foo',
+                                    value: 'bar'
+                                }
+                            ]
+                        }
+                    ]
+                };
+
+                // eslint-disable-next-line max-len
+                transformer.normalize(collection, { normalizeVersion: '1.0.0', retainEmptyValues: false }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isUndefined = result.requests.every(function (request) {
+                        return request.queryParams.every(function (variable) {
+                            return !_.has(variable, 'description');
+                        });
+                    });
+
+                    expect(isUndefined).to.be.true;
+                });
+            });
+        });
+
+        describe('on request headerData', function () {
+            it('should convert object descriptions to string using the `content` key', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    requests: [
+                        {
+                            headerData: [
+                                {
+                                    key: 'foo',
+                                    value: 'bar',
+                                    description: {
+                                        content: 'This is the expected output'
+                                    }
+                                },
+                                {
+                                    key: 'foo',
+                                    value: 'bar',
+                                    description: {
+                                        content: 'This is the expected output'
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                };
+
+                transformer.normalize(collection, { normalizeVersion: '1.0.0' }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isStringDescription = result.requests.every(function (request, rIdx) {
+                        return request.headerData.every(function (variable, idx) {
+                            var expected = collection.requests[rIdx].headerData[idx].description.content;
+
+                            return variable.description === expected;
+                        });
+                    });
+
+                    expect(isStringDescription).to.be.true;
+                });
+            });
+
+            it('should convert to `[object Object]` when `content` value is itself an object', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    requests: [
+                        {
+                            headerData: [
+                                {
+                                    key: 'foo',
+                                    value: 'bar',
+                                    description: {
+                                        content: {
+                                            text: 'This will be ignored'
+                                        }
+                                    }
+                                },
+                                {
+                                    key: 'foo',
+                                    value: 'bar',
+                                    description: {
+                                        content: {
+                                            text: 'This will be ignored'
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                };
+
+                transformer.normalize(collection, { normalizeVersion: '1.0.0' }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isStringDescription = result.requests.every(function (request) {
+                        return request.headerData.every(function (variable) {
+                            var expected = '[object Object]';
+
+                            return variable.description === expected;
+                        });
+                    });
+
+                    expect(isStringDescription).to.be.true;
+                });
+            });
+
+            it('for empty description, should set description to `null` if `retainEmptyValues` is set', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    requests: [
+                        {
+                            headerData: [
+                                {
+                                    key: 'foo',
+                                    value: 'bar'
+                                },
+                                {
+                                    key: 'foo',
+                                    value: 'bar'
+                                }
+                            ]
+                        }
+                    ]
+                };
+
+                // eslint-disable-next-line max-len
+                transformer.normalize(collection, { normalizeVersion: '1.0.0', retainEmptyValues: true }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isNullDescription = result.requests.every(function (request) {
+                        return request.headerData.every(function (variable) {
+                            return variable.description === null;
+                        });
+                    });
+
+                    expect(isNullDescription).to.be.true;
+                });
+            });
+
+            it('for empty description, should remove description `retainEmptyValues` is not set', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    requests: [
+                        {
+                            headerData: [
+                                {
+                                    key: 'foo',
+                                    value: 'bar'
+                                },
+                                {
+                                    key: 'foo',
+                                    value: 'bar'
+                                }
+                            ]
+                        }
+                    ]
+                };
+
+                // eslint-disable-next-line max-len
+                transformer.normalize(collection, { normalizeVersion: '1.0.0', retainEmptyValues: false }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isUndefined = result.requests.every(function (request) {
+                        return request.headerData.every(function (variable) {
+                            return !_.has(variable, 'description');
+                        });
+                    });
+
+                    expect(isUndefined).to.be.true;
+                });
+            });
+        });
+
+        describe('on request data', function () {
+            it('should convert object descriptions to string using the `content` key', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    requests: [
+                        {
+                            dataMode: 'params',
+                            data: [
+                                {
+                                    key: 'foo',
+                                    value: 'bar',
+                                    description: {
+                                        content: 'This is the expected output'
+                                    }
+                                },
+                                {
+                                    key: 'foo',
+                                    value: 'bar',
+                                    description: {
+                                        content: 'This is the expected output'
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                };
+
+                transformer.normalize(collection, { normalizeVersion: '1.0.0' }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isStringDescription = result.requests.every(function (request, rIdx) {
+                        return request.data.every(function (variable, idx) {
+                            var expected = collection.requests[rIdx].data[idx].description.content;
+
+                            return variable.description === expected;
+                        });
+                    });
+
+                    expect(isStringDescription).to.be.true;
+                });
+            });
+
+            it('should convert to `[object Object]` when `content` value is itself an object', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    requests: [
+                        {
+                            dataMode: 'params',
+                            data: [
+                                {
+                                    key: 'foo',
+                                    value: 'bar',
+                                    description: {
+                                        content: {
+                                            text: 'This will be ignored'
+                                        }
+                                    }
+                                },
+                                {
+                                    key: 'foo',
+                                    value: 'bar',
+                                    description: {
+                                        content: {
+                                            text: 'This will be ignored'
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                };
+
+                transformer.normalize(collection, { normalizeVersion: '1.0.0' }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isStringDescription = result.requests.every(function (request) {
+                        return request.data.every(function (variable) {
+                            var expected = '[object Object]';
+
+                            return variable.description === expected;
+                        });
+                    });
+
+                    expect(isStringDescription).to.be.true;
+                });
+            });
+
+            it('for empty description, should set description to `null` if `retainEmptyValues` is set', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    requests: [
+                        {
+                            dataMode: 'params',
+                            data: [
+                                {
+                                    key: 'foo',
+                                    value: 'bar'
+                                },
+                                {
+                                    key: 'foo',
+                                    value: 'bar'
+                                }
+                            ]
+                        }
+                    ]
+                };
+
+                // eslint-disable-next-line max-len
+                transformer.normalize(collection, { normalizeVersion: '1.0.0', retainEmptyValues: true }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isNullDescription = result.requests.every(function (request) {
+                        return request.data.every(function (variable) {
+                            return variable.description === null;
+                        });
+                    });
+
+                    expect(isNullDescription).to.be.true;
+                });
+            });
+
+            it('for empty description, should remove description if `retainEmptyValues` is not set', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    requests: [
+                        {
+                            dataMode: 'params',
+                            data: [
+                                {
+                                    key: 'foo',
+                                    value: 'bar'
+                                },
+                                {
+                                    key: 'foo',
+                                    value: 'bar'
+                                }
+                            ]
+                        }
+                    ]
+                };
+
+                // eslint-disable-next-line max-len
+                transformer.normalize(collection, { normalizeVersion: '1.0.0', retainEmptyValues: false }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isUndefined = result.requests.every(function (request) {
+                        return request.data.every(function (variable) {
+                            return !_.has(variable, 'description');
+                        });
+                    });
+
+                    expect(isUndefined).to.be.true;
+                });
+            });
+        });
+    });
 });
