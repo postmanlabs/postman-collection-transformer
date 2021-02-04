@@ -3781,9 +3781,271 @@ describe('v1.0.0 normalization', function () {
                     expect(isStringDescription).to.be.true;
                 });
             });
+
+            it('for invalid description, should set description to `null` if `retainEmptyValues` is set', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    description: {
+                        invalid: 'ignored'
+                    }
+                };
+
+                // eslint-disable-next-line max-len
+                transformer.normalize(collection, { normalizeVersion: '1.0.0', retainEmptyValues: true }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    expect(result.description).to.be.null;
+                });
+            });
+
+            it('for invalid description, should remove description if `retainEmptyValues` is not set', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    description: {
+                        invalid: 'ignored'
+                    }
+                };
+
+                // eslint-disable-next-line max-len
+                transformer.normalize(collection, { normalizeVersion: '1.0.0', retainEmptyValues: false }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    expect(result).to.not.have.property('description');
+                });
+            });
         });
 
-        describe('on folders', function () {
+        describe('on collection variables', function () {
+            it('should convert object descriptions to string using the `content` key', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    variables: [
+                        {
+                            id: 'v1',
+                            key: 'foo',
+                            value: 'bar',
+                            description: {
+                                content: 'This is the expected output'
+                            }
+                        },
+                        {
+                            id: '22',
+                            key: 'foo',
+                            value: 'bar',
+                            description: {
+                                content: 'This is the expected output'
+                            }
+                        }
+                    ]
+                };
+
+                transformer.normalize(collection, { normalizeVersion: '1.0.0' }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isStringDescription = result.variables.every(function (variable, idx) {
+                        var expected = collection.variables[idx].description.content;
+
+                        return variable.description === expected;
+                    });
+
+                    expect(isStringDescription).to.be.true;
+                });
+            });
+
+            it('should convert to `[object Object]` when `content` value is itself an object', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    variables: [
+                        {
+                            id: 'v1',
+                            key: 'foo',
+                            value: 'bar',
+                            description: {
+                                content: {
+                                    text: 'This will be ignored'
+                                }
+                            }
+                        },
+                        {
+                            id: '22',
+                            key: 'foo',
+                            value: 'bar',
+                            description: {
+                                content: {
+                                    text: 'This will be ignored'
+                                }
+                            }
+                        }
+                    ]
+                };
+
+                transformer.normalize(collection, { normalizeVersion: '1.0.0' }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isStringDescription = result.variables.every(function (variable) {
+                        var expected = '[object Object]';
+
+                        return variable.description === expected;
+                    });
+
+                    expect(isStringDescription).to.be.true;
+                });
+            });
+
+            it('for invalid description, should remove description even if `retainEmptyValues` is set', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    variables: [
+                        {
+                            id: 'v1',
+                            key: 'foo',
+                            value: 'bar',
+                            description: {
+                                invalid: {
+                                    text: 'This will be ignored'
+                                }
+                            }
+                        },
+                        {
+                            id: '22',
+                            key: 'foo',
+                            value: 'bar',
+                            description: {
+                                invalid: {
+                                    text: 'This will be ignored'
+                                }
+                            }
+                        }
+                    ]
+                };
+
+                // eslint-disable-next-line max-len
+                transformer.normalize(collection, { normalizeVersion: '1.0.0', retainEmptyValues: true }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isUndefined = result.variables.every(function (variable) {
+                        return !_.has(variable, 'description');
+                    });
+
+                    expect(isUndefined).to.be.true;
+                });
+            });
+        });
+
+        describe('on folder', function () {
+            it('should convert object descriptions to string using the `content` key', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    folders: [
+                        {
+                            description: {
+                                content: 'This is the expected output'
+                            }
+                        }
+                    ]
+                };
+
+                transformer.normalize(collection, { normalizeVersion: '1.0.0' }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isStringDescription = result.folders.every(function (folder, rIdx) {
+                        var expected = collection.folders[rIdx].description.content;
+
+                        return folder.description === expected;
+                    });
+
+                    expect(isStringDescription).to.be.true;
+                });
+            });
+
+            it('should convert to `[object Object]` when `content` value is itself an object', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    folders: [
+                        {
+                            description: {
+                                content: {
+                                    text: 'This will be ignored'
+                                }
+                            }
+                        }
+                    ]
+                };
+
+                transformer.normalize(collection, { normalizeVersion: '1.0.0' }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isStringDescription = result.folders.every(function (folder) {
+                        var expected = '[object Object]';
+
+                        return folder.description === expected;
+                    });
+
+                    expect(isStringDescription).to.be.true;
+                });
+            });
+
+            it('for invalid description, should set description to `null` if `retainEmptyValues` is set', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    folders: [
+                        {
+                            id: 'unimportant',
+                            description: {
+                                invalid: 'ignored'
+                            }
+                        }
+                    ]
+                };
+
+                // eslint-disable-next-line max-len
+                transformer.normalize(collection, { normalizeVersion: '1.0.0', retainEmptyValues: true }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isNullDescription = result.folders.every(function (folder) {
+                        return folder.description === null;
+                    });
+
+                    expect(isNullDescription).to.be.true;
+                });
+            });
+
+            it('for invalid description, should remove description if `retainEmptyValues` is not set', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    folders: [
+                        {
+                            id: 'unimportant',
+                            description: {
+                                invalid: 'ignored'
+                            }
+                        }
+                    ]
+                };
+
+                // eslint-disable-next-line max-len
+                transformer.normalize(collection, { normalizeVersion: '1.0.0', retainEmptyValues: false }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isUndefined = result.folders.every(function (folder) {
+                        return !_.has(folder, 'description');
+                    });
+
+                    expect(isUndefined).to.be.true;
+                });
+            });
+        });
+
+        describe('on folder variables', function () {
             it('should convert object descriptions to string using the `content` key', function () {
                 var collection = {
                     id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
@@ -3873,6 +4135,52 @@ describe('v1.0.0 normalization', function () {
                     expect(isStringDescription).to.be.true;
                 });
             });
+
+            it('for invalid description, should remove description even if `retainEmptyValues` is set', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    folders: [
+                        {
+                            variables: [
+                                {
+                                    id: 'v1',
+                                    key: 'foo',
+                                    value: 'bar',
+                                    description: {
+                                        invalid: {
+                                            text: 'This will be ignored'
+                                        }
+                                    }
+                                },
+                                {
+                                    id: '22',
+                                    key: 'foo',
+                                    value: 'bar',
+                                    description: {
+                                        invalid: {
+                                            text: 'This will be ignored'
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                };
+
+                // eslint-disable-next-line max-len
+                transformer.normalize(collection, { normalizeVersion: '1.0.0', retainEmptyValues: true }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isUndefined = result.folders.every(function (folder) {
+                        return folder.variables.every(function (variable) {
+                            return !_.has(variable, 'description');
+                        });
+                    });
+
+                    expect(isUndefined).to.be.true;
+                });
+            });
         });
 
         describe('on request', function () {
@@ -3930,12 +4238,15 @@ describe('v1.0.0 normalization', function () {
                 });
             });
 
-            it('for empty description, should set description to `null` if `retainEmptyValues` is set', function () {
+            it('for invalid description, should set description to `null` if `retainEmptyValues` is set', function () {
                 var collection = {
                     id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
                     requests: [
                         {
-                            id: 'unimportant'
+                            id: 'unimportant',
+                            description: {
+                                invalid: 'ignored'
+                            }
                         }
                     ]
                 };
@@ -3953,12 +4264,15 @@ describe('v1.0.0 normalization', function () {
                 });
             });
 
-            it('for empty description, should remove description if `retainEmptyValues` is not set', function () {
+            it('for invalid description, should remove description if `retainEmptyValues` is not set', function () {
                 var collection = {
                     id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
                     requests: [
                         {
-                            id: 'unimportant'
+                            id: 'unimportant',
+                            description: {
+                                invalid: 'ignored'
+                            }
                         }
                     ]
                 };
@@ -3970,6 +4284,144 @@ describe('v1.0.0 normalization', function () {
 
                     var isUndefined = result.requests.every(function (request) {
                         return !_.has(request, 'description');
+                    });
+
+                    expect(isUndefined).to.be.true;
+                });
+            });
+        });
+
+        describe('on request variables', function () {
+            it('should convert object descriptions to string using the `content` key', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    requests: [
+                        {
+                            variables: [
+                                {
+                                    id: 'v1',
+                                    key: 'foo',
+                                    value: 'bar',
+                                    description: {
+                                        content: 'This is the expected output'
+                                    }
+                                },
+                                {
+                                    id: '22',
+                                    key: 'foo',
+                                    value: 'bar',
+                                    description: {
+                                        content: 'This is the expected output'
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                };
+
+                transformer.normalize(collection, { normalizeVersion: '1.0.0' }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isStringDescription = result.requests.every(function (request, rIdx) {
+                        return request.variables.every(function (variable, idx) {
+                            var expected = collection.requests[rIdx].variables[idx].description.content;
+
+                            return variable.description === expected;
+                        });
+                    });
+
+                    expect(isStringDescription).to.be.true;
+                });
+            });
+
+            it('should convert to `[object Object]` when `content` value is itself an object', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    requests: [
+                        {
+                            variables: [
+                                {
+                                    id: 'v1',
+                                    key: 'foo',
+                                    value: 'bar',
+                                    description: {
+                                        content: {
+                                            text: 'This will be ignored'
+                                        }
+                                    }
+                                },
+                                {
+                                    id: '22',
+                                    key: 'foo',
+                                    value: 'bar',
+                                    description: {
+                                        content: {
+                                            text: 'This will be ignored'
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                };
+
+                transformer.normalize(collection, { normalizeVersion: '1.0.0' }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isStringDescription = result.requests.every(function (request) {
+                        return request.variables.every(function (variable) {
+                            var expected = '[object Object]';
+
+                            return variable.description === expected;
+                        });
+                    });
+
+                    expect(isStringDescription).to.be.true;
+                });
+            });
+
+            it('for invalid description, should remove description even if `retainEmptyValues` is set', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    requests: [
+                        {
+                            variables: [
+                                {
+                                    id: 'v1',
+                                    key: 'foo',
+                                    value: 'bar',
+                                    description: {
+                                        invalid: {
+                                            text: 'This will be ignored'
+                                        }
+                                    }
+                                },
+                                {
+                                    id: '22',
+                                    key: 'foo',
+                                    value: 'bar',
+                                    description: {
+                                        invalid: {
+                                            text: 'This will be ignored'
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                };
+
+                // eslint-disable-next-line max-len
+                transformer.normalize(collection, { normalizeVersion: '1.0.0', retainEmptyValues: true }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var isUndefined = result.requests.every(function (request) {
+                        return request.variables.every(function (variable) {
+                            return !_.has(variable, 'description');
+                        });
                     });
 
                     expect(isUndefined).to.be.true;
@@ -4068,7 +4520,7 @@ describe('v1.0.0 normalization', function () {
                 });
             });
 
-            it('for empty description, should set description to `null` if `retainEmptyValues` is set', function () {
+            it('for invalid description, should set description to `null` if `retainEmptyValues` is set', function () {
                 var collection = {
                     id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
                     requests: [
@@ -4077,12 +4529,18 @@ describe('v1.0.0 normalization', function () {
                                 {
                                     id: 'v1',
                                     key: 'foo',
-                                    value: 'bar'
+                                    value: 'bar',
+                                    description: {
+                                        invalid: 'ignored'
+                                    }
                                 },
                                 {
                                     id: '22',
                                     key: 'foo',
-                                    value: 'bar'
+                                    value: 'bar',
+                                    description: {
+                                        invalid: 'ignored'
+                                    }
                                 }
                             ]
                         }
@@ -4104,7 +4562,7 @@ describe('v1.0.0 normalization', function () {
                 });
             });
 
-            it('for empty description, should remove description if `retainEmptyValues` is not set', function () {
+            it('for invalid description, should remove description if `retainEmptyValues` is not set', function () {
                 var collection = {
                     id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
                     requests: [
@@ -4113,12 +4571,18 @@ describe('v1.0.0 normalization', function () {
                                 {
                                     id: 'v1',
                                     key: 'foo',
-                                    value: 'bar'
+                                    value: 'bar',
+                                    description: {
+                                        invalid: 'ignored'
+                                    }
                                 },
                                 {
                                     id: '22',
                                     key: 'foo',
-                                    value: 'bar'
+                                    value: 'bar',
+                                    description: {
+                                        invalid: 'ignored'
+                                    }
                                 }
                             ]
                         }
@@ -4228,7 +4692,7 @@ describe('v1.0.0 normalization', function () {
                 });
             });
 
-            it('for empty description, should set description to `null` if `retainEmptyValues` is set', function () {
+            it('for invalid description, should set description to `null` if `retainEmptyValues` is set', function () {
                 var collection = {
                     id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
                     requests: [
@@ -4236,11 +4700,17 @@ describe('v1.0.0 normalization', function () {
                             queryParams: [
                                 {
                                     key: 'foo',
-                                    value: 'bar'
+                                    value: 'bar',
+                                    description: {
+                                        invalid: 'ignored'
+                                    }
                                 },
                                 {
                                     key: 'foo',
-                                    value: 'bar'
+                                    value: 'bar',
+                                    description: {
+                                        invalid: 'ignored'
+                                    }
                                 }
                             ]
                         }
@@ -4262,7 +4732,7 @@ describe('v1.0.0 normalization', function () {
                 });
             });
 
-            it('for empty description, should remove description if `retainEmptyValues` is not set', function () {
+            it('for invalid description, should remove description if `retainEmptyValues` is not set', function () {
                 var collection = {
                     id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
                     requests: [
@@ -4270,11 +4740,17 @@ describe('v1.0.0 normalization', function () {
                             queryParams: [
                                 {
                                     key: 'foo',
-                                    value: 'bar'
+                                    value: 'bar',
+                                    description: {
+                                        invalid: 'ignored'
+                                    }
                                 },
                                 {
                                     key: 'foo',
-                                    value: 'bar'
+                                    value: 'bar',
+                                    description: {
+                                        invalid: 'ignored'
+                                    }
                                 }
                             ]
                         }
@@ -4384,7 +4860,7 @@ describe('v1.0.0 normalization', function () {
                 });
             });
 
-            it('for empty description, should set description to `null` if `retainEmptyValues` is set', function () {
+            it('for invalid description, should set description to `null` if `retainEmptyValues` is set', function () {
                 var collection = {
                     id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
                     requests: [
@@ -4392,11 +4868,17 @@ describe('v1.0.0 normalization', function () {
                             headerData: [
                                 {
                                     key: 'foo',
-                                    value: 'bar'
+                                    value: 'bar',
+                                    description: {
+                                        invalid: 'ignored'
+                                    }
                                 },
                                 {
                                     key: 'foo',
-                                    value: 'bar'
+                                    value: 'bar',
+                                    description: {
+                                        invalid: 'ignored'
+                                    }
                                 }
                             ]
                         }
@@ -4418,7 +4900,7 @@ describe('v1.0.0 normalization', function () {
                 });
             });
 
-            it('for empty description, should remove description `retainEmptyValues` is not set', function () {
+            it('for invalid description, should remove description `retainEmptyValues` is not set', function () {
                 var collection = {
                     id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
                     requests: [
@@ -4426,11 +4908,17 @@ describe('v1.0.0 normalization', function () {
                             headerData: [
                                 {
                                     key: 'foo',
-                                    value: 'bar'
+                                    value: 'bar',
+                                    description: {
+                                        invalid: 'ignored'
+                                    }
                                 },
                                 {
                                     key: 'foo',
-                                    value: 'bar'
+                                    value: 'bar',
+                                    description: {
+                                        invalid: 'ignored'
+                                    }
                                 }
                             ]
                         }
@@ -4542,7 +5030,7 @@ describe('v1.0.0 normalization', function () {
                 });
             });
 
-            it('for empty description, should set description to `null` if `retainEmptyValues` is set', function () {
+            it('for invalid description, should set description to `null` if `retainEmptyValues` is set', function () {
                 var collection = {
                     id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
                     requests: [
@@ -4551,11 +5039,17 @@ describe('v1.0.0 normalization', function () {
                             data: [
                                 {
                                     key: 'foo',
-                                    value: 'bar'
+                                    value: 'bar',
+                                    description: {
+                                        invalid: 'ignored'
+                                    }
                                 },
                                 {
                                     key: 'foo',
-                                    value: 'bar'
+                                    value: 'bar',
+                                    description: {
+                                        invalid: 'ignored'
+                                    }
                                 }
                             ]
                         }
@@ -4577,7 +5071,7 @@ describe('v1.0.0 normalization', function () {
                 });
             });
 
-            it('for empty description, should remove description if `retainEmptyValues` is not set', function () {
+            it('for invalid description, should remove description if `retainEmptyValues` is not set', function () {
                 var collection = {
                     id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
                     requests: [
@@ -4586,11 +5080,17 @@ describe('v1.0.0 normalization', function () {
                             data: [
                                 {
                                     key: 'foo',
-                                    value: 'bar'
+                                    value: 'bar',
+                                    description: {
+                                        invalid: 'ignored'
+                                    }
                                 },
                                 {
                                     key: 'foo',
-                                    value: 'bar'
+                                    value: 'bar',
+                                    description: {
+                                        invalid: 'ignored'
+                                    }
                                 }
                             ]
                         }
