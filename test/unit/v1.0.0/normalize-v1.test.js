@@ -5113,4 +5113,99 @@ describe('v1.0.0 normalization', function () {
             });
         });
     });
+
+    describe('variables', function () {
+        describe('collection variables', function () {
+            it('should retain `id` field, if present on source entity, ' +
+                'if retainIds set to true', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    variables: [
+                        {
+                            id: '1',
+                            key: 'foo',
+                            value: 'bar'
+                        },
+                        {
+                            id: '2',
+                            key: 'bar',
+                            value: 'foo'
+                        }
+                    ]
+                };
+
+                // eslint-disable-next-line max-len
+                transformer.normalize(collection, { normalizeVersion: '1.0.0', retainIds: true }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var hasIds = result.variables.every(function (variable, idx) {
+                        return variable.id === (idx + 1).toString();
+                    });
+
+                    expect(hasIds).to.be.true;
+                });
+            });
+
+            it('should retain `id` field, if present on source entity, ' +
+                'if retainIds set to true, and noDefaults set to false', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    variables: [
+                        {
+                            id: '1',
+                            key: 'foo',
+                            value: 'bar'
+                        },
+                        {
+                            id: '2',
+                            key: 'bar',
+                            value: 'foo'
+                        }
+                    ]
+                };
+
+                // eslint-disable-next-line max-len
+                transformer.normalize(collection, { normalizeVersion: '1.0.0', retainIds: true, noDefaults: false }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var hasIds = result.variables.every(function (variable, idx) {
+                        return variable.id === (idx + 1).toString();
+                    });
+
+                    expect(hasIds).to.be.true;
+                });
+            });
+
+            it('should not add `id` field, if not present on source entity, ' +
+                'and noDefaults is set to false', function () {
+                var collection = {
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    variables: [
+                        {
+                            key: 'foo',
+                            value: 'bar'
+                        },
+                        {
+                            key: 'bar',
+                            value: 'foo'
+                        }
+                    ]
+                };
+
+                // eslint-disable-next-line max-len
+                transformer.normalize(collection, { normalizeVersion: '1.0.0', noDefaults: true }, function (err, result) {
+                    expect(err).to.not.be.ok;
+                    expect(result).to.be.ok;
+
+                    var hasNoIds = result.variables.every(function (variable) {
+                        return !_.has(variable, 'id');
+                    });
+
+                    expect(hasNoIds).to.be.true;
+                });
+            });
+        });
+    });
 });
