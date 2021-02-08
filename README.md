@@ -22,7 +22,7 @@ The transformer provides a Command line API to convert collections.
 
 Example:
 
-    $ transform-collection convert \
+    $ postman-collection-transformer convert \
         --input ./v1-collection.json \
         --input-version 2.0.0 \
         --output ./v2-collection.json \
@@ -32,7 +32,7 @@ Example:
 
 All options:
 
-    $ transform-collection convert -h
+    $ postman-collection-transformer convert -h
 
       Usage: convert [options]
 
@@ -121,7 +121,7 @@ The transformer also provides a Command line API to normalize collections for fu
 
 Example:
 
-    $ transform-collection normalize \
+    $ postman-collection-transformer normalize \
         --input ./v1-collection.json \
         --normalize-version 1.0.0 \
         --output ./v1-norm-collection.json \
@@ -130,7 +130,7 @@ Example:
 
 All options:
 
-    $ transform-collection normalize -h
+    $ postman-collection-transformer normalize -h
 
       Usage: normalize [options]
 
