@@ -1,4 +1,5 @@
-master:
+4.0.1:
+  date: 2021-02-08
   fixed bugs:
     - GH-358 Ensured all description fields are normalized to v1 string values
   chores:
