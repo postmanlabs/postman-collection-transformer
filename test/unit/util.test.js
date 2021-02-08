@@ -25,6 +25,55 @@ describe('util', function () {
                 type: 'string'
             });
         });
+
+        it('should retain id, if present on entity, and retainId is true', function () {
+            const entity = {
+                    variables: [
+                        {
+                            id: '1'
+                        }
+                    ]
+                },
+                options = {
+                    noDefaults: true,
+                    retainIds: true
+                },
+                processed = util.handleVars(entity, options);
+
+            expect(processed[0]).to.have.property('id', '1');
+        });
+
+        it('should generate new id, if retainIds is false, and noDefaults is false', function () {
+            const entity = {
+                    variables: [
+                        {
+                            id: '1'
+                        }
+                    ]
+                },
+                options = {
+                    noDefaults: false,
+                    retainIds: false
+                },
+                processed = util.handleVars(entity, options);
+
+            expect(processed[0].id).to.not.eql('1');
+        });
+
+        it('should generate new id, if absent on entity, if retainIds is true, and noDefaults is false', function () {
+            const entity = {
+                    variables: [
+                        {}
+                    ]
+                },
+                options = {
+                    noDefaults: false,
+                    retainIds: false
+                },
+                processed = util.handleVars(entity, options);
+
+            expect(processed[0]).to.have.property('id');
+        });
     });
 
     describe('sanitizeAuthArray', function () {
