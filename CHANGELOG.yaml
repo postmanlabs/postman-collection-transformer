@@ -1,3 +1,9 @@
+master:
+  fixed bugs:
+    - GH-358 Ensured all description fields are normalized to v1 string values
+  chores:
+    - Updated dependencies
+
 4.0.0:
   date: 2020-12-03
   breaking changes:
