@@ -5271,4 +5271,94 @@ describe('v1.0.0 normalization', function () {
             });
         });
     });
+
+    describe('responses_order', function () {
+        it('should return responses_order as-is, if present', function (done) {
+            const collection = {
+                    order: ['Request1'],
+                    requests: [
+                        {
+                            id: 'Request1',
+                            name: 'Test',
+                            responses_order: [
+                                'Response1',
+                                'Response2',
+                                'Response3'
+                            ],
+                            responses: [
+                                { id: 'Response1', name: 'Response1' },
+                                { id: 'Response2', name: 'Response2' },
+                                { id: 'Response3', name: 'Response3' }
+                            ]
+                        }
+                    ]
+                },
+                options = { normalizeVersion: '1.0.0', retainIds: true },
+                normalized = transformer.normalize(collection, options);
+
+            expect(normalized).to.be.an('object');
+            expect(normalized.requests).to.be.an('array');
+            expect(normalized.requests[0]).to.be.an('object');
+            expect(normalized.requests[0].responses_order).to.be.an('array');
+
+            expect(normalized.requests[0].responses_order).to
+                .eql(collection.requests[0].responses_order);
+
+            return done();
+        });
+
+        it('should return empty array as responses_order, if absent and noDefaults = false', function (done) {
+            const collection = {
+                    order: ['Request1'],
+                    requests: [
+                        {
+                            id: 'Request1',
+                            name: 'Test',
+                            responses: [
+                                { id: 'Response1', name: 'Response1' },
+                                { id: 'Response2', name: 'Response2' },
+                                { id: 'Response3', name: 'Response3' }
+                            ]
+                        }
+                    ]
+                },
+                options = { normalizeVersion: '1.0.0', retainIds: true, noDefaults: false },
+                normalized = transformer.normalize(collection, options);
+
+            expect(normalized).to.be.an('object');
+            expect(normalized.requests).to.be.an('array');
+            expect(normalized.requests[0]).to.be.an('object');
+            expect(normalized.requests[0].responses_order).to.be.an('array');
+
+            expect(normalized.requests[0].responses_order).to.eql([]);
+
+            return done();
+        });
+
+        it('should not include responses_order, if absent and noDefaults = true', function (done) {
+            const collection = {
+                    order: ['Request1'],
+                    requests: [
+                        {
+                            id: 'Request1',
+                            name: 'Test',
+                            responses: [
+                                { id: 'Response1', name: 'Response1' },
+                                { id: 'Response2', name: 'Response2' },
+                                { id: 'Response3', name: 'Response3' }
+                            ]
+                        }
+                    ]
+                },
+                options = { normalizeVersion: '1.0.0', retainIds: true, noDefaults: true },
+                normalized = transformer.normalize(collection, options);
+
+            expect(normalized).to.be.an('object');
+            expect(normalized.requests).to.be.an('array');
+            expect(normalized.requests[0]).to.be.an('object');
+            expect(normalized.requests[0].responses_order).to.be.undefined;
+
+            return done();
+        });
+    });
 });
