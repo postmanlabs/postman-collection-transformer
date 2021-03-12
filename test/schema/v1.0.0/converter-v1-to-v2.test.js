@@ -178,4 +178,99 @@ describe('v1.0.0 ==> v2.0.0', function () {
             done();
         });
     });
+
+    describe('responses_order', function () {
+        it('should order responses as-is if no responses_order present', function (done) {
+            const collection = {
+                    order: ['Request1'],
+                    requests: [
+                        {
+                            id: 'Request1',
+                            name: 'Test',
+                            responses: [
+                                { id: 'Response1', name: 'Response1' },
+                                { id: 'Response2', name: 'Response2' },
+                                { id: 'Response3', name: 'Response3' }
+                            ]
+                        }
+                    ]
+                },
+                converted = converter.convert(collection);
+
+            expect(converted).to.be.an('object');
+            expect(converted.item).to.be.an('array');
+            expect(converted.item[0]).to.be.an('object');
+            expect(converted.item[0].response).to.be.an('array');
+
+            expect(_.map(converted.item[0].response, 'name')).to
+                .eql(_.map(collection.requests[0].responses, 'name'));
+
+            return done();
+        });
+
+        it('should order responses as per responses_order, if present', function (done) {
+            const collection = {
+                    order: ['Request1'],
+                    requests: [
+                        {
+                            id: 'Request1',
+                            name: 'Test',
+                            responses_order: [
+                                'Response2',
+                                'Response3',
+                                'Response1'
+                            ],
+                            responses: [
+                                { id: 'Response1', name: 'Response1' },
+                                { id: 'Response2', name: 'Response2' },
+                                { id: 'Response3', name: 'Response3' }
+                            ]
+                        }
+                    ]
+                },
+                converted = converter.convert(collection);
+
+            expect(converted).to.be.an('object');
+            expect(converted.item).to.be.an('array');
+            expect(converted.item[0]).to.be.an('object');
+            expect(converted.item[0].response).to.be.an('array');
+
+            expect(_.map(converted.item[0].response, 'name')).to
+                .eql(collection.requests[0].responses_order);
+
+            return done();
+        });
+
+        it('should ignore responses not specified in responses_order', function (done) {
+            const collection = {
+                    order: ['Request1'],
+                    requests: [
+                        {
+                            id: 'Request1',
+                            name: 'Test',
+                            responses_order: [
+                                'Response2',
+                                'Response1'
+                            ],
+                            responses: [
+                                { id: 'Response1', name: 'Response1' },
+                                { id: 'Response2', name: 'Response2' },
+                                { id: 'Response3', name: 'Response3' }
+                            ]
+                        }
+                    ]
+                },
+                converted = converter.convert(collection);
+
+            expect(converted).to.be.an('object');
+            expect(converted.item).to.be.an('array');
+            expect(converted.item[0]).to.be.an('object');
+            expect(converted.item[0].response).to.be.an('array');
+
+            expect(_.map(converted.item[0].response, 'name')).to
+                .eql(collection.requests[0].responses_order);
+
+            return done();
+        });
+    });
 });
