@@ -2377,7 +2377,8 @@ module.exports = {
                         updatedAt: '2015-11-02T18:05:45.000Z',
                         write: true
                     }
-                ]
+                ],
+                responses_order: []
             },
             {
                 folder: 'a3729195-78fd-52c3-0313-9aefed8af7eb',
@@ -2424,7 +2425,8 @@ module.exports = {
                 tests: 'var data;\n\ntry { responseJSON = JSON.parse(responseBody); }\ncatch (e) {}\n\ntests[\'Body contains files\'] = responseBody.has(\'files\');\ntests[\'Body contains args\'] = responseBody.has(\'args\');\ntests[\'Body contains form\'] = responseBody.has(\'form\');\ntests[\'Body contains headers\'] = responseBody.has(\'headers\');\ntests[\'Body contains url\'] = responseBody.has(\'url\');\n\n\n\ntests[\'Data has been passed\'] = (responseJSON && responseJSON.data && responseJSON.data.length)',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
                 // eslint-disable-next-line max-len
-                rawModeData: 'Etiam mi lacus, cursus vitae felis et, blandit pellentesque neque. Vestibulum eget nisi a tortor commodo dignissim.\nQuisque ipsum ligula, faucibus a felis a, commodo elementum nisl. Mauris vulputate sapien et tincidunt viverra. Donec vitae velit nec metus.'
+                rawModeData: 'Etiam mi lacus, cursus vitae felis et, blandit pellentesque neque. Vestibulum eget nisi a tortor commodo dignissim.\nQuisque ipsum ligula, faucibus a felis a, commodo elementum nisl. Mauris vulputate sapien et tincidunt viverra. Donec vitae velit nec metus.',
+                responses_order: []
             },
             {
                 folder: 'e3d0c773-6416-3c53-b933-96826acfa85a',
@@ -2551,7 +2553,8 @@ module.exports = {
                         updatedAt: '2015-11-02T13:48:46.000Z',
                         write: true
                     }
-                ]
+                ],
+                responses_order: []
             },
             {
                 folder: 'a3729195-78fd-52c3-0313-9aefed8af7eb',
@@ -2619,7 +2622,8 @@ module.exports = {
                 }],
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'Body contains headers\'] = responseBody.has(\'headers\');\ntests[\'Body contains args\'] = responseBody.has(\'args\');\ntests[\'Body contains url\'] = responseBody.has(\'url\');\n\nvar data = JSON.parse(responseBody)\n\ntests[\'Args key contains argument passed as url parameter\'] = \'test\' in data.args',
-                collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50'
+                collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
+                responses_order: []
             },
             {
                 folder: 'e3d0c773-6416-3c53-b933-96826acfa85a',
@@ -2754,7 +2758,8 @@ module.exports = {
                         updatedAt: '2015-11-02T13:48:42.000Z',
                         write: true
                     }
-                ]
+                ],
+                responses_order: []
             },
             {
                 folder: '3448365f-6534-c34d-14ed-01915810374e',
@@ -2796,7 +2801,8 @@ module.exports = {
                 url: 'https://echo.getpostman.com/delay/3',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\ntests[\'response body has key delay\'] = \'delay\' in data;',
-                collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50'
+                collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
+                responses_order: []
             },
             {
                 folder: '997e9a45-51e0-98b1-1894-319a72efca57',
@@ -2835,7 +2841,8 @@ module.exports = {
                 url: 'https://echo.getpostman.com/headers',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'Body contains headers\'] = responseBody.has(\'headers\');\n\nvar data = JSON.parse(responseBody).headers;\n\ntests[\'Header contains host\'] = \'host\' in data;\ntests[\'Header contains test parameter sent as part of request header\'] = \'my-sample-header\' in data;',
-                collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50'
+                collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
+                responses_order: []
             },
             {
                 folder: '997e9a45-51e0-98b1-1894-319a72efca57',
@@ -2901,7 +2908,8 @@ module.exports = {
                 }],
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'Body contains Content-Type\'] = responseBody.has(\'Content-Type\');\ntests[\'Body contains Server\'] = responseBody.has(\'Server\');',
-                collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50'
+                collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
+                responses_order: []
             },
             {
                 folder: 'a3729195-78fd-52c3-0313-9aefed8af7eb',
@@ -2942,7 +2950,8 @@ module.exports = {
                 tests: 'tests[\'Body contains files\'] = responseBody.has(\'files\');\ntests[\'Body contains args\'] = responseBody.has(\'args\');\ntests[\'Body contains form\'] = responseBody.has(\'form\');\ntests[\'Body contains headers\'] = responseBody.has(\'headers\');\ntests[\'Body contains url\'] = responseBody.has(\'url\');\n\nvar data = JSON.parse(responseBody)\n\ntests[\'form key has data passed in as form-data\'] = \'test\' in data.form',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
                 // eslint-disable-next-line max-len
-                rawModeData: 'Curabitur auctor, elit nec pulvinar porttitor, ex augue condimentum enim, eget suscipit urna felis quis neque.\nSuspendisse sit amet luctus massa, nec venenatis mi. Suspendisse tincidunt massa at nibh efficitur fringilla. Nam quis congue mi. Etiam volutpat.'
+                rawModeData: 'Curabitur auctor, elit nec pulvinar porttitor, ex augue condimentum enim, eget suscipit urna felis quis neque.\nSuspendisse sit amet luctus massa, nec venenatis mi. Suspendisse tincidunt massa at nibh efficitur fringilla. Nam quis congue mi. Etiam volutpat.',
+                responses_order: []
             },
             {
                 folder: 'a3729195-78fd-52c3-0313-9aefed8af7eb',
@@ -2988,7 +2997,8 @@ module.exports = {
                 tests: 'var responseJSON;\n\ntry { responseJSON = JSON.parse(responseBody); }\ncatch (e) { }\n\n\ntests[\'response has data\'] = responseJSON && responseJSON.data && (responseJSON.data.length === 256);\ntests[\'content-type equals text/plain\'] = responseJSON && responseJSON.headers && (responseJSON.headers[\'content-type\'] === \'text/plain\');',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
                 // eslint-disable-next-line max-len
-                rawModeData: 'Duis posuere augue vel cursus pharetra. In luctus a ex nec pretium. Praesent neque quam, tincidunt nec leo eget, rutrum vehicula magna.\nMaecenas consequat elementum elit, id semper sem tristique et. Integer pulvinar enim quis consectetur interdum volutpat.'
+                rawModeData: 'Duis posuere augue vel cursus pharetra. In luctus a ex nec pretium. Praesent neque quam, tincidunt nec leo eget, rutrum vehicula magna.\nMaecenas consequat elementum elit, id semper sem tristique et. Integer pulvinar enim quis consectetur interdum volutpat.',
+                responses_order: []
             },
             {
                 folder: '3448365f-6534-c34d-14ed-01915810374e',
@@ -3031,7 +3041,8 @@ module.exports = {
                 url: 'https://echo.getpostman.com/status/200',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'Body contains status\'] = responseBody.has(\'status\');\n\nvar data = JSON.parse(responseBody);\n\ntests[\'Status equals 200\'] = data.status === 200;\n',
-                collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50'
+                collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
+                responses_order: []
             },
             {
                 folder: '3448365f-6534-c34d-14ed-01915810374e',
@@ -3074,7 +3085,8 @@ module.exports = {
                 url: 'https://echo.getpostman.com/deflate',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\n\ntry {\n    var data = JSON.parse(responseBody);\n    tests[\'Body contains deflated\'] = responseBody.has(\'deflated\');\n    tests[\'Body contains headers\'] = responseBody.has(\'headers\');\n    tests[\'Body contains method\'] = responseBody.has(\'method\');\n}\ncatch(e) {\n    console.log(\'Cannot parse response,probably not a JSON\');\n}\n',
-                collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50'
+                collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
+                responses_order: []
             },
             {
                 folder: 'e3d0c773-6416-3c53-b933-96826acfa85a',
@@ -3211,7 +3223,8 @@ module.exports = {
                         updatedAt: '2015-11-02T13:48:39.000Z',
                         write: true
                     }
-                ]
+                ],
+                responses_order: []
             },
             {
                 folder: '3448365f-6534-c34d-14ed-01915810374e',
@@ -3244,7 +3257,8 @@ module.exports = {
                 pathVariables: {},
                 url: 'https://echo.getpostman.com/stream/10',
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\n\n',
-                collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50'
+                collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
+                responses_order: []
             },
             {
                 folder: 'ca633394-d946-8e44-f4fe-e0470be8cb64',
@@ -3317,7 +3331,8 @@ module.exports = {
                 url: 'https://echo.getpostman.com/digest-auth',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 401\'] = responseCode.code === 401;\ntests[\'response has WWW-Authenticate header\'] = (postman.getResponseHeader(\'WWW-Authenticate\'));\n\nvar authenticateHeader = postman.getResponseHeader(\'WWW-Authenticate\'),\n    realmStart = authenticateHeader.indexOf(\'\'\',authenticateHeader.indexOf(\'realm\')) + 1 ,\n    realmEnd = authenticateHeader.indexOf(\'\'\',realmStart),\n    realm = authenticateHeader.slice(realmStart,realmEnd),\n    nonceStart = authenticateHeader.indexOf(\'\'\',authenticateHeader.indexOf(\'nonce\')) + 1,\n    nonceEnd = authenticateHeader.indexOf(\'\'\',nonceStart),\n    nonce = authenticateHeader.slice(nonceStart,nonceEnd);\n    \npostman.setGlobalVariable(\'echo_digest_realm\', realm);\npostman.setGlobalVariable(\'echo_digest_nonce\', nonce);',
-                collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50'
+                collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
+                responses_order: []
             },
             {
                 folder: '3448365f-6534-c34d-14ed-01915810374e',
@@ -3348,7 +3363,8 @@ module.exports = {
                 pathVariables: {},
                 url: 'https://echo.getpostman.com/encoding/utf8',
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;',
-                collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50'
+                collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
+                responses_order: []
             },
             {
                 folder: 'a3729195-78fd-52c3-0313-9aefed8af7eb',
@@ -3389,7 +3405,8 @@ module.exports = {
                 tests: 'tests[\'Body contains files\'] = responseBody.has(\'files\');\ntests[\'Body contains args\'] = responseBody.has(\'args\');\ntests[\'Body contains form\'] = responseBody.has(\'form\');\ntests[\'Body contains headers\'] = responseBody.has(\'headers\');\ntests[\'Body contains url\'] = responseBody.has(\'url\');\n\nvar data = JSON.parse(responseBody)\n\ntests[\'form key has data passed in as form-data\'] = \'test\' in data.form',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
                 // eslint-disable-next-line max-len
-                rawModeData: 'Donec fermentum, nisi sed cursus eleifend, nulla tortor ultricies tellus, ut vehicula orci arcu ut velit. In volutpat egestas dapibus. \nMorbi condimentum vestibulum sapien. Etiam dignissim diam quis eros lobortis gravida vel lobortis est. Etiam gravida sed.'
+                rawModeData: 'Donec fermentum, nisi sed cursus eleifend, nulla tortor ultricies tellus, ut vehicula orci arcu ut velit. In volutpat egestas dapibus. \nMorbi condimentum vestibulum sapien. Etiam dignissim diam quis eros lobortis gravida vel lobortis est. Etiam gravida sed.',
+                responses_order: []
             },
             {
                 folder: '58b0685d-5e5c-d03e-8899-c1084704d0d3',
@@ -3628,7 +3645,8 @@ module.exports = {
                         updatedAt: '2015-11-02T13:48:58.000Z',
                         write: true
                     }
-                ]
+                ],
+                responses_order: []
             },
             {
                 folder: 'b9707261-deb2-7bf3-f1ae-8edd1373f4b8',
@@ -3694,7 +3712,8 @@ module.exports = {
                 url: 'https://echo.getpostman.com/oauth1',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\nvar body = JSON.parse(responseBody);\ntests[\'Body contains status pass\'] = body[\'status\'] == \'pass\'',
-                collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50'
+                collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
+                responses_order: []
             },
             {
                 folder: '58b0685d-5e5c-d03e-8899-c1084704d0d3',
@@ -3850,7 +3869,8 @@ module.exports = {
                         updatedAt: '2015-11-02T13:48:49.000Z',
                         write: true
                     }
-                ]
+                ],
+                responses_order: []
             },
             {
                 folder: '3448365f-6534-c34d-14ed-01915810374e',
@@ -3918,7 +3938,8 @@ module.exports = {
                 url: 'https://echo.getpostman.com/gzip',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\n\ntry {\n    var data = JSON.parse(responseBody);\n    tests[\'Body contains gzipped\'] = responseBody.has(\'gzipped\');\n    tests[\'Body contains headers\'] = responseBody.has(\'headers\');\n    tests[\'Body contains method\'] = responseBody.has(\'method\');\n}\ncatch(e) {\n    console.log(\'Cannot parse response,probably not a JSON\');\n}',
-                collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50'
+                collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
+                responses_order: []
             },
             {
                 folder: 'ca633394-d946-8e44-f4fe-e0470be8cb64',
@@ -4117,7 +4138,8 @@ module.exports = {
                         updatedAt: '2015-11-02T13:49:19.000Z',
                         write: true
                     }
-                ]
+                ],
+                responses_order: []
             },
             {
                 folder: 'b9707261-deb2-7bf3-f1ae-8edd1373f4b8',
@@ -4356,7 +4378,8 @@ module.exports = {
                         updatedAt: '2015-11-02T13:49:17.000Z',
                         write: true
                     }
-                ]
+                ],
+                responses_order: []
             }
         ]
     }
