@@ -1,3 +1,9 @@
+master:
+  new features:
+    - GH-381 Added support for `responses_order` field in v1 collection
+  chores:
+    - Updated dependencies
+
 4.0.1:
   date: 2021-02-08
   fixed bugs:
