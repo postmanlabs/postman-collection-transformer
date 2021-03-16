@@ -57,7 +57,8 @@ describe('v1.0.0 normalization', function () {
                     preRequestScript: null,
                     variables: [{ id: 'v1', key: 'foo', value: 'bar' }],
                     pathVariableData: [{ id: 'v1', key: 'foo', value: 'bar' }],
-                    events: [{ listen: 'random', script: { exec: [], type: 'text/javascript' } }]
+                    events: [{ listen: 'random', script: { exec: [], type: 'text/javascript' } }],
+                    responses_order: []
                 });
                 done();
             });
@@ -167,7 +168,8 @@ describe('v1.0.0 normalization', function () {
                         id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd',
                         currentHelper: null,
                         helperAttributes: null,
-                        auth: null
+                        auth: null,
+                        responses_order: []
                     });
                     done();
                 });
@@ -184,7 +186,8 @@ describe('v1.0.0 normalization', function () {
                         id: '27c8c9ac-dd90-4234-b83a-b199d3a0e945',
                         auth: null,
                         currentHelper: null,
-                        helperAttributes: null
+                        helperAttributes: null,
+                        responses_order: []
                     });
                     done();
                 });
@@ -201,7 +204,8 @@ describe('v1.0.0 normalization', function () {
                         id: '27c8c9ac-dd90-4234-b83a-b199d3a0e945',
                         auth: null,
                         currentHelper: null,
-                        helperAttributes: null
+                        helperAttributes: null,
+                        responses_order: []
                     });
                     done();
                 });
@@ -218,7 +222,8 @@ describe('v1.0.0 normalization', function () {
                         id: '27c8c9ac-dd90-4234-b83a-b199d3a0e945',
                         auth: null,
                         currentHelper: null,
-                        helperAttributes: null
+                        helperAttributes: null,
+                        responses_order: []
                     });
                     done();
                 });
@@ -239,7 +244,8 @@ describe('v1.0.0 normalization', function () {
                                     id: '27c8c9ac-dd90-4234-b83a-b199d3a0e945',
                                     auth: null,
                                     currentHelper: null,
-                                    helperAttributes: null
+                                    helperAttributes: null,
+                                    responses_order: []
                                 });
                                 done();
                             });
@@ -257,7 +263,8 @@ describe('v1.0.0 normalization', function () {
                                     id: '27c8c9ac-dd90-4234-b83a-b199d3a0e945',
                                     auth: null,
                                     currentHelper: null,
-                                    helperAttributes: null
+                                    helperAttributes: null,
+                                    responses_order: []
                                 });
                                 done();
                             });
@@ -315,7 +322,8 @@ describe('v1.0.0 normalization', function () {
                                     id: '27c8c9ac-dd90-4234-b83a-b199d3a0e945',
                                     auth: null,
                                     currentHelper: null,
-                                    helperAttributes: null
+                                    helperAttributes: null,
+                                    responses_order: []
                                 });
                                 done();
                             });
@@ -333,7 +341,8 @@ describe('v1.0.0 normalization', function () {
                                     id: '27c8c9ac-dd90-4234-b83a-b199d3a0e945',
                                     auth: null,
                                     currentHelper: null,
-                                    helperAttributes: null
+                                    helperAttributes: null,
+                                    responses_order: []
                                 });
                                 done();
                             });
@@ -403,7 +412,8 @@ describe('v1.0.0 normalization', function () {
                         id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd',
                         currentHelper: null,
                         helperAttributes: null,
-                        auth: { type: 'noauth' }
+                        auth: { type: 'noauth' },
+                        responses_order: []
                     });
                     done();
                 });
@@ -462,7 +472,8 @@ describe('v1.0.0 normalization', function () {
                                 { key: 'saveHelperData', type: 'any' },
                                 { key: 'showPassword', value: false, type: 'boolean' }
                             ]
-                        }
+                        },
+                        responses_order: []
                     });
                     done();
                 });
@@ -500,7 +511,8 @@ describe('v1.0.0 normalization', function () {
                                 { key: 'username', value: 'username', type: 'string' },
                                 { key: 'password', value: 'password', type: 'string' }
                             ]
-                        }
+                        },
+                        responses_order: []
                     });
                     done();
                 });
@@ -525,7 +537,8 @@ describe('v1.0.0 normalization', function () {
                             id: '722795b9-c9bc-4a01-a024-dd9358548dc1',
                             currentHelper: null,
                             helperAttributes: null,
-                            auth: null
+                            auth: null,
+                            responses_order: []
                         });
                         done();
                     });
@@ -544,7 +557,8 @@ describe('v1.0.0 normalization', function () {
                             id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd',
                             currentHelper: null,
                             helperAttributes: null,
-                            auth: null
+                            auth: null,
+                            responses_order: []
                         });
                         done();
                     });
@@ -575,7 +589,8 @@ describe('v1.0.0 normalization', function () {
                             id: 'b56246e9-5012-49f1-8f9d-f3338ac29cbd',
                             currentHelper: null,
                             helperAttributes: null,
-                            auth: null
+                            auth: null,
+                            responses_order: []
                         });
                         done();
                     });
@@ -769,7 +784,8 @@ describe('v1.0.0 normalization', function () {
                             auth: {
                                 type: 'bearer',
                                 bearer: [{ key: 'token', value: 'secret', type: 'string' }]
-                            }
+                            },
+                            responses_order: []
                         });
                         done();
                     });
@@ -806,7 +822,8 @@ describe('v1.0.0 normalization', function () {
                                     { key: 'saveHelperData', type: 'any' },
                                     { key: 'showPassword', value: false, type: 'boolean' }
                                 ]
-                            }
+                            },
+                            responses_order: []
                         });
                         done();
                     });
@@ -826,7 +843,8 @@ describe('v1.0.0 normalization', function () {
                             id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             currentHelper: null,
                             helperAttributes: null,
-                            auth: null
+                            auth: null,
+                            responses_order: []
                         });
                         done();
                     });
@@ -846,7 +864,8 @@ describe('v1.0.0 normalization', function () {
                             id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             currentHelper: null,
                             helperAttributes: null,
-                            auth: null
+                            auth: null,
+                            responses_order: []
                         });
                         done();
                     });
@@ -873,7 +892,8 @@ describe('v1.0.0 normalization', function () {
                             helperAttributes: {
                                 id: 'bearer',
                                 token: 'secret'
-                            }
+                            },
+                            responses_order: []
                         });
                         done();
                     });
@@ -924,7 +944,8 @@ describe('v1.0.0 normalization', function () {
                                 type: 'text/javascript',
                                 exec: ['console.log("Request level test script");']
                             }
-                        }]
+                        }],
+                        responses_order: []
                     });
                     done();
                 });
@@ -970,7 +991,8 @@ describe('v1.0.0 normalization', function () {
                                 type: 'text/javascript',
                                 exec: ['console.log("Alternative request level test script");']
                             }
-                        }]
+                        }],
+                        responses_order: []
                     });
                     done();
                 });
@@ -1013,7 +1035,8 @@ describe('v1.0.0 normalization', function () {
                                     type: 'text/javascript',
                                     exec: ['console.log("Test script");']
                                 }
-                            }]
+                            }],
+                            responses_order: []
                         });
                         done();
                     });
@@ -1044,7 +1067,8 @@ describe('v1.0.0 normalization', function () {
                                 }
                             }],
                             preRequestScript: 'console.log("Pre-request script");',
-                            tests: 'console.log("Test script");'
+                            tests: 'console.log("Test script");',
+                            responses_order: []
                         });
                         done();
                     });
@@ -1058,7 +1082,8 @@ describe('v1.0.0 normalization', function () {
                     transformer.normalizeSingle(source, options, function (err, result) {
                         expect(err).to.not.be.ok;
                         expect(JSON.parse(JSON.stringify(result))).to.eql({
-                            id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c'
+                            id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                            responses_order: []
                         });
                         done();
                     });
@@ -1104,7 +1129,8 @@ describe('v1.0.0 normalization', function () {
                                     type: 'text/javascript',
                                     exec: ['console.log("Actual test script");']
                                 }
-                            }]
+                            }],
+                            responses_order: []
                         });
                         done();
                     });
@@ -1136,7 +1162,8 @@ describe('v1.0.0 normalization', function () {
                                     type: 'text/javascript',
                                     exec: ['console.log("Legacy test script");']
                                 }
-                            }]
+                            }],
+                            responses_order: []
                         });
                         done();
                     });
@@ -1155,7 +1182,8 @@ describe('v1.0.0 normalization', function () {
                         expect(result).to.eql({
                             id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
                             preRequestScript: null,
-                            tests: null
+                            tests: null,
+                            responses_order: []
                         });
                         done();
                     });
@@ -1198,7 +1226,8 @@ describe('v1.0.0 normalization', function () {
                                         type: 'text/javascript',
                                         exec: ['console.log("Test script");']
                                     }
-                                }]
+                                }],
+                                responses_order: []
                             });
                             done();
                         });
@@ -1229,7 +1258,8 @@ describe('v1.0.0 normalization', function () {
                                     }
                                 }],
                                 preRequestScript: 'console.log("Pre-request script");',
-                                tests: 'console.log("Test script");'
+                                tests: 'console.log("Test script");',
+                                responses_order: []
                             });
                             done();
                         });
@@ -1243,7 +1273,8 @@ describe('v1.0.0 normalization', function () {
                         transformer.normalizeSingle(source, options, function (err, result) {
                             expect(err).to.not.be.ok;
                             expect(JSON.parse(JSON.stringify(result))).to.eql({
-                                id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c'
+                                id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
+                                responses_order: []
                             });
                             done();
                         });
@@ -1299,7 +1330,8 @@ describe('v1.0.0 normalization', function () {
                                     { key: 'gamma', value: null, type: 'file' }
                                 ],
                                 dataMode: 'params',
-                                collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                                collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                                responses_order: []
                             }
                         ]
                     });
@@ -1334,7 +1366,8 @@ describe('v1.0.0 normalization', function () {
                             { key: 'gamma', value: null, type: 'file' }
                         ],
                         dataMode: 'params',
-                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        responses_order: []
                     });
                     done();
                 });
@@ -1370,7 +1403,8 @@ describe('v1.0.0 normalization', function () {
                             }
                         ],
                         dataMode: 'params',
-                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        responses_order: []
                     });
                     done();
                 });
@@ -1442,7 +1476,8 @@ describe('v1.0.0 normalization', function () {
                             }
                         ],
                         dataMode: 'params',
-                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        responses_order: []
                     });
                     done();
                 });
@@ -1487,7 +1522,8 @@ describe('v1.0.0 normalization', function () {
                         method: 'POST',
                         dataMode: 'raw',
                         dataDisabled: true,
-                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        responses_order: []
                     }]
                 });
                 done();
@@ -1529,7 +1565,8 @@ describe('v1.0.0 normalization', function () {
                         data: 'foo=bar',
                         method: 'POST',
                         dataMode: 'raw',
-                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        responses_order: []
                     }]
                 });
                 done();
@@ -1568,7 +1605,8 @@ describe('v1.0.0 normalization', function () {
                         headers: '',
                         url: 'https://postman-echo.com/post',
                         method: 'POST',
-                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        responses_order: []
                     }]
                 });
                 done();
@@ -1607,7 +1645,8 @@ describe('v1.0.0 normalization', function () {
                         url: 'https://postman-echo.com/post',
                         dataMode: 'params',
                         method: 'POST',
-                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        responses_order: []
                     }]
                 });
                 done();
@@ -1634,7 +1673,8 @@ describe('v1.0.0 normalization', function () {
                     url: 'https://postman-echo.com/get',
                     data: 'foo=bar',
                     method: 'GET',
-                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                    responses_order: []
                 });
 
                 done();
@@ -1672,7 +1712,8 @@ describe('v1.0.0 normalization', function () {
                         events: null,
                         url: 'https://postman-echo.com/post',
                         method: 'POST',
-                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        responses_order: []
                     }]
                 });
                 done();
@@ -1708,7 +1749,8 @@ describe('v1.0.0 normalization', function () {
                         id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
                         url: 'https://postman-echo.com/post',
                         method: 'POST',
-                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        responses_order: []
                     }]
                 });
                 done();
@@ -1744,7 +1786,8 @@ describe('v1.0.0 normalization', function () {
                         id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
                         url: 'https://postman-echo.com/post',
                         method: 'POST',
-                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        responses_order: []
                     }]
                 });
                 done();
@@ -1773,7 +1816,8 @@ describe('v1.0.0 normalization', function () {
                     test: null,
                     url: 'https://postman-echo.com/get',
                     method: 'GET',
-                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                    collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                    responses_order: []
                 });
 
                 done();
@@ -1823,7 +1867,8 @@ describe('v1.0.0 normalization', function () {
                             protocolProfileBehavior: {
                                 disableBodyPruning: true
                             },
-                            collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                            collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                            responses_order: []
                         }]
                     });
                     done();
@@ -1886,7 +1931,8 @@ describe('v1.0.0 normalization', function () {
                                 id: '5ec6f591-4460-e4cf-fdc1-0de07c10b2b1',
                                 name: 'Request',
                                 method: 'GET',
-                                url: 'https://echo.getpostman.com/get'
+                                url: 'https://echo.getpostman.com/get',
+                                responses_order: []
                             }
                         ]
                     });
@@ -1931,7 +1977,8 @@ describe('v1.0.0 normalization', function () {
                             data: 'foo=bar',
                             method: 'GET',
                             dataMode: 'raw',
-                            collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                            collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                            responses_order: []
                         }],
                         protocolProfileBehavior: {
                             disableBodyPruning: true
@@ -1994,7 +2041,8 @@ describe('v1.0.0 normalization', function () {
                                 id: '5ec6f591-4460-e4cf-fdc1-0de07c10b2b1',
                                 name: 'Request',
                                 method: 'GET',
-                                url: 'https://echo.getpostman.com/get'
+                                url: 'https://echo.getpostman.com/get',
+                                responses_order: []
                             }
                         ]
                     });
@@ -2037,7 +2085,8 @@ describe('v1.0.0 normalization', function () {
                             data: 'foo=bar',
                             method: 'GET',
                             dataMode: 'raw',
-                            collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                            collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                            responses_order: []
                         }]
                     });
                     done();
@@ -2074,7 +2123,8 @@ describe('v1.0.0 normalization', function () {
                         protocolProfileBehavior: {
                             disableBodyPruning: true
                         },
-                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        responses_order: []
                     });
 
                     done();
@@ -2104,7 +2154,8 @@ describe('v1.0.0 normalization', function () {
                         data: 'foo=bar',
                         method: 'GET',
                         dataMode: 'raw',
-                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        responses_order: []
                     });
 
                     done();
@@ -2134,7 +2185,8 @@ describe('v1.0.0 normalization', function () {
                         data: 'foo=bar',
                         method: 'GET',
                         dataMode: 'raw',
-                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2'
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        responses_order: []
                     });
 
                     done();
@@ -2283,7 +2335,8 @@ describe('v1.0.0 normalization', function () {
                         }
                     ],
                     preRequestScript: 'console.log("Request level pre-request script");',
-                    tests: 'console.log("Request level test script");'
+                    tests: 'console.log("Request level test script");',
+                    responses_order: []
                 });
                 done();
             });
@@ -2532,7 +2585,8 @@ describe('v1.0.0 normalization', function () {
                                     ]
                                 }
                             }],
-                            collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50'
+                            collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
+                            responses_order: []
                         },
                         {
                             folder: '997e9a45-51e0-98b1-1894-319a72efca57',
@@ -2576,7 +2630,8 @@ describe('v1.0.0 normalization', function () {
                                     ]
                                 }
                             }],
-                            collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50'
+                            collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
+                            responses_order: []
                         }
                     ]
                 });
@@ -2628,7 +2683,8 @@ describe('v1.0.0 normalization', function () {
                         queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }],
                         pathVariableData: [{
                             id: 'pv1', key: 'pv_foo', value: 'pv_bar', description: null
-                        }]
+                        }],
+                        responses_order: []
                     }]
                 });
             });
@@ -2658,7 +2714,8 @@ describe('v1.0.0 normalization', function () {
                     helperAttributes: { id: 'bearer', token: 'random' },
                     headerData: [{ key: 'header_foo', value: 'header_bar', description: null }],
                     queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }],
-                    pathVariableData: [{ id: 'pv1', key: 'pv_foo', value: 'pv_bar', description: null }]
+                    pathVariableData: [{ id: 'pv1', key: 'pv_foo', value: 'pv_bar', description: null }],
+                    responses_order: []
                 });
             });
         });
@@ -2687,7 +2744,8 @@ describe('v1.0.0 normalization', function () {
                     helperAttributes: { id: 'bearer', token: 'random' },
                     headerData: [{ key: 'header_foo', value: 'header_bar', description: null }],
                     queryParams: [{ key: 'query_foo', value: 'query_bar', description: null }],
-                    pathVariableData: [{ id: 'pv1', key: 'pv_foo', value: 'pv_bar', description: null }]
+                    pathVariableData: [{ id: 'pv1', key: 'pv_foo', value: 'pv_bar', description: null }],
+                    responses_order: []
                 });
             });
         });
@@ -3548,7 +3606,12 @@ describe('v1.0.0 normalization', function () {
                     event: [null, {}, { script: {} }],
                     folders: [{ id: 'F1' }],
                     folders_order: ['F1'],
-                    requests: [{ id: 'R1' }],
+                    requests: [
+                        {
+                            id: 'R1',
+                            responses_order: []
+                        }
+                    ],
                     order: ['R1']
                 });
                 done();
@@ -5206,6 +5269,96 @@ describe('v1.0.0 normalization', function () {
                     expect(hasNoIds).to.be.true;
                 });
             });
+        });
+    });
+
+    describe('responses_order', function () {
+        it('should return responses_order as-is, if present', function (done) {
+            const collection = {
+                    order: ['Request1'],
+                    requests: [
+                        {
+                            id: 'Request1',
+                            name: 'Test',
+                            responses_order: [
+                                'Response1',
+                                'Response2',
+                                'Response3'
+                            ],
+                            responses: [
+                                { id: 'Response1', name: 'Response1' },
+                                { id: 'Response2', name: 'Response2' },
+                                { id: 'Response3', name: 'Response3' }
+                            ]
+                        }
+                    ]
+                },
+                options = { normalizeVersion: '1.0.0', retainIds: true },
+                normalized = transformer.normalize(collection, options);
+
+            expect(normalized).to.be.an('object');
+            expect(normalized.requests).to.be.an('array');
+            expect(normalized.requests[0]).to.be.an('object');
+            expect(normalized.requests[0].responses_order).to.be.an('array');
+
+            expect(normalized.requests[0].responses_order).to
+                .eql(collection.requests[0].responses_order);
+
+            return done();
+        });
+
+        it('should return empty array as responses_order, if absent and noDefaults = false', function (done) {
+            const collection = {
+                    order: ['Request1'],
+                    requests: [
+                        {
+                            id: 'Request1',
+                            name: 'Test',
+                            responses: [
+                                { id: 'Response1', name: 'Response1' },
+                                { id: 'Response2', name: 'Response2' },
+                                { id: 'Response3', name: 'Response3' }
+                            ]
+                        }
+                    ]
+                },
+                options = { normalizeVersion: '1.0.0', retainIds: true, noDefaults: false },
+                normalized = transformer.normalize(collection, options);
+
+            expect(normalized).to.be.an('object');
+            expect(normalized.requests).to.be.an('array');
+            expect(normalized.requests[0]).to.be.an('object');
+            expect(normalized.requests[0].responses_order).to.be.an('array');
+
+            expect(normalized.requests[0].responses_order).to.eql([]);
+
+            return done();
+        });
+
+        it('should not include responses_order, if absent and noDefaults = true', function (done) {
+            const collection = {
+                    order: ['Request1'],
+                    requests: [
+                        {
+                            id: 'Request1',
+                            name: 'Test',
+                            responses: [
+                                { id: 'Response1', name: 'Response1' },
+                                { id: 'Response2', name: 'Response2' },
+                                { id: 'Response3', name: 'Response3' }
+                            ]
+                        }
+                    ]
+                },
+                options = { normalizeVersion: '1.0.0', retainIds: true, noDefaults: true },
+                normalized = transformer.normalize(collection, options);
+
+            expect(normalized).to.be.an('object');
+            expect(normalized.requests).to.be.an('array');
+            expect(normalized.requests[0]).to.be.an('object');
+            expect(normalized.requests[0].responses_order).to.be.undefined;
+
+            return done();
         });
     });
 });

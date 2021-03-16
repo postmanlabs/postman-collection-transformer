@@ -29,7 +29,8 @@ module.exports = {
                 dataMode: 'params',
                 name: 'Formdata POST',
                 collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
-                responses: []
+                responses: [],
+                responses_order: []
             },
             {
                 id: 'c60ecf6a-6421-4446-859d-1b697f44e4e8',
@@ -50,7 +51,8 @@ module.exports = {
                 dataMode: 'params',
                 name: 'Formdata Multiple POST',
                 collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
-                responses: []
+                responses: [],
+                responses_order: []
             },
             {
                 id: '3d2c6dbc-cefa-0951-2796-3f0142ff85c3',
@@ -64,7 +66,8 @@ module.exports = {
                 name: 'Binary POST',
                 collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                 responses: [],
-                rawModeData: 't.csv'
+                rawModeData: 't.csv',
+                responses_order: []
             }
         ]
     },

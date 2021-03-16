@@ -139,4 +139,48 @@ describe('v2.0.0 ==> v1.0.0', function () {
             expect(deepCompare(convertedExpectation, convertedActual, ['id', 'order'])).to.equal(true);
         });
     });
+
+    describe('responses_order', function () {
+        it('should create responses_order field based on the order of responses', function (done) {
+            const collection = {
+                    info: {
+                        _postman_id: '8eca8c11-c5ce-4032-b62c-568ca86dbe4c',
+                        schema: 'https://schema.getpostman.com/json/collection/v2.0.0/collection.json'
+                    },
+                    item: [
+                        {
+                            name: 'Test',
+                            request: {
+                                header: []
+                            },
+                            response: [
+                                {
+                                    id: 'Response1',
+                                    name: 'Response1'
+                                },
+                                {
+                                    id: 'Response3',
+                                    name: 'Response3'
+                                },
+                                {
+                                    id: 'Response2',
+                                    name: 'Response2'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                converted = converter.convert(collection, { retainIds: true });
+
+            expect(converted).to.be.an('object');
+            expect(converted.requests).to.be.an('array');
+            expect(converted.requests[0]).to.be.an('object');
+            expect(converted.requests[0].responses_order).to.be.an('array');
+
+            expect(converted.requests[0].responses_order).to
+                .eql(_.map(collection.item[0].response, 'id'));
+
+            return done();
+        });
+    });
 });
