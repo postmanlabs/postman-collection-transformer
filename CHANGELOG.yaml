@@ -1,4 +1,5 @@
-master:
+4.1.0:
+  date: 2021-03-16
   new features:
     - GH-381 Added support for `responses_order` field in v1 collection
   chores:
