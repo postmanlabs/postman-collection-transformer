@@ -1,6 +1,6 @@
 {
   "name": "postman-collection-transformer",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "Perform rapid conversation and validation of JSON structure between Postman Collection Format v1 and v2",
   "author": "Postman Inc.",
   "license": "Apache-2.0",
@@ -32,11 +32,11 @@
     "test-unit": "nyc --nycrc-path=.nycrc.js node npm/test-unit.js"
   },
   "dependencies": {
-    "commander": "7.1.0",
+    "commander": "7.2.0",
     "inherits": "2.0.4",
     "intel": "1.2.0",
     "lodash": "4.17.21",
-    "semver": "7.3.4",
+    "semver": "7.3.5",
     "strip-json-comments": "3.1.1"
   },
   "devDependencies": {
