@@ -1,4 +1,5 @@
-master:
+4.1.1:
+  date: 2021-04-08
   fixed bugs:
     - GH-392 Ensured response ids are unchanged on v2.x -> v1 conversions
   chores:
