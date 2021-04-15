@@ -1,3 +1,9 @@
+master:
+  fixed bugs:
+    - >-
+      GH-394 Fixed a bug where variable.id was retained even if retainIds is set
+      to false
+
 4.1.1:
   date: 2021-04-08
   fixed bugs:
