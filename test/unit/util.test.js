@@ -68,7 +68,7 @@ describe('util', function () {
                 },
                 options = {
                     noDefaults: false,
-                    retainIds: false
+                    retainIds: true
                 },
                 processed = util.handleVars(entity, options);
 
