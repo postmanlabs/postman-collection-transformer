@@ -4009,4 +4009,133 @@ describe('v1.0.0 to v2.1.0', function () {
             });
         });
     });
+
+    describe('.covertResponse', function () {
+        it('should convert responses', function () {
+            transformer.convertResponse({
+                responseCode: { code: 200, name: 'OK' },
+                time: 412,
+                headers: [{
+                    key: 'Content-Type',
+                    value: 'text/html; charset=ISO-8859-1',
+                    name: 'Content-Type',
+                    description: 'The mime type of this content'
+                }],
+                cookies: [],
+                text: '<html></html>',
+                code: 200,
+                responseSize: {
+                    body: 14560,
+                    header: 669
+                },
+                mimeType: 'text',
+                fileName: 'response.html',
+                dataURI: 'data:text/html;base64, PGh0bWw+PC9odG1sPg==',
+                id: '21c40bcc-c1d5-1f91-06df-d7f4e66d1647',
+                name: 'Sample Response',
+                request: {
+                    url: 'https://foo.com',
+                    headers: [],
+                    data: 'akjshgdajhsgd',
+                    method: 'GET',
+                    dataMode: 'raw'
+                }
+            }, options, function (err, result) {
+                expect(err).to.not.be.ok;
+                expect(JSON.parse(JSON.stringify(result))).to.eql({
+                    body: '<html></html>',
+                    code: 200,
+                    cookie: [],
+                    header: [{
+                        key: 'Content-Type',
+                        value: 'text/html; charset=ISO-8859-1',
+                        name: 'Content-Type',
+                        description: 'The mime type of this content'
+                    }],
+                    id: '21c40bcc-c1d5-1f91-06df-d7f4e66d1647',
+                    name: 'Sample Response',
+                    originalRequest: {
+                        body: { mode: 'raw', raw: 'akjshgdajhsgd' },
+                        header: [],
+                        method: 'GET',
+                        url: {
+                            host: [
+                                'foo',
+                                'com'
+                            ],
+                            protocol: 'https',
+                            raw: 'https://foo.com'
+                        }
+                    },
+                    responseTime: 412,
+                    status: 'OK'
+                });
+            });
+        });
+
+        it('should convert responseCode to code and status', function () {
+            transformer.convertResponse({
+                responseCode: { code: '200', name: 'OK' },
+                id: '21c40bcc-c1d5-1f91-06df-d7f4e66d1647',
+                name: 'Sample Response',
+                request: {
+                    url: 'https://foo.com',
+                    method: 'GET'
+                }
+            }, options, function (err, result) {
+                expect(err).to.not.be.ok;
+                expect(JSON.parse(JSON.stringify(result))).to.eql({
+                    id: '21c40bcc-c1d5-1f91-06df-d7f4e66d1647',
+                    name: 'Sample Response',
+                    code: 200,
+                    status: 'OK',
+                    cookie: [],
+                    originalRequest: {
+                        header: [],
+                        method: 'GET',
+                        url: {
+                            host: [
+                                'foo',
+                                'com'
+                            ],
+                            protocol: 'https',
+                            raw: 'https://foo.com'
+                        }
+                    }
+                });
+            });
+        });
+
+        it('should drop code from responseCode if code is not number', function () {
+            transformer.convertResponse({
+                responseCode: { code: 'abc', name: 'OK' },
+                id: '21c40bcc-c1d5-1f91-06df-d7f4e66d1647',
+                name: 'Sample Response',
+                request: {
+                    url: 'https://foo.com',
+                    method: 'GET'
+                }
+            }, options, function (err, result) {
+                expect(err).to.not.be.ok;
+                expect(JSON.parse(JSON.stringify(result))).to.eql({
+                    id: '21c40bcc-c1d5-1f91-06df-d7f4e66d1647',
+                    name: 'Sample Response',
+                    status: 'OK',
+                    cookie: [],
+                    originalRequest: {
+                        header: [],
+                        method: 'GET',
+                        url: {
+                            host: [
+                                'foo',
+                                'com'
+                            ],
+                            protocol: 'https',
+                            raw: 'https://foo.com'
+                        }
+                    }
+                });
+            });
+        });
+    });
 });
