@@ -1,6 +1,6 @@
 {
   "name": "postman-collection-transformer",
-  "version": "4.1.2",
+  "version": "4.1.3",
   "description": "Perform rapid conversation and validation of JSON structure between Postman Collection Format v1 and v2",
   "author": "Postman Inc.",
   "license": "Apache-2.0",
@@ -32,7 +32,7 @@
     "test-unit": "nyc --nycrc-path=.nycrc.js node npm/test-unit.js"
   },
   "dependencies": {
-    "commander": "7.2.0",
+    "commander": "8.0.0",
     "inherits": "2.0.4",
     "intel": "1.2.0",
     "lodash": "4.17.21",
@@ -45,9 +45,9 @@
     "chai": "^4.3.4",
     "chalk": "^4.1.0",
     "eslint": "^7.22.0",
-    "eslint-plugin-jsdoc": "^32.3.0",
+    "eslint-plugin-jsdoc": "^35.4.1",
     "eslint-plugin-lodash": "^7.2.0",
-    "eslint-plugin-mocha": "^8.1.0",
+    "eslint-plugin-mocha": "^9.0.0",
     "eslint-plugin-security": "^1.4.0",
     "js-yaml": "^4.0.0",
     "karma": "^6.2.0",
@@ -55,7 +55,7 @@
     "karma-chrome-launcher": "^3.1.0",
     "karma-mocha": "^2.0.1",
     "karma-mocha-reporter": "^2.2.5",
-    "mocha": "^8.3.2",
+    "mocha": "^9.0.1",
     "nyc": "^15.1.0",
     "packity": "^0.3.2",
     "parse-gitignore": "^1.0.1",
