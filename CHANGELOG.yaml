@@ -3,6 +3,8 @@ master:
     - >-
       GH-418 Fixed a bug where response code type remained invalid after
       conversion from v1 to v2.x
+  chores:
+    - Updated dependencies
 
 4.1.2:
   date: 2021-04-15
