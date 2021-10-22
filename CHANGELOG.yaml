@@ -1,4 +1,8 @@
 unreleased:
+  fixed bugs:
+    - >-
+      GH-446 Fixed a bug where non-string URLs are not handled correctly on
+      v1.x -> v2.x conversions
   chores:
     - Updated dependencies
 

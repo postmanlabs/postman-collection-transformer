@@ -3362,6 +3362,81 @@ describe('v1.0.0 to v2.1.0', function () {
                 done();
             });
         });
+
+        it('should correctly handle non-string url', function (done) {
+            transformer.convertSingle({
+                id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                name: 'boolean URL',
+                url: false
+            }, options, function (err, result) {
+                expect(err).to.not.be.ok;
+                expect(JSON.parse(JSON.stringify(result))).to.eql({
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    name: 'boolean URL',
+                    request: {
+                        header: [],
+                        url: {
+                            host: ['false'],
+                            raw: 'false'
+                        }
+                    },
+                    response: []
+                });
+            });
+
+            transformer.convertSingle({
+                id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                name: 'object URL',
+                url: { foo: 'bar' }
+            }, options, function (err, result) {
+                expect(err).to.not.be.ok;
+                expect(JSON.parse(JSON.stringify(result))).to.eql({
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    name: 'object URL',
+                    request: {
+                        header: [],
+                        url: {
+                            host: ['[object Object]'],
+                            raw: '[object Object]'
+                        }
+                    },
+                    response: []
+                });
+            });
+
+            transformer.convertSingle({
+                id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                name: 'null URL',
+                url: null
+            }, options, function (err, result) {
+                expect(err).to.not.be.ok;
+                expect(JSON.parse(JSON.stringify(result))).to.eql({
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    name: 'null URL',
+                    request: {
+                        header: []
+                    },
+                    response: []
+                });
+            });
+
+            transformer.convertSingle({
+                id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                name: 'undefined URL',
+                url: undefined
+            }, options, function (err, result) {
+                expect(err).to.not.be.ok;
+                expect(JSON.parse(JSON.stringify(result))).to.eql({
+                    id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                    name: 'undefined URL',
+                    request: {
+                        header: []
+                    },
+                    response: []
+                });
+                done();
+            });
+        });
     });
 
     describe('query parameters', function () {
