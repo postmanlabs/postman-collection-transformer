@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 const fs = require('fs'),
 
-    log = require('intel'),
     { Command } = require('commander'),
     stripJSONComments = require('strip-json-comments'),
 
@@ -49,12 +48,6 @@ const fs = require('fs'),
         return fs.writeFile(options.output, json, options.overwrite ? FSWF_FLAG_W : FSWF_FLAG_WX, callback);
     };
 
-// Setup logging
-log.basicConfig({
-    format: '%(date)s [%(levelname)s] %(message)s',
-    level: log.DEBUG
-});
-
 program
     .usage('[command] [options]')
     .version(require('../package.json').version);
@@ -75,27 +68,27 @@ program
         let input;
 
         if (!options.output) {
-            return log.error('Output file must be specified!');
+            return console.error('Output file must be specified!');
         }
         if (!options.input) {
-            return log.error('Input file must be specified!');
+            return console.error('Input file must be specified!');
         }
 
         try {
             input = loadJSON(options.input);
         }
         catch (e) {
-            return log.error('Unable to load the input file!', e);
+            return console.error('Unable to load the input file!', e);
         }
 
         return transformer.convert(input, options, (err, result) => {
             if (err) {
-                return log.error('Unable to convert the input:', err);
+                return console.error('Unable to convert the input:', err);
             }
 
             return writeJSON(result, options, (error) => {
                 if (error) {
-                    log.error('Could not create output file %s', options.output, error);
+                    console.error('Could not create output file %s', options.output, error);
                 }
             });
         });
@@ -111,19 +104,19 @@ program
     .option('--retain-ids', 'Retain the request and folder IDs during conversion (collection ID is always retained)')
     .option('-w, --overwrite', 'Overwrite the output file if it exists')
     .action((options) => {
-        if (!options.input) { return log.error('Input file must be specified!'); }
-        if (!options.output) { return log.error('Output file must be specified!'); }
+        if (!options.input) { return console.error('Input file must be specified!'); }
+        if (!options.output) { return console.error('Output file must be specified!'); }
 
         let input;
 
         try { input = loadJSON(options.input); }
-        catch (e) { return log.error('Unable to load the input file!', e); }
+        catch (e) { return console.error('Unable to load the input file!', e); }
 
         return transformer.normalize(input, options, (err, result) => {
-            if (err) { return log.error('Unable to convert the input: ', err); }
+            if (err) { return console.error('Unable to convert the input: ', err); }
 
             return writeJSON(result, options, (error) => {
-                error && log.error('Could not create output file %s', options.output, error);
+                error && console.error('Could not create output file %s', options.output, error);
             });
         });
     });
