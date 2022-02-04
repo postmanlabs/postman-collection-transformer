@@ -2343,4 +2343,28 @@ describe('v2.0.0 to v1.0.0', function () {
             });
         });
     });
+
+    describe('handlePartialTransformation', function () {
+        let options = {
+            handlePartialTransformation: true,
+            inputVersion: '2.0.0',
+            outputVersion: '1.0.0'
+        };
+
+        it('should return headers, pathVariables, queryParams as undefined in a partial transformation',
+            function (done) {
+                transformer.convertSingle({
+                    name: 'This is the new name'
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    expect(converted).to.be.ok;
+                    expect(converted.headers).to.eql(undefined);
+                    expect(converted.pathVariableData).to.eql(undefined);
+                    expect(converted.queryParams).to.eql(undefined);
+
+                    done();
+                });
+            });
+    });
 });
