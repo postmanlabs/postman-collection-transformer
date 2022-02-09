@@ -2344,27 +2344,69 @@ describe('v2.0.0 to v1.0.0', function () {
         });
     });
 
-    describe('handlePartialTransformation', function () {
+    describe('handlePartial', function () {
         let options = {
-            handlePartialTransformation: true,
+            handlePartial: true,
             inputVersion: '2.0.0',
             outputVersion: '1.0.0'
         };
 
-        it('should return headers, pathVariables, queryParams as undefined in a partial transformation',
-            function (done) {
-                transformer.convertSingle({
+        it('should drop defaults and empty fields', function () {
+            transformer.convertSingle({
+                id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
+                name: 'This is the new name'
+            }, options, function (err, converted) {
+                expect(err).not.to.be.ok;
+
+                expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                    id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
                     name: 'This is the new name'
-                }, options, function (err, converted) {
-                    expect(err).to.not.be.ok;
-
-                    expect(converted).to.be.ok;
-                    expect(converted.headers).to.eql(undefined);
-                    expect(converted.pathVariableData).to.eql(undefined);
-                    expect(converted.queryParams).to.eql(undefined);
-
-                    done();
                 });
             });
+        });
+
+        it('should handle partial request object', function () {
+            transformer.convertSingle({
+                id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
+                request: {
+                    url: 'https://example.com'
+                }
+            }, options, function (err, converted) {
+                expect(err).not.to.be.ok;
+
+                expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                    id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
+                    url: 'https://example.com',
+                    queryParams: [],
+                    pathVariableData: []
+                });
+            });
+        });
+
+        it('should retain empty properties', function () {
+            transformer.convertSingle({
+                id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
+                name: 'This is the new name',
+                request: {
+                    url: {},
+                    header: []
+                },
+                responses: []
+            }, options, function (err, converted) {
+                expect(err).not.to.be.ok;
+
+                expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                    id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
+                    name: 'This is the new name',
+                    url: '',
+                    queryParams: [],
+                    pathVariableData: [],
+                    headers: '',
+                    headerData: [],
+                    responses: [],
+                    responses_order: []
+                });
+            });
+        });
     });
 });
