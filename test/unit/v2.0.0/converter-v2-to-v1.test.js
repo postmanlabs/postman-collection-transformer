@@ -2347,20 +2347,75 @@ describe('v2.0.0 to v1.0.0', function () {
     describe('handlePartial', function () {
         let options = {
             handlePartial: true,
+            retainIds: true,
             inputVersion: '2.0.0',
             outputVersion: '1.0.0'
         };
 
-        it('should drop defaults and empty fields', function () {
-            transformer.convertSingle({
-                id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
-                name: 'This is the new name'
+        it('should drop defaults and empty fields on .convert', function () {
+            transformer.convert({
+                info: {
+                    id: '9d123ce5-314a-40cd-9852-6a8569513f4e'
+                }
             }, options, function (err, converted) {
                 expect(err).not.to.be.ok;
 
                 expect(JSON.parse(JSON.stringify(converted))).to.eql({
-                    id: '9d123ce5-314a-40cd-9852-6a8569513f4e',
-                    name: 'This is the new name'
+                    id: '9d123ce5-314a-40cd-9852-6a8569513f4e'
+                });
+            });
+        });
+
+        it('should drop defaults and empty fields on .convertSingle', function () {
+            transformer.convertSingle({
+                id: '9d123ce5-314a-40cd-9852-6a8569513f4e'
+            }, options, function (err, converted) {
+                expect(err).not.to.be.ok;
+
+                expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                    id: '9d123ce5-314a-40cd-9852-6a8569513f4e'
+                });
+            });
+        });
+
+        it('should drop defaults and empty fields on .convertResponse', function () {
+            transformer.convertResponse({
+                id: '9d123ce5-314a-40cd-9852-6a8569513f4e'
+            }, options, function (err, converted) {
+                expect(err).not.to.be.ok;
+
+                expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                    id: '9d123ce5-314a-40cd-9852-6a8569513f4e'
+                });
+            });
+        });
+
+        it('should handle partial collection object', function () {
+            transformer.convert({
+                info: {
+                    id: 'C1'
+                },
+                item: [{
+                    id: 'R1',
+                    request: {
+                        url: ''
+                    }
+                }]
+            }, options, function (err, converted) {
+                expect(err).not.to.be.ok;
+
+                expect(JSON.parse(JSON.stringify(converted))).to.eql({
+                    id: 'C1',
+                    order: ['R1'],
+                    folders_order: [],
+                    folders: [],
+                    requests: [{
+                        id: 'R1',
+                        collectionId: 'C1',
+                        url: '',
+                        pathVariableData: [],
+                        queryParams: []
+                    }]
                 });
             });
         });

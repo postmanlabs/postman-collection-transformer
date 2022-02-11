@@ -1,6 +1,6 @@
 unreleased:
   chores:
-    - GH-486 [Internal] Added new handlePartial option
+    - GH-486 [private] Added handlePartial option for v2.x -> v1 conversions
 
 4.1.4:
   date: 2021-10-23
