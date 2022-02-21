@@ -1,6 +1,7 @@
-unreleased:
+4.1.5:
+  date: 2022-02-21
   chores:
-    - GH-486 [private] Added handlePartial option for v2.x -> v1 conversions
+    - 'GH-486 [private] Added handlePartial option for v2.x -> v1 conversions'
     - Updated dependencies
 
 4.1.4:
