@@ -2464,4 +2464,88 @@ describe('v2.0.0 to v1.0.0', function () {
             });
         });
     });
+
+    describe('response', function () {
+        it('should handle preview language and type correctly', function (done) {
+            transformer.convert({
+                info: {
+                    _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                    name: 'response-body-preview-languages',
+                    schema: 'https://schema.getpostman.com/json/collection/v2.0.0/collection.json'
+                },
+                item: [{
+                    _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                    name: '',
+                    request: {
+                        header: [],
+                        method: 'POST',
+                        url: 'https://postman-echo.com/post'
+                    },
+                    response: [{
+                        _: {
+                            postman_previewlanguage: 'json',
+                            postman_previewtype: 'json'
+                        },
+                        id: '7b42ad1c-5cec-46b6-9e9f-e5aa67548327',
+                        name: 'pet response',
+                        status: 'OK',
+                        code: 200,
+                        header: [],
+                        body: '{ "hello": "world" }',
+                        cookie: []
+                    }]
+                }]
+            }, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(converted).to.eql({
+                    id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                    name: 'response-body-preview-languages',
+                    order: [
+                        '4f65e265-dd38-0a67-71a5-d9dd50fa37a1'
+                    ],
+                    folders_order: [],
+                    folders: [],
+                    requests: [
+                        {
+                            id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                            name: '',
+                            collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                            method: 'POST',
+                            headers: '',
+                            url: 'https://postman-echo.com/post',
+                            responses: [
+                                {
+                                    id: '7b42ad1c-5cec-46b6-9e9f-e5aa67548327',
+                                    name: 'pet response',
+                                    status: 'OK',
+                                    responseCode: {
+                                        code: 200,
+                                        name: 'OK',
+                                        detail: ''
+                                    },
+                                    language: 'json',
+                                    previewType: 'json',
+                                    headers: [],
+                                    cookies: [],
+                                    text: '{ "hello": "world" }',
+                                    rawDataType: 'text'
+                                }
+                            ],
+                            responses_order: [
+                                '7b42ad1c-5cec-46b6-9e9f-e5aa67548327'
+                            ],
+                            pathVariableData: [],
+                            queryParams: [],
+                            headerData: []
+                        }
+                    ]
+                });
+                done();
+            });
+        });
+    });
 });
