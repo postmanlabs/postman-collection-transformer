@@ -1744,6 +1744,83 @@ describe('v1.0.0 to v2.0.0', function () {
                 });
             });
 
+            it('should be converted at response level', function (done) {
+                transformer.convert({
+                    id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                    name: 'get-with-body',
+                    order: ['4f65e265-dd38-0a67-71a5-d9dd50fa37a1'],
+                    requests: [{
+                        id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        headers: '',
+                        url: 'https://postman-echo.com/get',
+                        data: 'foo=bar',
+                        method: 'GET',
+                        dataMode: 'raw',
+                        collectionId: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        responses: [{
+                            id: 'f0575082-90b6-4a15-a78f-a5c196a67018',
+                            name: 'response 1',
+                            status: 'OK',
+                            code: 200,
+                            request: {
+                                id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                                method: 'POST',
+                                url: 'postman-echo.com/post',
+                                protocolProfileBehavior: { disableBodyPruning: true }
+                            },
+                            requestObject: JSON.stringify({
+                                id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                                method: 'POST',
+                                url: 'postman-echo.com/post',
+                                protocolProfileBehavior: { disableBodyPruning: true }
+                            })
+                        }],
+                        responses_order: ['f0575082-90b6-4a15-a78f-a5c196a67018']
+                    }]
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted).to.eql({
+                        info: {
+                            _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                            name: 'get-with-body',
+                            schema: 'https://schema.getpostman.com/json/collection/v2.0.0/collection.json'
+                        },
+                        item: [{
+                            id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                            name: '',
+                            request: {
+                                body: {
+                                    mode: 'raw',
+                                    raw: 'foo=bar'
+                                },
+                                header: [],
+                                method: 'GET',
+                                url: 'https://postman-echo.com/get'
+                            },
+                            response: [{
+                                id: 'f0575082-90b6-4a15-a78f-a5c196a67018',
+                                name: 'response 1',
+                                cookie: [],
+                                originalRequest: {
+                                    method: 'POST',
+                                    header: [],
+                                    url: 'postman-echo.com/post',
+                                    protocolProfileBehavior: {
+                                        disableBodyPruning: true
+                                    }
+                                }
+                            }]
+                        }]
+                    });
+
+                    done();
+                });
+            });
+
             it('should not include an empty object', function (done) {
                 transformer.convert({
                     id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',

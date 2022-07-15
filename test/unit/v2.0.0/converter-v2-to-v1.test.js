@@ -1442,6 +1442,61 @@ describe('v2.0.0 to v1.0.0', function () {
                 });
             });
 
+            it('should be converted at response level', function (done) {
+                transformer.convert({
+                    info: {
+                        _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
+                        name: 'get-with-body',
+                        schema: 'https://schema.getpostman.com/json/collection/v2.0.0/collection.json'
+                    },
+                    item: [{
+                        _postman_id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                        name: '',
+                        request: {
+                            body: {
+                                mode: 'raw',
+                                raw: 'foo=bar'
+                            },
+                            header: [],
+                            method: 'GET',
+                            url: 'https://postman-echo.com/get'
+                        },
+                        response: [{
+                            id: 'f0575082-90b6-4a15-a78f-a5c196a67018',
+                            name: 'response 1',
+                            status: 'OK',
+                            code: 200,
+                            originalRequest: {
+                                id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
+                                method: 'GET'
+                            }
+                        }],
+                        protocolProfileBehavior: {
+                            disableBodyPruning: true
+                        }
+                    }]
+                }, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    const response = converted.requests[0].responses[0];
+
+                    expect(response.request).to.be.an('object');
+                    expect(response.request.protocolProfileBehavior).to.eql({
+                        disableBodyPruning: true
+                    });
+
+                    expect(response.requestObject).to.be.a('string');
+                    expect(JSON.parse(response.requestObject).protocolProfileBehavior).to.eql({
+                        disableBodyPruning: true
+                    });
+
+                    done();
+                });
+            });
+
             it('should not include the property for invalid values', function (done) {
                 transformer.convert({
                     info: {
