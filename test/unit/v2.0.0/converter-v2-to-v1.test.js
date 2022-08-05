@@ -117,6 +117,32 @@ describe('v2.0.0 to v1.0.0', function () {
                     responseCode: { detail: '' }
                 });
             });
+
+            it('should work as intended for protocolProfileBehaviour', function (done) {
+                var fixture = require('../fixtures/single-response');
+
+                transformer.convertResponse(_.merge({}, fixture.v2, {
+                    originalRequest: {
+                        protocolProfileBehavior: {
+                            disableBodyPruning: true
+                        }
+                    }
+                }), options, function (err, converted) {
+                    expect(err).not.to.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(converted.requestObject).to.be.a('string');
+                    expect(function () {
+                        JSON.parse(converted.requestObject);
+                    }).to.not.throw();
+
+                    expect(JSON.parse(converted.requestObject).protocolProfileBehavior).to.be.an('object');
+
+                    done();
+                });
+            });
         });
 
         describe('.convert', function () {
