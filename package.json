@@ -59,7 +59,7 @@
     "packity": "^0.3.4",
     "parse-gitignore": "^1.0.1",
     "pretty-ms": "^7.0.1",
-    "recursive-readdir": "^2.2.2",
+    "recursive-readdir": "^2.2.3",
     "require-all": "^3.0.0",
     "shelljs": "^0.8.5",
     "superagent": "^6.1.0",
