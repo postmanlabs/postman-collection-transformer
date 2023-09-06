@@ -8,15 +8,102 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  run-test:
-    name: Run tests
+  browser-tests:
+    name: Browser Tests
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
         with:
-          node-version: 18.9.1
+          node-version: 18.x
+          cache: 'npm'
+
       - name: Install
-        run: "npm i"
-      - name: Run test
-        run: "npm run test"
+        run: npm i
+
+      - name: Run browser tests
+        run: npm run test-browser
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: 'npm'
+
+      - name: Install
+        run: npm i
+
+      - name: Run lint tests
+        run: npm run test-lint
+
+  schema-tests:
+    name: Schema Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: 'npm'
+
+      - name: Install
+        run: npm i
+
+      - name: Run schema tests
+        run: npm run test-schema
+
+  system-tests:
+    name: System Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: 'npm'
+
+      - name: Install
+        run: npm i
+
+      - name: Run system tests
+        run: npm run test-system
+
+  unit-tests:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: 'npm'
+
+      - name: Install
+        run: npm i
+
+      - name: Run unit tests
+        run: npm run test-unit
