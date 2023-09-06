@@ -49,5 +49,4 @@ test/
 examples/
 .eslintrc
 .nycrc.js
-.travis.yml
 .editorconfig
