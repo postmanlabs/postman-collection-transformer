@@ -1,3 +1,7 @@
+unreleased:
+  chores:
+    - GH-619 Migrate to GitHub Actions
+
 4.1.6:
   date: 2022-02-23
   fixed bugs:
