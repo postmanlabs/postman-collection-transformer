@@ -3297,6 +3297,70 @@ describe('v1.0.0 to v2.1.0', function () {
                     done();
                 });
             });
+
+            describe('with noDefaults', function () {
+                it('should not set default value if noDefaults is set true', function (done) {
+                    transformer.convertSingle({
+                        id: '#collection-id',
+                        name: '#collection-name',
+                        variables: [
+                            {
+                                key: 'key',
+                                value: 'value',
+                                type: 'string'
+                            }
+                        ]
+                    }, {
+                        inputVersion: '1.0.0',
+                        outputVersion: '2.1.0',
+                        retainIds: true,
+                        noDefaults: true
+                    }, function (err, result) {
+                        expect(err).to.be.undefined;
+                        expect(result.variable).to.eql([
+                            {
+                                key: 'key',
+                                value: 'value',
+                                type: 'string'
+                            }
+                        ]);
+                        done();
+                    });
+                });
+
+                it('should set default value if noDefaults is not set', function (done) {
+                    transformer.convertSingle({
+                        id: '#collection-id',
+                        name: '#collection-name',
+                        variables: [
+                            {
+                                key: 'key',
+                                value: 'value',
+                                type: 'string'
+                            }
+                        ]
+                    }, {
+                        inputVersion: '1.0.0',
+                        outputVersion: '2.1.0',
+                        retainIds: true
+                    }, function (err, result) {
+                        expect(err).to.be.undefined;
+                        expect(result.variable.length).to.be.eql(1);
+                        expect(result.variable[0].id).to.be.ok;
+
+                        delete result.variable[0].id;
+
+                        expect(result.variable).to.eql([
+                            {
+                                key: 'key',
+                                value: 'value',
+                                type: 'string'
+                            }
+                        ]);
+                        done();
+                    });
+                });
+            });
         });
     });
 
