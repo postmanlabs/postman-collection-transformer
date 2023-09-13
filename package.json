@@ -24,6 +24,7 @@
     "transformer"
   ],
   "scripts": {
+    "release": "node npm/release.js",
     "test": "npm run test-lint && npm run test-system && npm run test-unit && npm run test-schema && npm run test-browser",
     "test-browser": "node npm/test-browser.js",
     "test-lint": "node npm/test-lint.js",
@@ -39,6 +40,7 @@
     "strip-json-comments": "3.1.1"
   },
   "devDependencies": {
+    "@postman/shipit": "^0.4.0",
     "async": "^3.2.4",
     "browserify": "^17.0.0",
     "chai": "^4.3.8",
