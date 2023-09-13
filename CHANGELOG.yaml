@@ -1,6 +1,11 @@
 unreleased:
+  fixed bugs:
+    - >-
+      GH-617 Fixed a bug where `noDefaults` is not handled correctly on v1.x
+      -> v2.x conversions
   chores:
     - GH-619 Migrate to GitHub Actions
+    - Updated dependencies
 
 4.1.6:
   date: 2022-02-23
