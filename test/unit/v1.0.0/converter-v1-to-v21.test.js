@@ -122,6 +122,19 @@ describe('v1.0.0 to v2.1.0', function () {
                 expect(JSON.parse(JSON.stringify(transformer.convert(fixture.v1, options)))).to.eql(fixture.v21);
             });
 
+            it('should work as intended for graphql requests', function () {
+                const graphqlRequestTest = require('../fixtures/graphql-request-test.json'),
+                    converted = transformer.convert(graphqlRequestTest, {
+                        inputVersion: '1.0.0',
+                        outputVersion: '2.1.0',
+                        retainIds: true
+                    }),
+                    convertedRequestBody = converted.item[0].request.body;
+
+                expect(convertedRequestBody.mode).to.equal('graphql');
+                expect(convertedRequestBody.graphql.query).to.equal('mutation {\n\n}');
+                expect(convertedRequestBody.graphql.variables).to.equal('{\n    \n}');
+            });
             it('should generate new collection IDs when missing', function (done) {
                 transformer.convert({}, options, function (err, converted) {
                     expect(err).to.not.be.ok;
