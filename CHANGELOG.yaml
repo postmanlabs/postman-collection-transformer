@@ -1,8 +1,9 @@
-unreleased:
+4.1.8:
+  date: 2023-10-12
   fixed bugs:
     - >-
-      GH-634 Fixed a bug where GraphQL body was not parsed from `data` during
-      v1 -> v2.x conversions
+      GH-634 Fixed a bug where GraphQL body was not parsed from `data` during v1
+      -> v2.x conversions
 
 4.1.7:
   date: 2023-09-13
