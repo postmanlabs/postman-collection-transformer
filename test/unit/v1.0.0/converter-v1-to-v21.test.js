@@ -948,6 +948,29 @@ describe('v1.0.0 to v2.1.0', function () {
             });
         });
 
+        it('should set mode to graphql if dataMode is set, graphqlModeData is not set and data is not empty',
+            function () {
+                const graphqlRequestTest = require('../fixtures/graphql-payload-in-data-key.json'),
+                    converted = transformer.convert(graphqlRequestTest, options),
+                    convertedRequestBody = converted.item[0].request.body;
+
+                expect(convertedRequestBody.mode).to.equal('graphql');
+                expect(convertedRequestBody.graphql.query).to.equal('mutation {\n\n}');
+                expect(convertedRequestBody.graphql.variables).to.equal('{\n    \n}');
+            });
+
+        it('should set mode to graphql and graphqlModeData ig graphqlModeData and data both are provided',
+            function () {
+                const graphqlRequestTest = require('../fixtures/graphql-payload-in-both-key.json'),
+                    converted = transformer.convert(graphqlRequestTest, options),
+                    convertedRequestBody = converted.item[0].request.body;
+
+                expect(convertedRequestBody.mode).to.equal('graphql');
+                // Should have properties from graphqlModeData key of the input
+                expect(convertedRequestBody.graphql.query).to.equal('query Test { hello }');
+                expect(convertedRequestBody.graphql.variables).to.equal('{}');
+            });
+
         it('should set dataMode (file) even if data is not set', function (done) {
             transformer.convert({
                 id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
