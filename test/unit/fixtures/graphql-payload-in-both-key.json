@@ -1,0 +1,30 @@
+{
+    "type": "collection",
+    "name": "GraphQL Test",
+    "id": "1069931-3bb3a9a3-37c0-43c4-8b87-d03c19a4b7d2",
+    "order": [
+        "1069931-c59b3ff2-df0d-4c9c-a93a-496ffafd01b5"
+    ],
+    "requests": [
+        {
+            "type": "request",
+            "id": "1069931-c59b3ff2-df0d-4c9c-a93a-496ffafd01b5",
+            "name": "New Request",
+            "method": "GET",
+            "url": "https://google.com",
+            "data": {
+                "query": "mutation {\n\n}",
+                "variables": "{\n    \n}"
+            },
+            "dataOptions": {
+                "graphql": {}
+            },
+            "dataMode": "graphql",
+            "graphqlModeData": {
+                "query": "query Test { hello }",
+                "operationName": "Test",
+                "variables": "{}"
+            }
+        }
+    ]
+}
