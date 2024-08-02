@@ -43,7 +43,7 @@
     "@postman/shipit": "^0.4.0",
     "async": "^3.2.4",
     "browserify": "^17.0.0",
-    "chai": "^4.3.8",
+    "chai": "^5.1.1",
     "chalk": "^4.1.2",
     "eslint": "^7.22.0",
     "eslint-plugin-jsdoc": "^36.1.1",
