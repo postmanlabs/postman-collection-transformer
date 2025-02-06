@@ -20,7 +20,7 @@
             "headers": "",
             "method": "POST",
             "pathVariables": {},
-            "url": "http://echo.getpostman.com/post",
+            "url": "http://echo.postman.com/post",
             "preRequestScript": null,
             "tests": "console.log(responseBody)",
             "currentHelper": "normal",

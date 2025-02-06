@@ -71,7 +71,7 @@
 		},
     {
       "id": "951fc3e8-c6b6-5c19-9f69-4e7499b3127f",
-      "url": "http://echo.getpostman.com/auth/bearer",
+      "url": "http://echo.postman.com/auth/bearer",
       "preRequestScript": "",
       "pathVariables": {},
       "method": "GET",

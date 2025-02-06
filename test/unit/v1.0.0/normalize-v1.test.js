@@ -1899,7 +1899,7 @@ describe('v1.0.0 normalization', function () {
                             id: '5ec6f591-4460-e4cf-fdc1-0de07c10b2b1',
                             name: 'Request',
                             method: 'GET',
-                            url: 'https://echo.getpostman.com/get'
+                            url: 'https://echo.postman.com/get'
                         }
                     ]
                 }, options, function (err, converted) {
@@ -1931,7 +1931,7 @@ describe('v1.0.0 normalization', function () {
                                 id: '5ec6f591-4460-e4cf-fdc1-0de07c10b2b1',
                                 name: 'Request',
                                 method: 'GET',
-                                url: 'https://echo.getpostman.com/get',
+                                url: 'https://echo.postman.com/get',
                                 responses_order: []
                             }
                         ]
@@ -2010,7 +2010,7 @@ describe('v1.0.0 normalization', function () {
                             id: '5ec6f591-4460-e4cf-fdc1-0de07c10b2b1',
                             name: 'Request',
                             method: 'GET',
-                            url: 'https://echo.getpostman.com/get',
+                            url: 'https://echo.postman.com/get',
                             protocolProfileBehavior: {}
                         }
                     ],
@@ -2041,7 +2041,7 @@ describe('v1.0.0 normalization', function () {
                                 id: '5ec6f591-4460-e4cf-fdc1-0de07c10b2b1',
                                 name: 'Request',
                                 method: 'GET',
-                                url: 'https://echo.getpostman.com/get',
+                                url: 'https://echo.postman.com/get',
                                 responses_order: []
                             }
                         ]
@@ -2491,10 +2491,10 @@ describe('v1.0.0 normalization', function () {
                         rawModeData: null,
                         descriptionFormat: null,
                         // eslint-disable-next-line max-len
-                        description: 'A `GET` request to this endpoint returns the list of all request headers as part of the response JSON.\nIn Postman, sending your own set of headers through the [Headers tab](https://www.getpostman.com/docs/requests#headers) will reveal the headers as part of the response.',
+                        description: 'A `GET` request to this endpoint returns the list of all request headers as part of the response JSON.\nIn Postman, sending your own set of headers through the [Headers tab](https://www.postman.com/docs/requests#headers) will reveal the headers as part of the response.',
                         method: 'GET',
                         pathVariables: [],
-                        url: 'https://echo.getpostman.com/headers',
+                        url: 'https://echo.postman.com/headers',
                         preRequestScript: '',
                         // eslint-disable-next-line max-len
                         tests: 'tests[\'Body contains headers\'] = responseBody.has(\'headers\');\n\nvar data = JSON.parse(responseBody).headers;\n\ntests[\'Header contains host\'] = \'host\' in data;\ntests[\'Header contains test parameter sent as part of request header\'] = \'my-sample-header\' in data;',
@@ -2521,7 +2521,7 @@ describe('v1.0.0 normalization', function () {
                         headers: '',
                         method: 'GET',
                         pathVariables: {},
-                        url: 'https://echo.getpostman.com/response-headers?Content-Type=text/html&Server=apibin',
+                        url: 'https://echo.postman.com/response-headers?Content-Type=text/html&Server=apibin',
                         preRequestScript: '',
                         // eslint-disable-next-line max-len
                         tests: 'tests[\'Body contains Content-Type\'] = responseBody.has(\'Content-Type\');\ntests[\'Body contains Server\'] = responseBody.has(\'Server\');',
@@ -2564,10 +2564,10 @@ describe('v1.0.0 normalization', function () {
                             rawModeData: null,
                             descriptionFormat: null,
                             // eslint-disable-next-line max-len
-                            description: 'A `GET` request to this endpoint returns the list of all request headers as part of the response JSON.\nIn Postman, sending your own set of headers through the [Headers tab](https://www.getpostman.com/docs/requests#headers) will reveal the headers as part of the response.',
+                            description: 'A `GET` request to this endpoint returns the list of all request headers as part of the response JSON.\nIn Postman, sending your own set of headers through the [Headers tab](https://www.postman.com/docs/requests#headers) will reveal the headers as part of the response.',
                             method: 'GET',
                             pathVariables: [],
-                            url: 'https://echo.getpostman.com/headers',
+                            url: 'https://echo.postman.com/headers',
                             // eslint-disable-next-line max-len
                             tests: 'tests[\'Body contains headers\'] = responseBody.has(\'headers\');\n\nvar data = JSON.parse(responseBody).headers;\n\ntests[\'Header contains host\'] = \'host\' in data;\ntests[\'Header contains test parameter sent as part of request header\'] = \'my-sample-header\' in data;',
                             events: [{
@@ -2610,7 +2610,7 @@ describe('v1.0.0 normalization', function () {
                             headers: '',
                             method: 'GET',
                             pathVariables: {},
-                            url: 'https://echo.getpostman.com/response-headers?Content-Type=text/html&Server=apibin',
+                            url: 'https://echo.postman.com/response-headers?Content-Type=text/html&Server=apibin',
                             queryParams: [{
                                 key: 'Content-Type',
                                 value: 'text/html'

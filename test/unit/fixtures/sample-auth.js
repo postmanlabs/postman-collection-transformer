@@ -86,7 +86,7 @@ module.exports = {
             {
                 id: '951fc3e8-c6b6-5c19-9f69-4e7499b3127f',
                 headers: 'Authorization: Bearer wkjehbxoqnunc2k3',
-                url: 'http://echo.getpostman.com/auth/bearer',
+                url: 'http://echo.postman.com/auth/bearer',
                 preRequestScript: '',
                 method: 'GET',
                 queryParams: [],
@@ -125,7 +125,7 @@ module.exports = {
                 id: '951fc3e8-c6b6-5c19-9f69-4e7499b3127g',
                 // eslint-disable-next-line max-len
                 headers: 'Authorization: NTLM TlRMTVNTUAADAAAAGAAYAFYAAAAYABgAbgAAAAAAAABIAAAADgAOAEgAAAAAAAAAVgAAAAAAAACGAAAABYKIogUBKAoAAAAPcABvAHMAdABtAGEAbgCDJfCgEQC+3wAAAAAAAAAAAAAAAAAAAAB6O2T1blvWpb/pqHtSdqcZ/A34nPBZe20=',
-                url: 'http://echo.getpostman.com/auth/ntlm',
+                url: 'http://echo.postman.com/auth/ntlm',
                 preRequestScript: '',
                 method: 'GET',
                 queryParams: [],
@@ -178,7 +178,7 @@ module.exports = {
             name: 'AuthTest',
             _postman_id: 'd497d10e-e280-8c83-709a-a4d4ea12ad14',
             description: 'Sample auth tests',
-            schema: 'https://schema.getpostman.com/json/collection/v2.0.0/collection.json'
+            schema: 'https://schema.postman.com/json/collection/v2.0.0/collection.json'
         },
         item: [
             {
@@ -254,7 +254,7 @@ module.exports = {
                             token: 'wkjehbxoqnunc2k3'
                         }
                     },
-                    url: 'http://echo.getpostman.com/auth/bearer',
+                    url: 'http://echo.postman.com/auth/bearer',
                     method: 'GET',
                     header: [
                         {
@@ -295,7 +295,7 @@ module.exports = {
                             disableRetryRequest: false
                         }
                     },
-                    url: 'http://echo.getpostman.com/auth/ntlm',
+                    url: 'http://echo.postman.com/auth/ntlm',
                     method: 'GET',
                     header: [
                         {
@@ -318,7 +318,7 @@ module.exports = {
             name: 'AuthTest',
             _postman_id: 'd497d10e-e280-8c83-709a-a4d4ea12ad14',
             description: 'Sample auth tests',
-            schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+            schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
         },
         item: [
             {
@@ -463,9 +463,9 @@ module.exports = {
                         ]
                     },
                     url: {
-                        raw: 'http://echo.getpostman.com/auth/bearer',
+                        raw: 'http://echo.postman.com/auth/bearer',
                         protocol: 'http',
-                        host: ['echo', 'getpostman', 'com'],
+                        host: ['echo', 'postman', 'com'],
                         path: ['auth', 'bearer']
                     },
                     method: 'GET',
@@ -529,9 +529,9 @@ module.exports = {
                         ]
                     },
                     url: {
-                        raw: 'http://echo.getpostman.com/auth/ntlm',
+                        raw: 'http://echo.postman.com/auth/ntlm',
                         protocol: 'http',
-                        host: ['echo', 'getpostman', 'com'],
+                        host: ['echo', 'postman', 'com'],
                         path: ['auth', 'ntlm']
                     },
                     method: 'GET',

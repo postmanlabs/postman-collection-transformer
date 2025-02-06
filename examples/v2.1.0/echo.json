@@ -4,12 +4,12 @@
         "name": "Postman Echo (shamasified)",
         "_postman_id": "03cf74df-32de-af8b-7db8-855b51b05e50",
         "description": "Postman Echo is service you can use to test your REST clients and make sample API calls. It provides endpoints for `GET`, `POST`, `PUT`, various auth mechanisms and other utility endpoints.",
-        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+        "schema": "https://schema.postman.com/json/collection/v2.1.0/collection.json"
     },
     "item": [
         {
             "name": "Auth: Digest",
-            "description": "Digest authentication protects an endpoint with a username and password without actually transmitting the password over network.\nOne has to apply a hash function (like MD5, etc) to the username and password before sending them over the network.\n\n> Username: `postman`\n>\n> Password: `password`\n\nUnlike Basic-Auth, authentication happens using two consecutive requests where the first request returns `401 Unauthorised` along with `WWW-Authenticate` header containing information that needs to be used to authenticate subsequent calls.\n\nTo know more about digest authentication, refer to the [Digest Access Authentication](https://en.wikipedia.org/wiki/Digest_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.getpostman.com/docs/helpers#digest-auth) elaborates how to use the same within the Postman app.",
+            "description": "Digest authentication protects an endpoint with a username and password without actually transmitting the password over network.\nOne has to apply a hash function (like MD5, etc) to the username and password before sending them over the network.\n\n> Username: `postman`\n>\n> Password: `password`\n\nUnlike Basic-Auth, authentication happens using two consecutive requests where the first request returns `401 Unauthorised` along with `WWW-Authenticate` header containing information that needs to be used to authenticate subsequent calls.\n\nTo know more about digest authentication, refer to the [Digest Access Authentication](https://en.wikipedia.org/wiki/Digest_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.postman.com/docs/helpers#digest-auth) elaborates how to use the same within the Postman app.",
             "item": [
                 {
                     "name": "DigestAuth Request",
@@ -23,7 +23,7 @@
                         }
                     ],
                     "request": {
-                        "url": "https://echo.getpostman.com/digest-auth",
+                        "url": "https://echo.postman.com/digest-auth",
                         "method": "GET",
                         "headers": [],
                         "body": {
@@ -43,7 +43,7 @@
                                 },
                                 {
                                     "key": "redirect_uri",
-                                    "value": "https://www.getpostman.com/oauth2/callback",
+                                    "value": "https://www.postman.com/oauth2/callback",
                                     "type": "text",
                                     "enabled": true
                                 },
@@ -61,7 +61,7 @@
                                 }
                             ]
                         },
-                        "description": "Performing a simple `GET` request to this endpoint returns status code `401 Unauthorized` with `WWW-Authenticate` header containing information to successfully authenticate subsequent requests.\nThe `WWW-Authenticate` header must be processed to extract `realm` and `nonce` values to hash subsequent requests.\n\nWhen this request is executed within Postman, the script attached with this request does the hard work of extracting realm and nonce from the header and set it as [global variables](https://www.getpostman.com/docs/environments#global-variables) named `echo_digest_nonce` and `echo_digest_realm`.\nThese variables are re-used in subsequent request for seamless integration of the two requests."
+                        "description": "Performing a simple `GET` request to this endpoint returns status code `401 Unauthorized` with `WWW-Authenticate` header containing information to successfully authenticate subsequent requests.\nThe `WWW-Authenticate` header must be processed to extract `realm` and `nonce` values to hash subsequent requests.\n\nWhen this request is executed within Postman, the script attached with this request does the hard work of extracting realm and nonce from the header and set it as [global variables](https://www.postman.com/docs/environments#global-variables) named `echo_digest_nonce` and `echo_digest_realm`.\nThese variables are re-used in subsequent request for seamless integration of the two requests."
                     },
                     "responses": []
                 },
@@ -118,7 +118,7 @@
                                 }
                             ]
                         },
-                        "url": "https://echo.getpostman.com/digest-auth",
+                        "url": "https://echo.postman.com/digest-auth",
                         "method": "GET",
                         "headers": [
                             {
@@ -131,7 +131,7 @@
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": "This endpoint sends a hashed Digest Authorization header to gain access to a valid `200 Ok` response code. In Postman, it uses the stored [global variables](https://www.getpostman.com/docs/environments#gloval-variables), `echo_digest_realm` and `echo_digest_nonce`, to generate the hashed authorisation header.\n\nWithin Postman, for this request to successfully authenticate, running the previous request \"DigestAuth Request\" stores the relevant information within the global variables."
+                        "description": "This endpoint sends a hashed Digest Authorization header to gain access to a valid `200 Ok` response code. In Postman, it uses the stored [global variables](https://www.postman.com/docs/environments#gloval-variables), `echo_digest_realm` and `echo_digest_nonce`, to generate the hashed authorisation header.\n\nWithin Postman, for this request to successfully authenticate, running the previous request \"DigestAuth Request\" stores the relevant information within the global variables."
                     },
                     "responses": [
                         {
@@ -178,7 +178,7 @@
                                         }
                                     ]
                                 },
-                                "url": "https://echo.getpostman.com/digest-auth",
+                                "url": "https://echo.postman.com/digest-auth",
                                 "method": "GET",
                                 "headers": [
                                     {
@@ -191,7 +191,7 @@
                                     "mode": "formdata",
                                     "formdata": []
                                 },
-                                "description": "This endpoint sends a hashed Digest Authorization header to gain access to a valid `200 Ok` response code. In Postman, it uses the stored [global variables](https://www.getpostman.com/docs/environments#gloval-variables), `echo_digest_realm` and `echo_digest_nonce`, to generate the hashed authorisation header.\n\nWithin Postman, for this request to successfully authenticate, running the previous request \"DigestAuth Request\" stores the relevant information within the global variables."
+                                "description": "This endpoint sends a hashed Digest Authorization header to gain access to a valid `200 Ok` response code. In Postman, it uses the stored [global variables](https://www.postman.com/docs/environments#gloval-variables), `echo_digest_realm` and `echo_digest_nonce`, to generate the hashed authorisation header.\n\nWithin Postman, for this request to successfully authenticate, running the previous request \"DigestAuth Request\" stores the relevant information within the global variables."
                             },
                             "status": "OK",
                             "code": 200,
@@ -308,7 +308,7 @@
                                 }
                             ]
                         },
-                        "url": "https://echo.getpostman.com/basic-auth",
+                        "url": "https://echo.postman.com/basic-auth",
                         "method": "GET",
                         "headers": [
                             {
@@ -321,7 +321,7 @@
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": "This endpoint simulates a **basic-auth** protected endpoint. \nThe endpoint accepts a default username and password and returns a status code of `200 ok` only if the same is provided. \nOtherwise it will return a status code `401 unauthorized`.\n\n> Username: `postman`\n> \n> Password: `password`\n\nTo use this endpoint, send a request with the header `Authorization: Basic cG9zdG1hbjpwYXNzd29yZA==`. \nThe cryptic latter half of the header value is a base64 encoded concatenation of the default username and password. \nUsing Postman, to send this request, you can simply fill in the username and password in the \"Authorization\" tab and Postman will do the rest for you.\n\nTo know more about basic authentication, refer to the [Basic Access Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.getpostman.com/docs/helpers#basic-auth) elaborates how to use the same within the Postman app."
+                        "description": "This endpoint simulates a **basic-auth** protected endpoint. \nThe endpoint accepts a default username and password and returns a status code of `200 ok` only if the same is provided. \nOtherwise it will return a status code `401 unauthorized`.\n\n> Username: `postman`\n> \n> Password: `password`\n\nTo use this endpoint, send a request with the header `Authorization: Basic cG9zdG1hbjpwYXNzd29yZA==`. \nThe cryptic latter half of the header value is a base64 encoded concatenation of the default username and password. \nUsing Postman, to send this request, you can simply fill in the username and password in the \"Authorization\" tab and Postman will do the rest for you.\n\nTo know more about basic authentication, refer to the [Basic Access Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.postman.com/docs/helpers#basic-auth) elaborates how to use the same within the Postman app."
                     },
                     "responses": [
                         {
@@ -340,7 +340,7 @@
                                         }
                                     ]
                                 },
-                                "url": "https://echo.getpostman.com/basic-auth",
+                                "url": "https://echo.postman.com/basic-auth",
                                 "method": "GET",
                                 "headers": [
                                     {
@@ -353,7 +353,7 @@
                                     "mode": "formdata",
                                     "formdata": []
                                 },
-                                "description": "This endpoint simulates a **basic-auth** protected endpoint. \nThe endpoint accepts a default username and password and returns a status code of `200 ok` only if the same is provided. \nOtherwise it will return a status code `401 unauthorized`.\n\n> Username: `postman`\n> \n> Password: `password`\n\nTo use this endpoint, send a request with the header `Authorization: Basic cG9zdG1hbjpwYXNzd29yZA==`. \nThe cryptic latter half of the header value is a base64 encoded concatenation of the default username and password. \nUsing Postman, to send this request, you can simply fill in the username and password in the \"Authorization\" tab and Postman will do the rest for you.\n\nTo know more about basic authentication, refer to the [Basic Access Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.getpostman.com/docs/helpers#basic-auth) elaborates how to use the same within the Postman app."
+                                "description": "This endpoint simulates a **basic-auth** protected endpoint. \nThe endpoint accepts a default username and password and returns a status code of `200 ok` only if the same is provided. \nOtherwise it will return a status code `401 unauthorized`.\n\n> Username: `postman`\n> \n> Password: `password`\n\nTo use this endpoint, send a request with the header `Authorization: Basic cG9zdG1hbjpwYXNzd29yZA==`. \nThe cryptic latter half of the header value is a base64 encoded concatenation of the default username and password. \nUsing Postman, to send this request, you can simply fill in the username and password in the \"Authorization\" tab and Postman will do the rest for you.\n\nTo know more about basic authentication, refer to the [Basic Access Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.postman.com/docs/helpers#basic-auth) elaborates how to use the same within the Postman app."
                             },
                             "status": "Unauthorized",
                             "code": 401,
@@ -441,7 +441,7 @@
                                         }
                                     ]
                                 },
-                                "url": "https://echo.getpostman.com/basic-auth",
+                                "url": "https://echo.postman.com/basic-auth",
                                 "method": "GET",
                                 "headers": [
                                     {
@@ -454,7 +454,7 @@
                                     "mode": "formdata",
                                     "formdata": []
                                 },
-                                "description": "This endpoint simulates a **basic-auth** protected endpoint. \nThe endpoint accepts a default username and password and returns a status code of `200 ok` only if the same is provided. \nOtherwise it will return a status code `401 unauthorized`.\n\n> Username: `postman`\n> \n> Password: `password`\n\nTo use this endpoint, send a request with the header `Authorization: Basic cG9zdG1hbjpwYXNzd29yZA==`. \nThe cryptic latter half of the header value is a base64 encoded concatenation of the default username and password. \nUsing Postman, to send this request, you can simply fill in the username and password in the \"Authorization\" tab and Postman will do the rest for you.\n\nTo know more about basic authentication, refer to the [Basic Access Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.getpostman.com/docs/helpers#basic-auth) elaborates how to use the same within the Postman app."
+                                "description": "This endpoint simulates a **basic-auth** protected endpoint. \nThe endpoint accepts a default username and password and returns a status code of `200 ok` only if the same is provided. \nOtherwise it will return a status code `401 unauthorized`.\n\n> Username: `postman`\n> \n> Password: `password`\n\nTo use this endpoint, send a request with the header `Authorization: Basic cG9zdG1hbjpwYXNzd29yZA==`. \nThe cryptic latter half of the header value is a base64 encoded concatenation of the default username and password. \nUsing Postman, to send this request, you can simply fill in the username and password in the \"Authorization\" tab and Postman will do the rest for you.\n\nTo know more about basic authentication, refer to the [Basic Access Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.postman.com/docs/helpers#basic-auth) elaborates how to use the same within the Postman app."
                             },
                             "status": "OK",
                             "code": 200,
@@ -552,7 +552,7 @@
                         }
                     ],
                     "request": {
-                        "url": "https://echo.getpostman.com/oauth1",
+                        "url": "https://echo.postman.com/oauth1",
                         "method": "GET",
                         "headers": [
                             {
@@ -578,7 +578,7 @@
                                 },
                                 {
                                     "key": "redirect_uri",
-                                    "value": "https://www.getpostman.com/oauth2/callback",
+                                    "value": "https://www.postman.com/oauth2/callback",
                                     "type": "text",
                                     "enabled": true
                                 },
@@ -618,7 +618,7 @@
                         }
                     ],
                     "request": {
-                        "url": "https://echo.getpostman.com/cookies/set?foo1=bar1&foo2=bar2",
+                        "url": "https://echo.postman.com/cookies/set?foo1=bar1&foo2=bar2",
                         "method": "GET",
                         "headers": [],
                         "body": {
@@ -631,7 +631,7 @@
                         {
                             "name": "Cookies",
                             "originalRequest": {
-                                "url": "https://echo.getpostman.com/cookies/set?foo1=bar1&foo2=bar2",
+                                "url": "https://echo.postman.com/cookies/set?foo1=bar1&foo2=bar2",
                                 "method": "GET",
                                 "headers": [],
                                 "body": {
@@ -736,7 +736,7 @@
                         }
                     ],
                     "request": {
-                        "url": "https://echo.getpostman.com/cookies",
+                        "url": "https://echo.postman.com/cookies",
                         "method": "GET",
                         "headers": [],
                         "body": {
@@ -749,7 +749,7 @@
                         {
                             "name": "Cookies",
                             "originalRequest": {
-                                "url": "https://echo.getpostman.com/cookies",
+                                "url": "https://echo.postman.com/cookies",
                                 "method": "GET",
                                 "headers": [],
                                 "body": {
@@ -854,7 +854,7 @@
                         }
                     ],
                     "request": {
-                        "url": "https://echo.getpostman.com/cookies/delete?foo1&foo2",
+                        "url": "https://echo.postman.com/cookies/delete?foo1&foo2",
                         "method": "GET",
                         "headers": [],
                         "body": {
@@ -867,7 +867,7 @@
                         {
                             "name": "Cookies Response",
                             "originalRequest": {
-                                "url": "https://echo.getpostman.com/cookies/delete?foo1&foo2",
+                                "url": "https://echo.postman.com/cookies/delete?foo1&foo2",
                                 "method": "GET",
                                 "headers": [],
                                 "body": {
@@ -978,14 +978,14 @@
                         }
                     ],
                     "request": {
-                        "url": "https://echo.getpostman.com/headers",
+                        "url": "https://echo.postman.com/headers",
                         "method": "GET",
                         "headers": [],
                         "body": {
                             "mode": "formdata",
                             "formdata": []
                         },
-                        "description": "A `GET` request to this endpoint returns the list of all request headers as part of the response JSON.\nIn Postman, sending your own set of headers through the [Headers tab](https://www.getpostman.com/docs/requests#headers) will reveal the headers as part of the response."
+                        "description": "A `GET` request to this endpoint returns the list of all request headers as part of the response JSON.\nIn Postman, sending your own set of headers through the [Headers tab](https://www.postman.com/docs/requests#headers) will reveal the headers as part of the response."
                     },
                     "responses": []
                 },
@@ -1001,7 +1001,7 @@
                         }
                     ],
                     "request": {
-                        "url": "https://echo.getpostman.com/response-headers?Content-Type=text/html&Server=apibin",
+                        "url": "https://echo.postman.com/response-headers?Content-Type=text/html&Server=apibin",
                         "method": "GET",
                         "headers": [],
                         "body": {
@@ -1021,7 +1021,7 @@
                                 },
                                 {
                                     "key": "redirect_uri",
-                                    "value": "https://www.getpostman.com/oauth2/callback",
+                                    "value": "https://www.postman.com/oauth2/callback",
                                     "type": "text",
                                     "enabled": true
                                 },
@@ -1061,7 +1061,7 @@
                         }
                     ],
                     "request": {
-                        "url": "https://echo.getpostman.com/get?test=123",
+                        "url": "https://echo.postman.com/get?test=123",
                         "method": "GET",
                         "headers": [],
                         "body": {
@@ -1081,7 +1081,7 @@
                                 },
                                 {
                                     "key": "redirect_uri",
-                                    "value": "https://www.getpostman.com/oauth2/callback",
+                                    "value": "https://www.postman.com/oauth2/callback",
                                     "type": "text",
                                     "enabled": true
                                 },
@@ -1115,7 +1115,7 @@
                         }
                     ],
                     "request": {
-                        "url": "https://echo.getpostman.com/post",
+                        "url": "https://echo.postman.com/post",
                         "method": "POST",
                         "headers": [
                             {
@@ -1144,7 +1144,7 @@
                         }
                     ],
                     "request": {
-                        "url": "https://echo.getpostman.com/put",
+                        "url": "https://echo.postman.com/put",
                         "method": "PUT",
                         "headers": [],
                         "body": {
@@ -1167,7 +1167,7 @@
                         }
                     ],
                     "request": {
-                        "url": "https://echo.getpostman.com/patch",
+                        "url": "https://echo.postman.com/patch",
                         "method": "PATCH",
                         "headers": [],
                         "body": {
@@ -1190,7 +1190,7 @@
                         }
                     ],
                     "request": {
-                        "url": "https://echo.getpostman.com/delete",
+                        "url": "https://echo.postman.com/delete",
                         "method": "DELETE",
                         "headers": [],
                         "body": {
@@ -1219,7 +1219,7 @@
                         }
                     ],
                     "request": {
-                        "url": "https://echo.getpostman.com/status/200",
+                        "url": "https://echo.postman.com/status/200",
                         "method": "GET",
                         "headers": [],
                         "body": {
@@ -1249,7 +1249,7 @@
                         }
                     ],
                     "request": {
-                        "url": "https://echo.getpostman.com/stream/10",
+                        "url": "https://echo.postman.com/stream/10",
                         "method": "GET",
                         "headers": [],
                         "body": {
@@ -1272,7 +1272,7 @@
                         }
                     ],
                     "request": {
-                        "url": "https://echo.getpostman.com/delay/3",
+                        "url": "https://echo.postman.com/delay/3",
                         "method": "GET",
                         "headers": [],
                         "body": {
@@ -1302,7 +1302,7 @@
                         }
                     ],
                     "request": {
-                        "url": "https://echo.getpostman.com/encoding/utf8",
+                        "url": "https://echo.postman.com/encoding/utf8",
                         "method": "GET",
                         "headers": [],
                         "body": {
@@ -1325,7 +1325,7 @@
                         }
                     ],
                     "request": {
-                        "url": "https://echo.getpostman.com/gzip",
+                        "url": "https://echo.postman.com/gzip",
                         "method": "GET",
                         "headers": [],
                         "body": {
@@ -1345,7 +1345,7 @@
                                 },
                                 {
                                     "key": "redirect_uri",
-                                    "value": "https://www.getpostman.com/oauth2/callback",
+                                    "value": "https://www.postman.com/oauth2/callback",
                                     "type": "text",
                                     "enabled": true
                                 },
@@ -1379,7 +1379,7 @@
                         }
                     ],
                     "request": {
-                        "url": "https://echo.getpostman.com/deflate",
+                        "url": "https://echo.postman.com/deflate",
                         "method": "GET",
                         "headers": [],
                         "body": {
@@ -1408,7 +1408,7 @@
                         }
                     ],
                     "request": {
-                        "url": "https://echo.getpostman.com/oauth2/authtoken?client_id=abc123&response_type=code",
+                        "url": "https://echo.postman.com/oauth2/authtoken?client_id=abc123&response_type=code",
                         "method": "GET",
                         "headers": [],
                         "body": {
@@ -1428,7 +1428,7 @@
                                 },
                                 {
                                     "key": "redirect_uri",
-                                    "value": "https://www.getpostman.com/oauth2/callback",
+                                    "value": "https://www.postman.com/oauth2/callback",
                                     "type": "text",
                                     "enabled": true
                                 },
@@ -1452,7 +1452,7 @@
                         {
                             "name": "401",
                             "originalRequest": {
-                                "url": "https://echo.getpostman.com/oauth2/authtoken?client_id=abc123&response_type=code",
+                                "url": "https://echo.postman.com/oauth2/authtoken?client_id=abc123&response_type=code",
                                 "method": "GET",
                                 "headers": [],
                                 "body": {
@@ -1472,7 +1472,7 @@
                                         },
                                         {
                                             "key": "redirect_uri",
-                                            "value": "https://www.getpostman.com/oauth2/callback",
+                                            "value": "https://www.postman.com/oauth2/callback",
                                             "type": "text",
                                             "enabled": true
                                         },
@@ -1588,7 +1588,7 @@
                         }
                     ],
                     "request": {
-                        "url": "https://echo.getpostman.com/oauth2/token",
+                        "url": "https://echo.postman.com/oauth2/token",
                         "method": "POST",
                         "headers": [],
                         "body": {
@@ -1608,7 +1608,7 @@
                                 },
                                 {
                                     "key": "redirect_uri",
-                                    "value": "https://www.getpostman.com/oauth2/callback",
+                                    "value": "https://www.postman.com/oauth2/callback",
                                     "type": "text",
                                     "enabled": true
                                 },
@@ -1626,13 +1626,13 @@
                                 }
                             ]
                         },
-                        "description": "This endpoint is used to get the `access_token`\n\nIt requires the following secret client credentials to be sent as part of the form body along with the `authentication code` obtained as part of the `redirect_uri` from the previous request.\n\n> code: xWnkliVQJURqB2x1\n>\n> grant_type: authorization_code\n>\n> redirect_uri: https://www.getpostman.com/oauth2/callback\n>\n> client_id: abc123\n>\n> client_secret: ssh-secret\n\nIf the correct credentials are not passed, the server returns with a `401 Unauthorized` response."
+                        "description": "This endpoint is used to get the `access_token`\n\nIt requires the following secret client credentials to be sent as part of the form body along with the `authentication code` obtained as part of the `redirect_uri` from the previous request.\n\n> code: xWnkliVQJURqB2x1\n>\n> grant_type: authorization_code\n>\n> redirect_uri: https://www.postman.com/oauth2/callback\n>\n> client_id: abc123\n>\n> client_secret: ssh-secret\n\nIf the correct credentials are not passed, the server returns with a `401 Unauthorized` response."
                     },
                     "responses": [
                         {
                             "name": "401",
                             "originalRequest": {
-                                "url": "https://echo.getpostman.com/oauth2/token",
+                                "url": "https://echo.postman.com/oauth2/token",
                                 "method": "POST",
                                 "headers": [],
                                 "body": {
@@ -1652,7 +1652,7 @@
                                         },
                                         {
                                             "key": "redirect_uri",
-                                            "value": "https://www.getpostman.com/oauth2/callback",
+                                            "value": "https://www.postman.com/oauth2/callback",
                                             "type": "text",
                                             "enabled": true
                                         },
@@ -1751,7 +1751,7 @@
                         {
                             "name": "200",
                             "originalRequest": {
-                                "url": "https://echo.getpostman.com/oauth2/token",
+                                "url": "https://echo.postman.com/oauth2/token",
                                 "method": "POST",
                                 "headers": [],
                                 "body": {
@@ -1771,7 +1771,7 @@
                                         },
                                         {
                                             "key": "redirect_uri",
-                                            "value": "https://www.getpostman.com/oauth2/callback",
+                                            "value": "https://www.postman.com/oauth2/callback",
                                             "type": "text",
                                             "enabled": true
                                         },
@@ -1887,7 +1887,7 @@
                         }
                     ],
                     "request": {
-                        "url": "https://echo.getpostman.com/oauth2/user/info",
+                        "url": "https://echo.postman.com/oauth2/user/info",
                         "method": "GET",
                         "headers": [
                             {
@@ -1913,7 +1913,7 @@
                                 },
                                 {
                                     "key": "redirect_uri",
-                                    "value": "https://www.getpostman.com/oauth2/callback",
+                                    "value": "https://www.postman.com/oauth2/callback",
                                     "type": "text",
                                     "enabled": true
                                 },
@@ -1937,7 +1937,7 @@
                         {
                             "name": "401",
                             "originalRequest": {
-                                "url": "https://echo.getpostman.com/oauth2/user/info",
+                                "url": "https://echo.postman.com/oauth2/user/info",
                                 "method": "GET",
                                 "headers": [
                                     {
@@ -1963,7 +1963,7 @@
                                         },
                                         {
                                             "key": "redirect_uri",
-                                            "value": "https://www.getpostman.com/oauth2/callback",
+                                            "value": "https://www.postman.com/oauth2/callback",
                                             "type": "text",
                                             "enabled": true
                                         },
@@ -2056,7 +2056,7 @@
                         {
                             "name": "200",
                             "originalRequest": {
-                                "url": "https://echo.getpostman.com/oauth2/user/info",
+                                "url": "https://echo.postman.com/oauth2/user/info",
                                 "method": "GET",
                                 "headers": [
                                     {
@@ -2082,7 +2082,7 @@
                                         },
                                         {
                                             "key": "redirect_uri",
-                                            "value": "https://www.getpostman.com/oauth2/callback",
+                                            "value": "https://www.postman.com/oauth2/callback",
                                             "type": "text",
                                             "enabled": true
                                         },

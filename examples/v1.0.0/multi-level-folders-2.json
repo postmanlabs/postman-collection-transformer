@@ -101,7 +101,7 @@
         {
             "id": "R1",
             "headers": "",
-            "url": "https://echo.getpostman.com/get",
+            "url": "https://echo.postman.com/get",
             "pathVariables": {},
             "preRequestScript": null,
             "method": "GET",
@@ -121,7 +121,7 @@
         {
             "id": "R2",
             "headers": "",
-            "url": "https://echo.getpostman.com/get",
+            "url": "https://echo.postman.com/get",
             "pathVariables": {},
             "preRequestScript": null,
             "method": "GET",
@@ -141,7 +141,7 @@
         {
             "id": "R3",
             "headers": "",
-            "url": "https://echo.getpostman.com/get",
+            "url": "https://echo.postman.com/get",
             "pathVariables": {},
             "preRequestScript": null,
             "method": "GET",
@@ -162,7 +162,7 @@
         {
             "id": "R4",
             "headers": "",
-            "url": "https://echo.getpostman.com/get",
+            "url": "https://echo.postman.com/get",
             "pathVariables": {},
             "preRequestScript": null,
             "method": "GET",
@@ -183,7 +183,7 @@
         {
             "id": "R5",
             "headers": "",
-            "url": "https://echo.getpostman.com/get",
+            "url": "https://echo.postman.com/get",
             "pathVariables": {},
             "preRequestScript": null,
             "method": "GET",
@@ -204,7 +204,7 @@
         {
             "id": "R6",
             "headers": "",
-            "url": "https://echo.getpostman.com/get",
+            "url": "https://echo.postman.com/get",
             "pathVariables": {},
             "preRequestScript": null,
             "method": "GET",
@@ -225,7 +225,7 @@
         {
             "id": "R7",
             "headers": "",
-            "url": "https://echo.getpostman.com/get",
+            "url": "https://echo.postman.com/get",
             "pathVariables": {},
             "preRequestScript": null,
             "method": "GET",
@@ -246,7 +246,7 @@
         {
             "id": "R8",
             "headers": "",
-            "url": "https://echo.getpostman.com/get",
+            "url": "https://echo.postman.com/get",
             "pathVariables": {},
             "preRequestScript": null,
             "method": "GET",
@@ -267,7 +267,7 @@
         {
             "id": "R9",
             "headers": "",
-            "url": "https://echo.getpostman.com/get",
+            "url": "https://echo.postman.com/get",
             "pathVariables": {},
             "preRequestScript": null,
             "method": "GET",
@@ -288,7 +288,7 @@
         {
             "id": "R10",
             "headers": "",
-            "url": "https://echo.getpostman.com/get",
+            "url": "https://echo.postman.com/get",
             "pathVariables": {},
             "preRequestScript": null,
             "method": "GET",
@@ -309,7 +309,7 @@
         {
             "id": "R11",
             "headers": "",
-            "url": "https://echo.getpostman.com/get",
+            "url": "https://echo.postman.com/get",
             "pathVariables": {},
             "preRequestScript": null,
             "method": "GET",
@@ -330,7 +330,7 @@
         {
             "id": "R12",
             "headers": "",
-            "url": "https://echo.getpostman.com/get",
+            "url": "https://echo.postman.com/get",
             "pathVariables": {},
             "preRequestScript": null,
             "method": "GET",
@@ -351,7 +351,7 @@
         {
             "id": "R13",
             "headers": "",
-            "url": "https://echo.getpostman.com/get",
+            "url": "https://echo.postman.com/get",
             "pathVariables": {},
             "preRequestScript": null,
             "method": "GET",
@@ -372,7 +372,7 @@
         {
             "id": "R14",
             "headers": "",
-            "url": "https://echo.getpostman.com/get",
+            "url": "https://echo.postman.com/get",
             "pathVariables": {},
             "preRequestScript": null,
             "method": "GET",

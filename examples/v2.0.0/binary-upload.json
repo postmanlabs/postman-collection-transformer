@@ -4,7 +4,7 @@
         "name": "asdasdasdasdasdasd",
         "_postman_id": "70fa9b38-91c0-7e67-0ead-b31622bdc152",
         "description": "Description",
-        "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+        "schema": "https://schema.postman.com/json/collection/v2.0.0/collection.json"
     },
     "item": [
         {
@@ -22,7 +22,7 @@
                 }
             ],
             "request": {
-                "url": "http://echo.getpostman.com/post",
+                "url": "http://echo.postman.com/post",
                 "method": "POST",
                 "header": [],
                 "body": {

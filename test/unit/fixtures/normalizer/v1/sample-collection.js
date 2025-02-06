@@ -13,7 +13,7 @@ module.exports = {
                 id: 'ca633394-d946-8e44-f4fe-e0470be8cb64',
                 name: 'Auth: Digest',
                 // eslint-disable-next-line max-len
-                description: 'Digest authentication protects an endpoint with a username and password without actually transmitting the password over network.\nOne has to apply a hash function (like MD5, etc) to the username and password before sending them over the network.\n\n> Username: `postman`\n>\n> Password: `password`\n\nUnlike Basic-Auth, authentication happens using two consecutive requests where the first request returns `401 Unauthorised` along with `WWW-Authenticate` header containing information that needs to be used to authenticate subsequent calls.\n\nTo know more about digest authentication, refer to the [Digest Access Authentication](https://en.wikipedia.org/wiki/Digest_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.getpostman.com/docs/helpers#digest-auth) elaborates how to use the same within the Postman app.',
+                description: 'Digest authentication protects an endpoint with a username and password without actually transmitting the password over network.\nOne has to apply a hash function (like MD5, etc) to the username and password before sending them over the network.\n\n> Username: `postman`\n>\n> Password: `password`\n\nUnlike Basic-Auth, authentication happens using two consecutive requests where the first request returns `401 Unauthorised` along with `WWW-Authenticate` header containing information that needs to be used to authenticate subsequent calls.\n\nTo know more about digest authentication, refer to the [Digest Access Authentication](https://en.wikipedia.org/wiki/Digest_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.postman.com/docs/helpers#digest-auth) elaborates how to use the same within the Postman app.',
                 order: [
                     'a0d5867c-dd87-3f01-9560-8095271e2644',
                     'eecb504e-1736-d34c-990a-b86d36f06ddd'
@@ -126,7 +126,7 @@ module.exports = {
                     },
                     {
                         key: 'redirect_uri',
-                        value: 'https://www.getpostman.com/oauth2/callback',
+                        value: 'https://www.postman.com/oauth2/callback',
                         type: 'text'
                     },
                     {
@@ -143,11 +143,11 @@ module.exports = {
                 rawModeData: null,
                 descriptionFormat: null,
                 // eslint-disable-next-line max-len
-                description: 'This endpoint is used to get the `access_token`\n\nIt requires the following secret client credentials to be sent as part of the form body along with the `authentication code` obtained as part of the `redirect_uri` from the previous request.\n\n> code: xWnkliVQJURqB2x1\n>\n> grant_type: authorization_code\n>\n> redirect_uri: https://www.getpostman.com/oauth2/callback\n>\n> client_id: abc123\n>\n> client_secret: ssh-secret\n\nIf the correct credentials are not passed, the server returns with a `401 Unauthorized` response.',
+                description: 'This endpoint is used to get the `access_token`\n\nIt requires the following secret client credentials to be sent as part of the form body along with the `authentication code` obtained as part of the `redirect_uri` from the previous request.\n\n> code: xWnkliVQJURqB2x1\n>\n> grant_type: authorization_code\n>\n> redirect_uri: https://www.postman.com/oauth2/callback\n>\n> client_id: abc123\n>\n> client_secret: ssh-secret\n\nIf the correct credentials are not passed, the server returns with a `401 Unauthorized` response.',
                 headers: '',
                 method: 'POST',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/oauth2/token',
+                url: 'https://echo.postman.com/oauth2/token',
                 preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\nvar body = JSON.parse(responseBody);\ntests[\'body has access token\'] = \'access_token\' in body;\ntests[\'body has bearer type\'] = \'token_type\' in body;',
@@ -164,7 +164,7 @@ module.exports = {
                             name: 'Access Token',
                             // eslint-disable-next-line max-len
                             description: 'Tries to get the access token by passing the clientId , clientSecret,\nauthentication code, redirect URI and grant type.\n',
-                            url: 'https://echo.getpostman.com/oauth2/token',
+                            url: 'https://echo.postman.com/oauth2/token',
                             pathVariables: {},
                             data: [
                                 {
@@ -179,7 +179,7 @@ module.exports = {
                                 },
                                 {
                                     key: 'redirect_uri',
-                                    value: 'https://www.getpostman.com/oauth2/callback',
+                                    value: 'https://www.postman.com/oauth2/callback',
                                     type: 'text'
                                 },
                                 {
@@ -279,7 +279,7 @@ module.exports = {
                         searchResultScrolledTo: '-1',
                         version: null,
                         // eslint-disable-next-line max-len
-                        requestObject: '{\'name\':\'Access Token\',\'description\':\'Tries to get the access token by passing the clientId , clientSecret,\\nauthentication code, redirect URI and grant type.\\n\',\'url\':\'https://echo.getpostman.com/oauth2/token\',\'pathVariables\':{},\'data\':[{\'key\':\'code\',\'value\':\'xWnkliVQJURqB2x1\',\'type\':\'text\',\'enabled\':true},{\'key\':\'grant_type\',\'value\':\'authorization_code\',\'type\':\'text\',\'enabled\':true},{\'key\':\'redirect_uri\',\'value\':\'https://www.getpostman.com/oauth2/callback\',\'type\':\'text\',\'enabled\':true},{\'key\':\'client_id\',\'value\':\'abc123\',\'type\':\'text\',\'enabled\':true},{\'key\':\'client_secret\',\'value\':\'ssh-secret\',\'type\':\'text\',\'enabled\':true}],\'headers\':\'\',\'dataMode\':\'params\',\'method\':\'POST\',\'tests\':\'tests[\\\'response code is 200\\\'] = responseCode.code === 200;\\nvar body = JSON.parse(responseBody);\\ntests[\\\'body has access token\\\'] = \\\'access_token\\\' in body;\\ntests[\\\'body has bearer type\\\'] = \\\'token_type\\\' in body;\',\'isFromCollection\':true,\'write\':true,\'version\':2}',
+                        requestObject: '{\'name\':\'Access Token\',\'description\':\'Tries to get the access token by passing the clientId , clientSecret,\\nauthentication code, redirect URI and grant type.\\n\',\'url\':\'https://echo.postman.com/oauth2/token\',\'pathVariables\':{},\'data\':[{\'key\':\'code\',\'value\':\'xWnkliVQJURqB2x1\',\'type\':\'text\',\'enabled\':true},{\'key\':\'grant_type\',\'value\':\'authorization_code\',\'type\':\'text\',\'enabled\':true},{\'key\':\'redirect_uri\',\'value\':\'https://www.postman.com/oauth2/callback\',\'type\':\'text\',\'enabled\':true},{\'key\':\'client_id\',\'value\':\'abc123\',\'type\':\'text\',\'enabled\':true},{\'key\':\'client_secret\',\'value\':\'ssh-secret\',\'type\':\'text\',\'enabled\':true}],\'headers\':\'\',\'dataMode\':\'params\',\'method\':\'POST\',\'tests\':\'tests[\\\'response code is 200\\\'] = responseCode.code === 200;\\nvar body = JSON.parse(responseBody);\\ntests[\\\'body has access token\\\'] = \\\'access_token\\\' in body;\\ntests[\\\'body has bearer type\\\'] = \\\'token_type\\\' in body;\',\'isFromCollection\':true,\'write\':true,\'version\':2}',
                         createdAt: '2015-11-02T13:11:08.000Z',
                         updatedAt: '2015-11-02T18:05:45.000Z',
                         write: true
@@ -293,7 +293,7 @@ module.exports = {
                             name: 'Access Token',
                             // eslint-disable-next-line max-len
                             description: 'Tries to get the access token by passing the clientId , clientSecret,\nauthentication code, redirect URI and grant type.\n',
-                            url: 'https://echo.getpostman.com/oauth2/token',
+                            url: 'https://echo.postman.com/oauth2/token',
                             pathVariables: {},
                             data: [
                                 {
@@ -308,7 +308,7 @@ module.exports = {
                                 },
                                 {
                                     key: 'redirect_uri',
-                                    value: 'https://www.getpostman.com/oauth2/callback',
+                                    value: 'https://www.postman.com/oauth2/callback',
                                     type: 'text'
                                 },
                                 {
@@ -414,7 +414,7 @@ module.exports = {
                         searchResultScrolledTo: '-1',
                         version: null,
                         // eslint-disable-next-line max-len
-                        requestObject: '{\'name\':\'Access Token\',\'description\':\'Tries to get the access token by passing the clientId , clientSecret,\\nauthentication code, redirect URI and grant type.\\n\',\'url\':\'https://echo.getpostman.com/oauth2/token\',\'pathVariables\':{},\'data\':[{\'key\':\'code\',\'value\':\'xWnkliVQJURqB2x1\',\'type\':\'text\',\'enabled\':true},{\'key\':\'grant_type\',\'value\':\'authorization_code\',\'type\':\'text\',\'enabled\':true},{\'key\':\'redirect_uri\',\'value\':\'https://www.getpostman.com/oauth2/callback\',\'type\':\'text\',\'enabled\':true},{\'key\':\'client_id\',\'value\':\'abc123\',\'type\':\'text\',\'enabled\':true},{\'key\':\'client_secret\',\'value\':\'ssh-secret\',\'type\':\'text\',\'enabled\':true}],\'headers\':\'\',\'dataMode\':\'params\',\'method\':\'POST\',\'tests\':\'tests[\\\'response code is 200\\\'] = responseCode.code === 200;\\nvar body = JSON.parse(responseBody);\\ntests[\\\'body has access token\\\'] = \\\'access_token\\\' in body;\\ntests[\\\'body has bearer type\\\'] = \\\'token_type\\\' in body;\',\'isFromCollection\':true,\'write\':true,\'version\':2}',
+                        requestObject: '{\'name\':\'Access Token\',\'description\':\'Tries to get the access token by passing the clientId , clientSecret,\\nauthentication code, redirect URI and grant type.\\n\',\'url\':\'https://echo.postman.com/oauth2/token\',\'pathVariables\':{},\'data\':[{\'key\':\'code\',\'value\':\'xWnkliVQJURqB2x1\',\'type\':\'text\',\'enabled\':true},{\'key\':\'grant_type\',\'value\':\'authorization_code\',\'type\':\'text\',\'enabled\':true},{\'key\':\'redirect_uri\',\'value\':\'https://www.postman.com/oauth2/callback\',\'type\':\'text\',\'enabled\':true},{\'key\':\'client_id\',\'value\':\'abc123\',\'type\':\'text\',\'enabled\':true},{\'key\':\'client_secret\',\'value\':\'ssh-secret\',\'type\':\'text\',\'enabled\':true}],\'headers\':\'\',\'dataMode\':\'params\',\'method\':\'POST\',\'tests\':\'tests[\\\'response code is 200\\\'] = responseCode.code === 200;\\nvar body = JSON.parse(responseBody);\\ntests[\\\'body has access token\\\'] = \\\'access_token\\\' in body;\\ntests[\\\'body has bearer type\\\'] = \\\'token_type\\\' in body;\',\'isFromCollection\':true,\'write\':true,\'version\':2}',
                         createdAt: '2015-11-02T13:11:08.000Z',
                         updatedAt: '2015-11-02T18:05:45.000Z',
                         write: true
@@ -433,7 +433,7 @@ module.exports = {
                 headers: '',
                 method: 'PUT',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/put',
+                url: 'https://echo.postman.com/put',
                 preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'var data;\n\ntry { responseJSON = JSON.parse(responseBody); }\ncatch (e) {}\n\ntests[\'Body contains files\'] = responseBody.has(\'files\');\ntests[\'Body contains args\'] = responseBody.has(\'args\');\ntests[\'Body contains form\'] = responseBody.has(\'form\');\ntests[\'Body contains headers\'] = responseBody.has(\'headers\');\ntests[\'Body contains url\'] = responseBody.has(\'url\');\n\n\n\ntests[\'Data has been passed\'] = (responseJSON && responseJSON.data && responseJSON.data.length)',
@@ -456,7 +456,7 @@ module.exports = {
                 headers: '',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/cookies',
+                url: 'https://echo.postman.com/cookies',
                 preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'Status code is 200\'] = responseCode.code === 200;\ntests[\'Body contains cookies\'] = responseBody.has(\'cookies\');\nvar body = JSON.parse(responseBody);\ntests[\'Body contains cookie foo2\'] = \'foo2\' in body.cookies;',
@@ -575,7 +575,7 @@ module.exports = {
                     },
                     {
                         key: 'redirect_uri',
-                        value: 'https://www.getpostman.com/oauth2/callback',
+                        value: 'https://www.postman.com/oauth2/callback',
                         type: 'text'
                     },
                     {
@@ -596,7 +596,7 @@ module.exports = {
                 headers: '',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/get?test=123',
+                url: 'https://echo.postman.com/get?test=123',
                 preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'Body contains headers\'] = responseBody.has(\'headers\');\ntests[\'Body contains args\'] = responseBody.has(\'args\');\ntests[\'Body contains url\'] = responseBody.has(\'url\');\n\nvar data = JSON.parse(responseBody)\n\ntests[\'Args key contains argument passed as url parameter\'] = \'test\' in data.args',
@@ -617,7 +617,7 @@ module.exports = {
                 headers: '',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/cookies/delete?foo1&foo2',
+                url: 'https://echo.postman.com/cookies/delete?foo1&foo2',
                 preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'Status code is 200\'] = responseCode.code === 200;\ntests[\'Body contains key cookies\'] = responseBody.has(\'cookies\');\nvar body = JSON.parse(responseBody);\ntests[\'Body contains cookie foo2\'] = \'foo2\' in body.cookies;\ntests[\'Body does not contain cookie foo2\'] = !(\'foo1\' in body.cookies);',
@@ -737,7 +737,7 @@ module.exports = {
                 headers: '',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/delay/3',
+                url: 'https://echo.postman.com/delay/3',
                 preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\ntests[\'response body has key delay\'] = \'delay\' in data;',
@@ -754,11 +754,11 @@ module.exports = {
                 rawModeData: null,
                 descriptionFormat: null,
                 // eslint-disable-next-line max-len
-                description: 'A `GET` request to this endpoint returns the list of all request headers as part of the response JSON.\nIn Postman, sending your own set of headers through the [Headers tab](https://www.getpostman.com/docs/requests#headers) will reveal the headers as part of the response.',
+                description: 'A `GET` request to this endpoint returns the list of all request headers as part of the response JSON.\nIn Postman, sending your own set of headers through the [Headers tab](https://www.postman.com/docs/requests#headers) will reveal the headers as part of the response.',
                 headers: '[object Object]',
                 method: 'GET',
                 pathVariables: [],
-                url: 'https://echo.getpostman.com/headers',
+                url: 'https://echo.postman.com/headers',
                 preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'Body contains headers\'] = responseBody.has(\'headers\');\n\nvar data = JSON.parse(responseBody).headers;\n\ntests[\'Header contains host\'] = \'host\' in data;\ntests[\'Header contains test parameter sent as part of request header\'] = \'my-sample-header\' in data;',
@@ -784,7 +784,7 @@ module.exports = {
                     },
                     {
                         key: 'redirect_uri',
-                        value: 'https://www.getpostman.com/oauth2/callback',
+                        value: 'https://www.postman.com/oauth2/callback',
                         type: 'text'
                     },
                     {
@@ -805,7 +805,7 @@ module.exports = {
                 headers: '',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/response-headers?Content-Type=text/html&Server=apibin',
+                url: 'https://echo.postman.com/response-headers?Content-Type=text/html&Server=apibin',
                 preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'Body contains Content-Type\'] = responseBody.has(\'Content-Type\');\ntests[\'Body contains Server\'] = responseBody.has(\'Server\');',
@@ -825,7 +825,7 @@ module.exports = {
                 headers: '',
                 method: 'PATCH',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/patch',
+                url: 'https://echo.postman.com/patch',
                 preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'Body contains files\'] = responseBody.has(\'files\');\ntests[\'Body contains args\'] = responseBody.has(\'args\');\ntests[\'Body contains form\'] = responseBody.has(\'form\');\ntests[\'Body contains headers\'] = responseBody.has(\'headers\');\ntests[\'Body contains url\'] = responseBody.has(\'url\');\n\nvar data = JSON.parse(responseBody)\n\ntests[\'form key has data passed in as form-data\'] = \'test\' in data.form',
@@ -847,7 +847,7 @@ module.exports = {
                 headers: 'Content-Type: text/plain\n',
                 method: 'POST',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/post',
+                url: 'https://echo.postman.com/post',
                 preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'var responseJSON;\n\ntry { responseJSON = JSON.parse(responseBody); }\ncatch (e) { }\n\n\ntests[\'response has data\'] = responseJSON && responseJSON.data && (responseJSON.data.length === 256);\ntests[\'content-type equals text/plain\'] = responseJSON && responseJSON.headers && (responseJSON.headers[\'content-type\'] === \'text/plain\');',
@@ -876,7 +876,7 @@ module.exports = {
                 headers: '',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/status/200',
+                url: 'https://echo.postman.com/status/200',
                 preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'Body contains status\'] = responseBody.has(\'status\');\n\nvar data = JSON.parse(responseBody);\n\ntests[\'Status equals 200\'] = data.status === 200;\n',
@@ -897,7 +897,7 @@ module.exports = {
                 headers: '',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/deflate',
+                url: 'https://echo.postman.com/deflate',
                 preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\n\ntry {\n    var data = JSON.parse(responseBody);\n    tests[\'Body contains deflated\'] = responseBody.has(\'deflated\');\n    tests[\'Body contains headers\'] = responseBody.has(\'headers\');\n    tests[\'Body contains method\'] = responseBody.has(\'method\');\n}\ncatch(e) {\n    console.log(\'Cannot parse response,probably not a JSON\');\n}\n',
@@ -918,7 +918,7 @@ module.exports = {
                 headers: '',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/cookies/set?foo1=bar1&foo2=bar2',
+                url: 'https://echo.postman.com/cookies/set?foo1=bar1&foo2=bar2',
                 preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'Status code is 200\'] = responseCode.code === 200;\ntests[\'Body contains cookies\'] = responseBody.has(\'cookies\');\nvar body = JSON.parse(responseBody);\ntests[\'Body contains cookie foo1\'] = \'foo1\' in body.cookies;\ntests[\'Body contains cookie foo2\'] = \'foo2\' in body.cookies;\n\n',
@@ -1032,7 +1032,7 @@ module.exports = {
                 headers: '',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/stream/10',
+                url: 'https://echo.postman.com/stream/10',
                 preRequestScript: '',
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\n\n',
                 currentHelper: null,
@@ -1057,7 +1057,7 @@ module.exports = {
                     },
                     {
                         key: 'redirect_uri',
-                        value: 'https://www.getpostman.com/oauth2/callback',
+                        value: 'https://www.postman.com/oauth2/callback',
                         type: 'text'
                     },
                     {
@@ -1074,11 +1074,11 @@ module.exports = {
                 rawModeData: null,
                 descriptionFormat: null,
                 // eslint-disable-next-line max-len
-                description: 'Performing a simple `GET` request to this endpoint returns status code `401 Unauthorized` with `WWW-Authenticate` header containing information to successfully authenticate subsequent requests.\nThe `WWW-Authenticate` header must be processed to extract `realm` and `nonce` values to hash subsequent requests.\n\nWhen this request is executed within Postman, the script attached with this request does the hard work of extracting realm and nonce from the header and set it as [global variables](https://www.getpostman.com/docs/environments#global-variables) named `echo_digest_nonce` and `echo_digest_realm`.\nThese variables are re-used in subsequent request for seamless integration of the two requests.',
+                description: 'Performing a simple `GET` request to this endpoint returns status code `401 Unauthorized` with `WWW-Authenticate` header containing information to successfully authenticate subsequent requests.\nThe `WWW-Authenticate` header must be processed to extract `realm` and `nonce` values to hash subsequent requests.\n\nWhen this request is executed within Postman, the script attached with this request does the hard work of extracting realm and nonce from the header and set it as [global variables](https://www.postman.com/docs/environments#global-variables) named `echo_digest_nonce` and `echo_digest_realm`.\nThese variables are re-used in subsequent request for seamless integration of the two requests.',
                 headers: '',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/digest-auth',
+                url: 'https://echo.postman.com/digest-auth',
                 preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 401\'] = responseCode.code === 401;\ntests[\'response has WWW-Authenticate header\'] = (postman.getResponseHeader(\'WWW-Authenticate\'));\n\nvar authenticateHeader = postman.getResponseHeader(\'WWW-Authenticate\'),\n    realmStart = authenticateHeader.indexOf(\'\'\',authenticateHeader.indexOf(\'realm\')) + 1 ,\n    realmEnd = authenticateHeader.indexOf(\'\'\',realmStart),\n    realm = authenticateHeader.slice(realmStart,realmEnd),\n    nonceStart = authenticateHeader.indexOf(\'\'\',authenticateHeader.indexOf(\'nonce\')) + 1,\n    nonceEnd = authenticateHeader.indexOf(\'\'\',nonceStart),\n    nonce = authenticateHeader.slice(nonceStart,nonceEnd);\n    \npostman.setGlobalVariable(\'echo_digest_realm\', realm);\npostman.setGlobalVariable(\'echo_digest_nonce\', nonce);',
@@ -1099,7 +1099,7 @@ module.exports = {
                 headers: '',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/encoding/utf8',
+                url: 'https://echo.postman.com/encoding/utf8',
                 preRequestScript: '',
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;',
                 currentHelper: null,
@@ -1118,7 +1118,7 @@ module.exports = {
                 headers: '',
                 method: 'DELETE',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/delete',
+                url: 'https://echo.postman.com/delete',
                 preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'Body contains files\'] = responseBody.has(\'files\');\ntests[\'Body contains args\'] = responseBody.has(\'args\');\ntests[\'Body contains form\'] = responseBody.has(\'form\');\ntests[\'Body contains headers\'] = responseBody.has(\'headers\');\ntests[\'Body contains url\'] = responseBody.has(\'url\');\n\nvar data = JSON.parse(responseBody)\n\ntests[\'form key has data passed in as form-data\'] = \'test\' in data.form',
@@ -1146,7 +1146,7 @@ module.exports = {
                     },
                     {
                         key: 'redirect_uri',
-                        value: 'https://www.getpostman.com/oauth2/callback',
+                        value: 'https://www.postman.com/oauth2/callback',
                         type: 'text'
                     },
                     {
@@ -1168,7 +1168,7 @@ module.exports = {
                 headers: 'Authorization: Bearer vp7jxTwqgczoFHs0uIdOvv4VdBWmvCkbVbNBCuaTQ3JZplPS40BaNV47HD1zt7MztQPILJvqYsOs6PfJpFYBgwbaE3CVEKOj\n',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/oauth2/user/info',
+                url: 'https://echo.postman.com/oauth2/user/info',
                 preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 401\'] = (responseCode.code === 200);\nvar body = JSON.parse(responseBody);\ntests[\'body has user_id\'] = \'user_id\' in body;\ntests[\'body has name\'] = \'name\' in body;',
@@ -1368,7 +1368,7 @@ module.exports = {
                     },
                     {
                         key: 'redirect_uri',
-                        value: 'https://www.getpostman.com/oauth2/callback',
+                        value: 'https://www.postman.com/oauth2/callback',
                         type: 'text'
                     },
                     {
@@ -1390,7 +1390,7 @@ module.exports = {
                 headers: 'Authorization: OAuth oauth_consumer_key=\'RKCGzna7bv9YD57c\',oauth_signature_method=\'HMAC-SHA1\',oauth_timestamp=\'1442394747\',oauth_nonce=\'UIGipk\',oauth_version=\'1.0\',oauth_signature=\'CaeyGPr2mns1WCq4Cpm5aLvz6Gs=\'\n',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/oauth1',
+                url: 'https://echo.postman.com/oauth1',
                 preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\nvar body = JSON.parse(responseBody);\ntests[\'Body contains status pass\'] = body[\'status\'] == \'pass\'',
@@ -1416,7 +1416,7 @@ module.exports = {
                     },
                     {
                         key: 'redirect_uri',
-                        value: 'https://www.getpostman.com/oauth2/callback',
+                        value: 'https://www.postman.com/oauth2/callback',
                         type: 'text'
                     },
                     {
@@ -1437,7 +1437,7 @@ module.exports = {
                 headers: '',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/oauth2/authtoken?client_id=abc123&response_type=code',
+                url: 'https://echo.postman.com/oauth2/authtoken?client_id=abc123&response_type=code',
                 preRequestScript: '',
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;',
                 currentHelper: null,
@@ -1555,7 +1555,7 @@ module.exports = {
                     },
                     {
                         key: 'redirect_uri',
-                        value: 'https://www.getpostman.com/oauth2/callback',
+                        value: 'https://www.postman.com/oauth2/callback',
                         type: 'text'
                     },
                     {
@@ -1576,7 +1576,7 @@ module.exports = {
                 headers: '',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/gzip',
+                url: 'https://echo.postman.com/gzip',
                 preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\n\ntry {\n    var data = JSON.parse(responseBody);\n    tests[\'Body contains gzipped\'] = responseBody.has(\'gzipped\');\n    tests[\'Body contains headers\'] = responseBody.has(\'headers\');\n    tests[\'Body contains method\'] = responseBody.has(\'method\');\n}\ncatch(e) {\n    console.log(\'Cannot parse response,probably not a JSON\');\n}',
@@ -1593,12 +1593,12 @@ module.exports = {
                 rawModeData: null,
                 descriptionFormat: null,
                 // eslint-disable-next-line max-len
-                description: 'This endpoint sends a hashed Digest Authorization header to gain access to a valid `200 Ok` response code. In Postman, it uses the stored [global variables](https://www.getpostman.com/docs/environments#gloval-variables), `echo_digest_realm` and `echo_digest_nonce`, to generate the hashed authorisation header.\n\nWithin Postman, for this request to successfully authenticate, running the previous request \'DigestAuth Request\' stores the relevant information within the global variables.',
+                description: 'This endpoint sends a hashed Digest Authorization header to gain access to a valid `200 Ok` response code. In Postman, it uses the stored [global variables](https://www.postman.com/docs/environments#gloval-variables), `echo_digest_realm` and `echo_digest_nonce`, to generate the hashed authorisation header.\n\nWithin Postman, for this request to successfully authenticate, running the previous request \'DigestAuth Request\' stores the relevant information within the global variables.',
                 // eslint-disable-next-line max-len
                 headers: 'Authorization: Digest username=\'postman\', realm=\'Users\', nonce=\'ni1LiL0O37PRRhofWdCLmwFsnEtH1lew\', uri=\'/digest-auth\', response=\'254679099562cf07df9b6f5d8d15db44\', opaque=\'\'\n',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/digest-auth',
+                url: 'https://echo.postman.com/digest-auth',
                 preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\ntests[\'body contains authenticated\'] = responseBody.has(\'authenticated\');',
@@ -1722,11 +1722,11 @@ module.exports = {
                 rawModeData: null,
                 descriptionFormat: null,
                 // eslint-disable-next-line max-len
-                description: 'This endpoint simulates a **basic-auth** protected endpoint. \nThe endpoint accepts a default username and password and returns a status code of `200 ok` only if the same is provided. \nOtherwise it will return a status code `401 unauthorized`.\n\n> Username: `postman`\n> \n> Password: `password`\n\nTo use this endpoint, send a request with the header `Authorization: Basic cG9zdG1hbjpwYXNzd29yZA==`. \nThe cryptic latter half of the header value is a base64 encoded concatenation of the default username and password. \nUsing Postman, to send this request, you can simply fill in the username and password in the \'Authorization\' tab and Postman will do the rest for you.\n\nTo know more about basic authentication, refer to the [Basic Access Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.getpostman.com/docs/helpers#basic-auth) elaborates how to use the same within the Postman app.',
+                description: 'This endpoint simulates a **basic-auth** protected endpoint. \nThe endpoint accepts a default username and password and returns a status code of `200 ok` only if the same is provided. \nOtherwise it will return a status code `401 unauthorized`.\n\n> Username: `postman`\n> \n> Password: `password`\n\nTo use this endpoint, send a request with the header `Authorization: Basic cG9zdG1hbjpwYXNzd29yZA==`. \nThe cryptic latter half of the header value is a base64 encoded concatenation of the default username and password. \nUsing Postman, to send this request, you can simply fill in the username and password in the \'Authorization\' tab and Postman will do the rest for you.\n\nTo know more about basic authentication, refer to the [Basic Access Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.postman.com/docs/helpers#basic-auth) elaborates how to use the same within the Postman app.',
                 headers: 'Authorization: Basic cG9zdG1hbjpwYXNzd29yZA==\n',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/basic-auth',
+                url: 'https://echo.postman.com/basic-auth',
                 preRequestScript: '',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\ntests[\'Body contains authenticated\'] = responseBody.has(\'authenticated\');',
@@ -1935,7 +1935,7 @@ module.exports = {
                 id: 'ca633394-d946-8e44-f4fe-e0470be8cb64',
                 name: 'Auth: Digest',
                 // eslint-disable-next-line max-len
-                description: 'Digest authentication protects an endpoint with a username and password without actually transmitting the password over network.\nOne has to apply a hash function (like MD5, etc) to the username and password before sending them over the network.\n\n> Username: `postman`\n>\n> Password: `password`\n\nUnlike Basic-Auth, authentication happens using two consecutive requests where the first request returns `401 Unauthorised` along with `WWW-Authenticate` header containing information that needs to be used to authenticate subsequent calls.\n\nTo know more about digest authentication, refer to the [Digest Access Authentication](https://en.wikipedia.org/wiki/Digest_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.getpostman.com/docs/helpers#digest-auth) elaborates how to use the same within the Postman app.',
+                description: 'Digest authentication protects an endpoint with a username and password without actually transmitting the password over network.\nOne has to apply a hash function (like MD5, etc) to the username and password before sending them over the network.\n\n> Username: `postman`\n>\n> Password: `password`\n\nUnlike Basic-Auth, authentication happens using two consecutive requests where the first request returns `401 Unauthorised` along with `WWW-Authenticate` header containing information that needs to be used to authenticate subsequent calls.\n\nTo know more about digest authentication, refer to the [Digest Access Authentication](https://en.wikipedia.org/wiki/Digest_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.postman.com/docs/helpers#digest-auth) elaborates how to use the same within the Postman app.',
                 order: [
                     'a0d5867c-dd87-3f01-9560-8095271e2644',
                     'eecb504e-1736-d34c-990a-b86d36f06ddd'
@@ -2044,7 +2044,7 @@ module.exports = {
                     },
                     {
                         key: 'redirect_uri',
-                        value: 'https://www.getpostman.com/oauth2/callback',
+                        value: 'https://www.postman.com/oauth2/callback',
                         type: 'text'
                     },
                     {
@@ -2075,11 +2075,11 @@ module.exports = {
                     }
                 ],
                 // eslint-disable-next-line max-len
-                description: 'This endpoint is used to get the `access_token`\n\nIt requires the following secret client credentials to be sent as part of the form body along with the `authentication code` obtained as part of the `redirect_uri` from the previous request.\n\n> code: xWnkliVQJURqB2x1\n>\n> grant_type: authorization_code\n>\n> redirect_uri: https://www.getpostman.com/oauth2/callback\n>\n> client_id: abc123\n>\n> client_secret: ssh-secret\n\nIf the correct credentials are not passed, the server returns with a `401 Unauthorized` response.',
+                description: 'This endpoint is used to get the `access_token`\n\nIt requires the following secret client credentials to be sent as part of the form body along with the `authentication code` obtained as part of the `redirect_uri` from the previous request.\n\n> code: xWnkliVQJURqB2x1\n>\n> grant_type: authorization_code\n>\n> redirect_uri: https://www.postman.com/oauth2/callback\n>\n> client_id: abc123\n>\n> client_secret: ssh-secret\n\nIf the correct credentials are not passed, the server returns with a `401 Unauthorized` response.',
                 headers: '',
                 method: 'POST',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/oauth2/token',
+                url: 'https://echo.postman.com/oauth2/token',
                 currentHelper: null,
                 helperAttributes: null,
                 auth: null,
@@ -2110,7 +2110,7 @@ module.exports = {
                                     }
                                 }
                             ],
-                            url: 'https://echo.getpostman.com/oauth2/token',
+                            url: 'https://echo.postman.com/oauth2/token',
                             pathVariables: {},
                             data: [
                                 {
@@ -2125,7 +2125,7 @@ module.exports = {
                                 },
                                 {
                                     key: 'redirect_uri',
-                                    value: 'https://www.getpostman.com/oauth2/callback',
+                                    value: 'https://www.postman.com/oauth2/callback',
                                     type: 'text'
                                 },
                                 {
@@ -2224,7 +2224,7 @@ module.exports = {
                         searchResultScrolledTo: '-1',
                         version: null,
                         // eslint-disable-next-line max-len
-                        requestObject: '{\'name\':\'Access Token\',\'description\':\'Tries to get the access token by passing the clientId , clientSecret,\\nauthentication code, redirect URI and grant type.\\n\',\'url\':\'https://echo.getpostman.com/oauth2/token\',\'pathVariables\':{},\'data\':[{\'key\':\'code\',\'value\':\'xWnkliVQJURqB2x1\',\'type\':\'text\',\'enabled\':true},{\'key\':\'grant_type\',\'value\':\'authorization_code\',\'type\':\'text\',\'enabled\':true},{\'key\':\'redirect_uri\',\'value\':\'https://www.getpostman.com/oauth2/callback\',\'type\':\'text\',\'enabled\':true},{\'key\':\'client_id\',\'value\':\'abc123\',\'type\':\'text\',\'enabled\':true},{\'key\':\'client_secret\',\'value\':\'ssh-secret\',\'type\':\'text\',\'enabled\':true}],\'headers\':\'\',\'dataMode\':\'params\',\'method\':\'POST\',\'tests\':\'tests[\\\'response code is 200\\\'] = responseCode.code === 200;\\nvar body = JSON.parse(responseBody);\\ntests[\\\'body has access token\\\'] = \\\'access_token\\\' in body;\\ntests[\\\'body has bearer type\\\'] = \\\'token_type\\\' in body;\',\'isFromCollection\':true,\'write\':true,\'version\':2}',
+                        requestObject: '{\'name\':\'Access Token\',\'description\':\'Tries to get the access token by passing the clientId , clientSecret,\\nauthentication code, redirect URI and grant type.\\n\',\'url\':\'https://echo.postman.com/oauth2/token\',\'pathVariables\':{},\'data\':[{\'key\':\'code\',\'value\':\'xWnkliVQJURqB2x1\',\'type\':\'text\',\'enabled\':true},{\'key\':\'grant_type\',\'value\':\'authorization_code\',\'type\':\'text\',\'enabled\':true},{\'key\':\'redirect_uri\',\'value\':\'https://www.postman.com/oauth2/callback\',\'type\':\'text\',\'enabled\':true},{\'key\':\'client_id\',\'value\':\'abc123\',\'type\':\'text\',\'enabled\':true},{\'key\':\'client_secret\',\'value\':\'ssh-secret\',\'type\':\'text\',\'enabled\':true}],\'headers\':\'\',\'dataMode\':\'params\',\'method\':\'POST\',\'tests\':\'tests[\\\'response code is 200\\\'] = responseCode.code === 200;\\nvar body = JSON.parse(responseBody);\\ntests[\\\'body has access token\\\'] = \\\'access_token\\\' in body;\\ntests[\\\'body has bearer type\\\'] = \\\'token_type\\\' in body;\',\'isFromCollection\':true,\'write\':true,\'version\':2}',
                         createdAt: '2015-11-02T13:11:08.000Z',
                         updatedAt: '2015-11-02T18:05:45.000Z',
                         write: true
@@ -2238,7 +2238,7 @@ module.exports = {
                             name: 'Access Token',
                             // eslint-disable-next-line max-len
                             description: 'Tries to get the access token by passing the clientId , clientSecret,\nauthentication code, redirect URI and grant type.\n',
-                            url: 'https://echo.getpostman.com/oauth2/token',
+                            url: 'https://echo.postman.com/oauth2/token',
                             pathVariables: {},
                             data: [
                                 {
@@ -2253,7 +2253,7 @@ module.exports = {
                                 },
                                 {
                                     key: 'redirect_uri',
-                                    value: 'https://www.getpostman.com/oauth2/callback',
+                                    value: 'https://www.postman.com/oauth2/callback',
                                     type: 'text'
                                 },
                                 {
@@ -2372,7 +2372,7 @@ module.exports = {
                         searchResultScrolledTo: '-1',
                         version: null,
                         // eslint-disable-next-line max-len
-                        requestObject: '{\'name\':\'Access Token\',\'description\':\'Tries to get the access token by passing the clientId , clientSecret,\\nauthentication code, redirect URI and grant type.\\n\',\'url\':\'https://echo.getpostman.com/oauth2/token\',\'pathVariables\':{},\'data\':[{\'key\':\'code\',\'value\':\'xWnkliVQJURqB2x1\',\'type\':\'text\',\'enabled\':true},{\'key\':\'grant_type\',\'value\':\'authorization_code\',\'type\':\'text\',\'enabled\':true},{\'key\':\'redirect_uri\',\'value\':\'https://www.getpostman.com/oauth2/callback\',\'type\':\'text\',\'enabled\':true},{\'key\':\'client_id\',\'value\':\'abc123\',\'type\':\'text\',\'enabled\':true},{\'key\':\'client_secret\',\'value\':\'ssh-secret\',\'type\':\'text\',\'enabled\':true}],\'headers\':\'\',\'dataMode\':\'params\',\'method\':\'POST\',\'tests\':\'tests[\\\'response code is 200\\\'] = responseCode.code === 200;\\nvar body = JSON.parse(responseBody);\\ntests[\\\'body has access token\\\'] = \\\'access_token\\\' in body;\\ntests[\\\'body has bearer type\\\'] = \\\'token_type\\\' in body;\',\'isFromCollection\':true,\'write\':true,\'version\':2}',
+                        requestObject: '{\'name\':\'Access Token\',\'description\':\'Tries to get the access token by passing the clientId , clientSecret,\\nauthentication code, redirect URI and grant type.\\n\',\'url\':\'https://echo.postman.com/oauth2/token\',\'pathVariables\':{},\'data\':[{\'key\':\'code\',\'value\':\'xWnkliVQJURqB2x1\',\'type\':\'text\',\'enabled\':true},{\'key\':\'grant_type\',\'value\':\'authorization_code\',\'type\':\'text\',\'enabled\':true},{\'key\':\'redirect_uri\',\'value\':\'https://www.postman.com/oauth2/callback\',\'type\':\'text\',\'enabled\':true},{\'key\':\'client_id\',\'value\':\'abc123\',\'type\':\'text\',\'enabled\':true},{\'key\':\'client_secret\',\'value\':\'ssh-secret\',\'type\':\'text\',\'enabled\':true}],\'headers\':\'\',\'dataMode\':\'params\',\'method\':\'POST\',\'tests\':\'tests[\\\'response code is 200\\\'] = responseCode.code === 200;\\nvar body = JSON.parse(responseBody);\\ntests[\\\'body has access token\\\'] = \\\'access_token\\\' in body;\\ntests[\\\'body has bearer type\\\'] = \\\'token_type\\\' in body;\',\'isFromCollection\':true,\'write\':true,\'version\':2}',
                         createdAt: '2015-11-02T13:11:08.000Z',
                         updatedAt: '2015-11-02T18:05:45.000Z',
                         write: true
@@ -2420,7 +2420,7 @@ module.exports = {
                 auth: null,
                 currentHelper: null,
                 helperAttributes: null,
-                url: 'https://echo.getpostman.com/put',
+                url: 'https://echo.postman.com/put',
                 // eslint-disable-next-line max-len
                 tests: 'var data;\n\ntry { responseJSON = JSON.parse(responseBody); }\ncatch (e) {}\n\ntests[\'Body contains files\'] = responseBody.has(\'files\');\ntests[\'Body contains args\'] = responseBody.has(\'args\');\ntests[\'Body contains form\'] = responseBody.has(\'form\');\ntests[\'Body contains headers\'] = responseBody.has(\'headers\');\ntests[\'Body contains url\'] = responseBody.has(\'url\');\n\n\n\ntests[\'Data has been passed\'] = (responseJSON && responseJSON.data && responseJSON.data.length)',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
@@ -2458,7 +2458,7 @@ module.exports = {
                 headers: '',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/cookies',
+                url: 'https://echo.postman.com/cookies',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'Status code is 200\'] = responseCode.code === 200;\ntests[\'Body contains cookies\'] = responseBody.has(\'cookies\');\nvar body = JSON.parse(responseBody);\ntests[\'Body contains cookie foo2\'] = \'foo2\' in body.cookies;',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
@@ -2574,7 +2574,7 @@ module.exports = {
                     },
                     {
                         key: 'redirect_uri',
-                        value: 'https://www.getpostman.com/oauth2/callback',
+                        value: 'https://www.postman.com/oauth2/callback',
                         type: 'text'
                     },
                     {
@@ -2615,7 +2615,7 @@ module.exports = {
                 headers: '',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/get?test=123',
+                url: 'https://echo.postman.com/get?test=123',
                 queryParams: [{
                     key: 'test',
                     value: '123'
@@ -2656,7 +2656,7 @@ module.exports = {
                 headers: '',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/cookies/delete?foo1&foo2',
+                url: 'https://echo.postman.com/cookies/delete?foo1&foo2',
                 queryParams: [{
                     key: 'foo1',
                     value: null
@@ -2798,7 +2798,7 @@ module.exports = {
                 headers: '',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/delay/3',
+                url: 'https://echo.postman.com/delay/3',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\ntests[\'response body has key delay\'] = \'delay\' in data;',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
@@ -2833,12 +2833,12 @@ module.exports = {
                 currentHelper: null,
                 helperAttributes: null,
                 // eslint-disable-next-line max-len
-                description: 'A `GET` request to this endpoint returns the list of all request headers as part of the response JSON.\nIn Postman, sending your own set of headers through the [Headers tab](https://www.getpostman.com/docs/requests#headers) will reveal the headers as part of the response.',
+                description: 'A `GET` request to this endpoint returns the list of all request headers as part of the response JSON.\nIn Postman, sending your own set of headers through the [Headers tab](https://www.postman.com/docs/requests#headers) will reveal the headers as part of the response.',
                 headers: '[object Object]',
                 headerData: [],
                 method: 'GET',
                 pathVariables: [],
-                url: 'https://echo.getpostman.com/headers',
+                url: 'https://echo.postman.com/headers',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'Body contains headers\'] = responseBody.has(\'headers\');\n\nvar data = JSON.parse(responseBody).headers;\n\ntests[\'Header contains host\'] = \'host\' in data;\ntests[\'Header contains test parameter sent as part of request header\'] = \'my-sample-header\' in data;',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
@@ -2862,7 +2862,7 @@ module.exports = {
                     },
                     {
                         key: 'redirect_uri',
-                        value: 'https://www.getpostman.com/oauth2/callback',
+                        value: 'https://www.postman.com/oauth2/callback',
                         type: 'text'
                     },
                     {
@@ -2898,7 +2898,7 @@ module.exports = {
                 headers: '',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/response-headers?Content-Type=text/html&Server=apibin',
+                url: 'https://echo.postman.com/response-headers?Content-Type=text/html&Server=apibin',
                 queryParams: [{
                     key: 'Content-Type',
                     value: 'text/html'
@@ -2945,7 +2945,7 @@ module.exports = {
                 headers: '',
                 method: 'PATCH',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/patch',
+                url: 'https://echo.postman.com/patch',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'Body contains files\'] = responseBody.has(\'files\');\ntests[\'Body contains args\'] = responseBody.has(\'args\');\ntests[\'Body contains form\'] = responseBody.has(\'form\');\ntests[\'Body contains headers\'] = responseBody.has(\'headers\');\ntests[\'Body contains url\'] = responseBody.has(\'url\');\n\nvar data = JSON.parse(responseBody)\n\ntests[\'form key has data passed in as form-data\'] = \'test\' in data.form',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
@@ -2992,7 +2992,7 @@ module.exports = {
                 }],
                 method: 'POST',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/post',
+                url: 'https://echo.postman.com/post',
                 // eslint-disable-next-line max-len
                 tests: 'var responseJSON;\n\ntry { responseJSON = JSON.parse(responseBody); }\ncatch (e) { }\n\n\ntests[\'response has data\'] = responseJSON && responseJSON.data && (responseJSON.data.length === 256);\ntests[\'content-type equals text/plain\'] = responseJSON && responseJSON.headers && (responseJSON.headers[\'content-type\'] === \'text/plain\');',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
@@ -3038,7 +3038,7 @@ module.exports = {
                 headers: '',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/status/200',
+                url: 'https://echo.postman.com/status/200',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'Body contains status\'] = responseBody.has(\'status\');\n\nvar data = JSON.parse(responseBody);\n\ntests[\'Status equals 200\'] = data.status === 200;\n',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
@@ -3082,7 +3082,7 @@ module.exports = {
                 headers: '',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/deflate',
+                url: 'https://echo.postman.com/deflate',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\n\ntry {\n    var data = JSON.parse(responseBody);\n    tests[\'Body contains deflated\'] = responseBody.has(\'deflated\');\n    tests[\'Body contains headers\'] = responseBody.has(\'headers\');\n    tests[\'Body contains method\'] = responseBody.has(\'method\');\n}\ncatch(e) {\n    console.log(\'Cannot parse response,probably not a JSON\');\n}\n',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
@@ -3121,7 +3121,7 @@ module.exports = {
                 headers: '',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/cookies/set?foo1=bar1&foo2=bar2',
+                url: 'https://echo.postman.com/cookies/set?foo1=bar1&foo2=bar2',
                 queryParams: [{
                     key: 'foo1',
                     value: 'bar1'
@@ -3255,7 +3255,7 @@ module.exports = {
                 headers: '',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/stream/10',
+                url: 'https://echo.postman.com/stream/10',
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\n\n',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
                 responses_order: []
@@ -3278,7 +3278,7 @@ module.exports = {
                     },
                     {
                         key: 'redirect_uri',
-                        value: 'https://www.getpostman.com/oauth2/callback',
+                        value: 'https://www.postman.com/oauth2/callback',
                         type: 'text'
                     },
                     {
@@ -3324,11 +3324,11 @@ module.exports = {
                 currentHelper: null,
                 helperAttributes: null,
                 // eslint-disable-next-line max-len
-                description: 'Performing a simple `GET` request to this endpoint returns status code `401 Unauthorized` with `WWW-Authenticate` header containing information to successfully authenticate subsequent requests.\nThe `WWW-Authenticate` header must be processed to extract `realm` and `nonce` values to hash subsequent requests.\n\nWhen this request is executed within Postman, the script attached with this request does the hard work of extracting realm and nonce from the header and set it as [global variables](https://www.getpostman.com/docs/environments#global-variables) named `echo_digest_nonce` and `echo_digest_realm`.\nThese variables are re-used in subsequent request for seamless integration of the two requests.',
+                description: 'Performing a simple `GET` request to this endpoint returns status code `401 Unauthorized` with `WWW-Authenticate` header containing information to successfully authenticate subsequent requests.\nThe `WWW-Authenticate` header must be processed to extract `realm` and `nonce` values to hash subsequent requests.\n\nWhen this request is executed within Postman, the script attached with this request does the hard work of extracting realm and nonce from the header and set it as [global variables](https://www.postman.com/docs/environments#global-variables) named `echo_digest_nonce` and `echo_digest_realm`.\nThese variables are re-used in subsequent request for seamless integration of the two requests.',
                 headers: '',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/digest-auth',
+                url: 'https://echo.postman.com/digest-auth',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 401\'] = responseCode.code === 401;\ntests[\'response has WWW-Authenticate header\'] = (postman.getResponseHeader(\'WWW-Authenticate\'));\n\nvar authenticateHeader = postman.getResponseHeader(\'WWW-Authenticate\'),\n    realmStart = authenticateHeader.indexOf(\'\'\',authenticateHeader.indexOf(\'realm\')) + 1 ,\n    realmEnd = authenticateHeader.indexOf(\'\'\',realmStart),\n    realm = authenticateHeader.slice(realmStart,realmEnd),\n    nonceStart = authenticateHeader.indexOf(\'\'\',authenticateHeader.indexOf(\'nonce\')) + 1,\n    nonceEnd = authenticateHeader.indexOf(\'\'\',nonceStart),\n    nonce = authenticateHeader.slice(nonceStart,nonceEnd);\n    \npostman.setGlobalVariable(\'echo_digest_realm\', realm);\npostman.setGlobalVariable(\'echo_digest_nonce\', nonce);',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
@@ -3361,7 +3361,7 @@ module.exports = {
                 headers: '',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/encoding/utf8',
+                url: 'https://echo.postman.com/encoding/utf8',
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
                 responses_order: []
@@ -3400,7 +3400,7 @@ module.exports = {
                 headers: '',
                 method: 'DELETE',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/delete',
+                url: 'https://echo.postman.com/delete',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'Body contains files\'] = responseBody.has(\'files\');\ntests[\'Body contains args\'] = responseBody.has(\'args\');\ntests[\'Body contains form\'] = responseBody.has(\'form\');\ntests[\'Body contains headers\'] = responseBody.has(\'headers\');\ntests[\'Body contains url\'] = responseBody.has(\'url\');\n\nvar data = JSON.parse(responseBody)\n\ntests[\'form key has data passed in as form-data\'] = \'test\' in data.form',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
@@ -3426,7 +3426,7 @@ module.exports = {
                     },
                     {
                         key: 'redirect_uri',
-                        value: 'https://www.getpostman.com/oauth2/callback',
+                        value: 'https://www.postman.com/oauth2/callback',
                         type: 'text'
                     },
                     {
@@ -3470,7 +3470,7 @@ module.exports = {
                 }],
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/oauth2/user/info',
+                url: 'https://echo.postman.com/oauth2/user/info',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 401\'] = (responseCode.code === 200);\nvar body = JSON.parse(responseBody);\ntests[\'body has user_id\'] = \'user_id\' in body;\ntests[\'body has name\'] = \'name\' in body;',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
@@ -3666,7 +3666,7 @@ module.exports = {
                     },
                     {
                         key: 'redirect_uri',
-                        value: 'https://www.getpostman.com/oauth2/callback',
+                        value: 'https://www.postman.com/oauth2/callback',
                         type: 'text'
                     },
                     {
@@ -3709,7 +3709,7 @@ module.exports = {
                 }],
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/oauth1',
+                url: 'https://echo.postman.com/oauth1',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\nvar body = JSON.parse(responseBody);\ntests[\'Body contains status pass\'] = body[\'status\'] == \'pass\'',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
@@ -3733,7 +3733,7 @@ module.exports = {
                     },
                     {
                         key: 'redirect_uri',
-                        value: 'https://www.getpostman.com/oauth2/callback',
+                        value: 'https://www.postman.com/oauth2/callback',
                         type: 'text'
                     },
                     {
@@ -3768,7 +3768,7 @@ module.exports = {
                 headers: '',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/oauth2/authtoken?client_id=abc123&response_type=code',
+                url: 'https://echo.postman.com/oauth2/authtoken?client_id=abc123&response_type=code',
                 queryParams: [{
                     key: 'client_id',
                     value: 'abc123'
@@ -3890,7 +3890,7 @@ module.exports = {
                     },
                     {
                         key: 'redirect_uri',
-                        value: 'https://www.getpostman.com/oauth2/callback',
+                        value: 'https://www.postman.com/oauth2/callback',
                         type: 'text'
                     },
                     {
@@ -3935,7 +3935,7 @@ module.exports = {
                 headers: '',
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/gzip',
+                url: 'https://echo.postman.com/gzip',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\n\ntry {\n    var data = JSON.parse(responseBody);\n    tests[\'Body contains gzipped\'] = responseBody.has(\'gzipped\');\n    tests[\'Body contains headers\'] = responseBody.has(\'headers\');\n    tests[\'Body contains method\'] = responseBody.has(\'method\');\n}\ncatch(e) {\n    console.log(\'Cannot parse response,probably not a JSON\');\n}',
                 collectionId: '03cf74df-32de-af8b-7db8-855b51b05e50',
@@ -3962,7 +3962,7 @@ module.exports = {
                     }
                 ],
                 // eslint-disable-next-line max-len
-                description: 'This endpoint sends a hashed Digest Authorization header to gain access to a valid `200 Ok` response code. In Postman, it uses the stored [global variables](https://www.getpostman.com/docs/environments#gloval-variables), `echo_digest_realm` and `echo_digest_nonce`, to generate the hashed authorisation header.\n\nWithin Postman, for this request to successfully authenticate, running the previous request \'DigestAuth Request\' stores the relevant information within the global variables.',
+                description: 'This endpoint sends a hashed Digest Authorization header to gain access to a valid `200 Ok` response code. In Postman, it uses the stored [global variables](https://www.postman.com/docs/environments#gloval-variables), `echo_digest_realm` and `echo_digest_nonce`, to generate the hashed authorisation header.\n\nWithin Postman, for this request to successfully authenticate, running the previous request \'DigestAuth Request\' stores the relevant information within the global variables.',
                 // eslint-disable-next-line max-len
                 headers: 'Authorization: Digest username=\'postman\', realm=\'Users\', nonce=\'ni1LiL0O37PRRhofWdCLmwFsnEtH1lew\', uri=\'/digest-auth\', response=\'254679099562cf07df9b6f5d8d15db44\', opaque=\'\'\n',
                 headerData: [{
@@ -3972,7 +3972,7 @@ module.exports = {
                 }],
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/digest-auth',
+                url: 'https://echo.postman.com/digest-auth',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\ntests[\'body contains authenticated\'] = responseBody.has(\'authenticated\');',
                 auth: {
@@ -4162,7 +4162,7 @@ module.exports = {
                     }
                 ],
                 // eslint-disable-next-line max-len
-                description: 'This endpoint simulates a **basic-auth** protected endpoint. \nThe endpoint accepts a default username and password and returns a status code of `200 ok` only if the same is provided. \nOtherwise it will return a status code `401 unauthorized`.\n\n> Username: `postman`\n> \n> Password: `password`\n\nTo use this endpoint, send a request with the header `Authorization: Basic cG9zdG1hbjpwYXNzd29yZA==`. \nThe cryptic latter half of the header value is a base64 encoded concatenation of the default username and password. \nUsing Postman, to send this request, you can simply fill in the username and password in the \'Authorization\' tab and Postman will do the rest for you.\n\nTo know more about basic authentication, refer to the [Basic Access Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.getpostman.com/docs/helpers#basic-auth) elaborates how to use the same within the Postman app.',
+                description: 'This endpoint simulates a **basic-auth** protected endpoint. \nThe endpoint accepts a default username and password and returns a status code of `200 ok` only if the same is provided. \nOtherwise it will return a status code `401 unauthorized`.\n\n> Username: `postman`\n> \n> Password: `password`\n\nTo use this endpoint, send a request with the header `Authorization: Basic cG9zdG1hbjpwYXNzd29yZA==`. \nThe cryptic latter half of the header value is a base64 encoded concatenation of the default username and password. \nUsing Postman, to send this request, you can simply fill in the username and password in the \'Authorization\' tab and Postman will do the rest for you.\n\nTo know more about basic authentication, refer to the [Basic Access Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.postman.com/docs/helpers#basic-auth) elaborates how to use the same within the Postman app.',
                 headers: 'Authorization: Basic cG9zdG1hbjpwYXNzd29yZA==\n',
                 headerData: [{
                     key: 'Authorization',
@@ -4170,7 +4170,7 @@ module.exports = {
                 }],
                 method: 'GET',
                 pathVariables: {},
-                url: 'https://echo.getpostman.com/basic-auth',
+                url: 'https://echo.postman.com/basic-auth',
                 // eslint-disable-next-line max-len
                 tests: 'tests[\'response code is 200\'] = responseCode.code === 200;\ntests[\'Body contains authenticated\'] = responseBody.has(\'authenticated\');',
                 auth: {

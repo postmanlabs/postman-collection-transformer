@@ -15,7 +15,7 @@
             "rawModeData": "",
             "tests": "",
             "preRequestScript": "",
-            "url": "http://echo.getpostman.com",
+            "url": "http://echo.postman.com",
             "responses": []
         }
     ]

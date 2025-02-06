@@ -3,7 +3,7 @@
 		"name": "auth-v1",
 		"_postman_id": "46da69ac-9035-50c4-fcab-44d9167e06f4",
 		"description": "A simple V1 collection to elucidate nested auth helpers, variables, and scripts",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.postman.com/json/collection/v2.1.0/collection.json"
 	},
   "variable": [{
     "key": "collection",

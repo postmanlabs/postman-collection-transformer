@@ -13,7 +13,7 @@ module.exports = {
                 lastRevision: 75111444,
                 id: "ca633394-d946-8e44-f4fe-e0470be8cb64",
                 name: "Auth: Digest",
-                description: "Digest authentication protects an endpoint with a username and password without actually transmitting the password over network.\nOne has to apply a hash function (like MD5, etc) to the username and password before sending them over the network.\n\n> Username: `postman`\n>\n> Password: `password`\n\nUnlike Basic-Auth, authentication happens using two consecutive requests where the first request returns `401 Unauthorised` along with `WWW-Authenticate` header containing information that needs to be used to authenticate subsequent calls.\n\nTo know more about digest authentication, refer to the [Digest Access Authentication](https://en.wikipedia.org/wiki/Digest_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.getpostman.com/docs/helpers#digest-auth) elaborates how to use the same within the Postman app.",
+                description: "Digest authentication protects an endpoint with a username and password without actually transmitting the password over network.\nOne has to apply a hash function (like MD5, etc) to the username and password before sending them over the network.\n\n> Username: `postman`\n>\n> Password: `password`\n\nUnlike Basic-Auth, authentication happens using two consecutive requests where the first request returns `401 Unauthorised` along with `WWW-Authenticate` header containing information that needs to be used to authenticate subsequent calls.\n\nTo know more about digest authentication, refer to the [Digest Access Authentication](https://en.wikipedia.org/wiki/Digest_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.postman.com/docs/helpers#digest-auth) elaborates how to use the same within the Postman app.",
                 order: [
                     "a0d5867c-dd87-3f01-9560-8095271e2644",
                     "eecb504e-1736-d34c-990a-b86d36f06ddd"
@@ -122,7 +122,7 @@ module.exports = {
                     },
                     {
                         key: "redirect_uri",
-                        value: "https://www.getpostman.com/oauth2/callback",
+                        value: "https://www.postman.com/oauth2/callback",
                         type: "text"
                     },
                     {
@@ -138,11 +138,11 @@ module.exports = {
                 ],
                 rawModeData: null,
                 descriptionFormat: null,
-                description: "This endpoint is used to get the `access_token`\n\nIt requires the following secret client credentials to be sent as part of the form body along with the `authentication code` obtained as part of the `redirect_uri` from the previous request.\n\n> code: xWnkliVQJURqB2x1\n>\n> grant_type: authorization_code\n>\n> redirect_uri: https://www.getpostman.com/oauth2/callback\n>\n> client_id: abc123\n>\n> client_secret: ssh-secret\n\nIf the correct credentials are not passed, the server returns with a `401 Unauthorized` response.",
+                description: "This endpoint is used to get the `access_token`\n\nIt requires the following secret client credentials to be sent as part of the form body along with the `authentication code` obtained as part of the `redirect_uri` from the previous request.\n\n> code: xWnkliVQJURqB2x1\n>\n> grant_type: authorization_code\n>\n> redirect_uri: https://www.postman.com/oauth2/callback\n>\n> client_id: abc123\n>\n> client_secret: ssh-secret\n\nIf the correct credentials are not passed, the server returns with a `401 Unauthorized` response.",
                 headers: "",
                 method: "POST",
                 pathVariables: {},
-                url: "https://echo.getpostman.com/oauth2/token",
+                url: "https://echo.postman.com/oauth2/token",
                 preRequestScript: "",
                 tests: "tests[\"response code is 200\"] = responseCode.code === 200;\nvar body = JSON.parse(responseBody);\ntests[\"body has access token\"] = \"access_token\" in body;\ntests[\"body has bearer type\"] = \"token_type\" in body;",
                 currentHelper: null,
@@ -156,7 +156,7 @@ module.exports = {
                         request: {
                             name: "Access Token",
                             description: "Tries to get the access token by passing the clientId , clientSecret,\nauthentication code, redirect URI and grant type.\n",
-                            url: "https://echo.getpostman.com/oauth2/token",
+                            url: "https://echo.postman.com/oauth2/token",
                             pathVariables: {},
                             data: [
                                 {
@@ -171,7 +171,7 @@ module.exports = {
                                 },
                                 {
                                     key: "redirect_uri",
-                                    value: "https://www.getpostman.com/oauth2/callback",
+                                    value: "https://www.postman.com/oauth2/callback",
                                     type: "text"
                                 },
                                 {
@@ -269,7 +269,7 @@ module.exports = {
                         previewType: "html",
                         searchResultScrolledTo: "-1",
                         version: null,
-                        requestObject: "{\"name\":\"Access Token\",\"description\":\"Tries to get the access token by passing the clientId , clientSecret,\\nauthentication code, redirect URI and grant type.\\n\",\"url\":\"https://echo.getpostman.com/oauth2/token\",\"pathVariables\":{},\"data\":[{\"key\":\"code\",\"value\":\"xWnkliVQJURqB2x1\",\"type\":\"text\",\"enabled\":true},{\"key\":\"grant_type\",\"value\":\"authorization_code\",\"type\":\"text\",\"enabled\":true},{\"key\":\"redirect_uri\",\"value\":\"https://www.getpostman.com/oauth2/callback\",\"type\":\"text\",\"enabled\":true},{\"key\":\"client_id\",\"value\":\"abc123\",\"type\":\"text\",\"enabled\":true},{\"key\":\"client_secret\",\"value\":\"ssh-secret\",\"type\":\"text\",\"enabled\":true}],\"headers\":\"\",\"dataMode\":\"params\",\"method\":\"POST\",\"tests\":\"tests[\\\"response code is 200\\\"] = responseCode.code === 200;\\nvar body = JSON.parse(responseBody);\\ntests[\\\"body has access token\\\"] = \\\"access_token\\\" in body;\\ntests[\\\"body has bearer type\\\"] = \\\"token_type\\\" in body;\",\"isFromCollection\":true,\"write\":true,\"version\":2}",
+                        requestObject: "{\"name\":\"Access Token\",\"description\":\"Tries to get the access token by passing the clientId , clientSecret,\\nauthentication code, redirect URI and grant type.\\n\",\"url\":\"https://echo.postman.com/oauth2/token\",\"pathVariables\":{},\"data\":[{\"key\":\"code\",\"value\":\"xWnkliVQJURqB2x1\",\"type\":\"text\",\"enabled\":true},{\"key\":\"grant_type\",\"value\":\"authorization_code\",\"type\":\"text\",\"enabled\":true},{\"key\":\"redirect_uri\",\"value\":\"https://www.postman.com/oauth2/callback\",\"type\":\"text\",\"enabled\":true},{\"key\":\"client_id\",\"value\":\"abc123\",\"type\":\"text\",\"enabled\":true},{\"key\":\"client_secret\",\"value\":\"ssh-secret\",\"type\":\"text\",\"enabled\":true}],\"headers\":\"\",\"dataMode\":\"params\",\"method\":\"POST\",\"tests\":\"tests[\\\"response code is 200\\\"] = responseCode.code === 200;\\nvar body = JSON.parse(responseBody);\\ntests[\\\"body has access token\\\"] = \\\"access_token\\\" in body;\\ntests[\\\"body has bearer type\\\"] = \\\"token_type\\\" in body;\",\"isFromCollection\":true,\"write\":true,\"version\":2}",
                         createdAt: "2015-11-02T13:11:08.000Z",
                         updatedAt: "2015-11-02T18:05:45.000Z",
                         write: true
@@ -281,7 +281,7 @@ module.exports = {
                         request: {
                             name: "Access Token",
                             description: "Tries to get the access token by passing the clientId , clientSecret,\nauthentication code, redirect URI and grant type.\n",
-                            url: "https://echo.getpostman.com/oauth2/token",
+                            url: "https://echo.postman.com/oauth2/token",
                             pathVariables: {},
                             data: [
                                 {
@@ -296,7 +296,7 @@ module.exports = {
                                 },
                                 {
                                     key: "redirect_uri",
-                                    value: "https://www.getpostman.com/oauth2/callback",
+                                    value: "https://www.postman.com/oauth2/callback",
                                     type: "text"
                                 },
                                 {
@@ -399,7 +399,7 @@ module.exports = {
                         previewType: "html",
                         searchResultScrolledTo: "-1",
                         version: null,
-                        requestObject: "{\"name\":\"Access Token\",\"description\":\"Tries to get the access token by passing the clientId , clientSecret,\\nauthentication code, redirect URI and grant type.\\n\",\"url\":\"https://echo.getpostman.com/oauth2/token\",\"pathVariables\":{},\"data\":[{\"key\":\"code\",\"value\":\"xWnkliVQJURqB2x1\",\"type\":\"text\",\"enabled\":true},{\"key\":\"grant_type\",\"value\":\"authorization_code\",\"type\":\"text\",\"enabled\":true},{\"key\":\"redirect_uri\",\"value\":\"https://www.getpostman.com/oauth2/callback\",\"type\":\"text\",\"enabled\":true},{\"key\":\"client_id\",\"value\":\"abc123\",\"type\":\"text\",\"enabled\":true},{\"key\":\"client_secret\",\"value\":\"ssh-secret\",\"type\":\"text\",\"enabled\":true}],\"headers\":\"\",\"dataMode\":\"params\",\"method\":\"POST\",\"tests\":\"tests[\\\"response code is 200\\\"] = responseCode.code === 200;\\nvar body = JSON.parse(responseBody);\\ntests[\\\"body has access token\\\"] = \\\"access_token\\\" in body;\\ntests[\\\"body has bearer type\\\"] = \\\"token_type\\\" in body;\",\"isFromCollection\":true,\"write\":true,\"version\":2}",
+                        requestObject: "{\"name\":\"Access Token\",\"description\":\"Tries to get the access token by passing the clientId , clientSecret,\\nauthentication code, redirect URI and grant type.\\n\",\"url\":\"https://echo.postman.com/oauth2/token\",\"pathVariables\":{},\"data\":[{\"key\":\"code\",\"value\":\"xWnkliVQJURqB2x1\",\"type\":\"text\",\"enabled\":true},{\"key\":\"grant_type\",\"value\":\"authorization_code\",\"type\":\"text\",\"enabled\":true},{\"key\":\"redirect_uri\",\"value\":\"https://www.postman.com/oauth2/callback\",\"type\":\"text\",\"enabled\":true},{\"key\":\"client_id\",\"value\":\"abc123\",\"type\":\"text\",\"enabled\":true},{\"key\":\"client_secret\",\"value\":\"ssh-secret\",\"type\":\"text\",\"enabled\":true}],\"headers\":\"\",\"dataMode\":\"params\",\"method\":\"POST\",\"tests\":\"tests[\\\"response code is 200\\\"] = responseCode.code === 200;\\nvar body = JSON.parse(responseBody);\\ntests[\\\"body has access token\\\"] = \\\"access_token\\\" in body;\\ntests[\\\"body has bearer type\\\"] = \\\"token_type\\\" in body;\",\"isFromCollection\":true,\"write\":true,\"version\":2}",
                         createdAt: "2015-11-02T13:11:08.000Z",
                         updatedAt: "2015-11-02T18:05:45.000Z",
                         write: true
@@ -417,7 +417,7 @@ module.exports = {
                 headers: "",
                 method: "PUT",
                 pathVariables: {},
-                url: "https://echo.getpostman.com/put",
+                url: "https://echo.postman.com/put",
                 preRequestScript: "",
                 tests: "var data;\n\ntry { responseJSON = JSON.parse(responseBody); }\ncatch (e) {}\n\ntests[\"Body contains files\"] = responseBody.has(\"files\");\ntests[\"Body contains args\"] = responseBody.has(\"args\");\ntests[\"Body contains form\"] = responseBody.has(\"form\");\ntests[\"Body contains headers\"] = responseBody.has(\"headers\");\ntests[\"Body contains url\"] = responseBody.has(\"url\");\n\n\n\ntests[\"Data has been passed\"] = (responseJSON && responseJSON.data && responseJSON.data.length)",
                 currentHelper: null,
@@ -435,7 +435,7 @@ module.exports = {
                 headers: "",
                 method: "GET",
                 pathVariables: {},
-                url: "https://echo.getpostman.com/cookies",
+                url: "https://echo.postman.com/cookies",
                 preRequestScript: "",
                 tests: "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"Body contains cookies\"] = responseBody.has(\"cookies\");\nvar body = JSON.parse(responseBody);\ntests[\"Body contains cookie foo2\"] = 'foo2' in body.cookies;",
                 currentHelper: null,
@@ -553,7 +553,7 @@ module.exports = {
                     },
                     {
                         key: "redirect_uri",
-                        value: "https://www.getpostman.com/oauth2/callback",
+                        value: "https://www.postman.com/oauth2/callback",
                         type: "text"
                     },
                     {
@@ -573,7 +573,7 @@ module.exports = {
                 headers: "",
                 method: "GET",
                 pathVariables: {},
-                url: "https://echo.getpostman.com/get?test=123",
+                url: "https://echo.postman.com/get?test=123",
                 preRequestScript: "",
                 tests: "tests[\"Body contains headers\"] = responseBody.has(\"headers\");\ntests[\"Body contains args\"] = responseBody.has(\"args\");\ntests[\"Body contains url\"] = responseBody.has(\"url\");\n\nvar data = JSON.parse(responseBody)\n\ntests[\"Args key contains argument passed as url parameter\"] = 'test' in data.args",
                 currentHelper: null,
@@ -590,7 +590,7 @@ module.exports = {
                 headers: "",
                 method: "GET",
                 pathVariables: {},
-                url: "https://echo.getpostman.com/cookies/delete?foo1&foo2",
+                url: "https://echo.postman.com/cookies/delete?foo1&foo2",
                 preRequestScript: "",
                 tests: "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"Body contains key cookies\"] = responseBody.has(\"cookies\");\nvar body = JSON.parse(responseBody);\ntests[\"Body contains cookie foo2\"] = 'foo2' in body.cookies;\ntests[\"Body does not contain cookie foo2\"] = !('foo1' in body.cookies);",
                 currentHelper: null,
@@ -708,7 +708,7 @@ module.exports = {
                 headers: "",
                 method: "GET",
                 pathVariables: {},
-                url: "https://echo.getpostman.com/delay/3",
+                url: "https://echo.postman.com/delay/3",
                 preRequestScript: "",
                 tests: "tests[\"response code is 200\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\ntests[\"response body has key delay\"] = 'delay' in data;",
                 currentHelper: null,
@@ -721,11 +721,11 @@ module.exports = {
                 name: "Request Headers",
                 rawModeData: null,
                 descriptionFormat: null,
-                description: "A `GET` request to this endpoint returns the list of all request headers as part of the response JSON.\nIn Postman, sending your own set of headers through the [Headers tab](https://www.getpostman.com/docs/requests#headers) will reveal the headers as part of the response.",
+                description: "A `GET` request to this endpoint returns the list of all request headers as part of the response JSON.\nIn Postman, sending your own set of headers through the [Headers tab](https://www.postman.com/docs/requests#headers) will reveal the headers as part of the response.",
                 headers: "[object Object]",
                 method: "GET",
                 pathVariables: [],
-                url: "https://echo.getpostman.com/headers",
+                url: "https://echo.postman.com/headers",
                 preRequestScript: "",
                 tests: "tests[\"Body contains headers\"] = responseBody.has(\"headers\");\n\nvar data = JSON.parse(responseBody).headers;\n\ntests[\"Header contains host\"] = \"host\" in data;\ntests[\"Header contains test parameter sent as part of request header\"] = \"my-sample-header\" in data;",
                 currentHelper: null,
@@ -750,7 +750,7 @@ module.exports = {
                     },
                     {
                         key: "redirect_uri",
-                        value: "https://www.getpostman.com/oauth2/callback",
+                        value: "https://www.postman.com/oauth2/callback",
                         type: "text"
                     },
                     {
@@ -770,7 +770,7 @@ module.exports = {
                 headers: "",
                 method: "GET",
                 pathVariables: {},
-                url: "https://echo.getpostman.com/response-headers?Content-Type=text/html&Server=apibin",
+                url: "https://echo.postman.com/response-headers?Content-Type=text/html&Server=apibin",
                 preRequestScript: "",
                 tests: "tests[\"Body contains Content-Type\"] = responseBody.has(\"Content-Type\");\ntests[\"Body contains Server\"] = responseBody.has(\"Server\");",
                 currentHelper: null,
@@ -788,7 +788,7 @@ module.exports = {
                 headers: "",
                 method: "PATCH",
                 pathVariables: {},
-                url: "https://echo.getpostman.com/patch",
+                url: "https://echo.postman.com/patch",
                 preRequestScript: "",
                 tests: "tests[\"Body contains files\"] = responseBody.has(\"files\");\ntests[\"Body contains args\"] = responseBody.has(\"args\");\ntests[\"Body contains form\"] = responseBody.has(\"form\");\ntests[\"Body contains headers\"] = responseBody.has(\"headers\");\ntests[\"Body contains url\"] = responseBody.has(\"url\");\n\nvar data = JSON.parse(responseBody)\n\ntests[\"form key has data passed in as form-data\"] = 'test' in data.form",
                 currentHelper: null,
@@ -807,7 +807,7 @@ module.exports = {
                 headers: "Content-Type: text/plain\n",
                 method: "POST",
                 pathVariables: {},
-                url: "https://echo.getpostman.com/post",
+                url: "https://echo.postman.com/post",
                 preRequestScript: "",
                 tests: "var responseJSON;\n\ntry { responseJSON = JSON.parse(responseBody); }\ncatch (e) { }\n\n\ntests[\"response has data\"] = responseJSON && responseJSON.data && (responseJSON.data.length === 256);\ntests[\"content-type equals text/plain\"] = responseJSON && responseJSON.headers && (responseJSON.headers[\"content-type\"] === 'text/plain');",
                 currentHelper: null,
@@ -833,7 +833,7 @@ module.exports = {
                 headers: "",
                 method: "GET",
                 pathVariables: {},
-                url: "https://echo.getpostman.com/status/200",
+                url: "https://echo.postman.com/status/200",
                 preRequestScript: "",
                 tests: "tests[\"Body contains status\"] = responseBody.has(\"status\");\n\nvar data = JSON.parse(responseBody);\n\ntests[\"Status equals 200\"] = data.status === 200;\n",
                 currentHelper: null,
@@ -850,7 +850,7 @@ module.exports = {
                 headers: "",
                 method: "GET",
                 pathVariables: {},
-                url: "https://echo.getpostman.com/deflate",
+                url: "https://echo.postman.com/deflate",
                 preRequestScript: "",
                 tests: "tests[\"response code is 200\"] = responseCode.code === 200;\n\ntry {\n    var data = JSON.parse(responseBody);\n    tests[\"Body contains deflated\"] = responseBody.has(\"deflated\");\n    tests[\"Body contains headers\"] = responseBody.has(\"headers\");\n    tests[\"Body contains method\"] = responseBody.has(\"method\");\n}\ncatch(e) {\n    console.log('Cannot parse response,probably not a JSON');\n}\n",
                 currentHelper: null,
@@ -867,7 +867,7 @@ module.exports = {
                 headers: "",
                 method: "GET",
                 pathVariables: {},
-                url: "https://echo.getpostman.com/cookies/set?foo1=bar1&foo2=bar2",
+                url: "https://echo.postman.com/cookies/set?foo1=bar1&foo2=bar2",
                 preRequestScript: "",
                 tests: "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"Body contains cookies\"] = responseBody.has(\"cookies\");\nvar body = JSON.parse(responseBody);\ntests[\"Body contains cookie foo1\"] = 'foo1' in body.cookies;\ntests[\"Body contains cookie foo2\"] = 'foo2' in body.cookies;\n\n",
                 currentHelper: null,
@@ -977,7 +977,7 @@ module.exports = {
                 headers: "",
                 method: "GET",
                 pathVariables: {},
-                url: "https://echo.getpostman.com/stream/10",
+                url: "https://echo.postman.com/stream/10",
                 preRequestScript: "",
                 tests: "tests[\"response code is 200\"] = responseCode.code === 200;\n\n",
                 currentHelper: null,
@@ -1002,7 +1002,7 @@ module.exports = {
                     },
                     {
                         key: "redirect_uri",
-                        value: "https://www.getpostman.com/oauth2/callback",
+                        value: "https://www.postman.com/oauth2/callback",
                         type: "text"
                     },
                     {
@@ -1018,11 +1018,11 @@ module.exports = {
                 ],
                 rawModeData: null,
                 descriptionFormat: null,
-                description: "Performing a simple `GET` request to this endpoint returns status code `401 Unauthorized` with `WWW-Authenticate` header containing information to successfully authenticate subsequent requests.\nThe `WWW-Authenticate` header must be processed to extract `realm` and `nonce` values to hash subsequent requests.\n\nWhen this request is executed within Postman, the script attached with this request does the hard work of extracting realm and nonce from the header and set it as [global variables](https://www.getpostman.com/docs/environments#global-variables) named `echo_digest_nonce` and `echo_digest_realm`.\nThese variables are re-used in subsequent request for seamless integration of the two requests.",
+                description: "Performing a simple `GET` request to this endpoint returns status code `401 Unauthorized` with `WWW-Authenticate` header containing information to successfully authenticate subsequent requests.\nThe `WWW-Authenticate` header must be processed to extract `realm` and `nonce` values to hash subsequent requests.\n\nWhen this request is executed within Postman, the script attached with this request does the hard work of extracting realm and nonce from the header and set it as [global variables](https://www.postman.com/docs/environments#global-variables) named `echo_digest_nonce` and `echo_digest_realm`.\nThese variables are re-used in subsequent request for seamless integration of the two requests.",
                 headers: "",
                 method: "GET",
                 pathVariables: {},
-                url: "https://echo.getpostman.com/digest-auth",
+                url: "https://echo.postman.com/digest-auth",
                 preRequestScript: "",
                 tests: "tests[\"response code is 401\"] = responseCode.code === 401;\ntests[\"response has WWW-Authenticate header\"] = (postman.getResponseHeader('WWW-Authenticate'));\n\nvar authenticateHeader = postman.getResponseHeader('WWW-Authenticate'),\n    realmStart = authenticateHeader.indexOf('\"',authenticateHeader.indexOf(\"realm\")) + 1 ,\n    realmEnd = authenticateHeader.indexOf('\"',realmStart),\n    realm = authenticateHeader.slice(realmStart,realmEnd),\n    nonceStart = authenticateHeader.indexOf('\"',authenticateHeader.indexOf(\"nonce\")) + 1,\n    nonceEnd = authenticateHeader.indexOf('\"',nonceStart),\n    nonce = authenticateHeader.slice(nonceStart,nonceEnd);\n    \npostman.setGlobalVariable('echo_digest_realm', realm);\npostman.setGlobalVariable('echo_digest_nonce', nonce);",
                 currentHelper: null,
@@ -1039,7 +1039,7 @@ module.exports = {
                 headers: "",
                 method: "GET",
                 pathVariables: {},
-                url: "https://echo.getpostman.com/encoding/utf8",
+                url: "https://echo.postman.com/encoding/utf8",
                 preRequestScript: "",
                 tests: "tests[\"response code is 200\"] = responseCode.code === 200;",
                 currentHelper: null,
@@ -1057,7 +1057,7 @@ module.exports = {
                 headers: "",
                 method: "DELETE",
                 pathVariables: {},
-                url: "https://echo.getpostman.com/delete",
+                url: "https://echo.postman.com/delete",
                 preRequestScript: "",
                 tests: "tests[\"Body contains files\"] = responseBody.has(\"files\");\ntests[\"Body contains args\"] = responseBody.has(\"args\");\ntests[\"Body contains form\"] = responseBody.has(\"form\");\ntests[\"Body contains headers\"] = responseBody.has(\"headers\");\ntests[\"Body contains url\"] = responseBody.has(\"url\");\n\nvar data = JSON.parse(responseBody)\n\ntests[\"form key has data passed in as form-data\"] = 'test' in data.form",
                 currentHelper: null,
@@ -1083,7 +1083,7 @@ module.exports = {
                     },
                     {
                         key: "redirect_uri",
-                        value: "https://www.getpostman.com/oauth2/callback",
+                        value: "https://www.postman.com/oauth2/callback",
                         type: "text"
                     },
                     {
@@ -1103,7 +1103,7 @@ module.exports = {
                 headers: "Authorization: Bearer vp7jxTwqgczoFHs0uIdOvv4VdBWmvCkbVbNBCuaTQ3JZplPS40BaNV47HD1zt7MztQPILJvqYsOs6PfJpFYBgwbaE3CVEKOj\n",
                 method: "GET",
                 pathVariables: {},
-                url: "https://echo.getpostman.com/oauth2/user/info",
+                url: "https://echo.postman.com/oauth2/user/info",
                 preRequestScript: "",
                 tests: "tests[\"response code is 401\"] = (responseCode.code === 200);\nvar body = JSON.parse(responseBody);\ntests[\"body has user_id\"] = \"user_id\" in body;\ntests[\"body has name\"] = \"name\" in body;",
                 currentHelper: null,
@@ -1302,7 +1302,7 @@ module.exports = {
                     },
                     {
                         key: "redirect_uri",
-                        value: "https://www.getpostman.com/oauth2/callback",
+                        value: "https://www.postman.com/oauth2/callback",
                         type: "text"
                     },
                     {
@@ -1322,7 +1322,7 @@ module.exports = {
                 headers: "Authorization: OAuth oauth_consumer_key=\"RKCGzna7bv9YD57c\",oauth_signature_method=\"HMAC-SHA1\",oauth_timestamp=\"1442394747\",oauth_nonce=\"UIGipk\",oauth_version=\"1.0\",oauth_signature=\"CaeyGPr2mns1WCq4Cpm5aLvz6Gs=\"\n",
                 method: "GET",
                 pathVariables: {},
-                url: "https://echo.getpostman.com/oauth1",
+                url: "https://echo.postman.com/oauth1",
                 preRequestScript: "",
                 tests: "tests[\"response code is 200\"] = responseCode.code === 200;\nvar body = JSON.parse(responseBody);\ntests[\"Body contains status pass\"] = body[\"status\"] == \"pass\"",
                 currentHelper: null,
@@ -1347,7 +1347,7 @@ module.exports = {
                     },
                     {
                         key: "redirect_uri",
-                        value: "https://www.getpostman.com/oauth2/callback",
+                        value: "https://www.postman.com/oauth2/callback",
                         type: "text"
                     },
                     {
@@ -1367,7 +1367,7 @@ module.exports = {
                 headers: "",
                 method: "GET",
                 pathVariables: {},
-                url: "https://echo.getpostman.com/oauth2/authtoken?client_id=abc123&response_type=code",
+                url: "https://echo.postman.com/oauth2/authtoken?client_id=abc123&response_type=code",
                 preRequestScript: "",
                 tests: "tests[\"response code is 200\"] = responseCode.code === 200;",
                 currentHelper: null,
@@ -1485,7 +1485,7 @@ module.exports = {
                     },
                     {
                         key: "redirect_uri",
-                        value: "https://www.getpostman.com/oauth2/callback",
+                        value: "https://www.postman.com/oauth2/callback",
                         type: "text"
                     },
                     {
@@ -1505,7 +1505,7 @@ module.exports = {
                 headers: "",
                 method: "GET",
                 pathVariables: {},
-                url: "https://echo.getpostman.com/gzip",
+                url: "https://echo.postman.com/gzip",
                 preRequestScript: "",
                 tests: "tests[\"response code is 200\"] = responseCode.code === 200;\n\ntry {\n    var data = JSON.parse(responseBody);\n    tests[\"Body contains gzipped\"] = responseBody.has(\"gzipped\");\n    tests[\"Body contains headers\"] = responseBody.has(\"headers\");\n    tests[\"Body contains method\"] = responseBody.has(\"method\");\n}\ncatch(e) {\n    console.log('Cannot parse response,probably not a JSON');\n}",
                 currentHelper: null,
@@ -1518,11 +1518,11 @@ module.exports = {
                 name: "DigestAuth Success",
                 rawModeData: null,
                 descriptionFormat: null,
-                description: "This endpoint sends a hashed Digest Authorization header to gain access to a valid `200 Ok` response code. In Postman, it uses the stored [global variables](https://www.getpostman.com/docs/environments#gloval-variables), `echo_digest_realm` and `echo_digest_nonce`, to generate the hashed authorisation header.\n\nWithin Postman, for this request to successfully authenticate, running the previous request \"DigestAuth Request\" stores the relevant information within the global variables.",
+                description: "This endpoint sends a hashed Digest Authorization header to gain access to a valid `200 Ok` response code. In Postman, it uses the stored [global variables](https://www.postman.com/docs/environments#gloval-variables), `echo_digest_realm` and `echo_digest_nonce`, to generate the hashed authorisation header.\n\nWithin Postman, for this request to successfully authenticate, running the previous request \"DigestAuth Request\" stores the relevant information within the global variables.",
                 headers: "Authorization: Digest username=\"postman\", realm=\"Users\", nonce=\"ni1LiL0O37PRRhofWdCLmwFsnEtH1lew\", uri=\"/digest-auth\", response=\"254679099562cf07df9b6f5d8d15db44\", opaque=\"\"\n",
                 method: "GET",
                 pathVariables: {},
-                url: "https://echo.getpostman.com/digest-auth",
+                url: "https://echo.postman.com/digest-auth",
                 preRequestScript: "",
                 tests: "tests[\"response code is 200\"] = responseCode.code === 200;\ntests[\"body contains authenticated\"] = responseBody.has(\"authenticated\");",
                 currentHelper: "digestAuth",
@@ -1642,11 +1642,11 @@ module.exports = {
                 name: "Basic Auth",
                 rawModeData: null,
                 descriptionFormat: null,
-                description: "This endpoint simulates a **basic-auth** protected endpoint. \nThe endpoint accepts a default username and password and returns a status code of `200 ok` only if the same is provided. \nOtherwise it will return a status code `401 unauthorized`.\n\n> Username: `postman`\n> \n> Password: `password`\n\nTo use this endpoint, send a request with the header `Authorization: Basic cG9zdG1hbjpwYXNzd29yZA==`. \nThe cryptic latter half of the header value is a base64 encoded concatenation of the default username and password. \nUsing Postman, to send this request, you can simply fill in the username and password in the \"Authorization\" tab and Postman will do the rest for you.\n\nTo know more about basic authentication, refer to the [Basic Access Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.getpostman.com/docs/helpers#basic-auth) elaborates how to use the same within the Postman app.",
+                description: "This endpoint simulates a **basic-auth** protected endpoint. \nThe endpoint accepts a default username and password and returns a status code of `200 ok` only if the same is provided. \nOtherwise it will return a status code `401 unauthorized`.\n\n> Username: `postman`\n> \n> Password: `password`\n\nTo use this endpoint, send a request with the header `Authorization: Basic cG9zdG1hbjpwYXNzd29yZA==`. \nThe cryptic latter half of the header value is a base64 encoded concatenation of the default username and password. \nUsing Postman, to send this request, you can simply fill in the username and password in the \"Authorization\" tab and Postman will do the rest for you.\n\nTo know more about basic authentication, refer to the [Basic Access Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.postman.com/docs/helpers#basic-auth) elaborates how to use the same within the Postman app.",
                 headers: "Authorization: Basic cG9zdG1hbjpwYXNzd29yZA==\n",
                 method: "GET",
                 pathVariables: {},
-                url: "https://echo.getpostman.com/basic-auth",
+                url: "https://echo.postman.com/basic-auth",
                 preRequestScript: "",
                 tests: "tests[\"response code is 200\"] = responseCode.code === 200;\ntests[\"Body contains authenticated\"] = responseBody.has(\"authenticated\");",
                 currentHelper: "basicAuth",
@@ -1840,13 +1840,13 @@ module.exports = {
             name: "Postman Echo (shamasified)",
             _postman_id: "03cf74df-32de-af8b-7db8-855b51b05e50",
             description: "Postman Echo is service you can use to test your REST clients and make sample API calls. It provides endpoints for `GET`, `POST`, `PUT`, various auth mechanisms and other utility endpoints.",
-            schema: "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+            schema: "https://schema.postman.com/json/collection/v2.0.0/collection.json"
         },
         item: [
             {
                 id: "ca633394-d946-8e44-f4fe-e0470be8cb64",
                 name: "Auth: Digest",
-                description: "Digest authentication protects an endpoint with a username and password without actually transmitting the password over network.\nOne has to apply a hash function (like MD5, etc) to the username and password before sending them over the network.\n\n> Username: `postman`\n>\n> Password: `password`\n\nUnlike Basic-Auth, authentication happens using two consecutive requests where the first request returns `401 Unauthorised` along with `WWW-Authenticate` header containing information that needs to be used to authenticate subsequent calls.\n\nTo know more about digest authentication, refer to the [Digest Access Authentication](https://en.wikipedia.org/wiki/Digest_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.getpostman.com/docs/helpers#digest-auth) elaborates how to use the same within the Postman app.",
+                description: "Digest authentication protects an endpoint with a username and password without actually transmitting the password over network.\nOne has to apply a hash function (like MD5, etc) to the username and password before sending them over the network.\n\n> Username: `postman`\n>\n> Password: `password`\n\nUnlike Basic-Auth, authentication happens using two consecutive requests where the first request returns `401 Unauthorised` along with `WWW-Authenticate` header containing information that needs to be used to authenticate subsequent calls.\n\nTo know more about digest authentication, refer to the [Digest Access Authentication](https://en.wikipedia.org/wiki/Digest_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.postman.com/docs/helpers#digest-auth) elaborates how to use the same within the Postman app.",
                 item: [
                     {
                         id: "a0d5867c-dd87-3f01-9560-8095271e2644",
@@ -1875,7 +1875,7 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/digest-auth",
+                            url: "https://echo.postman.com/digest-auth",
                             method: "GET",
                             header: [],
                             body: {
@@ -1893,7 +1893,7 @@ module.exports = {
                                     },
                                     {
                                         key: "redirect_uri",
-                                        value: "https://www.getpostman.com/oauth2/callback",
+                                        value: "https://www.postman.com/oauth2/callback",
                                         type: "text"
                                     },
                                     {
@@ -1908,7 +1908,7 @@ module.exports = {
                                     }
                                 ]
                             },
-                            description: "Performing a simple `GET` request to this endpoint returns status code `401 Unauthorized` with `WWW-Authenticate` header containing information to successfully authenticate subsequent requests.\nThe `WWW-Authenticate` header must be processed to extract `realm` and `nonce` values to hash subsequent requests.\n\nWhen this request is executed within Postman, the script attached with this request does the hard work of extracting realm and nonce from the header and set it as [global variables](https://www.getpostman.com/docs/environments#global-variables) named `echo_digest_nonce` and `echo_digest_realm`.\nThese variables are re-used in subsequent request for seamless integration of the two requests."
+                            description: "Performing a simple `GET` request to this endpoint returns status code `401 Unauthorized` with `WWW-Authenticate` header containing information to successfully authenticate subsequent requests.\nThe `WWW-Authenticate` header must be processed to extract `realm` and `nonce` values to hash subsequent requests.\n\nWhen this request is executed within Postman, the script attached with this request does the hard work of extracting realm and nonce from the header and set it as [global variables](https://www.postman.com/docs/environments#global-variables) named `echo_digest_nonce` and `echo_digest_realm`.\nThese variables are re-used in subsequent request for seamless integration of the two requests."
                         },
                         response: []
                     },
@@ -1943,7 +1943,7 @@ module.exports = {
                                     disableRetryRequest: false
                                 }
                             },
-                            url: "https://echo.getpostman.com/digest-auth",
+                            url: "https://echo.postman.com/digest-auth",
                             method: "GET",
                             header: [
                                 {
@@ -1951,7 +1951,7 @@ module.exports = {
                                     value: "Digest username=\"postman\", realm=\"Users\", nonce=\"ni1LiL0O37PRRhofWdCLmwFsnEtH1lew\", uri=\"/digest-auth\", response=\"254679099562cf07df9b6f5d8d15db44\", opaque=\"\""
                                 }
                             ],
-                            description: "This endpoint sends a hashed Digest Authorization header to gain access to a valid `200 Ok` response code. In Postman, it uses the stored [global variables](https://www.getpostman.com/docs/environments#gloval-variables), `echo_digest_realm` and `echo_digest_nonce`, to generate the hashed authorisation header.\n\nWithin Postman, for this request to successfully authenticate, running the previous request \"DigestAuth Request\" stores the relevant information within the global variables."
+                            description: "This endpoint sends a hashed Digest Authorization header to gain access to a valid `200 Ok` response code. In Postman, it uses the stored [global variables](https://www.postman.com/docs/environments#gloval-variables), `echo_digest_realm` and `echo_digest_nonce`, to generate the hashed authorisation header.\n\nWithin Postman, for this request to successfully authenticate, running the previous request \"DigestAuth Request\" stores the relevant information within the global variables."
                         },
                         response: [
                             {
@@ -2063,7 +2063,7 @@ module.exports = {
                                     showPassword: false
                                 }
                             },
-                            url: "https://echo.getpostman.com/basic-auth",
+                            url: "https://echo.postman.com/basic-auth",
                             method: "GET",
                             header: [
                                 {
@@ -2071,7 +2071,7 @@ module.exports = {
                                     value: "Basic cG9zdG1hbjpwYXNzd29yZA=="
                                 }
                             ],
-                            description: "This endpoint simulates a **basic-auth** protected endpoint. \nThe endpoint accepts a default username and password and returns a status code of `200 ok` only if the same is provided. \nOtherwise it will return a status code `401 unauthorized`.\n\n> Username: `postman`\n> \n> Password: `password`\n\nTo use this endpoint, send a request with the header `Authorization: Basic cG9zdG1hbjpwYXNzd29yZA==`. \nThe cryptic latter half of the header value is a base64 encoded concatenation of the default username and password. \nUsing Postman, to send this request, you can simply fill in the username and password in the \"Authorization\" tab and Postman will do the rest for you.\n\nTo know more about basic authentication, refer to the [Basic Access Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.getpostman.com/docs/helpers#basic-auth) elaborates how to use the same within the Postman app."
+                            description: "This endpoint simulates a **basic-auth** protected endpoint. \nThe endpoint accepts a default username and password and returns a status code of `200 ok` only if the same is provided. \nOtherwise it will return a status code `401 unauthorized`.\n\n> Username: `postman`\n> \n> Password: `password`\n\nTo use this endpoint, send a request with the header `Authorization: Basic cG9zdG1hbjpwYXNzd29yZA==`. \nThe cryptic latter half of the header value is a base64 encoded concatenation of the default username and password. \nUsing Postman, to send this request, you can simply fill in the username and password in the \"Authorization\" tab and Postman will do the rest for you.\n\nTo know more about basic authentication, refer to the [Basic Access Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.postman.com/docs/helpers#basic-auth) elaborates how to use the same within the Postman app."
                         },
                         response: [
                             {
@@ -2235,7 +2235,7 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/oauth1",
+                            url: "https://echo.postman.com/oauth1",
                             method: "GET",
                             header: [
                                 {
@@ -2258,7 +2258,7 @@ module.exports = {
                                     },
                                     {
                                         key: "redirect_uri",
-                                        value: "https://www.getpostman.com/oauth2/callback",
+                                        value: "https://www.postman.com/oauth2/callback",
                                         type: "text"
                                     },
                                     {
@@ -2306,9 +2306,9 @@ module.exports = {
                         ],
                         request: {
                             url: {
-                                raw: "https://echo.getpostman.com/cookies/set?foo1=bar1&foo2=bar2",
+                                raw: "https://echo.postman.com/cookies/set?foo1=bar1&foo2=bar2",
                                 protocol: "https",
-                                host: ["echo", "getpostman", "com"],
+                                host: ["echo", "postman", "com"],
                                 path: ["cookies", "set"],
                                 query: [{ key: "foo1", value: "bar1" }, { key: "foo2", value: "bar2" }]
                             },
@@ -2413,7 +2413,7 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/cookies",
+                            url: "https://echo.postman.com/cookies",
                             method: "GET",
                             header: [],
                             description: "Use this endpoint to get a list of all cookies that are stored with respect to this domain. Whatever key-value pairs that has been previously set by calling the \"Set Cookies\" endpoint, will be returned as response JSON."
@@ -2517,9 +2517,9 @@ module.exports = {
                         ],
                         request: {
                             url: {
-                                raw: "https://echo.getpostman.com/cookies/delete?foo1&foo2",
+                                raw: "https://echo.postman.com/cookies/delete?foo1&foo2",
                                 protocol: "https",
-                                host: ["echo", "getpostman", "com"],
+                                host: ["echo", "postman", "com"],
                                 path: ["cookies", "delete"],
                                 query: [{ key: "foo1", value: null }, { key: "foo2", value: null }]
                             },
@@ -2633,10 +2633,10 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/headers",
+                            url: "https://echo.postman.com/headers",
                             method: "GET",
                             header: [],
-                            description: "A `GET` request to this endpoint returns the list of all request headers as part of the response JSON.\nIn Postman, sending your own set of headers through the [Headers tab](https://www.getpostman.com/docs/requests#headers) will reveal the headers as part of the response."
+                            description: "A `GET` request to this endpoint returns the list of all request headers as part of the response JSON.\nIn Postman, sending your own set of headers through the [Headers tab](https://www.postman.com/docs/requests#headers) will reveal the headers as part of the response."
                         },
                         response: []
                     },
@@ -2657,9 +2657,9 @@ module.exports = {
                         ],
                         request: {
                             url: {
-                                raw: "https://echo.getpostman.com/response-headers?Content-Type=text/html&Server=apibin",
+                                raw: "https://echo.postman.com/response-headers?Content-Type=text/html&Server=apibin",
                                 protocol: "https",
-                                host: ["echo", "getpostman", "com"],
+                                host: ["echo", "postman", "com"],
                                 path: ["response-headers"],
                                 query: [{ key: "Content-Type", value: "text/html" }, { key: "Server", value: "apibin" }]
                             },
@@ -2680,7 +2680,7 @@ module.exports = {
                                     },
                                     {
                                         key: "redirect_uri",
-                                        value: "https://www.getpostman.com/oauth2/callback",
+                                        value: "https://www.postman.com/oauth2/callback",
                                         type: "text"
                                     },
                                     {
@@ -2728,9 +2728,9 @@ module.exports = {
                         ],
                         request: {
                             url: {
-                                raw: "https://echo.getpostman.com/get?test=123",
+                                raw: "https://echo.postman.com/get?test=123",
                                 protocol: "https",
-                                host: ["echo", "getpostman", "com"],
+                                host: ["echo", "postman", "com"],
                                 path: ["get"],
                                 query: [{ key: "test", value: "123" }]
                             },
@@ -2751,7 +2751,7 @@ module.exports = {
                                     },
                                     {
                                         key: "redirect_uri",
-                                        value: "https://www.getpostman.com/oauth2/callback",
+                                        value: "https://www.postman.com/oauth2/callback",
                                         type: "text"
                                     },
                                     {
@@ -2792,7 +2792,7 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/post",
+                            url: "https://echo.postman.com/post",
                             method: "POST",
                             header: [
                                 {
@@ -2836,7 +2836,7 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/put",
+                            url: "https://echo.postman.com/put",
                             method: "PUT",
                             header: [],
                             body: {
@@ -2870,7 +2870,7 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/patch",
+                            url: "https://echo.postman.com/patch",
                             method: "PATCH",
                             header: [],
                             body: {
@@ -2904,7 +2904,7 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/delete",
+                            url: "https://echo.postman.com/delete",
                             method: "DELETE",
                             header: [],
                             body: {
@@ -2941,7 +2941,7 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/status/200",
+                            url: "https://echo.postman.com/status/200",
                             method: "GET",
                             header: [],
                             body: {
@@ -2975,7 +2975,7 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/stream/10",
+                            url: "https://echo.postman.com/stream/10",
                             method: "GET",
                             header: [],
                             description: "This endpoint allows one to recieve streaming http response using [chunked transfer encoding](https://en.wikipedia.org/wiki/Chunked_transfer_encoding) of a configurable length.\n\nA streaming response does not wait for the entire response to be generated on server before flushing it out. This implies that for a fairly large response, parts of it can be streamed to the requestee as and when it is generated on server. The client can then take actions of processing this partially received data."
@@ -3001,7 +3001,7 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/delay/3",
+                            url: "https://echo.postman.com/delay/3",
                             method: "GET",
                             header: [],
                             body: {
@@ -3033,7 +3033,7 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/encoding/utf8",
+                            url: "https://echo.postman.com/encoding/utf8",
                             method: "GET",
                             header: [],
                             description: "If a response of an endpoint requires to send data beyond the basic English / ASCII character set, the `charset` parameter in the `Content-Type` response header defines the character encoding policy.\n\nThis endpoint returns an `UTF8` character encoded response body with text in various languages such as Greek, Latin, East Asian, etc. Postman can interpret the character encoding and use appropriate methods to display the character set in responses."
@@ -3065,7 +3065,7 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/gzip",
+                            url: "https://echo.postman.com/gzip",
                             method: "GET",
                             header: [],
                             body: {
@@ -3083,7 +3083,7 @@ module.exports = {
                                     },
                                     {
                                         key: "redirect_uri",
-                                        value: "https://www.getpostman.com/oauth2/callback",
+                                        value: "https://www.postman.com/oauth2/callback",
                                         type: "text"
                                     },
                                     {
@@ -3128,7 +3128,7 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/deflate",
+                            url: "https://echo.postman.com/deflate",
                             method: "GET",
                             header: [],
                             description: "This endpoint returns the response using [deflate compression algoritm](https://en.wikipedia.org/wiki/DEFLATE). \nThe uncompressed response is a JSON string containing the details of the request sent by the client. For this endpoint to work, one should request with `Accept-encoding` header containing `deflate` as part of its value. Postman supports gzip, deflate and SDCH decoding and automatically sends them as part of the request.\n\nHTTP Compression allows the server to send responses in a compressed format, which is uncompressed by the client before processing. This reduces network bandwidth consumption at the cost of increase in CPU usage.\nTo know more about this, refer the [HTTP Compression](https://en.wikipedia.org/wiki/HTTP_compression) wikipedia article."
@@ -3158,9 +3158,9 @@ module.exports = {
                         ],
                         request: {
                             url: {
-                                raw: "https://echo.getpostman.com/oauth2/authtoken?client_id=abc123&response_type=code",
+                                raw: "https://echo.postman.com/oauth2/authtoken?client_id=abc123&response_type=code",
                                 protocol: 'https',
-                                host: ['echo', 'getpostman', 'com'],
+                                host: ['echo', 'postman', 'com'],
                                 path: ['oauth2', 'authtoken'],
                                 query: [{ key: 'client_id', value: 'abc123' }, { key: 'response_type', value: 'code' }]
                             },
@@ -3181,7 +3181,7 @@ module.exports = {
                                     },
                                     {
                                         key: "redirect_uri",
-                                        value: "https://www.getpostman.com/oauth2/callback",
+                                        value: "https://www.postman.com/oauth2/callback",
                                         type: "text"
                                     },
                                     {
@@ -3295,7 +3295,7 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/oauth2/token",
+                            url: "https://echo.postman.com/oauth2/token",
                             method: "POST",
                             header: [],
                             body: {
@@ -3313,7 +3313,7 @@ module.exports = {
                                     },
                                     {
                                         key: "redirect_uri",
-                                        value: "https://www.getpostman.com/oauth2/callback",
+                                        value: "https://www.postman.com/oauth2/callback",
                                         type: "text"
                                     },
                                     {
@@ -3328,14 +3328,14 @@ module.exports = {
                                     }
                                 ]
                             },
-                            description: "This endpoint is used to get the `access_token`\n\nIt requires the following secret client credentials to be sent as part of the form body along with the `authentication code` obtained as part of the `redirect_uri` from the previous request.\n\n> code: xWnkliVQJURqB2x1\n>\n> grant_type: authorization_code\n>\n> redirect_uri: https://www.getpostman.com/oauth2/callback\n>\n> client_id: abc123\n>\n> client_secret: ssh-secret\n\nIf the correct credentials are not passed, the server returns with a `401 Unauthorized` response."
+                            description: "This endpoint is used to get the `access_token`\n\nIt requires the following secret client credentials to be sent as part of the form body along with the `authentication code` obtained as part of the `redirect_uri` from the previous request.\n\n> code: xWnkliVQJURqB2x1\n>\n> grant_type: authorization_code\n>\n> redirect_uri: https://www.postman.com/oauth2/callback\n>\n> client_id: abc123\n>\n> client_secret: ssh-secret\n\nIf the correct credentials are not passed, the server returns with a `401 Unauthorized` response."
                         },
                         response: [
                             {
                                 id: "0716233b-474d-bac7-bf1f-ccb461ecd3b9",
                                 name: "401",
                                 originalRequest: {
-                                    url: "https://echo.getpostman.com/oauth2/token",
+                                    url: "https://echo.postman.com/oauth2/token",
                                     method: "POST",
                                     header: [],
                                     body: {
@@ -3353,7 +3353,7 @@ module.exports = {
                                             },
                                             {
                                                 key: "redirect_uri",
-                                                value: "https://www.getpostman.com/oauth2/callback",
+                                                value: "https://www.postman.com/oauth2/callback",
                                                 type: "text"
                                             },
                                             {
@@ -3439,7 +3439,7 @@ module.exports = {
                                 id: "aa6e8983-172d-692b-f8da-a69af6a27371",
                                 name: "200",
                                 originalRequest: {
-                                    url: "https://echo.getpostman.com/oauth2/token",
+                                    url: "https://echo.postman.com/oauth2/token",
                                     method: "POST",
                                     header: [],
                                     body: {
@@ -3457,7 +3457,7 @@ module.exports = {
                                             },
                                             {
                                                 key: "redirect_uri",
-                                                value: "https://www.getpostman.com/oauth2/callback",
+                                                value: "https://www.postman.com/oauth2/callback",
                                                 type: "text"
                                             },
                                             {
@@ -3564,7 +3564,7 @@ module.exports = {
                             }
                         ],
                         request: {
-                            url: "https://echo.getpostman.com/oauth2/user/info",
+                            url: "https://echo.postman.com/oauth2/user/info",
                             method: "GET",
                             header: [
                                 {
@@ -3587,7 +3587,7 @@ module.exports = {
                                     },
                                     {
                                         key: "redirect_uri",
-                                        value: "https://www.getpostman.com/oauth2/callback",
+                                        value: "https://www.postman.com/oauth2/callback",
                                         type: "text"
                                     },
                                     {
@@ -3758,13 +3758,13 @@ module.exports = {
             name: "Postman Echo (shamasified)",
             _postman_id: "03cf74df-32de-af8b-7db8-855b51b05e50",
             description: "Postman Echo is service you can use to test your REST clients and make sample API calls. It provides endpoints for `GET`, `POST`, `PUT`, various auth mechanisms and other utility endpoints.",
-            schema: "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+            schema: "https://schema.postman.com/json/collection/v2.1.0/collection.json"
         },
         item: [
             {
                 id: "ca633394-d946-8e44-f4fe-e0470be8cb64",
                 name: "Auth: Digest",
-                description: "Digest authentication protects an endpoint with a username and password without actually transmitting the password over network.\nOne has to apply a hash function (like MD5, etc) to the username and password before sending them over the network.\n\n> Username: `postman`\n>\n> Password: `password`\n\nUnlike Basic-Auth, authentication happens using two consecutive requests where the first request returns `401 Unauthorised` along with `WWW-Authenticate` header containing information that needs to be used to authenticate subsequent calls.\n\nTo know more about digest authentication, refer to the [Digest Access Authentication](https://en.wikipedia.org/wiki/Digest_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.getpostman.com/docs/helpers#digest-auth) elaborates how to use the same within the Postman app.",
+                description: "Digest authentication protects an endpoint with a username and password without actually transmitting the password over network.\nOne has to apply a hash function (like MD5, etc) to the username and password before sending them over the network.\n\n> Username: `postman`\n>\n> Password: `password`\n\nUnlike Basic-Auth, authentication happens using two consecutive requests where the first request returns `401 Unauthorised` along with `WWW-Authenticate` header containing information that needs to be used to authenticate subsequent calls.\n\nTo know more about digest authentication, refer to the [Digest Access Authentication](https://en.wikipedia.org/wiki/Digest_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.postman.com/docs/helpers#digest-auth) elaborates how to use the same within the Postman app.",
                 item: [
                     {
                         id: "a0d5867c-dd87-3f01-9560-8095271e2644",
@@ -3794,9 +3794,9 @@ module.exports = {
                         ],
                         request: {
                             url: {
-                                raw: "https://echo.getpostman.com/digest-auth",
+                                raw: "https://echo.postman.com/digest-auth",
                                 protocol: "https",
-                                host: ["echo", "getpostman", "com"],
+                                host: ["echo", "postman", "com"],
                                 path: ["digest-auth"]
                             },
                             method: "GET",
@@ -3816,7 +3816,7 @@ module.exports = {
                                     },
                                     {
                                         key: "redirect_uri",
-                                        value: "https://www.getpostman.com/oauth2/callback",
+                                        value: "https://www.postman.com/oauth2/callback",
                                         type: "text"
                                     },
                                     {
@@ -3831,7 +3831,7 @@ module.exports = {
                                     }
                                 ]
                             },
-                            description: "Performing a simple `GET` request to this endpoint returns status code `401 Unauthorized` with `WWW-Authenticate` header containing information to successfully authenticate subsequent requests.\nThe `WWW-Authenticate` header must be processed to extract `realm` and `nonce` values to hash subsequent requests.\n\nWhen this request is executed within Postman, the script attached with this request does the hard work of extracting realm and nonce from the header and set it as [global variables](https://www.getpostman.com/docs/environments#global-variables) named `echo_digest_nonce` and `echo_digest_realm`.\nThese variables are re-used in subsequent request for seamless integration of the two requests."
+                            description: "Performing a simple `GET` request to this endpoint returns status code `401 Unauthorized` with `WWW-Authenticate` header containing information to successfully authenticate subsequent requests.\nThe `WWW-Authenticate` header must be processed to extract `realm` and `nonce` values to hash subsequent requests.\n\nWhen this request is executed within Postman, the script attached with this request does the hard work of extracting realm and nonce from the header and set it as [global variables](https://www.postman.com/docs/environments#global-variables) named `echo_digest_nonce` and `echo_digest_realm`.\nThese variables are re-used in subsequent request for seamless integration of the two requests."
                         },
                         response: []
                     },
@@ -3867,9 +3867,9 @@ module.exports = {
                                 ]
                             },
                             url: {
-                                raw: "https://echo.getpostman.com/digest-auth",
+                                raw: "https://echo.postman.com/digest-auth",
                                 protocol: "https",
-                                host: ["echo", "getpostman", "com"],
+                                host: ["echo", "postman", "com"],
                                 path: ["digest-auth"]
                             },
                             method: "GET",
@@ -3879,7 +3879,7 @@ module.exports = {
                                     value: "Digest username=\"postman\", realm=\"Users\", nonce=\"ni1LiL0O37PRRhofWdCLmwFsnEtH1lew\", uri=\"/digest-auth\", response=\"254679099562cf07df9b6f5d8d15db44\", opaque=\"\""
                                 }
                             ],
-                            description: "This endpoint sends a hashed Digest Authorization header to gain access to a valid `200 Ok` response code. In Postman, it uses the stored [global variables](https://www.getpostman.com/docs/environments#gloval-variables), `echo_digest_realm` and `echo_digest_nonce`, to generate the hashed authorisation header.\n\nWithin Postman, for this request to successfully authenticate, running the previous request \"DigestAuth Request\" stores the relevant information within the global variables."
+                            description: "This endpoint sends a hashed Digest Authorization header to gain access to a valid `200 Ok` response code. In Postman, it uses the stored [global variables](https://www.postman.com/docs/environments#gloval-variables), `echo_digest_realm` and `echo_digest_nonce`, to generate the hashed authorisation header.\n\nWithin Postman, for this request to successfully authenticate, running the previous request \"DigestAuth Request\" stores the relevant information within the global variables."
                         },
                         response: [
                             {
@@ -3992,9 +3992,9 @@ module.exports = {
                                 ]
                             },
                             url: {
-                                raw: "https://echo.getpostman.com/basic-auth",
+                                raw: "https://echo.postman.com/basic-auth",
                                 protocol: "https",
-                                host: ["echo", "getpostman", "com"],
+                                host: ["echo", "postman", "com"],
                                 path: ["basic-auth"]
                             },
                             method: "GET",
@@ -4004,7 +4004,7 @@ module.exports = {
                                     value: "Basic cG9zdG1hbjpwYXNzd29yZA=="
                                 }
                             ],
-                            description: "This endpoint simulates a **basic-auth** protected endpoint. \nThe endpoint accepts a default username and password and returns a status code of `200 ok` only if the same is provided. \nOtherwise it will return a status code `401 unauthorized`.\n\n> Username: `postman`\n> \n> Password: `password`\n\nTo use this endpoint, send a request with the header `Authorization: Basic cG9zdG1hbjpwYXNzd29yZA==`. \nThe cryptic latter half of the header value is a base64 encoded concatenation of the default username and password. \nUsing Postman, to send this request, you can simply fill in the username and password in the \"Authorization\" tab and Postman will do the rest for you.\n\nTo know more about basic authentication, refer to the [Basic Access Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.getpostman.com/docs/helpers#basic-auth) elaborates how to use the same within the Postman app."
+                            description: "This endpoint simulates a **basic-auth** protected endpoint. \nThe endpoint accepts a default username and password and returns a status code of `200 ok` only if the same is provided. \nOtherwise it will return a status code `401 unauthorized`.\n\n> Username: `postman`\n> \n> Password: `password`\n\nTo use this endpoint, send a request with the header `Authorization: Basic cG9zdG1hbjpwYXNzd29yZA==`. \nThe cryptic latter half of the header value is a base64 encoded concatenation of the default username and password. \nUsing Postman, to send this request, you can simply fill in the username and password in the \"Authorization\" tab and Postman will do the rest for you.\n\nTo know more about basic authentication, refer to the [Basic Access Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.postman.com/docs/helpers#basic-auth) elaborates how to use the same within the Postman app."
                         },
                         response: [
                             {
@@ -4169,9 +4169,9 @@ module.exports = {
                         ],
                         request: {
                             url: {
-                                raw: "https://echo.getpostman.com/oauth1",
+                                raw: "https://echo.postman.com/oauth1",
                                 protocol: "https",
-                                host: ["echo", "getpostman", "com"],
+                                host: ["echo", "postman", "com"],
                                 path: ["oauth1"]
                             },
                             method: "GET",
@@ -4196,7 +4196,7 @@ module.exports = {
                                     },
                                     {
                                         key: "redirect_uri",
-                                        value: "https://www.getpostman.com/oauth2/callback",
+                                        value: "https://www.postman.com/oauth2/callback",
                                         type: "text"
                                     },
                                     {
@@ -4244,9 +4244,9 @@ module.exports = {
                         ],
                         request: {
                             url: {
-                                raw: "https://echo.getpostman.com/cookies/set?foo1=bar1&foo2=bar2",
+                                raw: "https://echo.postman.com/cookies/set?foo1=bar1&foo2=bar2",
                                 protocol: "https",
-                                host: ["echo", "getpostman", "com"],
+                                host: ["echo", "postman", "com"],
                                 path: ["cookies", "set"],
                                 query: [{ key: "foo1", value: "bar1" }, { key: "foo2", value: "bar2" }]
                             },
@@ -4352,9 +4352,9 @@ module.exports = {
                         ],
                         request: {
                             url: {
-                                raw: "https://echo.getpostman.com/cookies",
+                                raw: "https://echo.postman.com/cookies",
                                 protocol: "https",
-                                host: ["echo", "getpostman", "com"],
+                                host: ["echo", "postman", "com"],
                                 path: ["cookies"]
                             },
                             method: "GET",
@@ -4460,9 +4460,9 @@ module.exports = {
                         ],
                         request: {
                             url: {
-                                raw: "https://echo.getpostman.com/cookies/delete?foo1&foo2",
+                                raw: "https://echo.postman.com/cookies/delete?foo1&foo2",
                                 protocol: "https",
-                                host: ["echo", "getpostman", "com"],
+                                host: ["echo", "postman", "com"],
                                 path: ["cookies", "delete"],
                                 query: [{ key: "foo1", value: null }, { key: "foo2", value: null }]
                             },
@@ -4577,14 +4577,14 @@ module.exports = {
                         ],
                         request: {
                             url: {
-                                raw: "https://echo.getpostman.com/headers",
+                                raw: "https://echo.postman.com/headers",
                                 protocol: "https",
-                                host: ["echo", "getpostman", "com"],
+                                host: ["echo", "postman", "com"],
                                 path: ["headers"]
                             },
                             method: "GET",
                             header: [],
-                            description: "A `GET` request to this endpoint returns the list of all request headers as part of the response JSON.\nIn Postman, sending your own set of headers through the [Headers tab](https://www.getpostman.com/docs/requests#headers) will reveal the headers as part of the response."
+                            description: "A `GET` request to this endpoint returns the list of all request headers as part of the response JSON.\nIn Postman, sending your own set of headers through the [Headers tab](https://www.postman.com/docs/requests#headers) will reveal the headers as part of the response."
                         },
                         response: []
                     },
@@ -4605,9 +4605,9 @@ module.exports = {
                         ],
                         request: {
                             url: {
-                                raw: "https://echo.getpostman.com/response-headers?Content-Type=text/html&Server=apibin",
+                                raw: "https://echo.postman.com/response-headers?Content-Type=text/html&Server=apibin",
                                 protocol: "https",
-                                host: ["echo", "getpostman", "com"],
+                                host: ["echo", "postman", "com"],
                                 path: ["response-headers"],
                                 query: [{ key: "Content-Type", value: "text/html" }, { key: "Server", value: "apibin" }]
                             },
@@ -4628,7 +4628,7 @@ module.exports = {
                                     },
                                     {
                                         key: "redirect_uri",
-                                        value: "https://www.getpostman.com/oauth2/callback",
+                                        value: "https://www.postman.com/oauth2/callback",
                                         type: "text"
                                     },
                                     {
@@ -4676,9 +4676,9 @@ module.exports = {
                         ],
                         request: {
                             url: {
-                                raw: "https://echo.getpostman.com/get?test=123",
+                                raw: "https://echo.postman.com/get?test=123",
                                 protocol: "https",
-                                host: ["echo", "getpostman", "com"],
+                                host: ["echo", "postman", "com"],
                                 path: ["get"],
                                 query: [{ key: "test", value: "123" }]
                             },
@@ -4699,7 +4699,7 @@ module.exports = {
                                     },
                                     {
                                         key: "redirect_uri",
-                                        value: "https://www.getpostman.com/oauth2/callback",
+                                        value: "https://www.postman.com/oauth2/callback",
                                         type: "text"
                                     },
                                     {
@@ -4741,9 +4741,9 @@ module.exports = {
                         ],
                         request: {
                             url: {
-                                raw: "https://echo.getpostman.com/post",
+                                raw: "https://echo.postman.com/post",
                                 protocol: "https",
-                                host: ["echo", "getpostman", "com"],
+                                host: ["echo", "postman", "com"],
                                 path: ["post"]
                             },
                             method: "POST",
@@ -4790,9 +4790,9 @@ module.exports = {
                         ],
                         request: {
                             url: {
-                                raw: "https://echo.getpostman.com/put",
+                                raw: "https://echo.postman.com/put",
                                 protocol: "https",
-                                host: ["echo", "getpostman", "com"],
+                                host: ["echo", "postman", "com"],
                                 path: ["put"]
                             },
                             method: "PUT",
@@ -4829,9 +4829,9 @@ module.exports = {
                         ],
                         request: {
                             url: {
-                                raw: "https://echo.getpostman.com/patch",
+                                raw: "https://echo.postman.com/patch",
                                 protocol: "https",
-                                host: ["echo", "getpostman", "com"],
+                                host: ["echo", "postman", "com"],
                                 path: ["patch"]
                             },
                             method: "PATCH",
@@ -4868,9 +4868,9 @@ module.exports = {
                         ],
                         request: {
                             url: {
-                                raw: "https://echo.getpostman.com/delete",
+                                raw: "https://echo.postman.com/delete",
                                 protocol: "https",
-                                host: ["echo", "getpostman", "com"],
+                                host: ["echo", "postman", "com"],
                                 path: ["delete"]
                             },
                             method: "DELETE",
@@ -4910,9 +4910,9 @@ module.exports = {
                         ],
                         request: {
                             url: {
-                                raw: "https://echo.getpostman.com/status/200",
+                                raw: "https://echo.postman.com/status/200",
                                 protocol: "https",
-                                host: ["echo", "getpostman", "com"],
+                                host: ["echo", "postman", "com"],
                                 path: ["status", "200"]
                             },
                             method: "GET",
@@ -4949,9 +4949,9 @@ module.exports = {
                         ],
                         request: {
                             url: {
-                                raw: "https://echo.getpostman.com/stream/10",
+                                raw: "https://echo.postman.com/stream/10",
                                 protocol: "https",
-                                host: ["echo", "getpostman", "com"],
+                                host: ["echo", "postman", "com"],
                                 path: ["stream", "10"]
                             },
                             method: "GET",
@@ -4980,9 +4980,9 @@ module.exports = {
                         ],
                         request: {
                             url: {
-                                raw: "https://echo.getpostman.com/delay/3",
+                                raw: "https://echo.postman.com/delay/3",
                                 protocol: "https",
-                                host: ["echo", "getpostman", "com"],
+                                host: ["echo", "postman", "com"],
                                 path: ["delay", "3"]
                             },
                             method: "GET",
@@ -5017,9 +5017,9 @@ module.exports = {
                         ],
                         request: {
                             url: {
-                                raw: "https://echo.getpostman.com/encoding/utf8",
+                                raw: "https://echo.postman.com/encoding/utf8",
                                 protocol: "https",
-                                host: ["echo", "getpostman", "com"],
+                                host: ["echo", "postman", "com"],
                                 path: ["encoding", "utf8"]
                             },
                             method: "GET",
@@ -5054,9 +5054,9 @@ module.exports = {
                         ],
                         request: {
                             url: {
-                                raw: "https://echo.getpostman.com/gzip",
+                                raw: "https://echo.postman.com/gzip",
                                 protocol: "https",
-                                host: ["echo", "getpostman", "com"],
+                                host: ["echo", "postman", "com"],
                                 path: ["gzip"]
                             },
                             method: "GET",
@@ -5076,7 +5076,7 @@ module.exports = {
                                     },
                                     {
                                         key: "redirect_uri",
-                                        value: "https://www.getpostman.com/oauth2/callback",
+                                        value: "https://www.postman.com/oauth2/callback",
                                         type: "text"
                                     },
                                     {
@@ -5122,9 +5122,9 @@ module.exports = {
                         ],
                         request: {
                             url: {
-                                raw: "https://echo.getpostman.com/deflate",
+                                raw: "https://echo.postman.com/deflate",
                                 protocol: "https",
-                                host: ["echo", "getpostman", "com"],
+                                host: ["echo", "postman", "com"],
                                 path: ["deflate"]
                             },
                             method: "GET",
@@ -5156,9 +5156,9 @@ module.exports = {
                         ],
                         request: {
                             url: {
-                                raw: "https://echo.getpostman.com/oauth2/authtoken?client_id=abc123&response_type=code",
+                                raw: "https://echo.postman.com/oauth2/authtoken?client_id=abc123&response_type=code",
                                 protocol: "https",
-                                host: ["echo", "getpostman", "com"],
+                                host: ["echo", "postman", "com"],
                                 path: ["oauth2", "authtoken"],
                                 query: [{ key: "client_id", value: "abc123" }, { key: "response_type", value: "code" }]
                             },
@@ -5179,7 +5179,7 @@ module.exports = {
                                     },
                                     {
                                         key: "redirect_uri",
-                                        value: "https://www.getpostman.com/oauth2/callback",
+                                        value: "https://www.postman.com/oauth2/callback",
                                         type: "text"
                                     },
                                     {
@@ -5294,9 +5294,9 @@ module.exports = {
                         ],
                         request: {
                             url: {
-                                raw: "https://echo.getpostman.com/oauth2/token",
+                                raw: "https://echo.postman.com/oauth2/token",
                                 protocol: "https",
-                                host: ["echo", "getpostman", "com"],
+                                host: ["echo", "postman", "com"],
                                 path: ["oauth2", "token"]
                             },
                             method: "POST",
@@ -5316,7 +5316,7 @@ module.exports = {
                                     },
                                     {
                                         key: "redirect_uri",
-                                        value: "https://www.getpostman.com/oauth2/callback",
+                                        value: "https://www.postman.com/oauth2/callback",
                                         type: "text"
                                     },
                                     {
@@ -5331,7 +5331,7 @@ module.exports = {
                                     }
                                 ]
                             },
-                            description: "This endpoint is used to get the `access_token`\n\nIt requires the following secret client credentials to be sent as part of the form body along with the `authentication code` obtained as part of the `redirect_uri` from the previous request.\n\n> code: xWnkliVQJURqB2x1\n>\n> grant_type: authorization_code\n>\n> redirect_uri: https://www.getpostman.com/oauth2/callback\n>\n> client_id: abc123\n>\n> client_secret: ssh-secret\n\nIf the correct credentials are not passed, the server returns with a `401 Unauthorized` response."
+                            description: "This endpoint is used to get the `access_token`\n\nIt requires the following secret client credentials to be sent as part of the form body along with the `authentication code` obtained as part of the `redirect_uri` from the previous request.\n\n> code: xWnkliVQJURqB2x1\n>\n> grant_type: authorization_code\n>\n> redirect_uri: https://www.postman.com/oauth2/callback\n>\n> client_id: abc123\n>\n> client_secret: ssh-secret\n\nIf the correct credentials are not passed, the server returns with a `401 Unauthorized` response."
                         },
                         response: [
                             {
@@ -5339,9 +5339,9 @@ module.exports = {
                                 name: "401",
                                 originalRequest: {
                                     url: {
-                                        raw: "https://echo.getpostman.com/oauth2/token",
+                                        raw: "https://echo.postman.com/oauth2/token",
                                         protocol: "https",
-                                        host: ["echo", "getpostman", "com"],
+                                        host: ["echo", "postman", "com"],
                                         path: ["oauth2", "token"]
                                     },
                                     method: "POST",
@@ -5361,7 +5361,7 @@ module.exports = {
                                             },
                                             {
                                                 key: "redirect_uri",
-                                                value: "https://www.getpostman.com/oauth2/callback",
+                                                value: "https://www.postman.com/oauth2/callback",
                                                 type: "text"
                                             },
                                             {
@@ -5448,9 +5448,9 @@ module.exports = {
                                 name: "200",
                                 originalRequest: {
                                     url: {
-                                        raw: "https://echo.getpostman.com/oauth2/token",
+                                        raw: "https://echo.postman.com/oauth2/token",
                                         protocol: "https",
-                                        host: ["echo", "getpostman", "com"],
+                                        host: ["echo", "postman", "com"],
                                         path: ["oauth2", "token"]
                                     },
                                     method: "POST",
@@ -5470,7 +5470,7 @@ module.exports = {
                                             },
                                             {
                                                 key: "redirect_uri",
-                                                value: "https://www.getpostman.com/oauth2/callback",
+                                                value: "https://www.postman.com/oauth2/callback",
                                                 type: "text"
                                             },
                                             {
@@ -5578,9 +5578,9 @@ module.exports = {
                         ],
                         request: {
                             url: {
-                                raw: "https://echo.getpostman.com/oauth2/user/info",
+                                raw: "https://echo.postman.com/oauth2/user/info",
                                 protocol: "https",
-                                host: ["echo", "getpostman", "com"],
+                                host: ["echo", "postman", "com"],
                                 path: ["oauth2", "user", "info"]
                             },
                             method: "GET",
@@ -5605,7 +5605,7 @@ module.exports = {
                                     },
                                     {
                                         key: "redirect_uri",
-                                        value: "https://www.getpostman.com/oauth2/callback",
+                                        value: "https://www.postman.com/oauth2/callback",
                                         type: "text"
                                     },
                                     {
