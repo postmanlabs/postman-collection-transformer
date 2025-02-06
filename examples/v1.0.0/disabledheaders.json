@@ -10,7 +10,7 @@
         {
             "id": "6a795cee-c9a7-9cbc-32cd-9125337d6d7b",
             "headers": "A:B\n//C:D",
-            "url": "echo.getpostman.com/post",
+            "url": "echo.postman.com/post",
             "preRequestScript": null,
             "pathVariables": {},
             "method": "POST",
@@ -19,7 +19,7 @@
             "tests": "tests[\"Body matches string\"] = responseBody.has(\"OMG\");\ntests[\"Status code is 200\"] = responseCode.code === 200;",
             "currentHelper": "normal",
             "helperAttributes": {},
-            "name": "echo.getpostman.com/post",
+            "name": "echo.postman.com/post",
             "description": "OMG I AM description",
             "responses": []
         }

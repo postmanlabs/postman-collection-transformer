@@ -180,7 +180,7 @@ describe('module', function () {
             expect(transformer.isv2()).to.eql(false);
             expect(transformer.isv2({
                 info: {
-                    schema: 'https://schema.getpostman.com/json/collection/v2.0.0/collection.json'
+                    schema: 'https://schema.postman.com/json/collection/v2.0.0/collection.json'
                 }
             })).to.eql(true);
         });

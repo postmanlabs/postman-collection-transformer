@@ -4,7 +4,7 @@
         "name": "HackerNews API",
         "_postman_id": "361708ee-7343-43e0-f803-e10fb4d5d675",
         "description": "HackerNews API collection for Postman. I added more documentation.",
-        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+        "schema": "https://schema.postman.com/json/collection/v2.1.0/collection.json"
     },
     "item": [
         {
