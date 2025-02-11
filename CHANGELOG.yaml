@@ -1,3 +1,9 @@
+4.1.9:
+  date: 2025-02-11
+  chores:
+    - GH-660 Updated schema host to postman.com
+    - GH-661 Added jwt, edgegrid and asap auth
+
 4.1.8:
   date: 2023-10-12
   fixed bugs:

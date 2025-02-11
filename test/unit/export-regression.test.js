@@ -75,7 +75,7 @@ describe('v1.0.0 to v2.1.0 conversion', function () {
                 info: {
                     _postman_id: 'C1',
                     name: 'collection',
-                    schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+                    schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
                 },
                 item: [{
                     name: 'folder one',
@@ -207,7 +207,7 @@ describe('v1.0.0 to v2.1.0 conversion', function () {
                 info: {
                     _postman_id: 'C1',
                     name: 'collection',
-                    schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+                    schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
                 },
                 item: [{
                     id: 'F1',

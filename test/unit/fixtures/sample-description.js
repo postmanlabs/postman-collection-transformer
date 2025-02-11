@@ -84,7 +84,7 @@ module.exports = {
         info: {
             name: 'Sample descriptions',
             _postman_id: 'e1036383-ba43-d240-5e9d-19614febed77',
-            schema: 'https://schema.getpostman.com/json/collection/v2.0.0/collection.json'
+            schema: 'https://schema.postman.com/json/collection/v2.0.0/collection.json'
         },
         item: [
             {
@@ -174,7 +174,7 @@ module.exports = {
         info: {
             name: 'Sample descriptions',
             _postman_id: 'e1036383-ba43-d240-5e9d-19614febed77',
-            schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
+            schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
         },
         item: [
             {

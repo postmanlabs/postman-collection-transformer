@@ -4,7 +4,7 @@
         "name": "c1",
         "_postman_id": "34783f86-4a67-d3bd-ba5b-148495fa2f72",
         "description": "Description",
-        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+        "schema": "https://schema.postman.com/json/collection/v2.1.0/collection.json"
     },
     "item": [
         {
@@ -236,7 +236,7 @@
                         "type": "string"
                     }]
                 },
-                "url": "http://echo.getpostman.com/auth/bearer",
+                "url": "http://echo.postman.com/auth/bearer",
                 "method": "GET",
                 "data": {
                     "mode": "formdata",
