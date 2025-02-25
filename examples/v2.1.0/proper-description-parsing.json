@@ -7,7 +7,7 @@
           "content": "V2 supported collection description in object format",
           "type": "text/plain"
         },
-        "schema": "https://schema.postman.com/json/collection/v2.0.0/collection.json"
+        "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
     },
     "item": [
         {

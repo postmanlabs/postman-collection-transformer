@@ -145,7 +145,7 @@ describe('v2.0.0 ==> v1.0.0', function () {
             const collection = {
                     info: {
                         _postman_id: '8eca8c11-c5ce-4032-b62c-568ca86dbe4c',
-                        schema: 'https://schema.postman.com/json/collection/v2.0.0/collection.json'
+                        schema: 'https://schema.getpostman.com/json/collection/v2.0.0/collection.json'
                     },
                     item: [
                         {
