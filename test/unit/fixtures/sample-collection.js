@@ -1840,7 +1840,7 @@ module.exports = {
             name: "Postman Echo (shamasified)",
             _postman_id: "03cf74df-32de-af8b-7db8-855b51b05e50",
             description: "Postman Echo is service you can use to test your REST clients and make sample API calls. It provides endpoints for `GET`, `POST`, `PUT`, various auth mechanisms and other utility endpoints.",
-            schema: "https://schema.postman.com/json/collection/v2.0.0/collection.json"
+            schema: "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
         },
         item: [
             {
@@ -3758,7 +3758,7 @@ module.exports = {
             name: "Postman Echo (shamasified)",
             _postman_id: "03cf74df-32de-af8b-7db8-855b51b05e50",
             description: "Postman Echo is service you can use to test your REST clients and make sample API calls. It provides endpoints for `GET`, `POST`, `PUT`, various auth mechanisms and other utility endpoints.",
-            schema: "https://schema.postman.com/json/collection/v2.1.0/collection.json"
+            schema: "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
         },
         item: [
             {

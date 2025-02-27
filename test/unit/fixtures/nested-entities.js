@@ -360,7 +360,7 @@ module.exports = {
             name: 'nested-entities',
             _postman_id: '371e9fa3-97d3-ca11-07c0-836a72a325c2',
             description: 'A simple collection to elucidate nested auth helpers, variables, and scripts',
-            schema: 'https://schema.postman.com/json/collection/v2.0.0/collection.json'
+            schema: 'https://schema.getpostman.com/json/collection/v2.0.0/collection.json'
         },
         variable: [{
             id: 'collection',
@@ -563,7 +563,7 @@ module.exports = {
             name: 'nested-entities',
             _postman_id: '371e9fa3-97d3-ca11-07c0-836a72a325c2',
             description: 'A simple collection to elucidate nested auth helpers, variables, and scripts',
-            schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+            schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
         },
         variable: [{
             id: 'collection',

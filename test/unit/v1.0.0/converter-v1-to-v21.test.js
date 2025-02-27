@@ -131,7 +131,7 @@ describe('v1.0.0 to v2.1.0', function () {
 
                     expect(converted).to.include.keys({
                         info: {
-                            schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                            schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                         },
                         item: []
                     });
@@ -154,7 +154,7 @@ describe('v1.0.0 to v2.1.0', function () {
                     expect(converted).to.eql({
                         info: {
                             _postman_id: '9be04d9c-511b-4089-a184-9f0dedc7b21d',
-                            schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                            schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                         },
                         item: [{
                             id: 'F1',
@@ -271,7 +271,7 @@ describe('v1.0.0 to v2.1.0', function () {
                     info: {
                         _postman_id: 'C1',
                         name: 'collection',
-                        schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                     },
                     item: [{
                         id: 'F1',
@@ -340,7 +340,7 @@ describe('v1.0.0 to v2.1.0', function () {
                     info: {
                         _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                         name: 'body-src-check',
-                        schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                     },
                     item: [
                         {
@@ -446,7 +446,7 @@ describe('v1.0.0 to v2.1.0', function () {
                     info: {
                         _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                         name: 'disabled-body',
-                        schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                     },
                     item: [{
                         id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
@@ -500,7 +500,7 @@ describe('v1.0.0 to v2.1.0', function () {
                     info: {
                         _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                         name: 'disabled-body',
-                        schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                     },
                     item: [{
                         id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
@@ -551,7 +551,7 @@ describe('v1.0.0 to v2.1.0', function () {
                     info: {
                         _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                         name: 'null-request-body',
-                        schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                     },
                     item: [{
                         id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
@@ -599,7 +599,7 @@ describe('v1.0.0 to v2.1.0', function () {
                     info: {
                         _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                         name: 'null-dataMode',
-                        schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                     },
                     item: [{
                         id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
@@ -652,7 +652,7 @@ describe('v1.0.0 to v2.1.0', function () {
                         _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                         name: 'null-dataMode',
                         description: null,
-                        schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                     },
                     item: [{
                         id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
@@ -701,7 +701,7 @@ describe('v1.0.0 to v2.1.0', function () {
                     info: {
                         _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                         name: 'null-dataMode',
-                        schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                     },
                     item: [{
                         id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
@@ -752,7 +752,7 @@ describe('v1.0.0 to v2.1.0', function () {
                     info: {
                         _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                         name: 'null-dataMode',
-                        schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                     },
                     item: [{
                         id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
@@ -805,7 +805,7 @@ describe('v1.0.0 to v2.1.0', function () {
                     info: {
                         _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                         name: 'null-dataMode',
-                        schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                     },
                     item: [{
                         id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
@@ -860,7 +860,7 @@ describe('v1.0.0 to v2.1.0', function () {
                     info: {
                         _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                         name: 'null-dataMode',
-                        schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                     },
                     item: [{
                         id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
@@ -918,7 +918,7 @@ describe('v1.0.0 to v2.1.0', function () {
                     info: {
                         _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                         name: 'null-dataMode',
-                        schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                     },
                     item: [{
                         id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
@@ -996,7 +996,7 @@ describe('v1.0.0 to v2.1.0', function () {
                     info: {
                         _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                         name: 'null-data',
-                        schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                     },
                     item: [{
                         id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
@@ -1047,7 +1047,7 @@ describe('v1.0.0 to v2.1.0', function () {
                     info: {
                         _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                         name: 'null-data',
-                        schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                     },
                     item: [{
                         id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
@@ -1098,7 +1098,7 @@ describe('v1.0.0 to v2.1.0', function () {
                     info: {
                         _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                         name: 'null-data',
-                        schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                     },
                     item: [{
                         id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
@@ -1148,7 +1148,7 @@ describe('v1.0.0 to v2.1.0', function () {
                     info: {
                         _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                         name: 'null-data',
-                        schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                     },
                     item: [{
                         id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
@@ -1199,7 +1199,7 @@ describe('v1.0.0 to v2.1.0', function () {
                     info: {
                         _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                         name: 'null-data',
-                        schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                     },
                     item: [{
                         id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
@@ -1267,7 +1267,7 @@ describe('v1.0.0 to v2.1.0', function () {
                         info: {
                             _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                             name: 'get-with-body',
-                            schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                            schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                         },
                         item: [{
                             id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
@@ -1326,7 +1326,7 @@ describe('v1.0.0 to v2.1.0', function () {
                         info: {
                             _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                             name: 'get-with-body',
-                            schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                            schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                         },
                         item: [{
                             id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
@@ -1372,7 +1372,7 @@ describe('v1.0.0 to v2.1.0', function () {
                         info: {
                             _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                             name: 'get-with-body',
-                            schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                            schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                         },
                         item: [{
                             id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
@@ -1553,7 +1553,7 @@ describe('v1.0.0 to v2.1.0', function () {
                         info: {
                             _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                             name: 'get-with-body',
-                            schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                            schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                         },
                         item: [{
                             id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
@@ -1611,7 +1611,7 @@ describe('v1.0.0 to v2.1.0', function () {
                         info: {
                             _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                             name: 'get-with-body',
-                            schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                            schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                         },
                         item: [{
                             id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
@@ -1676,7 +1676,7 @@ describe('v1.0.0 to v2.1.0', function () {
                         info: {
                             _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                             name: 'get-with-body',
-                            schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                            schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                         },
                         item: [{
                             id: '5f321b3e-bfdd-4018-80d0-789351444674',
@@ -1744,7 +1744,7 @@ describe('v1.0.0 to v2.1.0', function () {
                         info: {
                             _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                             name: 'get-with-body',
-                            schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                            schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                         },
                         item: [{
                             id: '5f321b3e-bfdd-4018-80d0-789351444674',
@@ -1801,7 +1801,7 @@ describe('v1.0.0 to v2.1.0', function () {
                         info: {
                             _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                             name: 'get-with-body',
-                            schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                            schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                         },
                         item: [{
                             id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
@@ -1854,7 +1854,7 @@ describe('v1.0.0 to v2.1.0', function () {
                         info: {
                             _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
                             name: 'get-with-body',
-                            schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                            schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                         },
                         item: [{
                             id: '4f65e265-dd38-0a67-71a5-d9dd50fa37a1',
@@ -2345,7 +2345,7 @@ describe('v1.0.0 to v2.1.0', function () {
                     expect(JSON.parse(JSON.stringify(converted))).to.eql({
                         info: {
                             _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
-                            schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                            schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                         },
                         item: [{
                             id: '3658e838-9cee-434b-ac17-2fd2bae386bb',
@@ -2374,7 +2374,7 @@ describe('v1.0.0 to v2.1.0', function () {
                     expect(JSON.parse(JSON.stringify(converted))).to.eql({
                         info: {
                             _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
-                            schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                            schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                         },
                         item: [{
                             id: '3658e838-9cee-434b-ac17-2fd2bae386bb',
@@ -3402,7 +3402,7 @@ describe('v1.0.0 to v2.1.0', function () {
                 expect(JSON.parse(JSON.stringify(result))).to.eql({
                     info: {
                         _postman_id: '27ad5d23-f158-41e2-900d-4f81e62c0a1c',
-                        schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                     },
                     item: [{
                         id: 'F1',
@@ -3435,7 +3435,7 @@ describe('v1.0.0 to v2.1.0', function () {
                 expect(JSON.parse(JSON.stringify(result))).to.eql({
                     info: {
                         _postman_id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
-                        schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                     },
                     auth: {
                         type: 'bearer',
@@ -3608,7 +3608,7 @@ describe('v1.0.0 to v2.1.0', function () {
                     info: {
                         _postman_id: '03cf74df-32de-af8b-7db8-855b51b05e50',
                         name: 'Mini echo',
-                        schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                     },
                     item: [
                         {
@@ -3993,7 +3993,7 @@ describe('v1.0.0 to v2.1.0', function () {
                     info: {
                         _postman_id: '9ac7325c-cc3f-4c20-b0f8-a435766cb74c',
                         description: null,
-                        schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+                        schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
                     },
                     item: [{
                         id: 'f3285fa0-e361-43ba-ba15-618c7a911e84',
