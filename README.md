@@ -2,7 +2,7 @@
 
 Perform rapid conversion of JSON structure between Postman Collection Format v1 and v2.
 
-The formats are documented at https://schema.getpostman.com
+The formats are documented at https://schema.postman.com
 
 ## Installation
 
