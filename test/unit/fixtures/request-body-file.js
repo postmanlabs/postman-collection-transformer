@@ -75,7 +75,7 @@ module.exports = {
         info: {
             name: 'body-src-check',
             _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
-            schema: 'https://schema.postman.com/json/collection/v2.0.0/collection.json'
+            schema: 'https://schema.getpostman.com/json/collection/v2.0.0/collection.json'
         },
         item: [
             {
@@ -142,7 +142,7 @@ module.exports = {
         info: {
             name: 'body-src-check',
             _postman_id: '84b2b626-d3a6-0f31-c7a0-47733c01d0c2',
-            schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+            schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
         },
         item: [
             {

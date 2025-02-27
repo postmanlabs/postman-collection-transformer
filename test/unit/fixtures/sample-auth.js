@@ -178,7 +178,7 @@ module.exports = {
             name: 'AuthTest',
             _postman_id: 'd497d10e-e280-8c83-709a-a4d4ea12ad14',
             description: 'Sample auth tests',
-            schema: 'https://schema.postman.com/json/collection/v2.0.0/collection.json'
+            schema: 'https://schema.getpostman.com/json/collection/v2.0.0/collection.json'
         },
         item: [
             {
@@ -318,7 +318,7 @@ module.exports = {
             name: 'AuthTest',
             _postman_id: 'd497d10e-e280-8c83-709a-a4d4ea12ad14',
             description: 'Sample auth tests',
-            schema: 'https://schema.postman.com/json/collection/v2.1.0/collection.json'
+            schema: 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
         },
         item: [
             {
