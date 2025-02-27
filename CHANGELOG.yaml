@@ -1,4 +1,5 @@
-unreleased:
+4.1.10:
+  date: 2025-02-27
   fixed bugs:
     - GH-662 Reverted GH-660 to fix import/export in older clients
 
