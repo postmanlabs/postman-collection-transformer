@@ -1,4 +1,5 @@
-unreleased:
+4.1.11:
+  date: 2025-05-30
   fixed bugs:
     - >-
       GH-663 Fixed a bug where `noDefaults` is not handled correctly on v2.x ->
