@@ -33,7 +33,7 @@
     "test-unit": "nyc --nycrc-path=.nycrc.js node npm/test-unit.js"
   },
   "dependencies": {
-    "commander": "8.3.0",
+    "commander": "12.1.0",
     "inherits": "2.0.4",
     "lodash": "4.17.21",
     "semver": "7.5.4",
