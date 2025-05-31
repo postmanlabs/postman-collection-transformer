@@ -60,7 +60,7 @@
     "nyc": "^15.1.0",
     "packity": "^0.3.4",
     "parse-gitignore": "^1.0.1",
-    "pretty-ms": "^7.0.1",
+    "pretty-ms": "^9.1.0",
     "recursive-readdir": "^2.2.3",
     "require-all": "^3.0.0",
     "shelljs": "^0.8.5",
