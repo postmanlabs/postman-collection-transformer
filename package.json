@@ -1,6 +1,6 @@
 {
   "name": "postman-collection-transformer",
-  "version": "4.1.11",
+  "version": "4.1.12",
   "description": "Perform rapid conversation and validation of JSON structure between Postman Collection Format v1 and v2",
   "author": "Postman Inc.",
   "license": "Apache-2.0",
