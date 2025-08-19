@@ -1,3 +1,8 @@
+4.1.12:
+  date: 2025-08-19
+  chores:
+    - GH-666 Added default fallbacks for read properties in response cookies
+
 4.1.11:
   date: 2025-05-30
   fixed bugs:
