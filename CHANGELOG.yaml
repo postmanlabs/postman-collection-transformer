@@ -1,3 +1,7 @@
+unreleased:
+  chores:
+    - GH-669 Added support for `source` and `secret` in variable normalization
+
 4.1.12:
   date: 2025-08-19
   chores:
