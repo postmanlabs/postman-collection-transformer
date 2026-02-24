@@ -3524,6 +3524,31 @@ describe('v1.0.0 to v2.1.0', function () {
                 done();
             });
         });
+
+        it('should preserve secret and source properties on variables', function (done) {
+            transformer.convert({
+                id: '2509a94e-eca1-43ca-a8aa-0e200636764f',
+                variables: [{
+                    id: 'var-1', key: 'apiKey', value: '', secret: true,
+                    source: { provider: 'postman', postman: { type: 'local', secretId: '123', vaultId: '456' } }
+                }, {
+                    id: 'var-2', key: 'name', value: 'John'
+                }]
+            }, options, function (err, result) {
+                expect(err).to.not.be.ok;
+
+                expect(result.variable[0]).to.include({ key: 'apiKey', secret: true });
+                expect(result.variable[0].source).to.eql({
+                    provider: 'postman',
+                    postman: { type: 'local', secretId: '123', vaultId: '456' }
+                });
+
+                expect(result.variable[1]).to.include({ key: 'name' });
+                expect(result.variable[1]).to.not.have.property('secret');
+                expect(result.variable[1]).to.not.have.property('source');
+                done();
+            });
+        });
     });
 
     describe('query parameters', function () {
