@@ -310,6 +310,35 @@ describe('v2.0.0 to v1.0.0', function () {
                 });
             });
         });
+
+        it('should preserve secret and source properties on collection variables', function (done) {
+            transformer.convert({
+                info: {
+                    _postman_id: 'C1',
+                    schema: 'https://schema.getpostman.com/json/collection/v2.0.0/collection.json'
+                },
+                variable: [{
+                    id: 'var-1', key: 'apiKey', value: '', secret: true,
+                    source: { provider: 'azure', azure: { secretId: 'my-secret' } }
+                }, {
+                    id: 'var-2', key: 'name', value: 'John'
+                }],
+                item: []
+            }, options, function (err, result) {
+                expect(err).to.not.be.ok;
+
+                expect(result.variables[0]).to.include({ key: 'apiKey', secret: true });
+                expect(result.variables[0].source).to.eql({
+                    provider: 'azure',
+                    azure: { secretId: 'my-secret' }
+                });
+
+                expect(result.variables[1]).to.include({ key: 'name' });
+                expect(result.variables[1]).to.not.have.property('secret');
+                expect(result.variables[1]).to.not.have.property('source');
+                done();
+            });
+        });
     });
 
     describe('descriptions', function () {
