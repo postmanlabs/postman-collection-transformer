@@ -74,6 +74,60 @@ describe('util', function () {
 
             expect(processed[0]).to.have.property('id');
         });
+
+        it('should preserve secret property when set to true', function () {
+            const entity = {
+                    variables: [
+                        { key: 'password', value: 'secret123', secret: true }
+                    ]
+                },
+                processed = util.handleVars(entity, { noDefaults: true });
+
+            expect(processed[0]).to.have.property('secret', true);
+        });
+
+        it('should not include secret property when not present', function () {
+            const entity = {
+                    variables: [
+                        { key: 'name', value: 'John' }
+                    ]
+                },
+                processed = util.handleVars(entity, { noDefaults: true });
+
+            expect(processed[0]).to.not.have.property('secret');
+        });
+
+        it('should preserve source property when present', function () {
+            const source = {
+                    provider: 'postman',
+                    postman: {
+                        type: 'local',
+                        secretId: '123',
+                        vaultId: '456'
+                    }
+                },
+                entity = {
+                    variables: [
+                        { key: 'apiKey', value: '', secret: true, source: source }
+                    ]
+                },
+                processed = util.handleVars(entity, { noDefaults: true });
+
+            expect(processed[0]).to.have.property('secret', true);
+            expect(processed[0]).to.have.property('source');
+            expect(processed[0].source).to.deep.eql(source);
+        });
+
+        it('should not include source property when not present', function () {
+            const entity = {
+                    variables: [
+                        { key: 'name', value: 'John' }
+                    ]
+                },
+                processed = util.handleVars(entity, { noDefaults: true });
+
+            expect(processed[0]).to.not.have.property('source');
+        });
     });
 
     describe('sanitizeAuthArray', function () {
