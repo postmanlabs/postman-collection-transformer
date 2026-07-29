@@ -227,7 +227,7 @@ describe('v2.0.0 to v1.0.0', function () {
                                 language: 'Text',
                                 previewType: 'html',
                                 rawDataType: 'text',
-                                cookies: [{ name: 'foo' }],
+                                cookies: [{ domain: '', name: 'foo', path: '' }],
                                 responseCode: { detail: '' }
                             }],
                             pathVariableData: [{ key: 'foo', value: 'bar', description: 'foo' }],
