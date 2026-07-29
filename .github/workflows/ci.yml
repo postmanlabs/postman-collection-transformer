@@ -6,7 +6,8 @@ on:
       - 'docs/**'
       - '*.md'
   pull_request:
-    branches: [$default-branch]
+    branches: [develop, main]
+  workflow_dispatch:
   schedule:
     - cron: '0 12 * * 0'
 
