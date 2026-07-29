@@ -63,6 +63,9 @@ jobs:
       matrix:
         node-version: [18, 20]
         os: [ubuntu-latest, windows-latest]
+        include:
+          - node-version: latest
+            os: ubuntu-latest
 
     steps:
       - name: Checkout repository
