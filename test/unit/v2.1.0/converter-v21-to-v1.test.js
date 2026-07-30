@@ -374,6 +374,46 @@ describe('v2.1.0 to v1.0.0', function () {
                 done();
             });
         });
+
+        it('should retain empty description when allowFieldResets contains description', function (done) {
+            const source = {
+                info: {
+                    _postman_id: '969e90b1-0742-41b5-8602-e137d25274ac',
+                    description: null
+                }
+            };
+
+            options.allowFieldResets = ['description'];
+
+            transformer.convert(source, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+
+                expect(_.get(converted, 'description')).to.eql(null);
+                done();
+            });
+            delete options.allowFieldResets;
+        });
+
+        it('should not retain description when allowFieldResets doesn\'t contains description', function (done) {
+            const source = {
+                info: {
+                    _postman_id: '969e90b1-0742-41b5-8602-e137d25274ac',
+                    description: null
+                }
+            };
+
+            transformer.convert(source, options, function (err, converted) {
+                expect(err).to.not.be.ok;
+
+                // remove `undefined` properties for testing
+                converted = JSON.parse(JSON.stringify(converted));
+                expect(_.get(converted, 'description')).to.eql(undefined);
+                done();
+            });
+        });
     });
 
     describe('request file body', function () {
@@ -1737,6 +1777,45 @@ describe('v2.1.0 to v1.0.0', function () {
                     done();
                 });
             });
+
+            it('should retain noauth from null auth object when allowFieldResets contains auth', function (done) {
+                const source = {
+                    info: {
+                        _postman_id: '969e90b1-0742-41b5-8602-e137d25274ac'
+                    },
+                    auth: null,
+                    item: [{
+                        _postman_id: 'a9832f4d-657c-4cd2-a5a4-7ddd6bc4948e',
+                        auth: null,
+                        item: []
+                    }]
+                };
+
+                options.allowFieldResets = ['auth'];
+
+                transformer.convert(source, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(_.get(converted, 'folders.0.auth')).to.eql(null);
+                    done();
+                });
+                delete options.allowFieldResets;
+            });
+
+            it('should not retain noauth when allowFieldResets doesn\'t contains auth', function (done) {
+                var fixture = require('../fixtures/sample-description');
+
+                transformer.convert(fixture.v21WithEmptyDescription, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+                    expect(_.get(converted, 'folders.0.auth')).to.eql(undefined);
+                    done();
+                });
+            });
         });
 
         describe('with collections', function () {
@@ -1806,6 +1885,56 @@ describe('v2.1.0 to v1.0.0', function () {
                         requests: [],
                         folders_order: ['a9832f4d-657c-4cd2-a5a4-7ddd6bc4948e']
                     });
+                    done();
+                });
+            });
+
+            it('should retain noauth from null auth object when allowFieldResets contains auth', function (done) {
+                const source = {
+                    info: {
+                        _postman_id: '969e90b1-0742-41b5-8602-e137d25274ac'
+                    },
+                    auth: null,
+                    item: [{
+                        _postman_id: 'a9832f4d-657c-4cd2-a5a4-7ddd6bc4948e',
+                        auth: null,
+                        item: []
+                    }]
+                };
+
+                options.allowFieldResets = ['auth'];
+
+                transformer.convert(source, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+
+                    expect(_.get(converted, 'auth')).to.eql(null);
+                    done();
+                });
+                delete options.allowFieldResets;
+            });
+
+            it('should not retain noauth when allowFieldResets doesn\'t contains auth', function (done) {
+                const source = {
+                    info: {
+                        _postman_id: '969e90b1-0742-41b5-8602-e137d25274ac'
+                    },
+                    auth: null,
+                    item: [{
+                        _postman_id: 'a9832f4d-657c-4cd2-a5a4-7ddd6bc4948e',
+                        auth: null,
+                        item: []
+                    }]
+                };
+
+                transformer.convert(source, options, function (err, converted) {
+                    expect(err).to.not.be.ok;
+
+                    // remove `undefined` properties for testing
+                    converted = JSON.parse(JSON.stringify(converted));
+                    expect(_.get(converted, 'auth')).to.eql(undefined);
                     done();
                 });
             });
